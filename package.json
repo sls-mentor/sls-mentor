@@ -1,7 +1,9 @@
 {
   "name": "@kumo-by-theodo/guardian",
   "description": "",
-  "bin": "./dist/cli.js",
+  "bin": {
+    "guardian": "./dist/cli.js"
+  },
   "main": "./dist/index.js",
   "scripts": {
     "dev": "ts-node ./src/cli.ts",
