@@ -9,7 +9,8 @@
     "dev": "ts-node ./src/cli.ts",
     "clean": "rimraf ./dist/",
     "build": "npm run clean && tsc",
-    "lint": "eslint src --fix",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "test": "npm run build && ava --verbose",
     "prepare": "npm run build"
   },
