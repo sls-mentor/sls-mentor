@@ -9,6 +9,7 @@
     "dev": "ts-node ./src/cli.ts",
     "clean": "rimraf ./dist/",
     "build": "npm run clean && tsc",
+    "lint": "eslint src --fix",
     "test": "npm run build && ava --verbose",
     "prepare": "npm run build"
   },
@@ -27,7 +28,17 @@
     "!dist/**/*.test.js"
   ],
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "ava": "^4.2.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4"
