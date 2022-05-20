@@ -1,6 +1,5 @@
 {
   "name": "@kumo-by-theodo/guardian",
-  "version": "0.0.1",
   "description": "",
   "bin": "./dist/cli.js",
   "main": "./dist/index.js",
