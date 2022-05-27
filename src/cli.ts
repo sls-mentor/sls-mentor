@@ -102,4 +102,4 @@ void program
   .option('-s, --short', 'Short output', false)
   .option('-t, --tags [key_value...]', 'Add filter tags', parseTags, [])
   .action(handleGuardianChecksCommand)
-  .parseAsync(process.argv);
+  .parseAsync();
