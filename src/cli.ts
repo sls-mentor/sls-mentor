@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { InvalidArgumentError, program } from 'commander';
+import { Command, InvalidArgumentError, program } from 'commander';
 
 import { Rule, runGuardianChecks } from './index';
 
@@ -20,10 +20,9 @@ const parseTags = (value: string, previous: Tag[]): Tag[] => {
   return previous.concat([groups as Tag]);
 };
 
-export const handleGuardianChecksCommand = async (options: {
-  tags: Tag[];
-  short: boolean;
-}): Promise<void> => {
+export const handleGuardianChecksCommand = async (
+  options: Options,
+): Promise<void> => {
   process.stdout.write('Running Checks...');
   const results = await runGuardianChecks(options);
   process.stdout.clearLine(0);
@@ -97,9 +96,29 @@ export const handleGuardianChecksCommand = async (options: {
   });
 };
 
-void program
+type Options = {
+  awsProfile?: string | undefined;
+  short: boolean;
+  tags: Tag[];
+  cloudformation?: string | undefined;
+};
+
+const setAwsProfile = (command: Command): void => {
+  const awsProfile = command.opts<Options>().awsProfile;
+  if (awsProfile !== undefined) {
+    process.env.AWS_PROFILE = awsProfile;
+  }
+};
+
+program
   .version('0.0.1')
   .option('-s, --short', 'Short output', false)
+  .option('-p, --aws-profile [profile]', 'AWS profile to use')
   .option('-t, --tags [key_value...]', 'Add filter tags', parseTags, [])
+  .option(
+    '-c, --cloudformation [cloudformation_stack_name]',
+    'Only check resources from the specified CloudFormation stack name',
+  )
   .action(handleGuardianChecksCommand)
-  .parseAsync();
+  .hook('preAction', setAwsProfile)
+  .parse();
