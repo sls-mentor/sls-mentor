@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import { toto } from './index';
+import { runGuardianChecks } from './index';
 
-program
+void program
   .version('0.0.1')
   .option('-p, --peppers', 'Add peppers')
   .option('-P, --pineapple', 'Add pineapple')
@@ -12,6 +12,5 @@ program
     'Add the specified type of cheese [marble]',
     'marble',
   )
-  .parse(process.argv);
-
-toto();
+  .action(runGuardianChecks)
+  .parseAsync(process.argv);
