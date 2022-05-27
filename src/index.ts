@@ -10,6 +10,7 @@ import {
   noDefaultMemory,
   NoDefaultTimeout,
   NoMaxTimeout,
+  NoSharedIamRoles,
 } from './rules';
 
 process.env.AWS_PROFILE = 'safetracker-dev';
@@ -56,6 +57,7 @@ export const runGuardianChecks = async (): Promise<void> => {
     noDefaultMemory,
     NoDefaultTimeout,
     NoMaxTimeout,
+    NoSharedIamRoles,
   ];
   await Promise.all(rules.map(rule => rule.run(resourcesArn)));
 };
