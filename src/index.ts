@@ -92,6 +92,7 @@ const fetchResources = async (
     return fetchCloudFormationResources(cloudformation);
   }
 
+  // Maybe replace with a check of all account on the specified region ?
   throw new Error('not enough argument specified');
 };
 
