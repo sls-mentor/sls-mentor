@@ -7,21 +7,32 @@ export type Tag = {
   key: string;
   value: string;
 };
-const parseTags = (value: string, previous: Tag[] | undefined): Tag[] => {
-  const [{ groups }] = [
-    ...value.matchAll(
+
+const hasKeyAndValue = (
+  groups: Record<string, string> | undefined,
+): groups is Tag => {
+  // ts-config is losely assuming all keys exist, type guard to be updated when Typescript config is updated
+  return groups !== undefined;
+};
+
+const parseTags = (
+  tagOption: string,
+  previousTags: Tag[] | undefined,
+): Tag[] => {
+  const [{ groups: tag }] = [
+    ...tagOption.matchAll(
       /^Key=(?<key>[\p{L}\p{Z}\p{N}_.:/=+\-@]*),Value=(?<value>[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/gu,
     ),
   ];
-  if (!groups) {
+  if (!hasKeyAndValue(tag)) {
     throw new InvalidArgumentError('Unvalid flag parameters');
   }
 
-  if (!previous) {
-    return [groups as Tag];
+  if (!previousTags) {
+    return [tag];
   }
 
-  return [...previous, groups as Tag];
+  return [...previousTags, tag];
 };
 
 export const handleGuardianChecksCommand = async (

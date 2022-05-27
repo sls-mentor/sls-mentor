@@ -18,11 +18,6 @@ import {
 } from './rules';
 import { Options, Tag } from './cli';
 
-process.env.AWS_PROFILE = 'nathan';
-
-// index is owner of fetching scoped  resources (CFN or tags).
-// each rule owns details fetching
-
 type Resource = { arn: ARN };
 
 export interface Rule {
@@ -54,13 +49,15 @@ const fetchTaggedResources = async (tags: Tag[]): Promise<{ arn: ARN }[]> => {
   });
 };
 
-const fetchCloudFormationResources = async (): Promise<{ arn: ARN }[]> => {
+const fetchCloudFormationResources = async (
+  cloudformation: string,
+): Promise<{ arn: ARN }[]> => {
   const cloudFormationClient = new CloudFormationClient({});
   const stsClient = new STSClient({});
 
   const { StackResourceSummaries: resources } = await cloudFormationClient.send(
     new ListStackResourcesCommand({
-      StackName: 'aws-kumo-resto-dev',
+      StackName: cloudformation,
     }),
   );
   if (!resources) {
@@ -83,16 +80,24 @@ const fetchCloudFormationResources = async (): Promise<{ arn: ARN }[]> => {
   });
 };
 
-const fetchResources = async (tags: Tag[] | undefined) => {
+const fetchResources = async (
+  cloudformation: string | undefined,
+  tags: Tag[] | undefined,
+) => {
   if (tags !== undefined) {
     return fetchTaggedResources(tags);
   }
 
-  return fetchCloudFormationResources();
+  if (cloudformation !== undefined) {
+    return fetchCloudFormationResources(cloudformation);
+  }
+
+  throw new Error('not enough argument specified');
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const runGuardianChecks = async ({
+  cloudformation,
   tags,
 }: Options): Promise<
   {
@@ -100,7 +105,7 @@ export const runGuardianChecks = async ({
     result: ({ arn: string; success: boolean } & Record<string, unknown>)[];
   }[]
 > => {
-  const resourcesArn = await fetchResources(tags);
+  const resourcesArn = await fetchResources(cloudformation, tags);
   const rules: Rule[] = [
     LightBundleRule,
     noDefaultMemory,
