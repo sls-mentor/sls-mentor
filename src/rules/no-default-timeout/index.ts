@@ -6,11 +6,13 @@ import {
 } from '@aws-sdk/client-lambda';
 import { Rule } from '../..';
 
-const hasHeavyBundle = (
+const AWS_DEFAULT_TIMEOUT = 3;
+
+const hasDefaultTimeout = (
   lambdaConfiguration: GetFunctionConfigurationCommandOutput,
 ) =>
-  lambdaConfiguration.CodeSize !== undefined &&
-  lambdaConfiguration.CodeSize > 5000000;
+  lambdaConfiguration.Timeout !== undefined &&
+  lambdaConfiguration.Timeout === AWS_DEFAULT_TIMEOUT;
 
 const run = async (
   resources: { arn: ARN }[],
@@ -28,16 +30,16 @@ const run = async (
   );
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
-    success: hasHeavyBundle(lambdaConfiguration),
-    bundleSize: lambdaConfiguration.CodeSize,
+    success: !hasDefaultTimeout(lambdaConfiguration),
+    timeout: lambdaConfiguration.Timeout,
   }));
 
   return { results };
 };
 
 export default {
-  ruleName: 'Light Bundle',
+  ruleName: 'No default timeout',
   errorMessage:
-    'The following functions have bundles that weight more than 5 Mb.\nSee (https://m33.notion.site/Serverless-Sustainability-Audit-a36847289fd64339a60e40bc5aa63092) for impact.',
+    'The following functions have their timeout set as default.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-default-timeout) for impact and how to to resolve.',
   run,
 } as Rule;
