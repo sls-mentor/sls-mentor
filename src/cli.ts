@@ -111,6 +111,7 @@ const setAwsProfile = (command: Command): void => {
 };
 
 program
+  .name('guardian')
   .version('0.0.1')
   .option('-s, --short', 'Short output', false)
   .option('-p, --aws-profile [profile]', 'AWS profile to use')
