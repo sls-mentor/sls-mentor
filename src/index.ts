@@ -17,7 +17,7 @@ export interface Rule {
   ruleName: string;
   errorMessage: string;
   run: (resources: Resource[]) => Promise<{
-    failedResources: ({ arn: string } & Record<string, unknown>)[];
+    results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
   }>;
 }
 
