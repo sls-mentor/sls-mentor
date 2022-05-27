@@ -13,7 +13,7 @@ import {
   NoSharedIamRoles,
 } from './rules';
 
-process.env.AWS_PROFILE = 'safetracker-dev';
+process.env.AWS_PROFILE = 'nathan';
 
 // index is owner of fetching scoped  resources (CFN or tags).
 // each rule owns details fetching
@@ -28,16 +28,81 @@ export interface Rule {
   }>;
 }
 
-export const runGuardianChecks = async (): Promise<void> => {
+export const handleGuardianChecksCommand = async (options: {
+  short: boolean;
+}): Promise<void> => {
+  process.stdout.write('Running Checks...');
+  const results = await runGuardianChecks();
+  process.stdout.clearLine(0);
+  process.stdout.cursorTo(0);
+  console.log('Checks results: ');
+
+  let atLeastOneFailed = false;
+  results.forEach(({ rule, result }) => {
+    const successCount = result.filter(e => e.success).length;
+    const failCount = result.length - successCount;
+
+    atLeastOneFailed = atLeastOneFailed || failCount > 0;
+    console.log(
+      failCount > 0 ? '\x1b[47m\x1b[31m' : '\x1b[32m',
+      `${rule.ruleName}: ${failCount > 0 ? '❌' : '✅'} ${Math.floor(
+        (100 * successCount) / (failCount + successCount),
+      )}%`,
+      '\x1b[0m',
+    );
+  });
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (options.short || !atLeastOneFailed)
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    process.exit(atLeastOneFailed ? 1 : 0);
+
+  console.log('\nChecks details: ');
+  const failedByResource: Record<string, Record<string, string>[]> = {};
+
+  results.forEach(({ rule, result }) => {
+    result
+      .filter(e => !e.success)
+      .forEach(resourceResult => {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (failedByResource[resourceResult.arn] === undefined)
+          failedByResource[resourceResult.arn] = [];
+        const extraArgs = Object.fromEntries(
+          Object.keys(resourceResult)
+            .filter(k => !['arn', 'success'].includes(k))
+            .map(k => [k, resourceResult[k]]),
+        );
+        failedByResource[resourceResult.arn].push({
+          ruleName: rule.ruleName,
+          ...extraArgs,
+        });
+      });
+  });
+
+  Object.keys(failedByResource).forEach(ressourceArn => {
+    console.error(
+      '\n\n\x1b[47m\x1b[31m',
+      `Details on ressource "${ressourceArn}" :`,
+      '\x1b[0m\n',
+    );
+    console.table(failedByResource[ressourceArn]);
+  });
+};
+
+export const runGuardianChecks = async (): Promise<
+  {
+    rule: Rule;
+    result: ({ arn: string; success: boolean } & Record<string, unknown>)[];
+  }[]
+> => {
   const cloudFormationClient = new CloudFormationClient({});
   const stsClient = new STSClient({});
   const { StackResourceSummaries: resources } = await cloudFormationClient.send(
     new ListStackResourcesCommand({
-      StackName: 'safetracker-backend-dev',
+      StackName: 'aws-kumo-resto-dev',
     }),
   );
   if (!resources) {
-    return;
+    return [];
   }
   const filteredResources = resources.filter(
     resource => resource.ResourceType === 'AWS::Lambda::Function',
@@ -59,5 +124,10 @@ export const runGuardianChecks = async (): Promise<void> => {
     NoMaxTimeout,
     NoSharedIamRoles,
   ];
-  await Promise.all(rules.map(rule => rule.run(resourcesArn)));
+
+  return await Promise.all(
+    rules.map(async rule => {
+      return { rule, result: (await rule.run(resourcesArn)).results };
+    }),
+  );
 };
