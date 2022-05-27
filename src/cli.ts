@@ -129,10 +129,10 @@ program
   .name('guardian')
   .version('0.0.1')
   .option('-s, --short', 'Short output', false)
-  .option('-p, --aws-profile [profile]', 'AWS profile to use')
-  .option('-t, --tags [key_value...]', 'Add filter tags', parseTags)
+  .option('-p, --aws-profile <profile>', 'AWS profile to use')
+  .option('-t, --tags <key_value...>', 'Add filter tags', parseTags)
   .option(
-    '-c, --cloudformation [cloudformation_stack_name]',
+    '-c, --cloudformation <cloudformation_stack_name>',
     'Only check resources from the specified CloudFormation stack name',
   )
   .action(handleGuardianChecksCommand)
