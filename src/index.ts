@@ -5,6 +5,7 @@ import {
 import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 
 import { ARN, parse } from '@aws-sdk/util-arn-parser';
+import { LightBundleRule, noDefaultMemory } from './rules';
 
 process.env.AWS_PROFILE = 'safetracker-dev';
 
@@ -45,6 +46,6 @@ export const runGuardianChecks = async (): Promise<void> => {
       ),
     };
   });
-  const rules: Rule[] = [];
+  const rules: Rule[] = [LightBundleRule, noDefaultMemory];
   await Promise.all(rules.map(rule => rule.run(resourcesArn)));
 };
