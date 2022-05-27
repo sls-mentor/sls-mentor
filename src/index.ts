@@ -43,12 +43,19 @@ export const handleGuardianChecksCommand = async (options: {
     const failCount = result.length - successCount;
 
     atLeastOneFailed = atLeastOneFailed || failCount > 0;
+    const successRatio = successCount / (failCount + successCount);
+    const failRatio = failCount / (failCount + successCount);
     console.log(
-      failCount > 0 ? '\x1b[47m\x1b[31m' : '\x1b[32m',
-      `${rule.ruleName}: ${failCount > 0 ? '❌' : '✅'} ${Math.floor(
-        (100 * successCount) / (failCount + successCount),
-      )}%`,
-      '\x1b[0m',
+      successRatio < 0.7
+        ? '\x1b[31m'
+        : successRatio < 1
+        ? '\x1b[33m'
+        : '\x1b[32m',
+      `${rule.ruleName}:\n`,
+      `[${'◼'.repeat(Math.floor(20 * successRatio))}${' '.repeat(
+        Math.floor(20 * failRatio),
+      )}] ${successRatio * 100}%`,
+      '\x1b[0m\n',
     );
   });
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

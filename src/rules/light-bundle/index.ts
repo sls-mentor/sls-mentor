@@ -28,7 +28,7 @@ const run = async (
   );
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
-    success: hasHeavyBundle(lambdaConfiguration),
+    success: !hasHeavyBundle(lambdaConfiguration),
     bundleSize: lambdaConfiguration.CodeSize,
   }));
 
