@@ -6,7 +6,7 @@
   },
   "main": "./dist/index.js",
   "scripts": {
-    "dev": "ts-node ./src/cli.ts",
+    "dev": "node -r ts-node/register ./src/cli.ts",
     "clean": "rimraf ./dist/",
     "build": "npm run clean && tsc",
     "lint": "eslint src",
