@@ -47,8 +47,9 @@
   },
   "dependencies": {
     "@aws-sdk/client-cloudformation": "^3.99.0",
+    "@aws-sdk/client-lambda": "^3.95.0",
+    "@aws-sdk/client-resource-groups-tagging-api": "^3.100.0",
     "@aws-sdk/client-sts": "^3.100.0",
-    "@aws-sdk/client-lambda": "^3.100.0",
     "@aws-sdk/util-arn-parser": "^3.55.0",
     "commander": "^9.2.0"
   }
