@@ -1,31 +1,50 @@
-import { LambdaClient, ListFunctionsCommand } from '@aws-sdk/client-lambda';
+import {
+  CloudFormationClient,
+  ListStackResourcesCommand,
+} from '@aws-sdk/client-cloudformation';
+import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 
-const getLambdaFunctions = async () => {
-  let allFunctions = [];
-  let marker;
-  do {
-    // eslint-disable-next-line no-await-in-loop
-    const lambdaClient = new LambdaClient({});
-    try {
-      const { Functions, NextMarker } = await lambdaClient.send(
-        new ListFunctionsCommand({
-          Marker: marker,
-          MaxItems: 50,
-        }),
-      );
-      allFunctions = [...allFunctions, ...Functions];
-      marker = NextMarker;
-    } catch (e) {
-      console.error(e);
-    }
-  } while (marker);
+import { ARN, parse } from '@aws-sdk/util-arn-parser';
 
-  return allFunctions;
-};
+process.env.AWS_PROFILE = 'safetracker-dev';
 
-export const runGuardianChecks = async () => {
-  // AWS.config.credentials = new AWS.SharedIniFileCredentials({ profile: "default" });
-  console.log('Hello !');
-  const result = await getLambdaFunctions();
-  console.log(result);
+// index is owner of fetching scoped  resources (CFN or tags).
+// each rule owns details fetching
+
+type Resource = { arn: ARN };
+
+export interface Rule {
+  ruleName: string;
+  errorMessage: string;
+  run: (resources: Resource[]) => Promise<{
+    failedResources: ({ arn: string } & Record<string, unknown>)[];
+  }>;
+}
+
+export const runGuardianChecks = async (): Promise<void> => {
+  const cloudFormationClient = new CloudFormationClient({});
+  const stsClient = new STSClient({});
+  const { StackResourceSummaries: resources } = await cloudFormationClient.send(
+    new ListStackResourcesCommand({
+      StackName: 'safetracker-backend-dev',
+    }),
+  );
+  if (!resources) {
+    return;
+  }
+  const filteredResources = resources.filter(
+    resource => resource.ResourceType === 'AWS::Lambda::Function',
+  );
+  const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
+  const region = cloudFormationClient.config.region;
+  const resourcesArn: { arn: ARN }[] = filteredResources.map(resource => {
+    return {
+      arn: parse(
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        `arn:aws:lambda:${region}:${Account}:function:${resource.PhysicalResourceId}`,
+      ),
+    };
+  });
+  const rules: Rule[] = [];
+  await Promise.all(rules.map(rule => rule.run(resourcesArn)));
 };
