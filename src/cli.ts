@@ -7,7 +7,7 @@ export type Tag = {
   key: string;
   value: string;
 };
-const parseTags = (value: string, previous: Tag[]): Tag[] => {
+const parseTags = (value: string, previous: Tag[] | undefined): Tag[] => {
   const [{ groups }] = [
     ...value.matchAll(
       /^Key=(?<key>[\p{L}\p{Z}\p{N}_.:/=+\-@]*),Value=(?<value>[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/gu,
@@ -17,7 +17,11 @@ const parseTags = (value: string, previous: Tag[]): Tag[] => {
     throw new InvalidArgumentError('Unvalid flag parameters');
   }
 
-  return previous.concat([groups as Tag]);
+  if (!previous) {
+    return [groups as Tag];
+  }
+
+  return [...previous, groups as Tag];
 };
 
 export const handleGuardianChecksCommand = async (
@@ -96,10 +100,10 @@ export const handleGuardianChecksCommand = async (
   });
 };
 
-type Options = {
+export type Options = {
   awsProfile?: string | undefined;
   short: boolean;
-  tags: Tag[];
+  tags?: Tag[] | undefined;
   cloudformation?: string | undefined;
 };
 
@@ -115,7 +119,7 @@ program
   .version('0.0.1')
   .option('-s, --short', 'Short output', false)
   .option('-p, --aws-profile [profile]', 'AWS profile to use')
-  .option('-t, --tags [key_value...]', 'Add filter tags', parseTags, [])
+  .option('-t, --tags [key_value...]', 'Add filter tags', parseTags)
   .option(
     '-c, --cloudformation [cloudformation_stack_name]',
     'Only check resources from the specified CloudFormation stack name',

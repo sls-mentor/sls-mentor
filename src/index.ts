@@ -16,7 +16,7 @@ import {
   NoMaxTimeout,
   NoSharedIamRoles,
 } from './rules';
-import { Tag } from './cli';
+import { Options, Tag } from './cli';
 
 process.env.AWS_PROFILE = 'nathan';
 
@@ -83,8 +83,8 @@ const fetchCloudFormationResources = async (): Promise<{ arn: ARN }[]> => {
   });
 };
 
-const fetchResources = async (tags: Tag[]) => {
-  if (tags.length !== 0) {
+const fetchResources = async (tags: Tag[] | undefined) => {
+  if (tags !== undefined) {
     return fetchTaggedResources(tags);
   }
 
@@ -94,9 +94,7 @@ const fetchResources = async (tags: Tag[]) => {
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const runGuardianChecks = async ({
   tags,
-}: {
-  tags: Tag[];
-}): Promise<
+}: Options): Promise<
   {
     rule: Rule;
     result: ({ arn: string; success: boolean } & Record<string, unknown>)[];
