@@ -4,7 +4,7 @@ import {
   LambdaClient,
 } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
-import { Rule } from '../..';
+import { Rule } from '../../types';
 
 type CheckRuleOnResourceReturnType = {
   arn: string;

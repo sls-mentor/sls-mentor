@@ -2,7 +2,7 @@ import {
   GetFunctionConfigurationCommand,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { Rule } from '../../index';
+import { Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 const client = new LambdaClient({});
