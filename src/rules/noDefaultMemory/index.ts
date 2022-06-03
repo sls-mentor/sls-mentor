@@ -1,32 +1,26 @@
-import {
-  GetFunctionConfigurationCommand,
-  LambdaClient,
-} from '@aws-sdk/client-lambda';
-import { Rule } from '../../types';
+import { fetchAllLambdaConfigurations } from '../../helpers';
+import { CheckResult, Resource, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
-const client = new LambdaClient({});
+
+const run = async (
+  resources: Resource[],
+): Promise<{
+  results: CheckResult[];
+}> => {
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
+
+  const results = lambdaConfigurations.map(lambdaConfiguration => ({
+    arn: lambdaConfiguration.FunctionArn ?? '',
+    memory: lambdaConfiguration.MemorySize,
+    success: lambdaConfiguration.MemorySize !== DEFAULT_MEMORY_SIZE,
+  }));
+
+  return { results };
+};
 
 export default {
   ruleName: 'No default memory',
   errorMessage: 'The following functions have their memory set as default.',
-  run: async resources => {
-    resources = resources.filter(({ arn }) => arn.service === 'lambda');
-
-    const results = await Promise.all(
-      resources.map(async ({ arn }) => {
-        const lambdaConfig = await client.send(
-          new GetFunctionConfigurationCommand({ FunctionName: arn.resource }),
-        );
-
-        return {
-          arn: lambdaConfig.FunctionArn,
-          memory: lambdaConfig.MemorySize,
-          success: lambdaConfig.MemorySize !== DEFAULT_MEMORY_SIZE,
-        };
-      }),
-    );
-
-    return { results };
-  },
+  run,
 } as Rule;

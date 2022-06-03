@@ -1,30 +1,17 @@
-import {
-  GetFunctionConfigurationCommand,
-  GetFunctionConfigurationCommandOutput,
-  LambdaClient,
-} from '@aws-sdk/client-lambda';
-import { Resource, Rule } from '../../types';
+import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { fetchAllLambdaConfigurations } from '../../helpers';
+import { CheckResult, Resource, Rule } from '../../types';
 
-const hasHeavyBundle = (
-  lambdaConfiguration: GetFunctionConfigurationCommandOutput,
-) =>
+const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.CodeSize !== undefined &&
   lambdaConfiguration.CodeSize > 5000000;
 
 const run = async (
   resources: Resource[],
 ): Promise<{
-  results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
+  results: CheckResult[];
 }> => {
-  const client = new LambdaClient({});
-  const lambdaNames = resources
-    .filter(({ arn }) => arn.service === 'lambda')
-    .map(({ arn }) => arn.resource);
-  const lambdaConfigurations = await Promise.all(
-    lambdaNames.map(FunctionName =>
-      client.send(new GetFunctionConfigurationCommand({ FunctionName })),
-    ),
-  );
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
     success: !hasHeavyBundle(lambdaConfiguration),

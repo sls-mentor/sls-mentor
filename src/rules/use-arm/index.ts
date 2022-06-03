@@ -1,14 +1,11 @@
-import {
-  GetFunctionConfigurationCommand,
-  GetFunctionConfigurationCommandOutput,
-  LambdaClient,
-} from '@aws-sdk/client-lambda';
+import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { fetchAllLambdaConfigurations } from '../../helpers';
 import { CheckResult, Resource, Rule } from '../../types';
 
 const armArchitecture = 'arm64';
 
 const isArmArchitecture = (
-  lambdaConfigurations: GetFunctionConfigurationCommandOutput,
+  lambdaConfigurations: FunctionConfiguration,
 ): boolean =>
   lambdaConfigurations.Architectures
     ? lambdaConfigurations.Architectures[0] === armArchitecture
@@ -19,19 +16,10 @@ const run = async (
 ): Promise<{
   results: CheckResult[];
 }> => {
-  const client = new LambdaClient({});
-  const lambdasNames = resources
-    .filter(({ arn }) => arn.service === 'lambda')
-    .map(({ arn }) => arn.resource);
-
-  const lambdasConfigurations = await Promise.all(
-    lambdasNames.map(FunctionName =>
-      client.send(new GetFunctionConfigurationCommand({ FunctionName })),
-    ),
-  );
-  const results = lambdasConfigurations.map(lambdaConfigurations => ({
-    arn: lambdaConfigurations.FunctionArn ?? '',
-    success: isArmArchitecture(lambdaConfigurations),
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
+  const results = lambdaConfigurations.map(lambdaConfiguration => ({
+    arn: lambdaConfiguration.FunctionArn ?? '',
+    success: isArmArchitecture(lambdaConfiguration),
   }));
 
   return { results };

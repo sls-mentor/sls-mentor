@@ -1,29 +1,18 @@
-import {
-  GetFunctionConfigurationCommand,
-  GetFunctionConfigurationCommandOutput,
-  LambdaClient,
-} from '@aws-sdk/client-lambda';
-import { Resource, Rule } from '../../types';
+import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { fetchAllLambdaConfigurations } from '../../helpers';
+import { CheckResult, Resource, Rule } from '../../types';
 
 const isLambdaRoleShared = (
-  lambdaConfiguration: GetFunctionConfigurationCommandOutput,
+  lambdaConfiguration: FunctionConfiguration,
   sharedRoles: (string | undefined)[],
 ) => sharedRoles.includes(lambdaConfiguration.Role);
 
 const run = async (
   resources: Resource[],
 ): Promise<{
-  results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
+  results: CheckResult[];
 }> => {
-  const client = new LambdaClient({});
-  const lambdaNames = resources
-    .filter(({ arn }) => arn.service === 'lambda')
-    .map(({ arn }) => arn.resource);
-  const lambdaConfigurations = await Promise.all(
-    lambdaNames.map(FunctionName =>
-      client.send(new GetFunctionConfigurationCommand({ FunctionName })),
-    ),
-  );
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
   const roles = lambdaConfigurations.map(
     lambdaConfiguration => lambdaConfiguration.Role,
   );
