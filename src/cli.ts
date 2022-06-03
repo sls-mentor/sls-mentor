@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import { Rule, runGuardianChecks } from './index';
+import { runGuardianChecks } from './index';
+import { Rule } from './types/Rule';
 
 export type Tag = {
   key: string;

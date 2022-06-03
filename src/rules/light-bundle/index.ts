@@ -4,7 +4,7 @@ import {
   GetFunctionConfigurationCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { Rule } from '../..';
+import { Rule } from '../../types';
 
 const hasHeavyBundle = (
   lambdaConfiguration: GetFunctionConfigurationCommandOutput,

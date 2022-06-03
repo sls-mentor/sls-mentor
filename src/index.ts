@@ -11,6 +11,7 @@ import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 import { ARN, parse } from '@aws-sdk/util-arn-parser';
 import {
   LightBundleRule,
+  LimitedNumberOfLambdaVersions,
   noDefaultMemory,
   NoDefaultTimeout,
   NoMaxTimeout,
@@ -18,16 +19,7 @@ import {
   UseArm,
 } from './rules';
 import { Options, Tag } from './cli';
-
-type Resource = { arn: ARN };
-
-export interface Rule {
-  ruleName: string;
-  errorMessage: string;
-  run: (resources: Resource[]) => Promise<{
-    results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
-  }>;
-}
+import { Rule } from './types';
 
 const fetchTaggedResources = async (tags: Tag[]): Promise<{ arn: ARN }[]> => {
   const tagClient = new ResourceGroupsTaggingAPIClient({});
@@ -69,7 +61,7 @@ const fetchCloudFormationResources = async (
   );
 
   const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
-  const region = cloudFormationClient.config.region;
+  const region = await cloudFormationClient.config.region();
 
   return filteredResources.map(resource => {
     return {
@@ -115,6 +107,7 @@ export const runGuardianChecks = async ({
     NoMaxTimeout,
     NoSharedIamRoles,
     UseArm,
+    LimitedNumberOfLambdaVersions,
   ];
 
   let remaining = rules.length + 1;
