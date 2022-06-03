@@ -1,7 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import { CheckResult, Resource, Rule, RuleNames } from '../../types';
 
 const AWS_DEFAULT_TIMEOUT = 3;
 

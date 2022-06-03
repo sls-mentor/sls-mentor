@@ -1,6 +1,5 @@
 import { fetchAllLambdaVersions } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import { CheckResult, Resource, Rule, RuleNames } from '../../types';
 
 const MAX_NUMBER_OF_VERSIONS = 3 + 1; // +$latest
 

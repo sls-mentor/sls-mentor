@@ -1,6 +1,5 @@
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import { CheckResult, Resource, Rule, RuleNames } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
