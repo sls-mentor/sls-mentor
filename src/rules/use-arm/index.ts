@@ -3,13 +3,7 @@ import {
   GetFunctionConfigurationCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { ARN } from '@aws-sdk/util-arn-parser';
-import { Rule } from '../../types';
-
-type CheckRuleOnResourceReturnType = {
-  arn: string;
-  success: boolean;
-} & Record<string, unknown>;
+import { CheckResult, Resource, Rule } from '../../types';
 
 const armArchitecture = 'arm64';
 
@@ -21,9 +15,9 @@ const isArmArchitecture = (
     : false;
 
 const run = async (
-  resources: { arn: ARN }[],
+  resources: Resource[],
 ): Promise<{
-  results: CheckRuleOnResourceReturnType[];
+  results: CheckResult[];
 }> => {
   const client = new LambdaClient({});
   const lambdasNames = resources
