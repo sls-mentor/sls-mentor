@@ -1,10 +1,9 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import {
   GetFunctionConfigurationCommand,
   GetFunctionConfigurationCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { Rule } from '../../types';
+import { Resource, Rule } from '../../types';
 
 const hasHeavyBundle = (
   lambdaConfiguration: GetFunctionConfigurationCommandOutput,
@@ -13,7 +12,7 @@ const hasHeavyBundle = (
   lambdaConfiguration.CodeSize > 5000000;
 
 const run = async (
-  resources: { arn: ARN }[],
+  resources: Resource[],
 ): Promise<{
   results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
 }> => {

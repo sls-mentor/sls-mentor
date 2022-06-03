@@ -3,7 +3,7 @@ import {
   LambdaClient,
   ListVersionsByFunctionCommand,
 } from '@aws-sdk/client-lambda';
-import { build } from '@aws-sdk/util-arn-parser';
+import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { Resource, Rule } from '../../types';
 
 interface CheckOutput {
@@ -16,14 +16,14 @@ const filterLambdaFromResources = (resources: Resource[]): Resource[] =>
   resources.filter(({ arn }) => arn.service === 'lambda');
 
 const fetchLambdaVersions = async (
-  lambdaName: string,
+  arn: ARN,
   client: LambdaClient,
 ): Promise<FunctionConfiguration[]> => {
-  const { Versions: lambdaVersions } = await client.send(
-    new ListVersionsByFunctionCommand({ FunctionName: lambdaName }),
+  const { Versions: versions } = await client.send(
+    new ListVersionsByFunctionCommand({ FunctionName: arn.resource }),
   );
 
-  return lambdaVersions ?? [];
+  return versions ?? [];
 };
 
 const run = async (resources: Resource[]): Promise<CheckOutput> => {
@@ -33,14 +33,14 @@ const run = async (resources: Resource[]): Promise<CheckOutput> => {
   const lambdaVersions = await Promise.all(
     lambdaResources.map(async ({ arn }) => ({
       arn: build(arn),
-      versions: await fetchLambdaVersions(arn.resource, client),
+      versions: await fetchLambdaVersions(arn, client),
     })),
   );
 
   const results = lambdaVersions.map(({ arn, versions }) => ({
     arn,
     success: versions.length <= MAX_NUMBER_OF_VERSIONS,
-    versionNumber: Math.max(versions.length - 1, 0),
+    versionNumber: versions.length,
   }));
 
   return { results };

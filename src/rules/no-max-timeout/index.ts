@@ -1,10 +1,9 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import {
   GetFunctionConfigurationCommand,
   GetFunctionConfigurationCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { Rule } from '../../types';
+import { Resource, Rule } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -15,7 +14,7 @@ const hasMaximumTimeout = (
   lambdaConfiguration.Timeout === AWS_MAXIMUM_TIMEOUT;
 
 const run = async (
-  resources: { arn: ARN }[],
+  resources: Resource[],
 ): Promise<{
   results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
 }> => {

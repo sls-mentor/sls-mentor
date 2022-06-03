@@ -1,10 +1,9 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import {
   GetFunctionConfigurationCommand,
   GetFunctionConfigurationCommandOutput,
   LambdaClient,
 } from '@aws-sdk/client-lambda';
-import { Rule } from '../../types';
+import { Resource, Rule } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: GetFunctionConfigurationCommandOutput,
@@ -12,7 +11,7 @@ const isLambdaRoleShared = (
 ) => sharedRoles.includes(lambdaConfiguration.Role);
 
 const run = async (
-  resources: { arn: ARN }[],
+  resources: Resource[],
 ): Promise<{
   results: ({ arn: string; success: boolean } & Record<string, unknown>)[];
 }> => {

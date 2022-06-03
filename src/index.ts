@@ -8,7 +8,7 @@ import {
 } from '@aws-sdk/client-resource-groups-tagging-api';
 import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 
-import { ARN, parse } from '@aws-sdk/util-arn-parser';
+import { parse } from '@aws-sdk/util-arn-parser';
 import {
   LightBundleRule,
   LimitedNumberOfLambdaVersions,
@@ -19,9 +19,9 @@ import {
   UseArm,
 } from './rules';
 import { Options, Tag } from './cli';
-import { Rule } from './types';
+import { Resource, Rule } from './types';
 
-const fetchTaggedResources = async (tags: Tag[]): Promise<{ arn: ARN }[]> => {
+const fetchTaggedResources = async (tags: Tag[]): Promise<Resource[]> => {
   const tagClient = new ResourceGroupsTaggingAPIClient({});
 
   const { ResourceTagMappingList: taggedResources } = await tagClient.send(
@@ -44,7 +44,7 @@ const fetchTaggedResources = async (tags: Tag[]): Promise<{ arn: ARN }[]> => {
 
 const fetchCloudFormationResources = async (
   cloudformation: string,
-): Promise<{ arn: ARN }[]> => {
+): Promise<Resource[]> => {
   const cloudFormationClient = new CloudFormationClient({});
   const stsClient = new STSClient({});
 
