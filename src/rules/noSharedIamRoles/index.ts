@@ -1,6 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
 import { CheckResult, Resource, Rule } from '../../types';
+import { RuleNames } from '../../types/RuleNames';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -29,7 +30,7 @@ const run = async (
 };
 
 export default {
-  ruleName: 'No IAM shared roles',
+  ruleName: RuleNames.NO_SHARED_IAM_ROLES,
   errorMessage:
     'The following functions have roles used by 1 or more other functions.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-shared-roles) for impact and how to to resolve.',
   run,

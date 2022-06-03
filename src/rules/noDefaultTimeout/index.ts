@@ -1,12 +1,13 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
 import { CheckResult, Resource, Rule } from '../../types';
+import { RuleNames } from '../../types/RuleNames';
 
-const AWS_MAXIMUM_TIMEOUT = 900;
+const AWS_DEFAULT_TIMEOUT = 3;
 
-const hasMaximumTimeout = (lambdaConfiguration: FunctionConfiguration) =>
+const hasDefaultTimeout = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.Timeout !== undefined &&
-  lambdaConfiguration.Timeout === AWS_MAXIMUM_TIMEOUT;
+  lambdaConfiguration.Timeout === AWS_DEFAULT_TIMEOUT;
 
 const run = async (
   resources: Resource[],
@@ -17,7 +18,7 @@ const run = async (
 
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
-    success: !hasMaximumTimeout(lambdaConfiguration),
+    success: !hasDefaultTimeout(lambdaConfiguration),
     timeout: lambdaConfiguration.Timeout,
   }));
 
@@ -25,8 +26,8 @@ const run = async (
 };
 
 export default {
-  ruleName: 'No max timeout',
+  ruleName: RuleNames.NO_DEFAULT_TIMEOUT,
   errorMessage:
-    'The following functions have their timeout set as the maximum.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-max-timeout) for impact and how to to resolve.',
+    'The following functions have their timeout set as default.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-default-timeout) for impact and how to to resolve.',
   run,
 } as Rule;

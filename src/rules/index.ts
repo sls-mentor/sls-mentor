@@ -1,10 +1,10 @@
 import noDefaultMemory from './noDefaultMemory';
-import LightBundleRule from './light-bundle';
-import NoDefaultTimeout from './no-default-timeout';
-import NoMaxTimeout from './no-max-timeout';
-import NoSharedIamRoles from './no-shared-iam-roles';
-import UseArm from './use-arm';
-import LimitedNumberOfLambdaVersions from './limited-number-of-versions';
+import LightBundleRule from './lightBundle';
+import NoDefaultTimeout from './noDefaultTimeout';
+import NoMaxTimeout from './noMaxTimeout';
+import NoSharedIamRoles from './noSharedIamRoles';
+import UseArm from './useArm';
+import LimitedNumberOfLambdaVersions from './limitedNumberOfVersions';
 
 export {
   noDefaultMemory,

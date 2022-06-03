@@ -1,15 +1,11 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
 import { CheckResult, Resource, Rule } from '../../types';
+import { RuleNames } from '../../types/RuleNames';
 
-const armArchitecture = 'arm64';
-
-const isArmArchitecture = (
-  lambdaConfigurations: FunctionConfiguration,
-): boolean =>
-  lambdaConfigurations.Architectures
-    ? lambdaConfigurations.Architectures[0] === armArchitecture
-    : false;
+const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
+  lambdaConfiguration.CodeSize !== undefined &&
+  lambdaConfiguration.CodeSize > 5000000;
 
 const run = async (
   resources: Resource[],
@@ -19,15 +15,16 @@ const run = async (
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
-    success: isArmArchitecture(lambdaConfiguration),
+    success: !hasHeavyBundle(lambdaConfiguration),
+    bundleSize: lambdaConfiguration.CodeSize,
   }));
 
   return { results };
 };
 
 export default {
-  ruleName: 'Not using Arm Architecture',
+  ruleName: RuleNames.LIGHT_BUNDLE,
   errorMessage:
-    "The function's architecture is not set as ARM. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/use-arm/use-arm.md) for impact and how to to resolve.",
+    'The following functions have bundles that weight more than 5 Mb.\nSee (https://m33.notion.site/Serverless-Sustainability-Audit-a36847289fd64339a60e40bc5aa63092) for impact.',
   run,
 } as Rule;
