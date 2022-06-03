@@ -15,6 +15,7 @@ import {
   NoDefaultTimeout,
   NoMaxTimeout,
   NoSharedIamRoles,
+  UseArm,
 } from './rules';
 import { Options, Tag } from './cli';
 
@@ -113,6 +114,7 @@ export const runGuardianChecks = async ({
     NoDefaultTimeout,
     NoMaxTimeout,
     NoSharedIamRoles,
+    UseArm,
   ];
 
   let remaining = rules.length + 1;
