@@ -6,6 +6,7 @@ import UnderMaxMemory from './underMaxMemory';
 import NoSharedIamRoles from './noSharedIamRoles';
 import UseArm from './useArm';
 import LimitedNumberOfLambdaVersions from './limitedNumberOfVersions';
+import NoIdenticalCode from './noIdenticalCode';
 
 export {
   noDefaultMemory,
@@ -16,4 +17,5 @@ export {
   NoSharedIamRoles,
   UseArm,
   LimitedNumberOfLambdaVersions,
+  NoIdenticalCode,
 };
