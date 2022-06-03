@@ -26,7 +26,7 @@ const parseTags = (
     ),
   ];
   if (!hasKeyAndValue(tag)) {
-    throw new InvalidArgumentError('Unvalid flag parameters');
+    throw new InvalidArgumentError('Invalid flag parameters');
   }
 
   if (!previousTags) {
