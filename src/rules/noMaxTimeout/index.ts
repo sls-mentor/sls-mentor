@@ -1,6 +1,12 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule, RuleNames } from '../../types';
+import {
+  CheckResult,
+  ErrorMessages,
+  Resource,
+  Rule,
+  RuleDisplayNames,
+} from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -25,8 +31,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleNames.NO_MAX_TIMEOUT,
-  errorMessage:
-    'The following functions have their timeout set as the maximum.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-max-timeout) for impact and how to to resolve.',
+  ruleName: RuleDisplayNames.NO_MAX_TIMEOUT,
+  errorMessage: ErrorMessages.NO_MAX_TIMEOUT,
   run,
 } as Rule;

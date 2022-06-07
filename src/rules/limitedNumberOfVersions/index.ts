@@ -1,5 +1,11 @@
 import { fetchAllLambdaVersions } from '../../helpers';
-import { CheckResult, Resource, Rule, RuleNames } from '../../types';
+import {
+  CheckResult,
+  ErrorMessages,
+  Resource,
+  Rule,
+  RuleDisplayNames,
+} from '../../types';
 
 const MAX_NUMBER_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -18,8 +24,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleNames.LIMITED_NUMBER_OF_LAMBDA_VERSIONS,
-  errorMessage:
-    'The following functions have a number of deployed versions greater than 3',
+  ruleName: RuleDisplayNames.LIMITED_NUMBER_OF_LAMBDA_VERSIONS,
+  errorMessage: ErrorMessages.LIMITED_NUMBER_OF_LAMBDA_VERSIONS,
   run,
 } as Rule;
