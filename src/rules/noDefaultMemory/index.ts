@@ -1,6 +1,11 @@
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import {
+  CheckResult,
+  ErrorMessages,
+  Resource,
+  Rule,
+  RuleDisplayNames,
+} from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -21,7 +26,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleNames.NO_DEFAULT_MEMORY,
-  errorMessage: 'The following functions have their memory set as default.',
+  ruleName: RuleDisplayNames.NO_DEFAULT_MEMORY,
+  errorMessage: ErrorMessages.NO_DEFAULT_MEMORY,
   run,
 } as Rule;

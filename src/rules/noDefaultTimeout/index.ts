@@ -1,7 +1,12 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import {
+  CheckResult,
+  ErrorMessages,
+  Resource,
+  Rule,
+  RuleDisplayNames,
+} from '../../types';
 
 const AWS_DEFAULT_TIMEOUT = 3;
 
@@ -26,8 +31,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleNames.NO_DEFAULT_TIMEOUT,
-  errorMessage:
-    'The following functions have their timeout set as default.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-default-timeout) for impact and how to to resolve.',
+  ruleName: RuleDisplayNames.NO_DEFAULT_TIMEOUT,
+  errorMessage: ErrorMessages.NO_DEFAULT_TIMEOUT,
   run,
 } as Rule;

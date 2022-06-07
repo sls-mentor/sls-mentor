@@ -1,7 +1,12 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { CheckResult, Resource, Rule } from '../../types';
-import { RuleNames } from '../../types/RuleNames';
+import {
+  CheckResult,
+  ErrorMessages,
+  Resource,
+  Rule,
+  RuleDisplayNames,
+} from '../../types';
 
 const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.CodeSize !== undefined &&
@@ -23,8 +28,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleNames.LIGHT_BUNDLE,
-  errorMessage:
-    'The following functions have bundles that weight more than 5 Mb.\nSee (https://m33.notion.site/Serverless-Sustainability-Audit-a36847289fd64339a60e40bc5aa63092) for impact.',
+  ruleName: RuleDisplayNames.LIGHT_BUNDLE,
+  errorMessage: ErrorMessages.LIGHT_BUNDLE,
   run,
 } as Rule;
