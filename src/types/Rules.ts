@@ -17,7 +17,7 @@ export const RuleDisplayNames = {
   [Rules.NO_MAX_TIMEOUT]: 'No max timeout',
   [Rules.NO_SHARED_IAM_ROLES]: 'No shared IAM roles',
   [Rules.NO_ARM_ARCHITECTURE]: 'Not using Arm Architecture',
-};
+} as const;
 
 export const ErrorMessages = {
   [Rules.NO_DEFAULT_MEMORY]:
@@ -34,4 +34,4 @@ export const ErrorMessages = {
     'The following functions have roles used by 1 or more other functions.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-shared-roles) for impact and how to to resolve.',
   [Rules.NO_ARM_ARCHITECTURE]:
     "The function's architecture is not set as ARM. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/use-arm/use-arm.md) for impact and how to to resolve.",
-};
+} as const;
