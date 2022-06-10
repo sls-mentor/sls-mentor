@@ -39,10 +39,8 @@ const parseTags = (
 export const handleGuardianChecksCommand = async (
   options: Options,
 ): Promise<void> => {
-  process.stdout.write('Running Checks...');
+  console.log('Running checks');
   const results = await runGuardianChecks(options);
-  process.stdout.clearLine(0);
-  process.stdout.cursorTo(0);
   console.log('Checks summary: ');
 
   let atLeastOneFailed = false;
