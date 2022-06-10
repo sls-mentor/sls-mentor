@@ -12,7 +12,7 @@ export type Tag = {
 const hasKeyAndValue = (
   groups: Record<string, string> | undefined,
 ): groups is Tag => {
-  // ts-config is losely assuming all keys exist, type guard to be updated when Typescript config is updated
+  // ts-config is loosely assuming all keys exist, type guard to be updated when Typescript config is updated
   return groups !== undefined;
 };
 
@@ -26,7 +26,7 @@ const parseTags = (
     ),
   ];
   if (!hasKeyAndValue(tag)) {
-    throw new InvalidArgumentError('Unvalid flag parameters');
+    throw new InvalidArgumentError('Invalid flag parameters');
   }
 
   if (!previousTags) {
@@ -90,13 +90,13 @@ export const handleGuardianChecksCommand = async (
       });
   });
 
-  Object.keys(failedByResource).forEach(ressourceArn => {
+  Object.keys(failedByResource).forEach(resourceArn => {
     console.error(
       '\n\x1b[47m\x1b[31m',
-      `Failed checks on ressource "${ressourceArn}" :`,
+      `Failed checks on resource "${resourceArn}" :`,
       '\x1b[0m\n',
     );
-    failedByResource[ressourceArn].forEach(failedCheck => {
+    failedByResource[resourceArn].forEach(failedCheck => {
       console.log(
         '\x1b[31m',
         `   - ${failedCheck.rule.ruleName}: ${failedCheck.rule.errorMessage}`,
@@ -106,7 +106,7 @@ export const handleGuardianChecksCommand = async (
         '\x1b[0m\n',
       );
     });
-    //console.table(failedByResource[ressourceArn]);
+    //console.table(failedByResource[resourceArn]);
   });
 };
 
@@ -134,7 +134,7 @@ const setAwsRegion = (command: Command): void => {
 
 program
   .name('guardian')
-  .version('0.0.1')
+  .version(process.env.npm_package_version ?? '0.0.0')
   .option('-s, --short', 'Short output', false)
   .option('-p, --aws-profile <profile>', 'AWS profile to use')
   .option('-r, --aws-region <region>', 'Specify region')
