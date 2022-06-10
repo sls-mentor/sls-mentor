@@ -19,6 +19,7 @@ import {
   NoDefaultTimeout,
   NoMaxTimeout,
   NoSharedIamRoles,
+  UnderMaxMemory,
   UseArm,
 } from './rules';
 import { ChecksResults, Options, Resource, Rule, Tag } from './types';
@@ -106,6 +107,7 @@ export const runGuardianChecks = async ({
     NoSharedIamRoles,
     UseArm,
     LimitedNumberOfLambdaVersions,
+    UnderMaxMemory,
   ];
 
   let remaining = rules.length + 1;

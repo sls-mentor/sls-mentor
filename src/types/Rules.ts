@@ -1,3 +1,4 @@
+import { AWS_HISTORICAL_MAX_MEMORY } from '../constants';
 export enum Rules {
   NO_DEFAULT_MEMORY = 'NO_DEFAULT_MEMORY',
   LIGHT_BUNDLE = 'LIGHT_BUNDLE',
@@ -6,6 +7,7 @@ export enum Rules {
   NO_MAX_TIMEOUT = 'NO_MAX_TIMEOUT',
   NO_SHARED_IAM_ROLES = 'NO_SHARED_IAM_ROLES',
   USE_ARM_ARCHITECTURE = 'USE_ARM_ARCHITECTURE',
+  UNDER_MAX_MEMORY = 'UNDER_MAX_MEMORY',
 }
 
 export const RuleDisplayNames = {
@@ -17,6 +19,7 @@ export const RuleDisplayNames = {
   [Rules.NO_MAX_TIMEOUT]: 'No max timeout',
   [Rules.NO_SHARED_IAM_ROLES]: 'No shared IAM roles',
   [Rules.USE_ARM_ARCHITECTURE]: 'Using an ARM Architecture',
+  [Rules.UNDER_MAX_MEMORY]: 'Memory under maximum memory limit',
 } as const;
 
 export const ErrorMessages = {
@@ -34,4 +37,5 @@ export const ErrorMessages = {
     'The following functions have roles used by 1 or more other functions.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-shared-roles) for impact and how to to resolve.',
   [Rules.USE_ARM_ARCHITECTURE]:
     "The function's architecture is not set as ARM. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/useArm/useArm.md) for impact and how to to resolve.",
+  [Rules.UNDER_MAX_MEMORY]: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/underMaxMemory/underMaxMemory.md) for impact and how to to resolve.`,
 } as const;
