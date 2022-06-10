@@ -32,7 +32,7 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.NO_ARM_ARCHITECTURE,
-  errorMessage: ErrorMessages.NO_ARM_ARCHITECTURE,
+  ruleName: RuleDisplayNames.USE_ARM_ARCHITECTURE,
+  errorMessage: ErrorMessages.USE_ARM_ARCHITECTURE,
   run,
 } as Rule;

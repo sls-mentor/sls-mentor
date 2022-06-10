@@ -5,7 +5,7 @@ export enum Rules {
   NO_DEFAULT_TIMEOUT = 'NO_DEFAULT_TIMEOUT',
   NO_MAX_TIMEOUT = 'NO_MAX_TIMEOUT',
   NO_SHARED_IAM_ROLES = 'NO_SHARED_IAM_ROLES',
-  NO_ARM_ARCHITECTURE = 'NO_ARM_ARCHITECTURE',
+  USE_ARM_ARCHITECTURE = 'USE_ARM_ARCHITECTURE',
 }
 
 export const RuleDisplayNames = {
@@ -16,7 +16,7 @@ export const RuleDisplayNames = {
   [Rules.NO_DEFAULT_TIMEOUT]: 'No default timeout',
   [Rules.NO_MAX_TIMEOUT]: 'No max timeout',
   [Rules.NO_SHARED_IAM_ROLES]: 'No shared IAM roles',
-  [Rules.NO_ARM_ARCHITECTURE]: 'Not using Arm Architecture',
+  [Rules.USE_ARM_ARCHITECTURE]: 'Using an ARM Architecture',
 } as const;
 
 export const ErrorMessages = {
@@ -32,6 +32,6 @@ export const ErrorMessages = {
     'The following functions have their timeout set as the maximum.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-max-timeout) for impact and how to to resolve.',
   [Rules.NO_SHARED_IAM_ROLES]:
     'The following functions have roles used by 1 or more other functions.\nSee (https://theodo-uk.github.io/sls-dev-tools/docs/no-shared-roles) for impact and how to to resolve.',
-  [Rules.NO_ARM_ARCHITECTURE]:
-    "The function's architecture is not set as ARM. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/use-arm/use-arm.md) for impact and how to to resolve.",
+  [Rules.USE_ARM_ARCHITECTURE]:
+    "The function's architecture is not set as ARM. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/useArm/useArm.md) for impact and how to to resolve.",
 } as const;
