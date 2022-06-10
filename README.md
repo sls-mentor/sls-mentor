@@ -24,13 +24,6 @@
   <br />
 </div>
 
-- **Rules**
-  - Lambdas:
-    - [`ARM Architecture`](./docs/rules/use-arm.md): checks that you're using ARM architectures for your lambda functions.
-
-<br />
-<br />
-<br />
 <p align="center">
   <a href="./docs/running-locally.md"><strong>Local Development</strong></a> &mdash; How to run Guardian on your local machine.
   <br />
@@ -39,15 +32,27 @@
 </p>
 <br />
 <br />
+
+- **Rules**
+  - AWS Lambda:
+    - [`ARM64 architecture`](./docs/rules/use-arm.md): checks that you're using ARM64 architectures for your lambda functions.
+    - [`No default memory`](./docs/rules/no-default-memory.md): checks that you have consciously configured your lambda functions' memory size.
+    - [`No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your lambda functions' timeout is not set at the maximum available.
+    - [`No default timeout`](./docs/rules/no-default-timeout.md): checks that you have consciously configured your lambda functions' timeout.
+    - [`No shared IAM roles`](./docs/rules/no-shared-roles.md): checks that each one of your lambdas has it own IAM role.
+    - Limited number of lambda versions: checks that you do not store all previous deployment versions for your lambda functions.
+    - Light bundles: checks that each one of your lambda bundles is reasonably small.
+
 <div align="center">
-  <h1>Contributors</h1>
+  <br />
+  <br />
+  <br />
+  <h2>Contributors</h2>
+  <br />
+  <br />
+  <a href="https://github.com/kumo-by-theodo/guardian/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=kumo-by-theodo/guardian" />
+  </a>
+  <br />
+  <br />
 </div>
-<br />
-<br />
-<div align="center">
-<a href="https://github.com/kumo-by-theodo/guardian/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=kumo-by-theodo/guardian" />
-</a>
-</div>
-<br />
-<br />
