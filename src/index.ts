@@ -61,7 +61,8 @@ const fetchCloudFormationResources = async (
   );
 
   const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
-  const region = await cloudFormationClient.config.region();
+  const region =
+    process.env.AWS_REGION ?? (await cloudFormationClient.config.region());
 
   return filteredResources.map(resource => {
     return {

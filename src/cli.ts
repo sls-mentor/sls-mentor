@@ -113,10 +113,11 @@ export const handleGuardianChecksCommand = async (
 };
 
 export type Options = {
-  awsProfile?: string | undefined;
+  awsProfile?: string;
+  awsRegion?: string;
   short: boolean;
-  tags?: Tag[] | undefined;
-  cloudformation?: string | undefined;
+  tags?: Tag[];
+  cloudformation?: string;
 };
 
 const setAwsProfile = (command: Command): void => {
@@ -126,11 +127,19 @@ const setAwsProfile = (command: Command): void => {
   }
 };
 
+const setAwsRegion = (command: Command): void => {
+  const awsRegion = command.opts<Options>().awsRegion;
+  if (awsRegion !== undefined) {
+    process.env.AWS_REGION = awsRegion;
+  }
+};
+
 program
   .name('guardian')
   .version('0.0.1')
   .option('-s, --short', 'Short output', false)
   .option('-p, --aws-profile <profile>', 'AWS profile to use')
+  .option('-r, --aws-region <region>', 'Specify region')
   .option('-t, --tags <key_value...>', 'Add filter tags', parseTags)
   .option(
     '-c, --cloudformation <cloudformation_stack_name>',
@@ -138,4 +147,5 @@ program
   )
   .action(handleGuardianChecksCommand)
   .hook('preAction', setAwsProfile)
+  .hook('preAction', setAwsRegion)
   .parse();
