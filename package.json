@@ -4,7 +4,6 @@
   "bin": {
     "guardian": "./dist/cli.js"
   },
-  "main": "./dist/index.js",
   "scripts": {
     "dev": "node -r ts-node/register ./src/cli.ts",
     "clean": "rimraf ./dist/",
