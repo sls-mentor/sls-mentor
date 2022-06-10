@@ -114,9 +114,7 @@ export const runGuardianChecks = async ({
   let remaining = rules.length + 1;
   const decreaseRemaining = () => {
     remaining -= 1;
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    process.stdout.write(
+    console.log(
       `${remaining} check${remaining > 1 ? 's' : ''} remaining${
         remaining > 0 ? '...' : ' !'
       }`,
