@@ -40,8 +40,8 @@
     - [`No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your lambda functions' timeout is not set at the maximum available.
     - [`No default timeout`](./docs/rules/no-default-timeout.md): checks that you have consciously configured your lambda functions' timeout.
     - [`No shared IAM roles`](./docs/rules/no-shared-roles.md): checks that each one of your lambdas has it own IAM role.
-    - Limited number of lambda versions: checks that you do not store all previous deployment versions for your lambda functions.
-    - Light bundles: checks that each one of your lambda bundles is reasonably small.
+    - [`Limited number of lambda versions`](./docs/rules/limited-versions.md): checks that you do not store all previous deployment versions for your lambda functions.
+    - [`Light bundles`](./docs/rules/light-bundles.md): checks that each one of your lambda bundles is reasonably small.
 
 <div align="center">
   <br />
