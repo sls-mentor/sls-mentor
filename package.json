@@ -1,6 +1,6 @@
 {
   "name": "@kumo-by-theodo/guardian",
-  "description": "",
+  "description": "Audit tool for AWS serverless architectures",
   "bin": {
     "guardian": "./dist/cli.js"
   },
