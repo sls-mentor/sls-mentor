@@ -37,9 +37,6 @@ const fetchTaggedResources = async (tags: Tag[]): Promise<Resource[]> => {
   )) {
     taggedResources.push(...(page.ResourceTagMappingList ?? []));
   }
-  if (taggedResources.length === 0) {
-    throw new Error('No resources');
-  }
 
   return taggedResources.map(resource => {
     return {
