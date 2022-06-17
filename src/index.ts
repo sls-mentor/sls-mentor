@@ -1,10 +1,12 @@
 import {
   CloudFormationClient,
-  ListStackResourcesCommand,
+  paginateListStackResources,
+  StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
 import {
-  GetResourcesCommand,
+  paginateGetResources,
   ResourceGroupsTaggingAPIClient,
+  ResourceTagMapping,
 } from '@aws-sdk/client-resource-groups-tagging-api';
 import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 
@@ -24,14 +26,18 @@ import { Resource, Rule } from './types';
 const fetchTaggedResources = async (tags: Tag[]): Promise<Resource[]> => {
   const tagClient = new ResourceGroupsTaggingAPIClient({});
 
-  const { ResourceTagMappingList: taggedResources } = await tagClient.send(
-    new GetResourcesCommand({
+  const taggedResources: ResourceTagMapping[] = [];
+  for await (const page of paginateGetResources(
+    { client: tagClient },
+    {
       TagFilters: tags.map(({ key, value }) => {
         return { Key: key, Values: [value] };
       }),
-    }),
-  );
-  if (taggedResources === undefined || taggedResources.length === 0) {
+    },
+  )) {
+    taggedResources.push(...(page.ResourceTagMappingList ?? []));
+  }
+  if (taggedResources.length === 0) {
     throw new Error('No resources');
   }
 
@@ -48,13 +54,12 @@ const fetchCloudFormationResources = async (
   const cloudFormationClient = new CloudFormationClient({});
   const stsClient = new STSClient({});
 
-  const { StackResourceSummaries: resources } = await cloudFormationClient.send(
-    new ListStackResourcesCommand({
-      StackName: cloudformation,
-    }),
-  );
-  if (!resources) {
-    throw new Error('No resources');
+  const resources: StackResourceSummary[] = [];
+  for await (const page of paginateListStackResources(
+    { client: cloudFormationClient },
+    { StackName: cloudformation },
+  )) {
+    resources.push(...(page.StackResourceSummaries ?? []));
   }
   const filteredResources = resources.filter(
     resource => resource.ResourceType === 'AWS::Lambda::Function',
