@@ -1,0 +1,1 @@
+export const AWS_HISTORICAL_MAX_MEMORY = 3008;
