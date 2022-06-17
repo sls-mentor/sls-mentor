@@ -17,6 +17,7 @@ import {
   LimitedNumberOfLambdaVersions,
   noDefaultMemory,
   NoDefaultTimeout,
+  NoIdenticalCode,
   NoMaxTimeout,
   NoSharedIamRoles,
   UnderMaxMemory,
@@ -101,6 +102,7 @@ export const runGuardianChecks = async ({
   const resourcesArn = await fetchResources(cloudformation, tags);
   const rules: Rule[] = [
     LightBundleRule,
+    NoIdenticalCode,
     noDefaultMemory,
     NoDefaultTimeout,
     NoMaxTimeout,
