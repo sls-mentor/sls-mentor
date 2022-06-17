@@ -11,6 +11,7 @@ import {
 import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 
 import { parse } from '@aws-sdk/util-arn-parser';
+import { displayProgress } from './display';
 import {
   LightBundleRule,
   LimitedNumberOfLambdaVersions,
@@ -20,8 +21,7 @@ import {
   NoSharedIamRoles,
   UseArm,
 } from './rules';
-import { Options, Tag } from './cli';
-import { Resource, Rule } from './types';
+import { ChecksResults, Options, Resource, Rule, Tag } from './types';
 
 const fetchTaggedResources = async (tags: Tag[]): Promise<Resource[]> => {
   const tagClient = new ResourceGroupsTaggingAPIClient({});
@@ -96,12 +96,7 @@ const fetchResources = async (
 export const runGuardianChecks = async ({
   cloudformation,
   tags,
-}: Options): Promise<
-  {
-    rule: Rule;
-    result: ({ arn: string; success: boolean } & Record<string, unknown>)[];
-  }[]
-> => {
+}: Options): Promise<ChecksResults> => {
   const resourcesArn = await fetchResources(cloudformation, tags);
   const rules: Rule[] = [
     LightBundleRule,
@@ -114,15 +109,13 @@ export const runGuardianChecks = async ({
   ];
 
   let remaining = rules.length + 1;
+
   const decreaseRemaining = () => {
     remaining -= 1;
-    console.log(
-      `${remaining} check${remaining > 1 ? 's' : ''} remaining${
-        remaining > 0 ? '...' : ' !'
-      }`,
-    );
-    if (remaining === 0) console.log('\n');
+    const rate = (rules.length - remaining) / rules.length;
+    displayProgress(rate);
   };
+
   decreaseRemaining();
 
   return await Promise.all(
