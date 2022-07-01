@@ -9,4 +9,5 @@ export type Options = {
   short: boolean;
   tags?: Tag[];
   cloudformation?: string;
+  noFail: boolean;
 };

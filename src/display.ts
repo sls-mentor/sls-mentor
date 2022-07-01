@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { Progress } from 'clui';
-import { ChecksResults, Options } from './types';
+import { ChecksResults } from './types';
 import { getResultsByResource } from './helpers';
 
 const displayRulePassingPercentage = (
@@ -16,10 +16,7 @@ const displayRulePassingPercentage = (
   return console.log(chalk.green(message));
 };
 
-export const displayResults = (
-  results: ChecksResults,
-  options: Options,
-): void => {
+export const displayResultsSummary = (results: ChecksResults): void => {
   console.log('--- Checks summary ---\n');
 
   results.forEach(({ rule, result }) => {
@@ -27,16 +24,12 @@ export const displayResults = (
     const successRatio = result.length === 0 ? 1 : successCount / result.length;
     displayRulePassingPercentage(rule.ruleName, successRatio);
   });
+};
 
-  const atLeastOneFailed = results.some(
-    ({ result }) => result.filter(resource => !resource.success).length > 0,
-  );
-
-  if (options.short || !atLeastOneFailed) process.exit(0);
+export const displayFailedChecksDetails = (results: ChecksResults): void => {
+  console.log('--- Failed checks details ---\n');
 
   const resultsByResource = getResultsByResource(results);
-
-  console.log('--- Failed checks details ---\n');
 
   resultsByResource.forEach(({ resourceArn, failedRules }) => {
     const resourceNotPassingMessage = `Resource ${chalk.bold(

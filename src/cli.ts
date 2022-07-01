@@ -2,7 +2,11 @@
 import { Command, InvalidArgumentError, program } from 'commander';
 
 import { runGuardianChecks } from './index';
-import { displayChecksStarting, displayResults } from './display';
+import {
+  displayChecksStarting,
+  displayFailedChecksDetails,
+  displayResultsSummary,
+} from './display';
 import { Options, Tag } from './types/CliOptions';
 
 const hasKeyAndValue = (
@@ -37,7 +41,17 @@ export const handleGuardianChecksCommand = async (
 ): Promise<void> => {
   displayChecksStarting();
   const results = await runGuardianChecks(options);
-  displayResults(results, options);
+  displayResultsSummary(results);
+
+  const atLeastOneFailed = results.some(
+    ({ result }) => result.filter(resource => !resource.success).length > 0,
+  );
+
+  if (!options.short && atLeastOneFailed) {
+    displayFailedChecksDetails(results);
+  }
+  const processExit = !options.noFail && atLeastOneFailed ? 1 : 0;
+  process.exit(processExit);
 };
 
 const setAwsProfile = (command: Command): void => {
@@ -65,6 +79,7 @@ program
     '-c, --cloudformation <cloudformation_stack_name>',
     'Only check resources from the specified CloudFormation stack name',
   )
+  .option('--noFail', 'Exit with success status, even if checks failed', false)
   .action(handleGuardianChecksCommand)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)
