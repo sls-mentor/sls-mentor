@@ -1,6 +1,5 @@
 import noDefaultMemory from './noDefaultMemory';
 import LightBundleRule from './lightBundle';
-import NoDefaultTimeout from './noDefaultTimeout';
 import NoMaxTimeout from './noMaxTimeout';
 import UnderMaxMemory from './underMaxMemory';
 import NoSharedIamRoles from './noSharedIamRoles';
@@ -11,7 +10,6 @@ import NoIdenticalCode from './noIdenticalCode';
 export {
   noDefaultMemory,
   LightBundleRule,
-  NoDefaultTimeout,
   NoMaxTimeout,
   UnderMaxMemory,
   NoSharedIamRoles,
