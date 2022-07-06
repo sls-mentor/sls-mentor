@@ -50,11 +50,15 @@
     "@aws-sdk/client-lambda": "^3.95.0",
     "@aws-sdk/client-resource-groups-tagging-api": "^3.100.0",
     "@aws-sdk/client-sts": "^3.100.0",
+    "@aws-sdk/types": "^3.110.0",
     "@aws-sdk/util-arn-parser": "^3.55.0",
     "@types/lodash": "^4.14.182",
+    "@types/object-hash": "^2.2.1",
     "chalk": "^4.1.2",
     "clui": "^0.3.6",
     "commander": "^9.2.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "object-hash": "^3.0.0",
+    "save-dev": "^0.0.1-security"
   }
 }
