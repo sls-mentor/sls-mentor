@@ -7,6 +7,7 @@ import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
 import LimitedNumberOfLambdaVersions from './limitedNumberOfVersions';
 import NoIdenticalCode from './noIdenticalCode';
+import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 
 export {
   noDefaultMemory,
@@ -18,4 +19,5 @@ export {
   UseIntelligentTiering,
   LimitedNumberOfLambdaVersions,
   NoIdenticalCode,
+  AsyncSpecifyFailureDestination,
 };

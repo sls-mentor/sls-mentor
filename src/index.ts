@@ -4,6 +4,7 @@ import {
   fetchTaggedResourceArns,
 } from './helpers';
 import {
+  AsyncSpecifyFailureDestination,
   LightBundleRule,
   LimitedNumberOfLambdaVersions,
   noDefaultMemory,
@@ -48,6 +49,7 @@ export const runGuardianChecks = async ({
     UseIntelligentTiering,
     LimitedNumberOfLambdaVersions,
     UnderMaxMemory,
+    AsyncSpecifyFailureDestination,
   ];
 
   let remaining = rules.length + 1;
