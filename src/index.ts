@@ -59,22 +59,46 @@ const fetchCloudFormationResources = async (
   )) {
     resources.push(...(page.StackResourceSummaries ?? []));
   }
-  const filteredResources = resources.filter(
-    resource => resource.ResourceType === 'AWS::Lambda::Function',
-  );
 
   const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
   const region =
     process.env.AWS_REGION ?? (await cloudFormationClient.config.region());
 
-  return filteredResources.map(resource => {
-    return {
-      arn: parse(
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        `arn:aws:lambda:${region}:${Account}:function:${resource.PhysicalResourceId}`,
-      ),
-    };
+  return resources.flatMap(resource => {
+    return getSupportedResourceARN(resource, region, Account);
   });
+};
+
+const getLambdaResourceARN = (
+  region: string,
+  accountId: string,
+  resource: string,
+): Resource => {
+  return {
+    arn: {
+      partition: 'aws',
+      service: 'lambda',
+      region,
+      accountId,
+      resource,
+    },
+  };
+};
+
+const getSupportedResourceARN = (
+  { ResourceType, PhysicalResourceId }: StackResourceSummary,
+  region: string,
+  account: string | undefined,
+): Resource[] => {
+  const resourceARN = [];
+
+  if (ResourceType === 'AWS::Lambda::Function') {
+    resourceARN.push(
+      getLambdaResourceARN(region, account ?? '', PhysicalResourceId ?? ''),
+    );
+  }
+
+  return resourceARN;
 };
 
 const fetchResources = async (
