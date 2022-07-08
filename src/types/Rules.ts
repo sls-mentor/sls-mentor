@@ -9,6 +9,7 @@ export enum Rules {
   UNDER_MAX_MEMORY = 'UNDER_MAX_MEMORY',
   NO_IDENTICAL_CODE = 'NO_IDENTICAL_CODE',
   INTELLIGENT_TIERING = 'INTELLIGENT_TIERING',
+  ASYNC_SPECIFY_FAILURE_DESTINATION = 'ASYNC_NO_FAILURE_DESTINATION',
 }
 
 export const RuleDisplayNames = {
@@ -23,6 +24,8 @@ export const RuleDisplayNames = {
   [Rules.USE_ARM_ARCHITECTURE]: 'Not using Arm Architecture',
   [Rules.NO_IDENTICAL_CODE]: 'No identical code',
   [Rules.INTELLIGENT_TIERING]: 'Use Intelligent Tiering',
+  [Rules.ASYNC_SPECIFY_FAILURE_DESTINATION]:
+    'Async Lambdas: specify a failure destination',
 } as const;
 
 export const ErrorMessages = {
@@ -43,4 +46,6 @@ export const ErrorMessages = {
     "The function's code is identical to other functions. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/noIdenticalCode/noIdenticalCode.md) for impact and how to to resolve.",
   [Rules.INTELLIGENT_TIERING]:
     'Intelligent Tiering is not enabled on this S3 bucket. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/useIntelligentTiering/useIntelligentTiering.md) for impact and how to to resolve.',
+  [Rules.ASYNC_SPECIFY_FAILURE_DESTINATION]:
+    'The function is asynchronous but has no failure destination set. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/asyncSpecifyFailureDestination/asyncSpecifyFailureDestination.md) for impact and how to to resolve.',
 } as const;
