@@ -20,11 +20,13 @@ const hasUniqueShaCode = (
 };
 
 const run = async (
-  resources: { arn: ARN }[],
+  resourceArns: ARN[],
 ): Promise<{
   results: CheckResult[];
 }> => {
-  const lambdasConfigurations = await fetchAllLambdaConfigurations(resources);
+  const lambdasConfigurations = await fetchAllLambdaConfigurations(
+    resourceArns,
+  );
 
   const functionsArnGroupedByCodeSha = lambdasConfigurations.reduce(
     (acc, config) => {

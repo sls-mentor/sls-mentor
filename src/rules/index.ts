@@ -4,6 +4,7 @@ import NoMaxTimeout from './noMaxTimeout';
 import UnderMaxMemory from './underMaxMemory';
 import NoSharedIamRoles from './noSharedIamRoles';
 import UseArm from './useArm';
+import UseIntelligentTiering from './useIntelligentTiering';
 import LimitedNumberOfLambdaVersions from './limitedNumberOfVersions';
 import NoIdenticalCode from './noIdenticalCode';
 
@@ -14,6 +15,7 @@ export {
   UnderMaxMemory,
   NoSharedIamRoles,
   UseArm,
+  UseIntelligentTiering,
   LimitedNumberOfLambdaVersions,
   NoIdenticalCode,
 };

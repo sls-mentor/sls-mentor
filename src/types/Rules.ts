@@ -8,6 +8,7 @@ export enum Rules {
   USE_ARM_ARCHITECTURE = 'USE_ARM_ARCHITECTURE',
   UNDER_MAX_MEMORY = 'UNDER_MAX_MEMORY',
   NO_IDENTICAL_CODE = 'NO_IDENTICAL_CODE',
+  INTELLIGENT_TIERING = 'INTELLIGENT_TIERING',
 }
 
 export const RuleDisplayNames = {
@@ -21,6 +22,7 @@ export const RuleDisplayNames = {
   [Rules.UNDER_MAX_MEMORY]: 'Memory under maximum memory limit',
   [Rules.USE_ARM_ARCHITECTURE]: 'Not using Arm Architecture',
   [Rules.NO_IDENTICAL_CODE]: 'No identical code',
+  [Rules.INTELLIGENT_TIERING]: 'Use Intelligent Tiering',
 } as const;
 
 export const ErrorMessages = {
@@ -39,4 +41,6 @@ export const ErrorMessages = {
   [Rules.UNDER_MAX_MEMORY]: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/underMaxMemory/underMaxMemory.md) for impact and how to to resolve.`,
   [Rules.NO_IDENTICAL_CODE]:
     "The function's code is identical to other functions. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/noIdenticalCode/noIdenticalCode.md) for impact and how to to resolve.",
+  [Rules.INTELLIGENT_TIERING]:
+    'Intelligent Tiering is not enabled on this S3 bucket. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/useIntelligentTiering/useIntelligentTiering.md) for impact and how to to resolve.',
 } as const;

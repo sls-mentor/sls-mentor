@@ -1,17 +1,15 @@
+import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaVersions } from '../../helpers';
 import {
   CheckResult,
   ErrorMessages,
-  Resource,
   Rule,
   RuleDisplayNames,
 } from '../../types';
 
 const MAX_NUMBER_OF_VERSIONS = 3 + 1; // +$latest
 
-const run = async (
-  resources: Resource[],
-): Promise<{ results: CheckResult[] }> => {
+const run = async (resources: ARN[]): Promise<{ results: CheckResult[] }> => {
   const lambdaVersions = await fetchAllLambdaVersions(resources);
 
   const results = lambdaVersions.map(({ arn, versions }) => ({

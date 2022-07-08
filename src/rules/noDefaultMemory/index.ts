@@ -1,8 +1,8 @@
+import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
 import {
   CheckResult,
   ErrorMessages,
-  Resource,
   Rule,
   RuleDisplayNames,
 } from '../../types';
@@ -10,11 +10,11 @@ import {
 const DEFAULT_MEMORY_SIZE = 1024;
 
 const run = async (
-  resources: Resource[],
+  resourceArns: ARN[],
 ): Promise<{
   results: CheckResult[];
 }> => {
-  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
