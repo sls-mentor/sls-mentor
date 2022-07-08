@@ -21,6 +21,7 @@ import {
   NoSharedIamRoles,
   UnderMaxMemory,
   UseArm,
+  UseIntelligentTiering,
 } from './rules';
 import { ChecksResults, Options, Resource, Rule, Tag } from './types';
 
@@ -69,6 +70,22 @@ const fetchCloudFormationResources = async (
   });
 };
 
+const getS3ResourceARN = (
+  region: string,
+  accountId: string,
+  resource: string,
+): Resource => {
+  return {
+    arn: {
+      partition: 'aws',
+      service: 's3',
+      region,
+      accountId,
+      resource,
+    },
+  };
+};
+
 const getLambdaResourceARN = (
   region: string,
   accountId: string,
@@ -95,6 +112,12 @@ const getSupportedResourceARN = (
   if (ResourceType === 'AWS::Lambda::Function') {
     resourceARN.push(
       getLambdaResourceARN(region, account ?? '', PhysicalResourceId ?? ''),
+    );
+  }
+
+  if (ResourceType === 'AWS::S3::Bucket') {
+    resourceARN.push(
+      getS3ResourceARN(region, account ?? '', PhysicalResourceId ?? ''),
     );
   }
 
@@ -130,6 +153,7 @@ export const runGuardianChecks = async ({
     NoMaxTimeout,
     NoSharedIamRoles,
     UseArm,
+    UseIntelligentTiering,
     LimitedNumberOfLambdaVersions,
     UnderMaxMemory,
   ];
