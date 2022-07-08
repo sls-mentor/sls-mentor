@@ -4,6 +4,7 @@ export * from './fetchLambdaVersion';
 export * from './fetchTaggedResourceArns';
 export * from './fetchS3BucketConfiguration';
 export * from './fetchAllLambdaPolicies';
+export * from './fetchAllAsyncLambdasArns';
 
 export * from './filterLambdaFromResources';
 
