@@ -1,6 +1,6 @@
 import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
-import { fetchAllS3BucketConfigurations } from '../../helpers';
+import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../helpers';
 import { filterS3BucketFromResources } from '../../helpers/filterS3BucketFromResources';
 import {
   CheckResult,
@@ -14,14 +14,15 @@ const hasIntelligentTiering = (
 ): boolean => configuration?.some(item => item.Status === 'Enabled') ?? false;
 
 const run = async (
-  resourceArns: ARN[],
+  resources: ARN[],
 ): Promise<{
   results: CheckResult[];
 }> => {
-  const buckets = filterS3BucketFromResources(resourceArns);
-  const s3BucketConfigurations = await fetchAllS3BucketConfigurations(buckets);
-  const results = s3BucketConfigurations.map((configuration, index) => ({
-    arn: build(buckets[index]),
+  const buckets = filterS3BucketFromResources(resources);
+  const s3BucketConfigurations =
+    await fetchAllS3BucketIntelligentTieringConfigurations(buckets);
+  const results = s3BucketConfigurations.map(({ arn, configuration }) => ({
+    arn: build(arn),
     success: hasIntelligentTiering(configuration),
   }));
 

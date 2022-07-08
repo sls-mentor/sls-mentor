@@ -19,14 +19,17 @@ const fetchS3BucketConfigurationByArn = async (
   return configurationList;
 };
 
-export const fetchAllS3BucketConfigurations = async (
+export const fetchAllS3BucketIntelligentTieringConfigurations = async (
   buckets: ARN[],
-): Promise<(IntelligentTieringConfiguration[] | undefined)[]> => {
+): Promise<
+  { arn: ARN; configuration: IntelligentTieringConfiguration[] | undefined }[]
+> => {
   const client = new S3Client({});
 
-  const bucketConfigurations = await Promise.all(
-    buckets.map(arn => fetchS3BucketConfigurationByArn(arn, client)),
+  return Promise.all(
+    buckets.map(async arn => ({
+      arn,
+      configuration: await fetchS3BucketConfigurationByArn(arn, client),
+    })),
   );
-
-  return bucketConfigurations;
 };
