@@ -3,7 +3,6 @@ import {
   ListVersionsByFunctionCommand,
 } from '@aws-sdk/client-lambda';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
-import { Resource } from '../types';
 import { filterLambdaFromResources } from './filterLambdaFromResources';
 import { lambdaClient } from '../clients';
 
@@ -18,12 +17,12 @@ const fetchLambdaVersionsByArn = async (
 };
 
 export const fetchAllLambdaVersions = async (
-  resources: Resource[],
+  resources: ARN[],
 ): Promise<{ arn: string; versions: FunctionConfiguration[] }[]> => {
   const lambdaResources = filterLambdaFromResources(resources);
 
   const lambdaVersions = await Promise.all(
-    lambdaResources.map(async ({ arn }) => ({
+    lambdaResources.map(async arn => ({
       arn: build(arn),
       versions: await fetchLambdaVersionsByArn(arn),
     })),

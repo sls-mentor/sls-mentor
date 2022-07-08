@@ -1,9 +1,9 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
 import {
   CheckResult,
   ErrorMessages,
-  Resource,
   Rule,
   RuleDisplayNames,
 } from '../../types';
@@ -15,11 +15,11 @@ const hasMaximumTimeout = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.Timeout === AWS_MAXIMUM_TIMEOUT;
 
 const run = async (
-  resources: Resource[],
+  resourceArns: ARN[],
 ): Promise<{
   results: CheckResult[];
 }> => {
-  const lambdaConfigurations = await fetchAllLambdaConfigurations(resources);
+  const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
