@@ -31,7 +31,9 @@ const plugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
   },
 };
 
-const client = new LambdaClient({});
+const client = new LambdaClient({
+  maxAttempts: 10,
+});
 // @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
 client.middlewareStack.use(plugin);
 
