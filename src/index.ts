@@ -12,8 +12,8 @@ import {
   NoIdenticalCode,
   NoMaxTimeout,
   NoSharedIamRoles,
-  UnderMaxMemory,
   SpecifyDlqOnSqs,
+  UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
 } from './rules';
