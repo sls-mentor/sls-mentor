@@ -21,7 +21,7 @@ If you want to specify your AWS profile and region manually, then run:
 Here is the full list of available options:
 
 ```
-  -c, --cloudformation <stackName>  manually set AWS stack name
+  -c, --cloudformations <stackName>  manually set AWS stacks names
   -r, --aws-region <region>         manually set AWS region
   -p, --aws-profile <profile>       aws profile name to use
   -t, --tags <key_value...>       aws tags to filter resources

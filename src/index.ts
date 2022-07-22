@@ -1,4 +1,4 @@
-import intersectionBy from 'lodash/intersectionBy';
+import intersectionWith from 'lodash/intersectionWith';
 import { displayProgress } from './display';
 import {
   fetchCloudFormationResourceArns,
@@ -19,24 +19,24 @@ import {
 import { ChecksResults, Options, Rule, Tag } from './types';
 
 const fetchResourceArns = async (
-  cloudformation: string | undefined,
+  cloudformations: string[] | undefined,
   tags: Tag[] | undefined,
 ) => {
   const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
 
-  if (cloudformation === undefined) {
+  if (cloudformations === undefined) {
     return resourcesFetchedByTags;
   }
 
   const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-    cloudformation,
+    cloudformations,
   );
 
-  const resources = intersectionBy(
+  const resources = intersectionWith(
     resourcesFetchedByStack,
     resourcesFetchedByTags,
-    'resource',
-    'service',
+    (arnA, arnB) =>
+      arnA.resource === arnB.resource && arnA.service === arnB.service,
   );
 
   return resources;
@@ -44,10 +44,10 @@ const fetchResourceArns = async (
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const runGuardianChecks = async ({
-  cloudformation,
+  cloudformations,
   tags,
 }: Options): Promise<ChecksResults> => {
-  const resourceArns = await fetchResourceArns(cloudformation, tags);
+  const resourceArns = await fetchResourceArns(cloudformations, tags);
   const rules: Rule[] = [
     LightBundleRule,
     NoIdenticalCode,

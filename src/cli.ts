@@ -76,7 +76,7 @@ program
   .option('-r, --aws-region <region>', 'Specify region')
   .option('-t, --tags <key_value...>', 'Add filter tags', parseTags)
   .option(
-    '-c, --cloudformation <cloudformation_stack_name>',
+    '-c, --cloudformations [cloudformations...]',
     'Only check resources from the specified CloudFormation stack name',
   )
   .option('--noFail', 'Exit with success status, even if checks failed', false)
