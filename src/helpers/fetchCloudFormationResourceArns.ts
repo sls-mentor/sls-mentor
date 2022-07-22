@@ -5,7 +5,10 @@ import {
 } from '@aws-sdk/client-cloudformation';
 import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
 import { ARN } from '@aws-sdk/util-arn-parser';
-import { getSupportedResourceArn } from './getSupportedResourceArn';
+import {
+  getSupportedResourceArn,
+  ressourceTypeToRessources,
+} from './getSupportedResourceArn';
 
 export const fetchCloudFormationResourceArns = async (
   cloudformations: string[],
@@ -24,10 +27,25 @@ export const fetchCloudFormationResourceArns = async (
   }
 
   const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
+  if (Account === undefined) {
+    throw new Error(
+      'IAM user or role whose credentials are used to call the operations with the STS Client are undefined.',
+    );
+  }
   const region =
     process.env.AWS_REGION ?? (await cloudFormationClient.config.region());
 
-  return resources.flatMap(resource => {
-    return getSupportedResourceArn(resource, region, Account);
-  });
+  const supportedRessources = Object.keys(ressourceTypeToRessources);
+
+  return resources.flatMap(({ ResourceType, PhysicalResourceId }) =>
+    PhysicalResourceId !== undefined &&
+    ResourceType !== undefined &&
+    supportedRessources.includes(ResourceType)
+      ? getSupportedResourceArn(
+          { ResourceType, PhysicalResourceId },
+          region,
+          'Account',
+        )
+      : [],
+  );
 };
