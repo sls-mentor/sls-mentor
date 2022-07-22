@@ -5,7 +5,7 @@ import UnderMaxMemory from './underMaxMemory';
 import NoSharedIamRoles from './noSharedIamRoles';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
-import LimitedNumberOfLambdaVersions from './limitedNumberOfVersions';
+import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import NoIdenticalCode from './noIdenticalCode';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 
@@ -17,7 +17,7 @@ export {
   NoSharedIamRoles,
   UseArm,
   UseIntelligentTiering,
-  LimitedNumberOfLambdaVersions,
+  LimitedAmountOfLambdaVersions,
   NoIdenticalCode,
   AsyncSpecifyFailureDestination,
 };

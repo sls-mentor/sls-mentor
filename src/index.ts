@@ -6,7 +6,7 @@ import {
 import {
   AsyncSpecifyFailureDestination,
   LightBundleRule,
-  LimitedNumberOfLambdaVersions,
+  LimitedAmountOfLambdaVersions,
   noDefaultMemory,
   NoIdenticalCode,
   NoMaxTimeout,
@@ -47,7 +47,7 @@ export const runGuardianChecks = async ({
     NoSharedIamRoles,
     UseArm,
     UseIntelligentTiering,
-    LimitedNumberOfLambdaVersions,
+    LimitedAmountOfLambdaVersions,
     UnderMaxMemory,
     AsyncSpecifyFailureDestination,
   ];

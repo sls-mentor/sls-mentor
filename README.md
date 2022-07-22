@@ -35,12 +35,17 @@
 
 - **Rules**
   - AWS Lambda:
-    - [`ARM64 architecture`](./docs/rules/use-arm.md): checks that you're using ARM64 architectures for your lambda functions.
-    - [`No default memory`](./docs/rules/no-default-memory.md): checks that you have consciously configured your lambda functions' memory size.
-    - [`No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your lambda functions' timeout is not set at the maximum available.
-    - [`No shared IAM roles`](./docs/rules/no-shared-roles.md): checks that each one of your lambdas has it own IAM role.
-    - [`Limited number of lambda versions`](./docs/rules/limited-versions.md): checks that you do not store all previous deployment versions for your lambda functions.
-    - [`Light bundles`](./docs/rules/light-bundles.md): checks that each one of your lambda bundles is reasonably small.
+    - [`Lambda: Use ARM64 architecture`](./docs/rules/use-arm.md): checks that you're using ARM64 architectures for your Lambda functions.
+    - [`Lambda: No shared IAM roles`](./docs/rules/no-shared-iam-roles.md): checks that each one of your Lambda functions has its own IAM role.
+    - [`Lambda: Limited amount of versions`](./docs/rules/limited-amount-of-versions.md): checks that you do not store all previous deployment versions for your Lambda functions.
+    - [`Lambda: Specify failure destination to async functions`](./docs/rules/async-specify-failure-destination.md): checks that each one of your async Lambda functions has a failure destination.
+    - [`Lambda: No identical code`](./docs/rules/no-identical-code.md): checks that each one of your Lambda functions has different code.
+    - [`Lambda: Light bundle`](./docs/rules/light-bundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
+    - [`Lambda: No default memory`](./docs/rules/no-default-memory.md): checks that you have consciously configured your Lambda functions' memory size.
+    - [`Lambda: Under maximum memory`](./docs/rules/under-max-memory.md): checks that each one of your Lambda functions' memory size is reasonably small.
+    - [`Lambda: No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
+  - AWS S3:
+    - [`S3: Use intelligent tiering`](./docs/rules/use-intelligent-tiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
 
 <div align="center">
   <br />
