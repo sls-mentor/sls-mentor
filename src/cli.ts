@@ -71,15 +71,27 @@ const setAwsRegion = (command: Command): void => {
 program
   .name('guardian')
   .version(process.env.npm_package_version ?? '0.0.0')
-  .option('-s, --short', 'Short output', false)
+  .option(
+    '-s, --short',
+    'Short output: only display checks results overview',
+    false,
+  )
   .option('-p, --aws-profile <profile>', 'AWS profile to use')
   .option('-r, --aws-region <region>', 'Specify region')
-  .option('-t, --tags <key_value...>', 'Add filter tags', parseTags)
+  .option(
+    '-t, --tags <key_value...>',
+    'Filter checked account resources by tags',
+    parseTags,
+  )
   .option(
     '-c, --cloudformations [cloudformations...]',
-    'Only check resources from the specified CloudFormation stack name',
+    'Filter checked account resources by cloudformation stacks names',
   )
-  .option('--noFail', 'Exit with success status, even if checks failed', false)
+  .option(
+    '--noFail',
+    'Exit with success status, even if some checks failed',
+    false,
+  )
   .action(handleGuardianChecksCommand)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)
