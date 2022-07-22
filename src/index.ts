@@ -1,3 +1,4 @@
+import intersectionBy from 'lodash/intersectionBy';
 import { displayProgress } from './display';
 import {
   fetchCloudFormationResourceArns,
@@ -21,16 +22,24 @@ const fetchResourceArns = async (
   cloudformation: string | undefined,
   tags: Tag[] | undefined,
 ) => {
-  if (tags !== undefined) {
-    return fetchTaggedResourceArns(tags);
+  const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
+
+  if (cloudformation === undefined) {
+    return resourcesFetchedByTags;
   }
 
-  if (cloudformation !== undefined) {
-    return fetchCloudFormationResourceArns(cloudformation);
-  }
+  const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
+    cloudformation,
+  );
 
-  // Maybe replace with a check of all account on the specified region ?
-  throw new Error('not enough argument specified');
+  const resources = intersectionBy(
+    resourcesFetchedByStack,
+    resourcesFetchedByTags,
+    'resource',
+    'service',
+  );
+
+  return resources;
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
