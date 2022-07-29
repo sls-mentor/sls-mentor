@@ -3,15 +3,20 @@ import { Progress } from 'clui';
 import { ChecksResults } from './types';
 import { getResultsByResource } from './helpers';
 
-const displayRulePassingPercentage = (
+const displayRuleResults = (
   ruleName: string,
-  ratio: number,
+  successCount: number,
+  totalCount: number,
 ): void => {
-  const percentage = Math.round(ratio * 100 * 100) / 100;
-  const message = `${ruleName} - ${percentage}% of resources passed\n`;
+  if (totalCount === 0)
+    return console.log(`${ruleName} - no resources checked`);
 
-  if (ratio <= 0.5) return console.log(chalk.red(message));
-  if (ratio <= 0.7) return console.log(chalk.yellow(message));
+  const successRatio = successCount / totalCount;
+  const percentage = Math.round(successRatio * 100 * 100) / 100;
+  const message = `${ruleName} - ${percentage}% of resources passed (${successCount}/${totalCount})\n`;
+
+  if (successRatio <= 0.5) return console.log(chalk.red(message));
+  if (successRatio <= 0.7) return console.log(chalk.yellow(message));
 
   return console.log(chalk.green(message));
 };
@@ -21,8 +26,8 @@ export const displayResultsSummary = (results: ChecksResults): void => {
 
   results.forEach(({ rule, result }) => {
     const successCount = result.filter(e => e.success).length;
-    const successRatio = result.length === 0 ? 1 : successCount / result.length;
-    displayRulePassingPercentage(rule.ruleName, successRatio);
+
+    displayRuleResults(rule.ruleName, successCount, result.length);
   });
 };
 
