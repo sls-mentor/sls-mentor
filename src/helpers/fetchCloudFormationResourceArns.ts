@@ -44,7 +44,7 @@ export const fetchCloudFormationResourceArns = async (
       ? getSupportedResourceArn(
           { ResourceType, PhysicalResourceId },
           region,
-          'Account',
+          Account,
         )
       : [],
   );
