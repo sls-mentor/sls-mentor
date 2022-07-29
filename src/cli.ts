@@ -41,7 +41,6 @@ export const handleGuardianChecksCommand = async (
 ): Promise<void> => {
   displayChecksStarting();
   const results = await runGuardianChecks(options);
-  displayResultsSummary(results);
 
   const atLeastOneFailed = results.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,
@@ -50,6 +49,8 @@ export const handleGuardianChecksCommand = async (
   if (!options.short && atLeastOneFailed) {
     displayFailedChecksDetails(results);
   }
+
+  displayResultsSummary(results);
   const processExit = !options.noFail && atLeastOneFailed ? 1 : 0;
   process.exit(processExit);
 };
