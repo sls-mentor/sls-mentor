@@ -7,6 +7,10 @@ import {
 import hash from 'object-hash';
 
 import { InitializeHandlerOutput, Pluggable } from '@aws-sdk/types';
+import {
+  MAXIMUM_ATTEMPTS,
+  standardRetryStrategy,
+} from './standardRetryStrategy';
 
 const cache: Record<
   string,
@@ -32,7 +36,8 @@ const plugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
 };
 
 const client = new LambdaClient({
-  maxAttempts: 10,
+  maxAttempts: MAXIMUM_ATTEMPTS,
+  retryStrategy: standardRetryStrategy,
 });
 // @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
 client.middlewareStack.use(plugin);
