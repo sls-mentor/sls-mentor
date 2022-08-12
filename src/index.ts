@@ -1,5 +1,5 @@
 import intersectionWith from 'lodash/intersectionWith';
-import { displayProgress } from './display';
+import Progress from 'cli-progress';
 import {
   fetchCloudFormationResourceArns,
   fetchTaggedResourceArns,
@@ -63,17 +63,18 @@ export const runGuardianChecks = async ({
     SpecifyDlqOnSqs,
   ];
 
-  let remaining = rules.length + 1;
+  const total = rules.length + 1;
+
+  const progressBar = new Progress.SingleBar({}, Progress.Presets.rect);
+  progressBar.start(total, 0);
 
   const decreaseRemaining = () => {
-    remaining -= 1;
-    const rate = (rules.length - remaining) / rules.length;
-    displayProgress(rate);
+    progressBar.increment();
   };
 
   decreaseRemaining();
 
-  return await Promise.all(
+  const results = await Promise.all(
     rules.map(async rule => {
       const ruleResult = (await rule.run(resourceArns)).results;
       decreaseRemaining();
@@ -81,4 +82,8 @@ export const runGuardianChecks = async ({
       return { rule, result: ruleResult };
     }),
   );
+
+  progressBar.stop();
+
+  return results;
 };

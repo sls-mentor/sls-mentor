@@ -29,7 +29,7 @@
   ],
   "devDependencies": {
     "@aws-sdk/types": "^3.110.0",
-    "@types/clui": "^0.3.1",
+    "@types/cli-progress": "^3.11.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "^17.0.35",
     "@types/object-hash": "^2.2.1",
@@ -60,7 +60,7 @@
     "@aws-sdk/util-arn-parser": "^3.55.0",
     "@aws-sdk/util-middleware": "^3.127.0",
     "chalk": "^4.1.2",
-    "clui": "^0.3.6",
+    "cli-progress": "^3.11.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
     "object-hash": "^3.0.0",

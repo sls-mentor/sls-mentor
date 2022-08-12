@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import { Progress } from 'clui';
 import { ChecksResults } from './types';
 import { getResultsByResource } from './helpers';
 
@@ -56,11 +55,6 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
     });
   });
 };
-
-export const displayProgress = (rate: number): void => {
-  console.log(new Progress(50).update(rate));
-};
-
 export const displayChecksStarting = (): void => {
   console.log(chalk.blueBright.bold('--- Running checks ---\n'));
 };
