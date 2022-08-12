@@ -4,6 +4,7 @@ import { Command, InvalidArgumentError, program } from 'commander';
 import { runGuardianChecks } from './index';
 import {
   displayChecksStarting,
+  displayError,
   displayFailedChecksDetails,
   displayResultsSummary,
 } from './display';
@@ -59,6 +60,13 @@ const setAwsProfile = (command: Command): void => {
   const awsProfile = command.opts<Options>().awsProfile;
   if (awsProfile !== undefined) {
     process.env.AWS_PROFILE = awsProfile;
+  }
+
+  if (process.env.AWS_PROFILE === undefined) {
+    displayError(
+      'No default AWS profile found in your environment. \nEither define a default AWS profile or specify a profile using -p option',
+    );
+    process.exit(1);
   }
 };
 
