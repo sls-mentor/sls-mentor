@@ -58,3 +58,7 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
 export const displayChecksStarting = (): void => {
   console.log(chalk.blueBright.bold('--- Running checks ---\n'));
 };
+
+export const displayError = (errorMessage: string): void => {
+  console.error(`\n${chalk.redBright(errorMessage)}\n`);
+};

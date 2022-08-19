@@ -6,7 +6,9 @@ First, read the installation instruction [here](./running-locally.md).
 
 The command you want to run in your pipeline is:
 
-- `yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION}`.
+```
+ yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION}
+```
 
 ⚠️ To make sure it properly works when executed by a pipeline runner:
 
