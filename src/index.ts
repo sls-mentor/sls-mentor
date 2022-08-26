@@ -18,29 +18,39 @@ import {
   UseIntelligentTiering,
 } from './rules';
 import { ChecksResults, Options, Rule, Tag } from './types';
+import { displayError } from './display';
 
 const fetchResourceArns = async (
   cloudformations: string[] | undefined,
   tags: Tag[] | undefined,
 ) => {
-  const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
+  try {
+    const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
 
-  if (cloudformations === undefined) {
-    return resourcesFetchedByTags;
+    if (cloudformations === undefined) {
+      return resourcesFetchedByTags;
+    }
+
+    const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
+      cloudformations,
+    );
+
+    const resources = intersectionWith(
+      resourcesFetchedByStack,
+      resourcesFetchedByTags,
+      (arnA, arnB) =>
+        arnA.resource === arnB.resource && arnA.service === arnB.service,
+    );
+
+    return resources;
+  } catch {
+    displayError(
+      `Unable to fetch AWS resources, check that profile "${
+        process.env.AWS_PROFILE ?? ''
+      }" is correctly set or specify another profile using -p option`,
+    );
+    process.exit(1);
   }
-
-  const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-    cloudformations,
-  );
-
-  const resources = intersectionWith(
-    resourcesFetchedByStack,
-    resourcesFetchedByTags,
-    (arnA, arnB) =>
-      arnA.resource === arnB.resource && arnA.service === arnB.service,
-  );
-
-  return resources;
 };
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
