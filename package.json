@@ -63,8 +63,7 @@
     "cli-progress": "^3.11.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
-    "object-hash": "^3.0.0",
-    "save-dev": "^0.0.1-security"
+    "object-hash": "^3.0.0"
   },
   "keywords": [
     "aws",
