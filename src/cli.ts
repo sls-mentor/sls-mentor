@@ -8,6 +8,8 @@ import {
   displayResultsSummary,
 } from './display';
 import { Options, Tag } from './types/CliOptions';
+import { displayDashboard } from './displayDashboard';
+import { getResultsByCategory } from './helpers/getResultsByCategory';
 
 const hasKeyAndValue = (
   groups: Record<string, string> | undefined,
@@ -51,6 +53,8 @@ export const handleGuardianChecksCommand = async (
   }
 
   displayResultsSummary(results);
+  const resultsByCategory = getResultsByCategory(results);
+  displayDashboard(resultsByCategory);
   const processExit = !options.noFail && atLeastOneFailed ? 1 : 0;
   process.exit(processExit);
 };
