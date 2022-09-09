@@ -1,12 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -31,7 +26,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.NO_MAX_TIMEOUT,
-  errorMessage: ErrorMessages.NO_MAX_TIMEOUT,
   run,
+  rule: Rules.NO_MAX_TIMEOUT,
 } as Rule;

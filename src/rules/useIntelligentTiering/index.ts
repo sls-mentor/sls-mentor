@@ -2,12 +2,7 @@ import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../helpers';
 import { filterS3BucketFromResources } from '../../helpers/filterS3BucketFromResources';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 const hasIntelligentTiering = (
   configuration: IntelligentTieringConfiguration[] | undefined,
@@ -30,7 +25,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.INTELLIGENT_TIERING,
-  errorMessage: ErrorMessages.INTELLIGENT_TIERING,
   run,
+  rule: Rules.INTELLIGENT_TIERING,
 } as Rule;

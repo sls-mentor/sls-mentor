@@ -1,12 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 const hasUniqueShaCode = (
   lambdaConfiguration: FunctionConfiguration,
@@ -67,7 +62,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.NO_IDENTICAL_CODE,
-  errorMessage: ErrorMessages.NO_IDENTICAL_CODE,
   run,
+  rule: Rules.NO_IDENTICAL_CODE,
 } as Rule;

@@ -1,11 +1,6 @@
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { fetchAllQueuesAttributes } from '../../helpers';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -40,7 +35,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.SPECIFY_DLQ_ON_SQS,
-  errorMessage: ErrorMessages.SPECIFY_DLQ_ON_SQS,
   run,
+  rule: Rules.SPECIFY_DLQ_ON_SQS,
 } as Rule;

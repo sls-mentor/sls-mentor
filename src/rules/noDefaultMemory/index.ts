@@ -1,11 +1,6 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -26,7 +21,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.NO_DEFAULT_MEMORY,
-  errorMessage: ErrorMessages.NO_DEFAULT_MEMORY,
   run,
+  rule: Rules.NO_DEFAULT_MEMORY,
 } as Rule;
