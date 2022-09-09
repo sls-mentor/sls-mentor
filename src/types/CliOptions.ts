@@ -8,6 +8,8 @@ export type Options = {
   awsRegion?: string;
   short: boolean;
   tags?: Tag[];
+  /** @deprecated use cloudformationStacks instead */
   cloudformations?: string[];
+  cloudformationStacks?: string[];
   noFail: boolean;
 };
