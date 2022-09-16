@@ -23,8 +23,9 @@ const run: Rule['run'] = async resourceArns => {
 const rule: Rule = {
   ruleName: 'Lambda: Specify Failure Destination for Async Functions',
   errorMessage:
-    'The function is asynchronous but has no failure destination set. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/async-specify-failure-destination.md) for impact and how to resolve.',
+    'The function is asynchronous but has no failure destination set',
   run,
+  fileName: 'asyncSpecifyFailureDestination',
 };
 
 export default rule;

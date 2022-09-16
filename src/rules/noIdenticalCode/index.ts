@@ -58,9 +58,9 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Lambda: No Identical Code',
-  errorMessage:
-    "The function's code is identical to other functions.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-identical-code.md) for impact and how to resolve.",
+  errorMessage: "The function's code is identical to other functions",
   run,
+  fileName: 'noIdenticalCode',
 };
 
 export default rule;

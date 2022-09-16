@@ -23,9 +23,9 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Lambda: Use an ARM Architecture',
-  errorMessage:
-    "The function's architecture is not set as ARM.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/use-arm.md) for impact and how to resolve.",
+  errorMessage: "The function's architecture is not set as ARM",
   run,
+  fileName: 'useArm',
 };
 
 export default rule;

@@ -22,9 +22,9 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Lambda No Maximum Timeout',
-  errorMessage:
-    'The following functions have their timeout set as the maximum.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-max-timeout.md) for impact and how to resolve.',
+  errorMessage: 'The following functions have their timeout set as the maximum',
   run,
+  fileName: 'noMaxTimeout',
 };
 
 export default rule;

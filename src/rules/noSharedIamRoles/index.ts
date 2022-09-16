@@ -27,8 +27,9 @@ const run: Rule['run'] = async resourceArns => {
 const rule: Rule = {
   ruleName: 'Lambda: No Shared IAM Roles',
   errorMessage:
-    'The following functions have roles used by 1 or more other functions.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-shared-iam-roles.md) for impact and how to resolve.',
+    'The following functions have roles used by 1 or more other functions',
   run,
+  fileName: 'noSharedIamRoles',
 };
 
 export default rule;

@@ -35,6 +35,7 @@ const rule: Rule = {
   errorMessage:
     'The queue does not have a specified Dead Letter Queue. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
   run,
+  fileName: 'specifyDlqOnSqs',
 };
 
 export default rule;

@@ -18,8 +18,9 @@ const run: Rule['run'] = async resourceArns => {
 const rule: Rule = {
   ruleName: 'Lambda: Limited Amount of Versions',
   errorMessage:
-    'The following functions have an amount of deployed versions greater than 3.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/limited-amount-of-versions.md) for impact and how to resolve.',
+    'The following functions have an amount of deployed versions greater than 3',
   run,
+  fileName: 'limitedAmountOfVersions',
 };
 
 export default rule;
