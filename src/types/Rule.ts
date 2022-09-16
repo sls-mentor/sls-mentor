@@ -1,10 +1,10 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { CheckResult } from './CheckResult';
-import { Rules } from './Rules';
 
 export interface Rule {
+  ruleName: string;
+  errorMessage: string;
   run: (resources: ARN[]) => Promise<{
     results: CheckResult[];
   }>;
-  rule: Rules;
 }

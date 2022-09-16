@@ -1,5 +1,5 @@
 import { fetchAllLambdaVersions } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -16,8 +16,10 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'Lambda: Limited Amount of Versions',
+  errorMessage:
+    'The following functions have an amount of deployed versions greater than 3.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/limited-amount-of-versions.md) for impact and how to resolve.',
   run,
-  rule: Rules.LIMITED_AMOUNT_OF_LAMBDA_VERSIONS,
 };
 
 export default rule;
