@@ -1,5 +1,6 @@
 import intersectionWith from 'lodash/intersectionWith';
 import Progress from 'cli-progress';
+import { TooManyRequestsException } from '@aws-sdk/client-lambda';
 import {
   fetchCloudFormationResourceArns,
   fetchTaggedResourceArns,
@@ -84,16 +85,25 @@ export const runGuardianChecks = async ({
 
   decreaseRemaining();
 
-  const results = await Promise.all(
-    rules.map(async rule => {
-      const ruleResult = (await rule.run(resourceArns)).results;
-      decreaseRemaining();
+  try {
+    const results = await Promise.all(
+      rules.map(async rule => {
+        const ruleResult = (await rule.run(resourceArns)).results;
+        decreaseRemaining();
 
-      return { rule, result: ruleResult };
-    }),
-  );
+        return { rule, result: ruleResult };
+      }),
+    );
+    progressBar.stop();
 
-  progressBar.stop();
-
-  return results;
+    return results;
+  } catch (error) {
+    progressBar.stop();
+    if (error instanceof TooManyRequestsException) {
+      displayError(
+        'Too many requests sent to AWS, try to reduce the scope of your analysis by specifying filters on your cloudformation stacks (-c), or resource tags (-t).',
+      );
+    }
+    process.exit(1);
+  }
 };
