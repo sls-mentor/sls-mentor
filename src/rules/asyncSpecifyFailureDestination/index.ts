@@ -3,7 +3,7 @@ import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../helpers';
-import { ErrorMessages, Rule, RuleDisplayNames } from '../../types';
+import { Rule, Rules } from '../../types';
 
 const run = async (resourceArns: ARN[]) => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
@@ -21,7 +21,6 @@ const run = async (resourceArns: ARN[]) => {
 };
 
 export default {
-  ruleName: RuleDisplayNames.ASYNC_NO_FAILURE_DESTINATION,
-  errorMessage: ErrorMessages.ASYNC_NO_FAILURE_DESTINATION,
   run,
+  rule: Rules.ASYNC_SPECIFY_FAILURE_DESTINATION,
 } as Rule;

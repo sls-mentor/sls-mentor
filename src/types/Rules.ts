@@ -30,7 +30,7 @@ export const RuleDisplayNames = {
   [Rules.SPECIFY_DLQ_ON_SQS]: 'Specifying a DLQ on SQS',
 } as const;
 
-export const ErrorMessages = {
+export const RuleErrorMessages = {
   [Rules.NO_DEFAULT_MEMORY]:
     'The following functions have their memory set as default.\nSee (https://github.com/Kumo-by-Theodo/guardian/blob/master/docs/rules/no-default-memory.md) for impact and how to resolve.',
   [Rules.LIGHT_BUNDLE]:

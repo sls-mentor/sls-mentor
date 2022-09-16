@@ -1,12 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import {
-  CheckResult,
-  ErrorMessages,
-  Rule,
-  RuleDisplayNames,
-} from '../../types';
+import { CheckResult, Rule, Rules } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -35,7 +30,6 @@ const run = async (
 };
 
 export default {
-  ruleName: RuleDisplayNames.NO_SHARED_IAM_ROLES,
-  errorMessage: ErrorMessages.NO_SHARED_IAM_ROLES,
   run,
+  rule: Rules.NO_SHARED_IAM_ROLES,
 } as Rule;

@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { ChecksResults } from './types';
+import { ChecksResults, RuleDisplayNames, RuleErrorMessages } from './types';
 import { getResultsByResource } from './helpers';
 
 const displayRuleResults = (
@@ -23,10 +23,10 @@ const displayRuleResults = (
 export const displayResultsSummary = (results: ChecksResults): void => {
   console.log('--- Checks summary ---\n');
 
-  results.forEach(({ rule, result }) => {
+  results.forEach(({ rule: { rule }, result }) => {
     const successCount = result.filter(e => e.success).length;
 
-    displayRuleResults(rule.ruleName, successCount, result.length);
+    displayRuleResults(RuleDisplayNames[rule], successCount, result.length);
   });
 };
 
@@ -41,10 +41,12 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
     )} --> ${failedRules.length} rules failed`;
     console.log(chalk.redBright(resourceNotPassingMessage));
 
-    failedRules.forEach(({ rule, extras }) => {
-      const ruleFalingMessage = `   - ${chalk.bold(
-        rule.ruleName,
-      )} (${chalk.grey(rule.errorMessage)})`;
+    failedRules.forEach(({ rule: { rule }, extras }) => {
+      const ruleName = RuleDisplayNames[rule];
+      const errorMessage = RuleErrorMessages[rule];
+      const ruleFalingMessage = `   - ${chalk.bold(ruleName)} (${chalk.grey(
+        errorMessage,
+      )})`;
 
       const extrasMessage = Object.keys(extras).reduce(
         (prev, extra) =>
