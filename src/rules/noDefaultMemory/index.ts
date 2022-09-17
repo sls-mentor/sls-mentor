@@ -1,5 +1,5 @@
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -20,6 +20,7 @@ const rule: Rule = {
   errorMessage: 'The following functions have their memory set as default',
   run,
   fileName: 'noDefaultMemory',
+  categories: [Category.GREEN_IT, Category.IT_COSTS],
 };
 
 export default rule;

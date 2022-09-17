@@ -1,6 +1,6 @@
 import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllQueuesAttributes } from '../../helpers';
-import { Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -36,6 +36,7 @@ const rule: Rule = {
     'The queue does not have a specified Dead Letter Queue. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
   run,
   fileName: 'specifyDlqOnSqs',
+  categories: [Category.STABILITY],
 };
 
 export default rule;

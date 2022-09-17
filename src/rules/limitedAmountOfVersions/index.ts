@@ -1,5 +1,5 @@
 import { fetchAllLambdaVersions } from '../../helpers';
-import { Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -21,6 +21,7 @@ const rule: Rule = {
     'The following functions have an amount of deployed versions greater than 3',
   run,
   fileName: 'limitedAmountOfVersions',
+  categories: [Category.GREEN_IT, Category.STABILITY],
 };
 
 export default rule;

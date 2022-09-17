@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 const hasUniqueShaCode = (
   lambdaConfiguration: FunctionConfiguration,
@@ -61,6 +61,7 @@ const rule: Rule = {
   errorMessage: "The function's code is identical to other functions",
   run,
   fileName: 'noIdenticalCode',
+  categories: [Category.SECURITY, Category.STABILITY],
 };
 
 export default rule;

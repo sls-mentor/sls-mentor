@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 const ARM_ARCHITECTURE = 'arm64';
 
@@ -26,6 +26,7 @@ const rule: Rule = {
   errorMessage: "The function's architecture is not set as ARM",
   run,
   fileName: 'useArm',
+  categories: [Category.GREEN_IT, Category.IT_COSTS, Category.SPEED],
 };
 
 export default rule;

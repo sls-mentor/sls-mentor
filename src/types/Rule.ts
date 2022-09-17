@@ -1,5 +1,5 @@
 import { ARN } from '@aws-sdk/util-arn-parser';
-import { CheckResult } from './CheckResult';
+import { Category, CheckResult } from './CheckResult';
 
 export interface Rule {
   ruleName: string;
@@ -8,4 +8,5 @@ export interface Rule {
   run: (resources: ARN[]) => Promise<{
     results: CheckResult[];
   }>;
+  categories: Category[];
 }
