@@ -74,5 +74,10 @@
     "audit",
     "checks",
     "CI"
-  ]
+  ],
+  "engines": {
+    "npm": ">=8.15.0",
+    "pnpm": "please-use-npm",
+    "yarn": "please-use-npm"
+  }
 }
