@@ -1,11 +1,10 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaVersions } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { Rule, Rules } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
-const run = async (resources: ARN[]): Promise<{ results: CheckResult[] }> => {
-  const lambdaVersions = await fetchAllLambdaVersions(resources);
+const run: Rule['run'] = async resourceArns => {
+  const lambdaVersions = await fetchAllLambdaVersions(resourceArns);
 
   const results = lambdaVersions.map(({ arn, versions }) => ({
     arn,
@@ -16,7 +15,9 @@ const run = async (resources: ARN[]): Promise<{ results: CheckResult[] }> => {
   return { results };
 };
 
-export default {
+const rule: Rule = {
   run,
   rule: Rules.LIMITED_AMOUNT_OF_LAMBDA_VERSIONS,
-} as Rule;
+};
+
+export default rule;
