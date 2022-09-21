@@ -1,6 +1,6 @@
-import { ARN, build } from '@aws-sdk/util-arn-parser';
+import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllQueuesAttributes } from '../../helpers';
-import { CheckResult, Rule, Rules } from '../../types';
+import { Rule, Rules } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -8,11 +8,7 @@ interface RedrivePolicy {
 const hasDeadLetterQueue = (redrivePolicy: string | undefined): boolean =>
   redrivePolicy !== undefined;
 
-const run = async (
-  resourceArns: ARN[],
-): Promise<{
-  results: CheckResult[];
-}> => {
+const run: Rule['run'] = async resourceArns => {
   const queuesAttributesByArn = await fetchAllQueuesAttributes(resourceArns);
   const deadLetterQueuesArn: string[] = [];
   queuesAttributesByArn.forEach(queue => {
@@ -34,7 +30,9 @@ const run = async (
   return { results };
 };
 
-export default {
+const rule: Rule = {
   run,
   rule: Rules.SPECIFY_DLQ_ON_SQS,
-} as Rule;
+};
+
+export default rule;

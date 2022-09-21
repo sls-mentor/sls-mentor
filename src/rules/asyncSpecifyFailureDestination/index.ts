@@ -1,11 +1,11 @@
-import { ARN, parse } from '@aws-sdk/util-arn-parser';
+import { parse } from '@aws-sdk/util-arn-parser';
 import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../helpers';
 import { Rule, Rules } from '../../types';
 
-const run = async (resourceArns: ARN[]) => {
+const run: Rule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
 
   const invokeConfigs = await fetchAllLambdaInvokeEventConfigs(
@@ -20,7 +20,9 @@ const run = async (resourceArns: ARN[]) => {
   return { results };
 };
 
-export default {
+const rule: Rule = {
   run,
   rule: Rules.ASYNC_SPECIFY_FAILURE_DESTINATION,
-} as Rule;
+};
+
+export default rule;
