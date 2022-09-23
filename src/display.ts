@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import { ChecksResults, RuleDisplayNames, RuleErrorMessages } from './types';
-import { getResultsByResource } from './helpers';
+import { ChecksResults } from './types';
+import { getCompleteRuleErrorMessage, getResultsByResource } from './helpers';
 
 const displayRuleResults = (
   ruleName: string,
@@ -23,10 +23,10 @@ const displayRuleResults = (
 export const displayResultsSummary = (results: ChecksResults): void => {
   console.log('--- Checks summary ---\n');
 
-  results.forEach(({ rule: { rule }, result }) => {
+  results.forEach(({ rule, result }) => {
     const successCount = result.filter(e => e.success).length;
 
-    displayRuleResults(RuleDisplayNames[rule], successCount, result.length);
+    displayRuleResults(rule.ruleName, successCount, result.length);
   });
 };
 
@@ -41,11 +41,11 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
     )} --> ${failedRules.length} rules failed`;
     console.log(chalk.redBright(resourceNotPassingMessage));
 
-    failedRules.forEach(({ rule: { rule }, extras }) => {
-      const ruleName = RuleDisplayNames[rule];
-      const errorMessage = RuleErrorMessages[rule];
-      const ruleFalingMessage = `   - ${chalk.bold(ruleName)} (${chalk.grey(
-        errorMessage,
+    failedRules.forEach(({ rule, extras }) => {
+      const ruleFalingMessage = `   - ${chalk.bold(
+        rule.ruleName,
+      )} (${chalk.grey(
+        getCompleteRuleErrorMessage(rule.errorMessage, rule.fileName),
       )})`;
 
       const extrasMessage = Object.keys(extras).reduce(

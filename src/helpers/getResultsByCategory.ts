@@ -1,9 +1,4 @@
-import {
-  Category,
-  ChecksResults,
-  ChecksResultsByCategory,
-  RulesCategories,
-} from '../types';
+import { Category, ChecksResults, ChecksResultsByCategory } from '../types';
 
 export const getResultsByCategory = (
   results: ChecksResults,
@@ -24,8 +19,8 @@ export const getResultsByCategory = (
     [Category.STABILITY]: 0,
   };
 
-  results.forEach(({ rule: { rule }, result }) => {
-    const categories = RulesCategories[rule];
+  results.forEach(({ rule, result }) => {
+    const categories = rule.categories;
     const ruleRatio =
       result.length > 0
         ? result.filter(({ success }) => success).length / result.length

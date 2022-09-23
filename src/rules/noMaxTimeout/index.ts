@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Category, Rule } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -21,8 +21,11 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'Lambda No Maximum Timeout',
+  errorMessage: 'The following functions have their timeout set as the maximum',
   run,
-  rule: Rules.NO_MAX_TIMEOUT,
-};
+  fileName: 'noMaxTimeout',
+  categories: [Category.GREEN_IT, Category.IT_COSTS, Category.STABILITY],
+} as Rule;
 
 export default rule;

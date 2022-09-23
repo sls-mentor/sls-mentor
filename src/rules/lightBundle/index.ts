@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Category, Rule } from '../../types';
 
 const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.CodeSize !== undefined &&
@@ -18,8 +18,12 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'Lambda: Light Bundle',
+  errorMessage:
+    'The following functions have bundles that weight more than 5 Mb',
   run,
-  rule: Rules.LIGHT_BUNDLE,
+  fileName: 'lightBundle',
+  categories: [Category.GREEN_IT, Category.STABILITY],
 };
 
 export default rule;

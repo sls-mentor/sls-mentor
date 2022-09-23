@@ -2,7 +2,7 @@ import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
 import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../helpers';
 import { filterS3BucketFromResources } from '../../helpers/filterS3BucketFromResources';
-import { Rule, Rules } from '../../types';
+import { Category, Rule } from '../../types';
 
 const hasIntelligentTiering = (
   configuration: IntelligentTieringConfiguration[] | undefined,
@@ -21,8 +21,11 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'S3: Use Intelligent Tiering',
+  errorMessage: 'Intelligent Tiering is not enabled on this S3 bucket',
   run,
-  rule: Rules.INTELLIGENT_TIERING,
+  fileName: 'useIntelligentTiering',
+  categories: [Category.GREEN_IT, Category.IT_COSTS],
 };
 
 export default rule;

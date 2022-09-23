@@ -3,7 +3,7 @@ import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Category, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
@@ -21,8 +21,12 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'Lambda: Specify Failure Destination for Async Functions',
+  errorMessage:
+    'The function is asynchronous but has no failure destination set',
   run,
-  rule: Rules.ASYNC_SPECIFY_FAILURE_DESTINATION,
+  fileName: 'asyncSpecifyFailureDestination',
+  categories: [Category.STABILITY],
 };
 
 export default rule;

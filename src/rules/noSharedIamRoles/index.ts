@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../helpers';
-import { Rule, Rules } from '../../types';
+import { Category, Rule } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -25,8 +25,12 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  ruleName: 'Lambda: No Shared IAM Roles',
+  errorMessage:
+    'The following functions have roles used by 1 or more other functions',
   run,
-  rule: Rules.NO_SHARED_IAM_ROLES,
+  fileName: 'noSharedIamRoles',
+  categories: [Category.SECURITY, Category.STABILITY],
 };
 
 export default rule;
