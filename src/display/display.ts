@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import { ChecksResults } from './types';
-import { getCompleteRuleErrorMessage, getResultsByResource } from './helpers';
+import { getCompleteRuleErrorMessage, getResultsByResource } from '../helpers';
+import { ChecksResults } from '../types';
 
 const displayRuleResults = (
   ruleName: string,

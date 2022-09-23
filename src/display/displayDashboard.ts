@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { ChecksResultsByCategory } from './types';
+import { ChecksResultsByCategory } from '../types';
 
 type ScoresByCategory = { label: string; score: number }[];
 

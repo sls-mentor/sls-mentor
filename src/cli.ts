@@ -4,11 +4,11 @@ import { Command, InvalidArgumentError, program } from 'commander';
 import { runGuardianChecks } from './index';
 import {
   displayChecksStarting,
+  displayDashboard,
   displayFailedChecksDetails,
   displayResultsSummary,
 } from './display';
 import { Options, Tag } from './types/CliOptions';
-import { displayDashboard } from './displayDashboard';
 import { getResultsByCategory } from './helpers/getResultsByCategory';
 
 const hasKeyAndValue = (
