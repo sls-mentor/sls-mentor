@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/useArm/useArm.md)
+# 🔗 This documentation has been moved [here](../../src/rules/useArm/useArm.md)

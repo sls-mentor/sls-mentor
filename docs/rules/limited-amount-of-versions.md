@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/limitedAmountOfVersions/limitedAmountOfVersions.md)
+# 🔗 This documentation has been moved [here](../../src/rules/limitedAmountOfVersions/limitedAmountOfVersions.md)

@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/noDefaultMemory/noDefaultMemory.md)
+# 🔗 This documentation has been moved [here](../../src/rules/noDefaultMemory/noDefaultMemory.md)

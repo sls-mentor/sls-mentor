@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)
+# 🔗 This documentation has been moved [here](../../src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)

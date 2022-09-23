@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/underMaxMemory/underMaxMemory.md)
+# 🔗 This documentation has been moved [here](../../src/rules/underMaxMemory/underMaxMemory.md)

@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/noSharedIamRoles/noSharedIamRoles.md)
+# 🔗 This documentation has been moved [here](../../src/rules/noSharedIamRoles/noSharedIamRoles.md)

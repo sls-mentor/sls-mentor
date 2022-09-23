@@ -1,1 +1,1 @@
-# 🔗 [This documentation has been moved](../../src/rules/asyncSpecifyFailureDestination/asyncSpecifyFailureDestination.md)
+# 🔗 This documentation has been moved [here](../../src/rules/asyncSpecifyFailureDestination/asyncSpecifyFailureDestination.md)
