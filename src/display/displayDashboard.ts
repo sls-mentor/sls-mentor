@@ -1,11 +1,15 @@
 import chalk from 'chalk';
-import { ChecksResultsByCategory } from '../types';
+import {
+  ChecksResultsByCategory,
+  LOW_SCORE_THRESHOLD,
+  MEDIUM_SCORE_THRESHOLD,
+} from '../types';
 
 type ScoresByCategory = { label: string; score: number }[];
 
 const getBgColorFromScore = (score: number) => {
-  if (score > 75) return chalk.bgGreen;
-  if (score > 50) return chalk.bgYellow;
+  if (score > MEDIUM_SCORE_THRESHOLD) return chalk.bgGreen;
+  if (score > LOW_SCORE_THRESHOLD) return chalk.bgYellow;
 
   return chalk.bgRed;
 };
@@ -172,12 +176,12 @@ export const displayDashboard = (
     );
   }
 
-  console.log(chalk.bold(centerText('🛡  GUARDIAN 🛡', dashboardWidth)) + '\n');
+  console.log(chalk.bold(centerText('🛡  GUARDIAN 🛡', dashboardWidth)));
   console.log(
     chalk.bold(centerText('--- Your checks results ---', dashboardWidth)),
   );
   console.log(
-    chalk.gray(centerText('(More details above)', dashboardWidth)) + '\n\n',
+    chalk.gray(centerText('(More details above)', dashboardWidth)) + '\n',
   );
 
   const overallScore = Math.floor(
