@@ -7,28 +7,35 @@ import {
 import hash from 'object-hash';
 
 import { InitializeHandlerOutput, Pluggable } from '@aws-sdk/types';
-import {
-  MAXIMUM_ATTEMPTS,
-  standardRetryStrategy,
-} from './standardRetryStrategy';
+import { progressBar } from '../display';
 
 const cache: Record<
   string,
   Promise<InitializeHandlerOutput<ServiceOutputTypes>>
 > = {};
 
-const plugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
+const cachePlugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
   applyToStack: stack => {
+    const clientProgressBar = progressBar.create(
+      0,
+      0,
+      { client: 'Lambda' },
+      { format: '{client}: {bar} {percentage}% | {value}/{total}' },
+    );
     stack.add(
       next => async args => {
         const inputHash = hash(args);
         if (inputHash in cache) {
           return cache[inputHash];
         }
-        const result = next(args);
-        Object.assign(cache, { [hash(args)]: result });
+        clientProgressBar.setTotal(Object.keys(cache).length);
+        const resultPromise = next(args);
+        Object.assign(cache, { [inputHash]: resultPromise });
 
-        return await result;
+        const resolvedResult = await resultPromise;
+        clientProgressBar.increment();
+
+        return resolvedResult;
       },
       { step: 'initialize' },
     );
@@ -36,10 +43,11 @@ const plugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
 };
 
 const client = new LambdaClient({
-  maxAttempts: MAXIMUM_ATTEMPTS,
-  retryStrategy: standardRetryStrategy,
+  maxAttempts: 30,
+  retryMode: 'adaptive',
 });
+
 // @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
-client.middlewareStack.use(plugin);
+client.middlewareStack.use(cachePlugin);
 
 export default client;

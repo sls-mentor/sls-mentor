@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { MultiBar, Presets } from 'cli-progress';
 import {
   ChecksResults,
   ChecksResultsByCategory,
@@ -90,3 +91,8 @@ export const displayGuordle = (
     ),
   );
 };
+
+export const progressBar = new MultiBar(
+  { emptyOnZero: true, hideCursor: true },
+  Presets.rect,
+);

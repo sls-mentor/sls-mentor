@@ -1,5 +1,4 @@
 import intersectionWith from 'lodash/intersectionWith';
-import Progress from 'cli-progress';
 import { TooManyRequestsException } from '@aws-sdk/client-lambda';
 import {
   fetchCloudFormationResourceArns,
@@ -19,7 +18,7 @@ import {
   UseIntelligentTiering,
 } from './rules';
 import { ChecksResults, Options, Rule, Tag } from './types';
-import { displayError } from './display';
+import { displayError, progressBar } from './display';
 
 const fetchResourceArns = async (
   cloudformations: string[] | undefined,
@@ -76,11 +75,15 @@ export const runGuardianChecks = async ({
 
   const total = rules.length + 1;
 
-  const progressBar = new Progress.SingleBar({}, Progress.Presets.rect);
-  progressBar.start(total, 0);
+  const rulesProgressBar = progressBar.create(
+    total,
+    0,
+    {},
+    { format: 'Rules:  {bar} {percentage}% | ETA: {eta}s | {value}/{total}' },
+  );
 
   const decreaseRemaining = () => {
-    progressBar.increment();
+    rulesProgressBar.increment();
   };
 
   decreaseRemaining();
