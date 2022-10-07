@@ -25,7 +25,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Lambda: No Shared IAM Roles',
+  displayName: 'Lambda: No Shared IAM Roles',
   errorMessage:
     'The following functions have roles used by 1 or more other functions',
   run,

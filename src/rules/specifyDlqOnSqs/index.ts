@@ -31,7 +31,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Specifying a DLQ on SQS',
+  displayName: 'Specifying a DLQ on SQS',
   errorMessage:
     'The queue does not have a specified Dead Letter Queue. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
   run,

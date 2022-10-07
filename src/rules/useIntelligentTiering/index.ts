@@ -19,7 +19,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'S3: Use Intelligent Tiering',
+  displayName: 'S3: Use Intelligent Tiering',
   errorMessage: 'Intelligent Tiering is not enabled on this S3 bucket',
   run,
   fileName: 'useIntelligentTiering',

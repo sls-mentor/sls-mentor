@@ -20,7 +20,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Lambda: Under Maximum Memory',
+  displayName: 'Lambda: Under Maximum Memory',
   errorMessage: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher`,
   run,
   fileName: 'underMaxMemory',

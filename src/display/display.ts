@@ -32,7 +32,7 @@ export const displayResultsSummary = (results: ChecksResults): void => {
   results.forEach(({ rule, result }) => {
     const successCount = result.filter(e => e.success).length;
 
-    displayRuleResults(rule.ruleName, successCount, result.length);
+    displayRuleResults(rule.displayName, successCount, result.length);
   });
 };
 
@@ -49,7 +49,7 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
 
     failedRules.forEach(({ rule, extras }) => {
       const ruleFalingMessage = `   - ${chalk.bold(
-        rule.ruleName,
+        rule.displayName,
       )} (${chalk.grey(
         getCompleteRuleErrorMessage(rule.errorMessage, rule.fileName),
       )})`;

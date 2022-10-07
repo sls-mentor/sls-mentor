@@ -16,7 +16,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Lambda: No Default Memory',
+  displayName: 'Lambda: No Default Memory',
   errorMessage: 'The following functions have their memory set as default',
   run,
   fileName: 'noDefaultMemory',

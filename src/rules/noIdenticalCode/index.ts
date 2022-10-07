@@ -57,7 +57,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Lambda: No Identical Code',
+  displayName: 'Lambda: No Identical Code',
   errorMessage: "The function's code is identical to other functions",
   run,
   fileName: 'noIdenticalCode',
