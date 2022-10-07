@@ -21,6 +21,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  name: 'NO_MAX_TIMEOUT',
   displayName: 'Lambda: No Maximum Timeout',
   errorMessage: 'The following functions have their timeout set as the maximum',
   run,

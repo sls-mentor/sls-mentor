@@ -16,6 +16,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  name: 'LIMITED_AMOUNT_OF_VERSIONS',
   displayName: 'Lambda: Limited Amount of Versions',
   errorMessage:
     'The following functions have an amount of deployed versions greater than 3',

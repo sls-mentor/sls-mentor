@@ -57,6 +57,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  name: 'NO_MONO_PACKAGE',
   displayName: 'Lambda: No Mono Package',
   errorMessage:
     "The function's code is not packaged separately from the others'",

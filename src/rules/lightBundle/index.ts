@@ -18,6 +18,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  name: 'LIGHT_BUNDLE',
   displayName: 'Lambda: Light Bundle',
   errorMessage:
     'The following functions have bundles that weight more than 5 Mb',

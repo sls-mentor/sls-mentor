@@ -22,6 +22,7 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
+  name: 'USE_ARM',
   displayName: 'Lambda: Use an ARM Architecture',
   errorMessage: "The function's architecture is not set as ARM",
   run,
