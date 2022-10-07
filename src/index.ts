@@ -26,25 +26,28 @@ const fetchResourceArns = async (
   tags: Tag[] | undefined,
 ) => {
   try {
-    const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
-
     if (cloudformations === undefined) {
-      return resourcesFetchedByTags;
+      return await fetchTaggedResourceArns(tags ?? []);
     }
 
     const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
       cloudformations,
     );
 
-    const resources = intersectionWith(
+    if (tags === undefined) {
+      return resourcesFetchedByStack;
+    }
+
+    const resourcesFetchedByTags = await fetchTaggedResourceArns(tags);
+
+    return intersectionWith(
       resourcesFetchedByStack,
       resourcesFetchedByTags,
       (arnA, arnB) =>
         arnA.resource === arnB.resource && arnA.service === arnB.service,
     );
-
-    return resources;
-  } catch {
+  } catch (error) {
+    console.log(error);
     displayError(
       `Unable to fetch AWS resources, check that profile "${
         process.env.AWS_PROFILE ?? ''

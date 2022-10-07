@@ -66,10 +66,6 @@ const setAwsProfile = (command: Command): void => {
   if (awsProfile !== undefined) {
     process.env.AWS_PROFILE = awsProfile;
   }
-
-  if (process.env.AWS_PROFILE === undefined) {
-    process.env.AWS_PROFILE = process.env.DEFAULT_AWS_PROFILE ?? 'default';
-  }
 };
 
 const setAwsRegion = (command: Command): void => {
