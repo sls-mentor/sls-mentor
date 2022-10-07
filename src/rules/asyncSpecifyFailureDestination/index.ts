@@ -1,6 +1,7 @@
 import { parse } from '@aws-sdk/util-arn-parser';
 import {
   fetchAllAsyncLambdasArns,
+  fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../helpers';
 import { Category, Rule } from '../../types';
@@ -12,10 +13,25 @@ const run: Rule['run'] = async resourceArns => {
     asyncLambdasArns.map(parse),
   );
 
-  const results = invokeConfigs.map(({ arn, config }) => ({
-    arn,
-    success: config?.DestinationConfig?.OnFailure?.Destination !== undefined,
-  }));
+  const functionsConfigurations = await fetchAllLambdaConfigurations(
+    asyncLambdasArns.map(parse),
+  );
+
+  const results = invokeConfigs.map(({ arn, config }) => {
+    const hasFailureDestination =
+      config?.DestinationConfig?.OnFailure?.Destination !== undefined;
+
+    const matchingFunctionConfiguration = functionsConfigurations.find(
+      ({ FunctionArn }) => arn === FunctionArn,
+    );
+    const hasDlq =
+      matchingFunctionConfiguration?.DeadLetterConfig?.TargetArn !== undefined;
+
+    return {
+      arn,
+      success: hasDlq || hasFailureDestination,
+    };
+  });
 
   return { results };
 };
