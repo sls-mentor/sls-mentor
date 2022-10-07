@@ -57,10 +57,11 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  displayName: 'Lambda: No Identical Code',
-  errorMessage: "The function's code is identical to other functions",
+  displayName: 'Lambda: No Mono Package',
+  errorMessage:
+    "The function's code is not packaged separately from the others'",
   run,
-  fileName: 'noIdenticalCode',
+  fileName: 'noMonoPackage',
   categories: [Category.SECURITY, Category.STABILITY],
 };
 

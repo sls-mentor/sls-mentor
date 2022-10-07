@@ -6,7 +6,7 @@ import NoSharedIamRoles from './noSharedIamRoles';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
-import NoIdenticalCode from './noIdenticalCode';
+import NoIdenticalCode from './noMonoPackage';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
 
