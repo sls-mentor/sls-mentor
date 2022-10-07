@@ -4,11 +4,12 @@ import { Command, InvalidArgumentError, program } from 'commander';
 import { runGuardianChecks } from './index';
 import {
   displayChecksStarting,
+  displayDashboard,
   displayFailedChecksDetails,
+  displayGuordle,
   displayResultsSummary,
 } from './display';
 import { Options, Tag } from './types/CliOptions';
-import { displayDashboard } from './displayDashboard';
 import { getResultsByCategory } from './helpers/getResultsByCategory';
 
 const hasKeyAndValue = (
@@ -55,6 +56,7 @@ export const handleGuardianChecksCommand = async (
   displayResultsSummary(results);
   const resultsByCategory = getResultsByCategory(results);
   displayDashboard(resultsByCategory);
+  displayGuordle(resultsByCategory);
   const processExit = !options.noFail && atLeastOneFailed ? 1 : 0;
   process.exit(processExit);
 };

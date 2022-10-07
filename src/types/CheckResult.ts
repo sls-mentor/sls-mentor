@@ -37,3 +37,6 @@ export const CategoryNames = {
 };
 
 export type ChecksResultsByCategory = Record<Category, number>;
+
+export const LOW_SCORE_THRESHOLD = 50;
+export const MEDIUM_SCORE_THRESHOLD = 75;

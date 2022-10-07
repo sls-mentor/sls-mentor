@@ -1,6 +1,11 @@
 import chalk from 'chalk';
-import { ChecksResults } from './types';
-import { getCompleteRuleErrorMessage, getResultsByResource } from './helpers';
+import {
+  ChecksResults,
+  ChecksResultsByCategory,
+  LOW_SCORE_THRESHOLD,
+  MEDIUM_SCORE_THRESHOLD,
+} from '../types';
+import { getCompleteRuleErrorMessage, getResultsByResource } from '../helpers';
 
 const displayRuleResults = (
   ruleName: string,
@@ -63,4 +68,25 @@ export const displayChecksStarting = (): void => {
 
 export const displayError = (errorMessage: string): void => {
   console.error(`\n${chalk.redBright(errorMessage)}\n`);
+};
+
+const getEmojiFromScore = (score: number) => {
+  if (score > MEDIUM_SCORE_THRESHOLD) return '🟩';
+  if (score > LOW_SCORE_THRESHOLD) return '🟨';
+
+  return '🟥';
+};
+
+export const displayGuordle = (
+  checksResultsByCategory: ChecksResultsByCategory,
+): void => {
+  const guordle = Object.values(checksResultsByCategory)
+    .map(getEmojiFromScore)
+    .join('');
+
+  console.log(
+    chalk.bold(
+      `\nShare your results on twitter: ${guordle} #guardian #guordle`,
+    ),
+  );
 };
