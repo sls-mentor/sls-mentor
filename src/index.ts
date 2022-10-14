@@ -43,10 +43,16 @@ const fetchResourceArns = async (
 
     return resources;
   } catch {
+    const profile = process.env.AWS_PROFILE;
+    if (profile !== undefined) {
+      displayError(
+        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
+      );
+      process.exit(1);
+    }
+
     displayError(
-      `Unable to fetch AWS resources, check that the profile "${
-        process.env.AWS_PROFILE ?? ''
-      }" is correctly set or specify another profile using -p option`,
+      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
     );
     process.exit(1);
   }
