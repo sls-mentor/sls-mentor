@@ -63,7 +63,8 @@
     "cli-progress": "^3.11.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
-    "object-hash": "^3.0.0"
+    "object-hash": "^3.0.0",
+    "throttled-queue": "^2.1.4"
   },
   "keywords": [
     "aws",
