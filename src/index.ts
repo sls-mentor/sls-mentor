@@ -1,8 +1,13 @@
-import intersectionWith from 'lodash/intersectionWith';
 import {
-  fetchCloudFormationResourceArns,
-  fetchTaggedResourceArns,
-} from './helpers';
+  displayChecksStarting,
+  displayDashboard,
+  displayFailedChecksDetails,
+  displayGuordle,
+  displayResultsSummary,
+  progressBar,
+} from './display';
+import { fetchAllResourceArns } from './init';
+import { getResultsByCategory } from './results/getResultsByCategory';
 import {
   AsyncSpecifyFailureDestination,
   LightBundleRule,
@@ -16,54 +21,14 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, Options, Rule, Tag } from './types';
-import { displayError, progressBar } from './display';
+import { ChecksResults, Options, Rule } from './types';
 
-const fetchResourceArns = async (
-  cloudformationStacks: string[] | undefined,
-  tags: Tag[] | undefined,
-) => {
-  try {
-    const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
-
-    if (cloudformationStacks === undefined) {
-      return resourcesFetchedByTags;
-    }
-
-    const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-      cloudformationStacks,
-    );
-
-    const resources = intersectionWith(
-      resourcesFetchedByStack,
-      resourcesFetchedByTags,
-      (arnA, arnB) =>
-        arnA.resource === arnB.resource && arnA.service === arnB.service,
-    );
-
-    return resources;
-  } catch {
-    const profile = process.env.AWS_PROFILE;
-    if (profile !== undefined) {
-      displayError(
-        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
-      );
-      process.exit(1);
-    }
-
-    displayError(
-      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
-    );
-    process.exit(1);
-  }
-};
-
-export const runGuardianChecks = async ({
+export const runChecks = async ({
   cloudformations,
   cloudformationStacks,
   tags,
 }: Options): Promise<ChecksResults> => {
-  const resourceArns = await fetchResourceArns(
+  const resourceArns = await fetchAllResourceArns(
     cloudformationStacks ?? cloudformations,
     tags,
   );
@@ -112,4 +77,26 @@ export const runGuardianChecks = async ({
     progressBar.stop();
     throw error;
   }
+};
+
+export const runGuardian = async (
+  options: Options,
+): Promise<{ success: boolean }> => {
+  displayChecksStarting();
+  const checksResults = await runChecks(options);
+
+  const atLeastOneFailed = checksResults.some(
+    ({ result }) => result.filter(resource => !resource.success).length > 0,
+  );
+
+  if (!options.short && atLeastOneFailed) {
+    displayFailedChecksDetails(checksResults);
+  }
+
+  displayResultsSummary(checksResults);
+  const resultsByCategory = getResultsByCategory(checksResults);
+  displayDashboard(resultsByCategory);
+  displayGuordle(resultsByCategory);
+
+  return { success: options.noFail || !atLeastOneFailed };
 };

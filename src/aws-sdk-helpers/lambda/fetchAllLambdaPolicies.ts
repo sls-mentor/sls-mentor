@@ -1,7 +1,7 @@
 import { GetPolicyCommand } from '@aws-sdk/client-lambda';
 
 import { ARN, build } from '@aws-sdk/util-arn-parser';
-import { lambdaClient } from '../clients';
+import { lambdaClient } from '../../clients';
 import { filterLambdaFromResources } from './filterLambdaFromResources';
 
 // Incomplete, update if needed

@@ -3,7 +3,7 @@ import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
-} from '../../helpers';
+} from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {

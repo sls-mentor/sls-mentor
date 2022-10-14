@@ -1,5 +1,5 @@
 import { build } from '@aws-sdk/util-arn-parser';
-import { fetchAllQueuesAttributes } from '../../helpers';
+import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
 interface RedrivePolicy {
