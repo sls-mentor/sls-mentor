@@ -1,6 +1,8 @@
+import { ARN } from '@aws-sdk/util-arn-parser';
 import {
   displayChecksStarting,
   displayDashboard,
+  displayError,
   displayFailedChecksDetails,
   displayGuordle,
   displayResultsSummary,
@@ -23,15 +25,9 @@ import {
 } from './rules';
 import { ChecksResults, Options, Rule } from './types';
 
-export const runChecks = async ({
-  cloudformations,
-  cloudformationStacks,
-  tags,
-}: Options): Promise<ChecksResults> => {
-  const resourceArns = await fetchAllResourceArns(
-    cloudformationStacks ?? cloudformations,
-    tags,
-  );
+export const runChecks = async (
+  allResourceArns: ARN[],
+): Promise<ChecksResults> => {
   const rules: Rule[] = [
     LightBundleRule,
     NoIdenticalCode,
@@ -64,7 +60,7 @@ export const runChecks = async ({
   try {
     const results = await Promise.all(
       rules.map(async rule => {
-        const ruleResult = (await rule.run(resourceArns)).results;
+        const ruleResult = (await rule.run(allResourceArns)).results;
         decreaseRemaining();
 
         return { rule, result: ruleResult };
@@ -83,7 +79,32 @@ export const runGuardian = async (
   options: Options,
 ): Promise<{ success: boolean }> => {
   displayChecksStarting();
-  const checksResults = await runChecks(options);
+
+  let allReourcesArns: ARN[];
+  try {
+    allReourcesArns = await fetchAllResourceArns({
+      cloudformationStacks:
+        options.cloudformationStacks ?? options.cloudformations,
+      tags: options.tags,
+    });
+  } catch {
+    const profile = process.env.AWS_PROFILE;
+    if (profile !== undefined) {
+      displayError(
+        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
+      );
+
+      return { success: false };
+    }
+
+    displayError(
+      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
+    );
+
+    return { success: false };
+  }
+
+  const checksResults = await runChecks(allReourcesArns);
 
   const atLeastOneFailed = checksResults.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,
