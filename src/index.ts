@@ -23,12 +23,12 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, Options, Rule } from './types';
+import { ChecksResults, Options, Rule, RuleConfiguration } from './types';
 
 export const runChecks = async (
   allResourceArns: ARN[],
 ): Promise<ChecksResults> => {
-  const rules: Rule[] = [
+  const rules: Rule<RuleConfiguration>[] = [
     LightBundleRule,
     NoIdenticalCode,
     noDefaultMemory,

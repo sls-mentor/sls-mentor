@@ -1,14 +1,18 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
+
+type Configuration = BaseConfiguration;
+type NoMaxTimeoutRule = Rule<Configuration>;
 
 const hasMaximumTimeout = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.Timeout !== undefined &&
   lambdaConfiguration.Timeout === AWS_MAXIMUM_TIMEOUT;
 
-const run: Rule['run'] = async resourceArns => {
+const run: NoMaxTimeoutRule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
@@ -20,13 +24,14 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: NoMaxTimeoutRule = {
   name: 'NO_MAX_TIMEOUT',
   displayName: 'Lambda: No Maximum Timeout',
   errorMessage: 'The following functions have their timeout set as the maximum',
   run,
   fileName: 'noMaxTimeout',
   categories: [Category.GREEN_IT, Category.IT_COSTS, Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

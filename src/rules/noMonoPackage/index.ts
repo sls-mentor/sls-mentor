@@ -1,6 +1,10 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
+
+type Configuration = BaseConfiguration;
+type NoMonoPackageRule = Rule<Configuration>;
 
 const hasUniqueShaCode = (
   lambdaConfiguration: FunctionConfiguration,
@@ -13,7 +17,7 @@ const hasUniqueShaCode = (
     : true;
 };
 
-const run: Rule['run'] = async resourceArns => {
+const run: NoMonoPackageRule['run'] = async resourceArns => {
   const lambdasConfigurations = await fetchAllLambdaConfigurations(
     resourceArns,
   );
@@ -56,7 +60,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: NoMonoPackageRule = {
   name: 'NO_MONO_PACKAGE',
   displayName: 'Lambda: No Mono Package',
   errorMessage:
@@ -64,6 +68,7 @@ const rule: Rule = {
   run,
   fileName: 'noMonoPackage',
   categories: [Category.SECURITY, Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

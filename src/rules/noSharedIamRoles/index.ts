@@ -1,13 +1,17 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
+
+type Configuration = BaseConfiguration;
+type NoSharedIamRolesRule = Rule<Configuration>;
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
   sharedRoles: (string | undefined)[],
 ) => sharedRoles.includes(lambdaConfiguration.Role);
 
-const run: Rule['run'] = async resourceArns => {
+const run: NoSharedIamRolesRule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
   const roles = lambdaConfigurations.map(
     lambdaConfiguration => lambdaConfiguration.Role,
@@ -24,7 +28,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: NoSharedIamRolesRule = {
   name: 'NO_SHARED_IAM_ROLES',
   displayName: 'Lambda: No Shared IAM Roles',
   errorMessage:
@@ -32,6 +36,7 @@ const rule: Rule = {
   run,
   fileName: 'noSharedIamRoles',
   categories: [Category.SECURITY, Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

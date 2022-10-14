@@ -1,12 +1,16 @@
 import { parse } from '@aws-sdk/util-arn-parser';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
 
-const run: Rule['run'] = async resourceArns => {
+type Configuration = BaseConfiguration;
+type SpecifyAsyncFailureRule = Rule<Configuration>;
+
+const run: SpecifyAsyncFailureRule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
 
   const invokeConfigs = await fetchAllLambdaInvokeEventConfigs(
@@ -36,7 +40,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: SpecifyAsyncFailureRule = {
   name: 'ASYNC_SPECIFY_FAILURE_DESTINATION',
   displayName: 'Lambda: Specify Failure Destination for Async Functions',
   errorMessage:
@@ -44,6 +48,7 @@ const rule: Rule = {
   run,
   fileName: 'asyncSpecifyFailureDestination',
   categories: [Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

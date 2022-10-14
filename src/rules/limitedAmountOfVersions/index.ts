@@ -1,9 +1,13 @@
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
-const run: Rule['run'] = async resourceArns => {
+type Configuration = BaseConfiguration;
+type LimitedVersionsRule = Rule<Configuration>;
+
+const run: LimitedVersionsRule['run'] = async resourceArns => {
   const lambdaVersions = await fetchAllLambdaVersions(resourceArns);
 
   const results = lambdaVersions.map(({ arn, versions }) => ({
@@ -15,7 +19,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: LimitedVersionsRule = {
   name: 'LIMITED_AMOUNT_OF_VERSIONS',
   displayName: 'Lambda: Limited Amount of Versions',
   errorMessage:
@@ -23,6 +27,7 @@ const rule: Rule = {
   run,
   fileName: 'limitedAmountOfVersions',
   categories: [Category.GREEN_IT, Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

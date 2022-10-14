@@ -1,12 +1,16 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
+
+type Configuration = BaseConfiguration;
+type LightBundleRule = Rule<Configuration>;
 
 const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.CodeSize !== undefined &&
   lambdaConfiguration.CodeSize > 5000000;
 
-const run: Rule['run'] = async resourceArns => {
+const run: LightBundleRule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
     arn: lambdaConfiguration.FunctionArn ?? '',
@@ -17,7 +21,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: LightBundleRule = {
   name: 'LIGHT_BUNDLE',
   displayName: 'Lambda: Light Bundle',
   errorMessage:
@@ -25,6 +29,7 @@ const rule: Rule = {
   run,
   fileName: 'lightBundle',
   categories: [Category.GREEN_IT, Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

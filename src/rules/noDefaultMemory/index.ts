@@ -1,9 +1,13 @@
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
-const run: Rule['run'] = async resourceArns => {
+type Configuration = BaseConfiguration;
+type NoDefaultMemoryRule = Rule<Configuration>;
+
+const run: NoDefaultMemoryRule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
   const results = lambdaConfigurations.map(lambdaConfiguration => ({
@@ -15,13 +19,14 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: NoDefaultMemoryRule = {
   name: 'NO_DEFAULT_MEMORY',
   displayName: 'Lambda: No Default Memory',
   errorMessage: 'The following functions have their memory set as default',
   run,
   fileName: 'noDefaultMemory',
   categories: [Category.GREEN_IT, Category.IT_COSTS],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

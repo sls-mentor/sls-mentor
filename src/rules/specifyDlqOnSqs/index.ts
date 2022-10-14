@@ -1,6 +1,10 @@
 import { build } from '@aws-sdk/util-arn-parser';
+import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { BaseConfiguration, Category, Rule } from '../../types';
+
+type Configuration = BaseConfiguration;
+type SpecifyDLQRule = Rule<Configuration>;
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -8,7 +12,7 @@ interface RedrivePolicy {
 const hasDeadLetterQueue = (redrivePolicy: string | undefined): boolean =>
   redrivePolicy !== undefined;
 
-const run: Rule['run'] = async resourceArns => {
+const run: SpecifyDLQRule['run'] = async resourceArns => {
   const queuesAttributesByArn = await fetchAllQueuesAttributes(resourceArns);
   const deadLetterQueuesArn: string[] = [];
   queuesAttributesByArn.forEach(queue => {
@@ -30,7 +34,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+const rule: SpecifyDLQRule = {
   name: 'SPECIFY_DLQ_ON_SQS',
   displayName: 'Specifying a DLQ on SQS',
   errorMessage:
@@ -38,6 +42,7 @@ const rule: Rule = {
   run,
   fileName: 'specifyDlqOnSqs',
   categories: [Category.STABILITY],
+  configurationTypeGuards: baseConfigTypeGuard,
 };
 
 export default rule;

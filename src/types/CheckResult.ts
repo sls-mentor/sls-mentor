@@ -1,3 +1,4 @@
+import { RuleConfiguration } from './Configuration';
 import { Rule } from './Rule';
 
 export type CheckResult = { arn: string; success: boolean } & Record<
@@ -6,12 +7,12 @@ export type CheckResult = { arn: string; success: boolean } & Record<
 >;
 
 export type ChecksResults = {
-  rule: Rule;
+  rule: Rule<RuleConfiguration>;
   result: CheckResult[];
 }[];
 
 export type FailedRule = {
-  rule: Rule;
+  rule: Rule<RuleConfiguration>;
   extras: Record<string, unknown>;
 };
 
