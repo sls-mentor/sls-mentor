@@ -1,9 +1,11 @@
+/* eslint-disable max-lines */
 import chalk from 'chalk';
 import {
   ChecksResultsByCategory,
   LOW_SCORE_THRESHOLD,
   MEDIUM_SCORE_THRESHOLD,
 } from '../types';
+import { displayError } from './display';
 
 type ScoresByCategory = { label: string; score: number }[];
 
@@ -154,7 +156,17 @@ export const displayDashboard = (
   const scoresByCategory = Object.entries(checksResultsByCategory).map(
     ([category, score]) => ({ label: category, score }),
   );
-  const windowWidth = process.stdout.columns;
+  const windowWidth = process.stdout.columns as number | undefined;
+  if (windowWidth === undefined) {
+    displayError(
+      'Unfortunately your CLI doesnt allow the dashboard to be displayed, displaying row data',
+    );
+    scoresByCategory.forEach(({ score, label }) =>
+      console.log(`${label}: ${score}%`),
+    );
+
+    return;
+  }
   const nbOfBars = scoresByCategory.length;
   const nbOfSpaces = nbOfBars - 1;
 
