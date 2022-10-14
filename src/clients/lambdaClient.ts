@@ -5,9 +5,15 @@ import {
 } from '@aws-sdk/client-lambda';
 
 import hash from 'object-hash';
+import throttledQueue from 'throttled-queue';
 
 import { InitializeHandlerOutput, Pluggable } from '@aws-sdk/types';
 import { progressBar } from '../display';
+
+const SDK_RATE = 10;
+const ONE_SECOND = 1000;
+
+const queue = throttledQueue(1, ONE_SECOND / SDK_RATE);
 
 const cache: Record<
   string,
@@ -29,7 +35,7 @@ const cachePlugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
           return cache[inputHash];
         }
         clientProgressBar.setTotal(Object.keys(cache).length);
-        const resultPromise = next(args);
+        const resultPromise = queue(() => next(args));
         Object.assign(cache, { [inputHash]: resultPromise });
 
         const resolvedResult = await resultPromise;
@@ -42,10 +48,7 @@ const cachePlugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
   },
 };
 
-const client = new LambdaClient({
-  maxAttempts: 30,
-  retryMode: 'adaptive',
-});
+const client = new LambdaClient({});
 
 // @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
 client.middlewareStack.use(cachePlugin);

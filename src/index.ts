@@ -1,5 +1,4 @@
 import intersectionWith from 'lodash/intersectionWith';
-import { TooManyRequestsException } from '@aws-sdk/client-lambda';
 import {
   fetchCloudFormationResourceArns,
   fetchTaggedResourceArns,
@@ -53,7 +52,6 @@ const fetchResourceArns = async (
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const runGuardianChecks = async ({
   cloudformations,
   cloudformationStacks,
@@ -106,11 +104,6 @@ export const runGuardianChecks = async ({
     return results;
   } catch (error) {
     progressBar.stop();
-    if (error instanceof TooManyRequestsException) {
-      displayError(
-        'Too many requests sent to AWS, try to reduce the scope of your analysis by specifying filters on your cloudformation stacks (-c), or resource tags (-t).',
-      );
-    }
-    process.exit(1);
+    throw error;
   }
 };
