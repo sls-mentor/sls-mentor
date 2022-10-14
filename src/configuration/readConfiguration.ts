@@ -5,7 +5,14 @@ import { Configuration, Rule, RuleConfiguration, TypeGuard } from '../types';
 export const readConfigurationFile = (
   rules: Rule<RuleConfiguration>[],
 ): Configuration => {
-  const rawConfig = fs.readFileSync(DEFAULT_CONFIG_PATH_FILE).toString();
+  let rawConfig;
+  try {
+    rawConfig = fs.readFileSync(DEFAULT_CONFIG_PATH_FILE).toString();
+  } catch {
+    console.info('No config found');
+
+    return {};
+  }
   const configuration = JSON.parse(rawConfig) as Record<string, unknown>;
 
   if (!Object.prototype.hasOwnProperty.call(configuration, 'rules')) {
