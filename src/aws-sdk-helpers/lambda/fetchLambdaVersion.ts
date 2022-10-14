@@ -3,8 +3,8 @@ import {
   ListVersionsByFunctionCommand,
 } from '@aws-sdk/client-lambda';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
+import { lambdaClient } from '../../clients';
 import { filterLambdaFromResources } from './filterLambdaFromResources';
-import { lambdaClient } from '../clients';
 
 const fetchLambdaVersionsByArn = async (
   arn: ARN,

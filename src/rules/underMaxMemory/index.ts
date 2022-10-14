@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
+import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
-import { fetchAllLambdaConfigurations } from '../../helpers';
 import { Category, Rule } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>

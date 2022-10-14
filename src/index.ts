@@ -1,8 +1,15 @@
-import intersectionWith from 'lodash/intersectionWith';
+import { ARN } from '@aws-sdk/util-arn-parser';
 import {
-  fetchCloudFormationResourceArns,
-  fetchTaggedResourceArns,
-} from './helpers';
+  displayChecksStarting,
+  displayDashboard,
+  displayError,
+  displayFailedChecksDetails,
+  displayGuordle,
+  displayResultsSummary,
+  progressBar,
+} from './display';
+import { fetchAllResourceArns } from './init';
+import { getResultsByCategory } from './results/getResultsByCategory';
 import {
   AsyncSpecifyFailureDestination,
   LightBundleRule,
@@ -16,57 +23,11 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, Options, Rule, Tag } from './types';
-import { displayError, progressBar } from './display';
+import { ChecksResults, Options, Rule } from './types';
 
-const fetchResourceArns = async (
-  cloudformationStacks: string[] | undefined,
-  tags: Tag[] | undefined,
-) => {
-  try {
-    const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
-
-    if (cloudformationStacks === undefined) {
-      return resourcesFetchedByTags;
-    }
-
-    const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-      cloudformationStacks,
-    );
-
-    const resources = intersectionWith(
-      resourcesFetchedByStack,
-      resourcesFetchedByTags,
-      (arnA, arnB) =>
-        arnA.resource === arnB.resource && arnA.service === arnB.service,
-    );
-
-    return resources;
-  } catch {
-    const profile = process.env.AWS_PROFILE;
-    if (profile !== undefined) {
-      displayError(
-        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
-      );
-      process.exit(1);
-    }
-
-    displayError(
-      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
-    );
-    process.exit(1);
-  }
-};
-
-export const runGuardianChecks = async ({
-  cloudformations,
-  cloudformationStacks,
-  tags,
-}: Options): Promise<ChecksResults> => {
-  const resourceArns = await fetchResourceArns(
-    cloudformationStacks ?? cloudformations,
-    tags,
-  );
+export const runChecks = async (
+  allResourceArns: ARN[],
+): Promise<ChecksResults> => {
   const rules: Rule[] = [
     LightBundleRule,
     NoIdenticalCode,
@@ -99,7 +60,7 @@ export const runGuardianChecks = async ({
   try {
     const results = await Promise.all(
       rules.map(async rule => {
-        const ruleResult = (await rule.run(resourceArns)).results;
+        const ruleResult = (await rule.run(allResourceArns)).results;
         decreaseRemaining();
 
         return { rule, result: ruleResult };
@@ -112,4 +73,51 @@ export const runGuardianChecks = async ({
     progressBar.stop();
     throw error;
   }
+};
+
+export const runGuardian = async (
+  options: Options,
+): Promise<{ success: boolean }> => {
+  displayChecksStarting();
+
+  let allReourcesArns: ARN[];
+  try {
+    allReourcesArns = await fetchAllResourceArns({
+      cloudformationStacks:
+        options.cloudformationStacks ?? options.cloudformations,
+      tags: options.tags,
+    });
+  } catch {
+    const profile = process.env.AWS_PROFILE;
+    if (profile !== undefined) {
+      displayError(
+        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
+      );
+
+      return { success: false };
+    }
+
+    displayError(
+      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
+    );
+
+    return { success: false };
+  }
+
+  const checksResults = await runChecks(allReourcesArns);
+
+  const atLeastOneFailed = checksResults.some(
+    ({ result }) => result.filter(resource => !resource.success).length > 0,
+  );
+
+  if (!options.short && atLeastOneFailed) {
+    displayFailedChecksDetails(checksResults);
+  }
+
+  displayResultsSummary(checksResults);
+  const resultsByCategory = getResultsByCategory(checksResults);
+  displayDashboard(resultsByCategory);
+  displayGuordle(resultsByCategory);
+
+  return { success: options.noFail || !atLeastOneFailed };
 };

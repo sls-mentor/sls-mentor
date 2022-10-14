@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import { MultiBar, Presets } from 'cli-progress';
+import { getCompleteRuleErrorMessage } from '../results/getCompleteRuleErrorMessage';
+import { getResultsByResource } from '../results/getResultsByResource';
 import {
   ChecksResults,
   ChecksResultsByCategory,
   LOW_SCORE_THRESHOLD,
   MEDIUM_SCORE_THRESHOLD,
 } from '../types';
-import { getCompleteRuleErrorMessage, getResultsByResource } from '../helpers';
 
 const displayRuleResults = (
   ruleName: string,
@@ -91,8 +91,3 @@ export const displayGuordle = (
     ),
   );
 };
-
-export const progressBar = new MultiBar(
-  { emptyOnZero: true, hideCursor: true },
-  Presets.rect,
-);

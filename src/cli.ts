@@ -1,16 +1,8 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import {
-  displayChecksStarting,
-  displayDashboard,
-  displayFailedChecksDetails,
-  displayGuordle,
-  displayResultsSummary,
-} from './display';
-import { runGuardianChecks } from './index';
-import { Options, Tag } from './types/CliOptions';
-import { getResultsByCategory } from './helpers/getResultsByCategory';
+import { runGuardian } from './index';
+import { Options, Tag } from './types';
 
 const hasKeyAndValue = (
   groups: Record<string, string> | undefined,
@@ -42,23 +34,12 @@ const parseTags = (
 export const handleGuardianChecksCommand = async (
   options: Options,
 ): Promise<void> => {
-  displayChecksStarting();
-  const results = await runGuardianChecks(options);
-
-  const atLeastOneFailed = results.some(
-    ({ result }) => result.filter(resource => !resource.success).length > 0,
-  );
-
-  if (!options.short && atLeastOneFailed) {
-    displayFailedChecksDetails(results);
+  const { success } = await runGuardian(options);
+  if (success) {
+    process.exit(0);
   }
 
-  displayResultsSummary(results);
-  const resultsByCategory = getResultsByCategory(results);
-  displayDashboard(resultsByCategory);
-  displayGuordle(resultsByCategory);
-  const processExit = !options.noFail && atLeastOneFailed ? 1 : 0;
-  process.exit(processExit);
+  process.exit(1);
 };
 
 const setAwsProfile = (command: Command): void => {

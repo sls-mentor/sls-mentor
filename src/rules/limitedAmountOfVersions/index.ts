@@ -1,4 +1,4 @@
-import { fetchAllLambdaVersions } from '../../helpers';
+import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
