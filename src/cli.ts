@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import { runGuardianChecks } from './index';
 import {
   displayChecksStarting,
   displayDashboard,
@@ -9,6 +8,7 @@ import {
   displayGuordle,
   displayResultsSummary,
 } from './display';
+import { runGuardianChecks } from './index';
 import { Options, Tag } from './types/CliOptions';
 import { getResultsByCategory } from './helpers/getResultsByCategory';
 
@@ -94,9 +94,14 @@ program
     'Filter checked account resources by tags',
     parseTags,
   )
+  /** @deprecated use --cloudformation-stacks instead */
   .option(
-    '-c, --cloudformations [cloudformations...]',
-    'Filter checked account resources by cloudformation stacks names',
+    '--cloudformations [cloudformation-stacks...]',
+    'Filter checked account resources by CloudFormation stack names',
+  )
+  .option(
+    '-c, --cloudformation-stacks [cloudformation-stacks...]',
+    'Filter checked account resources by CloudFormation stack names',
   )
   .option(
     '--noFail',

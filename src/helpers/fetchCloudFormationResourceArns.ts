@@ -11,16 +11,16 @@ import {
 } from './getSupportedResourceArn';
 
 export const fetchCloudFormationResourceArns = async (
-  cloudformations: string[],
+  cloudformationStacks: string[],
 ): Promise<ARN[]> => {
   const cloudFormationClient = new CloudFormationClient({});
   const stsClient = new STSClient({});
 
   const resources: StackResourceSummary[] = [];
-  for (const cloudformation of cloudformations) {
+  for (const stack of cloudformationStacks) {
     for await (const page of paginateListStackResources(
       { client: cloudFormationClient },
-      { StackName: cloudformation },
+      { StackName: stack },
     )) {
       resources.push(...(page.StackResourceSummaries ?? []));
     }

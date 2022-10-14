@@ -21,18 +21,18 @@ import { ChecksResults, Options, Rule, Tag } from './types';
 import { displayError, progressBar } from './display';
 
 const fetchResourceArns = async (
-  cloudformations: string[] | undefined,
+  cloudformationStacks: string[] | undefined,
   tags: Tag[] | undefined,
 ) => {
   try {
     const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
 
-    if (cloudformations === undefined) {
+    if (cloudformationStacks === undefined) {
       return resourcesFetchedByTags;
     }
 
     const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-      cloudformations,
+      cloudformationStacks,
     );
 
     const resources = intersectionWith(
@@ -45,7 +45,7 @@ const fetchResourceArns = async (
     return resources;
   } catch {
     displayError(
-      `Unable to fetch AWS resources, check that profile "${
+      `Unable to fetch AWS resources, check that the profile "${
         process.env.AWS_PROFILE ?? ''
       }" is correctly set or specify another profile using -p option`,
     );
@@ -56,9 +56,13 @@ const fetchResourceArns = async (
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const runGuardianChecks = async ({
   cloudformations,
+  cloudformationStacks,
   tags,
 }: Options): Promise<ChecksResults> => {
-  const resourceArns = await fetchResourceArns(cloudformations, tags);
+  const resourceArns = await fetchResourceArns(
+    cloudformationStacks ?? cloudformations,
+    tags,
+  );
   const rules: Rule[] = [
     LightBundleRule,
     NoIdenticalCode,

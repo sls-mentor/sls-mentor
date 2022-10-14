@@ -12,11 +12,11 @@ If you already have a default aws profile configured specifying a default region
 
 Here is the full list of available options:
 
-| Option                                       | Effect                                                          |
-| -------------------------------------------- | --------------------------------------------------------------- |
-| -p, --aws-profile \<profile\>                | Aws profile name to use                                         |
-| -r, --aws-region \<region\>                  | Manually set AWS region                                         |
-| -c, --cloudformations \[cloudformations...\] | Filter checked account resources by cloudformation stacks names |
-| -t, --tags \<key_value...\>                  | Filter checked account resources by tags                        |
-| -s, --short                                  | Short output: only display checks results overview              |
-| --noFail                                     | Exit with success status, even if some checks failed            |
+| Option                                            | Effect                                                          |
+| ------------------------------------------------- | --------------------------------------------------------------- |
+| -p, --aws-profile \<profile\>                     | Aws profile name to use                                         |
+| -r, --aws-region \<region\>                       | Manually set AWS region                                         |
+| -c, --cloudformation-stacks \<stack1 stack2 ...\> | Filter checked account resources by cloudformation stacks names |
+| -t, --tags \<Key=...,Value=... Ke...\>            | Filter checked account resources by tags                        |
+| -s, --short                                       | Short output: only display checks results overview              |
+| --noFail                                          | Exit with success status, even if some checks failed            |
