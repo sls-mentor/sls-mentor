@@ -24,6 +24,7 @@ import {
   UseIntelligentTiering,
 } from './rules';
 import { ChecksResults, Options, Rule, RuleConfiguration } from './types';
+import { readConfigurationFile } from './configuration';
 
 export const runChecks = async (
   allResourceArns: ARN[],
@@ -41,6 +42,9 @@ export const runChecks = async (
     AsyncSpecifyFailureDestination,
     SpecifyDlqOnSqs,
   ];
+
+  const config = readConfigurationFile(rules);
+  console.log(config);
 
   const total = rules.length + 1;
 
