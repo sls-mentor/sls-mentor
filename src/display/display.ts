@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import { MultiBar, Presets } from 'cli-progress';
 import { getCompleteRuleErrorMessage } from '../results/getCompleteRuleErrorMessage';
 import { getResultsByResource } from '../results/getResultsByResource';
 import {
@@ -92,8 +91,3 @@ export const displayGuordle = (
     ),
   );
 };
-
-export const progressBar = new MultiBar(
-  { emptyOnZero: true, hideCursor: true },
-  Presets.rect,
-);
