@@ -4,7 +4,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { ARN } from '@aws-sdk/util-arn-parser';
 import { s3Client } from '../../clients';
-import { filterS3BucketFromResources } from './filterS3BucketFromResources';
+import { filterServiceFromResourceArns } from '../common';
 
 const fetchS3BucketConfigurationByArn = async (
   arn: ARN,
@@ -24,7 +24,7 @@ export const fetchAllS3BucketIntelligentTieringConfigurations = async (
 ): Promise<
   { arn: ARN; configuration: IntelligentTieringConfiguration[] | undefined }[]
 > => {
-  const buckets = filterS3BucketFromResources(resources);
+  const buckets = filterServiceFromResourceArns(resources, 's3');
 
   return Promise.all(
     buckets.map(async arn => ({

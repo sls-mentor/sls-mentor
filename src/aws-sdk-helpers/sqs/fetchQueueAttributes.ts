@@ -4,7 +4,7 @@ import {
   SQSClient,
 } from '@aws-sdk/client-sqs';
 import { ARN } from '@aws-sdk/util-arn-parser';
-import { filterSQSFromResources } from './filterSQSFromResources';
+import { filterServiceFromResourceArns } from '../common';
 
 type QueueAttributes = {
   arn: ARN;
@@ -30,7 +30,7 @@ export const fetchAllQueuesAttributes = async (
 ): Promise<QueueAttributes[]> => {
   const sqsClient = new SQSClient({});
 
-  const queues = filterSQSFromResources(resourceArns);
+  const queues = filterServiceFromResourceArns(resourceArns, 'sqs');
 
   const AttributesByArn = await Promise.all(
     queues.map(arn => fetchQueueAttributesByArn(arn, sqsClient)),

@@ -2,7 +2,7 @@ import { GetPolicyCommand } from '@aws-sdk/client-lambda';
 
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterLambdaFromResources } from './filterLambdaFromResources';
+import { filterServiceFromResourceArns } from '../common';
 
 // Incomplete, update if needed
 export type Policy = {
@@ -32,7 +32,7 @@ const fetchLambdaPolicyByArn = async (
 export const fetchAllLambdaPolicies = async (
   resourceArns: ARN[],
 ): Promise<{ arn: string; policy: Policy | undefined }[]> => {
-  const lambdas = filterLambdaFromResources(resourceArns);
+  const lambdas = filterServiceFromResourceArns(resourceArns, 'lambda');
 
   return Promise.all(
     lambdas.map(async arn => ({
