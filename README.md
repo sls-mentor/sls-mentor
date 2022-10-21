@@ -89,24 +89,19 @@
 - AWS S3:
   - [`S3: Use intelligent tiering`](./docs/rules/use-intelligent-tiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
 
+<p>Check out our articles, to find out more:</p>
+
+- <a href='https://dev.to/kumo/that-one-aws-lambda-hidden-configuration-that-will-make-you-a-hero-guardian-is-watching-over-you-5gi7'><b>That one AWS Lambda hidden configuration that will make you a Hero - Guardian is watching over you</b></a> by <a href='https://twitter.com/Gozinebgo'>Zineb</a>
+- <a href='https://dev.to/kumo/aws-lambda-versions-time-to-clean-up-guardian-is-watching-over-you-jkd'><b>AWS Lambda Versions : Time to clean up! - Guardian is watching over you</b></a> by <a href='https://twitter.com/PierreChollet22'>Pierre</a>
+- <a href='https://dev.to/kumo/aws-lambda-101-shave-that-bundle-down-48c7'><b>AWS Lambda 101: Shave That Bundle Down</b></a> by <a href='https://twitter.com/eloiatheodo'>Éloi</a>
+
 <br />
 <br />
 <div align="center">
-  <h2>Learn more about Guardian 📰</h2>
+  <h2>About Guardian 📰</h2>
   <br />
   <p>
-  Guardian's core team has published articles explaining decisions and how to fix rules on your architecture. Check them out, to find out more:
-    <ul align='left'>
-      <li>
-        <a href='https://dev.to/kumo/that-one-aws-lambda-hidden-configuration-that-will-make-you-a-hero-guardian-is-watching-over-you-5gi7'><b>That one AWS Lambda hidden configuration that will make you a Hero - Guardian is watching over you</b></a> by <a href='https://twitter.com/Gozinebgo'>Zineb</a>
-      </li>
-      <li>
-        <a href='https://dev.to/kumo/aws-lambda-versions-time-to-clean-up-guardian-is-watching-over-you-jkd'><b>AWS Lambda Versions : Time to clean up! - Guardian is watching over you</b></a> by <a href='https://twitter.com/PierreChollet22'>Pierre</a>
-      </li>
-      <li>
-        <a href='https://dev.to/kumo/aws-lambda-101-shave-that-bundle-down-48c7'><b>AWS Lambda 101: Shave That Bundle Down</b></a> by <a href='https://twitter.com/eloiatheodo'>Éloi</a>
-      </li>
-    </ul>
+  Guardian is a <a href='https://www.theodo.fr/startup-studio-m33'>Theodo Group</a> project made for AWS Serverless developers by AWS Serverless developers. Original idea appeared at <a href='https://www.aleios.com/'>Aleios</a>. Guardian was migrated to Typescript and enriched by <a href='https://www.theodo.com/experts/serverless'>Kumo</a>.
   </p>
 </div>
 <br />
@@ -116,6 +111,9 @@
   <br />
   <a href="https://github.com/kumo-by-theodo/guardian/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=kumo-by-theodo/guardian" />
+  </a>
+  <a href="https://github.com/aleios-cloud/sls-dev-tools/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=aleios-cloud/sls-dev-tools" />
   </a>
   <br/>
   <br/>
