@@ -1,10 +1,10 @@
 import { EventBridge } from '@aws-sdk/client-eventbridge';
-import { Category, CheckResult, Rule } from '../../types';
 import {
   filterEventBusesFromResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
+import { Category, Rule, RuleCheckResult } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const eventBridgeClient = new EventBridge({});
@@ -32,7 +32,7 @@ const run: Rule['run'] = async resourceArns => {
     }),
   );
 
-  const results: CheckResult[] = allEventBridgeTargetsWithRule.map(
+  const results: RuleCheckResult[] = allEventBridgeTargetsWithRule.map(
     ({ rule, targets }) => {
       const doesTargetHaveDLQConfigured = targets.every(
         target => target.DeadLetterConfig !== undefined,
