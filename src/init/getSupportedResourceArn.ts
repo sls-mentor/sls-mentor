@@ -57,6 +57,20 @@ const getLogGroupResourceArn = (
   };
 };
 
+const getEventBridgeResourceArn = (
+  region: string,
+  accountId: string,
+  resource: string,
+): ARN => {
+  return {
+    partition: 'aws',
+    service: 'events',
+    region,
+    accountId,
+    resource: 'event-bus/' + resource,
+  };
+};
+
 export const ressourceTypeToRessources: {
   [string: string]: (
     region: string,
@@ -68,6 +82,7 @@ export const ressourceTypeToRessources: {
   'AWS::S3::Bucket': getS3ResourceArn,
   'AWS::SQS::Queue': getSQSResourceArn,
   'AWS::Logs::LogGroup': getLogGroupResourceArn,
+  'AWS::Events::EventBus': getEventBridgeResourceArn,
 };
 
 export const getSupportedResourceArn = (
