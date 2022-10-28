@@ -42,6 +42,21 @@ const getSQSResourceArn = (
   };
 };
 
+const getLogGroupResourceArn = (
+  region: string,
+  accountId: string,
+  resource: string,
+): ARN => {
+  return {
+    partition: 'aws',
+    service: 'logs',
+    region,
+    accountId,
+    // transformation needed to format the arn the same way as tagging client does
+    resource: 'log-group:' + resource,
+  };
+};
+
 export const ressourceTypeToRessources: {
   [string: string]: (
     region: string,
@@ -52,6 +67,7 @@ export const ressourceTypeToRessources: {
   'AWS::Lambda::Function': getLambdaResourceArn,
   'AWS::S3::Bucket': getS3ResourceArn,
   'AWS::SQS::Queue': getSQSResourceArn,
+  'AWS::Logs::LogGroup': getLogGroupResourceArn,
 };
 
 export const getSupportedResourceArn = (

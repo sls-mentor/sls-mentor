@@ -12,6 +12,7 @@ import { fetchAllResourceArns } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 import {
   AsyncSpecifyFailureDestination,
+  DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
@@ -40,6 +41,7 @@ export const runChecks = async (
     UnderMaxMemory,
     AsyncSpecifyFailureDestination,
     SpecifyDlqOnSqs,
+    DefinedLogsRetentionDuration,
   ];
 
   const total = rules.length + 1;
