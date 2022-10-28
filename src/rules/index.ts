@@ -1,3 +1,4 @@
+import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import noDefaultMemory from './noDefaultMemory';
 import LightBundleRule from './lightBundle';
 import NoMaxTimeout from './noMaxTimeout';
@@ -13,6 +14,7 @@ import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 
 export {
+  CognitoSignInCaseInsensitivity,
   noDefaultMemory,
   LightBundleRule,
   NoMaxTimeout,

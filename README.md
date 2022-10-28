@@ -88,6 +88,8 @@
   - [`Lambda: No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./docs/rules/use-intelligent-tiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
+- AWS Cognito:
+  - [`Cognito: Sign-in case insensitivity`](./docs/rules/cognito-sign-in-case-insensitivity.md): checks that your Cognito user pool is insensitive to user name case.
 
 <p>Check out our articles, to find out more:</p>
 
