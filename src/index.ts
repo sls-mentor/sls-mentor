@@ -1,129 +1,96 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
-import {
-  displayChecksStarting,
-  displayDashboard,
-  displayError,
-  displayFailedChecksDetails,
-  displayGuordle,
-  displayResultsSummary,
-  progressBar,
-} from './display';
-import { fetchAllResourceArns } from './init';
-import { getResultsByCategory } from './results/getResultsByCategory';
-import {
-  AsyncSpecifyFailureDestination,
-  CognitoSignInCaseInsensitivity,
-  DefinedLogsRetentionDuration,
-  LightBundleRule,
-  LimitedAmountOfLambdaVersions,
-  noDefaultMemory,
-  NoIdenticalCode,
-  NoMaxTimeout,
-  NoSharedIamRoles,
-  SpecifyDlqOnEventBridgeRule,
-  SpecifyDlqOnSqs,
-  UnderMaxMemory,
-  UseArm,
-  UseIntelligentTiering,
-} from './rules';
-import { ChecksResults, Options, Rule } from './types';
+#!/usr/bin/env node
+import { Command, InvalidArgumentError, program } from 'commander';
+import { progressBar } from './display';
 
-export const runChecks = async (
-  allResourceArns: ARN[],
-): Promise<ChecksResults> => {
-  const rules: Rule[] = [
-    CognitoSignInCaseInsensitivity,
-    LightBundleRule,
-    NoIdenticalCode,
-    noDefaultMemory,
-    NoMaxTimeout,
-    NoSharedIamRoles,
-    UseArm,
-    UseIntelligentTiering,
-    LimitedAmountOfLambdaVersions,
-    UnderMaxMemory,
-    AsyncSpecifyFailureDestination,
-    SpecifyDlqOnSqs,
-    DefinedLogsRetentionDuration,
-    SpecifyDlqOnEventBridgeRule,
+import { runGuardian } from './guardian';
+import { Options, Tag } from './types';
+
+const hasKeyAndValue = (
+  groups: Record<string, string> | undefined,
+): groups is Tag => {
+  // ts-config is loosely assuming all keys exist, type guard to be updated when Typescript config is updated
+  return groups !== undefined;
+};
+
+const parseTags = (
+  tagOption: string,
+  previousTags: Tag[] | undefined,
+): Tag[] => {
+  const [{ groups: tag }] = [
+    ...tagOption.matchAll(
+      /^Key=(?<key>[\p{L}\p{Z}\p{N}_.:/=+\-@]*),Value=(?<value>[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/gu,
+    ),
   ];
-
-  const total = rules.length + 1;
-
-  const rulesProgressBar = progressBar.create(
-    total,
-    0,
-    {},
-    { format: 'Rules:  {bar} {percentage}% | ETA: {eta}s | {value}/{total}' },
-  );
-
-  const decreaseRemaining = () => {
-    rulesProgressBar.increment();
-  };
-
-  decreaseRemaining();
-
-  try {
-    const results = await Promise.all(
-      rules.map(async rule => {
-        const ruleResult = (await rule.run(allResourceArns)).results;
-        decreaseRemaining();
-
-        return { rule, result: ruleResult };
-      }),
-    );
-    progressBar.stop();
-
-    return results;
-  } catch (error) {
-    progressBar.stop();
-    throw error;
+  if (!hasKeyAndValue(tag)) {
+    throw new InvalidArgumentError('Invalid flag parameters');
   }
+
+  if (!previousTags) {
+    return [tag];
+  }
+
+  return [...previousTags, tag];
 };
 
-export const runGuardian = async (
+export const handleGuardianChecksCommand = async (
   options: Options,
-): Promise<{ success: boolean }> => {
-  displayChecksStarting();
-
-  let allResourcesArns: ARN[];
-  try {
-    allResourcesArns = await fetchAllResourceArns({
-      cloudformationStacks:
-        options.cloudformationStacks ?? options.cloudformations,
-      tags: options.tags,
-    });
-  } catch {
-    const profile = process.env.AWS_PROFILE;
-    if (profile !== undefined) {
-      displayError(
-        `Unable to fetch AWS resources, check that profile "${profile}" is correctly set and has the needed rights or specify another profile using -p option`,
-      );
-
-      return { success: false };
-    }
-
-    displayError(
-      `Unable to fetch AWS resources, check that your default profile is correctly set and has the needed rights or that you have correctly set environment variables`,
-    );
-
-    return { success: false };
+): Promise<void> => {
+  const { success } = await runGuardian(options);
+  if (success) {
+    process.exit(0);
   }
 
-  const checksResults = await runChecks(allResourcesArns);
-
-  const atLeastOneFailed = checksResults.some(
-    ({ result }) => result.filter(resource => !resource.success).length > 0,
-  );
-
-  if (!options.short && atLeastOneFailed) {
-    displayFailedChecksDetails(checksResults);
-  }
-
-  displayResultsSummary(checksResults);
-  const resultsByCategory = getResultsByCategory(checksResults);
-  displayDashboard(resultsByCategory);
-  displayGuordle(resultsByCategory);
-
-  return { success: options.noFail || !atLeastOneFailed };
+  process.exit(1);
 };
+
+const setAwsProfile = (command: Command): void => {
+  const awsProfile = command.opts<Options>().awsProfile;
+  if (awsProfile !== undefined) {
+    process.env.AWS_PROFILE = awsProfile;
+  }
+};
+
+const setAwsRegion = (command: Command): void => {
+  const awsRegion = command.opts<Options>().awsRegion;
+  if (awsRegion !== undefined) {
+    process.env.AWS_REGION = awsRegion;
+  }
+};
+
+process.on('SIGINT', () => {
+  progressBar.stop();
+});
+
+program
+  .name('guardian')
+  .version(process.env.npm_package_version ?? '0.0.0')
+  .option(
+    '-s, --short',
+    'Short output: only display checks results overview',
+    false,
+  )
+  .option('-p, --aws-profile <profile>', 'AWS profile to use')
+  .option('-r, --aws-region <region>', 'Specify region')
+  .option(
+    '-t, --tags <key_value...>',
+    'Filter checked account resources by tags',
+    parseTags,
+  )
+  /** @deprecated use --cloudformation-stacks instead */
+  .option(
+    '--cloudformations [cloudformation-stacks...]',
+    'Filter checked account resources by CloudFormation stack names',
+  )
+  .option(
+    '-c, --cloudformation-stacks [cloudformation-stacks...]',
+    'Filter checked account resources by CloudFormation stack names',
+  )
+  .option(
+    '--noFail',
+    'Exit with success status, even if some checks failed',
+    false,
+  )
+  .action(handleGuardianChecksCommand)
+  .hook('preAction', setAwsProfile)
+  .hook('preAction', setAwsRegion)
+  .parse();

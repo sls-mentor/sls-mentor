@@ -2,10 +2,11 @@
   "name": "@kumo-by-theodo/guardian",
   "description": "Audit tool for AWS serverless architectures",
   "bin": {
-    "guardian": "./dist/cli.js"
+    "guardian": "./dist/index.js"
   },
   "scripts": {
-    "dev": "node -r ts-node/register ./src/cli.ts",
+    "test-circular": "depcruise --validate .dependency-cruiser.js .",
+    "dev": "node -r ts-node/register ./src/index.ts",
     "clean": "rimraf ./dist/",
     "build": "npm run clean && tsc",
     "lint": "eslint src",
@@ -36,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
     "ava": "^4.2.0",
+    "dependency-cruiser": "^11.17.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",

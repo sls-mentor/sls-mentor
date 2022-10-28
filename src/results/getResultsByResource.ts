@@ -1,17 +1,17 @@
 import omit from 'lodash/omit';
 import uniq from 'lodash/uniq';
 import {
-  CheckResult,
   ChecksResults,
   FailedRule,
   ResourceResult,
+  RuleCheckResult,
 } from '../types';
 
 const getResourcesArnsCheckedByGuardian = (results: ChecksResults): string[] =>
   uniq(results.flatMap(({ result }) => result.map(({ arn }) => arn)));
 
 const getExtrasFromRuleResult = (
-  result: CheckResult,
+  result: RuleCheckResult,
 ): Record<string, unknown> => omit(result, 'arn', 'success');
 
 const getRulesFailedByResource = (
