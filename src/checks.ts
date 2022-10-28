@@ -48,20 +48,14 @@ export const runChecks = async (
 
   decreaseRemaining();
 
-  try {
-    const results = await Promise.all(
-      rules.map(async rule => {
-        const ruleResult = (await rule.run(allResourceArns)).results;
-        decreaseRemaining();
+  const results = await Promise.all(
+    rules.map(async rule => {
+      const ruleResult = (await rule.run(allResourceArns)).results;
+      decreaseRemaining();
 
-        return { rule, result: ruleResult };
-      }),
-    );
-    progressBar.stop();
+      return { rule, result: ruleResult };
+    }),
+  );
 
-    return results;
-  } catch (error) {
-    progressBar.stop();
-    throw error;
-  }
+  return results;
 };

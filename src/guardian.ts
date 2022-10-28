@@ -7,11 +7,12 @@ import {
   displayFailedChecksDetails,
   displayGuordle,
   displayResultsSummary,
+  progressBar,
 } from './display';
 import { fetchAllResourceArns } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 
-import { Options } from './types';
+import { ChecksResults, Options } from './types';
 
 export const runGuardian = async (
   options: Options,
@@ -42,7 +43,13 @@ export const runGuardian = async (
     return { success: false };
   }
 
-  const checksResults = await runChecks(allReourcesArns);
+  let checksResults: ChecksResults;
+
+  try {
+    checksResults = await runChecks(allReourcesArns);
+  } finally {
+    progressBar.stop();
+  }
 
   const atLeastOneFailed = checksResults.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,

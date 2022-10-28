@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
+import { progressBar } from './display';
 
 import { runGuardian } from './guardian';
 import { Options, Tag } from './types';
@@ -55,6 +56,10 @@ const setAwsRegion = (command: Command): void => {
     process.env.AWS_REGION = awsRegion;
   }
 };
+
+process.on('SIGINT', () => {
+  progressBar.stop();
+});
 
 program
   .name('guardian')
