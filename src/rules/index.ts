@@ -9,6 +9,7 @@ import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import NoIdenticalCode from './noIdenticalCode';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
+import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 
 export {
   noDefaultMemory,
@@ -22,4 +23,5 @@ export {
   NoIdenticalCode,
   AsyncSpecifyFailureDestination,
   SpecifyDlqOnSqs,
+  DefinedLogsRetentionDuration,
 };
