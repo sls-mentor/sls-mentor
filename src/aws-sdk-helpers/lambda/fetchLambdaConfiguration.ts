@@ -5,7 +5,7 @@ import {
 
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterLambdaFromResources } from './filterLambdaFromResources';
+import { filterServiceFromResourceArns } from '../common';
 
 const fetchLambdaConfigurationByArn = async (
   arn: ARN,
@@ -17,7 +17,7 @@ const fetchLambdaConfigurationByArn = async (
 export const fetchAllLambdaConfigurations = async (
   resources: ARN[],
 ): Promise<FunctionConfiguration[]> => {
-  const lambdas = filterLambdaFromResources(resources);
+  const lambdas = filterServiceFromResourceArns(resources, 'lambda');
   const lambdaConfigurations = await Promise.all(
     lambdas.map(arn => fetchLambdaConfigurationByArn(arn)),
   );

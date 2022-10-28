@@ -71,6 +71,20 @@ const getEventBridgeResourceArn = (
   };
 };
 
+const getCognitoUserPoolResourceArn = (
+  region: string,
+  accountId: string,
+  resource: string,
+): ARN => {
+  return {
+    partition: 'aws',
+    service: 'cognito-idp',
+    region,
+    accountId,
+    resource: 'userpool/' + resource,
+  };
+};
+
 export const ressourceTypeToRessources: {
   [string: string]: (
     region: string,
@@ -83,6 +97,7 @@ export const ressourceTypeToRessources: {
   'AWS::SQS::Queue': getSQSResourceArn,
   'AWS::Logs::LogGroup': getLogGroupResourceArn,
   'AWS::Events::EventBus': getEventBridgeResourceArn,
+  'AWS::Cognito::UserPool': getCognitoUserPoolResourceArn,
 };
 
 export const getSupportedResourceArn = (

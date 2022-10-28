@@ -4,7 +4,7 @@ import {
 } from '@aws-sdk/client-lambda';
 import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterLambdaFromResources } from './filterLambdaFromResources';
+import { filterServiceFromResourceArns } from '../common';
 
 const fetchLambdaInvokeEventConfigByArn = async (
   arn: ARN,
@@ -26,7 +26,7 @@ export const fetchAllLambdaInvokeEventConfigs = async (
     config: GetFunctionEventInvokeConfigCommandOutput | undefined;
   }[]
 > => {
-  const lambdas = filterLambdaFromResources(resourceArns);
+  const lambdas = filterServiceFromResourceArns(resourceArns, 'lambda');
 
   return await Promise.all(
     lambdas.map(async arn => ({

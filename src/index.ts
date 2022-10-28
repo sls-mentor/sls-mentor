@@ -12,6 +12,7 @@ import { fetchAllResourceArns } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 import {
   AsyncSpecifyFailureDestination,
+  CognitoSignInCaseInsensitivity,
   DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
@@ -31,6 +32,7 @@ export const runChecks = async (
   allResourceArns: ARN[],
 ): Promise<ChecksResults> => {
   const rules: Rule[] = [
+    CognitoSignInCaseInsensitivity,
     LightBundleRule,
     NoIdenticalCode,
     noDefaultMemory,
