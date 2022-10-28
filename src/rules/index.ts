@@ -10,6 +10,7 @@ import NoIdenticalCode from './noIdenticalCode';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
+import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 
 export {
   noDefaultMemory,
@@ -24,4 +25,5 @@ export {
   AsyncSpecifyFailureDestination,
   SpecifyDlqOnSqs,
   DefinedLogsRetentionDuration,
+  SpecifyDlqOnEventBridgeRule,
 };

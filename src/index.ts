@@ -19,6 +19,7 @@ import {
   NoIdenticalCode,
   NoMaxTimeout,
   NoSharedIamRoles,
+  SpecifyDlqOnEventBridgeRule,
   SpecifyDlqOnSqs,
   UnderMaxMemory,
   UseArm,
@@ -42,6 +43,7 @@ export const runChecks = async (
     AsyncSpecifyFailureDestination,
     SpecifyDlqOnSqs,
     DefinedLogsRetentionDuration,
+    SpecifyDlqOnEventBridgeRule,
   ];
 
   const total = rules.length + 1;
