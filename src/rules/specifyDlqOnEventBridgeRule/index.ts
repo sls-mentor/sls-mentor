@@ -55,7 +55,7 @@ const rule: Rule = {
   errorMessage:
     'The event bridge event rule targets do not all have a specified Dead Letter Queue',
   run,
-  fileName: 'specifyDlqOnEventBridge',
+  fileName: 'specifyDlqOnEventBridgeRule',
   categories: [Category.STABILITY],
 };
 
