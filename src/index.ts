@@ -19,6 +19,7 @@ import {
   NoIdenticalCode,
   NoMaxTimeout,
   NoSharedIamRoles,
+  SpecifyDlqOnEventBridgeRule,
   SpecifyDlqOnSqs,
   UnderMaxMemory,
   UseArm,
@@ -42,6 +43,7 @@ export const runChecks = async (
     AsyncSpecifyFailureDestination,
     SpecifyDlqOnSqs,
     DefinedLogsRetentionDuration,
+    SpecifyDlqOnEventBridgeRule,
   ];
 
   const total = rules.length + 1;
@@ -82,9 +84,9 @@ export const runGuardian = async (
 ): Promise<{ success: boolean }> => {
   displayChecksStarting();
 
-  let allReourcesArns: ARN[];
+  let allResourcesArns: ARN[];
   try {
-    allReourcesArns = await fetchAllResourceArns({
+    allResourcesArns = await fetchAllResourceArns({
       cloudformationStacks:
         options.cloudformationStacks ?? options.cloudformations,
       tags: options.tags,
@@ -106,7 +108,7 @@ export const runGuardian = async (
     return { success: false };
   }
 
-  const checksResults = await runChecks(allReourcesArns);
+  const checksResults = await runChecks(allResourcesArns);
 
   const atLeastOneFailed = checksResults.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,
