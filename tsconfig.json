@@ -6,5 +6,6 @@
     "target": "es6",
     "esModuleInterop": true,
     "strict": true
-  }
+  },
+  "exclude": ["tests-e2e/**"]
 }
