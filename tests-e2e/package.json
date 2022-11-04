@@ -1,0 +1,26 @@
+{
+  "name": "tests-e2e",
+  "version": "0.1.0",
+  "bin": {
+    "tests-e2e": "bin/tests-e2e.js"
+  },
+  "scripts": {
+    "synth": "cdk synth",
+    "deploy": "cdk deploy",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "10.17.27",
+    "@types/prettier": "2.6.0",
+    "aws-cdk": "2.50.0",
+    "lodash": "^4.17.21",
+    "ts-node": "^10.9.1",
+    "typescript": "~3.9.7",
+    "vitest": "^0.24.5"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.50.0",
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
+  }
+}
