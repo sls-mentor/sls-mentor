@@ -3,8 +3,8 @@ import {
   filterEventBusesFromResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
-} from '../../aws-sdk-helpers';
-import { Category, Rule, RuleCheckResult } from '../../types';
+} from '../../../aws-sdk-helpers';
+import { Category, Rule, RuleCheckResult } from '../../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const eventBridgeClient = new EventBridge({});

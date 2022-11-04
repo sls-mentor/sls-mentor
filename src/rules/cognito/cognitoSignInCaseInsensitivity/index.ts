@@ -1,8 +1,8 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
-import { fetchUserPoolIdByArn } from '../../aws-sdk-helpers/cognito';
-import fetchUserPoolConfiguration from '../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
-import filterServiceFromResourceArns from '../../aws-sdk-helpers/common/filterServiceFromResourceArns';
-import { Category, Rule } from '../../types';
+import { fetchUserPoolIdByArn } from '../../../aws-sdk-helpers/cognito';
+import fetchUserPoolConfiguration from '../../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
+import filterServiceFromResourceArns from '../../../aws-sdk-helpers/common/filterServiceFromResourceArns';
+import { Category, Rule } from '../../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const userPoolsArns = filterServiceFromResourceArns(

@@ -1,6 +1,6 @@
 import { build } from '@aws-sdk/util-arn-parser';
-import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { fetchAllQueuesAttributes } from '../../../aws-sdk-helpers';
+import { Category, Rule } from '../../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;

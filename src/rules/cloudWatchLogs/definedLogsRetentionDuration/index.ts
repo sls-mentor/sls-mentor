@@ -1,7 +1,7 @@
 import { LogGroup } from '@aws-sdk/client-cloudwatch-logs';
 import { build } from '@aws-sdk/util-arn-parser';
-import { fetchAllLogGroupsConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { fetchAllLogGroupsConfigurations } from '../../../aws-sdk-helpers';
+import { Category, Rule } from '../../../types';
 
 const isLogsRetentionDurationDefined = (
   logGroupConfiguration: LogGroup,
