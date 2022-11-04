@@ -1,17 +1,18 @@
+import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
-import noDefaultMemory from './noDefaultMemory';
+import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
+import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
+import noDefaultMemory from './noDefaultMemory';
+import NoIdenticalCode from './noIdenticalCode';
 import NoMaxTimeout from './noMaxTimeout';
-import UnderMaxMemory from './underMaxMemory';
 import NoSharedIamRoles from './noSharedIamRoles';
+import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
+import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
+import SpecifyDlqOnSqs from './specifyDlqOnSqs';
+import UnderMaxMemory from './underMaxMemory';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
-import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
-import NoIdenticalCode from './noIdenticalCode';
-import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
-import SpecifyDlqOnSqs from './specifyDlqOnSqs';
-import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
-import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 
 export {
   CognitoSignInCaseInsensitivity,
@@ -28,4 +29,5 @@ export {
   SpecifyDlqOnSqs,
   DefinedLogsRetentionDuration,
   SpecifyDlqOnEventBridgeRule,
+  ServerSideEncryptionEnabled,
 };
