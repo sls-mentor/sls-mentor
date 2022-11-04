@@ -16,7 +16,7 @@ import { ChecksResults, Options } from './types';
 
 export const runGuardian = async (
   options: Options,
-): Promise<{ success: boolean }> => {
+): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
   displayChecksStarting();
 
   let allReourcesArns: ARN[];
@@ -64,5 +64,8 @@ export const runGuardian = async (
   displayDashboard(resultsByCategory);
   displayGuordle(resultsByCategory);
 
-  return { success: options.noFail || !atLeastOneFailed };
+  return {
+    success: options.noFail || !atLeastOneFailed,
+    ...(options.getJsonResults === true ? { checksResults } : {}),
+  };
 };

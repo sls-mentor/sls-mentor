@@ -12,4 +12,5 @@ export type Options = {
   cloudformations?: string[];
   cloudformationStacks?: string[];
   noFail: boolean;
+  getJsonResults?: boolean;
 };
