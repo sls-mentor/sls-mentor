@@ -8,6 +8,7 @@ import {
   NoIdenticalCode,
   NoMaxTimeout,
   NoSharedIamRoles,
+  ServerSideEncryptionEnabled,
   SpecifyDlqOnSqs,
   UnderMaxMemory,
   UseArm,
@@ -26,10 +27,11 @@ export const runChecks = async (
     NoMaxTimeout,
     NoSharedIamRoles,
     UseArm,
-    UseIntelligentTiering,
     LimitedAmountOfLambdaVersions,
     UnderMaxMemory,
     AsyncSpecifyFailureDestination,
+    UseIntelligentTiering,
+    ServerSideEncryptionEnabled,
     SpecifyDlqOnSqs,
   ];
 
