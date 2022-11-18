@@ -77,20 +77,20 @@
 <br />
 
 - AWS Lambda:
-  - [`Lambda: Use ARM64 architecture`](./docs/rules/use-arm.md): checks that you're using ARM64 architectures for your Lambda functions.
-  - [`Lambda: No shared IAM roles`](./docs/rules/no-shared-iam-roles.md): checks that each one of your Lambda functions has its own IAM role.
-  - [`Lambda: Limited amount of versions`](./docs/rules/limited-amount-of-versions.md): checks that you do not store all previous deployment versions for your Lambda functions.
-  - [`Lambda: Specify failure destination to async functions`](./docs/rules/async-specify-failure-destination.md): checks that each one of your async Lambda functions has a failure destination.
-  - [`Lambda: No identical code`](./docs/rules/no-identical-code.md): checks that each one of your Lambda functions has different code.
-  - [`Lambda: Light bundle`](./docs/rules/light-bundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
-  - [`Lambda: No default memory`](./docs/rules/no-default-memory.md): checks that you have consciously configured your Lambda functions' memory size.
-  - [`Lambda: Under maximum memory`](./docs/rules/under-max-memory.md): checks that each one of your Lambda functions' memory size is reasonably small.
-  - [`Lambda: No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
+  - [`Lambda: Use ARM64 architecture`](./src/rules/useArm/useArm.md): checks that you're using ARM64 architectures for your Lambda functions.
+  - [`Lambda: No shared IAM roles`](./src/rules/noSharedIamRoles/noSharedIamRoles.md): checks that each one of your Lambda functions has its own IAM role.
+  - [`Lambda: Limited amount of versions`](./src/rules/limitedAmountOfVersions/limitedAmountOfVersions.md): checks that you do not store all previous deployment versions for your Lambda functions.
+  - [`Lambda: Specify failure destination to async functions`](./src/rules/asyncSpecifyFailureDestination/asyncSpecifyFailureDestination.md): checks that each one of your async Lambda functions has a failure destination.
+  - [`Lambda: No identical code`](./src/rules/noIdenticalCode/noIdenticalCode.md): checks that each one of your Lambda functions has different code.
+  - [`Lambda: Light bundle`](./src/rules/lightBundle/lightBundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
+  - [`Lambda: No default memory`](./src/rules/noDefaultMemory/noDefaultMemory.md): checks that you have consciously configured your Lambda functions' memory size.
+  - [`Lambda: Under maximum memory`](./src/rules/underMaxMemory/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
+  - [`Lambda: No maximum timeout`](./src/rules/noMaxTimeout/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
 - AWS S3:
-  - [`S3: Use intelligent tiering`](./docs/rules/use-intelligent-tiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
+  - [`S3: Use intelligent tiering`](./src/rules/useIntelligentTiering/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
   - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that a server-side encryption soution is enabled on each S3 bucket.
 - AWS Cognito:
-  - [`Cognito: Sign-in case insensitivity`](./docs/rules/cognito-sign-in-case-insensitivity.md): checks that your Cognito user pool is insensitive to user name case.
+  - [`Cognito: Sign-in case insensitivity`](./src/rules/cognitoSignInCaseInsensitivity/cognitoSignInCaseInsensitivity.md): checks that your Cognito user pool is insensitive to user name case.
 - AWS CloudWatch:
   - [`CloudWatch Log Groups: Defined logs retention duration`](./src/rules/definedLogsRetentionDuration/definedLogsRetentionDuration.md): checks that each of your Log Groups has a defined log retention duration.
 - AWS EventBridge:
