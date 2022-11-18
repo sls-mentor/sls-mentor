@@ -88,8 +88,13 @@
   - [`Lambda: No maximum timeout`](./docs/rules/no-max-timeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./docs/rules/use-intelligent-tiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
+  - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that a server-side encryption soution is enabled on each S3 bucket.
 - AWS Cognito:
   - [`Cognito: Sign-in case insensitivity`](./docs/rules/cognito-sign-in-case-insensitivity.md): checks that your Cognito user pool is insensitive to user name case.
+- AWS CloudWatch:
+  - [`CloudWatch Log Groups: Defined logs retention duration`](./src/rules/definedLogsRetentionDuration/definedLogsRetentionDuration.md): checks that each of your Log Groups has a defined log retention duration.
+- AWS EventBridge:
+  - [`EventBridge: Specified dead letter queue`](./src/rules/specifyDlqOnEventBridgeRule/specifyDlqOnEventBridgeRule.md): checks that each Event Bridge Rule target has a dead letter queue.
 
 <p>Check out our articles, to find out more:</p>
 
