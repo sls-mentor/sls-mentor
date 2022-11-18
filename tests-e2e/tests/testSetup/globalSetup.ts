@@ -1,14 +1,18 @@
+import { config } from 'dotenv';
 import { unlinkSync, writeFileSync } from 'fs';
 import { getGuardianResults } from './getGuardianResults';
 
 export const setup = async (): Promise<void> => {
+  config({ path: '.env' });
+
   const checkResults = await getGuardianResults({
-    awsRegion: 'eu-west-1',
+    awsProfile: process.env.AWS_PROFILE,
+    awsRegion: process.env.AWS_REGION,
     noFail: true,
     short: false,
     getJsonResults: true,
   });
-  // sleep 20s
+
   writeFileSync('./tests/guardianOutput.json', JSON.stringify(checkResults));
 };
 
