@@ -2,16 +2,15 @@ import {
   GetQueueAttributesCommand,
   GetQueueAttributesCommandOutput,
 } from '@aws-sdk/client-sqs';
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { sqsCLient } from '../../clients';
-import { filterServiceFromResourceArns } from '../common';
+import { GuardianARN, SqsQueueARN } from '../../types';
 
 type QueueAttributes = {
-  arn: ARN;
+  arn: SqsQueueARN;
   attributes: GetQueueAttributesCommandOutput;
 };
 export const fetchQueueAttributesByArn = async (
-  arn: ARN,
+  arn: SqsQueueARN,
 ): Promise<QueueAttributes> => {
   return {
     arn: arn,
@@ -25,9 +24,9 @@ export const fetchQueueAttributesByArn = async (
 };
 
 export const fetchAllQueuesAttributes = async (
-  resourceArns: ARN[],
+  resourceArns: GuardianARN[],
 ): Promise<QueueAttributes[]> => {
-  const queues = filterServiceFromResourceArns(resourceArns, 'sqs');
+  const queues = GuardianARN.filterArns(resourceArns, SqsQueueARN);
 
   const AttributesByArn = await Promise.all(
     queues.map(arn => fetchQueueAttributesByArn(arn)),

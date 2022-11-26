@@ -1,6 +1,5 @@
-import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
+import { Category, GuardianARN, Rule, SqsQueueARN } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -10,21 +9,29 @@ const hasDeadLetterQueue = (redrivePolicy: string | undefined): boolean =>
 
 const run: Rule['run'] = async resourceArns => {
   const queuesAttributesByArn = await fetchAllQueuesAttributes(resourceArns);
-  const deadLetterQueuesArn: string[] = [];
-  queuesAttributesByArn.forEach(queue => {
-    const redrivePolicy = queue.attributes.Attributes?.RedrivePolicy;
-    if (redrivePolicy !== undefined) {
-      const deadLetterTargetArn = (JSON.parse(redrivePolicy) as RedrivePolicy)
-        .deadLetterTargetArn;
-      deadLetterQueuesArn.push(deadLetterTargetArn);
-    }
-  });
+
+  const deadLetterQueueArns = queuesAttributesByArn
+    .map(({ attributes }) => {
+      const redrivePolicy = attributes.Attributes?.RedrivePolicy;
+      if (redrivePolicy !== undefined) {
+        const deadLetterTargetArn = (JSON.parse(redrivePolicy) as RedrivePolicy)
+          .deadLetterTargetArn;
+
+        return GuardianARN.fromArnString(deadLetterTargetArn);
+      }
+    })
+    .filter((arn): arn is SqsQueueARN => arn !== undefined);
 
   const results = queuesAttributesByArn
-    .filter(queue => !deadLetterQueuesArn.includes(build(queue.arn)))
-    .map(queue => ({
-      arn: build(queue.arn),
-      success: hasDeadLetterQueue(queue.attributes.Attributes?.RedrivePolicy),
+    .filter(
+      ({ arn }) =>
+        deadLetterQueueArns.find(deadLetterQueueArn =>
+          deadLetterQueueArn.is(arn),
+        ) === undefined,
+    )
+    .map(({ arn, attributes }) => ({
+      arn: build(arn),
+      success: hasDeadLetterQueue(attributes.Attributes?.RedrivePolicy),
     }));
 
   return { results };
