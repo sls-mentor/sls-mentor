@@ -3,7 +3,12 @@ import {
   paginateListStackResources,
   StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
-import { GuardianARN, LambdaFunctionARN, S3BucketARN } from '../types';
+import {
+  GuardianARN,
+  LambdaFunctionARN,
+  S3BucketARN,
+  SqsQueueARN,
+} from '../types';
 
 export const createARNFromCloudFormation = ({
   ResourceType,
@@ -18,6 +23,8 @@ export const createARNFromCloudFormation = ({
       return S3BucketARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::Lambda::Function':
       return LambdaFunctionARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::SQS::Queue':
+      return SqsQueueARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
