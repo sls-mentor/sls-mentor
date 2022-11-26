@@ -10,4 +10,6 @@ export class LambdaFunctionARN extends GuardianARN {
 
   static fromPhysicalId = (physicalId: string): LambdaFunctionARN =>
     LambdaFunctionARN.fromFunctionName(physicalId);
+
+  getFunctionName = (): string => this.resource.split(':')[1];
 }

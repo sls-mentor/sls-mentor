@@ -1,3 +1,4 @@
+import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
@@ -7,7 +8,7 @@ const run: Rule['run'] = async resourceArns => {
   const lambdaVersions = await fetchAllLambdaVersions(resourceArns);
 
   const results = lambdaVersions.map(({ arn, versions }) => ({
-    arn,
+    arn: build(arn),
     success: versions.length <= MAX_AMOUNT_OF_VERSIONS,
     versionAmount: versions.length,
   }));

@@ -1,8 +1,7 @@
 import { GetPolicyCommand } from '@aws-sdk/client-lambda';
 
-import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterServiceFromResourceArns } from '../common';
+import { GuardianARN, LambdaFunctionARN } from '../../types';
 
 // Incomplete, update if needed
 export type Policy = {
@@ -16,11 +15,11 @@ export type Policy = {
 };
 
 const fetchLambdaPolicyByArn = async (
-  arn: ARN,
+  arn: LambdaFunctionARN,
 ): Promise<Policy | undefined> => {
   try {
     const commandOutput = await lambdaClient.send(
-      new GetPolicyCommand({ FunctionName: build(arn) }),
+      new GetPolicyCommand({ FunctionName: arn.getFunctionName() }),
     );
     const policy = JSON.parse(commandOutput.Policy ?? '') as Policy;
 
@@ -30,13 +29,13 @@ const fetchLambdaPolicyByArn = async (
   }
 };
 export const fetchAllLambdaPolicies = async (
-  resourceArns: ARN[],
-): Promise<{ arn: string; policy: Policy | undefined }[]> => {
-  const lambdas = filterServiceFromResourceArns(resourceArns, 'lambda');
+  resourceArns: GuardianARN[],
+): Promise<{ arn: LambdaFunctionARN; policy: Policy | undefined }[]> => {
+  const lambdas = GuardianARN.filterArns(resourceArns, LambdaFunctionARN);
 
   return Promise.all(
     lambdas.map(async arn => ({
-      arn: build(arn),
+      arn,
       policy: await fetchLambdaPolicyByArn(arn),
     })),
   );

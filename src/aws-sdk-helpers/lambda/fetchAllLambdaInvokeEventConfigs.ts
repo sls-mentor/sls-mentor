@@ -2,16 +2,17 @@ import {
   GetFunctionEventInvokeConfigCommand,
   GetFunctionEventInvokeConfigCommandOutput,
 } from '@aws-sdk/client-lambda';
-import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterServiceFromResourceArns } from '../common';
+import { GuardianARN, LambdaFunctionARN } from '../../types';
 
 const fetchLambdaInvokeEventConfigByArn = async (
-  arn: ARN,
+  arn: LambdaFunctionARN,
 ): Promise<GetFunctionEventInvokeConfigCommandOutput | undefined> => {
   try {
     return await lambdaClient.send(
-      new GetFunctionEventInvokeConfigCommand({ FunctionName: build(arn) }),
+      new GetFunctionEventInvokeConfigCommand({
+        FunctionName: arn.getFunctionName(),
+      }),
     );
   } catch (e) {
     return;
@@ -19,18 +20,18 @@ const fetchLambdaInvokeEventConfigByArn = async (
 };
 
 export const fetchAllLambdaInvokeEventConfigs = async (
-  resourceArns: ARN[],
+  resourceArns: GuardianARN[],
 ): Promise<
   {
-    arn: string;
+    arn: LambdaFunctionARN;
     config: GetFunctionEventInvokeConfigCommandOutput | undefined;
   }[]
 > => {
-  const lambdas = filterServiceFromResourceArns(resourceArns, 'lambda');
+  const lambdas = GuardianARN.filterArns(resourceArns, LambdaFunctionARN);
 
   return await Promise.all(
     lambdas.map(async arn => ({
-      arn: build(arn),
+      arn,
       config: await fetchLambdaInvokeEventConfigByArn(arn),
     })),
   );
