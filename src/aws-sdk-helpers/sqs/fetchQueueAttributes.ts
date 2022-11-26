@@ -1,9 +1,9 @@
 import {
   GetQueueAttributesCommand,
   GetQueueAttributesCommandOutput,
-  SQSClient,
 } from '@aws-sdk/client-sqs';
 import { ARN } from '@aws-sdk/util-arn-parser';
+import { sqsCLient } from '../../clients';
 import { filterServiceFromResourceArns } from '../common';
 
 type QueueAttributes = {
@@ -12,11 +12,10 @@ type QueueAttributes = {
 };
 export const fetchQueueAttributesByArn = async (
   arn: ARN,
-  client: SQSClient,
 ): Promise<QueueAttributes> => {
   return {
     arn: arn,
-    attributes: await client.send(
+    attributes: await sqsCLient.send(
       new GetQueueAttributesCommand({
         QueueUrl: arn.resource,
         AttributeNames: ['RedrivePolicy'],
@@ -28,12 +27,10 @@ export const fetchQueueAttributesByArn = async (
 export const fetchAllQueuesAttributes = async (
   resourceArns: ARN[],
 ): Promise<QueueAttributes[]> => {
-  const sqsClient = new SQSClient({});
-
   const queues = filterServiceFromResourceArns(resourceArns, 'sqs');
 
   const AttributesByArn = await Promise.all(
-    queues.map(arn => fetchQueueAttributesByArn(arn, sqsClient)),
+    queues.map(arn => fetchQueueAttributesByArn(arn)),
   );
 
   return AttributesByArn;
