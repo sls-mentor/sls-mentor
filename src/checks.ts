@@ -1,4 +1,3 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { progressBar } from './display';
 import {
   AsyncSpecifyFailureDestination,
@@ -17,10 +16,10 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, Rule } from './types';
+import { ChecksResults, GuardianARN, Rule } from './types';
 
 export const runChecks = async (
-  allResourceArns: ARN[],
+  allResourceArns: GuardianARN[],
 ): Promise<ChecksResults> => {
   const rules: Rule[] = [
     LightBundleRule,

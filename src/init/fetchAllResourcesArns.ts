@@ -1,4 +1,3 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import intersectionWith from 'lodash/intersectionWith';
 import { fetchCloudFormationResourceArns } from './fetchCloudFormationResourceArns';
 import { fetchTaggedResourceArns } from './fetchTaggedResourceArns';
@@ -12,7 +11,7 @@ export const fetchAllResourceArns = async ({
 }: {
   cloudformationStacks?: string[];
   tags?: Tag[];
-}): Promise<ARN[]> => {
+}): Promise<GuardianARN[]> => {
   const allResources = await listAllResources();
 
   const resourcesToKeepByTags =
