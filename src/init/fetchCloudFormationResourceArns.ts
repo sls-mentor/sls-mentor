@@ -6,12 +6,15 @@ import {
 import {
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
+  EventBridgeEventBusARN,
   GuardianARN,
   LambdaFunctionARN,
   S3BucketARN,
   SqsQueueARN,
 } from '../types';
 
+// This is a big switch
+// eslint-disable-next-line complexity
 export const createARNFromCloudFormation = ({
   ResourceType,
   PhysicalResourceId,
@@ -31,6 +34,8 @@ export const createARNFromCloudFormation = ({
       return CognitoUserPoolARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::Logs::LogGroup':
       return CloudwatchLogGroupARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Events::EventBus':
+      return EventBridgeEventBusARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
