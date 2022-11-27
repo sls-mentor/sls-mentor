@@ -4,6 +4,7 @@ import {
   StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
 import {
+  CognitoUserPoolARN,
   GuardianARN,
   LambdaFunctionARN,
   S3BucketARN,
@@ -25,6 +26,8 @@ export const createARNFromCloudFormation = ({
       return LambdaFunctionARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::SQS::Queue':
       return SqsQueueARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Cognito::UserPool':
+      return CognitoUserPoolARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
