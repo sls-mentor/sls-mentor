@@ -11,10 +11,10 @@ const hasMaximumTimeout = (lambdaConfiguration: FunctionConfiguration) =>
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    success: !hasMaximumTimeout(lambdaConfiguration),
-    timeout: lambdaConfiguration.Timeout,
+  const results = lambdaConfigurations.map(({ arn, configuration }) => ({
+    arn,
+    success: !hasMaximumTimeout(configuration),
+    timeout: configuration.Timeout,
   }));
 
   return { results };

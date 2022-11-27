@@ -8,10 +8,10 @@ const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
 
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    success: !hasHeavyBundle(lambdaConfiguration),
-    bundleSize: lambdaConfiguration.CodeSize,
+  const results = lambdaConfigurations.map(({ arn, configuration }) => ({
+    arn,
+    success: !hasHeavyBundle(configuration),
+    bundleSize: configuration.CodeSize,
   }));
 
   return { results };

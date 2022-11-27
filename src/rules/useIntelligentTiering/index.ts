@@ -1,5 +1,4 @@
 import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
-import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
@@ -11,7 +10,7 @@ const run: Rule['run'] = async resourceArns => {
   const s3BucketConfigurations =
     await fetchAllS3BucketIntelligentTieringConfigurations(resourceArns);
   const results = s3BucketConfigurations.map(({ arn, configuration }) => ({
-    arn: build(arn),
+    arn,
     success: hasIntelligentTiering(configuration),
   }));
 

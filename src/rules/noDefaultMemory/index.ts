@@ -6,10 +6,10 @@ const DEFAULT_MEMORY_SIZE = 1024;
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    memory: lambdaConfiguration.MemorySize,
-    success: lambdaConfiguration.MemorySize !== DEFAULT_MEMORY_SIZE,
+  const results = lambdaConfigurations.map(({ arn, configuration }) => ({
+    arn,
+    memory: configuration.MemorySize,
+    success: configuration.MemorySize !== DEFAULT_MEMORY_SIZE,
   }));
 
   return { results };

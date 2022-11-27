@@ -1,4 +1,3 @@
-import { parse } from '@aws-sdk/util-arn-parser';
 import compact from 'lodash/compact';
 import { GuardianARN, LambdaFunctionARN } from '../../types';
 import { fetchAllLambdaPolicies, Policy } from './fetchAllLambdaPolicies';
@@ -10,11 +9,9 @@ const isLambdaPolicyAsync = (policy: Policy): boolean => {
     policy.Statement?.map(
       statement => statement.Condition?.ArnLike?.['AWS:SourceArn'],
     ),
-  );
+  ).map(arn => GuardianARN.fromArnString(arn));
 
-  return sourceArns.some(sourceArn =>
-    ASYNC_AWS_SERVICES.includes(parse(sourceArn).service),
-  );
+  return sourceArns.some(({ service }) => ASYNC_AWS_SERVICES.includes(service));
 };
 
 export const fetchAllAsyncLambdasArns = async (

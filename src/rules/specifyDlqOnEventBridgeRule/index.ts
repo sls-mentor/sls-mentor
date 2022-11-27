@@ -5,6 +5,7 @@ import {
 import {
   Category,
   EventBridgeEventBusARN,
+  EventBridgeRuleARN,
   GuardianARN,
   Rule,
   RuleCheckResult,
@@ -42,7 +43,7 @@ const run: Rule['run'] = async resourceArns => {
       );
 
       return {
-        arn: rule.Arn ?? 'unknown rule arn',
+        arn: EventBridgeRuleARN.fromRuleName(rule.Name ?? 'unknown_rule_arn'),
         success: doesTargetHaveDLQConfigured,
         eventBus: rule.EventBusName,
         targets: targets.map(target => target.Arn),

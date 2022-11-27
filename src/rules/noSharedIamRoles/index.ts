@@ -10,15 +10,15 @@ const isLambdaRoleShared = (
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
   const roles = lambdaConfigurations.map(
-    lambdaConfiguration => lambdaConfiguration.Role,
+    ({ configuration }) => configuration.Role,
   );
   const sharedRoles = roles.filter(
     role => roles.filter(r => r === role).length > 1,
   );
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    success: !isLambdaRoleShared(lambdaConfiguration, sharedRoles),
-    role: lambdaConfiguration.Role,
+  const results = lambdaConfigurations.map(({ configuration, arn }) => ({
+    arn,
+    success: !isLambdaRoleShared(configuration, sharedRoles),
+    role: configuration.Role,
   }));
 
   return { results };

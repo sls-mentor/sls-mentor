@@ -16,7 +16,7 @@ export const CategoryNames = {
   [Category.SECURITY]: 'Security',
 };
 
-export type RuleCheckResult = { arn: string; success: boolean } & Record<
+export type RuleCheckResult = { arn: GuardianARN; success: boolean } & Record<
   string,
   unknown
 >;

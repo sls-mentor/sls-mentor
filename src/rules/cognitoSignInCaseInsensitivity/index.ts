@@ -1,5 +1,4 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
-import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
 import { Category, Rule } from '../../types';
 
@@ -11,7 +10,7 @@ const run: Rule['run'] = async resourceArns => {
   const userPools = await fetchAllUserPoolConfigurations(resourceArns);
 
   const results = userPools.map(({ configuration, arn }) => ({
-    arn: build(arn),
+    arn,
     success: hasCaseInsensitiveSignIn(configuration),
   }));
 

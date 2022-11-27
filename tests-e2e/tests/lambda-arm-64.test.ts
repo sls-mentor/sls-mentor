@@ -12,14 +12,16 @@ describe('lambda-arm-64', () => {
   it('guardian passes on lambda with ARM64 architecture ', () => {
     const { result } = guardianOutput;
     expect(
-      result.find(r => r.arn.includes(PASS_ARM64_LAMBDA_NAME))?.success,
+      result.find(r => r.arn.resource.includes(PASS_ARM64_LAMBDA_NAME))
+        ?.success,
     ).toBe(true);
   });
 
   it('guardian fails on lambda with X86 architecture', () => {
     const { result } = guardianOutput;
     expect(
-      result.find(r => r.arn.includes(FAIL_ARM64_LAMBDA_NAME))?.success,
+      result.find(r => r.arn.resource.includes(FAIL_ARM64_LAMBDA_NAME))
+        ?.success,
     ).toBe(false);
   });
 });

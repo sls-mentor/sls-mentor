@@ -43,7 +43,7 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
 
   resultsByResource.forEach(({ resourceArn, failedRules }) => {
     const resourceNotPassingMessage = `Resource ${chalk.bold(
-      resourceArn,
+      resourceArn.toString(),
     )} --> ${failedRules.length} rules failed`;
     console.log(chalk.redBright(resourceNotPassingMessage));
 

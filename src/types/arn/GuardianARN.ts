@@ -1,4 +1,4 @@
-import { ARN, parse } from '@aws-sdk/util-arn-parser';
+import { ARN, build, parse } from '@aws-sdk/util-arn-parser';
 
 // Used to pass GuardianARN sub-classes as function parameter
 type GuardianARNSubClass<T extends GuardianARN> = new (...args: string[]) => T;
@@ -35,4 +35,6 @@ export class GuardianARN implements ARN {
     arns: GuardianARN[],
     childClass: GuardianARNSubClass<T>,
   ): T[] => arns.filter(GuardianARN.checkArnType(childClass));
+
+  toString = (): string => build(this);
 }

@@ -30,7 +30,7 @@ const run: Rule['run'] = async resourceArns => {
         ) === undefined,
     )
     .map(({ arn, attributes }) => ({
-      arn: build(arn),
+      arn,
       success: hasDeadLetterQueue(attributes.Attributes?.RedrivePolicy),
     }));
 

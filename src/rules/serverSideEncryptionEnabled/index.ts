@@ -1,4 +1,3 @@
-import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllS3BucketEncryptionConfigurations } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
@@ -7,7 +6,7 @@ const run: Rule['run'] = async resourceArns => {
     resourceArns,
   );
   const results = s3BucketConfigurations.map(({ arn, configuration }) => ({
-    arn: build(arn),
+    arn,
     success: configuration !== undefined,
   }));
 

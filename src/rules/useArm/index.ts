@@ -13,9 +13,9 @@ const isArmArchitecture = (
 
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    success: isArmArchitecture(lambdaConfiguration),
+  const results = lambdaConfigurations.map(({ arn, configuration }) => ({
+    arn,
+    success: isArmArchitecture(configuration),
   }));
 
   return { results };

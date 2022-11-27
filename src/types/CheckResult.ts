@@ -1,3 +1,4 @@
+import { GuardianARN } from './arn';
 import { Category, Rule, RuleCheckResult } from './Rule';
 
 export type ChecksResults = {
@@ -11,7 +12,7 @@ export type FailedRule = {
 };
 
 export type ResourceResult = {
-  resourceArn: string;
+  resourceArn: GuardianARN;
   failedRules: FailedRule[];
 };
 

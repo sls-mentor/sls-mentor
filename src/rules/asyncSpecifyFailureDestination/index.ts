@@ -1,10 +1,9 @@
-import { build } from '@aws-sdk/util-arn-parser';
 import {
   fetchAllAsyncLambdasArns,
   fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../aws-sdk-helpers';
-import { Category, LambdaFunctionARN, Rule } from '../../types';
+import { Category, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
@@ -22,15 +21,15 @@ const run: Rule['run'] = async resourceArns => {
       config?.DestinationConfig?.OnFailure?.Destination !== undefined;
 
     const matchingFunctionConfiguration = functionsConfigurations.find(
-      ({ FunctionName }) =>
-        LambdaFunctionARN.fromFunctionName(FunctionName ?? '').is(arn),
+      ({ arn: functionArn }) => functionArn.is(arn),
     );
 
     const hasDlq =
-      matchingFunctionConfiguration?.DeadLetterConfig?.TargetArn !== undefined;
+      matchingFunctionConfiguration?.configuration.DeadLetterConfig
+        ?.TargetArn !== undefined;
 
     return {
-      arn: build(arn),
+      arn,
       success: hasDlq || hasFailureDestination,
     };
   });
