@@ -1,4 +1,3 @@
-import { EventBridge } from '@aws-sdk/client-eventbridge';
 import {
   filterEventBusesFromResources,
   getAllRulesOfEventBus,
@@ -7,14 +6,11 @@ import {
 import { Category, Rule, RuleCheckResult } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
-  const eventBridgeClient = new EventBridge({});
   const eventBuses = filterEventBusesFromResources(resourceArns);
 
   const allEventBridgeRules = (
     await Promise.all(
-      eventBuses.map(eventBus =>
-        getAllRulesOfEventBus(eventBus, eventBridgeClient),
-      ),
+      eventBuses.map(eventBus => getAllRulesOfEventBus(eventBus)),
     )
   ).flat();
 
@@ -22,7 +18,6 @@ const run: Rule['run'] = async resourceArns => {
     allEventBridgeRules.map(async rule => {
       const allTargetsOfEventBridgeRule = await getAllTargetsOfEventBridgeRule(
         rule,
-        eventBridgeClient,
       );
 
       return {

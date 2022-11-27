@@ -1,13 +1,13 @@
 import {
-  EventBridge,
+  ListTargetsByRuleCommand,
   ListTargetsByRuleCommandOutput,
   Rule,
   Target,
 } from '@aws-sdk/client-eventbridge';
+import { eventBridgeClient } from '../../clients';
 
 export const getAllTargetsOfEventBridgeRule = async (
   eventBridgeRule: Rule,
-  eventBridgeClient: EventBridge,
 ): Promise<Target[]> => {
   const allTargetsOfEventBridgeRule: Target[] = [];
 
@@ -15,11 +15,13 @@ export const getAllTargetsOfEventBridgeRule = async (
   let nextToken: string | undefined = undefined;
 
   do {
-    listTargetsByRuleResult = await eventBridgeClient.listTargetsByRule({
-      EventBusName: eventBridgeRule.EventBusName,
-      Rule: eventBridgeRule.Name,
-      ...(nextToken !== undefined ? { NextToken: nextToken } : {}),
-    });
+    listTargetsByRuleResult = await eventBridgeClient.send(
+      new ListTargetsByRuleCommand({
+        EventBusName: eventBridgeRule.EventBusName,
+        Rule: eventBridgeRule.Name,
+        ...(nextToken !== undefined ? { NextToken: nextToken } : {}),
+      }),
+    );
 
     allTargetsOfEventBridgeRule.push(
       ...(listTargetsByRuleResult.Targets ?? []),
