@@ -1,1 +1,1 @@
-export { default as fetchUserPoolIdByArn } from './fetchUserPoolIdByArn';
+export * from './fetchUserPoolConfiguration';
