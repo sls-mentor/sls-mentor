@@ -1,3 +1,4 @@
+export * from './cloudwatch';
 export * from './cognito';
 export * from './GuardianARN';
 export * from './lambda';
