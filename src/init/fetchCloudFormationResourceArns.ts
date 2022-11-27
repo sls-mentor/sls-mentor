@@ -4,6 +4,7 @@ import {
   StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
 import {
+  CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   GuardianARN,
   LambdaFunctionARN,
@@ -28,6 +29,8 @@ export const createARNFromCloudFormation = ({
       return SqsQueueARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::Cognito::UserPool':
       return CognitoUserPoolARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Logs::LogGroup':
+      return CloudwatchLogGroupARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
