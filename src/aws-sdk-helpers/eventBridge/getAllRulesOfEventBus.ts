@@ -1,28 +1,23 @@
-import {
-  ListRulesCommand,
-  ListRulesCommandOutput,
-  Rule,
-} from '@aws-sdk/client-eventbridge';
-import { ARN, build } from '@aws-sdk/util-arn-parser';
+import { ListRulesCommand, Rule } from '@aws-sdk/client-eventbridge';
 import { eventBridgeClient } from '../../clients';
-export const getAllRulesOfEventBus = async (eventBus: ARN): Promise<Rule[]> => {
-  const eventBusArn = build(eventBus);
-
+import { EventBridgeEventBusARN } from '../../types';
+export const getAllRulesOfEventBus = async (
+  eventBus: EventBridgeEventBusARN,
+): Promise<Rule[]> => {
   const allEventBusRules: Rule[] = [];
 
-  let listRulesResult: ListRulesCommandOutput;
-  let nextToken: string | undefined = undefined;
+  let nextToken: string | undefined;
 
   do {
-    listRulesResult = await eventBridgeClient.send(
+    const { Rules, NextToken } = await eventBridgeClient.send(
       new ListRulesCommand({
-        EventBusName: eventBusArn,
-        ...(nextToken !== undefined ? { NextToken: nextToken } : {}),
+        EventBusName: eventBus.getEventBusName(),
+        NextToken: nextToken,
       }),
     );
 
-    allEventBusRules.push(...(listRulesResult.Rules ?? []));
-    nextToken = listRulesResult.NextToken;
+    allEventBusRules.push(...(Rules ?? []));
+    nextToken = NextToken;
   } while (nextToken !== undefined);
 
   return allEventBusRules;

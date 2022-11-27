@@ -1,12 +1,20 @@
 import {
-  filterEventBusesFromResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
-import { Category, Rule, RuleCheckResult } from '../../types';
+import {
+  Category,
+  EventBridgeEventBusARN,
+  GuardianARN,
+  Rule,
+  RuleCheckResult,
+} from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
-  const eventBuses = filterEventBusesFromResources(resourceArns);
+  const eventBuses = GuardianARN.filterArns(
+    resourceArns,
+    EventBridgeEventBusARN,
+  );
 
   const allEventBridgeRules = (
     await Promise.all(

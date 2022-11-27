@@ -10,4 +10,6 @@ export class EventBridgeEventBusARN extends GuardianARN {
 
   static fromPhysicalId = (physicalId: string): EventBridgeEventBusARN =>
     EventBridgeEventBusARN.fromEventBusName(physicalId);
+
+  getEventBusName = (): string => this.resource.split('/')[1];
 }
