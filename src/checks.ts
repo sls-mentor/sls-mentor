@@ -20,24 +20,25 @@ import { ChecksResults, GuardianARN, Rule } from './types';
 
 export const runChecks = async (
   allResourceArns: GuardianARN[],
+  level: number,
 ): Promise<ChecksResults> => {
-  const rules: Rule[] = [
-    LightBundleRule,
-    NoIdenticalCode,
-    noDefaultMemory,
-    NoMaxTimeout,
-    NoSharedIamRoles,
-    UseArm,
-    LimitedAmountOfLambdaVersions,
-    UnderMaxMemory,
-    AsyncSpecifyFailureDestination,
-    UseIntelligentTiering,
-    ServerSideEncryptionEnabled,
-    SpecifyDlqOnSqs,
-    CognitoSignInCaseInsensitivity,
-    DefinedLogsRetentionDuration,
-    SpecifyDlqOnEventBridgeRule,
+  const rulesByLevel: Rule[][] = [
+    // Level 1
+    [UseArm, NoIdenticalCode, ServerSideEncryptionEnabled],
+    // Level 2
+    [LimitedAmountOfLambdaVersions, UnderMaxMemory, UseIntelligentTiering],
+    // Level 3
+    [noDefaultMemory, NoMaxTimeout, DefinedLogsRetentionDuration],
+    // Level 4
+    [NoSharedIamRoles, LightBundleRule, SpecifyDlqOnSqs],
+    // Level 5
+    [
+      AsyncSpecifyFailureDestination,
+      CognitoSignInCaseInsensitivity,
+      SpecifyDlqOnEventBridgeRule,
+    ],
   ];
+  const rules = rulesByLevel.slice(0, level).flat();
 
   const total = rules.length + 1;
 

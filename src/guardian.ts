@@ -47,7 +47,7 @@ export const runGuardian = async (
   let checksResults: ChecksResults;
 
   try {
-    checksResults = await runChecks(allReourcesArns);
+    checksResults = await runChecks(allReourcesArns, 5);
   } finally {
     progressBar.stop();
   }
