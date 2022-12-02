@@ -3,18 +3,48 @@ import {
   paginateListStackResources,
   StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
-import { GetCallerIdentityCommand, STSClient } from '@aws-sdk/client-sts';
-import { ARN } from '@aws-sdk/util-arn-parser';
 import {
-  getSupportedResourceArn,
-  ressourceTypeToRessources,
-} from './getSupportedResourceArn';
+  CloudwatchLogGroupARN,
+  CognitoUserPoolARN,
+  EventBridgeEventBusARN,
+  GuardianARN,
+  LambdaFunctionARN,
+  S3BucketARN,
+  SqsQueueARN,
+} from '../types';
+
+// This is a big switch
+// eslint-disable-next-line complexity
+export const createARNFromCloudFormation = ({
+  ResourceType,
+  PhysicalResourceId,
+}: StackResourceSummary): GuardianARN | undefined => {
+  if (PhysicalResourceId === undefined || ResourceType === undefined) {
+    return undefined;
+  }
+
+  switch (ResourceType) {
+    case 'AWS::S3::Bucket':
+      return S3BucketARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Lambda::Function':
+      return LambdaFunctionARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::SQS::Queue':
+      return SqsQueueARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Cognito::UserPool':
+      return CognitoUserPoolARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Logs::LogGroup':
+      return CloudwatchLogGroupARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::Events::EventBus':
+      return EventBridgeEventBusARN.fromPhysicalId(PhysicalResourceId);
+    default:
+      return;
+  }
+};
 
 export const fetchCloudFormationResourceArns = async (
   cloudformationStacks: string[],
-): Promise<ARN[]> => {
+): Promise<GuardianARN[]> => {
   const cloudFormationClient = new CloudFormationClient({});
-  const stsClient = new STSClient({});
 
   const resources: StackResourceSummary[] = [];
   for (const stack of cloudformationStacks) {
@@ -26,26 +56,7 @@ export const fetchCloudFormationResourceArns = async (
     }
   }
 
-  const { Account } = await stsClient.send(new GetCallerIdentityCommand({}));
-  if (Account === undefined) {
-    throw new Error(
-      'IAM user or role whose credentials are used to call the operations with the STS Client are undefined.',
-    );
-  }
-  const region =
-    process.env.AWS_REGION ?? (await cloudFormationClient.config.region());
-
-  const supportedRessources = Object.keys(ressourceTypeToRessources);
-
-  return resources.flatMap(({ ResourceType, PhysicalResourceId }) =>
-    PhysicalResourceId !== undefined &&
-    ResourceType !== undefined &&
-    supportedRessources.includes(ResourceType)
-      ? getSupportedResourceArn(
-          { ResourceType, PhysicalResourceId },
-          region,
-          Account,
-        )
-      : [],
-  );
+  return resources
+    .map(createARNFromCloudFormation)
+    .filter((arn): arn is GuardianARN => arn !== undefined);
 };

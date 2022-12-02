@@ -1,30 +1,28 @@
 import {
-  EventBridge,
-  ListTargetsByRuleCommandOutput,
+  ListTargetsByRuleCommand,
   Rule,
   Target,
 } from '@aws-sdk/client-eventbridge';
+import { eventBridgeClient } from '../../clients';
 
 export const getAllTargetsOfEventBridgeRule = async (
   eventBridgeRule: Rule,
-  eventBridgeClient: EventBridge,
 ): Promise<Target[]> => {
   const allTargetsOfEventBridgeRule: Target[] = [];
 
-  let listTargetsByRuleResult: ListTargetsByRuleCommandOutput;
-  let nextToken: string | undefined = undefined;
+  let nextToken: string | undefined;
 
   do {
-    listTargetsByRuleResult = await eventBridgeClient.listTargetsByRule({
-      EventBusName: eventBridgeRule.EventBusName,
-      Rule: eventBridgeRule.Name,
-      ...(nextToken !== undefined ? { NextToken: nextToken } : {}),
-    });
-
-    allTargetsOfEventBridgeRule.push(
-      ...(listTargetsByRuleResult.Targets ?? []),
+    const { Targets, NextToken } = await eventBridgeClient.send(
+      new ListTargetsByRuleCommand({
+        EventBusName: eventBridgeRule.EventBusName,
+        Rule: eventBridgeRule.Name,
+        NextToken: nextToken,
+      }),
     );
-    nextToken = listTargetsByRuleResult.NextToken;
+
+    allTargetsOfEventBridgeRule.push(...(Targets ?? []));
+    nextToken = NextToken;
   } while (nextToken !== undefined);
 
   return allTargetsOfEventBridgeRule;

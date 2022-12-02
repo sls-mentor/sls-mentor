@@ -1,9 +1,9 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import intersectionWith from 'lodash/intersectionWith';
 import { fetchCloudFormationResourceArns } from './fetchCloudFormationResourceArns';
 import { fetchTaggedResourceArns } from './fetchTaggedResourceArns';
 
-import { Tag } from '../types';
+import { GuardianARN, Tag } from '../types';
+import { listAllResources } from './listResources';
 
 export const fetchAllResourceArns = async ({
   cloudformationStacks,
@@ -11,23 +11,28 @@ export const fetchAllResourceArns = async ({
 }: {
   cloudformationStacks?: string[];
   tags?: Tag[];
-}): Promise<ARN[]> => {
-  const resourcesFetchedByTags = await fetchTaggedResourceArns(tags ?? []);
+}): Promise<GuardianARN[]> => {
+  const allResources = await listAllResources();
 
-  if (cloudformationStacks === undefined) {
-    return resourcesFetchedByTags;
-  }
+  const resourcesToKeepByTags =
+    tags === undefined || tags.length === 0
+      ? allResources
+      : await fetchTaggedResourceArns(tags);
 
-  const resourcesFetchedByStack = await fetchCloudFormationResourceArns(
-    cloudformationStacks,
+  const resourcesToKeepByStacks =
+    cloudformationStacks === undefined || cloudformationStacks.length === 0
+      ? allResources
+      : await fetchCloudFormationResourceArns(cloudformationStacks);
+
+  const resourcesToKeep = intersectionWith(
+    resourcesToKeepByTags,
+    resourcesToKeepByStacks,
+    GuardianARN.areARNsEqual,
   );
 
-  const resources = intersectionWith(
-    resourcesFetchedByStack,
-    resourcesFetchedByTags,
-    (arnA, arnB) =>
-      arnA.resource === arnB.resource && arnA.service === arnB.service,
+  return intersectionWith(
+    allResources,
+    resourcesToKeep,
+    GuardianARN.areARNsEqual,
   );
-
-  return resources;
 };

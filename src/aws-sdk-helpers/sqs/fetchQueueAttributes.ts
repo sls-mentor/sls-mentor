@@ -1,22 +1,20 @@
 import {
   GetQueueAttributesCommand,
   GetQueueAttributesCommandOutput,
-  SQSClient,
 } from '@aws-sdk/client-sqs';
-import { ARN } from '@aws-sdk/util-arn-parser';
-import { filterServiceFromResourceArns } from '../common';
+import { sqsCLient } from '../../clients';
+import { GuardianARN, SqsQueueARN } from '../../types';
 
 type QueueAttributes = {
-  arn: ARN;
+  arn: SqsQueueARN;
   attributes: GetQueueAttributesCommandOutput;
 };
 export const fetchQueueAttributesByArn = async (
-  arn: ARN,
-  client: SQSClient,
+  arn: SqsQueueARN,
 ): Promise<QueueAttributes> => {
   return {
     arn: arn,
-    attributes: await client.send(
+    attributes: await sqsCLient.send(
       new GetQueueAttributesCommand({
         QueueUrl: arn.resource,
         AttributeNames: ['RedrivePolicy'],
@@ -26,14 +24,12 @@ export const fetchQueueAttributesByArn = async (
 };
 
 export const fetchAllQueuesAttributes = async (
-  resourceArns: ARN[],
+  resourceArns: GuardianARN[],
 ): Promise<QueueAttributes[]> => {
-  const sqsClient = new SQSClient({});
-
-  const queues = filterServiceFromResourceArns(resourceArns, 'sqs');
+  const queues = GuardianARN.filterArns(resourceArns, SqsQueueARN);
 
   const AttributesByArn = await Promise.all(
-    queues.map(arn => fetchQueueAttributesByArn(arn, sqsClient)),
+    queues.map(arn => fetchQueueAttributesByArn(arn)),
   );
 
   return AttributesByArn;

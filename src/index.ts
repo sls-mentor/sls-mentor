@@ -32,9 +32,7 @@ const parseTags = (
   return [...previousTags, tag];
 };
 
-export const handleGuardianChecksCommand = async (
-  options: Options,
-): Promise<void> => {
+const handleGuardianChecksCommand = async (options: Options): Promise<void> => {
   const { success } = await runGuardian(options);
   if (success) {
     process.exit(0);

@@ -10,10 +10,10 @@ const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
 const run: Rule['run'] = async resourceArns => {
   const lambdaConfigurations = await fetchAllLambdaConfigurations(resourceArns);
 
-  const results = lambdaConfigurations.map(lambdaConfiguration => ({
-    arn: lambdaConfiguration.FunctionArn ?? '',
-    success: hasMemoryUnderMaxMemory(lambdaConfiguration),
-    memorySize: lambdaConfiguration.MemorySize,
+  const results = lambdaConfigurations.map(({ arn, configuration }) => ({
+    arn,
+    success: hasMemoryUnderMaxMemory(configuration),
+    memorySize: configuration.MemorySize,
   }));
 
   return { results };

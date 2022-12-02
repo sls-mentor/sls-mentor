@@ -1,26 +1,32 @@
 import omit from 'lodash/omit';
-import uniq from 'lodash/uniq';
+import uniqBy from 'lodash/uniqBy';
 import {
   ChecksResults,
   FailedRule,
+  GuardianARN,
   ResourceResult,
   RuleCheckResult,
 } from '../types';
 
-const getResourcesArnsCheckedByGuardian = (results: ChecksResults): string[] =>
-  uniq(results.flatMap(({ result }) => result.map(({ arn }) => arn)));
+const getResourcesArnsCheckedByGuardian = (
+  results: ChecksResults,
+): GuardianARN[] =>
+  uniqBy(
+    results.flatMap(({ result }) => result.map(({ arn }) => arn)),
+    arn => arn.toString,
+  );
 
 const getExtrasFromRuleResult = (
   result: RuleCheckResult,
 ): Record<string, unknown> => omit(result, 'arn', 'success');
 
 const getRulesFailedByResource = (
-  resourceArn: string,
+  resourceArn: GuardianARN,
   results: ChecksResults,
 ): FailedRule[] =>
   results.flatMap(({ rule, result }) => {
-    const resultMatchingWithResource = result.find(
-      ({ arn }) => arn === resourceArn,
+    const resultMatchingWithResource = result.find(({ arn }) =>
+      arn.is(resourceArn),
     );
     if (!resultMatchingWithResource || resultMatchingWithResource.success)
       return [];

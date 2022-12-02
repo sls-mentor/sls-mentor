@@ -1,5 +1,4 @@
 import { LogGroup } from '@aws-sdk/client-cloudwatch-logs';
-import { build } from '@aws-sdk/util-arn-parser';
 import { fetchAllLogGroupsConfigurations } from '../../aws-sdk-helpers';
 import { Category, Rule } from '../../types';
 
@@ -12,7 +11,7 @@ const run: Rule['run'] = async resourceArns => {
     resourceArns,
   );
   const results = logGroupsConfiguration.map(({ arn, configuration }) => ({
-    arn: build(arn),
+    arn,
     success: isLogsRetentionDurationDefined(configuration),
   }));
 

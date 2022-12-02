@@ -1,43 +1,38 @@
 import {
-  CloudWatchLogsClient,
   LogGroup,
   paginateDescribeLogGroups,
 } from '@aws-sdk/client-cloudwatch-logs';
-import { ARN, build, parse } from '@aws-sdk/util-arn-parser';
-import { filterCloudWatchLogsFromResources } from './filterCloudWatchLogsFromResources';
+import { cloudWatchLogsClient } from '../../clients';
+import { CloudwatchLogGroupARN, GuardianARN } from '../../types';
 
-const fetchAllLogGroupsConfiguration = async (
-  client: CloudWatchLogsClient,
-): Promise<LogGroup[] | undefined> => {
+const listLogGroupConfigurations = async (): Promise<
+  { arn: CloudwatchLogGroupARN; configuration: LogGroup }[]
+> => {
   const logGroups = [];
-  for await (const page of paginateDescribeLogGroups({ client }, {})) {
+  for await (const page of paginateDescribeLogGroups(
+    { client: cloudWatchLogsClient },
+    {},
+  )) {
     logGroups.push(...(page.logGroups ?? []));
   }
 
   return logGroups.map(logGroup => ({
-    ...logGroup,
-    // transformation needed to format the arn the same way as tagging client does
-    arn: logGroup.arn?.replace(/:\*/, ''),
+    arn: CloudwatchLogGroupARN.fromLogGroupName(logGroup.logGroupName ?? ''),
+    configuration: logGroup,
   }));
 };
 
 export const fetchAllLogGroupsConfigurations = async (
-  resources: ARN[],
-): Promise<{ arn: ARN; configuration: LogGroup }[]> => {
-  const client = new CloudWatchLogsClient({});
-  const logGroupsArns = filterCloudWatchLogsFromResources(resources).map(arn =>
-    build(arn),
-  );
-  const allLogGroups = await fetchAllLogGroupsConfiguration(client);
-
-  const logGroups = (allLogGroups ?? []).filter(({ arn }) =>
-    logGroupsArns.includes(arn ?? ''),
+  resources: GuardianARN[],
+): Promise<{ arn: CloudwatchLogGroupARN; configuration: LogGroup }[]> => {
+  const logGroupsArns = GuardianARN.filterArns(
+    resources,
+    CloudwatchLogGroupARN,
   );
 
-  return Promise.all(
-    logGroups.map(logGroup => ({
-      arn: parse(logGroup.arn ?? ''),
-      configuration: logGroup,
-    })),
+  const allLogGroups = await listLogGroupConfigurations();
+
+  return allLogGroups.filter(({ arn }) =>
+    logGroupsArns.some(logGroupArn => logGroupArn.is(arn)),
   );
 };

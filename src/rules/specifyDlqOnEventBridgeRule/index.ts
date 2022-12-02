@@ -1,20 +1,25 @@
-import { EventBridge } from '@aws-sdk/client-eventbridge';
 import {
-  filterEventBusesFromResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
-import { Category, Rule, RuleCheckResult } from '../../types';
+import {
+  Category,
+  EventBridgeEventBusARN,
+  EventBridgeRuleARN,
+  GuardianARN,
+  Rule,
+  RuleCheckResult,
+} from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
-  const eventBridgeClient = new EventBridge({});
-  const eventBuses = filterEventBusesFromResources(resourceArns);
+  const eventBuses = GuardianARN.filterArns(
+    resourceArns,
+    EventBridgeEventBusARN,
+  );
 
   const allEventBridgeRules = (
     await Promise.all(
-      eventBuses.map(eventBus =>
-        getAllRulesOfEventBus(eventBus, eventBridgeClient),
-      ),
+      eventBuses.map(eventBus => getAllRulesOfEventBus(eventBus)),
     )
   ).flat();
 
@@ -22,7 +27,6 @@ const run: Rule['run'] = async resourceArns => {
     allEventBridgeRules.map(async rule => {
       const allTargetsOfEventBridgeRule = await getAllTargetsOfEventBridgeRule(
         rule,
-        eventBridgeClient,
       );
 
       return {
@@ -39,7 +43,7 @@ const run: Rule['run'] = async resourceArns => {
       );
 
       return {
-        arn: rule.Arn ?? 'unknown rule arn',
+        arn: EventBridgeRuleARN.fromRuleName(rule.Name ?? 'unknown_rule_arn'),
         success: doesTargetHaveDLQConfigured,
         eventBus: rule.EventBusName,
         targets: targets.map(target => target.Arn),

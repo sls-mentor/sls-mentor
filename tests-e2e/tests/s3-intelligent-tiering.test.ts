@@ -13,7 +13,9 @@ describe('s3-intelligent-tiering', () => {
     const { result } = guardianOutput;
     expect(
       result.find(r =>
-        r.arn.includes(PASS_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase()),
+        r.arn.resource.includes(
+          PASS_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase(),
+        ),
       )?.success,
     ).toBe(true);
   });
@@ -22,7 +24,9 @@ describe('s3-intelligent-tiering', () => {
     const { result } = guardianOutput;
     expect(
       result.find(r =>
-        r.arn.includes(FAIL_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase()),
+        r.arn.resource.includes(
+          FAIL_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase(),
+        ),
       )?.success,
     ).toBe(false);
   });

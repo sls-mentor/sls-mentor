@@ -19,9 +19,9 @@ const run: Rule['run'] = async resourceArns => {
   );
 
   const functionsArnGroupedByCodeSha = lambdasConfigurations.reduce(
-    (acc, config) => {
-      const key = config.CodeSha256;
-      const functionArn = config.FunctionArn;
+    (acc, { configuration }) => {
+      const key = configuration.CodeSha256;
+      const functionArn = configuration.FunctionArn;
       if (key === undefined || functionArn === undefined) {
         return acc;
       }
@@ -35,10 +35,10 @@ const run: Rule['run'] = async resourceArns => {
     {} as Record<string, string[]>,
   );
 
-  const results = lambdasConfigurations.map(lambdaConfiguration => {
-    const shaCode = lambdaConfiguration.CodeSha256 ?? '';
+  const results = lambdasConfigurations.map(({ arn, configuration }) => {
+    const shaCode = configuration.CodeSha256 ?? '';
     const uniqueCode = hasUniqueShaCode(
-      lambdaConfiguration,
+      configuration,
       functionsArnGroupedByCodeSha,
     );
     const identicalCodeFunctions =
@@ -47,7 +47,7 @@ const run: Rule['run'] = async resourceArns => {
         : '';
 
     return {
-      arn: lambdaConfiguration.FunctionArn ?? '',
+      arn,
       success: uniqueCode,
       identicalCodeFunctionsArn: identicalCodeFunctions,
     };

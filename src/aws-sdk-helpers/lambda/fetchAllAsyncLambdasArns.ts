@@ -1,5 +1,5 @@
-import { ARN, parse } from '@aws-sdk/util-arn-parser';
 import compact from 'lodash/compact';
+import { GuardianARN, LambdaFunctionARN } from '../../types';
 import { fetchAllLambdaPolicies, Policy } from './fetchAllLambdaPolicies';
 
 const ASYNC_AWS_SERVICES = ['events', 's3', 'sqs', 'sns'];
@@ -9,17 +9,17 @@ const isLambdaPolicyAsync = (policy: Policy): boolean => {
     policy.Statement?.map(
       statement => statement.Condition?.ArnLike?.['AWS:SourceArn'],
     ),
-  );
+  ).map(arn => GuardianARN.fromArnString(arn));
 
-  return sourceArns.some(sourceArn =>
-    ASYNC_AWS_SERVICES.includes(parse(sourceArn).service),
-  );
+  return sourceArns.some(({ service }) => ASYNC_AWS_SERVICES.includes(service));
 };
 
 export const fetchAllAsyncLambdasArns = async (
-  resources: ARN[],
-): Promise<string[]> => {
-  const lambdaPolicies = await fetchAllLambdaPolicies(resources);
+  resources: GuardianARN[],
+): Promise<LambdaFunctionARN[]> => {
+  const lambdaArns = GuardianARN.filterArns(resources, LambdaFunctionARN);
+
+  const lambdaPolicies = await fetchAllLambdaPolicies(lambdaArns);
 
   return compact(
     lambdaPolicies

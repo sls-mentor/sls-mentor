@@ -5,12 +5,11 @@ import {
   S3ServiceException,
   ServerSideEncryptionConfiguration,
 } from '@aws-sdk/client-s3';
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { s3Client } from '../../clients';
-import { filterServiceFromResourceArns } from '../common';
+import { GuardianARN, S3BucketARN } from '../../types';
 
-const fetchS3BucketIntelligentTieringConfigurationByArn = async (
-  arn: ARN,
+const fetchS3BucketConfigurationByArn = async (
+  arn: S3BucketARN,
 ): Promise<IntelligentTieringConfiguration[] | undefined> => {
   const { IntelligentTieringConfigurationList: configurationList } =
     await s3Client.send(
@@ -23,24 +22,25 @@ const fetchS3BucketIntelligentTieringConfigurationByArn = async (
 };
 
 export const fetchAllS3BucketIntelligentTieringConfigurations = async (
-  resources: ARN[],
+  resources: GuardianARN[],
 ): Promise<
-  { arn: ARN; configuration: IntelligentTieringConfiguration[] | undefined }[]
+  {
+    arn: S3BucketARN;
+    configuration: IntelligentTieringConfiguration[] | undefined;
+  }[]
 > => {
-  const buckets = filterServiceFromResourceArns(resources, 's3');
+  const buckets = GuardianARN.filterArns(resources, S3BucketARN);
 
   return Promise.all(
     buckets.map(async arn => ({
       arn,
-      configuration: await fetchS3BucketIntelligentTieringConfigurationByArn(
-        arn,
-      ),
+      configuration: await fetchS3BucketConfigurationByArn(arn),
     })),
   );
 };
 
 const fetchS3BucketEncryptionConfigurationByArn = async (
-  arn: ARN,
+  arn: S3BucketARN,
 ): Promise<ServerSideEncryptionConfiguration | undefined> => {
   try {
     const { ServerSideEncryptionConfiguration: configuration } =
@@ -63,17 +63,17 @@ const fetchS3BucketEncryptionConfigurationByArn = async (
 };
 
 export const fetchAllS3BucketEncryptionConfigurations = async (
-  resources: ARN[],
+  resources: GuardianARN[],
 ): Promise<
   {
-    arn: ARN;
+    arn: S3BucketARN;
     configuration:
       | ServerSideEncryptionConfiguration
       | undefined
       | 'noServerSideEncryption';
   }[]
 > => {
-  const buckets = filterServiceFromResourceArns(resources, 's3');
+  const buckets = GuardianARN.filterArns(resources, S3BucketARN);
 
   return Promise.all(
     buckets.map(async arn => ({

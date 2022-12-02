@@ -1,7 +1,8 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { progressBar } from './display';
 import {
   AsyncSpecifyFailureDestination,
+  CognitoSignInCaseInsensitivity,
+  DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
@@ -9,16 +10,16 @@ import {
   NoMaxTimeout,
   NoSharedIamRoles,
   ServerSideEncryptionEnabled,
+  SpecifyDlqOnEventBridgeRule,
   SpecifyDlqOnSqs,
   UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults } from './types/CheckResult';
-import { Rule } from './types/Rule';
+import { ChecksResults, GuardianARN, Rule } from './types';
 
 export const runChecks = async (
-  allResourceArns: ARN[],
+  allResourceArns: GuardianARN[],
 ): Promise<ChecksResults> => {
   const rules: Rule[] = [
     LightBundleRule,
@@ -33,6 +34,9 @@ export const runChecks = async (
     UseIntelligentTiering,
     ServerSideEncryptionEnabled,
     SpecifyDlqOnSqs,
+    CognitoSignInCaseInsensitivity,
+    DefinedLogsRetentionDuration,
+    SpecifyDlqOnEventBridgeRule,
   ];
 
   const total = rules.length + 1;

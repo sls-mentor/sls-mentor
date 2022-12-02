@@ -1,4 +1,3 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
 import { runChecks } from './checks';
 import {
   displayChecksStarting,
@@ -9,17 +8,19 @@ import {
   displayResultsSummary,
   progressBar,
 } from './display';
-import { fetchAllResourceArns } from './init';
+import { fetchAllResourceArns, initAccountAndRegion } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 
-import { ChecksResults, Options } from './types';
+import { ChecksResults, GuardianARN, Options } from './types';
 
 export const runGuardian = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
   displayChecksStarting();
 
-  let allReourcesArns: ARN[];
+  await initAccountAndRegion();
+
+  let allReourcesArns: GuardianARN[];
   try {
     allReourcesArns = await fetchAllResourceArns({
       cloudformationStacks:

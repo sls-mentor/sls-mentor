@@ -3,24 +3,34 @@ import {
   GetFunctionConfigurationCommand,
 } from '@aws-sdk/client-lambda';
 
-import { ARN, build } from '@aws-sdk/util-arn-parser';
 import { lambdaClient } from '../../clients';
-import { filterServiceFromResourceArns } from '../common';
+import { GuardianARN, LambdaFunctionARN } from '../../types';
 
 const fetchLambdaConfigurationByArn = async (
-  arn: ARN,
-): Promise<FunctionConfiguration> =>
-  await lambdaClient.send(
-    new GetFunctionConfigurationCommand({ FunctionName: build(arn) }),
-  );
+  arn: LambdaFunctionARN,
+): Promise<{
+  arn: LambdaFunctionARN;
+  configuration: FunctionConfiguration;
+}> => ({
+  arn,
+  configuration: await lambdaClient.send(
+    new GetFunctionConfigurationCommand({
+      FunctionName: arn.getFunctionName(),
+    }),
+  ),
+});
 
 export const fetchAllLambdaConfigurations = async (
-  resources: ARN[],
-): Promise<FunctionConfiguration[]> => {
-  const lambdas = filterServiceFromResourceArns(resources, 'lambda');
-  const lambdaConfigurations = await Promise.all(
+  resources: GuardianARN[],
+): Promise<
+  {
+    arn: LambdaFunctionARN;
+    configuration: FunctionConfiguration;
+  }[]
+> => {
+  const lambdas = GuardianARN.filterArns(resources, LambdaFunctionARN);
+
+  return await Promise.all(
     lambdas.map(arn => fetchLambdaConfigurationByArn(arn)),
   );
-
-  return lambdaConfigurations;
 };

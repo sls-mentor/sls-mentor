@@ -1,4 +1,4 @@
-import { ARN } from '@aws-sdk/util-arn-parser';
+import { GuardianARN } from './arn';
 
 export enum Category {
   GREEN_IT = 'GREEN_IT',
@@ -16,7 +16,7 @@ export const CategoryNames = {
   [Category.SECURITY]: 'Security',
 };
 
-export type RuleCheckResult = { arn: string; success: boolean } & Record<
+export type RuleCheckResult = { arn: GuardianARN; success: boolean } & Record<
   string,
   unknown
 >;
@@ -24,7 +24,7 @@ export interface Rule {
   ruleName: string;
   errorMessage: string;
   fileName: string;
-  run: (resources: ARN[]) => Promise<{
+  run: (resources: GuardianARN[]) => Promise<{
     results: RuleCheckResult[];
   }>;
   categories: Category[];
