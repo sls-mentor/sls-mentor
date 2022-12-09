@@ -64,11 +64,14 @@
     "@aws-sdk/types": "^3.110.0",
     "@aws-sdk/util-arn-parser": "^3.55.0",
     "@aws-sdk/util-middleware": "^3.127.0",
+    "@types/prompt-sync": "^4.2.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.11.2",
+    "cli-select": "^1.1.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
     "object-hash": "^3.0.0",
+    "prompt-sync": "^4.2.0",
     "throttled-queue": "^2.1.4"
   },
   "keywords": [
