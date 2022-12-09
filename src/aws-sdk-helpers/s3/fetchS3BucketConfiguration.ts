@@ -11,14 +11,21 @@ import { GuardianARN, S3BucketARN } from '../../types';
 const fetchS3BucketConfigurationByArn = async (
   arn: S3BucketARN,
 ): Promise<IntelligentTieringConfiguration[] | undefined> => {
-  const { IntelligentTieringConfigurationList: configurationList } =
-    await s3Client.send(
-      new ListBucketIntelligentTieringConfigurationsCommand({
-        Bucket: arn.resource,
-      }),
-    );
+  try {
+    const { IntelligentTieringConfigurationList: configurationList } =
+      await s3Client.send(
+        new ListBucketIntelligentTieringConfigurationsCommand({
+          Bucket: arn.resource,
+        }),
+      );
 
-  return configurationList;
+    return configurationList;
+  } catch (e) {
+    if (e instanceof S3ServiceException && e.name === 'PermanentRedirect') {
+      return undefined;
+    }
+    throw e;
+  }
 };
 
 export const fetchAllS3BucketIntelligentTieringConfigurations = async (
@@ -54,7 +61,10 @@ const fetchS3BucketEncryptionConfigurationByArn = async (
   } catch (e) {
     if (
       e instanceof S3ServiceException &&
-      e.name === 'ServerSideEncryptionConfigurationNotFoundError'
+      [
+        'ServerSideEncryptionConfigurationNotFoundError',
+        'PermanentRedirect',
+      ].includes(e.name)
     ) {
       return undefined;
     }

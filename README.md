@@ -67,7 +67,7 @@
   <br/>
   <p>⚠️ To make sure it properly works when executed by a pipeline runner:<br/>
 
-- Ensure that the CI/CD runner has an AWS profile configured, with AdministratorAccess privileges.<br/>
+- Ensure that the CI/CD runner has an AWS profile configured, with ReadOnlyAccess privileges.<br/>
 - If the region is not configured for that profile, make sure to specify it using the -r flag in the command.<br/></p>
   <p><a href="./docs/running-in-ci.md">📚 More information about CI runs of Guardian</a></p>
 </div>
