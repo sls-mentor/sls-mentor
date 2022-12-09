@@ -1,43 +1,20 @@
-import { progressBar } from './display';
-import {
-  AsyncSpecifyFailureDestination,
-  CognitoSignInCaseInsensitivity,
-  DefinedLogsRetentionDuration,
-  LightBundleRule,
-  LimitedAmountOfLambdaVersions,
-  noDefaultMemory,
-  NoMaxTimeout,
-  NoMonoPackage,
-  NoSharedIamRoles,
-  ServerSideEncryptionEnabled,
-  SpecifyDlqOnEventBridgeRule,
-  SpecifyDlqOnSqs,
-  UnderMaxMemory,
-  UseArm,
-  UseIntelligentTiering,
-} from './rules';
-import { ChecksResults, GuardianARN, Rule } from './types';
+import { MultiBar, Presets } from 'cli-progress';
+import { rulesByLevel } from './constants/level';
+import { ChecksResults, GuardianARN } from './types';
 
 export const runChecks = async (
   allResourceArns: GuardianARN[],
   level: number,
 ): Promise<ChecksResults> => {
-  const rulesByLevel: Rule[][] = [
-    // Level 1
-    [UseArm, NoMonoPackage, ServerSideEncryptionEnabled],
-    // Level 2
-    [LimitedAmountOfLambdaVersions, UnderMaxMemory, UseIntelligentTiering],
-    // Level 3
-    [noDefaultMemory, NoMaxTimeout, DefinedLogsRetentionDuration],
-    // Level 4
-    [NoSharedIamRoles, LightBundleRule, SpecifyDlqOnSqs],
-    // Level 5
-    [
-      AsyncSpecifyFailureDestination,
-      CognitoSignInCaseInsensitivity,
-      SpecifyDlqOnEventBridgeRule,
-    ],
-  ];
+  const progressBar = new MultiBar(
+    { emptyOnZero: true, hideCursor: true },
+    Presets.rect,
+  );
+  process.on('SIGINT', () => {
+    progressBar.stop();
+    process.exit(0);
+  });
+
   const rules = rulesByLevel.slice(0, level).flat();
 
   const total = rules.length + 1;

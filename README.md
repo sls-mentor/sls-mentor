@@ -61,7 +61,7 @@
   <h2>Run Guardian as a periodic check on your CI 📟</h2>
   <br />
   <p>The command you want to run in your pipeline is:</p>
-  <pre>yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION}</pre>
+  <pre>yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION} -l {YOUR_DESIRED_LEVEL}</pre>
 
   <p><i>Github actions, Circle CI, Gitlab CI configuration snippets coming soon 🚀</i></p>
   <br/>

@@ -11,6 +11,7 @@ export const setup = async (): Promise<void> => {
     noFail: true,
     short: false,
     getJsonResults: true,
+    level: '5',
   });
 
   writeFileSync('./tests/guardianOutput.json', JSON.stringify(checkResults));

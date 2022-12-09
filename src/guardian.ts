@@ -6,16 +6,18 @@ import {
   displayFailedChecksDetails,
   displayGuordle,
   displayResultsSummary,
-  progressBar,
 } from './display';
 import { fetchAllResourceArns, initAccountAndRegion } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 
 import { ChecksResults, GuardianARN, Options } from './types';
+import { getGuardianLevel } from './utils/getGuardianLevel';
 
 export const runGuardian = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
+  const level = await getGuardianLevel(options);
+
   displayChecksStarting();
 
   await initAccountAndRegion();
@@ -44,13 +46,7 @@ export const runGuardian = async (
     return { success: false };
   }
 
-  let checksResults: ChecksResults;
-
-  try {
-    checksResults = await runChecks(allReourcesArns, 5);
-  } finally {
-    progressBar.stop();
-  }
+  const checksResults = await runChecks(allReourcesArns, level);
 
   const atLeastOneFailed = checksResults.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,

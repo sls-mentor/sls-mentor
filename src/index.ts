@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
-import { progressBar } from './display';
 
 import { runGuardian } from './guardian';
 import { Options, Tag } from './types';
@@ -55,10 +54,6 @@ const setAwsRegion = (command: Command): void => {
   }
 };
 
-process.on('SIGINT', () => {
-  progressBar.stop();
-});
-
 program
   .name('guardian')
   .version(process.env.npm_package_version ?? '0.0.0')
@@ -74,6 +69,7 @@ program
     'Filter checked account resources by tags',
     parseTags,
   )
+  .option('-l, --level <number>', 'Level on which to run checks')
   /** @deprecated use --cloudformation-stacks instead */
   .option(
     '--cloudformations [cloudformation-stacks...]',
