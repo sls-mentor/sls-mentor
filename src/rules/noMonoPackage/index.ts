@@ -58,7 +58,7 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Lambda: No Mono Package',
-  errorMessage: "The function's code packaged with others",
+  errorMessage: "The function code packaged with others",
   run,
   fileName: 'noMonoPackage',
   categories: [Category.SECURITY, Category.STABILITY],
