@@ -5,10 +5,10 @@ const lilaHex = '#DAC2FE';
 
 const userPromptValues = [
   'Level 1 ✅',
-  'level 2 💪',
-  'level 3 🧠',
-  'level 4 🌶️',
-  'level 5 🏆',
+  'Level 2 💪',
+  'Level 3 🧠',
+  'Level 4 🌶️',
+  'Level 5 🏆',
   '(skip)',
 ];
 
