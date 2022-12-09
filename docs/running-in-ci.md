@@ -14,7 +14,7 @@ The command you want to run in your pipeline is:
 
 ⚠️ To make sure it properly works when executed by a pipeline runner:
 
-- Ensure that the CI/CD runner has an AWS profile configured, with AdministratorAccess privileges.
+- Ensure that the CI/CD runner has an AWS profile configured, with `ReadOnlyAccess` privileges.
 - If the region is not configured for that profile, make sure to specify it using the `-r <region>` flag in the command.
 
 ## CI snippets
