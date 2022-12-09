@@ -1,6 +1,8 @@
 import chalk from 'chalk';
 import cliSelect from 'cli-select';
 
+const lilaHex = '#DAC2FE';
+
 const userPromptValues = [
   'Level 1 ✅',
   'level 2 💪',
@@ -35,33 +37,38 @@ const wrapValueInColor = (value: string) => {
   if (value === userPromptValues[3]) return chalk.hsl(...colorHsls[3])(value);
   if (value === userPromptValues[4]) return chalk.hsl(...colorHsls[4])(value);
 
-  return chalk.blue(value);
+  return chalk.hex(lilaHex)(value);
 };
 
 export const promptForUserLevelInput = async (): Promise<
   number | undefined
 > => {
   console.clear();
-  console.log(chalk.blue('Welcome in Guardian 🛡️.\n'));
+  console.log(chalk.hex(lilaHex)('Welcome in Guardian 🛡️.\n'));
   console.log(
-    chalk.blue(
+    chalk.hex(lilaHex)(
       "Let's start by selecting the level of difficulty you want me to check your code against.\n\n",
     ),
   );
 
-  const promptSelection = await cliSelect({
-    values: userPromptValues,
-    defaultValue: 0,
-    selected: '👉',
-    unselected: ' ',
-    valueRenderer: (value, selected) => {
-      if (selected) {
-        return chalk.underline(wrapValueInColor(value));
-      } else {
-        return chalk.blue(value);
-      }
-    },
-  });
+  let promptSelection;
+  try {
+    promptSelection = await cliSelect({
+      values: userPromptValues,
+      defaultValue: 0,
+      selected: '👉',
+      unselected: ' ',
+      valueRenderer: (value, selected) => {
+        if (selected) {
+          return chalk.underline(wrapValueInColor(value));
+        } else {
+          return chalk.hex(lilaHex)(value);
+        }
+      },
+    });
+  } catch (e) {
+    process.exit(0);
+  }
 
   const responseNumber = Number(promptSelection.id) + 1;
   const level = responseNumber === 6 ? undefined : responseNumber;
