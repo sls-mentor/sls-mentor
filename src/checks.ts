@@ -1,6 +1,7 @@
 import { MultiBar, Presets } from 'cli-progress';
 import {
   AsyncSpecifyFailureDestination,
+  CloudFrontSecurityHeaders,
   CognitoSignInCaseInsensitivity,
   DefinedLogsRetentionDuration,
   LightBundleRule,
@@ -47,6 +48,7 @@ export const runChecks = async (
     CognitoSignInCaseInsensitivity,
     DefinedLogsRetentionDuration,
     SpecifyDlqOnEventBridgeRule,
+    CloudFrontSecurityHeaders,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(

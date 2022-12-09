@@ -12,6 +12,7 @@ import {
   S3BucketARN,
   SqsQueueARN,
 } from '../types';
+import { CloudFrontDistributionARN } from '../types/arn/cloudFront';
 
 // This is a big switch
 // eslint-disable-next-line complexity
@@ -36,6 +37,8 @@ export const createARNFromCloudFormation = ({
       return CloudwatchLogGroupARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::Events::EventBus':
       return EventBridgeEventBusARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::CloudFront::Distribution':
+      return CloudFrontDistributionARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
