@@ -1,6 +1,22 @@
 import { MultiBar, Presets } from 'cli-progress';
-import { rulesByLevel } from './constants/level';
-import { ChecksResults, GuardianARN } from './types';
+import {
+  AsyncSpecifyFailureDestination,
+  CognitoSignInCaseInsensitivity,
+  DefinedLogsRetentionDuration,
+  LightBundleRule,
+  LimitedAmountOfLambdaVersions,
+  noDefaultMemory,
+  NoMaxTimeout,
+  NoMonoPackage,
+  NoSharedIamRoles,
+  ServerSideEncryptionEnabled,
+  SpecifyDlqOnEventBridgeRule,
+  SpecifyDlqOnSqs,
+  UnderMaxMemory,
+  UseArm,
+  UseIntelligentTiering,
+} from './rules';
+import { ChecksResults, GuardianARN, Rule } from './types';
 
 export const runChecks = async (
   allResourceArns: GuardianARN[],
@@ -15,9 +31,29 @@ export const runChecks = async (
     process.exit(0);
   });
 
-  const rules = rulesByLevel.slice(0, level).flat();
+  const allRules: Rule[] = [
+    LightBundleRule,
+    NoMonoPackage,
+    noDefaultMemory,
+    NoMaxTimeout,
+    NoSharedIamRoles,
+    UseArm,
+    LimitedAmountOfLambdaVersions,
+    UnderMaxMemory,
+    AsyncSpecifyFailureDestination,
+    UseIntelligentTiering,
+    ServerSideEncryptionEnabled,
+    SpecifyDlqOnSqs,
+    CognitoSignInCaseInsensitivity,
+    DefinedLogsRetentionDuration,
+    SpecifyDlqOnEventBridgeRule,
+  ];
 
-  const total = rules.length + 1;
+  const rulesToRunAccordingToLevel = allRules.filter(
+    rule => rule.level <= level,
+  );
+
+  const total = rulesToRunAccordingToLevel.length + 1;
 
   const rulesProgressBar = progressBar.create(
     total,
@@ -33,7 +69,7 @@ export const runChecks = async (
   decreaseRemaining();
 
   const results = await Promise.all(
-    rules.map(async rule => {
+    rulesToRunAccordingToLevel.map(async rule => {
       const ruleResult = (await rule.run(allResourceArns)).results;
       decreaseRemaining();
 

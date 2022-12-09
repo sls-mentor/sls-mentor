@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
@@ -24,6 +25,7 @@ const rule: Rule = {
   run,
   fileName: 'lightBundle',
   categories: [Category.GREEN_IT, Category.STABILITY],
+  level: GuardianLevel.Level4,
 };
 
 export default rule;

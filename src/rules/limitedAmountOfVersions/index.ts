@@ -1,4 +1,5 @@
 import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
@@ -22,6 +23,7 @@ const rule: Rule = {
   run,
   fileName: 'limitedAmountOfVersions',
   categories: [Category.GREEN_IT, Category.STABILITY],
+  level: GuardianLevel.Level2,
 };
 
 export default rule;

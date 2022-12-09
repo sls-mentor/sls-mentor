@@ -1,4 +1,5 @@
 import { fetchAllS3BucketEncryptionConfigurations } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
@@ -19,6 +20,7 @@ const rule: Rule = {
   run,
   fileName: 'serverSideEncryptionEnabled',
   categories: [Category.SECURITY],
+  level: GuardianLevel.Level1,
 };
 
 export default rule;
