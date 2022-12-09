@@ -6,8 +6,8 @@ import {
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
-  NoIdenticalCode,
   NoMaxTimeout,
+  NoMonoPackage,
   NoSharedIamRoles,
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,
@@ -24,7 +24,7 @@ export const runChecks = async (
 ): Promise<ChecksResults> => {
   const rulesByLevel: Rule[][] = [
     // Level 1
-    [UseArm, NoIdenticalCode, ServerSideEncryptionEnabled],
+    [UseArm, NoMonoPackage, ServerSideEncryptionEnabled],
     // Level 2
     [LimitedAmountOfLambdaVersions, UnderMaxMemory, UseIntelligentTiering],
     // Level 3

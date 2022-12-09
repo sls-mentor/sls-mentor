@@ -4,8 +4,8 @@ import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
-import NoIdenticalCode from './noIdenticalCode';
 import NoMaxTimeout from './noMaxTimeout';
+import NoMonoPackage from './noMonoPackage';
 import NoSharedIamRoles from './noSharedIamRoles';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -24,7 +24,7 @@ export {
   UseArm,
   UseIntelligentTiering,
   LimitedAmountOfLambdaVersions,
-  NoIdenticalCode,
+  NoMonoPackage,
   AsyncSpecifyFailureDestination,
   SpecifyDlqOnSqs,
   DefinedLogsRetentionDuration,
