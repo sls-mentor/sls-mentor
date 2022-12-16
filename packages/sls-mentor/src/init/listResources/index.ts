@@ -1,3 +1,4 @@
+export * from './backupPlan';
 export * from './cloudwatch';
 export * from './cognito';
 export * from './eventBridge';

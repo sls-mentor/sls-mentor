@@ -1,4 +1,5 @@
 import {
+  BackupPlanARN,
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
@@ -10,6 +11,7 @@ import {
 } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 import { listCloudFrontDistributions } from './cloudfront';
+import { listBackupPlans } from './backupPlan';
 import { listCloudwatchLogGroups } from './cloudwatch';
 import { listCognitoUserPools } from './cognito';
 import { listEventBridgeEventBuses } from './eventBridge';
@@ -30,6 +32,7 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
   const cloudFrontDistributions: CloudFrontDistributionARN[] =
     await listCloudFrontDistributions();
   const rdsInstances: RdsInstanceARN[] = await listRdsInstances();
+  const backupPlans: BackupPlanARN[] = await listBackupPlans();
 
   return [
     ...s3buckets,
@@ -40,5 +43,6 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
     ...eventBridgeEventBuses,
     ...cloudFrontDistributions,
     ...rdsInstances,
+    ...backupPlans,
   ];
 };
