@@ -44,7 +44,7 @@ export const promptForUserLevelInput = async (): Promise<
   number | undefined
 > => {
   console.clear();
-  console.log(chalk.hex(lilaHex)('Welcome in Guardian 🛡️.\n'));
+  console.log(chalk.hex(lilaHex)('Welcome to Guardian 🛡️.\n'));
   console.log(
     chalk.hex(lilaHex)(
       "Let's start by selecting the level of difficulty you want me to check your code against.\n\n",
