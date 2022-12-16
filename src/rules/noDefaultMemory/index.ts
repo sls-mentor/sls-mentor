@@ -1,4 +1,5 @@
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
@@ -21,6 +22,7 @@ const rule: Rule = {
   run,
   fileName: 'noDefaultMemory',
   categories: [Category.GREEN_IT, Category.IT_COSTS],
+  level: GuardianLevel.Level3,
 };
 
 export default rule;

@@ -2,6 +2,7 @@ import {
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import {
   Category,
   EventBridgeEventBusARN,
@@ -61,6 +62,7 @@ const rule: Rule = {
   run,
   fileName: 'specifyDlqOnEventBridgeRule',
   categories: [Category.STABILITY],
+  level: GuardianLevel.Level5,
 };
 
 export default rule;

@@ -1,3 +1,4 @@
+import { GuardianLevel } from '../constants/level';
 import { GuardianARN } from './arn';
 
 export enum Category {
@@ -28,4 +29,5 @@ export interface Rule {
     results: RuleCheckResult[];
   }>;
   categories: Category[];
+  level: GuardianLevel;
 }

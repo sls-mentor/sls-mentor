@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const isLambdaRoleShared = (
@@ -31,6 +32,7 @@ const rule: Rule = {
   run,
   fileName: 'noSharedIamRoles',
   categories: [Category.SECURITY, Category.STABILITY],
+  level: GuardianLevel.Level4,
 };
 
 export default rule;

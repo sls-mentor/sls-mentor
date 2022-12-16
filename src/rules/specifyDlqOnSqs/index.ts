@@ -1,4 +1,5 @@
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, GuardianARN, Rule, SqsQueueARN } from '../../types';
 
 interface RedrivePolicy {
@@ -44,6 +45,7 @@ const rule: Rule = {
   run,
   fileName: 'specifyDlqOnSqs',
   categories: [Category.STABILITY],
+  level: GuardianLevel.Level4,
 };
 
 export default rule;

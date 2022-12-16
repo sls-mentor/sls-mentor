@@ -3,6 +3,7 @@ import {
   fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../aws-sdk-helpers';
+import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
@@ -44,6 +45,7 @@ const rule: Rule = {
   run,
   fileName: 'asyncSpecifyFailureDestination',
   categories: [Category.STABILITY],
+  level: GuardianLevel.Level5,
 };
 
 export default rule;
