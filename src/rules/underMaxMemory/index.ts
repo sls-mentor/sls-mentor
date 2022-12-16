@@ -29,10 +29,16 @@ const ruleConfigTypeguard = (
     return false;
   }
 
-  // @ts-expect-error -- max memory doesn't exists on base config but should on under max rule
+  // @ts-expect-error -- max memory doesn't exists on base config but could on under max rule
   const maxMemory = config.maxMemory as unknown | undefined;
+  if (maxMemory === undefined) {
+    return true;
+  }
+  if (typeof maxMemory === 'number') {
+    return true;
+  }
 
-  return maxMemory !== undefined && typeof maxMemory === 'number';
+  return false;
 };
 
 const rule: Rule<UnderMaxMemoryRuleConfig> = {

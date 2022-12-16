@@ -3,12 +3,12 @@ export type Configuration = {
 };
 
 export interface BaseConfiguration {
-  ignoredResources: string[];
+  ignoredResources?: string[];
 }
 
 // example rule config
 export interface UnderMaxMemoryRuleConfig extends BaseConfiguration {
-  maxMemory: number;
+  maxMemory?: number;
 }
 
 export type RuleConfiguration = BaseConfiguration | UnderMaxMemoryRuleConfig;

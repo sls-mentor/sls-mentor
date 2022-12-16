@@ -4,7 +4,7 @@ export const baseConfigTypeGuard = (
   config: unknown,
 ): config is BaseConfiguration => {
   if (!Object.prototype.hasOwnProperty.call(config, 'ignoredResources')) {
-    return false;
+    return true;
   }
 
   const ignoredResources = (config as Record<string, unknown>).ignoredResources;
