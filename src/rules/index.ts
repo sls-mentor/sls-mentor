@@ -15,6 +15,7 @@ import SpecifyDlqOnSqs from './specifyDlqOnSqs';
 import UnderMaxMemory from './underMaxMemory';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
+import UseSSL from './useSsl';
 
 export {
   CognitoSignInCaseInsensitivity,
@@ -34,4 +35,5 @@ export {
   SpecifyDlqOnEventBridgeRule,
   ServerSideEncryptionEnabled,
   NoProvisionedConcurrency,
+  UseSSL,
 };
