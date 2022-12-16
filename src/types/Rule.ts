@@ -1,5 +1,6 @@
 import { GuardianLevel } from '../constants/level';
 import { GuardianARN } from './arn';
+import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
 export enum Category {
   GREEN_IT = 'GREEN_IT',
@@ -21,7 +22,7 @@ export type RuleCheckResult = { arn: GuardianARN; success: boolean } & Record<
   string,
   unknown
 >;
-export interface Rule {
+export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   ruleName: string;
   errorMessage: string;
   fileName: string;
@@ -30,4 +31,5 @@ export interface Rule {
   }>;
   categories: Category[];
   level: GuardianLevel;
+  configurationTypeguard?: (config: unknown) => config is T;
 }
