@@ -7,8 +7,8 @@ export interface BaseConfiguration {
 }
 
 // example rule config
-export interface LambdaMemoryRuleConfig extends BaseConfiguration {
+export interface UnderMaxMemoryRuleConfig extends BaseConfiguration {
   maxMemory: number;
 }
 
-export type RuleConfiguration = BaseConfiguration | LambdaMemoryRuleConfig;
+export type RuleConfiguration = BaseConfiguration | UnderMaxMemoryRuleConfig;
