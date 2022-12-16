@@ -6,6 +6,7 @@ import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
 import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
+import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -30,4 +31,5 @@ export {
   DefinedLogsRetentionDuration,
   SpecifyDlqOnEventBridgeRule,
   ServerSideEncryptionEnabled,
+  NoProvisionedConcurrency,
 };
