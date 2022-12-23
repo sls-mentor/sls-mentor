@@ -16,11 +16,12 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, GuardianARN, Rule } from './types';
+import { ChecksResults, GuardianARN, Rule, RuleConfiguration } from './types';
 
 export const runChecks = async (
   allResourceArns: GuardianARN[],
   level: number,
+  rulesConfigurations?: Record<string, RuleConfiguration>,
 ): Promise<ChecksResults> => {
   const progressBar = new MultiBar(
     { emptyOnZero: true, hideCursor: true },
@@ -70,7 +71,9 @@ export const runChecks = async (
 
   const results = await Promise.all(
     rulesToRunAccordingToLevel.map(async rule => {
-      const ruleResult = (await rule.run(allResourceArns)).results;
+      const ruleResult = (
+        await rule.run(allResourceArns, rulesConfigurations?.[rule.fileName])
+      ).results;
       decreaseRemaining();
 
       return { rule, result: ruleResult };
