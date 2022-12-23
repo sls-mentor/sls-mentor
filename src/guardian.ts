@@ -1,4 +1,5 @@
 import { runChecks } from './checks';
+import { readConfiguration } from './configuration/utils/readConfiguration';
 import {
   displayChecksStarting,
   displayDashboard,
@@ -16,6 +17,7 @@ import { getGuardianLevel } from './utils/getGuardianLevel';
 export const runGuardian = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
+  const configuration = readConfiguration();
   const level = await getGuardianLevel(options);
 
   displayChecksStarting();
