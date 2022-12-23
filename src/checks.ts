@@ -71,8 +71,18 @@ export const runChecks = async (
 
   const results = await Promise.all(
     rulesToRunAccordingToLevel.map(async rule => {
+      const ignoredArnPatterns =
+        rulesConfigurations?.[rule.fileName]?.ignoredResources;
+
+      const filteredResourcesArns = ignoredArnPatterns
+        ? GuardianARN.filterIgnoredArns(allResourceArns, ignoredArnPatterns)
+        : allResourceArns;
+
       const ruleResult = (
-        await rule.run(allResourceArns, rulesConfigurations?.[rule.fileName])
+        await rule.run(
+          filteredResourcesArns,
+          rulesConfigurations?.[rule.fileName],
+        )
       ).results;
       decreaseRemaining();
 
