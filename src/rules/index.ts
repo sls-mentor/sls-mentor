@@ -9,13 +9,13 @@ import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
+import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
 import UnderMaxMemory from './underMaxMemory';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
-import UseSSL from './useSsl';
 
 export {
   CognitoSignInCaseInsensitivity,
@@ -35,5 +35,5 @@ export {
   SpecifyDlqOnEventBridgeRule,
   ServerSideEncryptionEnabled,
   NoProvisionedConcurrency,
-  UseSSL,
+  S3OnlyAllowHTTPS,
 };

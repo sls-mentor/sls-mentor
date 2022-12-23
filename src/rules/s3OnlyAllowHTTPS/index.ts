@@ -5,11 +5,14 @@ import {
 import { GuardianLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
-const hasSSLConfiguration = (policy: S3BucketPolicy): boolean =>
-  policy.Statement.some(
+const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
+  if (policy === undefined) return false;
+
+  return policy.Statement.some(
     ({ Effect, Condition }) =>
       Effect === 'Deny' && Condition.Bool['aws:SecureTransport'] === 'false',
   );
+};
 
 const run: Rule['run'] = async resourceArns => {
   const s3BucketConfigurations = await fetchAllS3BucketPolicies(resourceArns);
@@ -22,11 +25,11 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'S3: Use SSL requests only',
-  errorMessage: 'SSL requests only is not enabled on this S3 bucket',
+  ruleName: 'S3: Use HTTPS requests only',
+  errorMessage: 'HTTPS requests only is not enabled on this S3 bucket',
   run,
-  fileName: 'useSsl',
-  categories: [Category.GREEN_IT, Category.IT_COSTS],
+  fileName: 's3OnlyAllowHTTPS',
+  categories: [Category.SECURITY],
   level: GuardianLevel.Level2,
 };
 
