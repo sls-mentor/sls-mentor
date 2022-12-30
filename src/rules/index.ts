@@ -9,6 +9,7 @@ import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
+import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
@@ -34,4 +35,5 @@ export {
   SpecifyDlqOnEventBridgeRule,
   ServerSideEncryptionEnabled,
   NoProvisionedConcurrency,
+  S3OnlyAllowHTTPS,
 };
