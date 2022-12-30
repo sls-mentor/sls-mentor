@@ -5,5 +5,8 @@
       "source.organizeImports":true,
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
+    },
+    "search.exclude": {
+      "**/dist": true
     }
   }
