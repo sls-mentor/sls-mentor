@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-cloudformation": "^3.99.0",
+    "@aws-sdk/client-cloudfront": "^3.226.0",
     "@aws-sdk/client-cloudwatch-logs": "^3.193.0",
     "@aws-sdk/client-cognito-identity-provider": "^3.193.0",
     "@aws-sdk/client-eventbridge": "^3.193.0",

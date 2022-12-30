@@ -1,4 +1,5 @@
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
+import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
@@ -17,6 +18,7 @@ import UseIntelligentTiering from './useIntelligentTiering';
 
 export {
   CognitoSignInCaseInsensitivity,
+  CloudFrontSecurityHeaders,
   noDefaultMemory,
   LightBundleRule,
   NoMaxTimeout,

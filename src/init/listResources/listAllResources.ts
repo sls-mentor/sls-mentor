@@ -7,6 +7,8 @@ import {
   S3BucketARN,
   SqsQueueARN,
 } from '../../types';
+import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
+import { listCloudFrontDistributions } from './cloudfront';
 import { listCloudwatchLogGroups } from './cloudwatch';
 import { listCognitoUserPools } from './cognito';
 import { listEventBridgeEventBuses } from './eventBridge';
@@ -23,6 +25,8 @@ export const listAllResources = async (): Promise<GuardianARN[]> => {
     await listCloudwatchLogGroups();
   const eventBridgeEventBuses: EventBridgeEventBusARN[] =
     await listEventBridgeEventBuses();
+  const cloudFrontDistributions: CloudFrontDistributionARN[] =
+    await listCloudFrontDistributions();
 
   return [
     ...s3buckets,
@@ -31,5 +35,6 @@ export const listAllResources = async (): Promise<GuardianARN[]> => {
     ...cognitoUserPools,
     ...cloudWatchLogGroups,
     ...eventBridgeEventBuses,
+    ...cloudFrontDistributions,
   ];
 };
