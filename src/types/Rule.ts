@@ -26,7 +26,10 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   ruleName: string;
   errorMessage: string;
   fileName: string;
-  run: (resources: GuardianARN[]) => Promise<{
+  run: (
+    resources: GuardianARN[],
+    configuration?: T,
+  ) => Promise<{
     results: RuleCheckResult[];
   }>;
   categories: Category[];

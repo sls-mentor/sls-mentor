@@ -36,5 +36,16 @@ export class GuardianARN implements ARN {
     childClass: GuardianARNSubClass<T>,
   ): T[] => arns.filter(GuardianARN.checkArnType(childClass));
 
+  static filterIgnoredArns = <T extends GuardianARN>(
+    arns: T[],
+    ignoredArnPatterns: string[],
+  ): T[] =>
+    arns.filter(
+      arn =>
+        ignoredArnPatterns.findIndex(ignoredPattern =>
+          arn.toString().match(ignoredPattern),
+        ) < 0,
+    );
+
   toString = (): string => build(this);
 }

@@ -1,4 +1,5 @@
 import { runChecks } from './checks';
+import { readConfiguration } from './configuration/utils/readConfiguration';
 import {
   displayChecksStarting,
   displayDashboard,
@@ -16,15 +17,16 @@ import { getGuardianLevel } from './utils/getGuardianLevel';
 export const runGuardian = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
+  const configuration = readConfiguration();
   const level = await getGuardianLevel(options);
 
   displayChecksStarting();
 
   await initAccountAndRegion();
 
-  let allReourcesArns: GuardianARN[];
+  let allResourcesArns: GuardianARN[];
   try {
-    allReourcesArns = await fetchAllResourceArns({
+    allResourcesArns = await fetchAllResourceArns({
       cloudformationStacks:
         options.cloudformationStacks ?? options.cloudformations,
       tags: options.tags,
@@ -46,7 +48,11 @@ export const runGuardian = async (
     return { success: false };
   }
 
-  const checksResults = await runChecks(allReourcesArns, level);
+  const checksResults = await runChecks(
+    allResourcesArns,
+    level,
+    configuration.rules,
+  );
 
   const atLeastOneFailed = checksResults.some(
     ({ result }) => result.filter(resource => !resource.success).length > 0,
