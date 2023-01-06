@@ -13,6 +13,7 @@ import {
   NoMonoPackage,
   NoProvisionedConcurrency,
   NoSharedIamRoles,
+  NoUnauthorizedApiGatewaysV2Routes,
   S3OnlyAllowHTTPS,
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,
@@ -58,6 +59,7 @@ export const runChecks = async (
     NoProvisionedConcurrency,
     AutoscaleRdsInstanceEnabled,
     DefinedBackupRetentionPeriodOrTransitionToColdStorage,
+    NoUnauthorizedApiGatewaysV2Routes,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(

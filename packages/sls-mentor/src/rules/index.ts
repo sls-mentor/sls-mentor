@@ -11,6 +11,7 @@ import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
+import NoUnauthorizedApiGatewaysV2Routes from './noUnauthorizedApiGatewaysV2Routes';
 import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -38,6 +39,7 @@ export {
   ServerSideEncryptionEnabled,
   NoProvisionedConcurrency,
   S3OnlyAllowHTTPS,
+  NoUnauthorizedApiGatewaysV2Routes,
   AutoscaleRdsInstanceEnabled,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
 };
