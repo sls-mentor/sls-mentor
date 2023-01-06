@@ -1,8 +1,8 @@
 {
-  "name": "@kumo-by-theodo/guardian",
+  "name": "sls-mentor",
   "description": "Audit tool for AWS serverless architectures",
   "bin": {
-    "guardian": "./dist/index.js"
+    "sls-mentor": "./dist/index.js"
   },
   "scripts": {
     "test-circular": "depcruise --validate .dependency-cruiser.js .",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kumo-by-Theodo/guardian.git"
+    "url": "git+https://github.com/sls-mentor/sls-mentor.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kumo-by-Theodo/guardian/issues"
+    "url": "https://github.com/sls-mentor/sls-mentor/issues"
   },
-  "homepage": "https://github.com/Kumo-by-Theodo/guardian#readme",
+  "homepage": "https://github.com/sls-mentor/sls-mentor#readme",
   "files": [
     "dist/**/*",
     "!dist/**/*.test.js"
