@@ -31,21 +31,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'
-          cache-dependency-path: './tests-e2e/package-lock.json'
-
-      - name: Install sls-mentor dependencies
-        run: cd .. && npm install --ignore-scripts
-
       - name: Copy CI env vars
         run: cp .env.ci .env
 
-      - name: Install E2E tests dependencies
-        run: npm install
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Install E2E dependencies
+        run: pnpm i
 
       - name: Configure aws credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -54,7 +47,7 @@ jobs:
           aws-region: eu-west-1
 
       - name: Deploy app
-        run: npm run deploy
+        run: pnpm run deploy
 
       - name: Run tests
-        run: npm run test
+        run: pnpm run test

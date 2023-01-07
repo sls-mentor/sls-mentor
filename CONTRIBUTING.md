@@ -13,7 +13,7 @@ git clone git@github.com:sls-mentor/sls-mentor.git
 Install the dependencies:
 
 ```sh
-npm install
+pnpm install
 ```
 
 You are ready to start developing on sls-mentor 🏃
@@ -23,14 +23,14 @@ You are ready to start developing on sls-mentor 🏃
 If you have a default AWS profile defined in your configuration, you can launch:
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 This will test sls-mentor rules against your default stack.
 You can also add profile, credentials or region options to test against a different stack.
 
 ```sh
-npm run dev -- -p my-profile
+pnpm run dev -- -p my-profile
 ```
 
 Check out documentation to learn about [CLI options](./README.md)

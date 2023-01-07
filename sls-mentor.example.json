@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "useIntelligentTiering": {
+      "ignoredResources": [
+        "serverlessdeploymentbucket"
+      ]
+    }
+  }
+}
