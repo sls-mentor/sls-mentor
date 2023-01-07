@@ -11,7 +11,6 @@
     "build": "npm run clean && tsc",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "test": "npm run build && ava --verbose",
     "prepare": "npm run build"
   },
   "repository": {
@@ -43,14 +42,12 @@
     "@aws-sdk/types": "^3.226.0",
     "@aws-sdk/util-arn-parser": "3.208.0",
     "@aws-sdk/util-middleware": "^3.226.0",
-    "@types/prompt-sync": "^4.2.0",
     "chalk": "^4.1.2",
     "cli-progress": "^3.11.2",
     "cli-select": "^1.1.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
     "object-hash": "^3.0.0",
-    "prompt-sync": "^4.2.0",
     "throttled-queue": "^2.1.4"
   },
   "devDependencies": {
@@ -61,7 +58,6 @@
     "@types/object-hash": "^2.2.1",
     "@typescript-eslint/eslint-plugin": "^5.25.0",
     "@typescript-eslint/parser": "^5.25.0",
-    "ava": "^4.2.0",
     "dependency-cruiser": "^12.3.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
