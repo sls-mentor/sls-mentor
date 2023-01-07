@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const ARM_ARCHITECTURE = 'arm64';
@@ -28,7 +28,7 @@ const rule: Rule = {
   run,
   fileName: 'useArm',
   categories: [Category.GREEN_IT, Category.IT_COSTS, Category.SPEED],
-  level: GuardianLevel.Level1,
+  level: SlsMentorLevel.Level1,
 };
 
 export default rule;

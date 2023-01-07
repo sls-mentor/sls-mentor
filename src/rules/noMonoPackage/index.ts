@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasUniqueShaCode = (
@@ -63,7 +63,7 @@ const rule: Rule = {
   run,
   fileName: 'noMonoPackage',
   categories: [Category.SECURITY, Category.STABILITY],
-  level: GuardianLevel.Level1,
+  level: SlsMentorLevel.Level1,
 };
 
 export default rule;

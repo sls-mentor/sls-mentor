@@ -3,7 +3,7 @@ import { Construct } from 'constructs';
 import { setupLambda } from './lambda';
 import { setupS3 } from './s3';
 
-export class GuardianE2EStackFail extends cdk.Stack {
+export class SlsMentorE2EStackFail extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
     setupLambda(this);

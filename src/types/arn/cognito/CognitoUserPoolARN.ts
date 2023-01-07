@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class CognitoUserPoolARN extends GuardianARN {
+export class CognitoUserPoolARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'cognito-idp');
   }

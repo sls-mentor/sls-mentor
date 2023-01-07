@@ -6,8 +6,8 @@ import {
 import {
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
+  CustomARN,
   EventBridgeEventBusARN,
-  GuardianARN,
   LambdaFunctionARN,
   S3BucketARN,
   SqsQueueARN,
@@ -19,7 +19,7 @@ import { CloudFrontDistributionARN } from '../types/arn/cloudFront';
 export const createARNFromCloudFormation = ({
   ResourceType,
   PhysicalResourceId,
-}: StackResourceSummary): GuardianARN | undefined => {
+}: StackResourceSummary): CustomARN | undefined => {
   if (PhysicalResourceId === undefined || ResourceType === undefined) {
     return undefined;
   }
@@ -46,7 +46,7 @@ export const createARNFromCloudFormation = ({
 
 export const fetchCloudFormationResourceArns = async (
   cloudformationStacks: string[],
-): Promise<GuardianARN[]> => {
+): Promise<CustomARN[]> => {
   const cloudFormationClient = new CloudFormationClient({});
 
   const resources: StackResourceSummary[] = [];
@@ -61,5 +61,5 @@ export const fetchCloudFormationResourceArns = async (
 
   return resources
     .map(createARNFromCloudFormation)
-    .filter((arn): arn is GuardianARN => arn !== undefined);
+    .filter((arn): arn is CustomARN => arn !== undefined);
 };

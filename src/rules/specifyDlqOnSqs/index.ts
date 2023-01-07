@@ -1,6 +1,6 @@
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
-import { Category, GuardianARN, Rule, SqsQueueARN } from '../../types';
+import { SlsMentorLevel } from '../../constants/level';
+import { Category, CustomARN, Rule, SqsQueueARN } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -18,7 +18,7 @@ const run: Rule['run'] = async resourceArns => {
         const deadLetterTargetArn = (JSON.parse(redrivePolicy) as RedrivePolicy)
           .deadLetterTargetArn;
 
-        return GuardianARN.fromArnString(deadLetterTargetArn);
+        return CustomARN.fromArnString(deadLetterTargetArn);
       }
     })
     .filter((arn): arn is SqsQueueARN => arn !== undefined);
@@ -41,11 +41,11 @@ const run: Rule['run'] = async resourceArns => {
 const rule: Rule = {
   ruleName: 'Specifying a DLQ on SQS',
   errorMessage:
-    'The queue does not have a specified Dead Letter Queue. See (https://github.com/Kumo-by-Theodo/guardian/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
+    'The queue does not have a specified Dead Letter Queue. See (https://github.com/sls-mentor/sls-mentor/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
   run,
   fileName: 'specifyDlqOnSqs',
   categories: [Category.STABILITY],
-  level: GuardianLevel.Level4,
+  level: SlsMentorLevel.Level4,
 };
 
 export default rule;

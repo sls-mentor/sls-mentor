@@ -11,20 +11,20 @@ import {
 import { fetchAllResourceArns, initAccountAndRegion } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 
-import { ChecksResults, GuardianARN, Options } from './types';
-import { getGuardianLevel } from './utils/getGuardianLevel';
+import { ChecksResults, CustomARN, Options } from './types';
+import { getSlsMentorLevel } from './utils/getSlsMentorLevel';
 
-export const runGuardian = async (
+export const runSlsMentor = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
   const configuration = readConfiguration();
-  const level = await getGuardianLevel(options);
+  const level = await getSlsMentorLevel(options);
 
   displayChecksStarting();
 
   await initAccountAndRegion();
 
-  let allResourcesArns: GuardianARN[];
+  let allResourcesArns: CustomARN[];
   try {
     allResourcesArns = await fetchAllResourceArns({
       cloudformationStacks:

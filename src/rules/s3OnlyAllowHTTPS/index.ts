@@ -2,7 +2,7 @@ import {
   fetchAllS3BucketPolicies,
   S3BucketPolicy,
 } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
@@ -30,7 +30,7 @@ const rule: Rule = {
   run,
   fileName: 's3OnlyAllowHTTPS',
   categories: [Category.SECURITY],
-  level: GuardianLevel.Level2,
+  level: SlsMentorLevel.Level2,
 };
 
 export default rule;

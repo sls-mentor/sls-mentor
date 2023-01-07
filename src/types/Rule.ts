@@ -1,5 +1,5 @@
-import { GuardianLevel } from '../constants/level';
-import { GuardianARN } from './arn';
+import { SlsMentorLevel } from '../constants/level';
+import { CustomARN } from './arn';
 import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
 export enum Category {
@@ -18,7 +18,7 @@ export const CategoryNames = {
   [Category.SECURITY]: 'Security',
 };
 
-export type RuleCheckResult = { arn: GuardianARN; success: boolean } & Record<
+export type RuleCheckResult = { arn: CustomARN; success: boolean } & Record<
   string,
   unknown
 >;
@@ -27,12 +27,12 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   errorMessage: string;
   fileName: string;
   run: (
-    resources: GuardianARN[],
+    resources: CustomARN[],
     configuration?: T,
   ) => Promise<{
     results: RuleCheckResult[];
   }>;
   categories: Category[];
-  level: GuardianLevel;
+  level: SlsMentorLevel;
   configurationTypeguard?: (config: unknown) => config is T;
 }

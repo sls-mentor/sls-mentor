@@ -1,6 +1,6 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
 import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasCaseInsensitiveSignIn = (userPool: UserPoolType) => {
@@ -24,7 +24,7 @@ const rule: Rule = {
   run,
   fileName: 'cognitoSignInCaseInsensitivity',
   categories: [Category.STABILITY],
-  level: GuardianLevel.Level5,
+  level: SlsMentorLevel.Level5,
 };
 
 export default rule;

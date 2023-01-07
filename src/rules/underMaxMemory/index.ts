@@ -2,7 +2,7 @@ import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
 import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule, UnderMaxMemoryRuleConfig } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
@@ -47,7 +47,7 @@ const rule: Rule<UnderMaxMemoryRuleConfig> = {
   run,
   fileName: 'underMaxMemory',
   categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: GuardianLevel.Level2,
+  level: SlsMentorLevel.Level2,
   configurationTypeguard: ruleConfigTypeguard,
 };
 

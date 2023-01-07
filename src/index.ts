@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import { runGuardian } from './guardian';
+import { runSlsMentor } from './slsMentor';
 import { Options, Tag } from './types';
 
 const hasKeyAndValue = (
@@ -31,8 +31,10 @@ const parseTags = (
   return [...previousTags, tag];
 };
 
-const handleGuardianChecksCommand = async (options: Options): Promise<void> => {
-  const { success } = await runGuardian(options);
+const handleSlsMentorChecksCommand = async (
+  options: Options,
+): Promise<void> => {
+  const { success } = await runSlsMentor(options);
   if (success) {
     process.exit(0);
   }
@@ -55,7 +57,7 @@ const setAwsRegion = (command: Command): void => {
 };
 
 program
-  .name('guardian')
+  .name('sls-mentor')
   .version(process.env.npm_package_version ?? '0.0.0')
   .option(
     '-s, --short',
@@ -84,7 +86,7 @@ program
     'Exit with success status, even if some checks failed',
     false,
   )
-  .action(handleGuardianChecksCommand)
+  .action(handleSlsMentorChecksCommand)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)
   .parse();

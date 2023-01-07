@@ -27,7 +27,7 @@ const levelMessageMapping: Record<number, string> = {
   4: chalk.hsl(...colorHsls[3])(
     '🌶️  Things are getting spicy, keep up the good work!',
   ),
-  5: chalk.hsl(...colorHsls[4]).bold('🏆  Level 5! You are a true guardian!'),
+  5: chalk.hsl(...colorHsls[4]).bold('🏆  Level 5! You are a true mentor!'), // ??? @valentin_beggi ???
 };
 
 const wrapValueInColor = (value: string) => {
@@ -44,7 +44,7 @@ export const promptForUserLevelInput = async (): Promise<
   number | undefined
 > => {
   console.clear();
-  console.log(chalk.hex(lilaHex)('Welcome to Guardian 🛡️.\n'));
+  console.log(chalk.hex(lilaHex)('Welcome to sls-mentor 🛡️.\n'));
   console.log(
     chalk.hex(lilaHex)(
       "Let's start by selecting the level of difficulty you want me to check your code against.\n\n",

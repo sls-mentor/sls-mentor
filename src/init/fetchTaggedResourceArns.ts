@@ -3,11 +3,11 @@ import {
   ResourceGroupsTaggingAPIClient,
   ResourceTagMapping,
 } from '@aws-sdk/client-resource-groups-tagging-api';
-import { GuardianARN, Tag } from '../types';
+import { CustomARN, Tag } from '../types';
 
 export const fetchTaggedResourceArns = async (
   tags: Tag[],
-): Promise<GuardianARN[]> => {
+): Promise<CustomARN[]> => {
   const tagClient = new ResourceGroupsTaggingAPIClient({});
 
   const taggedResources: ResourceTagMapping[] = [];
@@ -25,5 +25,5 @@ export const fetchTaggedResourceArns = async (
   return taggedResources
     .map(({ ResourceARN }) => ResourceARN)
     .filter((resourceArn): resourceArn is string => resourceArn !== undefined)
-    .map(GuardianARN.fromArnString);
+    .map(CustomARN.fromArnString);
 };

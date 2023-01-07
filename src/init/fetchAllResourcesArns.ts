@@ -2,7 +2,7 @@ import intersectionWith from 'lodash/intersectionWith';
 import { fetchCloudFormationResourceArns } from './fetchCloudFormationResourceArns';
 import { fetchTaggedResourceArns } from './fetchTaggedResourceArns';
 
-import { GuardianARN, Tag } from '../types';
+import { CustomARN, Tag } from '../types';
 import { listAllResources } from './listResources';
 
 export const fetchAllResourceArns = async ({
@@ -11,7 +11,7 @@ export const fetchAllResourceArns = async ({
 }: {
   cloudformationStacks?: string[];
   tags?: Tag[];
-}): Promise<GuardianARN[]> => {
+}): Promise<CustomARN[]> => {
   const allResources = await listAllResources();
 
   const resourcesToKeepByTags =
@@ -27,12 +27,12 @@ export const fetchAllResourceArns = async ({
   const resourcesToKeep = intersectionWith(
     resourcesToKeepByTags,
     resourcesToKeepByStacks,
-    GuardianARN.areARNsEqual,
+    CustomARN.areARNsEqual,
   );
 
   return intersectionWith(
     allResources,
     resourcesToKeep,
-    GuardianARN.areARNsEqual,
+    CustomARN.areARNsEqual,
   );
 };

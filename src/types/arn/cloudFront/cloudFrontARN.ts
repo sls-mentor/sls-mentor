@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class CloudFrontDistributionARN extends GuardianARN {
+export class CloudFrontDistributionARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'cloudfront');
   }

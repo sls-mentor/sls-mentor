@@ -6,7 +6,7 @@
   },
   "scripts": {
     "synth": "cdk synth",
-    "deploy": "cdk deploy 'guardian-e2e*'",
+    "deploy": "cdk deploy 'sls-mentor-e2e*'",
     "test": "vitest run"
   },
   "devDependencies": {

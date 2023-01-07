@@ -1,11 +1,11 @@
 import { config } from 'dotenv';
 import { unlinkSync, writeFileSync } from 'fs';
-import { getGuardianResults } from './getGuardianResults';
+import { getSlsMentorResult } from './getSlsMentorResults';
 
 export const setup = async (): Promise<void> => {
   config({ path: '.env' });
 
-  const checkResults = await getGuardianResults({
+  const checkResults = await getSlsMentorResult({
     awsProfile: process.env.AWS_PROFILE,
     awsRegion: process.env.AWS_REGION,
     noFail: true,
@@ -14,9 +14,9 @@ export const setup = async (): Promise<void> => {
     level: '5',
   });
 
-  writeFileSync('./tests/guardianOutput.json', JSON.stringify(checkResults));
+  writeFileSync('./tests/slsMentorOutput.json', JSON.stringify(checkResults));
 };
 
 export const teardown = (): void => {
-  unlinkSync('./tests/guardianOutput.json');
+  unlinkSync('./tests/slsMentorOutput.json');
 };

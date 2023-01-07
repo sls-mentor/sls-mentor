@@ -1,6 +1,6 @@
 import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
 import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasIntelligentTiering = (
@@ -24,7 +24,7 @@ const rule: Rule = {
   run,
   fileName: 'useIntelligentTiering',
   categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: GuardianLevel.Level2,
+  level: SlsMentorLevel.Level2,
 };
 
 export default rule;

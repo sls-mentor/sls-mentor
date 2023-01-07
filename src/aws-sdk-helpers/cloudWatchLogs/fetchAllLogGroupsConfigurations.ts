@@ -3,7 +3,7 @@ import {
   paginateDescribeLogGroups,
 } from '@aws-sdk/client-cloudwatch-logs';
 import { cloudWatchLogsClient } from '../../clients';
-import { CloudwatchLogGroupARN, GuardianARN } from '../../types';
+import { CloudwatchLogGroupARN, CustomARN } from '../../types';
 
 const listLogGroupConfigurations = async (): Promise<
   { arn: CloudwatchLogGroupARN; configuration: LogGroup }[]
@@ -23,12 +23,9 @@ const listLogGroupConfigurations = async (): Promise<
 };
 
 export const fetchAllLogGroupsConfigurations = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<{ arn: CloudwatchLogGroupARN; configuration: LogGroup }[]> => {
-  const logGroupsArns = GuardianARN.filterArns(
-    resources,
-    CloudwatchLogGroupARN,
-  );
+  const logGroupsArns = CustomARN.filterArns(resources, CloudwatchLogGroupARN);
 
   const allLogGroups = await listLogGroupConfigurations();
 

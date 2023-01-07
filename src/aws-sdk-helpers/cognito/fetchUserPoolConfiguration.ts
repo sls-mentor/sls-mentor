@@ -3,7 +3,7 @@ import {
   UserPoolType,
 } from '@aws-sdk/client-cognito-identity-provider';
 import { cognitoIdpClient } from '../../clients';
-import { CognitoUserPoolARN, GuardianARN } from '../../types';
+import { CognitoUserPoolARN, CustomARN } from '../../types';
 
 const fetchUserPoolConfiguration = async (
   userPoolId: string,
@@ -16,14 +16,14 @@ const fetchUserPoolConfiguration = async (
 };
 
 export const fetchAllUserPoolConfigurations = async (
-  resourceArns: GuardianARN[],
+  resourceArns: CustomARN[],
 ): Promise<
   {
     arn: CognitoUserPoolARN;
     configuration: UserPoolType;
   }[]
 > => {
-  const userPoolIds = GuardianARN.filterArns(
+  const userPoolIds = CustomARN.filterArns(
     resourceArns,
     CognitoUserPoolARN,
   ).map(arn => arn.getUserPoolId());

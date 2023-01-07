@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class EventBridgeEventBusARN extends GuardianARN {
+export class EventBridgeEventBusARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'events');
   }

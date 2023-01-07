@@ -1,4 +1,4 @@
-import { GuardianARN } from './arn';
+import { CustomARN } from './arn';
 import { Category, Rule, RuleCheckResult } from './Rule';
 
 export type ChecksResults = {
@@ -12,7 +12,7 @@ export type FailedRule = {
 };
 
 export type ResourceResult = {
-  resourceArn: GuardianARN;
+  resourceArn: CustomARN;
   failedRules: FailedRule[];
 };
 
