@@ -12,7 +12,7 @@ To save all these versions, you will consume unessary resources and run your CO2
 
 ## How to fix the issue
 
-Guardian checks if you have 5 versions or less for each lambda.
+sls-mentor checks if you have 5 versions or less for each lambda.
 To solve this you can:
 
 1. [Disable Serverless default setting to not save all versions](https://www.serverless.com/framework/docs/providers/aws/guide/functions/#versioning-deployed-functions)

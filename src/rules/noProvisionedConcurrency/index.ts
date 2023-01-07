@@ -1,6 +1,6 @@
 import { ProvisionedConcurrencyConfigListItem } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaProvisionedConcurrency } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const hasNoProvisionedConcurrency = (
@@ -25,7 +25,7 @@ const rule: Rule = {
   errorMessage: 'The following functions have provisioned concurrency',
   run,
   fileName: 'noProvisionedConcurrency',
-  level: GuardianLevel.Level3,
+  level: SlsMentorLevel.Level3,
   categories: [Category.GREEN_IT, Category.IT_COSTS],
 } as Rule;
 

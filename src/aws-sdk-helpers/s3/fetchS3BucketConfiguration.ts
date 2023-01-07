@@ -6,7 +6,7 @@ import {
   ServerSideEncryptionConfiguration,
 } from '@aws-sdk/client-s3';
 import { s3Client } from '../../clients';
-import { GuardianARN, S3BucketARN } from '../../types';
+import { CustomARN, S3BucketARN } from '../../types';
 
 const fetchS3BucketConfigurationByArn = async (
   arn: S3BucketARN,
@@ -29,14 +29,14 @@ const fetchS3BucketConfigurationByArn = async (
 };
 
 export const fetchAllS3BucketIntelligentTieringConfigurations = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<
   {
     arn: S3BucketARN;
     configuration: IntelligentTieringConfiguration[] | undefined;
   }[]
 > => {
-  const buckets = GuardianARN.filterArns(resources, S3BucketARN);
+  const buckets = CustomARN.filterArns(resources, S3BucketARN);
 
   return Promise.all(
     buckets.map(async arn => ({
@@ -73,7 +73,7 @@ const fetchS3BucketEncryptionConfigurationByArn = async (
 };
 
 export const fetchAllS3BucketEncryptionConfigurations = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<
   {
     arn: S3BucketARN;
@@ -83,7 +83,7 @@ export const fetchAllS3BucketEncryptionConfigurations = async (
       | 'noServerSideEncryption';
   }[]
 > => {
-  const buckets = GuardianARN.filterArns(resources, S3BucketARN);
+  const buckets = CustomARN.filterArns(resources, S3BucketARN);
 
   return Promise.all(
     buckets.map(async arn => ({

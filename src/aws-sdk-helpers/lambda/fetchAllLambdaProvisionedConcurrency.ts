@@ -4,7 +4,7 @@ import {
 } from '@aws-sdk/client-lambda';
 
 import { lambdaClient } from '../../clients';
-import { GuardianARN, LambdaFunctionARN } from '../../types';
+import { CustomARN, LambdaFunctionARN } from '../../types';
 
 const fetchLambdaProvisionedConcurrency = async (
   arn: LambdaFunctionARN,
@@ -25,14 +25,14 @@ const fetchLambdaProvisionedConcurrency = async (
 };
 
 export const fetchAllLambdaProvisionedConcurrency = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<
   {
     arn: LambdaFunctionARN;
     provisionedConcurrency: ProvisionedConcurrencyConfigListItem[];
   }[]
 > => {
-  const lambdas = GuardianARN.filterArns(resources, LambdaFunctionARN);
+  const lambdas = CustomARN.filterArns(resources, LambdaFunctionARN);
 
   return await Promise.all(
     lambdas.map(arn => fetchLambdaProvisionedConcurrency(arn)),

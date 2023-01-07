@@ -18,10 +18,10 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from './rules';
-import { ChecksResults, GuardianARN, Rule, RuleConfiguration } from './types';
+import { ChecksResults, CustomARN, Rule, RuleConfiguration } from './types';
 
 export const runChecks = async (
-  allResourceArns: GuardianARN[],
+  allResourceArns: CustomARN[],
   level: number,
   rulesConfigurations?: Record<string, RuleConfiguration>,
 ): Promise<ChecksResults> => {
@@ -79,7 +79,7 @@ export const runChecks = async (
         rulesConfigurations?.[rule.fileName]?.ignoredResources;
 
       const filteredResourcesArns = ignoredArnPatterns
-        ? GuardianARN.filterIgnoredArns(allResourceArns, ignoredArnPatterns)
+        ? CustomARN.filterIgnoredArns(allResourceArns, ignoredArnPatterns)
         : allResourceArns;
 
       const ruleResult = (

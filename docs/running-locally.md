@@ -1,7 +1,7 @@
 ## Installation
 
 ```[sh]
-yarn add -D @kumo-by-theodo/guardian
+yarn add -D sls-mentor
 ```
 
 ## Usage

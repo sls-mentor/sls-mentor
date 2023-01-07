@@ -1,15 +1,15 @@
-import { MAX_GUARDIAN_LEVEL } from '../constants/level';
+import { MAX_SLS_MENTOR_LEVEL } from '../constants/level';
 import { promptForUserLevelInput } from '../display/promptForUserLevelInput';
 import { Options } from '../types';
 
-export const getGuardianLevel = async (
+export const getSlsMentorLevel = async (
   cliOptions: Options,
 ): Promise<number> => {
   if (cliOptions.level !== undefined) {
     const levelNumber = Number(cliOptions.level);
 
-    if (levelNumber > MAX_GUARDIAN_LEVEL || levelNumber < 1) {
-      return MAX_GUARDIAN_LEVEL;
+    if (levelNumber > MAX_SLS_MENTOR_LEVEL || levelNumber < 1) {
+      return MAX_SLS_MENTOR_LEVEL;
     }
 
     return levelNumber;
@@ -17,5 +17,5 @@ export const getGuardianLevel = async (
 
   const levelPrompt = await promptForUserLevelInput();
 
-  return levelPrompt ?? MAX_GUARDIAN_LEVEL;
+  return levelPrompt ?? MAX_SLS_MENTOR_LEVEL;
 };

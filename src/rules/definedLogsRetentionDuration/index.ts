@@ -1,6 +1,6 @@
 import { LogGroup } from '@aws-sdk/client-cloudwatch-logs';
 import { fetchAllLogGroupsConfigurations } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
 const isLogsRetentionDurationDefined = (
@@ -25,7 +25,7 @@ const rule: Rule = {
   run,
   fileName: 'definedLogsRetentionDuration',
   categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: GuardianLevel.Level3,
+  level: SlsMentorLevel.Level3,
 };
 
 export default rule;

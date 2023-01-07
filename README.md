@@ -4,17 +4,17 @@
     <br/>
     🛡
     <br />
-    Guardian
+    sls-mentor
     <br />
     <br />
   </h1>
   <sup>
     <br />
-    <a href="https://www.npmjs.com/package/@kumo-by-theodo/guardian">
-       <img src="https://img.shields.io/npm/v/@kumo-by-theodo/guardian.svg" alt="npm package" />
+    <a href="https://www.npmjs.com/package/sls-mentor">
+       <img src="https://img.shields.io/npm/v/sls-mentor.svg" alt="npm package" />
     </a>
-    <a href="https://www.npmjs.com/package/@kumo-by-theodo/guardian">
-      <img src="https://img.shields.io/npm/dm/@kumo-by-theodo/guardian.svg" alt="npm downloads" />
+    <a href="https://www.npmjs.com/package/sls-mentor">
+      <img src="https://img.shields.io/npm/dm/sls-mentor.svg" alt="npm downloads" />
     </a>
   </sup>
   <br />
@@ -25,7 +25,7 @@
    <p align="right"> Anonymous on Tumblr - 2012 </p>
    <br/>
   <p>
-    <b>Guardian</b> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><b>Guardian</b> solves problems before they occur, and optimizes your app’s performances and costs.
+    <b>sls-mentor</b> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><b>sls-mentor</b> solves problems before they occur, and optimizes your app’s performances and costs.
   </p>
 </div>
 <br />
@@ -33,35 +33,35 @@
 <div align="center">
   <h2>One minute quick start 🚀</h2>
   <br />
-  <pre>npx <a href="https://www.npmjs.com/package/@kumo-by-theodo/guardian">@kumo-by-theodo/guardian</a></pre>
+  <pre>npx <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor</a></pre>
     <img src="./docs/images/guardian-run.gif" style="width: 60%">
   <br />
   <br />
 </div>
 <br />
 <div align="center">
-  <h2>Install Guardian on your project and customize your experience 🔎</h2>
+  <h2>Install sls-mentor on your project and customize your experience 🔎</h2>
   <br />
-  <pre>yarn add -D <a href="https://www.npmjs.com/package/@kumo-by-theodo/guardian">@kumo-by-theodo/guardian</a></pre>
+  <pre>yarn add -D <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor</a></pre>
 
   <p>Select the cloudformation stacks you want to check using -c option</p>
-  <pre>yarn guardian -c {YOUR_AWS_STACK_NAME_1} {YOUR_AWS_STACK_NAME_2}</pre>
+  <pre>yarn sls-mentor -c {YOUR_AWS_STACK_NAME_1} {YOUR_AWS_STACK_NAME_2}</pre>
 
   <p>Filter the checked resources by tags using the -t option</p>
-  <pre>yarn guardian -t Key={TAG_KEY},Value={TAG_VALUE}</pre>
+  <pre>yarn sls-mentor -t Key={TAG_KEY},Value={TAG_VALUE}</pre>
 
   <p>Specify an AWS profile or an AWS region using -p and -r options</p>
-  <pre>yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION}</pre>
+  <pre>yarn sls-mentor -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION}</pre>
 
-  <p><a href="./docs/running-locally.md">📚 More information about local runs of Guardian</a></p>
+  <p><a href="./docs/running-locally.md">📚 More information about local runs of sls-mentor</a></p>
   <br />
 </div>
 <br />
 <div align="center">
-  <h2>Run Guardian as a periodic check on your CI 📟</h2>
+  <h2>Run sls-mentor as a periodic check on your CI 📟</h2>
   <br />
   <p>The command you want to run in your pipeline is:</p>
-  <pre>yarn guardian -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION} -l {YOUR_DESIRED_LEVEL}</pre>
+  <pre>yarn sls-mentor -p {YOUR_AWS_PROFILE} -c {YOUR_AWS_STACK_NAME} -r {YOUR_AWS_REGION} -l {YOUR_DESIRED_LEVEL}</pre>
 
   <p><i>Github actions, Circle CI, Gitlab CI configuration snippets coming soon 🚀</i></p>
   <br/>
@@ -69,11 +69,11 @@
 
 - Ensure that the CI/CD runner has an AWS profile configured, with ReadOnlyAccess privileges.<br/>
 - If the region is not configured for that profile, make sure to specify it using the -r flag in the command.<br/></p>
-  <p><a href="./docs/running-in-ci.md">📚 More information about CI runs of Guardian</a></p>
+  <p><a href="./docs/running-in-ci.md">📚 More information about CI runs of sls-mentor</a></p>
 </div>
 <br />
 <br />
-<h2 align="center">Rules featured by Guardian 📏</h2>
+<h2 align="center">Rules featured by sls-mentor 📏</h2>
 <br />
 
 - AWS Lambda:
@@ -105,10 +105,10 @@
 <br />
 <br />
 <div align="center">
-  <h2>About Guardian 📰</h2>
+  <h2>About sls-mentor 📰</h2>
   <br />
   <p>
-  Guardian is a <a href='https://www.theodo.fr/startup-studio-m33'>Theodo Group</a> project made for AWS Serverless developers by AWS Serverless developers. Original idea appeared at <a href='https://www.aleios.com/'>Aleios</a>. Guardian was migrated to Typescript and enriched by <a href='https://www.theodo.com/experts/serverless'>Kumo</a>.
+  sls-mentor is a <a href='https://www.theodo.fr/startup-studio-m33'>Theodo Group</a> project made for AWS Serverless developers by AWS Serverless developers. Original idea appeared at <a href='https://www.aleios.com/'>Aleios</a>. sls-mentor was migrated to Typescript and enriched by <a href='https://www.theodo.com/experts/serverless'>Kumo</a>.
   </p>
 </div>
 <br />
@@ -117,7 +117,7 @@
   <h2>Contributors ❤️</h2>
   <br />
   <a href="https://github.com/kumo-by-theodo/guardian/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=kumo-by-theodo/guardian" />
+    <img src="https://contrib.rocks/image?repo=sls-mentor/sls-mentor" />
   </a>
   <a href="https://github.com/aleios-cloud/sls-dev-tools/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=aleios-cloud/sls-dev-tools" />

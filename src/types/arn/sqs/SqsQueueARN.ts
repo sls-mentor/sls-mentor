@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class SqsQueueARN extends GuardianARN {
+export class SqsQueueARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'sqs');
   }

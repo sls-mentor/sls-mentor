@@ -3,7 +3,7 @@ import { Configuration } from '../../types';
 
 export const readConfiguration = (): Configuration => {
   try {
-    const rawConfig = fs.readFileSync('guardian.json', 'utf-8');
+    const rawConfig = fs.readFileSync('sls-mentor.json', 'utf-8');
     const configuration = JSON.parse(rawConfig) as Configuration;
 
     return configuration;

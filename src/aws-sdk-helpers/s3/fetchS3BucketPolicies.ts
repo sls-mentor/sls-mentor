@@ -1,6 +1,6 @@
 import { GetBucketPolicyCommand, S3ServiceException } from '@aws-sdk/client-s3';
 import { s3Client } from '../../clients';
-import { GuardianARN, S3BucketARN } from '../../types';
+import { CustomARN, S3BucketARN } from '../../types';
 interface S3BucketPolicyStatementItem {
   Sid: string;
   Action: string;
@@ -45,14 +45,14 @@ const fetchS3BucketPolicyByArn = async (
 };
 
 export const fetchAllS3BucketPolicies = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<
   | {
       arn: S3BucketARN;
       policy: S3BucketPolicy | undefined;
     }[]
 > => {
-  const buckets = GuardianARN.filterArns(resources, S3BucketARN);
+  const buckets = CustomARN.filterArns(resources, S3BucketARN);
 
   const policies = await Promise.all(
     buckets.map(async arn => ({

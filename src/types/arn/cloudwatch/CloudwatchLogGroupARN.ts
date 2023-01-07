@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class CloudwatchLogGroupARN extends GuardianARN {
+export class CloudwatchLogGroupARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'logs');
   }

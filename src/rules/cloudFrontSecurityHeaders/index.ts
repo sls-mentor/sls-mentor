@@ -1,7 +1,7 @@
 import { Distribution } from '@aws-sdk/client-cloudfront';
 import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
 import getDistributionResponseHeadersPolicyIds from '../../aws-sdk-helpers/cloudFront/getDistributionResponseHeadersPolicyIds';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
@@ -52,7 +52,7 @@ const rule: Rule = {
   run,
   fileName: 'cloudFrontSecurityHeaders',
   categories: [Category.SECURITY],
-  level: GuardianLevel.Level1,
+  level: SlsMentorLevel.Level1,
 };
 
 export default rule;

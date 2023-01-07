@@ -3,7 +3,7 @@ import {
   GetFunctionEventInvokeConfigCommandOutput,
 } from '@aws-sdk/client-lambda';
 import { lambdaClient } from '../../clients';
-import { GuardianARN, LambdaFunctionARN } from '../../types';
+import { CustomARN, LambdaFunctionARN } from '../../types';
 
 const fetchLambdaInvokeEventConfigByArn = async (
   arn: LambdaFunctionARN,
@@ -20,14 +20,14 @@ const fetchLambdaInvokeEventConfigByArn = async (
 };
 
 export const fetchAllLambdaInvokeEventConfigs = async (
-  resourceArns: GuardianARN[],
+  resourceArns: CustomARN[],
 ): Promise<
   {
     arn: LambdaFunctionARN;
     config: GetFunctionEventInvokeConfigCommandOutput | undefined;
   }[]
 > => {
-  const lambdas = GuardianARN.filterArns(resourceArns, LambdaFunctionARN);
+  const lambdas = CustomARN.filterArns(resourceArns, LambdaFunctionARN);
 
   return await Promise.all(
     lambdas.map(async arn => ({

@@ -2,15 +2,15 @@ import omit from 'lodash/omit';
 import uniqBy from 'lodash/uniqBy';
 import {
   ChecksResults,
+  CustomARN,
   FailedRule,
-  GuardianARN,
   ResourceResult,
   RuleCheckResult,
 } from '../types';
 
-const getResourcesArnsCheckedByGuardian = (
+const getResourcesArnsCheckedBySlsMentor = (
   results: ChecksResults,
-): GuardianARN[] =>
+): CustomARN[] =>
   uniqBy(
     results.flatMap(({ result }) => result.map(({ arn }) => arn)),
     arn => arn.toString,
@@ -21,7 +21,7 @@ const getExtrasFromRuleResult = (
 ): Record<string, unknown> => omit(result, 'arn', 'success');
 
 const getRulesFailedByResource = (
-  resourceArn: GuardianARN,
+  resourceArn: CustomARN,
   results: ChecksResults,
 ): FailedRule[] =>
   results.flatMap(({ rule, result }) => {
@@ -43,7 +43,7 @@ const getRulesFailedByResource = (
 export const getResultsByResource = (
   results: ChecksResults,
 ): ResourceResult[] => {
-  const checkedResourcesArns = getResourcesArnsCheckedByGuardian(results);
+  const checkedResourcesArns = getResourcesArnsCheckedBySlsMentor(results);
 
   const resultsByResource = checkedResourcesArns.map(resourceArn => {
     const failedRules = getRulesFailedByResource(resourceArn, results);

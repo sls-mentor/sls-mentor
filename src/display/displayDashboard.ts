@@ -188,7 +188,7 @@ export const displayDashboard = (
     );
   }
 
-  console.log(chalk.bold(centerText('🛡  GUARDIAN 🛡', dashboardWidth)));
+  console.log(chalk.bold(centerText('🛡  sls-mentor 🛡', dashboardWidth)));
   console.log(
     chalk.bold(centerText('--- Your checks results ---', dashboardWidth)),
   );

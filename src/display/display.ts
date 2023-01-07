@@ -86,8 +86,6 @@ export const displayGuordle = (
     .join('');
 
   console.log(
-    chalk.bold(
-      `\nShare your results on twitter: ${guordle} #guardian #guordle`,
-    ),
+    chalk.bold(`\nShare your results on twitter: ${guordle} #sls-mentor`),
   );
 };

@@ -2,9 +2,9 @@ import { readFileSync } from 'fs';
 import keyBy from 'lodash/keyBy';
 import { ChecksResults } from '../../../src/types';
 
-export const guardianResult = keyBy(
+export const slsMentorResult = keyBy(
   JSON.parse(
-    readFileSync('./tests/guardianOutput.json', 'utf8'),
+    readFileSync('./tests/slsMentorOutput.json', 'utf8'),
   ) as ChecksResults,
   'rule.ruleName',
 );

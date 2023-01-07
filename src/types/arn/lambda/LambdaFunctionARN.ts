@@ -1,6 +1,6 @@
-import { GuardianARN } from '../GuardianARN';
+import { CustomARN } from '../CustomARN';
 
-export class LambdaFunctionARN extends GuardianARN {
+export class LambdaFunctionARN extends CustomARN {
   constructor(resource: string) {
     super(resource, 'lambda');
   }

@@ -2,21 +2,18 @@ import {
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
-import { GuardianLevel } from '../../constants/level';
+import { SlsMentorLevel } from '../../constants/level';
 import {
   Category,
+  CustomARN,
   EventBridgeEventBusARN,
   EventBridgeRuleARN,
-  GuardianARN,
   Rule,
   RuleCheckResult,
 } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
-  const eventBuses = GuardianARN.filterArns(
-    resourceArns,
-    EventBridgeEventBusARN,
-  );
+  const eventBuses = CustomARN.filterArns(resourceArns, EventBridgeEventBusARN);
 
   const allEventBridgeRules = (
     await Promise.all(
@@ -62,7 +59,7 @@ const rule: Rule = {
   run,
   fileName: 'specifyDlqOnEventBridgeRule',
   categories: [Category.STABILITY],
-  level: GuardianLevel.Level5,
+  level: SlsMentorLevel.Level5,
 };
 
 export default rule;

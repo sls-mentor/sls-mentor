@@ -3,7 +3,7 @@ import {
   GetDistributionCommand,
 } from '@aws-sdk/client-cloudfront';
 import { cloudFrontClient } from '../../clients';
-import { GuardianARN } from '../../types';
+import { CustomARN } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
 const fetchDistribution = async (
@@ -17,9 +17,9 @@ const fetchDistribution = async (
 };
 
 export const fetchAllDistributions = async (
-  resourceArns: GuardianARN[],
+  resourceArns: CustomARN[],
 ): Promise<Distribution[]> => {
-  const distributionArns = GuardianARN.filterArns(
+  const distributionArns = CustomARN.filterArns(
     resourceArns,
     CloudFrontDistributionARN,
   );

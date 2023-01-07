@@ -1,4 +1,4 @@
-# Running guardian in Your CI
+# Running sls-mentor in Your CI
 
 ## Installation
 
@@ -9,7 +9,7 @@ First, read the installation instruction [here](./running-locally.md).
 The command you want to run in your pipeline is:
 
 ```sh
- yarn guardian -p {YOUR_AWS_PROFILE} -c {OPTIONAL_CLOUDFORMATION_STACKS_NAMES} -t {OPTIONAL_TAGS}
+ yarn sls-mentor -p {YOUR_AWS_PROFILE} -c {OPTIONAL_CLOUDFORMATION_STACKS_NAMES} -t {OPTIONAL_TAGS}
 ```
 
 ⚠️ To make sure it properly works when executed by a pipeline runner:
@@ -23,20 +23,20 @@ Here you can find some CI snippets we are using daily in our projects. We will t
 
 ### Circle CI
 
-This snippet will run Guardian at 01:00 on Sundays.
+This snippet will run sls-mentor at 01:00 on Sundays.
 
 ```yml
 jobs:
-  guardian-checks:
+  sls-mentor-checks:
     docker:
       - image: cimg/node:16.17.0
     steps:
       - checkout # checkout your code
       - setup-aws-cli # setup AWS CLI (export environment variables)
       - install # install your dependencies
-      - run: yarn guardian -p my-aws-profile -c my-stack-1 my-stack-2
+      - run: yarn sls-mentor -p my-aws-profile -c my-stack-1 my-stack-2
 workflows:
-  weekly-guardian-checks:
+  weekly-sls-mentor-checks:
     triggers:
       - schedule:
           cron: '0 1 * * 0' # run at 01:00 on Sundays
@@ -45,15 +45,15 @@ workflows:
               only:
                 - main
     jobs:
-      - guardian-checks
+      - sls-mentor-checks
 ```
 
 ### Gitlab CI
 
-This snippet will run Guardian after merge.
+This snippet will run sls-mentor after merge.
 
 ```yml
-guardian:
+sls-mentor:
   image: node:16.17.0
   stage:
     - post-deploy-test # the stage after your deployment
@@ -62,6 +62,6 @@ guardian:
   needs:
     - install # the job that installs your dependencies
   script:
-    - yarn guardian -r eu-west-1 -c <stacks> # fill in the stacks you want to check
+    - yarn sls-mentor -r eu-west-1 -c <stacks> # fill in the stacks you want to check
   allow_failure: true # allow the job to fail, when you want to run subsequent tests
 ```

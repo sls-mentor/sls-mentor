@@ -3,7 +3,7 @@ import {
   ListVersionsByFunctionCommand,
 } from '@aws-sdk/client-lambda';
 import { lambdaClient } from '../../clients';
-import { GuardianARN, LambdaFunctionARN } from '../../types';
+import { CustomARN, LambdaFunctionARN } from '../../types';
 
 const fetchLambdaVersionsByArn = async (
   arn: LambdaFunctionARN,
@@ -16,9 +16,9 @@ const fetchLambdaVersionsByArn = async (
 };
 
 export const fetchAllLambdaVersions = async (
-  resources: GuardianARN[],
+  resources: CustomARN[],
 ): Promise<{ arn: LambdaFunctionARN; versions: FunctionConfiguration[] }[]> => {
-  const lambdaResources = GuardianARN.filterArns(resources, LambdaFunctionARN);
+  const lambdaResources = CustomARN.filterArns(resources, LambdaFunctionARN);
 
   const lambdaVersions = await Promise.all(
     lambdaResources.map(async arn => ({

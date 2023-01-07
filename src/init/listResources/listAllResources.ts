@@ -1,8 +1,8 @@
 import {
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
+  CustomARN,
   EventBridgeEventBusARN,
-  GuardianARN,
   LambdaFunctionARN,
   S3BucketARN,
   SqsQueueARN,
@@ -16,7 +16,7 @@ import { listLambdaFunctions } from './lambda';
 import { listS3Buckets } from './s3';
 import { listSqsQueues } from './sqs';
 
-export const listAllResources = async (): Promise<GuardianARN[]> => {
+export const listAllResources = async (): Promise<CustomARN[]> => {
   const s3buckets: S3BucketARN[] = await listS3Buckets();
   const lambdaFunctions: LambdaFunctionARN[] = await listLambdaFunctions();
   const sqsQueues: SqsQueueARN[] = await listSqsQueues();

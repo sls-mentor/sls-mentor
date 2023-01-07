@@ -38,7 +38,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: './tests-e2e/package-lock.json'
 
-      - name: Install Guardian dependencies
+      - name: Install sls-mentor dependencies
         run: cd .. && npm install --ignore-scripts
 
       - name: Copy CI env vars
