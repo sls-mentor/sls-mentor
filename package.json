@@ -6,12 +6,12 @@
   },
   "scripts": {
     "test-circular": "depcruise --validate .dependency-cruiser.js .",
-    "dev": "npx ts-node --transpileOnly ./src/index.ts",
+    "dev": "pnpm exec ts-node --transpileOnly ./src/index.ts",
     "clean": "rimraf ./dist/",
-    "build": "npm run clean && tsc",
+    "build": "pnpm run clean && tsc",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "prepare": "npm run build"
+    "prepare": "pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -82,8 +82,8 @@
     "CI"
   ],
   "engines": {
-    "npm": ">=8.15.0",
-    "pnpm": "please-use-npm",
-    "yarn": "please-use-npm"
-  }
+    "npm": "please-use-pnpm",
+    "yarn": "please-use-pnpm"
+  },
+  "packageManager": "pnpm@7.22.0"
 }

@@ -5,34 +5,40 @@ on:
     branches: [master]
   pull_request:
 
+env:
+  CI: true
+  NODE_VERSION: 16
+
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.2.4
         with:
-          node-version: 16
+          version: 7.22.0
       - uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: ~/.pnpm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - run: npm i
-      - run: npm run lint
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+      - run: pnpm run lint
   type:
     name: Type
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.2.4
         with:
-          node-version: 16
+          version: 7.22.0
       - uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: ~/.pnpm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - run: npm i
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
       - name: Typescript checks
         run: tsc --noEmit
 
@@ -41,12 +47,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.2.4
         with:
-          node-version: 16
+          version: 7.22.0
       - uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: ~/.pnpm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - run: npm i
-      - run: npm run test-circular
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+      - run: pnpm run test-circular
