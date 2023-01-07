@@ -1,0 +1,48 @@
+.title-container {
+  display: flex;
+  gap: 0.3em;
+  font-size: 1.5rem;
+  font-family: "InterBold";
+}
+
+.letter {
+  border-radius: 0.3em;
+  width: 2em;
+  height: 2em;
+  color: var(--white);
+  box-shadow: 0.1em 0.1em 0.3em var(--shadow-high-contrast);
+  font-weight: 900;
+}
+
+.letter h3 {
+  transform: translateY(0.25em);
+  text-align: center;
+  transition: transform 1000ms;
+}
+
+.red {
+  background: var(--red);
+}
+
+.green {
+  background: var(--green);
+}
+
+.orange {
+  background: var(--orange);
+}
+
+.letter-container .letter {
+  transition: transform 1000ms, background 500ms ease-in;
+}
+
+.letter-container.on .letter {
+  transform: rotateY(180deg);
+  transition: transform 1000ms, background 500ms ease-in;
+  background: var(--green);
+}
+
+.letter-container.on .letter h3 {
+  transform: translateY(0.25em) rotateY(-180deg);
+  transition: transform 1000ms;
+}

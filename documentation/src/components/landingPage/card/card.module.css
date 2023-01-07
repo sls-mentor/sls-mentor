@@ -1,0 +1,16 @@
+.card {
+  padding: 1em;
+  background: var(--background-secondary);
+  border-radius: .5em;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--grey-high-contrast);
+}
+
+.card h6 {
+  color: var(--ifm-color-primary);
+}

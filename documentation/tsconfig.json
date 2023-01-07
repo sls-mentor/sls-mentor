@@ -1,11 +1,12 @@
 {
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
     "module": "commonjs",
     "target": "es6",
     "esModuleInterop": true,
-    "strict": true
-  },
-  "exclude": ["tests-e2e/**", "documentation/**"]
+    "strict": true,
+    "baseUrl": "."
+  }
 }

@@ -1,0 +1,23 @@
+.contributors {
+  margin-top: 5em;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contributors h4 {
+  margin-bottom: 2em;
+}
+
+.contributors img {
+  height: 7vh;
+}
+
+.contribute {
+  cursor: pointer;
+}
+
+.contribute:hover {
+  text-decoration: underline;
+}
