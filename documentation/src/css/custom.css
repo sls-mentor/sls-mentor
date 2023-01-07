@@ -1,0 +1,167 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+@font-face {
+  font-family: "InterBold";
+  src: url('/static/Inter-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family: "InterSemiBold";
+  src: url('/static/Inter-SemiBold.ttf') format('woff');
+}
+
+@font-face {
+  font-family: "InterRegular";
+  src: url('/static/Inter-Regular.ttf') format('woff');
+}
+
+* {
+  font-family: "InterSemiBold";
+  margin: 0;
+  padding: 0;
+}
+
+.regular {
+  font-family: "InterRegular";
+}
+
+b {
+  font-family: "InterBold";
+}
+
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  overflow: auto !important;
+  height: 100% !important;
+}
+
+footer {
+  padding: 1.5em !important;
+  padding-bottom: 1em !important;
+}
+
+h1 {
+  font-size: 52px;
+  line-height: 1;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+p.small {
+  font-size: 14px;
+}
+
+button {
+  font-size: 14px;
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+:root {
+  --green: #21e900;
+  --red: #ff0000;
+  --orange: #ffb800;
+  --white: #ffffff;
+
+  --ifm-color-primary: #ed774b;
+  --ifm-color-primary-dark: #e75343;
+  --ifm-color-primary-darker: #e75343;
+  --ifm-color-primary-darkest: #e75343;
+  --ifm-color-primary-light: #f19e51;
+  --ifm-color-primary-lighter: #f19e51;
+  --ifm-color-primary-lightest: #f19e51;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --shadow-high-contrast: #00000050;
+  --grey-high-contrast:  #333333;
+  --grey:#555555;
+  --grey-low-contrast:  #777777;
+  --background: #ffffff;
+  --background-secondary: #f3f3f3;
+  --background-third: #e6e6e6;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #f19e51;
+  --ifm-color-primary-dark: #f7ca59;
+  --ifm-color-primary-darker: #f7ca59;
+  --ifm-color-primary-darkest: #f7ca59;
+  --ifm-color-primary-light: #ed774b;
+  --ifm-color-primary-lighter: #ed774b;
+  --ifm-color-primary-lightest: #ed774b;
+  --shadow-high-contrast: #FFFFFF20;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --grey-high-contrast: #cccccc;
+  --grey: #aaaaaa;
+  --grey-low-contrast: #999999;
+  --background: #1B1B1D;
+  --background-secondary: #242526;
+  --background-third: #333333;
+}
+
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+html[data-theme='dark'] .header-github-link:before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+main {
+  padding: 2em 3em 3em 3em;
+}
+
+@media (min-width: 1000px) {
+  main {
+    min-width: 1000px;
+    max-width: 1200px;
+    margin: auto;
+  }
+}

@@ -1,0 +1,61 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.mainSection {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.rightSection {
+  width: 10em;
+}
+
+.title {
+  margin-top: 1em;
+}
+
+.subtitle {
+  color: var(--grey-low-contrast);
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  gap: 1em;
+  margin-top: 3em;
+}
+
+@media (min-width: 1000px) {
+  .mainSection {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .leftSection {
+    display: block;
+    text-align: start;
+    width: 600px;
+  }
+  
+  .rightSection {
+    width: 300px;
+    margin: auto;
+  }
+
+  .cardsContainer {
+    display: flex;
+  }
+}

@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "InterBold";
+  src: url('/static/Inter-Bold.ttf') format('woff');
+}
+@font-face {
+  font-family: "InterSemiBold";
+  src: url('/static/Inter-SemiBold.ttf') format('woff');
+}
+
+
+.buttons-container {
+  display: flex;
+  gap: .7em;
+  margin-top: 3em;
+}
+
+.button {
+  padding: .7em 1.4em;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: .7em;
+  background: none;
+  color: var(--ifm-color-primary);
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--ifm-color-primary);
+  padding: .7em 1.4em;
+  color: var(--background);
+  background: var(--ifm-color-primary);
+}
+
+.button.important {
+  border: 1.5px solid;
+  color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.button.important:hover {
+  border: 1.5px solid;
+  border-color: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary-dark);
+  color: var(--background);
+}

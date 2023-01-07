@@ -1,0 +1,56 @@
+.outerBlock {
+  background: var(--background-secondary);
+  padding: 0.8em;
+  border-radius: 0.7em;
+  margin-top: 2em;
+}
+
+.outerBlock p {
+  margin-bottom: 0;
+}
+
+.innerBlock {
+  background: var(--background);
+  padding: 1em;
+  border-radius: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.command {
+  color: var(--ifm-color-primary);
+}
+
+.command .secondary {
+  color: var(--grey-low-contrast);
+}
+
+.copy {
+  cursor: pointer;
+  border-radius: 10em;
+  padding: 4px;
+  color: var(--ifm-color-primary);
+}
+
+.copy:hover {
+  background: var(--background-secondary);
+}
+
+.copy:active {
+  background: var(--background-third);
+}
+
+.tip {
+  margin-top: 0.7em;
+  color: var(--grey-high-contrast);
+  display: flex;
+  align-items: center;
+}
+
+.tipIcon {
+  cursor: pointer;
+  border-radius: 10em;
+  padding: 4px;
+  color: var(--orange);
+}
