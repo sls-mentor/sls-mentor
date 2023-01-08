@@ -118,7 +118,8 @@ module.exports = {
         project: [
           'tsconfig.json',
           'tests-e2e/tsconfig.json',
-          'documentation/tsconfig.json',
+          'documentation/app/tsconfig.json',
+          'documentation/cloudfront/tsconfig.json',
         ],
       },
       settings: { 'import/resolver': { typescript: {} } },

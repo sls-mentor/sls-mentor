@@ -1,0 +1,82 @@
+name: Deploy Front 🖥
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
+env:
+  CI: true
+  NODE_VERSION: 16
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-front:
+    name: Build Front ⚙️
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./documentation/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Install FrontEnd dependencies
+        run: pnpm i
+
+      - name: Build app
+        run: pnpm run build
+      - name: Create build artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifact
+          path: ./documentation/app/build
+
+  deploy-front:
+    needs: build-front
+    name: Deploy Front 🖥
+    environment: deploy_front
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./documentation/cloudfront
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: build-artifact
+          path: ./documentation/app/build
+
+      - name: Copy CI env vars
+        run: cp .env.ci .env
+
+      - name: Install Cloudfront dependencies
+        run: pnpm i
+
+      - name: Deploy app
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: pnpm run deploy

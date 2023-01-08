@@ -57,3 +57,24 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install
       - run: pnpm run test-circular
+
+  test-build-front:
+    name: Test Build Front ⚙️
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./documentation/app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Install FrontEnd dependencies
+        run: pnpm i
+
+      - name: Build app
+        run: pnpm run build
