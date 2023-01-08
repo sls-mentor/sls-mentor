@@ -1,6 +1,7 @@
 import Layout from '@theme/Layout';
 import React from 'react';
 import { Buttons, Card, Contributors, Title } from '../components';
+import { SponsoredByKumo } from '../components/landingPage/sponsoredByKumo';
 
 import styles from './index.module.css';
 
@@ -47,6 +48,7 @@ const Home = (): JSX.Element => (
       <section>
         <Contributors />
       </section>
+      <SponsoredByKumo />
     </main>
   </Layout>
 );
