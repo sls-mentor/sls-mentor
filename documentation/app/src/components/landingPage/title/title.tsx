@@ -11,7 +11,7 @@ const letters = [
   { letter: 'N', color: 'orange' },
   { letter: 'T', color: 'red' },
   { letter: 'O', color: 'green' },
-  { letter: 'R', color: 'green' },
+  { letter: 'R', color: 'orange' },
 ];
 
 export const Title = (): JSX.Element => {
