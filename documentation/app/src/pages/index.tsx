@@ -1,7 +1,12 @@
 import Layout from '@theme/Layout';
 import React from 'react';
-import { Buttons, Card, Contributors, Title } from '../components';
-import { SponsoredByKumo } from '../components/landingPage/sponsoredByKumo';
+import {
+  Buttons,
+  Card,
+  Contributors,
+  SponsoredByKumo,
+  Title,
+} from '../components';
 
 import styles from './index.module.css';
 

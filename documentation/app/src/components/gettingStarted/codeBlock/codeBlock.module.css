@@ -1,7 +1,7 @@
 .outerBlock {
   background: var(--background-secondary);
-  padding: 0.8em;
-  border-radius: 0.7em;
+  padding: 1em;
+  border-radius: var(--radius-3);
   margin-top: 2em;
 }
 
@@ -12,7 +12,7 @@
 .innerBlock {
   background: var(--background);
   padding: 1em;
-  border-radius: 0.5em;
+  border-radius: var(--radius-2);
   display: flex;
   justify-content: space-between;
   align-items: center;

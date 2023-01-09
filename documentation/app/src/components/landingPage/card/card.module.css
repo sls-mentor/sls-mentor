@@ -1,7 +1,7 @@
 .card {
   padding: 1em;
   background: var(--background-secondary);
-  border-radius: .5em;
+  border-radius: var(--radius-2);
   flex-basis: 0;
   flex-grow: 1;
 }
