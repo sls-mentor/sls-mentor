@@ -1,6 +1,6 @@
-import { CodeBlock } from '@site/src/components';
 import Layout from '@theme/Layout';
 import React from 'react';
+import { CodeBlock, Dashboard } from '../../components';
 import styles from './index.module.css';
 
 const GettingStarted = (): JSX.Element => (
@@ -14,6 +14,8 @@ const GettingStarted = (): JSX.Element => (
         commandSecondary="@latest"
         tip="Encounter an error ? Try specifying an AWS profile with -p or a region with -r"
       />
+      <h4 className={styles.subtitle}>Reading the results</h4>
+      <Dashboard />
     </main>
   </Layout>
 );

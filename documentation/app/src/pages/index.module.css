@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 .leftSection {
@@ -34,7 +34,7 @@
   grid-template-columns: 1fr 1fr;
   width: 100%;
   gap: 1em;
-  margin-top: 3em;
+  margin-top: 4em;
 }
 
 @media (min-width: 1000px) {

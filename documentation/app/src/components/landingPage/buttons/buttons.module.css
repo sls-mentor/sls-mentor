@@ -1,23 +1,22 @@
 @font-face {
-  font-family: "InterBold";
+  font-family: 'InterBold';
   src: url('/static/Inter-Bold.ttf') format('woff');
 }
 @font-face {
-  font-family: "InterSemiBold";
+  font-family: 'InterSemiBold';
   src: url('/static/Inter-SemiBold.ttf') format('woff');
 }
 
-
 .buttons-container {
   display: flex;
-  gap: .7em;
+  gap: 0.7em;
   margin-top: 3em;
 }
 
 .button {
-  padding: .7em 1.4em;
+  padding: 0.7em 1.4em;
   border: 1px solid var(--ifm-color-primary);
-  border-radius: .7em;
+  border-radius: var(--radius-3);
   background: none;
   color: var(--ifm-color-primary);
   cursor: pointer;
@@ -25,7 +24,7 @@
 
 .button:hover {
   border-color: var(--ifm-color-primary);
-  padding: .7em 1.4em;
+  padding: 0.7em 1.4em;
   color: var(--background);
   background: var(--ifm-color-primary);
 }

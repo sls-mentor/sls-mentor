@@ -2,11 +2,11 @@
   display: flex;
   gap: 0.3em;
   font-size: 1.5rem;
-  font-family: "InterBold";
+  font-family: 'InterBold';
 }
 
 .letter {
-  border-radius: 0.3em;
+  border-radius: var(--radius-1);
   width: 2em;
   height: 2em;
   color: var(--white);

@@ -7,31 +7,31 @@
 /* You can override the default Infima variables here. */
 
 @font-face {
-  font-family: "InterBold";
+  font-family: 'InterBold';
   src: url('/static/Inter-Bold.ttf') format('woff');
 }
 @font-face {
-  font-family: "InterSemiBold";
+  font-family: 'InterSemiBold';
   src: url('/static/Inter-SemiBold.ttf') format('woff');
 }
 
 @font-face {
-  font-family: "InterRegular";
+  font-family: 'InterRegular';
   src: url('/static/Inter-Regular.ttf') format('woff');
 }
 
 * {
-  font-family: "InterSemiBold";
+  font-family: 'InterSemiBold';
   margin: 0;
   padding: 0;
 }
 
 .regular {
-  font-family: "InterRegular";
+  font-family: 'InterRegular';
 }
 
 b {
-  font-family: "InterBold";
+  font-family: 'InterBold';
 }
 
 html {
@@ -94,9 +94,13 @@ button {
 }
 
 :root {
+  --radius-1: 0.3em;
+  --radius-2: 0.5em;
+  --radius-3: 0.7em;
+
   --green: #21e900;
   --red: #ff0000;
-  --orange: #ffb800;
+  --orange: #ffbb00;
   --white: #ffffff;
 
   --ifm-color-primary: #ed774b;
@@ -109,9 +113,9 @@ button {
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --shadow-high-contrast: #00000050;
-  --grey-high-contrast:  #333333;
-  --grey:#555555;
-  --grey-low-contrast:  #777777;
+  --grey-high-contrast: #333333;
+  --grey: #555555;
+  --grey-low-contrast: #777777;
   --background: #ffffff;
   --background-secondary: #f3f3f3;
   --background-third: #e6e6e6;
@@ -126,12 +130,12 @@ button {
   --ifm-color-primary-light: #ed774b;
   --ifm-color-primary-lighter: #ed774b;
   --ifm-color-primary-lightest: #ed774b;
-  --shadow-high-contrast: #FFFFFF20;
+  --shadow-high-contrast: #ffffff20;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --grey-high-contrast: #cccccc;
   --grey: #aaaaaa;
   --grey-low-contrast: #999999;
-  --background: #1B1B1D;
+  --background: #1b1b1d;
   --background-secondary: #242526;
   --background-third: #333333;
 }
