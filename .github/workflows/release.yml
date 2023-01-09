@@ -25,6 +25,6 @@ jobs:
             - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
             
             - run: pnpm version $RELEASE_VERSION --no-git-tag-version
-            - run: pnpm publish --access public
+            - run: pnpm publish --access public --no-git-checks
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
