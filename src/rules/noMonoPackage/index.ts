@@ -62,7 +62,7 @@ const rule: Rule = {
   errorMessage: 'The function code packaged with others',
   run,
   fileName: 'noMonoPackage',
-  categories: [Category.SECURITY, Category.STABILITY],
+  categories: [Category.STABILITY],
   level: SlsMentorLevel.Level1,
 };
 
