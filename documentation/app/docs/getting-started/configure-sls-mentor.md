@@ -44,3 +44,18 @@ The rule name should be one of the following list:
 - underMaxMemory
 - useArm
 - useIntelligentTiering
+
+For example you can add the following:
+
+```[json]
+{
+    rules: {
+        noSharedIamRoles: {
+            ignoredResources: [
+                'arn:aws:lambda:us-west-2:123456789012:function:my-function',
+                'arn:aws:lambda:us-west-1:.*'
+             ]
+        }
+    }
+}
+```
