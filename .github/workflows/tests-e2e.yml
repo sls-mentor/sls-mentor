@@ -19,7 +19,7 @@ env:
 defaults:
   run:
     shell: bash
-    working-directory: ./tests-e2e
+    working-directory: ./apps/tests
 
 jobs:
   test-e2e:

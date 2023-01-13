@@ -4,6 +4,7 @@ on:
   push:
     branches: [master]
   pull_request:
+    types: [opened, synchronize, reopened]
 
 env:
   CI: true
@@ -40,7 +41,7 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install
       - name: Typescript checks
-        run: tsc --noEmit
+        run: pnpm run typecheck
 
   circular:
     name: Circular
@@ -63,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./documentation/app
+        working-directory: ./apps/documentation
     steps:
       - name: Checkout
         uses: actions/checkout@v2

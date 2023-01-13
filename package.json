@@ -1,17 +1,11 @@
 {
-  "name": "sls-mentor",
+  "name": "@sls-mentor/root",
   "description": "Audit tool for AWS serverless architectures",
-  "bin": {
-    "sls-mentor": "./dist/index.js"
-  },
   "scripts": {
-    "test-circular": "depcruise --validate .dependency-cruiser.js .",
-    "dev": "pnpm exec ts-node --transpileOnly ./src/index.ts",
-    "clean": "rimraf ./dist/",
-    "build": "pnpm run clean && tsc",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "prepare": "pnpm run build"
+    "build": "pnpm -- turbo run build",
+    "typecheck": "pnpm -- turbo run typecheck",
+    "lint": "pnpm -- turbo run lint",
+    "test-circular": "depcruise --validate .dependency-cruiser.js ."
   },
   "repository": {
     "type": "git",
@@ -23,36 +17,7 @@
     "url": "https://github.com/sls-mentor/sls-mentor/issues"
   },
   "homepage": "https://github.com/sls-mentor/sls-mentor#readme",
-  "files": [
-    "dist/**/*",
-    "!dist/**/*.test.js"
-  ],
-  "dependencies": {
-    "@aws-sdk/client-cloudformation": "^3.226.0",
-    "@aws-sdk/client-cloudfront": "^3.226.0",
-    "@aws-sdk/client-cloudwatch-logs": "^3.226.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.226.0",
-    "@aws-sdk/client-eventbridge": "^3.226.0",
-    "@aws-sdk/client-lambda": "^3.226.0",
-    "@aws-sdk/client-rds": "^3.237.0",
-    "@aws-sdk/client-resource-groups-tagging-api": "^3.226.0",
-    "@aws-sdk/client-s3": "^3.226.0",
-    "@aws-sdk/client-sqs": "^3.226.0",
-    "@aws-sdk/client-sts": "^3.226.0",
-    "@aws-sdk/middleware-retry": "^3.226.0",
-    "@aws-sdk/types": "^3.226.0",
-    "@aws-sdk/util-arn-parser": "3.208.0",
-    "@aws-sdk/util-middleware": "^3.226.0",
-    "chalk": "^4.1.2",
-    "cli-progress": "^3.11.2",
-    "cli-select": "^1.1.2",
-    "commander": "^9.2.0",
-    "lodash": "^4.17.21",
-    "object-hash": "^3.0.0",
-    "throttled-queue": "^2.1.4"
-  },
   "devDependencies": {
-    "@aws-sdk/types": "^3.226.0",
     "@types/cli-progress": "^3.11.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "18.11.9",
@@ -70,6 +35,7 @@
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "ts-node": "^10.7.0",
+    "turbo": "^1.7.0",
     "typescript": "^4.6.4"
   },
   "keywords": [
@@ -84,7 +50,8 @@
   ],
   "engines": {
     "npm": "please-use-pnpm",
-    "yarn": "please-use-pnpm"
+    "yarn": "please-use-pnpm",
+    "node": ">=14.16"
   },
   "packageManager": "pnpm@7.22.0"
 }

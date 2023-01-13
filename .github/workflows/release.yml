@@ -11,6 +11,10 @@ env:
 
 jobs:
   release:
+    name: Release to NPM
+    defaults:
+      run:
+        working-directory: ./packages/sls-mentor
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

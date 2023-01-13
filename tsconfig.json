@@ -1,11 +1,10 @@
 {
-  "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
-    "module": "commonjs",
-    "target": "es6",
-    "esModuleInterop": true,
-    "strict": true
-  },
-  "exclude": ["tests-e2e/**", "documentation/**"]
+  "extends": "./tsconfig.options.json",
+  "files": [],
+  "references": [
+    { "path": "./packages/sls-mentor" },
+    { "path": "./apps/documentation" },
+    { "path": "./apps/cloudfront" },
+    { "path": "./apps/tests" }
+  ]
 }
