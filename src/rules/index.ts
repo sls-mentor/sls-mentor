@@ -1,4 +1,5 @@
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
+import AutoscaleRdsInstanceEnabled from './autoscaleRdsInstanceEnabled';
 import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
@@ -36,4 +37,5 @@ export {
   ServerSideEncryptionEnabled,
   NoProvisionedConcurrency,
   S3OnlyAllowHTTPS,
+  AutoscaleRdsInstanceEnabled,
 };
