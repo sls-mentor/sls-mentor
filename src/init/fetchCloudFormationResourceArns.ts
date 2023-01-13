@@ -9,6 +9,7 @@ import {
   CustomARN,
   EventBridgeEventBusARN,
   LambdaFunctionARN,
+  RdsInstanceARN,
   S3BucketARN,
   SqsQueueARN,
 } from '../types';
@@ -37,6 +38,8 @@ export const createARNFromCloudFormation = ({
       return CloudwatchLogGroupARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::Events::EventBus':
       return EventBridgeEventBusARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::RDS::DBInstance':
+      return RdsInstanceARN.fromRdsInstanceName(PhysicalResourceId);
     case 'AWS::CloudFront::Distribution':
       return CloudFrontDistributionARN.fromPhysicalId(PhysicalResourceId);
     default:
