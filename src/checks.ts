@@ -9,6 +9,7 @@ import {
   noDefaultMemory,
   NoMaxTimeout,
   NoMonoPackage,
+  NoProvisionedConcurrency,
   NoSharedIamRoles,
   S3OnlyAllowHTTPS,
   ServerSideEncryptionEnabled,
@@ -52,6 +53,7 @@ export const runChecks = async (
     SpecifyDlqOnEventBridgeRule,
     CloudFrontSecurityHeaders,
     S3OnlyAllowHTTPS,
+    NoProvisionedConcurrency,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(

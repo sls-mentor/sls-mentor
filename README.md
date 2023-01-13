@@ -86,6 +86,7 @@
   - [`Lambda: No default memory`](./src/rules/noDefaultMemory/noDefaultMemory.md): checks that you have consciously configured your Lambda functions' memory size.
   - [`Lambda: Under maximum memory`](./src/rules/underMaxMemory/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
   - [`Lambda: No maximum timeout`](./src/rules/noMaxTimeout/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
+  - [`Lambda: No provisioned concurrency`](./src/rules/noProvisionedConcurrency/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./src/rules/useIntelligentTiering/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
   - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that a server-side encryption soution is enabled on each S3 bucket.
