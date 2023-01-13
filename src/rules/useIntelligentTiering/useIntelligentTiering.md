@@ -11,11 +11,16 @@ Create an Intelligent-Tiering configuration either with your favorite tool. The 
   "Type": "AWS::S3::Bucket",
   "Properties": {
     "BucketName": "my-bucket",
-    "IntelligentTieringConfigurations": [
+    "LifecycleConfiguration": [
       {
-        "Id": "my-id",
+        "Id": "intelligent-tiering",
         "Status": "Enabled",
-        "Tierings": ["ARCHIVE_ACCESS", " DEEP_ARCHIVE_ACCESS"]
+        "Transitions": [
+          {
+            "TransitionInDays": 0,
+            "StorageClass": "INTELLIGENT_TIERING"
+          }
+        ]
       }
     ]
   }
