@@ -1,18 +1,26 @@
-import { IntelligentTieringConfiguration } from '@aws-sdk/client-s3';
-import { fetchAllS3BucketIntelligentTieringConfigurations } from '../../aws-sdk-helpers';
+import { LifecycleRule } from '@aws-sdk/client-s3';
+import { fetchAllS3BucketLifeCycleRules } from '../../aws-sdk-helpers';
 import { SlsMentorLevel } from '../../constants/level';
 import { Category, Rule } from '../../types';
 
-const hasIntelligentTiering = (
-  configuration: IntelligentTieringConfiguration[] | undefined,
-): boolean => configuration?.some(item => item.Status === 'Enabled') ?? false;
+const hasIntelligentTiering = (rules: LifecycleRule[] | undefined): boolean =>
+  rules?.some(
+    item =>
+      item.Status === 'Enabled' &&
+      item.Transitions?.some(
+        transition =>
+          transition.StorageClass === 'INTELLIGENT_TIERING' &&
+          transition.Days === 0,
+      ),
+  ) ?? false;
 
 const run: Rule['run'] = async resourceArns => {
-  const s3BucketConfigurations =
-    await fetchAllS3BucketIntelligentTieringConfigurations(resourceArns);
-  const results = s3BucketConfigurations.map(({ arn, configuration }) => ({
+  const s3BucketLifecycleRules = await fetchAllS3BucketLifeCycleRules(
+    resourceArns,
+  );
+  const results = s3BucketLifecycleRules.map(({ arn, rules }) => ({
     arn,
-    success: hasIntelligentTiering(configuration),
+    success: hasIntelligentTiering(rules),
   }));
 
   return { results };
