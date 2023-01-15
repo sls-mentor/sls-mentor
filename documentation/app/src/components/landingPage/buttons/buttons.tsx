@@ -10,10 +10,16 @@ export const Buttons = (): JSX.Element => (
     >
       <b>Start analysing!</b>
     </button>
-    <button className={styles.button}>
+    <button
+      onClick={() => (window.location.href = 'slsMentorLevels')}
+      className={styles.button}
+    >
       <b>A step-by-step path</b>
     </button>
-    <button className={styles.button}>
+    <button
+      onClick={() => (window.location.href = 'slsMentorCategories')}
+      className={styles.button}
+    >
       <b>What do we assess ?</b>
     </button>
   </div>

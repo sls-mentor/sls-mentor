@@ -75,8 +75,7 @@ const config = {
             label: 'Docs',
           },
           {
-            type: 'doc',
-            docId: 'intro',
+            to: 'whySlsMentor',
             position: 'right',
             label: 'Why sls-mentor ?',
           },
