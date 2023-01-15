@@ -8,6 +8,7 @@ import {
 import clsx from 'clsx';
 import React from 'react';
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './dashboard.module.css';
 
 const categories = {
@@ -83,7 +84,7 @@ export const Dashboard = (): JSX.Element => {
             </div>
             {selectedCategory === undefined ? (
               <div className={styles.detailsPlaceholder}>
-                <img src="img/sls-mentor.svg" />
+                <img src={useBaseUrl('img/sls-mentor.svg')} />
               </div>
             ) : (
               <div className={styles.details}>
