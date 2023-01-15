@@ -34,7 +34,7 @@ const rule: Rule = {
   run,
   fileName: 'autoscaleRdsInstanceEnabled',
   categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level1,
+  level: SlsMentorLevel.Level3,
 };
 
 export default rule;
