@@ -4,7 +4,7 @@ import { CodeBlock, Dashboard } from '../../components';
 import styles from './index.module.css';
 
 const GettingStarted = (): JSX.Element => (
-  <Layout title="Getting started" description="Getting with sls-mentor">
+  <Layout title="Getting started" description="Getting started with sls-mentor">
     <main>
       <h2>Getting started</h2>
       <h4 className={styles.subtitle}>A single command to analyze your app</h4>

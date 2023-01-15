@@ -1,3 +1,4 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import React from 'react';
 import {
@@ -27,7 +28,7 @@ const Home = (): JSX.Element => (
           <Buttons />
         </div>
         <div className={styles.rightSection}>
-          <img src="img/sls-mentor.svg" />
+          <img src={useBaseUrl('/img/sls-mentor.svg')} />
         </div>
       </section>
       <section>
