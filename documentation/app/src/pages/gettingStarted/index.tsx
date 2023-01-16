@@ -1,6 +1,6 @@
 import Layout from '@theme/Layout';
 import React from 'react';
-import { CodeBlock, Dashboard } from '../../components';
+import { CodeBlock, Dashboard, RuleByRule } from '../../components';
 import styles from './index.module.css';
 
 const GettingStarted = (): JSX.Element => (
@@ -16,6 +16,7 @@ const GettingStarted = (): JSX.Element => (
       />
       <h4 className={styles.subtitle}>Reading the results</h4>
       <Dashboard />
+      <RuleByRule />
     </main>
   </Layout>
 );

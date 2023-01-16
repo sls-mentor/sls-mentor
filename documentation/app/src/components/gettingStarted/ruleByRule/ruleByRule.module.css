@@ -1,0 +1,31 @@
+.container {
+  margin-top: 2em;
+  background: var(--background-secondary);
+  border-radius: var(--radius-3);
+  padding: 1em;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.innerCard {
+  background: var(--background);
+  border-radius: var(--radius-2);
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1000px) {
+  .innerContainer {
+    flex-direction: row;
+  }
+
+  .innerCard {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}

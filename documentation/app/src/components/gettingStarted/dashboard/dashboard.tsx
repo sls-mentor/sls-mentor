@@ -14,7 +14,7 @@ import styles from './dashboard.module.css';
 const categories = {
   'Green IT': {
     details:
-      'We help you leverage serverless technologies full potential to reduce you footprint.',
+      'We help you leverage serverless technologies full potential to reduce your footprint.',
     Icon: <UilTrees size={16} />,
     defaultScore: '30%',
     defaultColor: 'red',
