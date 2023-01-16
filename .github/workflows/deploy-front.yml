@@ -74,9 +74,11 @@ jobs:
       - name: Install Cloudfront dependencies
         run: pnpm i
 
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::885330630487:role/github-action
+          aws-region: eu-west-1
+
       - name: Deploy app
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: pnpm run deploy

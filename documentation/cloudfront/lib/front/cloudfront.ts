@@ -6,11 +6,11 @@ import { ARecord, HostedZone, RecordTarget } from 'aws-cdk-lib/aws-route53';
 import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
 import { IBucket } from 'aws-cdk-lib/aws-s3';
 
-const HOSTED_ZONE_ID = 'Z00145332XE1L4116FZ7M';
-const HOSTED_ZONE_NAME = 'pchol.fr';
-const DOMAIN_NAMES = ['www.sls-mentor.pchol.fr', 'sls-mentor.pchol.fr'];
+const HOSTED_ZONE_ID = 'Z075028229G4FKEZYST8V';
+const HOSTED_ZONE_NAME = 'sls-mentor.dev';
+const DOMAIN_NAMES = ['www.sls-mentor.dev', 'sls-mentor.dev'];
 const US_EAST_CERTIFICATE_ARN =
-  'arn:aws:acm:us-east-1:361870595792:certificate/a7e52ce6-fff3-41b2-9346-7aa709852d39';
+  'arn:aws:acm:us-east-1:885330630487:certificate/dcae66d1-8dea-40be-ba86-5eb8944bb0a7';
 
 export const setupCloudfront = (stack: Stack, bucket: IBucket): void => {
   const distribution = new Distribution(
