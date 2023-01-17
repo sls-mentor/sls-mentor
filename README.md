@@ -2,7 +2,7 @@
   <h1>
     <br/>
     <br/>
-    🛡
+    <img src="documentation/app/static/img/sls-mentor.svg" height="48px" />
     <br />
     sls-mentor
     <br />
@@ -25,8 +25,9 @@
    <p align="right"> Anonymous on Tumblr - 2012 </p>
    <br/>
   <p>
-    <b>sls-mentor</b> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><b>sls-mentor</b> solves problems before they occur, and optimizes your app’s performances and costs.
+    <a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> solves problems before they occur, and optimizes your app’s performances and costs.
   </p>
+  <p>Check our <a href="https://www.sls-mentor.dev">website</a> for more information! </p>
 </div>
 <br />
 <br />
@@ -89,18 +90,26 @@
   - [`Lambda: No provisioned concurrency`](./src/rules/noProvisionedConcurrency/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./src/rules/useIntelligentTiering/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
-  - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that a server-side encryption soution is enabled on each S3 bucket.
+  - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that server-side encryption is enabled on each S3 bucket.
+  - [`S3: Use HTTPS requests only`](./src/rules/s3OnlyAllowHTTPS/s3OnlyAllowHTTPS.md): checks that users access buckets objects using SSL.
+- AWS SQS:
+  - [`SQS: Specify a DLQ on queues`](./src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md): checks that SQS queues have a dead-letter-queue specified in case of failure
 - AWS Cognito:
   - [`Cognito: Sign-in case insensitivity`](./src/rules/cognitoSignInCaseInsensitivity/cognitoSignInCaseInsensitivity.md): checks that your Cognito user pool is insensitive to user name case.
 - AWS CloudWatch:
   - [`CloudWatch Log Groups: Defined logs retention duration`](./src/rules/definedLogsRetentionDuration/definedLogsRetentionDuration.md): checks that each of your Log Groups has a defined log retention duration.
 - AWS EventBridge:
   - [`EventBridge: Specified dead letter queue`](./src/rules/specifyDlqOnEventBridgeRule/specifyDlqOnEventBridgeRule.md): checks that each Event Bridge Rule target has a dead letter queue.
+- AWS CloudFront:
+  - [`CloudFront: Enable security headers`](./src/rules/cloudFrontSecurityHeaders/cloudFrontSecurityHeaders.md): checks that each CloudFront distributions have basic security headers enabled.
+- AWS RDS:
+  - [`RDS: Enable instance autoscaling`](./src/rules/autoscaleRdsInstanceEnabled/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
 
 <p>Check out our articles, to find out more:</p>
 
-- <a href='https://dev.to/kumo/that-one-aws-lambda-hidden-configuration-that-will-make-you-a-hero-guardian-is-watching-over-you-5gi7'><b>That one AWS Lambda hidden configuration that will make you a Hero - Guardian is watching over you</b></a> by <a href='https://twitter.com/Gozinebgo'>Zineb</a>
-- <a href='https://dev.to/kumo/aws-lambda-versions-time-to-clean-up-guardian-is-watching-over-you-jkd'><b>AWS Lambda Versions : Time to clean up! - Guardian is watching over you</b></a> by <a href='https://twitter.com/PierreChollet22'>Pierre</a>
+- <a href='https://dev.to/kumo/guardian-100-available-now-your-free-open-source-audit-tool-for-aws-architectures-54cd'><b>sls-mentor 1.0.0 available now! Your Free Open Source audit tool for AWS architectures!</b></a> by <a href='https://twitter.com/eloiatheodo'>Éloi</a>
+- <a href='https://dev.to/kumo/that-one-aws-lambda-hidden-configuration-that-will-make-you-a-hero-guardian-is-watching-over-you-5gi7'><b>That one AWS Lambda hidden configuration that will make you a Hero - sls-mentor is watching over you</b></a> by <a href='https://twitter.com/Gozinebgo'>Zineb</a>
+- <a href='https://dev.to/kumo/aws-lambda-versions-time-to-clean-up-guardian-is-watching-over-you-jkd'><b>AWS Lambda Versions : Time to clean up! - sls-mentor is watching over you</b></a> by <a href='https://twitter.com/PierreChollet22'>Pierre</a>
 - <a href='https://dev.to/kumo/aws-lambda-101-shave-that-bundle-down-48c7'><b>AWS Lambda 101: Shave That Bundle Down</b></a> by <a href='https://twitter.com/eloiatheodo'>Éloi</a>
 
 <br />
@@ -117,7 +126,7 @@
 <div align="center">
   <h2>Contributors ❤️</h2>
   <br />
-  <a href="https://github.com/kumo-by-theodo/guardian/graphs/contributors">
+  <a href="https://github.com/sls-mentor/sls-mentor/graphs/contributors">
     <img src="https://contrib.rocks/image?repo=sls-mentor/sls-mentor" />
   </a>
   <a href="https://github.com/aleios-cloud/sls-dev-tools/graphs/contributors">
@@ -125,7 +134,7 @@
   </a>
   <br/>
   <br/>
-  <h4>Your contributions are very welcome, feel free to add new rules to Guardian !</h4>
+  <h4>Your contributions are very welcome, feel free to add new rules to sls-mentor !</h4>
   <br />
   <br />
 </div>
