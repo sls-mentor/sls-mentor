@@ -40,8 +40,7 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Specifying a DLQ on SQS',
-  errorMessage:
-    'The queue does not have a specified Dead Letter Queue. See (https://github.com/sls-mentor/sls-mentor/blob/master/src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md)',
+  errorMessage: 'The queue does not have a specified Dead Letter Queue.',
   run,
   fileName: 'specifyDlqOnSqs',
   categories: [Category.STABILITY],
