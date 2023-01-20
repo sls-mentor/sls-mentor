@@ -29,7 +29,6 @@
   <p>
     <a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> solves problems before they occur, and optimizes your app’s performances and costs.
   </p>
-  <p>Check our <a href="https://www.sls-mentor.dev">website</a> for more information! </p>
 </div>
 <br />
 <br />
