@@ -2,7 +2,7 @@
   <h1>
     <br/>
     <br/>
-    <img src="documentation/app/static/img/sls-mentor.svg" height="48px" />
+    <img src="apps/documentation/static/img/sls-mentor.svg" height="48px" />
     <br />
     sls-mentor
     <br />
