@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "esModuleInterop": true,
+    "strict": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "Node16"
+    },
+    "require": ["tsconfig-paths/register"]
+  }
+}

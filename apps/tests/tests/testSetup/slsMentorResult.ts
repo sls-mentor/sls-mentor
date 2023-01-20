@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import keyBy from 'lodash/keyBy';
-import { ChecksResults } from '../../../src/types';
+import { ChecksResults } from '../../../../packages/sls-mentor/src/types';
 
 export const slsMentorResult = keyBy(
   JSON.parse(

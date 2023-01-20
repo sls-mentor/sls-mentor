@@ -13,7 +13,7 @@ export const setupS3 = (stack: Stack): IBucket => {
   });
 
   new BucketDeployment(stack, STATIC_WEBSITE_DEPLOYMENT_NAME, {
-    sources: [Source.asset('../app/build')],
+    sources: [Source.asset('../documentation/build')],
     destinationBucket: bucket,
   });
 

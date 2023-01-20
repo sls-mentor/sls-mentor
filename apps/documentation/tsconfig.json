@@ -1,12 +1,18 @@
 {
   "extends": "@tsconfig/docusaurus/tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "dist",
     "module": "commonjs",
     "target": "es6",
     "esModuleInterop": true,
     "strict": true,
-    "baseUrl": "."
-  }
+    "baseUrl": "src"
+  },
+  "exclude": [
+    "babel.config.js",
+    "docusaurus.config.js",
+    "sidebars.js",
+    "docs/*",
+    "blog/*"
+  ]
 }

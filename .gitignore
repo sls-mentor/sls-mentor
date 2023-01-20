@@ -3,3 +3,5 @@ node_modules/
 yarn.lock
 sls-mentor.json
 .tool-versions
+.turbo
+.DS_Store
