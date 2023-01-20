@@ -61,7 +61,7 @@ const sidebars = {
             },
             {
               type: 'category',
-              label: 'cognito',
+              label: 'Cognito',
               items: ['rules/cognitoSignInCaseInsensitivity'],
             },
             {
@@ -78,6 +78,13 @@ const sidebars = {
               type: 'category',
               label: 'RDS',
               items: ['rules/autoscaleRdsInstanceEnabled'],
+            },
+            {
+              type: 'category',
+              label: 'Backup',
+              items: [
+                'rules/definedBackupRetentionPeriodOrTransitionToColdStorage',
+              ],
             },
           ],
         },
@@ -98,6 +105,7 @@ const sidebars = {
                 'rules/noProvisionedConcurrency',
                 'rules/underMaxMemory',
                 'rules/useIntelligentTiering',
+                'rules/definedBackupRetentionPeriodOrTransitionToColdStorage',
               ],
             },
             {
@@ -137,6 +145,7 @@ const sidebars = {
                 'rules/underMaxMemory',
                 'rules/useArm',
                 'rules/useIntelligentTiering',
+                'rules/definedBackupRetentionPeriodOrTransitionToColdStorage',
               ],
             },
             {
@@ -179,6 +188,7 @@ const sidebars = {
                 'rules/definedLogsRetentionDuration',
                 'rules/autoscaleRdsInstanceEnabled',
                 'rules/noProvisionedConcurrency',
+                'rules/definedBackupRetentionPeriodOrTransitionToColdStorage',
               ],
             },
             {

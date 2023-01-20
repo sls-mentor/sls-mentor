@@ -4,6 +4,7 @@ import {
   AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
   CognitoSignInCaseInsensitivity,
+  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
@@ -56,6 +57,7 @@ export const runChecks = async (
     S3OnlyAllowHTTPS,
     NoProvisionedConcurrency,
     AutoscaleRdsInstanceEnabled,
+    DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(

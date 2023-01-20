@@ -2,6 +2,7 @@ import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import AutoscaleRdsInstanceEnabled from './autoscaleRdsInstanceEnabled';
 import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
+import DefinedBackupRetentionPeriodOrTransitionToColdStorage from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
@@ -38,4 +39,5 @@ export {
   NoProvisionedConcurrency,
   S3OnlyAllowHTTPS,
   AutoscaleRdsInstanceEnabled,
+  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
 };

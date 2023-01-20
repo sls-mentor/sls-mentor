@@ -104,6 +104,8 @@
   - [`CloudFront: Enable security headers`](./src/rules/cloudFrontSecurityHeaders/cloudFrontSecurityHeaders.md): checks that each CloudFront distributions have basic security headers enabled.
 - AWS RDS:
   - [`RDS: Enable instance autoscaling`](./src/rules/autoscaleRdsInstanceEnabled/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
+- AWS Backup:
+  - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./src/rules/definedBackupRetentionPeriodOrTransitionToColdStorage): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
 
 <p>Check out our articles, to find out more:</p>
 

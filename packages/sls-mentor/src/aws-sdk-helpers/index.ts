@@ -1,3 +1,4 @@
+export * from './backupPlan';
 export * from './cloudWatchLogs';
 export * from './eventBridge';
 export * from './lambda';
