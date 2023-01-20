@@ -1,3 +1,5 @@
+# Intro
+
 <div align="center">
   <h1>
     <br/>
@@ -27,7 +29,6 @@
   <p>
     <a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> is a tool that analyzes the configuration of your AWS resources against best practice rules. <br /><a href="https://www.sls-mentor.dev"><b>sls-mentor</b></a> solves problems before they occur, and optimizes your app’s performances and costs.
   </p>
-  <p>Check our <a href="https://www.sls-mentor.dev">website</a> for more information! </p>
 </div>
 <br />
 <br />
@@ -54,7 +55,7 @@
   <p>Specify an AWS profile or an AWS region using -p and -r options</p>
   <pre>yarn sls-mentor -p YOUR_AWS_PROFILE -c YOUR_AWS_STACK_NAME -r YOUR_AWS_REGION</pre>
 
-  <p><a href="./running-locally">📚 More information about local runs of sls-mentor</a></p>
+  <p><a href="./set-up-sls-mentor/run-locally">📚 More information about local runs of sls-mentor</a></p>
   <br />
 </div>
 <br />
@@ -70,7 +71,7 @@
 
 <li>Ensure that the CI/CD runner has an AWS profile configured, with ReadOnlyAccess privileges</li>
 <li>If the region is not configured for that profile, make sure to specify it using the -r flag in the command</li></p>
-  <p><a href="./running-in-ci">📚 More information about CI runs of sls-mentor</a></p>
+  <p><a href="./set-up-sls-mentor/run-in-ci">📚 More information about CI runs of sls-mentor</a></p>
 </div>
 <br />
 <br />

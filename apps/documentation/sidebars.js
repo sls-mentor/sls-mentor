@@ -2,7 +2,20 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   docsSidebar: [
-    'intro',
+    {
+      label: 'Intro',
+      type: 'doc',
+      id: 'intro',
+    },
+    {
+      type: 'category',
+      label: 'Set up sls-mentor',
+      items: [
+        'set-up-sls-mentor/run-locally',
+        'set-up-sls-mentor/run-in-ci',
+        'set-up-sls-mentor/configure-sls-mentor',
+      ],
+    },
     {
       type: 'category',
       label: 'Rules',

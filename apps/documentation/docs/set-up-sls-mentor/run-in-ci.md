@@ -1,8 +1,8 @@
-# Running sls-mentor in Your CI
+# Run in your CI
 
 ## Installation
 
-First, read the installation instruction [here](./running-locally.md).
+First, read the installation instruction [here](./run-locally.md).
 
 ## Usage in a CI/CD pipeline
 
