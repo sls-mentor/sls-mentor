@@ -26,6 +26,10 @@ jobs:
         uses: ./.github/actions/install
       # Store the name of the release
       # See https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions
+
+      - name: pnpm run build
+        run: pnpm run build
+
       - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - run: pnpm version $RELEASE_VERSION --no-git-tag-version
