@@ -1,4 +1,4 @@
-# Running sls-mentor in Your CI
+# Run in your CI
 
 ## Installation
 
