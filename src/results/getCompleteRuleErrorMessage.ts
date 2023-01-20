@@ -2,4 +2,4 @@ export const getCompleteRuleErrorMessage = (
   specificMessage: string,
   fileName: string,
 ): string =>
-  `${specificMessage}.\nSee (https://github.com/sls-mentor/sls-mentor/blob/master/src/rules/${fileName}/${fileName}.md) for impact and how to resolve.`;
+  `${specificMessage}.\nSee (https://www.sls-mentor.dev/docs/rules/${fileName}) for impact and how to resolve.`;
