@@ -56,7 +56,7 @@
   <p>Specify an AWS profile or an AWS region using -p and -r options</p>
   <pre>yarn sls-mentor -p YOUR_AWS_PROFILE -c YOUR_AWS_STACK_NAME -r YOUR_AWS_REGION</pre>
 
-  <p><a href="./running-locally">📚 More information about local runs of sls-mentor</a></p>
+  <p><a href="./set-up-sls-mentor/run-locally">📚 More information about local runs of sls-mentor</a></p>
   <br />
 </div>
 <br />
@@ -72,7 +72,7 @@
 
 <li>Ensure that the CI/CD runner has an AWS profile configured, with ReadOnlyAccess privileges</li>
 <li>If the region is not configured for that profile, make sure to specify it using the -r flag in the command</li></p>
-  <p><a href="./running-in-ci">📚 More information about CI runs of sls-mentor</a></p>
+  <p><a href="./set-up-sls-mentor/run-in-ci">📚 More information about CI runs of sls-mentor</a></p>
 </div>
 <br />
 <br />
