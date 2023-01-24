@@ -37,6 +37,7 @@ The rule name should be one of the following list:
 - noMonoPackage
 - noProvisionedConcurrency
 - noSharedIamRoles
+- noTimeout
 - s3OnlyAllowHTTPS
 - serverSideEncryptionEnabled
 - specifyDlqOnEventBridgeRule

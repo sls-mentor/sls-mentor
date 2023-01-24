@@ -11,6 +11,7 @@ import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
+import NoTimeout from './noTimeout';
 import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -25,6 +26,7 @@ export {
   noDefaultMemory,
   LightBundleRule,
   NoMaxTimeout,
+  NoTimeout,
   UnderMaxMemory,
   NoSharedIamRoles,
   UseArm,
