@@ -4,6 +4,7 @@ import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import DefinedBackupRetentionPeriodOrTransitionToColdStorage from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
+import HasTimeout from './hasTimeout';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
@@ -11,7 +12,6 @@ import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
-import NoUnauthorizedApiGatewaysV2Routes from './noUnauthorizedApiGatewaysV2Routes';
 import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -21,25 +21,25 @@ import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
 
 export {
-  CognitoSignInCaseInsensitivity,
+  AsyncSpecifyFailureDestination,
+  AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
-  noDefaultMemory,
+  CognitoSignInCaseInsensitivity,
+  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
+  DefinedLogsRetentionDuration,
+  HasTimeout,
   LightBundleRule,
+  LimitedAmountOfLambdaVersions,
+  noDefaultMemory,
   NoMaxTimeout,
-  UnderMaxMemory,
+  NoMonoPackage,
+  NoProvisionedConcurrency,
   NoSharedIamRoles,
+  S3OnlyAllowHTTPS,
+  ServerSideEncryptionEnabled,
+  SpecifyDlqOnEventBridgeRule,
+  SpecifyDlqOnSqs,
+  UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
-  LimitedAmountOfLambdaVersions,
-  NoMonoPackage,
-  AsyncSpecifyFailureDestination,
-  SpecifyDlqOnSqs,
-  DefinedLogsRetentionDuration,
-  SpecifyDlqOnEventBridgeRule,
-  ServerSideEncryptionEnabled,
-  NoProvisionedConcurrency,
-  S3OnlyAllowHTTPS,
-  NoUnauthorizedApiGatewaysV2Routes,
-  AutoscaleRdsInstanceEnabled,
-  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
 };

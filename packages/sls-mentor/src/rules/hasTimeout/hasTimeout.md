@@ -1,10 +1,10 @@
 ---
-id: no-timeout
-title: no-timeout
-sidebar_label: no-timeout
+id: has-timeout
+title: has-timeout
+sidebar_label: has-timeout
 ---
 
-# All Functions Have Timeout Configurations (no-timeout)
+# All Functions Have Timeout Configurations (has-timeout)
 
 Lambda Function timeout is configurable and should be configured for the use-case.
 Having it set at the maximum is rarely appropriate, unless processing a lot of data.
