@@ -30,6 +30,7 @@ The rule name should be one of the following list:
 - cloudFrontSecurityHeaders
 - cognitoSignInCaseInsensitivity
 - definedLogsRetentionDuration
+- hasTimeout
 - lightBundle
 - limitedAmountOfVersions
 - noDefaultMemory
@@ -37,7 +38,6 @@ The rule name should be one of the following list:
 - noMonoPackage
 - noProvisionedConcurrency
 - noSharedIamRoles
-- noTimeout
 - s3OnlyAllowHTTPS
 - serverSideEncryptionEnabled
 - specifyDlqOnEventBridgeRule

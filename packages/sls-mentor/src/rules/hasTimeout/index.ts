@@ -11,7 +11,7 @@ const run: Rule['run'] = async resourceArns => {
 
   const results = lambdaConfigurations.map(({ arn, configuration }) => ({
     arn,
-    success: !hasTimeout(configuration),
+    success: hasTimeout(configuration),
     timeout: configuration.Timeout,
   }));
 
@@ -19,10 +19,10 @@ const run: Rule['run'] = async resourceArns => {
 };
 
 const rule: Rule = {
-  ruleName: 'Lambda: No Timeout',
+  ruleName: 'Lambda: Has Timeout',
   errorMessage: 'The following functions have no timeout',
   run,
-  fileName: 'noTimeout',
+  fileName: 'hasTimeout',
   categories: [Category.GREEN_IT, Category.IT_COSTS, Category.STABILITY],
   level: SlsMentorLevel.Level3,
 } as Rule;
