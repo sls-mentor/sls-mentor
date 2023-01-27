@@ -6,18 +6,15 @@ import {
   CognitoSignInCaseInsensitivity,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   DefinedLogsRetentionDuration,
-  HasTimeout,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
+  NoDeprecatedRuntimes,
   NoMaxTimeout,
   NoMonoPackage,
   NoProvisionedConcurrency,
   NoSharedIamRoles,
-<<<<<<< HEAD
   NoUnauthorizedApiGatewaysV2Routes,
-=======
->>>>>>> 9d2bd7e (rename rule -- hasTimeout)
   S3OnlyAllowHTTPS,
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,
@@ -48,10 +45,7 @@ export const runChecks = async (
     noDefaultMemory,
     NoMaxTimeout,
     NoSharedIamRoles,
-<<<<<<< HEAD
-=======
-    HasTimeout,
->>>>>>> 9d2bd7e (rename rule -- hasTimeout)
+    NoDeprecatedRuntimes,
     UseArm,
     LimitedAmountOfLambdaVersions,
     UnderMaxMemory,

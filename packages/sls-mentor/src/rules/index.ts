@@ -4,14 +4,15 @@ import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import DefinedBackupRetentionPeriodOrTransitionToColdStorage from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
-import HasTimeout from './hasTimeout';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
+import NoDeprecatedRuntimes from './noDeprecatedRuntime';
 import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
 import NoSharedIamRoles from './noSharedIamRoles';
+import NoUnauthorizedApiGatewaysV2Routes from './noUnauthorizedApiGatewaysV2Routes';
 import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
@@ -27,14 +28,15 @@ export {
   CognitoSignInCaseInsensitivity,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   DefinedLogsRetentionDuration,
-  HasTimeout,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
+  NoDeprecatedRuntimes,
   NoMaxTimeout,
   NoMonoPackage,
   NoProvisionedConcurrency,
   NoSharedIamRoles,
+  NoUnauthorizedApiGatewaysV2Routes,
   S3OnlyAllowHTTPS,
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,

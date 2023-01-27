@@ -30,10 +30,10 @@ The rule name should be one of the following list:
 - cloudFrontSecurityHeaders
 - cognitoSignInCaseInsensitivity
 - definedLogsRetentionDuration
-- hasTimeout
 - lightBundle
 - limitedAmountOfVersions
 - noDefaultMemory
+- noDeprecatedRuntimes
 - noMaxTimeout
 - noMonoPackage
 - noProvisionedConcurrency
