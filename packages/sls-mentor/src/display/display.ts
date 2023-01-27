@@ -56,7 +56,7 @@ export const displayFailedChecksDetails = (results: ChecksResults): void => {
 
       const extrasMessage = Object.keys(extras).reduce(
         (prev, extra) =>
-          `${prev}      - ${extra} : ${extras[extra] as string}\n`,
+          `${prev}      - ${extra} : ${JSON.stringify(extras[extra])}\n`,
         '',
       );
       console.log(`${ruleFalingMessage}\n${extrasMessage}`);
