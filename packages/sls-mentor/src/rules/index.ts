@@ -16,6 +16,7 @@ import S3OnlyAllowHTTPS from './s3OnlyAllowHTTPS';
 import ServerSideEncryptionEnabled from './serverSideEncryptionEnabled';
 import SpecifyDlqOnEventBridgeRule from './specifyDlqOnEventBridgeRule';
 import SpecifyDlqOnSqs from './specifyDlqOnSqs';
+import TimeoutSmallEnoughForSqsVisibility from './timeoutSmallEnoughForSqsVisibility';
 import UnderMaxMemory from './underMaxMemory';
 import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
@@ -42,4 +43,5 @@ export {
   NoUnauthorizedApiGatewaysV2Routes,
   AutoscaleRdsInstanceEnabled,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
+  TimeoutSmallEnoughForSqsVisibility,
 };

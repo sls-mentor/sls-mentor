@@ -13,11 +13,11 @@ export const fetchQueueAttributesByArn = async (
   arn: SqsQueueARN,
 ): Promise<QueueAttributes> => {
   return {
-    arn: arn,
+    arn,
     attributes: await sqsCLient.send(
       new GetQueueAttributesCommand({
         QueueUrl: arn.resource,
-        AttributeNames: ['RedrivePolicy'],
+        AttributeNames: ['VisibilityTimeout', 'RedrivePolicy'],
       }),
     ),
   };

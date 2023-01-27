@@ -18,6 +18,7 @@ import {
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,
   SpecifyDlqOnSqs,
+  TimeoutSmallEnoughForSqsVisibility,
   UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
@@ -60,6 +61,7 @@ export const runChecks = async (
     AutoscaleRdsInstanceEnabled,
     DefinedBackupRetentionPeriodOrTransitionToColdStorage,
     NoUnauthorizedApiGatewaysV2Routes,
+    TimeoutSmallEnoughForSqsVisibility,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(
