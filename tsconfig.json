@@ -3,6 +3,7 @@
   "files": [],
   "references": [
     { "path": "./packages/sls-mentor" },
+    { "path": "./packages/core" },
     { "path": "./apps/documentation" },
     { "path": "./apps/cloudfront" },
     { "path": "./apps/tests" }

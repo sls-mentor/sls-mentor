@@ -1,4 +1,5 @@
-import { Category, ChecksResults, ChecksResultsByCategory } from '../types';
+import { Category } from 'core';
+import { ChecksResults, ChecksResultsByCategory } from '../types';
 
 export const getResultsByCategory = (
   results: ChecksResults,

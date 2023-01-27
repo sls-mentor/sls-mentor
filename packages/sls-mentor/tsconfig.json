@@ -4,6 +4,10 @@
     "baseUrl": "src",
     "outDir": "dist"
   },
-  "include": ["./**/*.ts"],
+  "include": [
+    "./**/*.ts",
+    "../core/src/types/Rule.ts",
+    "../core/src/types/Configuration.ts"
+  ],
   "exclude": ["./dist"]
 }

@@ -4,6 +4,7 @@ import {
   AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
   CognitoSignInCaseInsensitivity,
+  CustomARN,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   DefinedLogsRetentionDuration,
   LightBundleRule,
@@ -15,6 +16,8 @@ import {
   NoProvisionedConcurrency,
   NoSharedIamRoles,
   NoUnauthorizedApiGatewaysV2Routes,
+  Rule,
+  RuleConfiguration,
   S3OnlyAllowHTTPS,
   ServerSideEncryptionEnabled,
   SpecifyDlqOnEventBridgeRule,
@@ -22,8 +25,8 @@ import {
   UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
-} from './rules';
-import { ChecksResults, CustomARN, Rule, RuleConfiguration } from './types';
+} from 'core';
+import { ChecksResults } from './types';
 
 export const runChecks = async (
   allResourceArns: CustomARN[],

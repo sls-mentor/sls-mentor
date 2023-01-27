@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { Configuration } from '../../types';
+import { Configuration } from 'core';
 
 export const readConfiguration = (): Configuration => {
   try {

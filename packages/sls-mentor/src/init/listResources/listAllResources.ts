@@ -9,8 +9,8 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SqsQueueARN,
-} from '../../types';
-import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
+} from 'core';
+import { CloudFrontDistributionARN } from 'core/src/types/arn/cloudFront';
 import { listApiGatewaysV2 } from './apiGatewayV2';
 import { listBackupPlans } from './backupPlan';
 import { listCloudFrontDistributions } from './cloudfront';

@@ -1,6 +1,5 @@
 import { ListBucketsCommand } from '@aws-sdk/client-s3';
-import { s3Client } from '../../../clients';
-import { S3BucketARN } from '../../../types';
+import { S3BucketARN, s3Client } from 'core';
 
 export const listS3Buckets = async (): Promise<S3BucketARN[]> => {
   const { Buckets } = await s3Client.send(new ListBucketsCommand({}));

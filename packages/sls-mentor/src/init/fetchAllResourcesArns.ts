@@ -1,8 +1,9 @@
+import { CustomARN } from 'core';
 import intersectionWith from 'lodash/intersectionWith';
 import { fetchCloudFormationResourceArns } from './fetchCloudFormationResourceArns';
 import { fetchTaggedResourceArns } from './fetchTaggedResourceArns';
 
-import { CustomARN, Tag } from '../types';
+import { Tag } from '../types';
 import { listAllResources } from './listResources';
 
 export const fetchAllResourceArns = async ({

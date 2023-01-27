@@ -2,8 +2,7 @@ import {
   DistributionSummary,
   paginateListDistributions,
 } from '@aws-sdk/client-cloudfront';
-import { cloudFrontClient } from '../../../clients';
-import { CloudFrontDistributionARN } from '../../../types/arn/cloudFront';
+import { cloudFrontClient, CloudFrontDistributionARN  } from 'core';
 
 export const listCloudFrontDistributions = async (): Promise<
   CloudFrontDistributionARN[]

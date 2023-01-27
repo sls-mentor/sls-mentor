@@ -1,6 +1,5 @@
 import { DBInstance, paginateDescribeDBInstances } from '@aws-sdk/client-rds';
-import { rdsClient } from '../../../clients';
-import { RdsInstanceARN } from '../../../types/';
+import { rdsClient, RdsInstanceARN } from 'core';
 
 export const listRdsInstances = async (): Promise<RdsInstanceARN[]> => {
   const rdsInstances: DBInstance[] = [];

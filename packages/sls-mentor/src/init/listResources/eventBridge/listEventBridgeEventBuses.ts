@@ -1,6 +1,5 @@
 import { EventBus, ListEventBusesCommand } from '@aws-sdk/client-eventbridge';
-import { eventBridgeClient } from '../../../clients';
-import { EventBridgeEventBusARN } from '../../../types';
+import { eventBridgeClient, EventBridgeEventBusARN } from 'core';
 
 export const listEventBridgeEventBuses = async (): Promise<
   EventBridgeEventBusARN[]

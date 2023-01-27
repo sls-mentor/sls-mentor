@@ -160,6 +160,50 @@ importers:
       lodash: 4.17.21
       vitest: 0.24.5
 
+  packages/core:
+    specifiers:
+      '@aws-sdk/client-apigatewayv2': ^3.231.0
+      '@aws-sdk/client-backup': ^3.245.0
+      '@aws-sdk/client-cloudformation': ^3.226.0
+      '@aws-sdk/client-cloudfront': ^3.226.0
+      '@aws-sdk/client-cloudwatch-logs': ^3.226.0
+      '@aws-sdk/client-cognito-identity-provider': ^3.226.0
+      '@aws-sdk/client-eventbridge': ^3.226.0
+      '@aws-sdk/client-lambda': ^3.226.0
+      '@aws-sdk/client-rds': ^3.237.0
+      '@aws-sdk/client-resource-groups-tagging-api': ^3.226.0
+      '@aws-sdk/client-s3': ^3.226.0
+      '@aws-sdk/client-sqs': ^3.226.0
+      '@aws-sdk/client-sts': ^3.226.0
+      '@aws-sdk/middleware-retry': ^3.226.0
+      '@aws-sdk/types': ^3.226.0
+      '@aws-sdk/util-arn-parser': 3.208.0
+      '@aws-sdk/util-middleware': ^3.226.0
+      lodash: ^4.17.21
+      object-hash: ^3.0.0
+      throttled-queue: ^2.1.4
+    dependencies:
+      '@aws-sdk/client-apigatewayv2': 3.245.0
+      '@aws-sdk/client-backup': 3.259.0
+      '@aws-sdk/client-cloudformation': 3.245.0
+      '@aws-sdk/client-cloudfront': 3.245.0
+      '@aws-sdk/client-cloudwatch-logs': 3.245.0
+      '@aws-sdk/client-cognito-identity-provider': 3.245.0
+      '@aws-sdk/client-eventbridge': 3.245.0
+      '@aws-sdk/client-lambda': 3.245.0
+      '@aws-sdk/client-rds': 3.248.0
+      '@aws-sdk/client-resource-groups-tagging-api': 3.245.0
+      '@aws-sdk/client-s3': 3.245.0
+      '@aws-sdk/client-sqs': 3.245.0
+      '@aws-sdk/client-sts': 3.259.0
+      '@aws-sdk/middleware-retry': 3.259.0
+      '@aws-sdk/types': 3.257.0
+      '@aws-sdk/util-arn-parser': 3.208.0
+      '@aws-sdk/util-middleware': 3.257.0
+      lodash: 4.17.21
+      object-hash: 3.0.0
+      throttled-queue: 2.1.4
+
   packages/sls-mentor:
     specifiers:
       '@aws-sdk/client-apigatewayv2': ^3.231.0
@@ -183,6 +227,7 @@ importers:
       cli-progress: ^3.11.2
       cli-select: ^1.1.2
       commander: ^9.2.0
+      core: workspace:*
       lodash: ^4.17.21
       object-hash: ^3.0.0
       throttled-queue: ^2.1.4
@@ -208,6 +253,7 @@ importers:
       cli-progress: 3.11.2
       cli-select: 1.1.2
       commander: 9.5.0
+      core: link:../core
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4
@@ -3662,6 +3708,10 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
 
+  /@balena/dockerignore/1.0.2:
+    resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+    dev: false
+
   /@colors/colors/1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
     engines: {node: '>=0.1.90'}
@@ -5496,7 +5546,16 @@ packages:
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
+      '@balena/dockerignore': 1.0.2
+      case: 1.6.3
       constructs: 10.1.232
+      fs-extra: 9.1.0
+      ignore: 5.2.4
+      jsonschema: 1.4.1
+      minimatch: 3.1.2
+      punycode: 2.1.1
+      semver: 7.3.8
+      yaml: 1.10.2
     dev: false
     bundledDependencies:
       - '@balena/dockerignore'
@@ -5749,6 +5808,11 @@ packages:
 
   /caniuse-lite/1.0.30001449:
     resolution: {integrity: sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==}
+
+  /case/1.6.3:
+    resolution: {integrity: sha512-mzDSXIPaFwVDvZAHqZ9VlbyF4yyXRuX6IvB06WvPYkqJVO24kX1PPhv9bfpKNFZyxYFmmgo03HUiD8iklmJYRQ==}
+    engines: {node: '>= 0.8.0'}
+    dev: false
 
   /ccount/1.1.0:
     resolution: {integrity: sha512-vlNK021QdI7PNeiUh/lKkC/mNHHfV0m/Ad5JoI0TYtlBnJAslM/JIkm/tGC88bkLIwO6OQ5uV6ztS6kVAtCDlg==}
@@ -8404,6 +8468,10 @@ packages:
       universalify: 2.0.0
     optionalDependencies:
       graceful-fs: 4.2.10
+
+  /jsonschema/1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
+    dev: false
 
   /keyv/3.1.0:
     resolution: {integrity: sha512-9ykJ/46SN/9KPM/sichzQ7OvXyGDYKGTaDlKMGCAlg2UK8KRy4jb0d8sFc+0Tt0YYnThq8X2RZgCg74RPxgcVA==}

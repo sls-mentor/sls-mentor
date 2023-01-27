@@ -1,3 +1,4 @@
+import { CustomARN } from 'core';
 import { runChecks } from './checks';
 import { readConfiguration } from './configuration/utils/readConfiguration';
 import {
@@ -11,7 +12,7 @@ import {
 import { fetchAllResourceArns, initAccountAndRegion } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
 
-import { ChecksResults, CustomARN, Options } from './types';
+import { ChecksResults, Options } from './types';
 import { getSlsMentorLevel } from './utils/getSlsMentorLevel';
 
 export const runSlsMentor = async (

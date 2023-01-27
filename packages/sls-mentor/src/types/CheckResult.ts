@@ -1,5 +1,4 @@
-import { CustomARN } from './arn';
-import { Category, Rule, RuleCheckResult } from './Rule';
+import { Category, CustomARN, Rule, RuleCheckResult } from 'core';
 
 export type ChecksResults = {
   rule: Rule;

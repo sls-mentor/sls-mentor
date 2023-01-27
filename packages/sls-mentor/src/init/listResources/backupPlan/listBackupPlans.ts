@@ -2,8 +2,7 @@ import {
   BackupPlansListMember,
   paginateListBackupPlans,
 } from '@aws-sdk/client-backup';
-import { backupClient } from '../../../clients';
-import { BackupPlanARN } from '../../../types';
+import { backupClient, BackupPlanARN } from 'core';
 
 export const listBackupPlans = async (): Promise<BackupPlanARN[]> => {
   const backupPlans: BackupPlansListMember[] = [];

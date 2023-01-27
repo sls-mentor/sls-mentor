@@ -49,10 +49,8 @@
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
     "object-hash": "^3.0.0",
-    "throttled-queue": "^2.1.4"
-  },
-  "devDependencies": {
-    "@aws-sdk/types": "^3.226.0"
+    "throttled-queue": "^2.1.4",
+    "core": "workspace:*"
   },
   "keywords": [
     "aws",

@@ -1,12 +1,7 @@
+import { CustomARN, RuleCheckResult } from 'core';
 import omit from 'lodash/omit';
 import uniqBy from 'lodash/uniqBy';
-import {
-  ChecksResults,
-  CustomARN,
-  FailedRule,
-  ResourceResult,
-  RuleCheckResult,
-} from '../types';
+import { ChecksResults, FailedRule, ResourceResult } from '../types';
 
 const getResourcesArnsCheckedBySlsMentor = (
   results: ChecksResults,

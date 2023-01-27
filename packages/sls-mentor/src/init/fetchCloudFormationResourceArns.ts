@@ -5,6 +5,7 @@ import {
 } from '@aws-sdk/client-cloudformation';
 import {
   ApiGatewayV2ApiARN,
+  CloudFrontDistributionARN,
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
@@ -13,8 +14,7 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SqsQueueARN,
-} from '../types';
-import { CloudFrontDistributionARN } from '../types/arn/cloudFront';
+} from 'core';
 
 // This is a big switch
 // eslint-disable-next-line complexity
