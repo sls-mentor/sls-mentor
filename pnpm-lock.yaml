@@ -160,6 +160,60 @@ importers:
       lodash: 4.17.21
       vitest: 0.24.5
 
+  packages/cli:
+    specifiers:
+      '@aws-sdk/client-apigatewayv2': ^3.231.0
+      '@aws-sdk/client-backup': ^3.245.0
+      '@aws-sdk/client-cloudformation': ^3.226.0
+      '@aws-sdk/client-cloudfront': ^3.226.0
+      '@aws-sdk/client-cloudwatch-logs': ^3.226.0
+      '@aws-sdk/client-cognito-identity-provider': ^3.226.0
+      '@aws-sdk/client-eventbridge': ^3.226.0
+      '@aws-sdk/client-lambda': ^3.226.0
+      '@aws-sdk/client-rds': ^3.237.0
+      '@aws-sdk/client-resource-groups-tagging-api': ^3.226.0
+      '@aws-sdk/client-s3': ^3.226.0
+      '@aws-sdk/client-sqs': ^3.226.0
+      '@aws-sdk/client-sts': ^3.226.0
+      '@aws-sdk/middleware-retry': ^3.226.0
+      '@aws-sdk/types': ^3.226.0
+      '@aws-sdk/util-arn-parser': 3.208.0
+      '@aws-sdk/util-middleware': ^3.226.0
+      chalk: ^4.1.2
+      cli-progress: ^3.11.2
+      cli-select: ^1.1.2
+      commander: ^9.2.0
+      core: workspace:*
+      lodash: ^4.17.21
+      object-hash: ^3.0.0
+      throttled-queue: ^2.1.4
+    dependencies:
+      '@aws-sdk/client-apigatewayv2': 3.245.0
+      '@aws-sdk/client-backup': 3.259.0
+      '@aws-sdk/client-cloudformation': 3.245.0
+      '@aws-sdk/client-cloudfront': 3.245.0
+      '@aws-sdk/client-cloudwatch-logs': 3.245.0
+      '@aws-sdk/client-cognito-identity-provider': 3.245.0
+      '@aws-sdk/client-eventbridge': 3.245.0
+      '@aws-sdk/client-lambda': 3.245.0
+      '@aws-sdk/client-rds': 3.248.0
+      '@aws-sdk/client-resource-groups-tagging-api': 3.245.0
+      '@aws-sdk/client-s3': 3.245.0
+      '@aws-sdk/client-sqs': 3.245.0
+      '@aws-sdk/client-sts': 3.259.0
+      '@aws-sdk/middleware-retry': 3.259.0
+      '@aws-sdk/types': 3.257.0
+      '@aws-sdk/util-arn-parser': 3.208.0
+      '@aws-sdk/util-middleware': 3.257.0
+      chalk: 4.1.2
+      cli-progress: 3.11.2
+      cli-select: 1.1.2
+      commander: 9.5.0
+      core: link:../core
+      lodash: 4.17.21
+      object-hash: 3.0.0
+      throttled-queue: 2.1.4
+
   packages/core:
     specifiers:
       '@aws-sdk/client-apigatewayv2': ^3.231.0
@@ -200,60 +254,6 @@ importers:
       '@aws-sdk/types': 3.257.0
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': 3.257.0
-      lodash: 4.17.21
-      object-hash: 3.0.0
-      throttled-queue: 2.1.4
-
-  packages/sls-mentor:
-    specifiers:
-      '@aws-sdk/client-apigatewayv2': ^3.231.0
-      '@aws-sdk/client-backup': ^3.245.0
-      '@aws-sdk/client-cloudformation': ^3.226.0
-      '@aws-sdk/client-cloudfront': ^3.226.0
-      '@aws-sdk/client-cloudwatch-logs': ^3.226.0
-      '@aws-sdk/client-cognito-identity-provider': ^3.226.0
-      '@aws-sdk/client-eventbridge': ^3.226.0
-      '@aws-sdk/client-lambda': ^3.226.0
-      '@aws-sdk/client-rds': ^3.237.0
-      '@aws-sdk/client-resource-groups-tagging-api': ^3.226.0
-      '@aws-sdk/client-s3': ^3.226.0
-      '@aws-sdk/client-sqs': ^3.226.0
-      '@aws-sdk/client-sts': ^3.226.0
-      '@aws-sdk/middleware-retry': ^3.226.0
-      '@aws-sdk/types': ^3.226.0
-      '@aws-sdk/util-arn-parser': 3.208.0
-      '@aws-sdk/util-middleware': ^3.226.0
-      chalk: ^4.1.2
-      cli-progress: ^3.11.2
-      cli-select: ^1.1.2
-      commander: ^9.2.0
-      core: workspace:*
-      lodash: ^4.17.21
-      object-hash: ^3.0.0
-      throttled-queue: ^2.1.4
-    dependencies:
-      '@aws-sdk/client-apigatewayv2': 3.245.0
-      '@aws-sdk/client-backup': 3.259.0
-      '@aws-sdk/client-cloudformation': 3.245.0
-      '@aws-sdk/client-cloudfront': 3.245.0
-      '@aws-sdk/client-cloudwatch-logs': 3.245.0
-      '@aws-sdk/client-cognito-identity-provider': 3.245.0
-      '@aws-sdk/client-eventbridge': 3.245.0
-      '@aws-sdk/client-lambda': 3.245.0
-      '@aws-sdk/client-rds': 3.248.0
-      '@aws-sdk/client-resource-groups-tagging-api': 3.245.0
-      '@aws-sdk/client-s3': 3.245.0
-      '@aws-sdk/client-sqs': 3.245.0
-      '@aws-sdk/client-sts': 3.245.0
-      '@aws-sdk/middleware-retry': 3.235.0
-      '@aws-sdk/types': 3.226.0
-      '@aws-sdk/util-arn-parser': 3.208.0
-      '@aws-sdk/util-middleware': 3.226.0
-      chalk: 4.1.2
-      cli-progress: 3.11.2
-      cli-select: 1.1.2
-      commander: 9.5.0
-      core: link:../core
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4
