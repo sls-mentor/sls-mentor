@@ -26,6 +26,7 @@
   ],
   "homepage": "https://github.com/sls-mentor/sls-mentor#readme",
   "dependencies": {
+    "@aws-sdk/client-apigatewayv2": "^3.231.0",
     "@aws-sdk/client-backup": "^3.245.0",
     "@aws-sdk/client-cloudformation": "^3.226.0",
     "@aws-sdk/client-cloudfront": "^3.226.0",

@@ -1,3 +1,4 @@
+export * from './apiGatewayV2';
 export * from './backupPlan';
 export * from './cloudWatchLogs';
 export * from './eventBridge';

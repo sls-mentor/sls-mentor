@@ -4,6 +4,7 @@ import {
   StackResourceSummary,
 } from '@aws-sdk/client-cloudformation';
 import {
+  ApiGatewayV2ApiARN,
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
@@ -42,6 +43,8 @@ export const createARNFromCloudFormation = ({
       return RdsInstanceARN.fromRdsInstanceName(PhysicalResourceId);
     case 'AWS::CloudFront::Distribution':
       return CloudFrontDistributionARN.fromPhysicalId(PhysicalResourceId);
+    case 'AWS::ApiGatewayV2::Api':
+      return ApiGatewayV2ApiARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
