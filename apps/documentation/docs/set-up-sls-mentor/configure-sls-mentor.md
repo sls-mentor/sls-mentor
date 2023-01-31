@@ -33,6 +33,7 @@ The rule name should be one of the following list:
 - lightBundle
 - limitedAmountOfVersions
 - noDefaultMemory
+- noDeprecatedRuntimes
 - noMaxTimeout
 - noMonoPackage
 - noProvisionedConcurrency

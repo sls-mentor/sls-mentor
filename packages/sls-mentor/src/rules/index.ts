@@ -7,6 +7,7 @@ import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
+import NoDeprecatedRuntimes from './noDeprecatedRuntime';
 import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
@@ -21,25 +22,26 @@ import UseArm from './useArm';
 import UseIntelligentTiering from './useIntelligentTiering';
 
 export {
-  CognitoSignInCaseInsensitivity,
+  AsyncSpecifyFailureDestination,
+  AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
-  noDefaultMemory,
+  CognitoSignInCaseInsensitivity,
+  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
+  DefinedLogsRetentionDuration,
   LightBundleRule,
+  LimitedAmountOfLambdaVersions,
+  noDefaultMemory,
+  NoDeprecatedRuntimes,
   NoMaxTimeout,
-  UnderMaxMemory,
+  NoMonoPackage,
+  NoProvisionedConcurrency,
   NoSharedIamRoles,
+  NoUnauthorizedApiGatewaysV2Routes,
+  S3OnlyAllowHTTPS,
+  ServerSideEncryptionEnabled,
+  SpecifyDlqOnEventBridgeRule,
+  SpecifyDlqOnSqs,
+  UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
-  LimitedAmountOfLambdaVersions,
-  NoMonoPackage,
-  AsyncSpecifyFailureDestination,
-  SpecifyDlqOnSqs,
-  DefinedLogsRetentionDuration,
-  SpecifyDlqOnEventBridgeRule,
-  ServerSideEncryptionEnabled,
-  NoProvisionedConcurrency,
-  S3OnlyAllowHTTPS,
-  NoUnauthorizedApiGatewaysV2Routes,
-  AutoscaleRdsInstanceEnabled,
-  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
 };

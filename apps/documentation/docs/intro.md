@@ -89,6 +89,7 @@
   - [`Lambda: Under maximum memory`](./rules/underMaxMemory): checks that each one of your Lambda functions' memory size is reasonably small.
   - [`Lambda: No maximum timeout`](./rules/noMaxTimeout): checks that your Lambda functions' timeout is not set at the maximum available.
   - [`Lambda: No provisioned concurrency`](./rules/noProvisionedConcurrency): checks that no Lambda function has provisioned concurrency.
+  - [`Lambda: No deprecated runtimes`](./rules/noDeprecatedRuntimes): checks that your Lambda functions do not run on deprecated runtimes.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./rules/useIntelligentTiering): checks that each one of S3 buckets has intelligent tiering enabled.
   - [`S3: Server-side encryption enabled`](./rules/serverSideEncryptionEnabled): checks that server-side encryption is enabled on each S3 bucket.
