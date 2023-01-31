@@ -7,7 +7,7 @@ import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
 import noDefaultMemory from './noDefaultMemory';
-import NoDeprecatedRuntimes from './noDeprecatedRuntime';
+import NoDeprecatedRuntime from './noDeprecatedRuntime';
 import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
 import NoProvisionedConcurrency from './noProvisionedConcurrency';
@@ -31,7 +31,7 @@ export {
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
   noDefaultMemory,
-  NoDeprecatedRuntimes,
+  NoDeprecatedRuntime,
   NoMaxTimeout,
   NoMonoPackage,
   NoProvisionedConcurrency,

@@ -38,6 +38,7 @@ const sidebars = {
                 'rules/noSharedIamRoles',
                 'rules/underMaxMemory',
                 'rules/limitedAmountOfVersions',
+                'rules/noDeprecatedRuntime',
               ],
             },
             {
@@ -122,6 +123,7 @@ const sidebars = {
                 'rules/noSharedIamRoles',
                 'rules/specifyDlqOnEventBridgeRule',
                 'rules/specifyDlqOnSqs',
+                'rules/noDeprecatedRuntime',
               ],
             },
             {
@@ -132,6 +134,7 @@ const sidebars = {
                 'rules/noSharedIamRoles',
                 'rules/s3OnlyAllowHTTPS',
                 'rules/serverSideEncryptionEnabled',
+                'rules/noDeprecatedRuntime',
               ],
             },
             {
@@ -198,6 +201,7 @@ const sidebars = {
                 'rules/specifyDlqOnSqs',
                 'rules/noSharedIamRoles',
                 'rules/lightBundle',
+                'rules/noDeprecatedRuntime',
               ],
             },
             {

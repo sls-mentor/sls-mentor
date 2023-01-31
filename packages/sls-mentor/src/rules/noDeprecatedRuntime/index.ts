@@ -22,11 +22,11 @@ const run: Rule['run'] = async resourceArns => {
 
 const rule: Rule = {
   ruleName: 'Lambda: No Deprecated Runtime',
-  errorMessage: 'The following functions have deprecated runtimes',
+  errorMessage: 'The following functions have deprecated runtime',
   run,
   fileName: 'noDeprecatedRuntime',
   categories: [Category.STABILITY, Category.SECURITY],
-  level: SlsMentorLevel.Level3,
+  level: SlsMentorLevel.Level4,
 } as Rule;
 
 export default rule;

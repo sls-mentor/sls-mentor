@@ -1,10 +1,4 @@
----
-id: no-deprecated-runtime
-title: no-deprecated-runtime
-sidebar_label: no-deprecated-runtime
----
-
-# All Functions Have Supported Runtimes (no-deprecated-runtime)
+# All Functions Have Supported Runtime (no-deprecated-runtime)
 
 Lambda invokes your function in an execution environment. The execution environment provides a secure and isolated runtime environment that manages the resources required to run your function. Lambda re-uses the execution environment from a previous invocation if one is available, or it can create a new execution environment. When security updates are no longer available for a component of a runtime, Lambda deprecates the runtime.[Source](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy)
 
