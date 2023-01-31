@@ -15,6 +15,10 @@
   height: 7vh;
 }
 
+.contributors img.big {
+  height: 14vh;
+}
+
 .contribute {
   cursor: pointer;
 }
