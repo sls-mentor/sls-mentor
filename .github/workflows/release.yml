@@ -27,6 +27,9 @@ jobs:
       # Store the name of the release
       # See https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions
 
+      - name: Copy paste root README to @sls-mentor/sls-mentor
+        run: cp README.md ./packages/sls-mentor/README.md
+
       - name: pnpm run build
         run: pnpm run build
 
