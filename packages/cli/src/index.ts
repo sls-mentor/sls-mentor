@@ -3,6 +3,8 @@ import { Command, InvalidArgumentError, program } from 'commander';
 
 import { runSlsMentor } from './slsMentor';
 import { Options, Tag } from './types';
+export * from './slsMentor';
+export * from './types';
 
 const hasKeyAndValue = (
   groups: Record<string, string> | undefined,

@@ -1,8 +1,4 @@
-import { runSlsMentor } from '../../../../packages/sls-mentor/src/slsMentor';
-import {
-  ChecksResults,
-  Options,
-} from '../../../../packages/sls-mentor/src/types';
+import { ChecksResults, Options, runSlsMentor } from 'sls-mentor';
 
 export const getSlsMentorResult = async (
   options: Options,

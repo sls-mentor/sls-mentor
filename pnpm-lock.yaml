@@ -146,13 +146,17 @@ importers:
       aws-cdk: 2.50.0
       aws-cdk-lib: 2.50.0
       constructs: ^10.0.0
+      core: workspace:*
       dotenv: ^16.0.3
       lodash: ^4.17.21
+      sls-mentor: workspace:*
       source-map-support: ^0.5.21
       vitest: ^0.24.5
     dependencies:
       aws-cdk-lib: 2.50.0_constructs@10.1.232
       constructs: 10.1.232
+      core: link:../../packages/core
+      sls-mentor: link:../../packages/cli
       source-map-support: 0.5.21
     devDependencies:
       aws-cdk: 2.50.0

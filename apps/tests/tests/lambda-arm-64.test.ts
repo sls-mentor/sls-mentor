@@ -1,5 +1,5 @@
+import { UseArm as UseArmRule } from 'core';
 import { describe, expect, it } from 'vitest';
-import UseArmRule from '../../../packages/sls-mentor/src/rules/useArm';
 import { FAIL_ARM64_LAMBDA_NAME } from '../lib/failStack/lambda';
 import { PASS_ARM64_LAMBDA_NAME } from '../lib/passStack/lambda';
 import { slsMentorResult } from './testSetup/slsMentorResult';
