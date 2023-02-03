@@ -1,5 +1,5 @@
+import { UseIntelligentTiering as S3IntelligentTieringRule } from '@sls-mentor/core';
 import { describe, expect, it } from 'vitest';
-import S3IntelligentTieringRule from '../../../packages/sls-mentor/src/rules/useIntelligentTiering';
 import { FAIL_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/failStack/s3';
 import { PASS_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/passStack/s3';
 import { slsMentorResult } from './testSetup/slsMentorResult';

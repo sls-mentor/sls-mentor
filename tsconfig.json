@@ -2,7 +2,8 @@
   "extends": "./tsconfig.options.json",
   "files": [],
   "references": [
-    { "path": "./packages/sls-mentor" },
+    { "path": "./packages/cli" },
+    { "path": "./packages/core" },
     { "path": "./apps/documentation" },
     { "path": "./apps/cloudfront" },
     { "path": "./apps/tests" }

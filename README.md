@@ -78,34 +78,34 @@
 <br />
 
 - AWS Lambda:
-  - [`Lambda: Use ARM64 architecture`](./src/rules/useArm/useArm.md): checks that you're using ARM64 architectures for your Lambda functions.
-  - [`Lambda: No shared IAM roles`](./src/rules/noSharedIamRoles/noSharedIamRoles.md): checks that each one of your Lambda functions has its own IAM role.
-  - [`Lambda: Limited amount of versions`](./src/rules/limitedAmountOfVersions/limitedAmountOfVersions.md): checks that you do not store all previous deployment versions for your Lambda functions.
-  - [`Lambda: Specify failure destination to async functions`](./src/rules/asyncSpecifyFailureDestination/asyncSpecifyFailureDestination.md): checks that each one of your async Lambda functions has a failure destination.
-  - [`Lambda: No identical code`](./src/rules/noIdenticalCode/noIdenticalCode.md): checks that each one of your Lambda functions has different code.
-  - [`Lambda: Light bundle`](./src/rules/lightBundle/lightBundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
-  - [`Lambda: No default memory`](./src/rules/noDefaultMemory/noDefaultMemory.md): checks that you have consciously configured your Lambda functions' memory size.
-  - [`Lambda: Under maximum memory`](./src/rules/underMaxMemory/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
-  - [`Lambda: No maximum timeout`](./src/rules/noMaxTimeout/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
-  - [`Lambda: No provisioned concurrency`](./src/rules/noProvisionedConcurrency/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.
+  - [`Lambda: Use ARM64 architecture`](./apps/documentation/docs/rules/useArm.md): checks that you're using ARM64 architectures for your Lambda functions.
+  - [`Lambda: No shared IAM roles`](./apps/documentation/docs/rules/noSharedIamRoles.md): checks that each one of your Lambda functions has its own IAM role.
+  - [`Lambda: Limited amount of versions`](./apps/documentation/docs/rules/limitedAmountOfVersions.md): checks that you do not store all previous deployment versions for your Lambda functions.
+  - [`Lambda: Specify failure destination to async functions`](./apps/documentation/docs/rules/asyncSpecifyFailureDestination.md): checks that each one of your async Lambda functions has a failure destination.
+  - [`Lambda: No identical code`](./apps/documentation/docs/rules/noIdenticalCode.md): checks that each one of your Lambda functions has different code.
+  - [`Lambda: Light bundle`](./apps/documentation/docs/rules/lightBundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
+  - [`Lambda: No default memory`](./apps/documentation/docs/rules/noDefaultMemory.md): checks that you have consciously configured your Lambda functions' memory size.
+  - [`Lambda: Under maximum memory`](./apps/documentation/docs/rules/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
+  - [`Lambda: No maximum timeout`](./apps/documentation/docs/rules/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
+  - [`Lambda: No provisioned concurrency`](./apps/documentation/docs/rules/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.
 - AWS S3:
-  - [`S3: Use intelligent tiering`](./src/rules/useIntelligentTiering/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
-  - [`S3: Server-side encryption enabled`](./src/rules/serverSideEncryptionEnabled/serverSideEncryptionEnabled.md): checks that server-side encryption is enabled on each S3 bucket.
-  - [`S3: Use HTTPS requests only`](./src/rules/s3OnlyAllowHTTPS/s3OnlyAllowHTTPS.md): checks that users access buckets objects using SSL.
+  - [`S3: Use intelligent tiering`](./apps/documentation/docs/rules/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
+  - [`S3: Server-side encryption enabled`](./apps/documentation/docs/rules/serverSideEncryptionEnabled.md): checks that server-side encryption is enabled on each S3 bucket.
+  - [`S3: Use HTTPS requests only`](./apps/documentation/docs/rules/s3OnlyAllowHTTPS.md): checks that users access buckets objects using SSL.
 - AWS SQS:
-  - [`SQS: Specify a DLQ on queues`](./src/rules/specifyDlqOnSqs/specifyDlqOnSqs.md): checks that SQS queues have a dead-letter-queue specified in case of failure
+  - [`SQS: Specify a DLQ on queues`](./apps/documentation/docs/rules/specifyDlqOnSqs.md): checks that SQS queues have a dead-letter-queue specified in case of failure
 - AWS Cognito:
-  - [`Cognito: Sign-in case insensitivity`](./src/rules/cognitoSignInCaseInsensitivity/cognitoSignInCaseInsensitivity.md): checks that your Cognito user pool is insensitive to user name case.
+  - [`Cognito: Sign-in case insensitivity`](./apps/documentation/docs/rules/cognitoSignInCaseInsensitivity.md): checks that your Cognito user pool is insensitive to user name case.
 - AWS CloudWatch:
-  - [`CloudWatch Log Groups: Defined logs retention duration`](./src/rules/definedLogsRetentionDuration/definedLogsRetentionDuration.md): checks that each of your Log Groups has a defined log retention duration.
+  - [`CloudWatch Log Groups: Defined logs retention duration`](./apps/documentation/docs/rules/definedLogsRetentionDuration.md): checks that each of your Log Groups has a defined log retention duration.
 - AWS EventBridge:
-  - [`EventBridge: Specified dead letter queue`](./src/rules/specifyDlqOnEventBridgeRule/specifyDlqOnEventBridgeRule.md): checks that each Event Bridge Rule target has a dead letter queue.
+  - [`EventBridge: Specified dead letter queue`](./apps/documentation/docs/rules/specifyDlqOnEventBridgeRule.md): checks that each Event Bridge Rule target has a dead letter queue.
 - AWS CloudFront:
-  - [`CloudFront: Enable security headers`](./src/rules/cloudFrontSecurityHeaders/cloudFrontSecurityHeaders.md): checks that each CloudFront distributions have basic security headers enabled.
+  - [`CloudFront: Enable security headers`](./apps/documentation/docs/rules/cloudFrontSecurityHeaders.md): checks that each CloudFront distributions have basic security headers enabled.
 - AWS RDS:
-  - [`RDS: Enable instance autoscaling`](./src/rules/autoscaleRdsInstanceEnabled/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
+  - [`RDS: Enable instance autoscaling`](./apps/documentation/docs/rules/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
 - AWS Backup:
-  - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./src/rules/definedBackupRetentionPeriodOrTransitionToColdStorage): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
+  - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./apps/documentation/docs/rules/definedBackupRetentionPeriodOrTransitionToColdStorage.md): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
 
 <p>Check out our articles, to find out more:</p>
 
