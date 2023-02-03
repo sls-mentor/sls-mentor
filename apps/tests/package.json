@@ -22,6 +22,8 @@
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21",
     "@sls-mentor/core": "workspace:*",
-    "sls-mentor": "workspace:*"
+    "sls-mentor": "workspace:*",
+    "danfojs": "^1.1.2",
+    "exceljs": "^4.3.0"
   }
 }
