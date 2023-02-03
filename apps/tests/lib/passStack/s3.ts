@@ -1,7 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Duration } from 'aws-cdk-lib';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import { StorageClass } from 'aws-cdk-lib/aws-s3';
+import { BucketEncryption, StorageClass } from 'aws-cdk-lib/aws-s3';
 
 export const PASS_INTELLIGENT_TIERING_BUCKET_NAME =
   'PassIntelligentTieringBucket';
@@ -20,5 +20,6 @@ export const setupS3 = (stack: cdk.Stack): void => {
         ],
       },
     ],
+    encryption: BucketEncryption.KMS_MANAGED,
   });
 };
