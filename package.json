@@ -39,7 +39,6 @@
     "@aws-sdk/util-arn-parser": "3.208.0",
     "@aws-sdk/util-middleware": "^3.226.0",
     "chalk": "^4.1.2",
-    "cli-progress": "^3.11.2",
     "cli-select": "^1.1.2",
     "commander": "^9.2.0",
     "lodash": "^4.17.21",
@@ -47,7 +46,6 @@
     "throttled-queue": "^2.1.4"
   },
   "devDependencies": {
-    "@types/cli-progress": "^3.11.0",
     "@types/lodash": "^4.14.182",
     "@types/node": "18.11.9",
     "@types/object-hash": "^2.2.1",

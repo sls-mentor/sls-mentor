@@ -1,4 +1,3 @@
-import { MultiBar, Presets } from 'cli-progress';
 import {
   AsyncSpecifyFailureDestination,
   AutoscaleRdsInstanceEnabled,
@@ -26,22 +25,18 @@ import {
   UseArm,
   UseIntelligentTiering,
 } from '@sls-mentor/core';
+import chalk from 'chalk';
+import { Spinner } from 'cli-spinner';
 import { ChecksResults } from './types';
+
+const formatSpinnerString = (current: number, total: number): string =>
+  chalk.green(`%s Processing rules ${current}/${total}...`);
 
 export const runChecks = async (
   allResourceArns: CustomARN[],
   level: number,
   rulesConfigurations?: Record<string, RuleConfiguration>,
 ): Promise<ChecksResults> => {
-  const progressBar = new MultiBar(
-    { emptyOnZero: true, hideCursor: true },
-    Presets.rect,
-  );
-  process.on('SIGINT', () => {
-    progressBar.stop();
-    process.exit(0);
-  });
-
   const allRules: Rule[] = [
     LightBundleRule,
     NoMonoPackage,
@@ -71,17 +66,27 @@ export const runChecks = async (
     rule => rule.level <= level,
   );
 
-  const total = rulesToRunAccordingToLevel.length + 1;
+  const total = rulesToRunAccordingToLevel.length;
+  let current = 1;
 
-  const rulesProgressBar = progressBar.create(
-    total,
-    0,
-    {},
-    { format: 'Rules:  {bar} {percentage}% | ETA: {eta}s | {value}/{total}' },
-  );
+  const rulesSpinner = new Spinner({
+    text: formatSpinnerString(current, total),
+    stream: process.stderr,
+
+    onTick: function (msg) {
+      this.clearLine(this.stream);
+      this.stream.write(msg);
+    },
+  });
+  rulesSpinner.setSpinnerString('⠇⠋⠙⠸⠴⠦');
+
+  rulesSpinner.start();
 
   const decreaseRemaining = () => {
-    rulesProgressBar.increment();
+    if (current < total) {
+      current++;
+      rulesSpinner.setSpinnerTitle(formatSpinnerString(current, total));
+    }
   };
 
   decreaseRemaining();
@@ -106,6 +111,8 @@ export const runChecks = async (
       return { rule, result: ruleResult };
     }),
   );
+
+  rulesSpinner.stop(true);
 
   return results;
 };
