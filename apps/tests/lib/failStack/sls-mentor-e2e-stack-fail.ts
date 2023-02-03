@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { setupLambda } from './lambda';
+import { setupLogGroup } from './logGroup';
 import { setupS3 } from './s3';
 
 export class SlsMentorE2EStackFail extends cdk.Stack {
@@ -8,5 +9,6 @@ export class SlsMentorE2EStackFail extends cdk.Stack {
     super(scope, id, props);
     setupLambda(this);
     setupS3(this);
+    setupLogGroup(this);
   }
 }
