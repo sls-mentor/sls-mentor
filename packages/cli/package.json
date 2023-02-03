@@ -6,8 +6,7 @@
   },
   "scripts": {
     "dev": "pnpm exec ts-node --transpileOnly ./src/index.ts",
-    "clean": "rimraf ./dist/",
-    "build": "pnpm run clean && tsc",
+    "build": "tsup src/index.ts",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
@@ -47,10 +46,10 @@
     "cli-progress": "^3.11.2",
     "cli-select": "^1.1.2",
     "commander": "^9.2.0",
+    "core": "workspace:*",
     "lodash": "^4.17.21",
     "object-hash": "^3.0.0",
-    "throttled-queue": "^2.1.4",
-    "core": "workspace:*"
+    "throttled-queue": "^2.1.4"
   },
   "keywords": [
     "aws",
@@ -63,5 +62,8 @@
     "CI"
   ],
   "main": "src/index.ts",
-  "types": "src/index.ts"
+  "types": "src/index.ts",
+  "devDependencies": {
+    "tsup": "^6.5.0"
+  }
 }
