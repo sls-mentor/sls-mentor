@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
-import { DEPRECATED_RUNTIMES } from 'constants/runtimes';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
 import { SlsMentorLevel } from '../../constants/level';
+import { DEPRECATED_RUNTIMES } from '../../constants/runtimes';
 import { Category, Rule } from '../../types';
 
 const hasDeprecatedRuntime = (lambdaConfiguration: FunctionConfiguration) =>
