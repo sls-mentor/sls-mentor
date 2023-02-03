@@ -86,8 +86,12 @@
       "name": "🧪 test-stack [service]"
     },
     {
-      "path": "packages/sls-mentor",
-      "name": "🛡️ sls-mentor [core]"
+      "path": "packages/cli",
+      "name": "🛡️ sls-mentor [cli]"
+    },
+    {
+      "path": "packages/core",
+      "name": "🛡️ core"
     }
   ]
 }
