@@ -2,7 +2,7 @@ import {
   FunctionConfiguration,
   paginateListFunctions,
 } from '@aws-sdk/client-lambda';
-import { lambdaClient, LambdaFunctionARN } from 'core';
+import { lambdaClient, LambdaFunctionARN } from '@sls-mentor/core';
 
 export const listLambdaFunctions = async (): Promise<LambdaFunctionARN[]> => {
   const lambdaFunctions: FunctionConfiguration[] = [];

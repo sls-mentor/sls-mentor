@@ -3,6 +3,6 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   clean: true,
   silent: true,
-  noExternal: ['core'],
+  noExternal: ['@sls-mentor/core'],
   outDir: 'dist',
 });

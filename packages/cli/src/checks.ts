@@ -25,7 +25,7 @@ import {
   UnderMaxMemory,
   UseArm,
   UseIntelligentTiering,
-} from 'core';
+} from '@sls-mentor/core';
 import { ChecksResults } from './types';
 
 export const runChecks = async (

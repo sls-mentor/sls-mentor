@@ -1,4 +1,4 @@
-import { UseArm as UseArmRule } from 'core';
+import { UseArm as UseArmRule } from '@sls-mentor/core';
 import { describe, expect, it } from 'vitest';
 import { FAIL_ARM64_LAMBDA_NAME } from '../lib/failStack/lambda';
 import { PASS_ARM64_LAMBDA_NAME } from '../lib/passStack/lambda';

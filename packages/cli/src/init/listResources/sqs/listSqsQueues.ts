@@ -1,5 +1,5 @@
 import { paginateListQueues } from '@aws-sdk/client-sqs';
-import { sqsCLient, SqsQueueARN } from 'core';
+import { sqsCLient, SqsQueueARN } from '@sls-mentor/core';
 
 export const listSqsQueues = async (): Promise<SqsQueueARN[]> => {
   const queueUrls: string[] = [];

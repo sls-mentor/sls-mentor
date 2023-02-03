@@ -3,7 +3,7 @@ import {
   ResourceGroupsTaggingAPIClient,
   ResourceTagMapping,
 } from '@aws-sdk/client-resource-groups-tagging-api';
-import { CustomARN } from 'core';
+import { CustomARN } from '@sls-mentor/core';
 import { Tag } from '../types';
 
 export const fetchTaggedResourceArns = async (

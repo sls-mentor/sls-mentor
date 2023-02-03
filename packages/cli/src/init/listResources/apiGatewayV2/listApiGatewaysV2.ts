@@ -1,5 +1,5 @@
 import { GetApisCommand } from '@aws-sdk/client-apigatewayv2';
-import { ApiGatewayV2ApiARN, apiGatewayV2Client } from 'core';
+import { ApiGatewayV2ApiARN, apiGatewayV2Client } from '@sls-mentor/core';
 
 export const listApiGatewaysV2 = async (): Promise<ApiGatewayV2ApiARN[]> => {
   const { Items } = await apiGatewayV2Client.send(new GetApisCommand({}));

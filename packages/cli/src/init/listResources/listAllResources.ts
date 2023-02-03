@@ -1,6 +1,7 @@
 import {
   ApiGatewayV2ApiARN,
   BackupPlanARN,
+  CloudFrontDistributionARN,
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
@@ -9,8 +10,7 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SqsQueueARN,
-} from 'core';
-import { CloudFrontDistributionARN } from 'core/src/types/arn/cloudFront';
+} from '@sls-mentor/core';
 import { listApiGatewaysV2 } from './apiGatewayV2';
 import { listBackupPlans } from './backupPlan';
 import { listCloudFrontDistributions } from './cloudfront';

@@ -1,4 +1,4 @@
-import { CustomARN } from 'core';
+import { CustomARN } from '@sls-mentor/core';
 import intersectionWith from 'lodash/intersectionWith';
 import { fetchCloudFormationResourceArns } from './fetchCloudFormationResourceArns';
 import { fetchTaggedResourceArns } from './fetchTaggedResourceArns';

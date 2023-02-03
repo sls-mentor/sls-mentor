@@ -1,4 +1,4 @@
-import { UseIntelligentTiering as S3IntelligentTieringRule } from 'core';
+import { UseIntelligentTiering as S3IntelligentTieringRule } from '@sls-mentor/core';
 import { describe, expect, it } from 'vitest';
 import { FAIL_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/failStack/s3';
 import { PASS_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/passStack/s3';

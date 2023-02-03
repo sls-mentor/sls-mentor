@@ -1,4 +1,4 @@
-import { CustomARN, RuleCheckResult } from 'core';
+import { CustomARN, RuleCheckResult } from '@sls-mentor/core';
 import omit from 'lodash/omit';
 import uniqBy from 'lodash/uniqBy';
 import { ChecksResults, FailedRule, ResourceResult } from '../types';

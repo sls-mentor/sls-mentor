@@ -1,4 +1,4 @@
-import { Category, CustomARN, Rule, RuleCheckResult } from 'core';
+import { Category, CustomARN, Rule, RuleCheckResult } from '@sls-mentor/core';
 
 export type ChecksResults = {
   rule: Rule;

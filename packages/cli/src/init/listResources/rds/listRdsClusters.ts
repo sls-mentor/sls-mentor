@@ -1,5 +1,5 @@
 import { DBCluster, paginateDescribeDBClusters } from '@aws-sdk/client-rds';
-import { rdsClient, RdsClusterARN } from 'core';
+import { rdsClient, RdsClusterARN } from '@sls-mentor/core';
 
 export const listRdsClusters = async (): Promise<RdsClusterARN[]> => {
   const rdsClusters: DBCluster[] = [];

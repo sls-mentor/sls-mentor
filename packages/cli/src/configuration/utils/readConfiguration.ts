@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import { Configuration } from 'core';
+import { Configuration } from '@sls-mentor/core';
 
 export const readConfiguration = (): Configuration => {
   try {

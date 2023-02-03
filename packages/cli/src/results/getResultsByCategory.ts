@@ -1,4 +1,4 @@
-import { Category } from 'core';
+import { Category } from '@sls-mentor/core';
 import { ChecksResults, ChecksResultsByCategory } from '../types';
 
 export const getResultsByCategory = (

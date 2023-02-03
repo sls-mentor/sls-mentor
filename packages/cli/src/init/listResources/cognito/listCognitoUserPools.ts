@@ -2,7 +2,7 @@ import {
   paginateListUserPools,
   UserPoolDescriptionType,
 } from '@aws-sdk/client-cognito-identity-provider';
-import { cognitoIdpClient, CognitoUserPoolARN } from 'core';
+import { cognitoIdpClient, CognitoUserPoolARN } from '@sls-mentor/core';
 
 export const listCognitoUserPools = async (): Promise<CognitoUserPoolARN[]> => {
   const userPools: UserPoolDescriptionType[] = [];

@@ -1,4 +1,4 @@
-import { MAX_SLS_MENTOR_LEVEL } from 'core';
+import { MAX_SLS_MENTOR_LEVEL } from '@sls-mentor/core';
 import { promptForUserLevelInput } from '../display/promptForUserLevelInput';
 import { Options } from '../types';
 

@@ -1,5 +1,5 @@
 import { EventBus, ListEventBusesCommand } from '@aws-sdk/client-eventbridge';
-import { eventBridgeClient, EventBridgeEventBusARN } from 'core';
+import { eventBridgeClient, EventBridgeEventBusARN } from '@sls-mentor/core';
 
 export const listEventBridgeEventBuses = async (): Promise<
   EventBridgeEventBusARN[]

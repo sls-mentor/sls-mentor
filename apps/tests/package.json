@@ -20,7 +20,7 @@
     "aws-cdk-lib": "2.50.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21",
-    "core": "workspace:*",
+    "@sls-mentor/core": "workspace:*",
     "sls-mentor": "workspace:*"
   }
 }

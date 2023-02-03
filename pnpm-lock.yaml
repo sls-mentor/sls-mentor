@@ -141,19 +141,19 @@ importers:
 
   apps/tests:
     specifiers:
+      '@sls-mentor/core': workspace:*
       aws-cdk: 2.50.0
       aws-cdk-lib: 2.50.0
       constructs: ^10.0.0
-      core: workspace:*
       dotenv: ^16.0.3
       lodash: ^4.17.21
       sls-mentor: workspace:*
       source-map-support: ^0.5.21
       vitest: ^0.24.5
     dependencies:
+      '@sls-mentor/core': link:../../packages/core
       aws-cdk-lib: 2.50.0_constructs@10.1.232
       constructs: 10.1.232
-      core: link:../../packages/core
       sls-mentor: link:../../packages/cli
       source-map-support: 0.5.21
     devDependencies:
@@ -181,11 +181,11 @@ importers:
       '@aws-sdk/types': ^3.226.0
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': ^3.226.0
+      '@sls-mentor/core': workspace:*
       chalk: ^4.1.2
       cli-progress: ^3.11.2
       cli-select: ^1.1.2
       commander: ^9.2.0
-      core: workspace:*
       lodash: ^4.17.21
       object-hash: ^3.0.0
       throttled-queue: ^2.1.4
@@ -208,11 +208,11 @@ importers:
       '@aws-sdk/types': 3.257.0
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': 3.257.0
+      '@sls-mentor/core': link:../core
       chalk: 4.1.2
       cli-progress: 3.11.2
       cli-select: 1.1.2
       commander: 9.5.0
-      core: link:../core
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4

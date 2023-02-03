@@ -1,4 +1,4 @@
-import { CustomARN } from 'core';
+import { CustomARN } from '@sls-mentor/core';
 import { runChecks } from './checks';
 import { readConfiguration } from './configuration/utils/readConfiguration';
 import {

@@ -14,7 +14,7 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SqsQueueARN,
-} from 'core';
+} from '@sls-mentor/core';
 
 // This is a big switch
 // eslint-disable-next-line complexity
