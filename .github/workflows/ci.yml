@@ -26,6 +26,10 @@ jobs:
       - name: Install & cache node dependencies
         uses: ./.github/actions/install
       - run: pnpm run lint
+      - name: Danger
+        run: pnpm danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   type:
     name: Type
     runs-on: ubuntu-latest
