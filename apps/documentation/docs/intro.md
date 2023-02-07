@@ -4,14 +4,12 @@
   <h1>
     <br/>
     <br/>
-    <img src="../../img/sls-mentor.svg" style={{height: '48px'}} />
+    <img src="../../img/sls-mentor.svg" style={{width: '60px'}} />
     <br />
-    sls-mentor
-    <br />
+    <img src="../img/title.png" style={{width: '600px'}} alt="sls-mentor" />
     <br />
   </h1>
   <sup>
-    <br />
     <a href="https://www.npmjs.com/package/sls-mentor">
        <img src="https://img.shields.io/npm/v/sls-mentor.svg" alt="npm package" />
     </a>
