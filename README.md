@@ -2,14 +2,13 @@
   <h1>
     <br/>
     <br/>
-    <img src="apps/documentation/static/img/sls-mentor.svg" height="48px" />
+    <img src="apps/documentation/static/img/sls-mentor.svg" width="60px" alt="sls-mentor-logo" />
     <br />
-    sls-mentor
-    <br />
+    <img src="apps/documentation/static/img/title.png" width="600px" alt="sls-mentor" />
     <br />
   </h1>
   <sup>
-    <br />
+    <p>We are open to contributions, check our <a href="https://github.com/sls-mentor/sls-mentor/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">good first issues</a>!</p>
     <a href="https://www.npmjs.com/package/sls-mentor">
        <img src="https://img.shields.io/npm/v/sls-mentor.svg" alt="npm package" />
     </a>
@@ -88,6 +87,8 @@
   - [`Lambda: Under maximum memory`](./apps/documentation/docs/rules/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
   - [`Lambda: No maximum timeout`](./apps/documentation/docs/rules/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
   - [`Lambda: No provisioned concurrency`](./apps/documentation/docs/rules/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.
+    concurrency.
+  - [`Lambda: No deprecated runtime`](./apps/documentation//docs/rules/noDeprecatedRuntime.md): checks that your Lambda functions do not run on deprecated runtime.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./apps/documentation/docs/rules/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
   - [`S3: Server-side encryption enabled`](./apps/documentation/docs/rules/serverSideEncryptionEnabled.md): checks that server-side encryption is enabled on each S3 bucket.
@@ -106,6 +107,8 @@
   - [`RDS: Enable instance autoscaling`](./apps/documentation/docs/rules/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
 - AWS Backup:
   - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./apps/documentation/docs/rules/definedBackupRetentionPeriodOrTransitionToColdStorage.md): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
+- AWS API Gateway V2:
+  - [`API Gateway: Use authorized routes`](./apps/documentation/docs/rules/noUnauthorizedApiGatewaysV2Routes.md): checks that each API Gateway route has an authorizer configured.
 
 <p>Check out our articles, to find out more:</p>
 
