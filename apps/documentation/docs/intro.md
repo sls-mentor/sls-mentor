@@ -10,6 +10,7 @@
     <br />
   </h1>
   <sup>
+    <p>We are open to contributions, check our <a href="https://github.com/sls-mentor/sls-mentor/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">good first issues</a>!</p>
     <a href="https://www.npmjs.com/package/sls-mentor">
        <img src="https://img.shields.io/npm/v/sls-mentor.svg" alt="npm package" />
     </a>
