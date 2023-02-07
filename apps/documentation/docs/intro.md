@@ -106,6 +106,10 @@
   - [`CloudFront: Enable security headers`](./rules/cloudFrontSecurityHeaders): checks that each CloudFront distributions have basic security headers enabled.
 - AWS RDS:
   - [`RDS: Enable instance autoscaling`](./rules/autoscaleRdsInstanceEnabled): checks that RDS instances have autoscaling enabled.
+- AWS Backup:
+  - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./rules/definedBackupRetentionPeriodOrTransitionToColdStorage): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
+- AWS API Gateway V2:
+  - [`API Gateway: Use authorized routes`](./rules/noUnauthorizedApiGatewaysV2Routes): checks that each API Gateway route has an authorizer configured.
 
 <p>Check out our articles, to find out more:</p>
 
