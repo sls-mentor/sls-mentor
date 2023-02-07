@@ -6,7 +6,7 @@
     <br/>
     <img src="../../img/sls-mentor.svg" style={{width: '60px'}} />
     <br />
-    <img src="../img/title.png" style={{width: '600px'}} alt="sls-mentor" />
+    <img src="../../img/title.png" style={{width: '600px'}} alt="sls-mentor" />
     <br />
   </h1>
   <sup>
@@ -35,7 +35,7 @@
   <h2>One minute quick start 🚀</h2>
   <br />
   <pre>npx <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor</a></pre>
-    <img src="../img/guardian-run.gif" style={{width: '60%'}} />
+    <img src="../../img/guardian-run.gif" style={{width: '60%'}} />
   <br />
   <br />
 </div>
