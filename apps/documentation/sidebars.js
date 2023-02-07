@@ -87,6 +87,11 @@ const sidebars = {
                 'rules/definedBackupRetentionPeriodOrTransitionToColdStorage',
               ],
             },
+            {
+              type: 'category',
+              label: 'Api Gateway V2',
+              items: ['rules/noUnauthorizedApiGatewaysV2Routes'],
+            },
           ],
         },
         {
@@ -135,6 +140,7 @@ const sidebars = {
                 'rules/s3OnlyAllowHTTPS',
                 'rules/serverSideEncryptionEnabled',
                 'rules/noDeprecatedRuntime',
+                'rules/noUnauthorizedApiGatewaysV2Routes',
               ],
             },
             {
@@ -211,6 +217,7 @@ const sidebars = {
                 'rules/cognitoSignInCaseInsensitivity',
                 'rules/specifyDlqOnEventBridgeRule',
                 'rules/asyncSpecifyFailureDestination',
+                'rules/noUnauthorizedApiGatewaysV2Routes',
               ],
             },
           ],
