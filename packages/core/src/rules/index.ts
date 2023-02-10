@@ -1,3 +1,4 @@
+import { Rule } from '../types';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import AutoscaleRdsInstanceEnabled from './autoscaleRdsInstanceEnabled';
 import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
@@ -45,3 +46,28 @@ export {
   UseArm,
   UseIntelligentTiering,
 };
+
+export const rules: Rule[] = [
+  LightBundleRule,
+  NoMonoPackage,
+  NoDefaultMemory,
+  NoMaxTimeout,
+  NoSharedIamRoles,
+  NoDeprecatedRuntime,
+  UseArm,
+  LimitedAmountOfLambdaVersions,
+  UnderMaxMemory,
+  AsyncSpecifyFailureDestination,
+  UseIntelligentTiering,
+  ServerSideEncryptionEnabled,
+  SpecifyDlqOnSqs,
+  CognitoSignInCaseInsensitivity,
+  DefinedLogsRetentionDuration,
+  SpecifyDlqOnEventBridgeRule,
+  CloudFrontSecurityHeaders,
+  S3OnlyAllowHTTPS,
+  NoProvisionedConcurrency,
+  AutoscaleRdsInstanceEnabled,
+  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
+  NoUnauthorizedApiGatewaysV2Routes,
+];
