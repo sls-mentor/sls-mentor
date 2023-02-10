@@ -43,8 +43,8 @@
     "@aws-sdk/util-arn-parser": "3.208.0",
     "@aws-sdk/util-middleware": "^3.226.0",
     "chalk": "^4.1.2",
-    "cli-progress": "^3.11.2",
     "cli-select": "^1.1.2",
+    "cli-spinner": "^0.2.10",
     "commander": "^9.2.0",
     "@sls-mentor/core": "workspace:*",
     "lodash": "^4.17.21",
@@ -64,6 +64,7 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "devDependencies": {
-    "tsup": "^6.5.0"
+    "tsup": "^6.5.0",
+    "@types/cli-spinner": "^0.2.1"
   }
 }

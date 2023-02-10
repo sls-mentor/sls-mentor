@@ -20,14 +20,12 @@ importers:
       '@aws-sdk/types': ^3.226.0
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': ^3.226.0
-      '@types/cli-progress': ^3.11.0
       '@types/lodash': ^4.14.182
       '@types/node': 18.11.9
       '@types/object-hash': ^2.2.1
       '@typescript-eslint/eslint-plugin': ^5.25.0
       '@typescript-eslint/parser': ^5.25.0
       chalk: ^4.1.2
-      cli-progress: ^3.11.2
       cli-select: ^1.1.2
       commander: ^9.2.0
       danger: ^11.2.1
@@ -64,14 +62,12 @@ importers:
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': 3.226.0
       chalk: 4.1.2
-      cli-progress: 3.11.2
       cli-select: 1.1.2
       commander: 9.5.0
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4
     devDependencies:
-      '@types/cli-progress': 3.11.0
       '@types/lodash': 4.14.191
       '@types/node': 18.11.9
       '@types/object-hash': 2.2.1
@@ -184,9 +180,10 @@ importers:
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': ^3.226.0
       '@sls-mentor/core': workspace:*
+      '@types/cli-spinner': ^0.2.1
       chalk: ^4.1.2
-      cli-progress: ^3.11.2
       cli-select: ^1.1.2
+      cli-spinner: ^0.2.10
       commander: ^9.2.0
       lodash: ^4.17.21
       object-hash: ^3.0.0
@@ -212,13 +209,14 @@ importers:
       '@aws-sdk/util-middleware': 3.257.0
       '@sls-mentor/core': link:../core
       chalk: 4.1.2
-      cli-progress: 3.11.2
       cli-select: 1.1.2
+      cli-spinner: 0.2.10
       commander: 9.5.0
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4
     devDependencies:
+      '@types/cli-spinner': 0.2.1
       tsup: 6.5.0
 
   packages/core:
@@ -5033,8 +5031,8 @@ packages:
     resolution: {integrity: sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==}
     dev: true
 
-  /@types/cli-progress/3.11.0:
-    resolution: {integrity: sha512-XhXhBv1R/q2ahF3BM7qT5HLzJNlIL0wbcGyZVjqOTqAybAnsLisd7gy1UCyIqpL+5Iv6XhlSyzjLCnI2sIdbCg==}
+  /@types/cli-spinner/0.2.1:
+    resolution: {integrity: sha512-bsdlZy3LThi9QbsK0GXm5s/e3F6HAJi1tMsIanm9trtoStSlV3gzir9JpfOK40gERMNIVevDTpG5NzSGnYs3QA==}
     dependencies:
       '@types/node': 18.11.9
     dev: true
@@ -6161,17 +6159,15 @@ packages:
     resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
     engines: {node: '>=10'}
 
-  /cli-progress/3.11.2:
-    resolution: {integrity: sha512-lCPoS6ncgX4+rJu5bS3F/iCz17kZ9MPZ6dpuTtI0KXKABkhyXIdYB3Inby1OpaGti3YlI3EeEkM9AuWpelJrVA==}
-    engines: {node: '>=4'}
-    dependencies:
-      string-width: 4.2.3
-    dev: false
-
   /cli-select/1.1.2:
     resolution: {integrity: sha512-PSvWb8G0PPmBNDcz/uM2LkZN3Nn5JmhUl465tTfynQAXjKzFpmHbxStM6X/+awKp5DJuAaHMzzMPefT0suGm1w==}
     dependencies:
       ansi-escapes: 3.2.0
+    dev: false
+
+  /cli-spinner/0.2.10:
+    resolution: {integrity: sha512-U0sSQ+JJvSLi1pAYuJykwiA8Dsr15uHEy85iCJ6A+0DjVxivr3d+N2Wjvodeg89uP5K6TswFkKBfAD7B3YSn/Q==}
+    engines: {node: '>=0.10'}
     dev: false
 
   /cli-table3/0.6.3:
