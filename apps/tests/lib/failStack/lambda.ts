@@ -14,11 +14,11 @@ export const FAIL_LIGHT_BUNDLE_LAMBDA_NAME = 'FailLightBundleLambda';
 export const FAIL_NO_DEFAULT_MEMORY_LAMBDA_NAME = 'FailNoDefaultMemoryLambda';
 
 export const setupLambda = (stack: cdk.Stack): void => {
-  new NodejsFunction(stack, FAIL_ARM64_LAMBDA_NAME, {
+  new Function(stack, FAIL_ARM64_LAMBDA_NAME, {
     architecture: Architecture.X86_64,
     runtime: Runtime.NODEJS_16_X,
-    entry: path.join(__dirname, 'handler.ts'),
-    handler: 'main',
+    code: lambdaInlineCode,
+    handler: 'index.handler',
   });
 
   // duplicated lambdas to fail no mono lambda rule

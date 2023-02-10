@@ -1,27 +1,25 @@
-import { describe, expect, it } from 'vitest';
-import NoMonoPackageRule from '../../../packages/sls-mentor/src/rules/noMonoPackage';
+import { NoMonoPackage } from '@sls-mentor/core';
+import { describe, it } from 'vitest';
 import { FAIL_NO_MONO_LAMBDA_NAME } from '../lib/failStack/lambda';
 import { PASS_NO_MONO_LAMBDA_NAME } from '../lib/passStack/lambda';
-import { slsMentorResult } from './testSetup/slsMentorResult';
+import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = NoMonoPackageRule['ruleName'];
-
-const slsMentorOutput = slsMentorResult[ruleName];
+const ruleName = NoMonoPackage['ruleName'];
 
 describe('lambda-arm-64', () => {
   it('sls-mentor passes on lambda sharing no code', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r => r.arn.resource.includes(PASS_NO_MONO_LAMBDA_NAME))
-        ?.success,
-    ).toBe(true);
+    assertResourceResult({
+      ruleName,
+      resourceName: PASS_NO_MONO_LAMBDA_NAME,
+      expectedResultForResource: true,
+    });
   });
 
   it('sls-mentor fails on lambda sharing code with other', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r => r.arn.resource.includes(FAIL_NO_MONO_LAMBDA_NAME))
-        ?.success,
-    ).toBe(false);
+    assertResourceResult({
+      ruleName,
+      resourceName: FAIL_NO_MONO_LAMBDA_NAME,
+      expectedResultForResource: false,
+    });
   });
 });

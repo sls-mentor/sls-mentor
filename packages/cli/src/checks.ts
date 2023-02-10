@@ -8,7 +8,7 @@ import {
   DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
-  noDefaultMemory,
+  NoDefaultMemory,
   NoDeprecatedRuntime,
   NoMaxTimeout,
   NoMonoPackage,
@@ -40,7 +40,7 @@ export const runChecks = async (
   const allRules: Rule[] = [
     LightBundleRule,
     NoMonoPackage,
-    noDefaultMemory,
+    NoDefaultMemory,
     NoMaxTimeout,
     NoSharedIamRoles,
     NoDeprecatedRuntime,

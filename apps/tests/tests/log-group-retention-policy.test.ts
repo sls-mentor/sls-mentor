@@ -1,26 +1,25 @@
-import { describe, expect, it } from 'vitest';
-import DefinedLogsRetentionDuration from '../../../packages/sls-mentor/src/rules/definedLogsRetentionDuration';
+import { DefinedLogsRetentionDuration } from '@sls-mentor/core';
+import { describe, it } from 'vitest';
 import { FAIL_RETENTION_LOG_GROUP } from '../lib/failStack/logGroup';
 import { PASS_RETENTION_LOG_GROUP } from '../lib/passStack/logGroup';
-import { slsMentorResult } from './testSetup/slsMentorResult';
+import { assertResourceResult } from './utils/assertResourceResult';
 
 const ruleName = DefinedLogsRetentionDuration['ruleName'];
 
-const slsMentorOutput = slsMentorResult[ruleName];
-
 describe('log-group-retention-policy', () => {
   it('sls-mentor passes on LogGroup with specified retention policy', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r => r.arn.resource.includes(PASS_RETENTION_LOG_GROUP))
-        ?.success,
-    ).toBe(true);
+    assertResourceResult({
+      ruleName,
+      resourceName: PASS_RETENTION_LOG_GROUP,
+      expectedResultForResource: true,
+    });
   });
+
   it('sls-mentor fails on LogGroup with undefined retention policy', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r => r.arn.resource.includes(FAIL_RETENTION_LOG_GROUP))
-        ?.success,
-    ).toBe(false);
+    assertResourceResult({
+      ruleName,
+      resourceName: FAIL_RETENTION_LOG_GROUP,
+      expectedResultForResource: false,
+    });
   });
 });

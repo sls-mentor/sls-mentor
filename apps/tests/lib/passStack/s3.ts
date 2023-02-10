@@ -6,6 +6,8 @@ import { BucketEncryption, StorageClass } from 'aws-cdk-lib/aws-s3';
 export const PASS_INTELLIGENT_TIERING_BUCKET_NAME =
   'PassIntelligentTieringBucket';
 
+export const PASS_SSE_ENABLED_BUCKET_NAME = 'PassSseEnabled';
+
 export const setupS3 = (stack: cdk.Stack): void => {
   new s3.Bucket(stack, PASS_INTELLIGENT_TIERING_BUCKET_NAME, {
     lifecycleRules: [
@@ -20,6 +22,9 @@ export const setupS3 = (stack: cdk.Stack): void => {
         ],
       },
     ],
+  });
+
+  new s3.Bucket(stack, PASS_SSE_ENABLED_BUCKET_NAME, {
     encryption: BucketEncryption.KMS_MANAGED,
   });
 };

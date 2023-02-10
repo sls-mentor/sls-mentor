@@ -1,32 +1,25 @@
-import { describe, expect, it } from 'vitest';
-import ServiceSideEncryptionEnabled from '../../../packages/sls-mentor/src/rules/serverSideEncryptionEnabled';
-import { FAIL_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/failStack/s3';
-import { PASS_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/passStack/s3';
-import { slsMentorResult } from './testSetup/slsMentorResult';
+import { ServerSideEncryptionEnabled } from '@sls-mentor/core';
+import { describe, it } from 'vitest';
+import { FAIL_SSE_ENABLED_BUCKET_NAME } from '../lib/failStack/s3';
+import { PASS_SSE_ENABLED_BUCKET_NAME } from '../lib/passStack/s3';
+import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = ServiceSideEncryptionEnabled['ruleName'];
-
-const slsMentorOutput = slsMentorResult[ruleName];
+const ruleName = ServerSideEncryptionEnabled['ruleName'];
 
 describe('s3-sse-enabled', () => {
   it('sls-mentor passes on S3 bucket with SSE enable ', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r =>
-        r.arn.resource.includes(
-          PASS_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase(),
-        ),
-      )?.success,
-    ).toBe(true);
+    assertResourceResult({
+      ruleName,
+      resourceName: PASS_SSE_ENABLED_BUCKET_NAME.toLowerCase(),
+      expectedResultForResource: true,
+    });
   });
+
   it('sls-mentor fails on S3 bucket with no server side encryption', () => {
-    const { result } = slsMentorOutput;
-    expect(
-      result.find(r =>
-        r.arn.resource.includes(
-          FAIL_INTELLIGENT_TIERING_BUCKET_NAME.toLowerCase(),
-        ),
-      )?.success,
-    ).toBe(false);
+    assertResourceResult({
+      ruleName,
+      resourceName: FAIL_SSE_ENABLED_BUCKET_NAME.toLowerCase(),
+      expectedResultForResource: false,
+    });
   });
 });
