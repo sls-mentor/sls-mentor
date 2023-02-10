@@ -6,7 +6,7 @@ import DefinedBackupRetentionPeriodOrTransitionToColdStorage from './definedBack
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
 import LightBundleRule from './lightBundle';
 import LimitedAmountOfLambdaVersions from './limitedAmountOfVersions';
-import noDefaultMemory from './noDefaultMemory';
+import NoDefaultMemory from './noDefaultMemory';
 import NoDeprecatedRuntime from './noDeprecatedRuntime';
 import NoMaxTimeout from './noMaxTimeout';
 import NoMonoPackage from './noMonoPackage';
@@ -30,7 +30,7 @@ export {
   DefinedLogsRetentionDuration,
   LightBundleRule,
   LimitedAmountOfLambdaVersions,
-  noDefaultMemory,
+  NoDefaultMemory,
   NoDeprecatedRuntime,
   NoMaxTimeout,
   NoMonoPackage,
