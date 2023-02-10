@@ -14,7 +14,8 @@
     "aws-cdk": "2.50.0",
     "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
-    "vitest": "^0.24.5"
+    "vitest": "^0.24.5",
+    "ts-node": "^10.7.0"
   },
   "dependencies": {
     "aws-cdk-lib": "2.50.0",
