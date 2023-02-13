@@ -149,6 +149,12 @@ const drawLegend = (): void => {
   );
 };
 
+const displayRawDashboard = (scoresByCategory: ScoresByCategory): void => {
+  scoresByCategory.forEach(({ score, label }) =>
+    console.log(`${label}: ${score}%`),
+  );
+};
+
 export const displayDashboard = (
   checksResultsByCategory: ChecksResultsByCategory,
 ): void => {
@@ -159,11 +165,9 @@ export const displayDashboard = (
   const windowWidth = process.stdout.columns as number | undefined;
   if (windowWidth === undefined) {
     displayError(
-      'Unfortunately your CLI doesnt allow the dashboard to be displayed, displaying row data',
+      "Unfortunately your CLI doesn't allow the dashboard to be displayed, displaying raw data",
     );
-    scoresByCategory.forEach(({ score, label }) =>
-      console.log(`${label}: ${score}%`),
-    );
+    displayRawDashboard(scoresByCategory);
 
     return;
   }
@@ -181,11 +185,13 @@ export const displayDashboard = (
   );
   const dashboardWidth = nbOfBars * barsWidth + nbOfSpaces * barsSpacing;
   if (dashboardWidth > windowWidth) {
-    return console.log(
+    console.log(
       chalk.red(
-        chalk.bold('⚠️  Terminal is too small to display results dashboard'),
+        chalk.bold('⚠️ Terminal is too small to display results dashboard'),
       ),
     );
+
+    return displayRawDashboard(scoresByCategory);
   }
 
   console.log(chalk.bold(centerText('🛡  sls-mentor 🛡', dashboardWidth)));
