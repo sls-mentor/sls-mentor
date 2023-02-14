@@ -103,6 +103,7 @@
   - [`EventBridge: Specified dead letter queue`](./apps/documentation/docs/rules/specifyDlqOnEventBridgeRule.md): checks that each Event Bridge Rule target has a dead letter queue.
 - AWS CloudFront:
   - [`CloudFront: Enable security headers`](./apps/documentation/docs/rules/cloudFrontSecurityHeaders.md): checks that each CloudFront distributions have basic security headers enabled.
+  - [`CloudFront: SSL certificate associated`](./apps/documentation/docs/rules/cloudFrontSSLCertificate.md): checks that each CloudFront distributions have a SSL certificate associated (IAM or ACM).
 - AWS RDS:
   - [`RDS: Enable instance autoscaling`](./apps/documentation/docs/rules/autoscaleRdsInstanceEnabled.md): checks that RDS instances have autoscaling enabled.
 - AWS Backup:

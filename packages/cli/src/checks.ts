@@ -2,6 +2,7 @@ import {
   AsyncSpecifyFailureDestination,
   AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
+  CloudFrontSSLCertificate,
   CognitoSignInCaseInsensitivity,
   CustomARN,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
@@ -60,6 +61,7 @@ export const runChecks = async (
     AutoscaleRdsInstanceEnabled,
     DefinedBackupRetentionPeriodOrTransitionToColdStorage,
     NoUnauthorizedApiGatewaysV2Routes,
+    CloudFrontSSLCertificate,
   ];
 
   const rulesToRunAccordingToLevel = allRules.filter(
