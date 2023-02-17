@@ -16,7 +16,7 @@ const fetchDistribution = async (
   return distribution;
 };
 
-export const fetchAllDistributions = async (
+const fetchAllDistributions = async (
   resourceArns: CustomARN[],
 ): Promise<Distribution[]> => {
   const distributionArns = CustomARN.filterArns(
@@ -36,3 +36,5 @@ export const fetchAllDistributions = async (
 
   return definedDistributions;
 };
+
+export default fetchAllDistributions;

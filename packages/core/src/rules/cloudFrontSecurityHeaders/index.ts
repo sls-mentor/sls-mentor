@@ -1,33 +1,25 @@
 import { Distribution } from '@aws-sdk/client-cloudfront';
-import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
-import getDistributionResponseHeadersPolicyIds from '../../aws-sdk-helpers/cloudFront/getDistributionResponseHeadersPolicyIds';
-import { Rule } from '../../types';
+import {
+  fetchAllDistributions,
+  getEnabledSecurityHeadersByManagedPolicies,
+} from '../../aws-sdk-helpers/cloudFront';
+import { EnabledSecurityHeaders, Rule, SecurityHeader } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
 const areSecurityHeadersEnabled = (distribution: Distribution) => {
-  const responseHeadersPolicyIds =
-    getDistributionResponseHeadersPolicyIds(distribution);
+  const enabledSecurityHeaders: EnabledSecurityHeaders = {
+    ...getEnabledSecurityHeadersByManagedPolicies(distribution),
+  };
 
-  /**
-   * Let's hard code the ID of the policy that has the security headers and is managed by AWS.
-   */
   if (
-    responseHeadersPolicyIds.includes('67f7725c-6f97-4210-82d7-5512b31e9d03')
+    enabledSecurityHeaders[SecurityHeader.StrictTransportSecurity] &&
+    enabledSecurityHeaders[SecurityHeader.ReferrerPolicy] &&
+    enabledSecurityHeaders[SecurityHeader.XContentTypeOptions] &&
+    enabledSecurityHeaders[SecurityHeader.XFrameOptions] &&
+    enabledSecurityHeaders[SecurityHeader.XXSSProtection]
   ) {
     return true;
   }
-
-  /**
-   * TODO: analyze the response headers policies to ensure all security headers are present
-   * In fact, not only the managed policy '67f7725c-6f97-4210-82d7-5512b31e9d03' has the headers,
-   * but the custom policies may also have them.
-   *
-   * const responseHeadersPolicies = await Promise.all(
-   *   responseHeadersPolicyIds.map(fetchResponseHeaderPolicyById),
-   * );
-   *
-   * ...
-   */
 
   return false;
 };
