@@ -8,11 +8,5 @@
     "strict": true,
     "baseUrl": "src"
   },
-  "exclude": [
-    "babel.config.js",
-    "docusaurus.config.js",
-    "sidebars.js",
-    "docs/*",
-    "blog/*"
-  ]
+  "exclude": ["babel.config.js", "docusaurus.config.js", "docs/*", "blog/*"]
 }

@@ -2,9 +2,7 @@ import {
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
 import {
-  Category,
   CustomARN,
   EventBridgeEventBusARN,
   EventBridgeRuleARN,
@@ -58,8 +56,9 @@ const rule: Rule = {
     'The event bridge event rule targets do not all have a specified Dead Letter Queue',
   run,
   fileName: 'specifyDlqOnEventBridgeRule',
-  categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level5,
+  categories: ['Stability'],
+  level: 5,
+  service: 'EventBridge',
 };
 
 export default rule;

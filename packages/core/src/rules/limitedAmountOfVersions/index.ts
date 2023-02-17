@@ -1,6 +1,5 @@
 import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -22,8 +21,9 @@ const rule: Rule = {
     'The following functions have an amount of deployed versions greater than 3',
   run,
   fileName: 'limitedAmountOfVersions',
-  categories: [Category.GREEN_IT, Category.STABILITY],
-  level: SlsMentorLevel.Level2,
+  categories: ['GreenIT', 'Stability'],
+  level: 2,
+  service: 'Lambda',
 };
 
 export default rule;

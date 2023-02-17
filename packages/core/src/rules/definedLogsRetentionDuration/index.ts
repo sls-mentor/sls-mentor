@@ -1,7 +1,6 @@
 import { LogGroup } from '@aws-sdk/client-cloudwatch-logs';
 import { fetchAllLogGroupsConfigurations } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
-import { SlsMentorLevel } from '../../constants';
+import { Rule } from '../../types';
 
 const isLogsRetentionDurationDefined = (
   logGroupConfiguration: LogGroup,
@@ -24,8 +23,9 @@ const rule: Rule = {
   errorMessage: 'RetentionInDays of the log group is undefined.',
   run,
   fileName: 'definedLogsRetentionDuration',
-  categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: SlsMentorLevel.Level3,
+  categories: ['GreenIT', 'ITCosts'],
+  level: 3,
+  service: 'CloudWatch',
 };
 
 export default rule;

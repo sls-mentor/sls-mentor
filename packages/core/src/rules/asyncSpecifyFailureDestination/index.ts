@@ -3,8 +3,7 @@ import {
   fetchAllLambdaConfigurations,
   fetchAllLambdaInvokeEventConfigs,
 } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
@@ -44,8 +43,9 @@ const rule: Rule = {
     'The function is asynchronous but has no failure destination set',
   run,
   fileName: 'asyncSpecifyFailureDestination',
-  categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level5,
+  categories: ['Stability'],
+  level: 5,
+  service: 'Lambda',
 };
 
 export default rule;

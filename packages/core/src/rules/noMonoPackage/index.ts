@@ -1,7 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const hasUniqueShaCode = (
   lambdaConfiguration: FunctionConfiguration,
@@ -62,8 +61,9 @@ const rule: Rule = {
   errorMessage: 'The function code packaged with others',
   run,
   fileName: 'noMonoPackage',
-  categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level1,
+  categories: ['Stability'],
+  level: 1,
+  service: 'Lambda',
 };
 
 export default rule;

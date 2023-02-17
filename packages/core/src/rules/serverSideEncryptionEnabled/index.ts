@@ -1,6 +1,5 @@
 import { fetchAllS3BucketEncryptionConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const s3BucketConfigurations = await fetchAllS3BucketEncryptionConfigurations(
@@ -19,8 +18,9 @@ const rule: Rule = {
   errorMessage: 'Server-side Encryption is not enabled on this S3 bucket',
   run,
   fileName: 'serverSideEncryptionEnabled',
-  categories: [Category.SECURITY],
-  level: SlsMentorLevel.Level1,
+  categories: ['Security'],
+  level: 1,
+  service: 'S3',
 };
 
 export default rule;

@@ -1,8 +1,7 @@
 import { DistributionConfig } from '@aws-sdk/client-cloudfront';
 import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
 import getDistributionConfig from '../../aws-sdk-helpers/cloudFront/getDistributionConfig';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
 const areSSLCertificateAssociated = (
@@ -38,8 +37,9 @@ const rule: Rule = {
   errorMessage: 'Your distributions are not associated with a SSL certificate.',
   run,
   fileName: 'cloudFrontSSLCertificate',
-  categories: [Category.SECURITY],
-  level: SlsMentorLevel.Level1,
+  categories: ['Security'],
+  level: 1,
+  service: 'CloudFront',
 };
 
 export default rule;

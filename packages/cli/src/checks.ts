@@ -1,31 +1,4 @@
-import {
-  AsyncSpecifyFailureDestination,
-  AutoscaleRdsInstanceEnabled,
-  CloudFrontSecurityHeaders,
-  CloudFrontSSLCertificate,
-  CognitoSignInCaseInsensitivity,
-  CustomARN,
-  DefinedBackupRetentionPeriodOrTransitionToColdStorage,
-  DefinedLogsRetentionDuration,
-  LightBundleRule,
-  LimitedAmountOfLambdaVersions,
-  NoDefaultMemory,
-  NoDeprecatedRuntime,
-  NoMaxTimeout,
-  NoMonoPackage,
-  NoProvisionedConcurrency,
-  NoSharedIamRoles,
-  NoUnauthorizedApiGatewaysV2Routes,
-  Rule,
-  RuleConfiguration,
-  S3OnlyAllowHTTPS,
-  ServerSideEncryptionEnabled,
-  SpecifyDlqOnEventBridgeRule,
-  SpecifyDlqOnSqs,
-  UnderMaxMemory,
-  UseArm,
-  UseIntelligentTiering,
-} from '@sls-mentor/core';
+import { CustomARN, RuleConfiguration, rules } from '@sls-mentor/core';
 import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
 import { ChecksResults } from './types';
@@ -38,35 +11,7 @@ export const runChecks = async (
   level: number,
   rulesConfigurations?: Record<string, RuleConfiguration>,
 ): Promise<ChecksResults> => {
-  const allRules: Rule[] = [
-    LightBundleRule,
-    NoMonoPackage,
-    NoDefaultMemory,
-    NoMaxTimeout,
-    NoSharedIamRoles,
-    NoDeprecatedRuntime,
-    UseArm,
-    LimitedAmountOfLambdaVersions,
-    UnderMaxMemory,
-    AsyncSpecifyFailureDestination,
-    UseIntelligentTiering,
-    ServerSideEncryptionEnabled,
-    SpecifyDlqOnSqs,
-    CognitoSignInCaseInsensitivity,
-    DefinedLogsRetentionDuration,
-    SpecifyDlqOnEventBridgeRule,
-    CloudFrontSecurityHeaders,
-    S3OnlyAllowHTTPS,
-    NoProvisionedConcurrency,
-    AutoscaleRdsInstanceEnabled,
-    DefinedBackupRetentionPeriodOrTransitionToColdStorage,
-    NoUnauthorizedApiGatewaysV2Routes,
-    CloudFrontSSLCertificate,
-  ];
-
-  const rulesToRunAccordingToLevel = allRules.filter(
-    rule => rule.level <= level,
-  );
+  const rulesToRunAccordingToLevel = rules.filter(rule => rule.level <= level);
 
   const total = rulesToRunAccordingToLevel.length;
   let current = 1;
