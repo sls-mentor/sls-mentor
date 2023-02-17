@@ -11,8 +11,61 @@
     "type": "git",
     "url": "git+https://github.com/sls-mentor/sls-mentor.git"
   },
-  "author": "",
-  "license": "ISC",
+  "contributors": [
+    {
+      "name": "Pierre Cholet",
+      "email": "pierrech@theodo.fr"
+    },
+    {
+      "name": "Juliette Fournier",
+      "email": "juliettef@theodo.fr"
+    },
+    {
+      "name": "Valentin Beggi",
+      "email": "valentinbe@theodo.fr"
+    },
+    {
+      "name": "Vincent Zanetta",
+      "email": "vincentz@theodo.fr"
+    },
+    {
+      "name": "Frédéric Barthelet",
+      "email": "fredericb@theodo.fr"
+    },
+    {
+      "name": "Adèle Gauvrit",
+      "email": "adeleg@theodo.fr"
+    },
+    {
+      "name": "Eloi Alain",
+      "email": "eloia@theodo.fr"
+    },
+    {
+      "name": "Ajani Motta",
+      "email": "ajanim@theodo.com"
+    },
+    {
+      "name": "Quentin Nativel",
+      "email": "quentinn@theodo.fr"
+    },
+    {
+      "name": "Alexandre Pernin",
+      "email": "alexandrep@theodo.fr"
+    },
+    {
+      "name": "Zineb El Bachiri",
+      "email": "zinebe@theodo.fr"
+    },
+    {
+      "name": "Adrien Cacciaguerra",
+      "email": "adrienc@theodo.fr"
+    },
+    {
+      "name": "Charles Géry",
+      "email": "charlesg@theodo.fr"
+    }
+  ],
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sls-mentor/sls-mentor/issues"
   },
