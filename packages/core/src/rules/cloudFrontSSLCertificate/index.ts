@@ -11,8 +11,6 @@ const areSSLCertificateAssociated = (
   if (!distributionConfig) return false;
 
   return (
-    distributionConfig.ViewerCertificate?.CloudFrontDefaultCertificate ===
-      true ||
     distributionConfig.ViewerCertificate?.IAMCertificateId !== undefined ||
     distributionConfig.ViewerCertificate?.ACMCertificateArn !== undefined
   );
