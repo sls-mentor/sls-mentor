@@ -1,7 +1,6 @@
 import { LifecycleRule } from '@aws-sdk/client-s3';
 import { fetchAllS3BucketLifeCycleRules } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const hasIntelligentTiering = (rules: LifecycleRule[] | undefined): boolean =>
   rules?.some(
@@ -31,8 +30,8 @@ const rule: Rule = {
   errorMessage: 'Intelligent Tiering is not enabled on this S3 bucket',
   run,
   fileName: 'useIntelligentTiering',
-  categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: SlsMentorLevel.Level2,
+  categories: ['GreenIT', 'ITCosts'],
+  level: 2,
 };
 
 export default rule;

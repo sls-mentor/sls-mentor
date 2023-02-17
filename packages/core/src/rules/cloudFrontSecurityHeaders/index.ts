@@ -1,8 +1,7 @@
 import { Distribution } from '@aws-sdk/client-cloudfront';
 import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
 import getDistributionResponseHeadersPolicyIds from '../../aws-sdk-helpers/cloudFront/getDistributionResponseHeadersPolicyIds';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
 const areSecurityHeadersEnabled = (distribution: Distribution) => {
@@ -51,8 +50,8 @@ const rule: Rule = {
     'SecurityHeadersPolicy is not enabled on a behavior of the distribution',
   run,
   fileName: 'cloudFrontSecurityHeaders',
-  categories: [Category.SECURITY],
-  level: SlsMentorLevel.Level1,
+  categories: ['Security'],
+  level: 1,
 };
 
 export default rule;

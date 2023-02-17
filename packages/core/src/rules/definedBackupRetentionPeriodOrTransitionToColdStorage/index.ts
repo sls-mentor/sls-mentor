@@ -1,7 +1,6 @@
 import { GetBackupPlanOutput } from '@aws-sdk/client-backup';
 import { fetchAllBackupPlanConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const isRetentionPeriodOrTransitionToColdStorageDefinedForEachRule = (
   backupPlanConfiguration: GetBackupPlanOutput,
@@ -37,8 +36,8 @@ const rule: Rule = {
     'The backup plan has at least one backup rule without defined retention period and transition to cold storage',
   run,
   fileName: 'definedBackupRetentionPeriodOrTransitionToColdStorage',
-  categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: SlsMentorLevel.Level3,
+  categories: ['GreenIT', 'ITCosts'],
+  level: 3,
 };
 
 export default rule;

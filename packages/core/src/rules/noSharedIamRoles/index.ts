@@ -1,7 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,
@@ -31,8 +30,8 @@ const rule: Rule = {
     'The following functions have roles used by 1 or more other functions',
   run,
   fileName: 'noSharedIamRoles',
-  categories: [Category.SECURITY, Category.STABILITY],
-  level: SlsMentorLevel.Level4,
+  categories: ['Security', 'Stability'],
+  level: 4,
 };
 
 export default rule;

@@ -1,6 +1,7 @@
-import { Category, rules } from '@sls-mentor/core';
+import { CATEGORIES, categoryNames, rules } from '@sls-mentor/core';
 import fs from 'fs';
 import groupBy from 'lodash/groupBy';
+import path from 'path';
 
 const rulesByLevelDictionnary = groupBy(rules, 'level');
 export const rulesByLevel = Object.keys(rulesByLevelDictionnary).map(level => ({
@@ -11,23 +12,15 @@ export const rulesByLevel = Object.keys(rulesByLevelDictionnary).map(level => ({
   ),
 }));
 
-const categories = Object.values(Category);
 const rulesByCategoryDictionnary = Object.fromEntries(
-  categories.map(category => [
+  CATEGORIES.map(category => [
     category,
     rules.filter(rule => rule.categories.includes(category)),
   ]),
 );
-const categoryToLabelMapping = {
-  [Category.GREEN_IT]: 'Green IT',
-  [Category.IT_COSTS]: 'IT Costs',
-  [Category.SECURITY]: 'Security',
-  [Category.SPEED]: 'Speed',
-  [Category.STABILITY]: 'Stability',
-};
-export const rulesByCategory = categories.map(category => ({
+export const rulesByCategory = CATEGORIES.map(category => ({
   type: 'category',
-  label: categoryToLabelMapping[category],
+  label: categoryNames[category],
   items: rulesByCategoryDictionnary[category].map(
     ({ fileName }) => `rules/${fileName}`,
   ),
@@ -142,4 +135,7 @@ const sidebars = {
   ],
 };
 
-fs.writeFileSync('./sidebars.json', JSON.stringify(sidebars));
+fs.writeFileSync(
+  path.join(__dirname, '../sidebars.json'),
+  JSON.stringify(sidebars),
+);

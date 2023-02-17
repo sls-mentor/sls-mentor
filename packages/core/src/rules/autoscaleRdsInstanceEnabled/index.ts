@@ -1,6 +1,5 @@
 import { fetchAllRdsInstancesDescriptions } from '../../aws-sdk-helpers/';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const rdsInstancesDescriptions = await fetchAllRdsInstancesDescriptions(
@@ -33,8 +32,8 @@ const rule: Rule = {
     'Autoscaling is not possible for this RDS instance with current settings.',
   run,
   fileName: 'autoscaleRdsInstanceEnabled',
-  categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level3,
+  categories: ['Stability'],
+  level: 3,
 };
 
 export default rule;

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "generate-sidebar": "ts-node generateSidebar.ts",
+    "generate-sidebar": "ts-node scripts/generateSidebar.ts",
     "start": "pnpm run generate-sidebar && docusaurus start",
     "build": "pnpm run generate-sidebar && docusaurus build",
     "swizzle": "docusaurus swizzle",

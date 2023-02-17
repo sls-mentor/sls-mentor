@@ -1,7 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const hasHeavyBundle = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.CodeSize !== undefined &&
@@ -24,8 +23,8 @@ const rule: Rule = {
     'The following functions have bundles that weight more than 5 Mb',
   run,
   fileName: 'lightBundle',
-  categories: [Category.GREEN_IT, Category.STABILITY],
-  level: SlsMentorLevel.Level4,
+  categories: ['GreenIT', 'Stability'],
+  level: 4,
 };
 
 export default rule;

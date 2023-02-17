@@ -1,6 +1,5 @@
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 
@@ -21,8 +20,8 @@ const rule: Rule = {
   errorMessage: 'The following functions have their memory set as default',
   run,
   fileName: 'noDefaultMemory',
-  categories: [Category.GREEN_IT, Category.IT_COSTS],
-  level: SlsMentorLevel.Level3,
+  categories: ['GreenIT', 'ITCosts'],
+  level: 3,
 };
 
 export default rule;

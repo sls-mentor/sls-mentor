@@ -5,19 +5,19 @@ export const getResultsByCategory = (
   results: ChecksResults,
 ): ChecksResultsByCategory => {
   const resultsByCategory: ChecksResultsByCategory = {
-    [Category.GREEN_IT]: 0,
-    [Category.IT_COSTS]: 0,
-    [Category.SECURITY]: 0,
-    [Category.SPEED]: 0,
-    [Category.STABILITY]: 0,
+    GreenIT: 0,
+    ITCosts: 0,
+    Security: 0,
+    Speed: 0,
+    Stability: 0,
   };
 
   const categoryTotals: ChecksResultsByCategory = {
-    [Category.GREEN_IT]: 0,
-    [Category.IT_COSTS]: 0,
-    [Category.SECURITY]: 0,
-    [Category.SPEED]: 0,
-    [Category.STABILITY]: 0,
+    GreenIT: 0,
+    ITCosts: 0,
+    Security: 0,
+    Speed: 0,
+    Stability: 0,
   };
 
   results.forEach(({ rule, result }) => {
