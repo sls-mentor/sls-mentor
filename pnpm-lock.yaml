@@ -110,9 +110,12 @@ importers:
       '@docusaurus/types': ^2.2.0
       '@iconscout/react-unicons': ^1.1.6
       '@mdx-js/react': ^1.6.22
+      '@sls-mentor/core': workspace:*
       '@tsconfig/docusaurus': ^1.0.6
       '@types/react': ^18.0.26
       clsx: ^1.2.1
+      fs: 0.0.1-security
+      lodash: ^4.17.21
       prism-react-renderer: ^1.3.5
       prop-types: ^15.8.1
       react: ^17.0.2
@@ -124,6 +127,7 @@ importers:
       '@docusaurus/preset-classic': 2.2.0_7hx6yga3yrwjera5667rpi6vge
       '@iconscout/react-unicons': 1.1.6_react@17.0.2
       '@mdx-js/react': 1.6.22_react@17.0.2
+      '@sls-mentor/core': link:../../packages/core
       '@types/react': 18.0.27
       clsx: 1.2.1
       prism-react-renderer: 1.3.5_react@17.0.2
@@ -135,6 +139,8 @@ importers:
       '@docusaurus/theme-classic': 2.2.0_lhsnqlb35hvawm3f6bviuzo2eu
       '@docusaurus/types': 2.2.0_sfoxds7t5ydpegc3knd667wn6m
       '@tsconfig/docusaurus': 1.0.6
+      fs: 0.0.1-security
+      lodash: 4.17.21
       typescript: 4.9.4
 
   apps/tests:
@@ -8615,6 +8621,10 @@ packages:
 
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+
+  /fs/0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
+    dev: true
 
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
