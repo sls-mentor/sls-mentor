@@ -20,6 +20,7 @@ const rule: Rule = {
   fileName: 'serverSideEncryptionEnabled',
   categories: ['Security'],
   level: 1,
+  service: 'S3',
 };
 
 export default rule;

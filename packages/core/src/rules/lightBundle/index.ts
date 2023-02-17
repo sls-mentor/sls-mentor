@@ -25,6 +25,7 @@ const rule: Rule = {
   fileName: 'lightBundle',
   categories: ['GreenIT', 'Stability'],
   level: 4,
+  service: 'Lambda',
 };
 
 export default rule;

@@ -38,6 +38,7 @@ const rule: Rule = {
   fileName: 'definedBackupRetentionPeriodOrTransitionToColdStorage',
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
+  service: 'Backup',
 };
 
 export default rule;

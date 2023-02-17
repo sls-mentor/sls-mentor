@@ -45,6 +45,7 @@ const rule: Rule = {
   fileName: 'asyncSpecifyFailureDestination',
   categories: ['Stability'],
   level: 5,
+  service: 'Lambda',
 };
 
 export default rule;

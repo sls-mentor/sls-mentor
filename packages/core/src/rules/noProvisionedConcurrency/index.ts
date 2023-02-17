@@ -26,6 +26,7 @@ const rule: Rule = {
   fileName: 'noProvisionedConcurrency',
   level: 3,
   categories: ['GreenIT', 'ITCosts'],
+  service: 'Lambda',
 } as Rule;
 
 export default rule;

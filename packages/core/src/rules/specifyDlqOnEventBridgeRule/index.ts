@@ -58,6 +58,7 @@ const rule: Rule = {
   fileName: 'specifyDlqOnEventBridgeRule',
   categories: ['Stability'],
   level: 5,
+  service: 'EventBridge',
 };
 
 export default rule;

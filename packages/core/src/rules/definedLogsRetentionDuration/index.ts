@@ -25,6 +25,7 @@ const rule: Rule = {
   fileName: 'definedLogsRetentionDuration',
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
+  service: 'CloudWatch',
 };
 
 export default rule;

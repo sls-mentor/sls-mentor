@@ -28,6 +28,7 @@ const rule: Rule = {
   fileName: 'useArm',
   categories: ['GreenIT', 'ITCosts', 'Speed'],
   level: 1,
+  service: 'Lambda',
 };
 
 export default rule;

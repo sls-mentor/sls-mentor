@@ -24,6 +24,7 @@ const rule: Rule = {
   fileName: 'cognitoSignInCaseInsensitivity',
   categories: ['Stability'],
   level: 5,
+  service: 'Cognito',
 };
 
 export default rule;

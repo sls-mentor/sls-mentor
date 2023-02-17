@@ -22,6 +22,7 @@ const rule: Rule = {
   fileName: 'noDefaultMemory',
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
+  service: 'Lambda',
 };
 
 export default rule;

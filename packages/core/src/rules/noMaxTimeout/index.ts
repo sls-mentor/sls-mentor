@@ -27,6 +27,7 @@ const rule: Rule = {
   fileName: 'noMaxTimeout',
   categories: ['GreenIT', 'ITCosts', 'Stability'],
   level: 3,
+  service: 'Lambda',
 } as Rule;
 
 export default rule;

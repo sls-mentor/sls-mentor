@@ -26,6 +26,7 @@ const rule: Rule = {
   fileName: 'noDeprecatedRuntime',
   categories: ['Stability', 'Security'],
   level: 4,
+  service: 'Lambda',
 } as Rule;
 
 export default rule;

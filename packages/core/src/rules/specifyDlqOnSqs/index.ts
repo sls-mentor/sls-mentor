@@ -44,6 +44,7 @@ const rule: Rule = {
   fileName: 'specifyDlqOnSqs',
   categories: ['Stability'],
   level: 4,
+  service: 'SQS',
 };
 
 export default rule;

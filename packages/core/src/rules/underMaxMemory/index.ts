@@ -47,6 +47,7 @@ const rule: Rule<UnderMaxMemoryRuleConfig> = {
   fileName: 'underMaxMemory',
   categories: ['GreenIT', 'ITCosts'],
   level: 2,
+  service: 'Lambda',
   configurationTypeguard: ruleConfigTypeguard,
 };
 

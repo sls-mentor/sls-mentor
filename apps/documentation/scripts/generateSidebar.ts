@@ -1,10 +1,17 @@
-import { CATEGORIES, categoryNames, rules } from '@sls-mentor/core';
+import {
+  CATEGORIES,
+  categoryNames,
+  rules,
+  serviceNames,
+  SERVICES,
+  SLS_MENTOR_LEVELS,
+} from '@sls-mentor/core';
 import fs from 'fs';
 import groupBy from 'lodash/groupBy';
 import path from 'path';
 
 const rulesByLevelDictionnary = groupBy(rules, 'level');
-export const rulesByLevel = Object.keys(rulesByLevelDictionnary).map(level => ({
+export const rulesByLevel = SLS_MENTOR_LEVELS.map(level => ({
   type: 'category',
   label: `Level ${level}`,
   items: rulesByLevelDictionnary[level].map(
@@ -26,74 +33,14 @@ export const rulesByCategory = CATEGORIES.map(category => ({
   ),
 }));
 
-const rulesByService = [
-  {
-    type: 'category',
-    label: 'Lambda',
-    items: [
-      'rules/useArm',
-      'rules/lightBundle',
-      'rules/asyncSpecifyFailureDestination',
-      'rules/noDefaultMemory',
-      'rules/noMaxTimeout',
-      'rules/noMonoPackage',
-      'rules/noProvisionedConcurrency',
-      'rules/noSharedIamRoles',
-      'rules/underMaxMemory',
-      'rules/limitedAmountOfVersions',
-      'rules/noDeprecatedRuntime',
-    ],
-  },
-  {
-    type: 'category',
-    label: 'S3',
-    items: [
-      'rules/s3OnlyAllowHTTPS',
-      'rules/serverSideEncryptionEnabled',
-      'rules/useIntelligentTiering',
-    ],
-  },
-  {
-    type: 'category',
-    label: 'CloudWatch',
-    items: ['rules/definedLogsRetentionDuration'],
-  },
-  {
-    type: 'category',
-    label: 'CloudFront',
-    items: ['rules/cloudFrontSecurityHeaders'],
-  },
-  {
-    type: 'category',
-    label: 'Cognito',
-    items: ['rules/cognitoSignInCaseInsensitivity'],
-  },
-  {
-    type: 'category',
-    label: 'SQS',
-    items: ['rules/specifyDlqOnSqs'],
-  },
-  {
-    type: 'category',
-    label: 'EventBridge',
-    items: ['rules/specifyDlqOnEventBridgeRule'],
-  },
-  {
-    type: 'category',
-    label: 'RDS',
-    items: ['rules/autoscaleRdsInstanceEnabled'],
-  },
-  {
-    type: 'category',
-    label: 'Backup',
-    items: ['rules/definedBackupRetentionPeriodOrTransitionToColdStorage'],
-  },
-  {
-    type: 'category',
-    label: 'Api Gateway V2',
-    items: ['rules/noUnauthorizedApiGatewaysV2Routes'],
-  },
-];
+const rulesByServiceDictionnary = groupBy(rules, 'service');
+export const rulesByService = SERVICES.map(service => ({
+  type: 'category',
+  label: serviceNames[service],
+  items: rulesByServiceDictionnary[service].map(
+    ({ fileName }) => `rules/${fileName}`,
+  ),
+}));
 
 const sidebars = {
   docsSidebar: [

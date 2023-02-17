@@ -32,6 +32,7 @@ const rule: Rule = {
   fileName: 'useIntelligentTiering',
   categories: ['GreenIT', 'ITCosts'],
   level: 2,
+  service: 'S3',
 };
 
 export default rule;

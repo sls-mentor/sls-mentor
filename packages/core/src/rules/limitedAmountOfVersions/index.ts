@@ -23,6 +23,7 @@ const rule: Rule = {
   fileName: 'limitedAmountOfVersions',
   categories: ['GreenIT', 'Stability'],
   level: 2,
+  service: 'Lambda',
 };
 
 export default rule;

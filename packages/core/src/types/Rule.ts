@@ -19,6 +19,33 @@ export const categoryNames: Record<Category, string> = {
   Security: 'Security',
 };
 
+export const SERVICES = [
+  'Lambda',
+  'S3',
+  'CloudWatch',
+  'CloudFront',
+  'Cognito',
+  'SQS',
+  'EventBridge',
+  'RDS',
+  'Backup',
+  'ApiGatewayV2',
+] as const;
+export type Service = (typeof SERVICES)[number];
+
+export const serviceNames: Record<Service, string> = {
+  Lambda: 'Lambda',
+  S3: 'S3',
+  CloudWatch: 'CloudWatch',
+  CloudFront: 'CloudFront',
+  Cognito: 'Cognito',
+  SQS: 'SQS',
+  EventBridge: 'EventBridge',
+  RDS: 'RDS',
+  Backup: 'Backup',
+  ApiGatewayV2: 'Api Gateway V2',
+};
+
 export type RuleCheckResult = { arn: CustomARN; success: boolean } & Record<
   string,
   unknown
@@ -35,5 +62,6 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   }>;
   categories: Category[];
   level: SlsMentorLevel;
+  service: Service;
   configurationTypeguard?: (config: unknown) => config is T;
 }

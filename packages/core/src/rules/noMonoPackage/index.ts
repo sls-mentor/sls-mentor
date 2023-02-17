@@ -63,6 +63,7 @@ const rule: Rule = {
   fileName: 'noMonoPackage',
   categories: ['Stability'],
   level: 1,
+  service: 'Lambda',
 };
 
 export default rule;

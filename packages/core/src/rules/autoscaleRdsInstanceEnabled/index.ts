@@ -34,6 +34,7 @@ const rule: Rule = {
   fileName: 'autoscaleRdsInstanceEnabled',
   categories: ['Stability'],
   level: 3,
+  service: 'RDS',
 };
 
 export default rule;

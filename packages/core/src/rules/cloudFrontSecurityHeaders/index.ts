@@ -52,6 +52,7 @@ const rule: Rule = {
   fileName: 'cloudFrontSecurityHeaders',
   categories: ['Security'],
   level: 1,
+  service: 'CloudFront',
 };
 
 export default rule;

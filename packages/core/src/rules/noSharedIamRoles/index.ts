@@ -32,6 +32,7 @@ const rule: Rule = {
   fileName: 'noSharedIamRoles',
   categories: ['Security', 'Stability'],
   level: 4,
+  service: 'Lambda',
 };
 
 export default rule;

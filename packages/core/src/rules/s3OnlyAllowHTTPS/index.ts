@@ -30,6 +30,7 @@ const rule: Rule = {
   fileName: 's3OnlyAllowHTTPS',
   categories: ['Security'],
   level: 2,
+  service: 'S3',
 };
 
 export default rule;
