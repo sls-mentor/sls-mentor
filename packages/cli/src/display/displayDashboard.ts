@@ -1,4 +1,5 @@
 /* eslint-disable max-lines */
+import { Category, categoryNames } from '@sls-mentor/core';
 import chalk from 'chalk';
 import {
   ChecksResultsByCategory,
@@ -160,7 +161,10 @@ export const displayDashboard = (
 ): void => {
   console.log('\n\n');
   const scoresByCategory = Object.entries(checksResultsByCategory).map(
-    ([category, score]) => ({ label: category, score }),
+    ([category, score]) => ({
+      label: categoryNames[category as Category],
+      score,
+    }),
   );
   const windowWidth = process.stdout.columns as number | undefined;
   if (windowWidth === undefined) {

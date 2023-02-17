@@ -1,7 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -26,8 +25,9 @@ const rule: Rule = {
   errorMessage: 'The following functions have their timeout set as the maximum',
   run,
   fileName: 'noMaxTimeout',
-  categories: [Category.GREEN_IT, Category.IT_COSTS, Category.STABILITY],
-  level: SlsMentorLevel.Level3,
+  categories: ['GreenIT', 'ITCosts', 'Stability'],
+  level: 3,
+  service: 'Lambda',
 } as Rule;
 
 export default rule;

@@ -1,7 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { DEPRECATED_RUNTIMES, SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { DEPRECATED_RUNTIMES } from '../../constants';
+import { Rule } from '../../types';
 
 const hasDeprecatedRuntime = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.Runtime !== undefined &&
@@ -24,8 +24,9 @@ const rule: Rule = {
   errorMessage: 'The following functions have deprecated runtime',
   run,
   fileName: 'noDeprecatedRuntime',
-  categories: [Category.STABILITY, Category.SECURITY],
-  level: SlsMentorLevel.Level4,
+  categories: ['Stability', 'Security'],
+  level: 4,
+  service: 'Lambda',
 } as Rule;
 
 export default rule;

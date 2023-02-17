@@ -1,6 +1,5 @@
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, CustomARN, Rule, SqsQueueARN } from '../../types';
+import { CustomARN, Rule, SqsQueueARN } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -43,8 +42,9 @@ const rule: Rule = {
   errorMessage: 'The queue does not have a specified Dead Letter Queue.',
   run,
   fileName: 'specifyDlqOnSqs',
-  categories: [Category.STABILITY],
-  level: SlsMentorLevel.Level4,
+  categories: ['Stability'],
+  level: 4,
+  service: 'SQS',
 };
 
 export default rule;

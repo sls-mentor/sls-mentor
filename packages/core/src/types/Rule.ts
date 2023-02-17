@@ -2,20 +2,48 @@ import { SlsMentorLevel } from '../constants';
 import { CustomARN } from '../types/arn';
 import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
-export enum Category {
-  GREEN_IT = 'GREEN_IT',
-  STABILITY = 'STABILITY',
-  SPEED = 'SPEED',
-  IT_COSTS = 'IT_COSTS',
-  SECURITY = 'SECURITY',
-}
+export const CATEGORIES = [
+  'GreenIT',
+  'Stability',
+  'Speed',
+  'ITCosts',
+  'Security',
+] as const;
+export type Category = (typeof CATEGORIES)[number];
 
-export const CategoryNames = {
-  [Category.GREEN_IT]: 'Green IT',
-  [Category.STABILITY]: 'Stability',
-  [Category.SPEED]: 'Speed',
-  [Category.IT_COSTS]: 'IT costs',
-  [Category.SECURITY]: 'Security',
+export const categoryNames: Record<Category, string> = {
+  GreenIT: 'Green IT',
+  Stability: 'Stability',
+  Speed: 'Speed',
+  ITCosts: 'IT Costs',
+  Security: 'Security',
+};
+
+export const SERVICES = [
+  'Lambda',
+  'S3',
+  'CloudWatch',
+  'CloudFront',
+  'Cognito',
+  'SQS',
+  'EventBridge',
+  'RDS',
+  'Backup',
+  'ApiGatewayV2',
+] as const;
+export type Service = (typeof SERVICES)[number];
+
+export const serviceNames: Record<Service, string> = {
+  Lambda: 'Lambda',
+  S3: 'S3',
+  CloudWatch: 'CloudWatch',
+  CloudFront: 'CloudFront',
+  Cognito: 'Cognito',
+  SQS: 'SQS',
+  EventBridge: 'EventBridge',
+  RDS: 'RDS',
+  Backup: 'Backup',
+  ApiGatewayV2: 'Api Gateway V2',
 };
 
 export type RuleCheckResult = { arn: CustomARN; success: boolean } & Record<
@@ -34,5 +62,6 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   }>;
   categories: Category[];
   level: SlsMentorLevel;
+  service: Service;
   configurationTypeguard?: (config: unknown) => config is T;
 }

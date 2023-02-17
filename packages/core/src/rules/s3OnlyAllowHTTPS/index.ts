@@ -2,8 +2,7 @@ import {
   fetchAllS3BucketPolicies,
   S3BucketPolicy,
 } from '../../aws-sdk-helpers';
-import { SlsMentorLevel } from '../../constants';
-import { Category, Rule } from '../../types';
+import { Rule } from '../../types';
 
 const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
   if (policy === undefined) return false;
@@ -29,8 +28,9 @@ const rule: Rule = {
   errorMessage: 'HTTPS requests only is not enabled on this S3 bucket',
   run,
   fileName: 's3OnlyAllowHTTPS',
-  categories: [Category.SECURITY],
-  level: SlsMentorLevel.Level2,
+  categories: ['Security'],
+  level: 2,
+  service: 'S3',
 };
 
 export default rule;

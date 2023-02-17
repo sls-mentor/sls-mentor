@@ -1,8 +1,7 @@
 import { Route } from '@aws-sdk/client-apigatewayv2';
 import compact from 'lodash/compact';
 import { fetchAllApiGatewayV2Routes } from '../../aws-sdk-helpers';
-import { Category, Rule } from '../../types';
-import { SlsMentorLevel } from '../../constants';
+import { Rule } from '../../types';
 
 const isAuthenticated = (route: Route): boolean => {
   const hasAuthorizer =
@@ -31,8 +30,9 @@ const rule: Rule = {
   errorMessage: 'Route is not authorized',
   run,
   fileName: 'noUnauthorizedApiGatewaysV2Routes',
-  categories: [Category.SECURITY],
-  level: SlsMentorLevel.Level5,
+  categories: ['Security'],
+  level: 5,
+  service: 'ApiGatewayV2',
 };
 
 export default rule;
