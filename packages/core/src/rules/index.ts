@@ -2,6 +2,7 @@ import { Rule } from '../types';
 import AsyncSpecifyFailureDestination from './asyncSpecifyFailureDestination';
 import AutoscaleRdsInstanceEnabled from './autoscaleRdsInstanceEnabled';
 import CloudFrontSecurityHeaders from './cloudFrontSecurityHeaders';
+import CloudFrontSSLCertificate from './cloudFrontSSLCertificate';
 import CognitoSignInCaseInsensitivity from './cognitoSignInCaseInsensitivity';
 import DefinedBackupRetentionPeriodOrTransitionToColdStorage from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 import DefinedLogsRetentionDuration from './definedLogsRetentionDuration';
@@ -26,6 +27,7 @@ export {
   AsyncSpecifyFailureDestination,
   AutoscaleRdsInstanceEnabled,
   CloudFrontSecurityHeaders,
+  CloudFrontSSLCertificate,
   CognitoSignInCaseInsensitivity,
   DefinedBackupRetentionPeriodOrTransitionToColdStorage,
   DefinedLogsRetentionDuration,
@@ -65,6 +67,7 @@ export const rules: Rule[] = [
   DefinedLogsRetentionDuration,
   SpecifyDlqOnEventBridgeRule,
   CloudFrontSecurityHeaders,
+  CloudFrontSSLCertificate,
   S3OnlyAllowHTTPS,
   NoProvisionedConcurrency,
   AutoscaleRdsInstanceEnabled,
