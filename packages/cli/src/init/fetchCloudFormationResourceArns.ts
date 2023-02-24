@@ -14,6 +14,8 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SESIdentityARN,
+  SnsSubscriptionARN,
+  SnsTopicARN,
   SqsQueueARN,
 } from '@sls-mentor/core';
 
@@ -47,6 +49,10 @@ export const createARNFromCloudFormation = ({
       return ApiGatewayV2ApiARN.fromPhysicalId(PhysicalResourceId);
     case '"AWS::SES::EmailIdentity"':
       return SESIdentityARN.fromIdentityName(PhysicalResourceId);
+    case 'AWS::SNS::Subscription':
+      return SnsSubscriptionARN.fromArnString(PhysicalResourceId);
+    case 'AWS::SNS::Topic':
+      return SnsTopicARN.fromArnString(PhysicalResourceId);
     default:
       return;
   }
