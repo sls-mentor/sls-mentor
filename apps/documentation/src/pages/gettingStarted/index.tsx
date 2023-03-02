@@ -4,6 +4,7 @@ import {
   CodeBlock,
   Dashboard,
   LevelChoice,
+  ResourceByResource,
   RuleByRule,
 } from '../../components';
 import styles from './index.module.css';
@@ -23,6 +24,7 @@ const GettingStarted = (): JSX.Element => (
       <h4 className={styles.subtitle}>Reading the results</h4>
       <Dashboard />
       <RuleByRule />
+      <ResourceByResource />
     </main>
   </Layout>
 );
