@@ -31,7 +31,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const cloudFrontSSLCertificate: Rule = {
   ruleName:
     'CloudFront: your distributions should be associated with a SSL certificate (ACM or IAM).',
   errorMessage: 'Your distributions are not associated with a SSL certificate.',
@@ -41,5 +41,3 @@ const rule: Rule = {
   level: 1,
   service: 'CloudFront',
 };
-
-export default rule;

@@ -8,11 +8,20 @@ import { IBucket } from 'aws-cdk-lib/aws-s3';
 
 const HOSTED_ZONE_ID = 'Z075028229G4FKEZYST8V';
 const HOSTED_ZONE_NAME = 'sls-mentor.dev';
-const DOMAIN_NAMES = ['www.sls-mentor.dev', 'sls-mentor.dev'];
 const US_EAST_CERTIFICATE_ARN =
   'arn:aws:acm:us-east-1:885330630487:certificate/dcae66d1-8dea-40be-ba86-5eb8944bb0a7';
+const US_EAST_DEV_CERTIFICATE_ARN =
+  'arn:aws:acm:us-east-1:885330630487:certificate/7877837c-0583-4224-89b7-306816e4ed04';
 
-export const setupCloudfront = (stack: Stack, bucket: IBucket): void => {
+export const setupCloudfront = (
+  stack: Stack,
+  bucket: IBucket,
+  stage: string,
+): void => {
+  const DOMAIN_NAMES = [
+    `www.${stage === 'dev' ? 'dev.' : ''}sls-mentor.dev`,
+    `${stage === 'dev' ? 'dev.' : ''}sls-mentor.dev`,
+  ];
   const distribution = new Distribution(
     stack,
     'DocumentationCloudfrontDistribution',
@@ -24,7 +33,7 @@ export const setupCloudfront = (stack: Stack, bucket: IBucket): void => {
       certificate: Certificate.fromCertificateArn(
         stack,
         'certificate',
-        US_EAST_CERTIFICATE_ARN,
+        stage === 'dev' ? US_EAST_DEV_CERTIFICATE_ARN : US_EAST_CERTIFICATE_ARN,
       ),
     },
   );

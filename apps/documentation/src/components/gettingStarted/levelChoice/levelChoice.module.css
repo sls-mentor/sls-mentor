@@ -1,0 +1,109 @@
+.container {
+  margin-top: 2em;
+  background: var(--background-secondary);
+  border-radius: var(--radius-3);
+  padding: 1em;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.innerCard {
+  background: var(--background);
+  border-radius: var(--radius-2);
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+}
+
+.metro {
+  height: 7em;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.arrows p {
+  margin: 0;
+}
+
+.icon {
+  transform: translateY(25%);
+}
+
+@media (min-width: 1000px) {
+  .innerContainer {
+    flex-direction: row;
+  }
+
+  .innerCard {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+
+.gradient {
+  background: linear-gradient(
+    90deg,
+    var(--green) -5%,
+    #ffe000 35%,
+    var(--orange) 65%,
+    var(--red) 105%
+  );
+  height: 1em;
+  border-radius: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20%;
+  padding-left: 5%;
+}
+
+.circle {
+  height: 1.2em;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: white;
+  border: 3px solid;
+  border-color: black;
+  position: relative;
+  cursor: pointer;
+  overflow: visible;
+}
+
+.levelDetails {
+  white-space: nowrap;
+  position: absolute;
+  top: -50%;
+  transform-origin: top left;
+  transform: rotate(-45deg) translate(0.5em, -1em);
+}
+
+.levelDetails p {
+  margin: 0;
+}
+
+.circle:hover {
+  border-color: var(--ifm-color-primary);
+}
+.circle:hover .levelDetails p {
+  color: var(--ifm-color-primary);
+}
+
+.services {
+  display: flex;
+  padding-left: 1.8em;
+  gap: 0.1em;
+}
+
+.services img {
+  border-radius: 15%;
+}

@@ -77,39 +77,60 @@
 <h2 align="center">Rules featured by sls-mentor 📏</h2>
 <br />
 
-- AWS Lambda:
-  - [`Lambda: Use ARM64 architecture`](./rules/useArm): checks that you're using ARM64 architectures for your Lambda functions.
-  - [`Lambda: No shared IAM roles`](./rules/noSharedIamRoles): checks that each one of your Lambda functions has its own IAM role.
-  - [`Lambda: Limited amount of versions`](./rules/limitedAmountOfVersions): checks that you do not store all previous deployment versions for your Lambda functions.
-  - [`Lambda: Specify failure destination to async functions`](./rules/asyncSpecifyFailureDestination): checks that each one of your async Lambda functions has a failure destination.
-  - [`Lambda: No mono package`](./rules/noMonoPackage): checks that each one of your Lambda functions has different code.
-  - [`Lambda: Light bundle`](./rules/lightBundle): checks that each one of your Lambda functions' bundles is reasonably small.
-  - [`Lambda: No default memory`](./rules/noDefaultMemory): checks that you have consciously configured your Lambda functions' memory size.
-  - [`Lambda: Under maximum memory`](./rules/underMaxMemory): checks that each one of your Lambda functions' memory size is reasonably small.
-  - [`Lambda: No maximum timeout`](./rules/noMaxTimeout): checks that your Lambda functions' timeout is not set at the maximum available.
-  - [`Lambda: No provisioned concurrency`](./rules/noProvisionedConcurrency): checks that no Lambda function has provisioned concurrency.
-  - [`Lambda: No deprecated runtime`](./rules/noDeprecatedRuntime): checks that your Lambda functions do not run on deprecated runtime.
-- AWS S3:
-  - [`S3: Use intelligent tiering`](./rules/useIntelligentTiering): checks that each one of S3 buckets has intelligent tiering enabled.
-  - [`S3: Server-side encryption enabled`](./rules/serverSideEncryptionEnabled): checks that server-side encryption is enabled on each S3 bucket.
-  - [`S3: Use HTTPS requests only`](./rules/s3OnlyAllowHTTPS): checks that users access buckets objects using SSL.
-- AWS SQS:
-  - [`SQS: Specify a DLQ on queues`](./rules/specifyDlqOnSqs): checks that SQS queues have a dead-letter-queue specified in case of failure
-- AWS Cognito:
-  - [`Cognito: Sign-in case insensitivity`](./rules/cognitoSignInCaseInsensitivity): checks that your Cognito user pool is insensitive to user name case.
-- AWS CloudWatch:
-  - [`CloudWatch Log Groups: Defined logs retention duration`](./rules/definedLogsRetentionDuration): checks that each of your Log Groups has a defined log retention duration.
-- AWS EventBridge:
-  - [`EventBridge: Specified dead letter queue`](./rules/specifyDlqOnEventBridgeRule): checks that each Event Bridge Rule target has a dead letter queue.
-- AWS CloudFront:
-  - [`CloudFront: Enable security headers`](./rules/cloudFrontSecurityHeaders): checks that each CloudFront distributions have basic security headers enabled.
-- AWS RDS:
-  - [`RDS: Enable instance autoscaling`](./rules/autoscaleRdsInstanceEnabled): checks that RDS instances have autoscaling enabled.
-- AWS Backup:
-  - [`Backup: Defined Backup Retention Period or Transition to Cold Storage`](./rules/definedBackupRetentionPeriodOrTransitionToColdStorage): checks that each rule of any Backup Plan has a defined retention period or transition to cold storage date.
-- AWS API Gateway V2:
-  - [`API Gateway: Use authorized routes`](./rules/noUnauthorizedApiGatewaysV2Routes): checks that each API Gateway route has an authorizer configured.
+<a name="Lambda">AWS Lambda:</a>
 
+- [`Lambda: Use ARM64 architecture`](./rules/useArm): checks that you're using ARM64 architectures for your Lambda functions.
+- [`Lambda: No shared IAM roles`](./rules/noSharedIamRoles): checks that each one of your Lambda functions has its own IAM role.
+- [`Lambda: Limited amount of versions`](./rules/limitedAmountOfVersions): checks that you do not store all previous deployment versions for your Lambda functions.
+- [`Lambda: Specify failure destination to async functions`](./rules/asyncSpecifyFailureDestination): checks that each one of your async Lambda functions has a failure destination.
+- [`Lambda: No mono package`](./rules/noMonoPackage): checks that each one of your Lambda functions has different code.
+- [`Lambda: Light bundle`](./rules/lightBundle): checks that each one of your Lambda functions' bundles is reasonably small.
+- [`Lambda: No default memory`](./rules/noDefaultMemory): checks that you have consciously configured your Lambda functions' memory size.
+- [`Lambda: Under maximum memory`](./rules/underMaxMemory): checks that each one of your Lambda functions' memory size is reasonably small.
+- [`Lambda: No maximum timeout`](./rules/noMaxTimeout): checks that your Lambda functions' timeout is not set at the maximum available.
+- [`Lambda: No provisioned concurrency`](./rules/noProvisionedConcurrency): checks that no Lambda function has provisioned concurrency.
+- [`Lambda: No deprecated runtime`](./rules/noDeprecatedRuntime): checks that your Lambda functions do not run on deprecated runtime.
+
+<a name="S3">AWS S3:</a>
+
+- [`S3: Use intelligent tiering`](./rules/useIntelligentTiering): checks that each one of S3 buckets has intelligent tiering enabled.
+- [`S3: Server-side encryption enabled`](./rules/serverSideEncryptionEnabled): checks that server-side encryption is enabled on each S3 bucket.
+- [`S3: Use HTTPS requests only`](./rules/s3OnlyAllowHTTPS): checks that users access buckets objects using SSL.
+
+<a name="SQS">AWS SQS:</a>
+
+- [`SQS: Specify a DLQ on queues`](./rules/specifyDlqOnSqs): checks that SQS queues have a dead-letter-queue specified in case of failure
+
+<a name="Cognito">AWS Cognito:</a>
+
+- [`Cognito: Sign-in case insensitivity`](./rules/cognitoSignInCaseInsensitivity): checks that your Cognito user pool is insensitive to user name case.
+
+<a name="Cloudwatch">AWS CloudWatch:</a>
+
+- [`CloudWatch Log Groups: Defined logs retention duration`](./rules/definedLogsRetentionDuration): checks that each of your Log Groups has a defined log retention duration.
+
+<a name="EventBridge">AWS EventBridge:</a>
+
+- [`EventBridge: Specified dead letter queue`](./rules/specifyDlqOnEventBridgeRule): checks that each Event Bridge Rule target has a dead letter queue.
+
+<a name="CloudFront">AWS CloudFront:</a>
+
+- [`CloudFront: Enable security headers`](./rules/cloudFrontSecurityHeaders): checks that each CloudFront distributions have basic security headers enabled.
+- [`CloudFront: Use a SSL certificate`](./rules/cloudFrontSSLCertificate): checks that CloudFront distributions use custom SSL certificates from ACM or IAM.
+
+<a name="RDS">AWS RDS:</a>
+
+- [`RDS: Enable instance autoscaling`](./rules/autoscaleRdsInstanceEnabled): checks that RDS instances have autoscaling enabled.
+
+<a name="Backup">AWS Backup:</a>
+
+- [`Backup: Define backup retention period`](./rules/definedBackupRetentionPeriodOrTransitionToColdStorage): checks that backups have a retention period or are transitioned to clod storage
+
+<a name="ApiGatewayV2">AWS Api Gateway V2:</a>
+
+- [`Api Gateway V2: no unauthorized route`](./rules/noUnauthorizedApiGatewaysV2Routes.md): checks that all your backend routes have authorization enabled
+
+<br/>
 <p>Check out our articles, to find out more:</p>
 
 - <a href='https://dev.to/kumo/guardian-100-available-now-your-free-open-source-audit-tool-for-aws-architectures-54cd'><b>sls-mentor 1.0.0 available now! Your Free Open Source audit tool for AWS architectures!</b></a> by <a href='https://twitter.com/eloiatheodo'>Éloi</a>
