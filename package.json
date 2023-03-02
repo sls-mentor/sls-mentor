@@ -113,6 +113,7 @@
     "eslint-plugin-jest": "^26.2.2",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "^4.0.0",
+    "fs": "0.0.1-security",
     "prettier": "^2.6.2",
     "ts-node": "^10.7.0",
     "turbo": "^1.7.0",

@@ -1,10 +1,10 @@
-import { UseArm as UseArmRule } from '@sls-mentor/core';
+import { useArm } from '@sls-mentor/core';
 import { describe, it } from 'vitest';
 import { FAIL_ARM64_LAMBDA_NAME } from '../lib/failStack/lambda';
 import { PASS_ARM64_LAMBDA_NAME } from '../lib/passStack/lambda';
 import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = UseArmRule['ruleName'];
+const ruleName = useArm['ruleName'];
 
 describe('lambda-arm-64', () => {
   it('sls-mentor passes on lambda with ARM64 architecture ', () => {

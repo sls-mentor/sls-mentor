@@ -29,7 +29,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const definedBackupRetentionPeriodOrTransitionToColdStorage: Rule = {
   ruleName:
     'Backup: Defined Backup Retention Period or Transition to Cold Storage',
   errorMessage:
@@ -40,5 +40,3 @@ const rule: Rule = {
   level: 3,
   service: 'Backup',
 };
-
-export default rule;

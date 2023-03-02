@@ -21,7 +21,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const useArm: Rule = {
   ruleName: 'Lambda: Use an ARM Architecture',
   errorMessage: "The function's architecture is not set as ARM",
   run,
@@ -30,5 +30,3 @@ const rule: Rule = {
   level: 1,
   service: 'Lambda',
 };
-
-export default rule;

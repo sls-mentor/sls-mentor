@@ -2,6 +2,9 @@
   "name": "@sls-mentor/core",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "scripts": {
+    "create-rule": "ts-node scripts/create-rule.ts"
+  },
   "dependencies": {
     "@aws-sdk/client-apigatewayv2": "^3.231.0",
     "@aws-sdk/client-backup": "^3.245.0",

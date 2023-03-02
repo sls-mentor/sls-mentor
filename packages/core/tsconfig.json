@@ -8,7 +8,9 @@
     "preserveWatchOutput": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": "./src"
   },
+  "include": ["./**/*.ts"],
   "exclude": ["node_modules"]
 }

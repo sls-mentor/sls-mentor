@@ -3,18 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "docusaurus": "docusaurus",
-    "generate-sidebar": "ts-node scripts/generateSidebar.ts",
-    "start": "pnpm run generate-sidebar && docusaurus start",
-    "build": "pnpm run generate-sidebar && docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
+    "start": "pnpm run generate-sidebar && pnpm run generate-docs && docusaurus start",
+    "build": "pnpm run generate-sidebar && pnpm run generate-docs && docusaurus build",
     "typecheck": "tsc",
-    "lint": "eslint src --ext .ts,.tsx"
+    "lint": "eslint src --ext .ts,.tsx",
+    "generate-docs": "ts-node scripts/generate-docs.ts",
+    "generate-sidebar": "ts-node scripts/generateSidebar.ts"
   },
   "dependencies": {
     "@algolia/client-search": ">= 4.9.1 < 6",

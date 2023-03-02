@@ -13,7 +13,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const serverSideEncryptionEnabled: Rule = {
   ruleName: 'S3: Server-side Encryption Enabled',
   errorMessage: 'Server-side Encryption is not enabled on this S3 bucket',
   run,
@@ -22,5 +22,3 @@ const rule: Rule = {
   level: 1,
   service: 'S3',
 };
-
-export default rule;

@@ -26,7 +26,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const autoscaleRdsInstanceEnabled: Rule = {
   ruleName: 'Autoscaling is possible for RDS instances',
   errorMessage:
     'Autoscaling is not possible for this RDS instance with current settings.',
@@ -36,5 +36,3 @@ const rule: Rule = {
   level: 3,
   service: 'RDS',
 };
-
-export default rule;

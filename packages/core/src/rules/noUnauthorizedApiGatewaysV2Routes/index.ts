@@ -25,7 +25,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noUnauthorizedApiGatewaysV2Routes: Rule = {
   ruleName: 'Api Gateway V2: Use Authorized Routes',
   errorMessage: 'Route is not authorized',
   run,
@@ -34,5 +34,3 @@ const rule: Rule = {
   level: 5,
   service: 'ApiGatewayV2',
 };
-
-export default rule;

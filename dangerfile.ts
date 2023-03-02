@@ -19,7 +19,7 @@ createdFiles.forEach(file => {
 });
 
 createdFiles.forEach(file => {
-  if (!file.match(/^apps\/documentation\/docs\/rules\/.*\.md$/)) {
+  if (!file.match(/^packages\/core\/src\/rules\/.*\/doc\.md$/)) {
     return;
   }
   const rulePath = file.split('/');

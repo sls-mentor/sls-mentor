@@ -43,7 +43,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const cloudFrontSecurityHeaders: Rule = {
   ruleName:
     'CloudFront: use SecurityHeadersPolicy on the cache behaviors of your distributions',
   errorMessage:
@@ -54,5 +54,3 @@ const rule: Rule = {
   level: 1,
   service: 'CloudFront',
 };
-
-export default rule;

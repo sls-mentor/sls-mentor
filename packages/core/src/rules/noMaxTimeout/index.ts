@@ -20,7 +20,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noMaxTimeout: Rule = {
   ruleName: 'Lambda: No Maximum Timeout',
   errorMessage: 'The following functions have their timeout set as the maximum',
   run,
@@ -29,5 +29,3 @@ const rule: Rule = {
   level: 3,
   service: 'Lambda',
 } as Rule;
-
-export default rule;

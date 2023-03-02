@@ -15,7 +15,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noDefaultMemory: Rule = {
   ruleName: 'Lambda: No Default Memory',
   errorMessage: 'The following functions have their memory set as default',
   run,
@@ -24,5 +24,3 @@ const rule: Rule = {
   level: 3,
   service: 'Lambda',
 };
-
-export default rule;

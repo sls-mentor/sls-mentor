@@ -37,7 +37,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const asyncSpecifyFailureDestination: Rule = {
   ruleName: 'Lambda: Specify Failure Destination for Async Functions',
   errorMessage:
     'The function is asynchronous but has no failure destination set',
@@ -47,5 +47,3 @@ const rule: Rule = {
   level: 5,
   service: 'Lambda',
 };
-
-export default rule;

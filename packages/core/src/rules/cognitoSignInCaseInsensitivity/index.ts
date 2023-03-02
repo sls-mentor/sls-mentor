@@ -17,7 +17,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const cognitoSignInCaseInsensitivity: Rule = {
   ruleName: 'Cognito: use case insensitivity on the username input',
   errorMessage: 'The user pool is case sensitive on the username',
   run,
@@ -26,5 +26,3 @@ const rule: Rule = {
   level: 5,
   service: 'Cognito',
 };
-
-export default rule;

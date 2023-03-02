@@ -56,7 +56,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noMonoPackage: Rule = {
   ruleName: 'Lambda: No Mono Package',
   errorMessage: 'The function code packaged with others',
   run,
@@ -65,5 +65,3 @@ const rule: Rule = {
   level: 1,
   service: 'Lambda',
 };
-
-export default rule;

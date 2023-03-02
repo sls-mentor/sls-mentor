@@ -24,7 +24,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noSharedIamRoles: Rule = {
   ruleName: 'Lambda: No Shared IAM Roles',
   errorMessage:
     'The following functions have roles used by 1 or more other functions',
@@ -34,5 +34,3 @@ const rule: Rule = {
   level: 4,
   service: 'Lambda',
 };
-
-export default rule;

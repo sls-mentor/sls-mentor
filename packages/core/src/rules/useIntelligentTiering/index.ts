@@ -25,7 +25,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const useIntelligentTiering: Rule = {
   ruleName: 'S3: Use Intelligent Tiering',
   errorMessage: 'Intelligent Tiering is not enabled on this S3 bucket',
   run,
@@ -34,5 +34,3 @@ const rule: Rule = {
   level: 2,
   service: 'S3',
 };
-
-export default rule;

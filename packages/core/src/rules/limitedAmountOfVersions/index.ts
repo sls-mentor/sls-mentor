@@ -15,7 +15,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const limitedAmountOfVersions: Rule = {
   ruleName: 'Lambda: Limited Amount of Versions',
   errorMessage:
     'The following functions have an amount of deployed versions greater than 3',
@@ -25,5 +25,3 @@ const rule: Rule = {
   level: 2,
   service: 'Lambda',
 };
-
-export default rule;
