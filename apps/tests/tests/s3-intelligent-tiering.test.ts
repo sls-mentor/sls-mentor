@@ -1,10 +1,10 @@
-import { UseIntelligentTiering as S3IntelligentTieringRule } from '@sls-mentor/core';
+import { useIntelligentTiering } from '@sls-mentor/core';
 import { describe, it } from 'vitest';
 import { FAIL_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/failStack/s3';
 import { PASS_INTELLIGENT_TIERING_BUCKET_NAME } from '../lib/passStack/s3';
 import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = S3IntelligentTieringRule['ruleName'];
+const ruleName = useIntelligentTiering['ruleName'];
 
 describe('s3-intelligent-tiering', () => {
   it('sls-mentor passes on S3 bucket with intelligent tiering ', () => {

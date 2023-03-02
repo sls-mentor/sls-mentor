@@ -50,7 +50,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const specifyDlqOnEventBridgeRule: Rule = {
   ruleName: 'Specifying a DLQ on EventBridge events targets',
   errorMessage:
     'The event bridge event rule targets do not all have a specified Dead Letter Queue',
@@ -60,5 +60,3 @@ const rule: Rule = {
   level: 5,
   service: 'EventBridge',
 };
-
-export default rule;

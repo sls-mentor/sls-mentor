@@ -37,6 +37,7 @@ importers:
       eslint-plugin-jest: ^26.2.2
       eslint-plugin-prefer-arrow: ^1.2.3
       eslint-plugin-prettier: ^4.0.0
+      fs: 0.0.1-security
       lodash: ^4.17.21
       object-hash: ^3.0.0
       prettier: ^2.6.2
@@ -82,6 +83,7 @@ importers:
       eslint-plugin-jest: 26.9.0_eicrjziaffed7zesw4t3fwf6ea
       eslint-plugin-prefer-arrow: 1.2.3_eslint@8.31.0
       eslint-plugin-prettier: 4.2.1_iu5s7nk6dw7o3tajefwfiqfmge
+      fs: 0.0.1-security
       prettier: 2.8.2
       ts-node: 10.9.1_3v2cms72gsblw7jmali7btb3pu
       turbo: 1.7.0

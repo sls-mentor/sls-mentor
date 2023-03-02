@@ -19,7 +19,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noProvisionedConcurrency: Rule = {
   ruleName: 'Lambda: No Provisioned Concurrency',
   errorMessage: 'The following functions have provisioned concurrency',
   run,
@@ -28,5 +28,3 @@ const rule: Rule = {
   categories: ['GreenIT', 'ITCosts'],
   service: 'Lambda',
 } as Rule;
-
-export default rule;

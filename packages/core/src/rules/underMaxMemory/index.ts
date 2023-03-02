@@ -40,7 +40,7 @@ const ruleConfigTypeguard = (
   return false;
 };
 
-const rule: Rule<UnderMaxMemoryRuleConfig> = {
+export const underMaxMemory: Rule<UnderMaxMemoryRuleConfig> = {
   ruleName: 'Lambda: Under Maximum Memory',
   errorMessage: `The function's memory is set to the historical maximum limit of ${AWS_HISTORICAL_MAX_MEMORY} MB or higher`,
   run,
@@ -50,5 +50,3 @@ const rule: Rule<UnderMaxMemoryRuleConfig> = {
   service: 'Lambda',
   configurationTypeguard: ruleConfigTypeguard,
 };
-
-export default rule;

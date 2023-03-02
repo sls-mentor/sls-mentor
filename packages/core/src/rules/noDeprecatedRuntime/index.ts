@@ -19,7 +19,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const noDeprecatedRuntime: Rule = {
   ruleName: 'Lambda: No Deprecated Runtime',
   errorMessage: 'The following functions have deprecated runtime',
   run,
@@ -28,5 +28,3 @@ const rule: Rule = {
   level: 4,
   service: 'Lambda',
 } as Rule;
-
-export default rule;

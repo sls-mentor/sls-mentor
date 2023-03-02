@@ -1,10 +1,10 @@
-import { NoDefaultMemory } from '@sls-mentor/core';
+import { noDefaultMemory } from '@sls-mentor/core';
 import { describe, it } from 'vitest';
 import { FAIL_NO_DEFAULT_MEMORY_LAMBDA_NAME } from '../lib/failStack/lambda';
 import { PASS_NO_DEFAULT_MEMORY_LAMBDA_NAME } from '../lib/passStack/lambda';
 import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = NoDefaultMemory['ruleName'];
+const ruleName = noDefaultMemory['ruleName'];
 
 describe('lambda no default memory', () => {
   it('sls-mentor passes on lambda with memory set', () => {

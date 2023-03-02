@@ -17,7 +17,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const lightBundle: Rule = {
   ruleName: 'Lambda: Light Bundle',
   errorMessage:
     'The following functions have bundles that weight more than 5 Mb',
@@ -27,5 +27,3 @@ const rule: Rule = {
   level: 4,
   service: 'Lambda',
 };
-
-export default rule;

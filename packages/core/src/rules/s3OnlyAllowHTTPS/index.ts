@@ -23,7 +23,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const s3OnlyAllowHTTPS: Rule = {
   ruleName: 'S3: Use HTTPS requests only',
   errorMessage: 'HTTPS requests only is not enabled on this S3 bucket',
   run,
@@ -32,5 +32,3 @@ const rule: Rule = {
   level: 2,
   service: 'S3',
 };
-
-export default rule;

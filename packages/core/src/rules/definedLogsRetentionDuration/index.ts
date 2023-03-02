@@ -18,7 +18,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const definedLogsRetentionDuration: Rule = {
   ruleName: 'CloudWatch Logs: Define a retention duration',
   errorMessage: 'RetentionInDays of the log group is undefined.',
   run,
@@ -27,5 +27,3 @@ const rule: Rule = {
   level: 3,
   service: 'CloudWatch',
 };
-
-export default rule;

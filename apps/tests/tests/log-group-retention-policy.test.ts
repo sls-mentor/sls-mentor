@@ -1,10 +1,10 @@
-import { DefinedLogsRetentionDuration } from '@sls-mentor/core';
+import { definedLogsRetentionDuration } from '@sls-mentor/core';
 import { describe, it } from 'vitest';
 import { FAIL_RETENTION_LOG_GROUP } from '../lib/failStack/logGroup';
 import { PASS_RETENTION_LOG_GROUP } from '../lib/passStack/logGroup';
 import { assertResourceResult } from './utils/assertResourceResult';
 
-const ruleName = DefinedLogsRetentionDuration['ruleName'];
+const ruleName = definedLogsRetentionDuration['ruleName'];
 
 describe('log-group-retention-policy', () => {
   it('sls-mentor passes on LogGroup with specified retention policy', () => {

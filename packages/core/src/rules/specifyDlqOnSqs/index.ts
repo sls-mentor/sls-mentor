@@ -37,7 +37,7 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-const rule: Rule = {
+export const specifyDlqOnSqs: Rule = {
   ruleName: 'Specifying a DLQ on SQS',
   errorMessage: 'The queue does not have a specified Dead Letter Queue.',
   run,
@@ -46,5 +46,3 @@ const rule: Rule = {
   level: 4,
   service: 'SQS',
 };
-
-export default rule;
