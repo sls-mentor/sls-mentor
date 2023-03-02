@@ -12,7 +12,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './dashboard.module.css';
 
 const categories = {
-  'Green IT': {
+  Sustainability: {
     details:
       'We help you leverage serverless technologies full potential to reduce your footprint.',
     Icon: <UilTrees size={16} />,
@@ -33,7 +33,7 @@ const categories = {
     defaultScore: '100%',
     defaultColor: 'green',
   },
-  'IT Costs': {
+  Savings: {
     details:
       'We make sure you can scale your resources to zero, and to infinity (but not too fast!)',
     Icon: <UilUsdCircle size={16} />,
@@ -123,7 +123,9 @@ export const Dashboard = (): JSX.Element => {
                   }}
                 ></div>
                 <p>
-                  {category}&nbsp;{categories[category as Category].Icon}
+                  {category}
+                  <br />
+                  {categories[category as Category].Icon}
                 </p>
               </div>
             ))}
