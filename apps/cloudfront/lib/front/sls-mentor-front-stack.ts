@@ -4,9 +4,13 @@ import { setupCloudfront } from './cloudfront';
 import { setupS3 } from './s3';
 
 export class SlsMentorFrontStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+  constructor(
+    scope: Construct,
+    id: string,
+    props?: cdk.StackProps & { stage: string },
+  ) {
     super(scope, id, props);
     const bucket = setupS3(this);
-    setupCloudfront(this, bucket);
+    setupCloudfront(this, bucket, props?.stage ?? '');
   }
 }
