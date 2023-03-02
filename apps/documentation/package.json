@@ -19,6 +19,7 @@
     "@sls-mentor/core": "workspace:*",
     "@types/react": "^18.0.26",
     "clsx": "^1.2.1",
+    "lodash": "^4.17.21",
     "prism-react-renderer": "^1.3.5",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",

@@ -1,6 +1,11 @@
 import Layout from '@theme/Layout';
 import React from 'react';
-import { CodeBlock, Dashboard } from '../../components';
+import {
+  CodeBlock,
+  Dashboard,
+  LevelChoice,
+  RuleByRule,
+} from '../../components';
 import styles from './index.module.css';
 
 const GettingStarted = (): JSX.Element => (
@@ -14,8 +19,10 @@ const GettingStarted = (): JSX.Element => (
         commandSecondary="@latest"
         tip="Encounter an error ? Try specifying an AWS profile with -p or a region with -r"
       />
+      <LevelChoice />
       <h4 className={styles.subtitle}>Reading the results</h4>
       <Dashboard />
+      <RuleByRule />
     </main>
   </Layout>
 );
