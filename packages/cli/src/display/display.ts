@@ -14,7 +14,7 @@ const displayRuleResults = (
   totalCount: number,
 ): void => {
   if (totalCount === 0)
-    return console.log(`${ruleName} - no resources checked`);
+    return console.log(`${ruleName} - no resources checked\n`);
 
   const successRatio = successCount / totalCount;
   const percentage = Math.round(successRatio * 100 * 100) / 100;
