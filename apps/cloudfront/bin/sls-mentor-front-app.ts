@@ -10,7 +10,9 @@ if (stage === undefined) {
   throw new Error('Stage is undefined');
 }
 
-export const SLS_MENTOR_FRONT_STACK_NAME = `${stage}sls-mentor-front-stack`;
+export const SLS_MENTOR_FRONT_STACK_NAME = `${
+  stage === 'dev' ? 'dev' : ''
+}sls-mentor-front-stack`;
 
 new SlsMentorFrontStack(app, SLS_MENTOR_FRONT_STACK_NAME, {
   env: {
