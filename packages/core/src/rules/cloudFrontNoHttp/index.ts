@@ -1,5 +1,5 @@
 import { DistributionConfig } from '@aws-sdk/client-cloudfront';
-import getDistributionConfig from '../../aws-sdk-helpers/cloudFront/getDistributionConfig';
+import { fetchDistributionConfig } from '../../aws-sdk-helpers/cloudFront';
 import { CloudFrontDistributionARN, CustomARN, Rule } from '../../types';
 
 const noHttpAllowed = (distributionConfig: DistributionConfig | undefined) => {
@@ -26,7 +26,7 @@ const run: Rule['run'] = async resourceArns => {
     distributionArns.map(async arn => ({
       arn: arn,
       success: noHttpAllowed(
-        await getDistributionConfig(arn.getDistributionId()),
+        await fetchDistributionConfig(arn.getDistributionId()),
       ),
     })),
   );
