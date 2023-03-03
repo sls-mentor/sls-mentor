@@ -6,6 +6,8 @@ import { cloudFrontClient } from '../../clients';
 import { CustomARN } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
+type DistributionWithDefinedId = Distribution & { Id: string };
+
 const fetchDistribution = async (
   Id: string,
 ): Promise<Distribution | undefined> => {
@@ -18,7 +20,7 @@ const fetchDistribution = async (
 
 const fetchAllDistributions = async (
   resourceArns: CustomARN[],
-): Promise<Distribution[]> => {
+): Promise<DistributionWithDefinedId[]> => {
   const distributionArns = CustomARN.filterArns(
     resourceArns,
     CloudFrontDistributionARN,
@@ -26,15 +28,15 @@ const fetchAllDistributions = async (
 
   const distributionIds = distributionArns.map(arn => arn.getDistributionId());
 
-  const distributions = await Promise.all(
-    distributionIds.map(fetchDistribution),
-  );
-
-  const definedDistributions = distributions.filter(
-    (distribution): distribution is Distribution => distribution !== undefined,
-  );
-
-  return definedDistributions;
+  return (await Promise.all(distributionIds.map(fetchDistribution)))
+    .filter(
+      (distribution): distribution is Distribution =>
+        distribution !== undefined,
+    )
+    .filter(
+      (distribution): distribution is DistributionWithDefinedId =>
+        distribution.Id !== undefined,
+    );
 };
 
 export default fetchAllDistributions;

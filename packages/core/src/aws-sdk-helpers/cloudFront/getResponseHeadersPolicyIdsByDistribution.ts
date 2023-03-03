@@ -1,23 +1,25 @@
 import { Distribution } from '@aws-sdk/client-cloudfront';
 
-const getDistributionResponseHeadersPolicyIds = (
+const getResponseHeadersPolicyIdsByDistribution = (
   distribution: Distribution,
 ): (string | undefined)[] => {
   if (distribution.DistributionConfig === undefined) {
-    return [];
+    return [undefined];
   }
 
   const defaultCacheBehavior =
     distribution.DistributionConfig.DefaultCacheBehavior;
 
   if (defaultCacheBehavior === undefined) {
-    return [];
+    return [undefined];
   }
 
-  const cacheBehaviors =
-    distribution.DistributionConfig.CacheBehaviors?.Items ?? [];
+  // TODO: support multiple behaviors
+  // const cacheBehaviors =
+  //   distribution.DistributionConfig.CacheBehaviors?.Items ?? [];
 
-  const allCacheBehaviors = [defaultCacheBehavior, ...cacheBehaviors];
+  // const allCacheBehaviors = [defaultCacheBehavior, ...cacheBehaviors];
+  const allCacheBehaviors = [defaultCacheBehavior];
 
   const responseHeadersPolicyIds = allCacheBehaviors.map(
     ({ ResponseHeadersPolicyId }) => ResponseHeadersPolicyId,
@@ -26,4 +28,4 @@ const getDistributionResponseHeadersPolicyIds = (
   return responseHeadersPolicyIds;
 };
 
-export default getDistributionResponseHeadersPolicyIds;
+export default getResponseHeadersPolicyIdsByDistribution;
