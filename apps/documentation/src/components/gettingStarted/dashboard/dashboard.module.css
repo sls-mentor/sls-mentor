@@ -52,7 +52,7 @@
   align-items: center;
   justify-content: center;
   padding: 1em;
-  }
+}
 
 .detailsPlaceholder img {
   filter: contrast(0%) brightness(190%);
@@ -65,7 +65,7 @@
 
 .details {
   flex-grow: 2;
-  flex-basis: 0;  
+  flex-basis: 0;
   padding: 1em;
   position: relative;
 }
@@ -163,12 +163,11 @@
   }
 
   .graphBar {
-    margin: 0 .5em;
+    margin: 0 0.5em;
   }
 }
 
 .red {
-  
   filter: hue-rotate(0deg) brightness(1);
 }
 
@@ -185,6 +184,6 @@
   width: 100%;
   height: 2em;
   background: linear-gradient(180deg, #00000000 0%, var(--background) 75%);
-  bottom: 2.8em;
+  bottom: 4em;
   left: 0;
 }

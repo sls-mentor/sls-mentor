@@ -12,10 +12,10 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number];
 
 export const categoryNames: Record<Category, string> = {
-  GreenIT: 'Green IT',
+  GreenIT: 'Sustainability',
   Stability: 'Stability',
   Speed: 'Speed',
-  ITCosts: 'IT Costs',
+  ITCosts: 'Savings',
   Security: 'Security',
 };
 
