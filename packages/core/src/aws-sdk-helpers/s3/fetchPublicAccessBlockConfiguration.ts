@@ -39,8 +39,6 @@ export const fetchPublicAccesBlockByArn = async (
       configuration: response.PublicAccessBlockConfiguration,
     };
   } catch (error) {
-    console.log(arn);
-
     return {
       arn,
       configuration: undefined,
