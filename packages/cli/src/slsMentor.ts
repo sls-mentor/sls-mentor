@@ -1,8 +1,10 @@
 import { CustomARN } from '@sls-mentor/core';
+import chalk from 'chalk';
+import { Spinner } from 'cli-spinner';
 import { runChecks } from './checks';
 import { readConfiguration } from './configuration/utils/readConfiguration';
+import { LILA_HEX } from './constants';
 import {
-  displayChecksStarting,
   displayDashboard,
   displayError,
   displayFailedChecksDetails,
@@ -21,9 +23,20 @@ export const runSlsMentor = async (
   const configuration = readConfiguration();
   const level = await getSlsMentorLevel(options);
 
-  displayChecksStarting();
+  const connectionSpinner = new Spinner({
+    text: chalk.hex(LILA_HEX)('%s Connecting to AWS...'),
+
+    onTick: function (msg) {
+      this.clearLine(this.stream);
+      this.stream.write(msg);
+    },
+  });
+  connectionSpinner.setSpinnerString('⠇⠋⠙⠸⠴⠦');
+  connectionSpinner.start();
 
   await initAccountAndRegion();
+
+  connectionSpinner.stop(true);
 
   let allResourcesArns: CustomARN[];
   try {

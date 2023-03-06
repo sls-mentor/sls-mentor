@@ -1,10 +1,11 @@
 import { CustomARN, RuleConfiguration, rules } from '@sls-mentor/core';
 import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
+import { LILA_HEX } from './constants';
 import { ChecksResults } from './types';
 
 const formatSpinnerString = (current: number, total: number): string =>
-  chalk.green(`%s Processing rules ${current}/${total}...`);
+  chalk.hex(LILA_HEX)(`%s Processing rules ${current}/${total}...`);
 
 export const runChecks = async (
   allResourceArns: CustomARN[],
@@ -18,7 +19,6 @@ export const runChecks = async (
 
   const rulesSpinner = new Spinner({
     text: formatSpinnerString(current, total),
-    stream: process.stderr,
 
     onTick: function (msg) {
       this.clearLine(this.stream);
