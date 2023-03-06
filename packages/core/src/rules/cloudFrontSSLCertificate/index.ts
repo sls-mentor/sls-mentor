@@ -38,6 +38,6 @@ export const cloudFrontSSLCertificate: Rule = {
   run,
   fileName: 'cloudFrontSSLCertificate',
   categories: ['Security'],
-  level: 1,
+  level: 2,
   service: 'CloudFront',
 };

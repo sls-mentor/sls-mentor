@@ -28,11 +28,11 @@ const run: Rule['run'] = async resourceArns => {
   return { results };
 };
 
-export const enableBlockPublicAdress: Rule = {
-  ruleName: 'Enable block public adress',
-  errorMessage: 'This bucket does not enable block public adress',
+export const enableBlockPublicAccess: Rule = {
+  ruleName: 'Enable block public access',
+  errorMessage: 'This bucket does not enable block public access',
   run,
-  fileName: 'enableBlockPublicAdress',
+  fileName: 'enableBlockPublicAccess',
   categories: ['Security'],
   level: 1,
   service: 'S3',
