@@ -52,6 +52,21 @@ expect.extend({
   }),
 });
 
+interface CustomMatchers {
+  toHaveSuccessfullyPassedSlsMentorRule(): void;
+  toFailSlsMentorRule(): void;
+}
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Vi {
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface Assertion extends CustomMatchers {}
+    // eslint-disable-next-line @typescript-eslint/no-empty-interface
+    interface AsymmetricMatchersContaining extends CustomMatchers {}
+  }
+}
+
 describe('Successful resources', () => {
   let success: boolean;
   let checksResults: ChecksResults | undefined;
