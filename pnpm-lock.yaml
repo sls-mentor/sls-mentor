@@ -164,8 +164,8 @@ importers:
     dependencies:
       '@sls-mentor/core': link:../../packages/core
       aws-cdk: 2.67.0
-      aws-cdk-lib: 2.67.0_constructs@10.1.270
-      constructs: 10.1.270
+      aws-cdk-lib: 2.67.0_constructs@10.0.0
+      constructs: 10.0.0
       danfojs: 1.1.2
       exceljs: 4.3.0
       sls-mentor: link:../../packages/cli
@@ -283,8 +283,8 @@ importers:
       object-hash: 3.0.0
       throttled-queue: 2.1.4
     devDependencies:
-      aws-cdk-lib: 2.67.0_constructs@10.1.232
-      constructs: 10.1.232
+      aws-cdk-lib: 2.67.0_constructs@10.0.0
+      constructs: 10.0.0
 
 packages:
 
@@ -6797,7 +6797,7 @@ packages:
       - semver
       - yaml
 
-  /aws-cdk-lib/2.67.0_constructs@10.1.232:
+  /aws-cdk-lib/2.67.0_constructs@10.0.0:
     resolution: {integrity: sha512-oVD0cZPKTtkGXvFkYLA+vNiq+QzyuQkOe/rDY/BSxi/cEElbu74StKwCFCFGq8ljTAHQjyYeE5dzlB2q8Wq20w==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -6808,7 +6808,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.77
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.232
+      constructs: 10.0.0
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -6816,38 +6816,6 @@ packages:
       punycode: 2.3.0
       semver: 7.3.8
       yaml: 1.10.2
-    dev: true
-    bundledDependencies:
-      - '@balena/dockerignore'
-      - case
-      - fs-extra
-      - ignore
-      - jsonschema
-      - minimatch
-      - punycode
-      - semver
-      - yaml
-
-  /aws-cdk-lib/2.67.0_constructs@10.1.270:
-    resolution: {integrity: sha512-oVD0cZPKTtkGXvFkYLA+vNiq+QzyuQkOe/rDY/BSxi/cEElbu74StKwCFCFGq8ljTAHQjyYeE5dzlB2q8Wq20w==}
-    engines: {node: '>= 14.15.0'}
-    peerDependencies:
-      constructs: ^10.0.0
-    dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.97
-      '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.77
-      '@balena/dockerignore': 1.0.2
-      case: 1.6.3
-      constructs: 10.1.270
-      fs-extra: 9.1.0
-      ignore: 5.2.4
-      jsonschema: 1.4.1
-      minimatch: 3.1.2
-      punycode: 2.3.0
-      semver: 7.3.8
-      yaml: 1.10.2
-    dev: false
     bundledDependencies:
       - '@balena/dockerignore'
       - case
@@ -7519,12 +7487,12 @@ packages:
   /consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
 
+  /constructs/10.0.0:
+    resolution: {integrity: sha512-MIwjmrXZpM9RtwyrSD4HotDIQl8HTdIefQhU+MU1asvtSyVN3kK8kjeUOWMFb+fdyT4RX3QvvcaaPBluLEX1SA==}
+    engines: {node: '>= 10.17.0'}
+
   /constructs/10.1.232:
     resolution: {integrity: sha512-rqXywZLOyUoEp3wIlr75SpahUYDrmpOrAf1vUjBi0MLap32oR6zbPfM2Ar9Xu6kgNdZP4BH16+CZVEtJxKE3uw==}
-    engines: {node: '>= 14.17.0'}
-
-  /constructs/10.1.270:
-    resolution: {integrity: sha512-EuPb/VI9q0pOy/deaddOIO0RKdJXpBv+qTo7AbYK2dcEq6Kd7PJ8TnDQ5XwotWgB7YaXuTPddIgFDyyIstHcsA==}
     engines: {node: '>= 14.17.0'}
     dev: false
 
