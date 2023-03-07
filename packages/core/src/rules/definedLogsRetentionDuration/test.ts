@@ -1,7 +1,7 @@
-import { definedLogsRetentionDuration as DefinedLogsRetentionDurationRule } from '@sls-mentor/core';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
-import { DefaultLogGroup } from '../common';
+import { DefaultLogGroup } from '../../../tests/constructs';
+import { definedLogsRetentionDuration as DefinedLogsRetentionDurationRule } from './index';
 
 interface DefinedLogsRetentionDurationProps {
   logRetention: RetentionDays;

@@ -256,6 +256,8 @@ importers:
       '@aws-sdk/types': ^3.226.0
       '@aws-sdk/util-arn-parser': 3.208.0
       '@aws-sdk/util-middleware': ^3.226.0
+      aws-cdk-lib: ^2.67.0
+      constructs: ^10.0.0
       lodash: ^4.17.21
       object-hash: ^3.0.0
       throttled-queue: ^2.1.4
@@ -280,6 +282,9 @@ importers:
       lodash: 4.17.21
       object-hash: 3.0.0
       throttled-queue: 2.1.4
+    devDependencies:
+      aws-cdk-lib: 2.67.0_constructs@10.1.232
+      constructs: 10.1.232
 
 packages:
 
@@ -409,13 +414,20 @@ packages:
     resolution: {integrity: sha512-MdC2UpjDVi0ePQkXZg938/FZvK5pu0o2im9legoojmNZNKGssqpscz5gPISeZhrW124WI8IF+6hYPkHVYnod2w==}
     dev: false
 
+  /@aws-cdk/asset-awscli-v1/2.2.97:
+    resolution: {integrity: sha512-bWFkQphw1U7Q8XngShvGy0S1yqDui6q72zjnLciqKQ5ucZq17/TEujLTpSv+v2K5qJU8oa8VaMDiRyYbdPD6MA==}
+    dev: true
+
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
-    dev: false
 
   /@aws-cdk/asset-node-proxy-agent-v5/2.0.55:
     resolution: {integrity: sha512-wqw3I/Bdy3SURLiGKtU47Fkz6OnSPsNs9O0FlkJyBFWVh4e5kMe1BfEmc3kZ/QukvKxI+Fnqk9Yz8tui0goqiQ==}
     dev: false
+
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.77:
+    resolution: {integrity: sha512-KKrnyIujGN38yOb0MIm0EnB3n7z83NRl9VgKvN0flOyB8C+3Ey+XKxLYfjoXJ/BulB0161eBJXXwGdP8xQrQJw==}
+    dev: true
 
   /@aws-crypto/crc32/2.0.0:
     resolution: {integrity: sha512-TvE1r2CUueyXOuHdEigYjIZVesInd9KN+K/TFFNfkkxRThiNxO6i4ZqqAVMoEjAamZZ1AA8WXJkjCz7YShHPQA==}
@@ -6185,6 +6197,28 @@ packages:
       - semver
       - yaml
 
+  /aws-cdk-lib/2.67.0_constructs@10.1.232:
+    resolution: {integrity: sha512-oVD0cZPKTtkGXvFkYLA+vNiq+QzyuQkOe/rDY/BSxi/cEElbu74StKwCFCFGq8ljTAHQjyYeE5dzlB2q8Wq20w==}
+    engines: {node: '>= 14.15.0'}
+    peerDependencies:
+      constructs: ^10.0.0
+    dependencies:
+      '@aws-cdk/asset-awscli-v1': 2.2.97
+      '@aws-cdk/asset-kubectl-v20': 2.1.1
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.77
+      constructs: 10.1.232
+    dev: true
+    bundledDependencies:
+      - '@balena/dockerignore'
+      - case
+      - fs-extra
+      - ignore
+      - jsonschema
+      - minimatch
+      - punycode
+      - semver
+      - yaml
+
   /aws-cdk/2.50.0:
     resolution: {integrity: sha512-55vmKTf2DZRqioumVfXn+S0H9oAbpRK3HFHY8EjZ5ykR5tq2+XiMWEZkYduX2HJhVAeHJJIS6h+Okk3smZjeqw==}
     engines: {node: '>= 14.15.0'}
@@ -6849,7 +6883,6 @@ packages:
   /constructs/10.1.232:
     resolution: {integrity: sha512-rqXywZLOyUoEp3wIlr75SpahUYDrmpOrAf1vUjBi0MLap32oR6zbPfM2Ar9Xu6kgNdZP4BH16+CZVEtJxKE3uw==}
     engines: {node: '>= 14.17.0'}
-    dev: false
 
   /content-disposition/0.5.2:
     resolution: {integrity: sha512-kRGRZw3bLlFISDBgwTSA1TMBFN6J6GWDeubmDE3AF+3+yXL8hTWv8r5rkLbqYXY4RjPk/EzHnClI3zQf1cFmHA==}

@@ -1,7 +1,7 @@
-import { noMonoPackage as NoMonoPackageRule } from '@sls-mentor/core';
 import { InlineCode } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import { DefaultFunction } from '../common';
+import { DefaultFunction } from '../../../tests/constructs';
+import { noMonoPackage as NoMonoPackageRule } from './index';
 
 interface NoMonoPackageProps {
   quantityOfLambdaFunctionsSharingTheSamePackage: number;

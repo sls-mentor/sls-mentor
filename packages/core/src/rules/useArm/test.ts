@@ -1,7 +1,7 @@
-import { useArm as UseArmRule } from '@sls-mentor/core';
 import { Architecture } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import { DefaultFunction } from '../common';
+import { DefaultFunction } from '../../../tests/constructs';
+import { useArm as UseArmRule } from './index';
 
 interface UseArmProps {
   architecture: Architecture;

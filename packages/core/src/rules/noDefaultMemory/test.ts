@@ -1,6 +1,6 @@
-import { noDefaultMemory as NoDefaultMemoryRule } from '@sls-mentor/core';
 import { Construct } from 'constructs';
-import { DefaultFunction } from '../common';
+import { DefaultFunction } from '../../../tests/constructs';
+import { noDefaultMemory as NoDefaultMemoryRule } from './index';
 
 interface NoDefaultMemoryProps {
   memory: number;

@@ -1,4 +1,3 @@
-import { Rule } from '@sls-mentor/core';
 import { Duration, RemovalPolicy, Tags } from 'aws-cdk-lib';
 import {
   BlockPublicAccess,
@@ -9,6 +8,7 @@ import {
   StorageClass,
 } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
+import { Rule } from '../../src/types';
 import { RULE_TAG_KEY, Tagger } from './tags';
 
 export class DefaultBucket extends Bucket implements Tagger {

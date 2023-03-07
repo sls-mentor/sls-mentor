@@ -1,8 +1,8 @@
-import { useIntelligentTiering as UseIntelligentTieringRule } from '@sls-mentor/core';
 import { Duration } from 'aws-cdk-lib';
 import { LifecycleRule, StorageClass } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
-import { DefaultBucket } from '../common';
+import { DefaultBucket } from '../../../tests/constructs';
+import { useIntelligentTiering as UseIntelligentTieringRule } from './index';
 
 interface UseIntelligentTieringProps {
   lifecycleRules: LifecycleRule[];

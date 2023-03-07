@@ -52,7 +52,7 @@ expect.extend({
   }),
 });
 
-describe('StackSuccess', () => {
+describe('Successful resources', () => {
   let success: boolean;
   let checksResults: ChecksResults | undefined;
   beforeAll(async () => {
@@ -85,7 +85,7 @@ describe('StackSuccess', () => {
   );
 });
 
-describe('StackFail', () => {
+describe('Failed resources', () => {
   let success: boolean;
   let checksResults: ChecksResults | undefined;
   beforeAll(async () => {

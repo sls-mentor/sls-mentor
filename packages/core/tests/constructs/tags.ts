@@ -1,4 +1,4 @@
-import { Rule } from '@sls-mentor/core';
+import { Rule } from '../../src/types';
 
 export const RULE_TAG_KEY = 'rule';
 

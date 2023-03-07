@@ -1,4 +1,3 @@
-import { Rule } from '@sls-mentor/core';
 import { RemovalPolicy, Tags } from 'aws-cdk-lib';
 import {
   CfnLogGroup,
@@ -8,6 +7,7 @@ import {
 } from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
 import { RULE_TAG_KEY, Tagger } from './tags';
+import { Rule } from '../../src/types';
 
 export class DefaultLogGroup extends LogGroup implements Tagger {
   constructor(

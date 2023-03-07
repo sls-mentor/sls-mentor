@@ -1,6 +1,6 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
-import * as testConstructs from './ruleConstructs';
+import * as testConstructs from '@sls-mentor/core/tests';
 
 export class StackFail extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {

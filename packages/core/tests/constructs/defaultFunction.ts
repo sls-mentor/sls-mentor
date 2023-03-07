@@ -1,4 +1,3 @@
-import { Rule } from '@sls-mentor/core';
 import { Names, Tags } from 'aws-cdk-lib';
 import {
   Architecture,
@@ -9,6 +8,7 @@ import {
   Runtime,
 } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
+import { Rule } from '../../src/types';
 import { RULE_TAG_KEY, Tagger } from './tags';
 
 export class DefaultFunction extends Function implements Tagger {

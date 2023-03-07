@@ -6,7 +6,7 @@
   },
   "scripts": {
     "synth": "cdk synth",
-    "deploy": "cdk deploy 'sls-mentor-e2e*'",
+    "deploy": "cdk deploy --all",
     "test": "vitest run",
     "lint": "eslint . --ext .ts"
   },
