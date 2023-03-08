@@ -4,8 +4,7 @@ import {
   ResourceTagMapping,
 } from '@aws-sdk/client-resource-groups-tagging-api';
 import type { Rule, RuleCheckResult } from '@sls-mentor/core';
-import { CustomARN } from '@sls-mentor/core';
-import * as rules from '@sls-mentor/core/src/rules';
+import { CustomARN, rules } from '@sls-mentor/core';
 import type { ChecksResults } from 'sls-mentor';
 import { runSlsMentor } from 'sls-mentor/src/slsMentor';
 import { beforeAll, describe, expect, it } from 'vitest';
