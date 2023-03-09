@@ -6,12 +6,12 @@
   },
   "scripts": {
     "synth": "cdk synth",
-    "deploy": "cdk deploy 'sls-mentor-e2e*'",
+    "deploy": "cdk deploy --all",
     "test": "vitest run",
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
-    "aws-cdk": "2.50.0",
+    "@aws-sdk/client-resource-groups-tagging-api": "^3.282.0",
     "dotenv": "^16.0.3",
     "esbuild": "^0.17.7",
     "lodash": "^4.17.21",
@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "@sls-mentor/core": "workspace:*",
-    "aws-cdk-lib": "2.50.0",
+    "aws-cdk": "^2.67.0",
+    "aws-cdk-lib": "^2.67.0",
     "constructs": "^10.0.0",
     "danfojs": "^1.1.2",
     "exceljs": "^4.3.0",

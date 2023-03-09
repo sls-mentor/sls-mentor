@@ -29,6 +29,8 @@
     "throttled-queue": "^2.1.4"
   },
   "devDependencies": {
-    "@aws-sdk/types": "^3.226.0"
+    "@aws-sdk/types": "^3.226.0",
+    "aws-cdk-lib": "^2.67.0",
+    "constructs": "^10.0.0"
   }
 }
