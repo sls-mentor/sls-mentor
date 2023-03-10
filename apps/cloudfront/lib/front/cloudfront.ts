@@ -17,7 +17,7 @@ export const setupCloudfront = (
   stack: Stack,
   bucket: IBucket,
   stage: string,
-): void => {
+): Distribution => {
   const DOMAIN_NAMES = [
     `www.${stage === 'dev' ? 'dev.' : ''}sls-mentor.dev`,
     `${stage === 'dev' ? 'dev.' : ''}sls-mentor.dev`,
@@ -50,4 +50,6 @@ export const setupCloudfront = (
       recordName: domainName,
     });
   });
+
+  return distribution;
 };
