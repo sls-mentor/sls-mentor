@@ -39,7 +39,7 @@ const Home = (): JSX.Element => (
           ></Card>
           <Card
             title="Framework agnostic"
-            message="Built on AWS sdk. We check your resources online and support every deployment method."
+            message="Built on AWS SDK. We check your resources online and support every deployment method."
           ></Card>
           <Card
             title="Easy to implement"

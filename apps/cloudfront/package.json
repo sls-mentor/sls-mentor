@@ -7,9 +7,11 @@
     "lint": "eslint . --ext .ts"
   },
   "devDependencies": {
-    "aws-cdk": "2.50.0"
+    "aws-cdk": "2.50.0",
+    "esbuild": "^0.17.7"
   },
   "dependencies": {
+    "@aws-sdk/client-cloudfront": "^3.226.0",
     "aws-cdk-lib": "2.50.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21"

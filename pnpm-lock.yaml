@@ -91,16 +91,20 @@ importers:
 
   apps/cloudfront:
     specifiers:
+      '@aws-sdk/client-cloudfront': ^3.226.0
       aws-cdk: 2.50.0
       aws-cdk-lib: 2.50.0
       constructs: ^10.0.0
+      esbuild: ^0.17.7
       source-map-support: ^0.5.21
     dependencies:
+      '@aws-sdk/client-cloudfront': 3.245.0
       aws-cdk-lib: 2.50.0_constructs@10.1.232
       constructs: 10.1.232
       source-map-support: 0.5.21
     devDependencies:
       aws-cdk: 2.50.0
+      esbuild: 0.17.7
 
   apps/documentation:
     specifiers:

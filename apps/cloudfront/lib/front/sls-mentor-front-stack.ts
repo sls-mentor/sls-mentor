@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { setupCloudfront } from './cloudfront';
+import { setupInvalidation } from './invalidation';
 import { setupS3 } from './s3';
 
 export class SlsMentorFrontStack extends cdk.Stack {
@@ -11,6 +12,7 @@ export class SlsMentorFrontStack extends cdk.Stack {
   ) {
     super(scope, id, props);
     const bucket = setupS3(this);
-    setupCloudfront(this, bucket, props?.stage ?? '');
+    const distribution = setupCloudfront(this, bucket, props?.stage ?? '');
+    setupInvalidation(this, bucket, distribution);
   }
 }
