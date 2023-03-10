@@ -47,7 +47,7 @@ const Home = (): JSX.Element => (
           ></Card>
           <Card
             title="Free and open-source"
-            message="We are open to contributions. Feel free to implement new rules and give some feedback!"
+            message="We are open to contributions! Feel free to implement new rules and give some feedback!"
           ></Card>
         </div>
       </section>
