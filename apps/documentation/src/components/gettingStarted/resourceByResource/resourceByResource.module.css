@@ -27,8 +27,7 @@
   height: 300px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  margin-right: 300px;
+  justify-content: center;
 }
 
 @media (min-width: 1000px) {
@@ -46,6 +45,14 @@
   position: relative;
   height: 100px;
   width: 100px;
+}
+
+.group1 {
+  width: 380px;
+}
+
+.group2 {
+  width: 300px;
 }
 
 .resource > * {
@@ -85,6 +92,12 @@
   transform: rotate(-45deg) translateX(50px) rotate(45deg) translate(55px, -50%);
   white-space: noWrap;
   margin: 0;
+}
+
+.rule1:hover,
+.rule2:hover {
+  color: var(--ifm-color-primary);
+  cursor: pointer;
 }
 
 .line21 {
