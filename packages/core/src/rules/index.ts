@@ -22,3 +22,4 @@ export * from './specifyDlqOnSqs';
 export * from './underMaxMemory';
 export * from './useArm';
 export * from './useIntelligentTiering';
+export * from './cloudFrontNoHttp';
