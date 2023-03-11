@@ -9,6 +9,7 @@ import {
   displayError,
   displayFailedChecksDetails,
   displayGuordle,
+  displayLink,
   displayResultsSummary,
 } from './display';
 import { fetchAllResourceArns, initAccountAndRegion } from './init';
@@ -80,6 +81,7 @@ export const runSlsMentor = async (
   const resultsByCategory = getResultsByCategory(checksResults);
   displayDashboard(resultsByCategory);
   displayGuordle(resultsByCategory);
+  displayLink(checksResults, level);
 
   return {
     success: options.noFail || !atLeastOneFailed,

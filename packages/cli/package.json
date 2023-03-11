@@ -5,7 +5,7 @@
     "sls-mentor": "./dist/index.js"
   },
   "scripts": {
-    "dev": "pnpm exec ts-node --transpileOnly ./src/index.ts",
+    "dev": "STAGE=local pnpm exec ts-node --transpileOnly ./src/index.ts",
     "build": "tsup src/index.ts",
     "lint": "eslint src --ext .ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
