@@ -30,6 +30,7 @@ export const SERVICES = [
   'RDS',
   'Backup',
   'ApiGatewayV2',
+  'SES',
 ] as const;
 export type Service = (typeof SERVICES)[number];
 
@@ -44,6 +45,7 @@ export const serviceNames: Record<Service, string> = {
   RDS: 'RDS',
   Backup: 'Backup',
   ApiGatewayV2: 'Api Gateway V2',
+  SES: 'SES',
 };
 
 export type RuleCheckResult = { arn: CustomARN; success: boolean } & Record<
