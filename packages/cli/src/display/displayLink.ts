@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import terminalLink from 'terminal-link';
 import { ChecksResults } from 'types';
 import { LILA_HEX } from '../constants';
 
@@ -35,11 +36,13 @@ export const displayLink = (
 
   const url = `${baseLink}/report/?${queryParams}&level=${level}`;
 
+  const link = terminalLink(chalk.bold.hex('##0095ff')('Click here!'), url);
+
   console.log(
     chalk.hex(LILA_HEX)(
       '\n\n ⬇️  [NEW!] Follow this link to see a detailed report of your analysis ⬇️\n',
     ),
   );
-  console.log(url);
+  console.log(` ➡️  ${link}`);
   console.log('\n');
 };
