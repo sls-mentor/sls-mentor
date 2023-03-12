@@ -13,6 +13,7 @@ import {
   LambdaFunctionARN,
   RdsInstanceARN,
   S3BucketARN,
+  SESIdentityARN,
   SqsQueueARN,
 } from '@sls-mentor/core';
 
@@ -25,7 +26,6 @@ export const createARNFromCloudFormation = ({
   if (PhysicalResourceId === undefined || ResourceType === undefined) {
     return undefined;
   }
-
   switch (ResourceType) {
     case 'AWS::S3::Bucket':
       return S3BucketARN.fromPhysicalId(PhysicalResourceId);
@@ -45,6 +45,8 @@ export const createARNFromCloudFormation = ({
       return CloudFrontDistributionARN.fromPhysicalId(PhysicalResourceId);
     case 'AWS::ApiGatewayV2::Api':
       return ApiGatewayV2ApiARN.fromPhysicalId(PhysicalResourceId);
+    case '"AWS::SES::EmailIdentity"':
+      return SESIdentityARN.fromIdentityName(PhysicalResourceId);
     default:
       return;
   }
