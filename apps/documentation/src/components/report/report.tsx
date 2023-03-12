@@ -1,7 +1,11 @@
 import { useLocation } from '@docusaurus/router';
 import React, { useMemo } from 'react';
+import { Bars } from './bars';
 import { ReportContext } from './hooks';
-import { parseParams } from './parseParams';
+import { MainScore } from './mainScore';
+import { parseParams } from './helpers';
+
+import styles from './report.module.css';
 
 export const Report = (): JSX.Element => {
   const { search: queryString } = useLocation();
@@ -18,7 +22,10 @@ export const Report = (): JSX.Element => {
   return (
     <main>
       <ReportContext.Provider value={parsedQueryString}>
-        <h1>Report</h1>
+        <div className={styles.headerContainer}>
+          <MainScore />
+          <Bars />
+        </div>
       </ReportContext.Provider>
     </main>
   );

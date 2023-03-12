@@ -1,5 +1,5 @@
 import { rules, SlsMentorLevel } from '@sls-mentor/core';
-import { Results } from './types';
+import { Results } from '../types';
 
 const isRuleName = (ruleName: string): boolean =>
   rules.find(({ fileName }) => fileName === ruleName) !== undefined;
