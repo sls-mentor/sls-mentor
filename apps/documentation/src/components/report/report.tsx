@@ -1,9 +1,10 @@
 import { useLocation } from '@docusaurus/router';
 import React, { useMemo } from 'react';
 import { Bars } from './bars';
+import { parseParams } from './helpers';
 import { ReportContext } from './hooks';
 import { MainScore } from './mainScore';
-import { parseParams } from './helpers';
+import { Recommendations } from './recommendations';
 
 import styles from './report.module.css';
 
@@ -26,6 +27,7 @@ export const Report = (): JSX.Element => {
           <MainScore />
           <Bars />
         </div>
+        <Recommendations />
       </ReportContext.Provider>
     </main>
   );

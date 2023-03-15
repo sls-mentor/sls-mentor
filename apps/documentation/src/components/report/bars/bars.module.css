@@ -12,7 +12,7 @@
 .barsContainer::after {
   content: '';
   position: absolute;
-  height: 100%;
+  height: calc(100% - 3em);
   width: 20%;
   background: linear-gradient(90deg, var(--background), #00000000);
 }

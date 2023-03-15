@@ -1,0 +1,130 @@
+.mainContainer {
+  margin-top: 4em;
+}
+
+.recommendationsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  gap: 1em;
+}
+
+.recommendationCard {
+  border-radius: 1em;
+  flex-grow: 1;
+  flex-basis: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 0.5em var(--shadow-low-contrast);
+  gap: 0.2em;
+  cursor: pointer;
+}
+
+.recommendationCard:hover {
+  box-shadow: 0 0 0.5em var(--shadow-high-contrast);
+}
+
+.recommendationHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 1em;
+  margin-left: 1em;
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background: var(--background-third);
+  align-self: center;
+}
+
+.recommendationHeader > h3 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.recommendationHeader > h2 {
+  font-size: 3rem;
+  margin: 0;
+  color: var(--grey-low-contrast);
+}
+
+.recommendationBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.service {
+  aspect-ratio: 1;
+  height: 4em;
+  margin: 1em;
+}
+
+.service > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+.tagsContainer {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.5em;
+}
+
+.tagsContainer > p {
+  margin: 0;
+  padding: 0.2em 0.5em;
+  background: var(--background-third);
+  border-radius: 0.5em;
+  width: fit-content;
+}
+
+.tagsContainer > p.critical {
+  background: #ffb0b0;
+}
+
+.tagsContainer > p.high {
+  background: #ffc5af;
+}
+
+.tagsContainer > p.moderate {
+  background: #fff2b9;
+}
+
+.tagsContainer > p.low {
+  background: #e1ffb6;
+}
+
+.tagsContainer > p.quick-fix {
+  background: #b8d7ff;
+}
+
+[data-theme='dark'] .tagsContainer > p.critical {
+  background: #7a0000;
+}
+
+[data-theme='dark'] .tagsContainer > p.high {
+  background: #985300;
+}
+
+[data-theme='dark'] .tagsContainer > p.moderate {
+  background: #7a5b00;
+}
+
+[data-theme='dark'] .tagsContainer > p.low {
+  background: #005f00;
+}
+
+[data-theme='dark'] .tagsContainer > p.quick-fix {
+  background: #000087;
+}

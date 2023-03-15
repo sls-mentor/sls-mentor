@@ -113,6 +113,7 @@ button {
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --shadow-high-contrast: #00000050;
+  --shadow-low-contrast: #00000030;
   --grey-high-contrast: #333333;
   --grey: #555555;
   --grey-low-contrast: #777777;
@@ -130,7 +131,8 @@ button {
   --ifm-color-primary-light: #ed774b;
   --ifm-color-primary-lighter: #ed774b;
   --ifm-color-primary-lightest: #ed774b;
-  --shadow-high-contrast: #ffffff20;
+  --shadow-high-contrast: #ffffff40;
+  --shadow-low-contrast: #ffffff20;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --grey-high-contrast: #cccccc;
   --grey: #aaaaaa;
