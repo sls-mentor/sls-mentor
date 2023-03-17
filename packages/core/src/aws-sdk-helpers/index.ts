@@ -5,4 +5,5 @@ export * from './eventBridge';
 export * from './lambda';
 export * from './rds';
 export * from './s3';
+export * from './ses';
 export * from './sqs';

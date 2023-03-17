@@ -13,6 +13,7 @@ export * from './noDeprecatedRuntime';
 export * from './noMaxTimeout';
 export * from './noMonoPackage';
 export * from './noProvisionedConcurrency';
+export * from './noSESEmailIdentity';
 export * from './noSharedIamRoles';
 export * from './noUnauthorizedApiGatewaysV2Routes';
 export * from './s3OnlyAllowHTTPS';

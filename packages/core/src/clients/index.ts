@@ -7,4 +7,5 @@ export { default as eventBridgeClient } from './eventBridgeClient';
 export { default as lambdaClient } from './lambdaClient';
 export { default as rdsClient } from './rdsClient';
 export { default as s3Client } from './s3Client';
+export { default as sesClient } from './sesClient';
 export { default as sqsCLient } from './sqsClient';
