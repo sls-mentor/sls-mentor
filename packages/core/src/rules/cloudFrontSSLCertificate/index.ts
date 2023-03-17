@@ -1,6 +1,8 @@
 import { DistributionConfig } from '@aws-sdk/client-cloudfront';
-import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
-import getDistributionConfig from '../../aws-sdk-helpers/cloudFront/getDistributionConfig';
+import {
+  fetchAllDistributions,
+  fetchDistributionConfig,
+} from '../../aws-sdk-helpers/cloudFront';
 import { Rule } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
@@ -19,7 +21,7 @@ const run: Rule['run'] = async resourceArns => {
   const distributions = await fetchAllDistributions(resourceArns);
   const distributionConfigs = await Promise.all(
     distributions.map(
-      async distribution => await getDistributionConfig(distribution.Id),
+      async distribution => await fetchDistributionConfig(distribution.Id),
     ),
   );
 

@@ -4,10 +4,13 @@ import {
 } from '@aws-sdk/client-cloudfront';
 import { cloudFrontClient } from '../../clients';
 
-const fetchResponseHeaderPolicyById = async (
-  id: string | undefined,
+const fetchResponseHeadersPolicyByResponseHeadersPolicyId = async (
+  policyId: string | undefined,
 ): Promise<ResponseHeadersPolicy | undefined> => {
-  const command = new GetResponseHeadersPolicyCommand({ Id: id });
+  if (policyId === undefined) {
+    return undefined;
+  }
+  const command = new GetResponseHeadersPolicyCommand({ Id: policyId });
 
   const commandOutput = await cloudFrontClient.send(command);
 
@@ -16,4 +19,4 @@ const fetchResponseHeaderPolicyById = async (
   return policy;
 };
 
-export default fetchResponseHeaderPolicyById;
+export default fetchResponseHeadersPolicyByResponseHeadersPolicyId;

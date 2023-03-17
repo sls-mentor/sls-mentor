@@ -4,7 +4,7 @@ import {
 } from '@aws-sdk/client-cloudfront';
 import { cloudFrontClient } from '../../clients';
 
-const getDistributionConfig = async (
+const fetchDistributionConfig = async (
   id: string | undefined,
 ): Promise<DistributionConfig | undefined> => {
   const command = new GetDistributionConfigCommand({ Id: id });
@@ -16,4 +16,4 @@ const getDistributionConfig = async (
   return distributionConfig;
 };
 
-export default getDistributionConfig;
+export default fetchDistributionConfig;

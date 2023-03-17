@@ -1,43 +1,105 @@
-import { Distribution } from '@aws-sdk/client-cloudfront';
-import { fetchAllDistributions } from '../../aws-sdk-helpers/cloudFront';
-import getDistributionResponseHeadersPolicyIds from '../../aws-sdk-helpers/cloudFront/getDistributionResponseHeadersPolicyIds';
-import { Rule } from '../../types';
+import { ResponseHeadersPolicy } from '@aws-sdk/client-cloudfront';
+import {
+  fetchAllDistributions,
+  fetchResponseHeadersPolicyByResponseHeadersPolicyId,
+  getResponseHeadersPolicyIdsByDistribution,
+} from '../../aws-sdk-helpers/cloudFront';
+import { EnabledSecurityHeaders, Rule, SecurityHeader } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
-const areSecurityHeadersEnabled = (distribution: Distribution) => {
-  const responseHeadersPolicyIds =
-    getDistributionResponseHeadersPolicyIds(distribution);
+const areSecurityHeadersEnabledOnPolicy = (
+  policy?: ResponseHeadersPolicy,
+): boolean => {
+  if (policy === undefined) {
+    return false;
+  }
 
-  /**
-   * Let's hard code the ID of the policy that has the security headers and is managed by AWS.
-   */
+  const enabledSecurityHeaders: EnabledSecurityHeaders =
+    getSecurityHeadersConfigSecurityHeaders(policy);
+
   if (
-    responseHeadersPolicyIds.includes('67f7725c-6f97-4210-82d7-5512b31e9d03')
+    enabledSecurityHeaders[SecurityHeader.StrictTransportSecurity] &&
+    enabledSecurityHeaders[SecurityHeader.ReferrerPolicy] &&
+    enabledSecurityHeaders[SecurityHeader.XContentTypeOptions] &&
+    enabledSecurityHeaders[SecurityHeader.XFrameOptions] &&
+    enabledSecurityHeaders[SecurityHeader.XXSSProtection]
   ) {
     return true;
   }
 
-  /**
-   * TODO: analyze the response headers policies to ensure all security headers are present
-   * In fact, not only the managed policy '67f7725c-6f97-4210-82d7-5512b31e9d03' has the headers,
-   * but the custom policies may also have them.
-   *
-   * const responseHeadersPolicies = await Promise.all(
-   *   responseHeadersPolicyIds.map(fetchResponseHeaderPolicyById),
-   * );
-   *
-   * ...
-   */
-
   return false;
+};
+
+const getSecurityHeadersConfigSecurityHeaders = (
+  policy: ResponseHeadersPolicy,
+): EnabledSecurityHeaders => {
+  const securityHeadersConfig =
+    policy.ResponseHeadersPolicyConfig?.SecurityHeadersConfig;
+
+  return {
+    ...(securityHeadersConfig?.StrictTransportSecurity
+      ?.AccessControlMaxAgeSec !== undefined
+      ? { [SecurityHeader.StrictTransportSecurity]: true }
+      : {}),
+    ...(securityHeadersConfig?.ReferrerPolicy?.ReferrerPolicy !== undefined
+      ? { [SecurityHeader.ReferrerPolicy]: true }
+      : {}),
+    ...(securityHeadersConfig?.ContentTypeOptions?.Override !== undefined
+      ? { [SecurityHeader.XContentTypeOptions]: true }
+      : {}),
+    ...(securityHeadersConfig?.FrameOptions?.FrameOption !== undefined
+      ? { [SecurityHeader.XFrameOptions]: true }
+      : {}),
+    ...(securityHeadersConfig?.XSSProtection?.Protection === true &&
+    securityHeadersConfig.XSSProtection.ModeBlock === true
+      ? { [SecurityHeader.XXSSProtection]: true }
+      : {}),
+  };
 };
 
 const run: Rule['run'] = async resourceArns => {
   const distributions = await fetchAllDistributions(resourceArns);
 
+  const distributionIdPolicyIdCouples: {
+    distributionId: string;
+    policyId?: string;
+  }[] = [];
+  for (const distribution of distributions) {
+    const responseHeadersPolicyIds =
+      getResponseHeadersPolicyIdsByDistribution(distribution);
+    distributionIdPolicyIdCouples.push(
+      ...responseHeadersPolicyIds.map(policyId => ({
+        distributionId: distribution.Id,
+        policyId,
+      })),
+    );
+  }
+
+  const distributionIdPolicyCouples: {
+    distributionId: string;
+    policy?: ResponseHeadersPolicy;
+  }[] = await Promise.all(
+    distributionIdPolicyIdCouples.map(async ({ distributionId, policyId }) => {
+      const policy = await fetchResponseHeadersPolicyByResponseHeadersPolicyId(
+        policyId,
+      );
+
+      return { distributionId, policy };
+    }),
+  );
+
+  const distributionIdEnabledSecurityHeadersCouples =
+    distributionIdPolicyCouples.map(({ distributionId, policy }) => ({
+      distributionId,
+      areSecurityHeadersEnabledOnPolicy:
+        areSecurityHeadersEnabledOnPolicy(policy),
+    }));
+
   const results = distributions.map(distribution => ({
-    arn: CloudFrontDistributionARN.fromDistributionId(distribution.Id ?? ''),
-    success: areSecurityHeadersEnabled(distribution),
+    arn: CloudFrontDistributionARN.fromDistributionId(distribution.Id),
+    success: distributionIdEnabledSecurityHeadersCouples
+      .filter(({ distributionId }) => distribution.Id === distributionId)
+      .every(({ areSecurityHeadersEnabledOnPolicy: enabled }) => enabled),
   }));
 
   return { results };
@@ -51,6 +113,6 @@ export const cloudFrontSecurityHeaders: Rule = {
   run,
   fileName: 'cloudFrontSecurityHeaders',
   categories: ['Security'],
-  level: 1,
+  level: 4,
   service: 'CloudFront',
 };
