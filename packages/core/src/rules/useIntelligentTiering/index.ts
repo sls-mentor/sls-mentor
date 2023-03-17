@@ -33,4 +33,6 @@ export const useIntelligentTiering: Rule = {
   categories: ['GreenIT', 'ITCosts'],
   level: 2,
   service: 'S3',
+  easyToFix: true,
+  severity: 'high',
 };

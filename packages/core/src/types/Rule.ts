@@ -2,6 +2,9 @@ import { SlsMentorLevel } from '../constants';
 import { CustomARN } from '../types/arn';
 import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
+export const SEVERITY_LEVELS = ['critical', 'high', 'medium', 'low'] as const;
+export type Severity = (typeof SEVERITY_LEVELS)[number];
+
 export const CATEGORIES = [
   'GreenIT',
   'Stability',
@@ -64,4 +67,6 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   level: SlsMentorLevel;
   service: Service;
   configurationTypeguard?: (config: unknown) => config is T;
+  easyToFix: boolean;
+  severity: Severity;
 }

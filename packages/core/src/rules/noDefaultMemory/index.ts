@@ -23,4 +23,6 @@ export const noDefaultMemory: Rule = {
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
   service: 'Lambda',
+  easyToFix: true,
+  severity: 'low',
 };

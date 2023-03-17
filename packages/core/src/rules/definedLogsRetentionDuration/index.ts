@@ -26,4 +26,6 @@ export const definedLogsRetentionDuration: Rule = {
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
   service: 'CloudWatch',
+  easyToFix: true,
+  severity: 'low',
 };

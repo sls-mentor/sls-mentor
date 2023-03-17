@@ -21,4 +21,6 @@ export const serverSideEncryptionEnabled: Rule = {
   categories: ['Security'],
   level: 1,
   service: 'S3',
+  easyToFix: true,
+  severity: 'medium',
 };

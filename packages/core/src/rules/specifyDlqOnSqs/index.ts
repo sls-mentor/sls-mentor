@@ -45,4 +45,6 @@ export const specifyDlqOnSqs: Rule = {
   categories: ['Stability'],
   level: 4,
   service: 'SQS',
+  easyToFix: false,
+  severity: 'medium',
 };

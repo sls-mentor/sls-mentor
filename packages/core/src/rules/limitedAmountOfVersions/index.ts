@@ -24,4 +24,6 @@ export const limitedAmountOfVersions: Rule = {
   categories: ['GreenIT', 'Stability'],
   level: 2,
   service: 'Lambda',
+  easyToFix: true,
+  severity: 'medium',
 };

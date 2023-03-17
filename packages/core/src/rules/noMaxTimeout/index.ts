@@ -28,4 +28,6 @@ export const noMaxTimeout: Rule = {
   categories: ['GreenIT', 'ITCosts', 'Stability'],
   level: 3,
   service: 'Lambda',
+  easyToFix: true,
+  severity: 'high',
 } as Rule;
