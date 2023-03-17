@@ -113,6 +113,6 @@ export const cloudFrontSecurityHeaders: Rule = {
   run,
   fileName: 'cloudFrontSecurityHeaders',
   categories: ['Security'],
-  level: 1,
+  level: 4,
   service: 'CloudFront',
 };
