@@ -42,6 +42,12 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        ...(process.env.STAGE === 'prod' && {
+          gtag: {
+            trackingID: 'G-FNPC8EWL38',
+            anonymizeIP: true,
+          },
+        }),
       }),
     ],
   ],
