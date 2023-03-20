@@ -1,7 +1,9 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { rules } from '@sls-mentor/core';
-import React from 'react';
+import React, { useMemo } from 'react';
+import { getRecommendations } from '../helpers';
 import { useReportContext } from '../hooks';
+import { Tag } from '../types';
 import styles from './recommendations.module.css';
 
 const getRuleName = (ruleName: string): string => {
@@ -10,13 +12,13 @@ const getRuleName = (ruleName: string): string => {
   return rule?.ruleName ?? '';
 };
 
-const getTagName = (tag: string): string => {
+const getTagName = (tag: Tag): string => {
   switch (tag) {
     case 'critical':
       return 'Critical 🚨';
     case 'high':
       return 'High 🔴';
-    case 'moderate':
+    case 'medium':
       return 'Moderate 🟡';
     case 'low':
       return 'Low 🟢';
@@ -28,27 +30,10 @@ const getTagName = (tag: string): string => {
 };
 
 export const Recommendations = (): JSX.Element => {
-  const { results } = useReportContext();
-  console.log(results);
   const path = useBaseUrl('');
 
-  const recommendations = [
-    {
-      service: 'Lambda',
-      tags: ['quick-fix', 'critical'],
-      ruleName: 'noSharedIamRoles',
-    },
-    {
-      service: 'S3',
-      tags: ['quick-fix', 'moderate'],
-      ruleName: 'useIntelligentTiering',
-    },
-    {
-      service: 'Lambda',
-      tags: ['low'],
-      ruleName: 'lightBundle',
-    },
-  ];
+  const { results } = useReportContext();
+  const recommendations = useMemo(() => getRecommendations(results), [results]);
 
   return (
     <div className={styles.mainContainer}>

@@ -97,7 +97,7 @@
   background: #ffc5af;
 }
 
-.tagsContainer > p.moderate {
+.tagsContainer > p.medium {
   background: #fff2b9;
 }
 
@@ -117,7 +117,7 @@
   background: #985300;
 }
 
-[data-theme='dark'] .tagsContainer > p.moderate {
+[data-theme='dark'] .tagsContainer > p.medium {
   background: #7a5b00;
 }
 
