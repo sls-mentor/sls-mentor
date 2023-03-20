@@ -1,4 +1,9 @@
+import {
+  ANONYMIZED_ACCOUNT_ID_PATH_PARAMETER,
+  LEVEL_PATH_PARAMETER,
+} from '@sls-mentor/core';
 import chalk from 'chalk';
+import { sha1 } from 'object-hash';
 import terminalLink from 'terminal-link';
 import { ChecksResults } from 'types';
 import { LILA_HEX } from '../constants';
@@ -24,6 +29,12 @@ export const displayLink = (
   level: number,
 ): void => {
   const baseLink = getBaseLink();
+  const accountId = process.env.ACCOUNT_ID;
+  if (accountId === undefined) {
+    throw new Error('Unexpected undefined accountID');
+  }
+
+  const hashedAccountId = sha1(accountId);
 
   const queryParams = checksResults
     .map(({ result, rule: { fileName } }) => {
@@ -34,7 +45,7 @@ export const displayLink = (
     })
     .join('&');
 
-  const url = `${baseLink}/report/?${queryParams}&level=${level}`;
+  const url = `${baseLink}/report/?${queryParams}&${LEVEL_PATH_PARAMETER}=${level}&${ANONYMIZED_ACCOUNT_ID_PATH_PARAMETER}=${hashedAccountId}`;
 
   const link = terminalLink(chalk.bold.hex('##0095ff')('Click here!'), url);
 

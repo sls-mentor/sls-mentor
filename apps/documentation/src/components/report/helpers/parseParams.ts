@@ -1,4 +1,9 @@
-import { rules, SlsMentorLevel } from '@sls-mentor/core';
+import {
+  ANONYMIZED_ACCOUNT_ID_PATH_PARAMETER,
+  LEVEL_PATH_PARAMETER,
+  rules,
+  SlsMentorLevel,
+} from '@sls-mentor/core';
 import { Results } from '../types';
 
 const isRuleName = (ruleName: string): boolean =>
@@ -6,7 +11,9 @@ const isRuleName = (ruleName: string): boolean =>
 
 export const parseParams = (
   queryString: string,
-): { results: Results; level: SlsMentorLevel } | undefined => {
+):
+  | { results: Results; level: SlsMentorLevel; anonymizedAccountId: string }
+  | undefined => {
   try {
     const queryStrings = queryString
       .slice(1) // remove '?'
@@ -26,16 +33,27 @@ export const parseParams = (
         .filter(([ruleName]) => isRuleName(ruleName)),
     );
 
-    const level =
-      queryStrings
-        .map(stringParam => {
-          const [key, value] = stringParam.split('=');
+    const level = queryStrings
+      .map(stringParam => {
+        const [key, value] = stringParam.split('=');
 
-          return [key, value];
-        })
-        .find(([key]) => key === 'level')?.[1] ?? '1';
+        return [key, value];
+      })
+      .find(([key]) => key === LEVEL_PATH_PARAMETER)?.[1];
 
-    return { results, level: +level as SlsMentorLevel };
+    const anonymizedAccountId = queryStrings
+      .map(stringParam => {
+        const [key, value] = stringParam.split('=');
+
+        return [key, value];
+      })
+      .find(([key]) => key === ANONYMIZED_ACCOUNT_ID_PATH_PARAMETER)?.[1];
+
+    if (anonymizedAccountId === undefined || level === undefined) {
+      throw new Error('Unexpected undefined anonymized account id or level');
+    }
+
+    return { results, level: +level as SlsMentorLevel, anonymizedAccountId };
   } catch {
     return undefined;
   }
