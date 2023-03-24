@@ -9,8 +9,6 @@ export class SnsSubscriptionARN extends CustomARN {
   static fromName = (name: string): SnsSubscriptionARN =>
     new SnsSubscriptionARN(name);
 
-  // static fromArnString: (arnString: string) => SnsSubscriptionARN;
-
   static fromArnString = (arnString: string): SnsSubscriptionARN => {
     const parsedArn = parse(arnString);
 

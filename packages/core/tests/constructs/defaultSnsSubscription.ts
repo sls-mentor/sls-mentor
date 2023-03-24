@@ -7,7 +7,7 @@ import {
 } from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
 import { Rule } from '../../src/types';
-import { DefaultFunction } from './defaultFunction';
+
 import { DefaultSnsTopic } from './defaultSnsTopic';
 import { DefaultSqsQueue } from './defaultSqsQueue';
 import { RULE_TAG_KEY, Tagger } from './tags';
@@ -19,18 +19,15 @@ export class DefaultSnsSubscription extends Subscription implements Tagger {
     props: Partial<SubscriptionProps> | undefined = {},
   ) {
     const topic = new DefaultSnsTopic(scope, `${id}-topic`);
-    const targetLambda = new DefaultFunction(
-      scope,
-      `${id}-subscription-target`,
-    );
+
     super(
       scope,
       id,
       Object.assign<SubscriptionProps, Partial<SubscriptionProps>>(
         {
           topic,
-          protocol: SubscriptionProtocol.LAMBDA,
-          endpoint: targetLambda.functionArn,
+          protocol: SubscriptionProtocol.EMAIL,
+          endpoint: 'success@simulator.amazonses.com',
           deadLetterQueue: new DefaultSqsQueue(scope, `${id}-queue`),
         },
         props,
