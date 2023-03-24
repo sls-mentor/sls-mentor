@@ -1,8 +1,11 @@
 export * from './asyncSpecifyFailureDestination';
 export * from './autoscaleRdsInstanceEnabled';
+export * from './cloudFrontNoHttp';
 export * from './cloudFrontSecurityHeaders';
 export * from './cloudFrontSSLCertificate';
+export * from './cognitoEnforceLongPasswords';
 export * from './cognitoSignInCaseInsensitivity';
+export * from './customMailFromDomain';
 export * from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 export * from './definedLogsRetentionDuration';
 export * from './enableBlockPublicAccess';
@@ -23,5 +26,4 @@ export * from './specifyDlqOnSqs';
 export * from './underMaxMemory';
 export * from './useArm';
 export * from './useIntelligentTiering';
-export * from './cloudFrontNoHttp';
-export * from './customMailFromDomain';
+
