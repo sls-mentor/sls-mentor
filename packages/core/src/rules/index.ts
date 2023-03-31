@@ -21,6 +21,7 @@ export * from './noSharedIamRoles';
 export * from './noUnauthorizedApiGatewaysV2Routes';
 export * from './s3OnlyAllowHTTPS';
 export * from './serverSideEncryptionEnabled';
+export * from './snsRedrivePolicy';
 export * from './specifyDlqOnEventBridgeRule';
 export * from './specifyDlqOnSqs';
 export * from './underMaxMemory';

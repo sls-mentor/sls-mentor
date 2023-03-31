@@ -85,6 +85,34 @@ const getCognitoUserPoolResourceArn = (
   };
 };
 
+const getSnsTopicArn = (
+  region: string,
+  accountId: string,
+  resource: string,
+): ARN => {
+  return {
+    partition: 'aws',
+    service: 'sns-topic',
+    region,
+    accountId,
+    resource,
+  };
+};
+
+const getSnsSubscriptionArn = (
+  region: string,
+  accountId: string,
+  resource: string,
+): ARN => {
+  return {
+    partition: 'aws',
+    service: 'sns-subscription',
+    region,
+    accountId,
+    resource,
+  };
+};
+
 export const ressourceTypeToRessources: {
   [string: string]: (
     region: string,
@@ -98,6 +126,8 @@ export const ressourceTypeToRessources: {
   'AWS::Logs::LogGroup': getLogGroupResourceArn,
   'AWS::Events::EventBus': getEventBridgeResourceArn,
   'AWS::Cognito::UserPool': getCognitoUserPoolResourceArn,
+  'AWS::SNS::Topic': getSnsTopicArn,
+  'AWS::SNS:Subscription': getSnsSubscriptionArn,
 };
 
 export const getSupportedResourceArn = (

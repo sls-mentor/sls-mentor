@@ -10,6 +10,8 @@ import {
   RdsInstanceARN,
   S3BucketARN,
   SESIdentityARN,
+  SnsSubscriptionARN,
+  SnsTopicARN,
   SqsQueueARN,
 } from '@sls-mentor/core';
 import { listApiGatewaysV2 } from './apiGatewayV2';
@@ -22,6 +24,8 @@ import { listLambdaFunctions } from './lambda';
 import { listRdsInstances } from './rds';
 import { listS3Buckets } from './s3';
 import { listSESIdentities } from './ses';
+import { listSnsSubscriptions } from './sns/listSnsSubscriptions';
+import { listSnsTopics } from './sns/listSnsTopics';
 import { listSqsQueues } from './sqs';
 
 export const listAllResources = async (): Promise<CustomARN[]> => {
@@ -39,6 +43,8 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
   const backupPlans: BackupPlanARN[] = await listBackupPlans();
   const apiGatewaysV2: ApiGatewayV2ApiARN[] = await listApiGatewaysV2();
   const sesIdentities: SESIdentityARN[] = await listSESIdentities();
+  const snsTopics: SnsTopicARN[] = await listSnsTopics();
+  const snsSubscriptions: SnsSubscriptionARN[] = await listSnsSubscriptions();
 
   return [
     ...s3buckets,
@@ -52,5 +58,7 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
     ...backupPlans,
     ...apiGatewaysV2,
     ...sesIdentities,
+    ...snsTopics,
+    ...snsSubscriptions,
   ];
 };
