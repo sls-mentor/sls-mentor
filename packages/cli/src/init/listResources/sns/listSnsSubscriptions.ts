@@ -14,7 +14,8 @@ export const listSnsSubscriptions = async (): Promise<SnsSubscriptionARN[]> => {
     .map(({ SubscriptionArn }) => SubscriptionArn)
     .filter(
       (SubscriptionArn): SubscriptionArn is string =>
-        SubscriptionArn !== undefined,
+        SubscriptionArn !== undefined &&
+        SubscriptionArn !== 'PendingConfirmation',
     )
     .map(SnsSubscriptionARN.fromArnString);
 };
