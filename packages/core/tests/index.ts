@@ -5,6 +5,7 @@ export * from '../src/rules/enableBlockPublicAccess/test';
 export * from '../src/rules/noDefaultMemory/test';
 export * from '../src/rules/noMaxTimeout/test';
 export * from '../src/rules/noMonoPackage/test';
+export * from '../src/rules/s3OnlyAllowHTTPS/test';
 export * from '../src/rules/snsRedrivePolicy/test';
 export * from '../src/rules/specifyDlqOnEventBridgeRule/test';
 export * from '../src/rules/underMaxMemory/test';
