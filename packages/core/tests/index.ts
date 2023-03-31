@@ -5,3 +5,4 @@ export * from '../src/rules/noMonoPackage/test';
 export * from '../src/rules/snsRedrivePolicy/test';
 export * from '../src/rules/useArm/test';
 export * from '../src/rules/useIntelligentTiering/test';
+export * from '../src/rules/cognitoSignInCaseInsensitivity/test';
