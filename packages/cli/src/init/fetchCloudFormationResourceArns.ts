@@ -13,6 +13,7 @@ import {
   LambdaFunctionARN,
   RdsInstanceARN,
   S3BucketARN,
+  SESConfigurationSetARN,
   SESIdentityARN,
   SnsSubscriptionARN,
   SnsTopicARN,
@@ -53,6 +54,10 @@ export const createARNFromCloudFormation = ({
       return SnsSubscriptionARN.fromArnString(PhysicalResourceId);
     case 'AWS::SNS::Topic':
       return SnsTopicARN.fromArnString(PhysicalResourceId);
+    case '"AWS::SES::ConfigurationSet"':
+      return SESConfigurationSetARN.fromConfigurationSetName(
+        PhysicalResourceId,
+      );
     default:
       return;
   }

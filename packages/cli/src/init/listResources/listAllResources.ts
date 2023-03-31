@@ -9,6 +9,7 @@ import {
   LambdaFunctionARN,
   RdsInstanceARN,
   S3BucketARN,
+  SESConfigurationSetARN,
   SESIdentityARN,
   SnsSubscriptionARN,
   SnsTopicARN,
@@ -23,7 +24,7 @@ import { listEventBridgeEventBuses } from './eventBridge';
 import { listLambdaFunctions } from './lambda';
 import { listRdsInstances } from './rds';
 import { listS3Buckets } from './s3';
-import { listSESIdentities } from './ses';
+import { listSESConfigurationSets, listSESIdentities } from './ses';
 import { listSnsSubscriptions } from './sns/listSnsSubscriptions';
 import { listSnsTopics } from './sns/listSnsTopics';
 import { listSqsQueues } from './sqs';
@@ -45,6 +46,8 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
   const sesIdentities: SESIdentityARN[] = await listSESIdentities();
   const snsTopics: SnsTopicARN[] = await listSnsTopics();
   const snsSubscriptions: SnsSubscriptionARN[] = await listSnsSubscriptions();
+  const sesConfigurationSets: SESConfigurationSetARN[] =
+    await listSESConfigurationSets();
 
   return [
     ...s3buckets,
@@ -60,5 +63,6 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
     ...sesIdentities,
     ...snsTopics,
     ...snsSubscriptions,
+    ...sesConfigurationSets,
   ];
 };
