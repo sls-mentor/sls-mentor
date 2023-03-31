@@ -8,6 +8,7 @@ export * from '../src/rules/noMonoPackage/test';
 export * from '../src/rules/s3OnlyAllowHTTPS/test';
 export * from '../src/rules/snsRedrivePolicy/test';
 export * from '../src/rules/specifyDlqOnEventBridgeRule/test';
+export * from '../src/rules/specifyDlqOnSqs/test';
 export * from '../src/rules/underMaxMemory/test';
 export * from '../src/rules/useArm/test';
 export * from '../src/rules/useIntelligentTiering/test';
