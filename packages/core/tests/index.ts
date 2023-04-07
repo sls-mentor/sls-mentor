@@ -1,5 +1,6 @@
 export * from '../src/rules/cognitoEnforceLongPasswords/test';
 export * from '../src/rules/cognitoSignInCaseInsensitivity/test';
+export * from '../src/rules/assignDefaultConfigurationSet/test';
 export * from '../src/rules/definedLogsRetentionDuration/test';
 export * from '../src/rules/enableBlockPublicAccess/test';
 export * from '../src/rules/noDefaultMemory/test';
