@@ -1,36 +1,36 @@
-import { ConfigurationSet } from 'aws-cdk-lib/aws-ses';
 import { Construct } from 'constructs';
 import { DefaultIdentity } from '../../../tests/constructs';
 import { assignDefaultConfigurationSet as assignDefaultConfigurationSetRule } from './index';
 
 type AssignDefaultConfigurationSetProps = {
-  assignConfigurationSet: ConfigurationSet | undefined;
+  hasAssignedConfigurationSet: boolean;
 };
 
 export class AssignDefaultConfigurationSet extends Construct {
-  createConfigurationSet = (scope: Construct): ConfigurationSet =>
-    new ConfigurationSet(scope, 'ConfigurationSet', {});
-
   static passTestCases: Record<string, AssignDefaultConfigurationSetProps> = {
-    Assigned: {
-      assignConfigurationSet: undefined,
+    'Identity with a configuration set assigned': {
+      hasAssignedConfigurationSet: true,
     },
   };
   static failTestCases: Record<string, AssignDefaultConfigurationSetProps> = {
-    'Not assigned': {
-      assignConfigurationSet: undefined,
+    'Identity with no configuration set assigned': {
+      hasAssignedConfigurationSet: false,
     },
   };
 
   constructor(
     scope: Construct,
     id: string,
-    { assignConfigurationSet }: AssignDefaultConfigurationSetProps,
+    { hasAssignedConfigurationSet }: AssignDefaultConfigurationSetProps,
   ) {
     super(scope, id);
-    const identity = new DefaultIdentity(this, 'Identity', {
-      configurationSet: assignConfigurationSet,
-    });
+    const nameDomain = hasAssignedConfigurationSet ? 'succes.com' : 'fail.com';
+    const identity = new DefaultIdentity(
+      this,
+      'Identity',
+      hasAssignedConfigurationSet ? {} : { configurationSet: undefined },
+      nameDomain,
+    );
     identity.tagRule(assignDefaultConfigurationSetRule);
   }
 }
