@@ -91,7 +91,6 @@
   - [`Lambda: No deprecated runtime`](./apps/documentation//docs/rules/noDeprecatedRuntime.md): checks that your Lambda functions do not run on deprecated runtime.
 - AWS S3:
   - [`S3: Use intelligent tiering`](./apps/documentation/docs/rules/useIntelligentTiering.md): checks that each one of S3 buckets has intelligent tiering enabled.
-  - [`S3: Server-side encryption enabled`](./apps/documentation/docs/rules/serverSideEncryptionEnabled.md): checks that server-side encryption is enabled on each S3 bucket.
   - [`S3: Use HTTPS requests only`](./apps/documentation/docs/rules/s3OnlyAllowHTTPS.md): checks that users access buckets objects using SSL.
 - AWS SQS:
   - [`SQS: Specify a DLQ on queues`](./apps/documentation/docs/rules/specifyDlqOnSqs.md): checks that SQS queues have a dead-letter-queue specified in case of failure

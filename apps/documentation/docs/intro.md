@@ -94,7 +94,6 @@
 <a name="S3">AWS S3:</a>
 
 - [`S3: Use intelligent tiering`](./rules/useIntelligentTiering): checks that each one of S3 buckets has intelligent tiering enabled.
-- [`S3: Server-side encryption enabled`](./rules/serverSideEncryptionEnabled): checks that server-side encryption is enabled on each S3 bucket.
 - [`S3: Use HTTPS requests only`](./rules/s3OnlyAllowHTTPS): checks that users access buckets objects using SSL.
 
 <a name="SQS">AWS SQS:</a>

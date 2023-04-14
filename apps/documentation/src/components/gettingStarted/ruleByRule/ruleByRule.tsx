@@ -49,12 +49,6 @@ const ruleBars = [
     color: 'orange',
     link: 'docs/rules/cloudFrontSecurityHeaders',
   },
-  {
-    label: 'S3: Enable server-side encryption',
-    score: '90%',
-    color: 'green',
-    link: 'docs/rules/serverSideEncryptionEnabled',
-  },
 ];
 const RULES_BY_SERVICE = groupBy(allRules, 'service');
 

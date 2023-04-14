@@ -39,7 +39,6 @@ The rule name should be one of the following list:
 - noProvisionedConcurrency
 - noSharedIamRoles
 - s3OnlyAllowHTTPS
-- serverSideEncryptionEnabled
 - specifyDlqOnEventBridgeRule
 - specifyDlqOnSqs
 - underMaxMemory
