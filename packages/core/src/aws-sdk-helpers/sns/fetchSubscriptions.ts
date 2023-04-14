@@ -2,8 +2,8 @@ import {
   GetSubscriptionAttributesCommand,
   GetSubscriptionAttributesCommandOutput,
 } from '@aws-sdk/client-sns';
-import { snsClient } from '../../clients';
-import { CustomARN, SnsSubscriptionARN } from '../../types';
+import { snsClient } from 'clients';
+import { CustomARN, SnsSubscriptionARN } from 'types';
 
 type SubscriptionAttributes = {
   arn: SnsSubscriptionARN;

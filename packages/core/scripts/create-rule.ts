@@ -16,7 +16,7 @@ prompt.question('Name of the new rule?\n-> ', ruleName => {
 
   fs.writeFileSync(
     path.join(__dirname, '../src/rules', ruleName, 'index.ts'),
-    `import { Rule } from '../../types';
+    `import { Rule } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   await Promise.resolve(resourceArns); // Delete this line

@@ -12,5 +12,5 @@ runs:
         node-version-file: '.nvmrc'
         cache: 'pnpm'
     - name: Install dependencies
-      run: pnpm install
+      run: pnpm install && pnpm package
       shell: bash

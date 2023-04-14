@@ -5,7 +5,8 @@
     "build": "pnpm -- turbo run build",
     "typecheck": "pnpm -- turbo run typecheck",
     "lint": "pnpm -- turbo run lint",
-    "test-circular": "depcruise --validate .dependency-cruiser.js ."
+    "test-circular": "depcruise --validate .dependency-cruiser.js .",
+    "package": "pnpm -- turbo run package"
   },
   "repository": {
     "type": "git",

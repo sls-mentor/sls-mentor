@@ -1,5 +1,5 @@
-import { fetchAllSubscriptions } from '../../aws-sdk-helpers/sns/fetchSubscriptions';
-import { Rule } from '../../types';
+import { fetchAllSubscriptions } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const checkSubscriptionRedrivePolicy = (
   attributes: Record<string, string | undefined> | undefined,

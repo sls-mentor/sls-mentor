@@ -2,9 +2,8 @@ import {
   GetTopicAttributesCommand,
   GetTopicAttributesCommandOutput,
 } from '@aws-sdk/client-sns';
-import { snsClient } from '../../clients';
-import { SnsTopicARN } from '../../types';
-import { CustomARN } from '../../types/arn/CustomARN';
+import { snsClient } from 'clients';
+import { CustomARN, SnsTopicARN } from 'types';
 
 type TopicAttributes = {
   arn: SnsTopicARN;

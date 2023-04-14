@@ -1,6 +1,6 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
-import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito';
-import { Rule } from '../../types';
+import { fetchAllUserPoolConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const enforcesLongPasswords = (userPool: UserPoolType): boolean => {
   const passwordPolicy = userPool.Policies?.PasswordPolicy;
