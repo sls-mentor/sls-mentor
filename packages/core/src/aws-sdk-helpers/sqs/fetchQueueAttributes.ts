@@ -2,8 +2,8 @@ import {
   GetQueueAttributesCommand,
   GetQueueAttributesCommandOutput,
 } from '@aws-sdk/client-sqs';
-import { sqsCLient } from '../../clients';
-import { CustomARN, SqsQueueARN } from '../../types';
+import { sqsCLient } from 'clients';
+import { CustomARN, SqsQueueARN } from 'types';
 
 type QueueAttributes = {
   arn: SqsQueueARN;

@@ -1,5 +1,5 @@
-import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllLambdaConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const DEFAULT_MEMORY_SIZE = 1024;
 

@@ -2,8 +2,8 @@ import {
   GetBackupPlanCommand,
   GetBackupPlanOutput,
 } from '@aws-sdk/client-backup';
-import { backupClient } from '../../clients';
-import { BackupPlanARN, CustomARN } from '../../types';
+import { backupClient } from 'clients';
+import { BackupPlanARN, CustomARN } from 'types';
 
 const fetchBackupPlanConfigurationByArn = async (
   arn: BackupPlanARN,

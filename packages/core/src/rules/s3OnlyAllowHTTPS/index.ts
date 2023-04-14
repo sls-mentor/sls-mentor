@@ -1,8 +1,5 @@
-import {
-  fetchAllS3BucketPolicies,
-  S3BucketPolicy,
-} from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllS3BucketPolicies, S3BucketPolicy } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
   if (policy === undefined) return false;

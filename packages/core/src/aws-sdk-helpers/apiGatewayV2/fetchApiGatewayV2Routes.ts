@@ -1,6 +1,6 @@
 import { GetRoutesCommand, Route } from '@aws-sdk/client-apigatewayv2';
-import apiGatewayV2Client from '../../clients/apiGatewayV2Client';
-import { ApiGatewayV2ApiARN, CustomARN } from '../../types';
+import { apiGatewayV2Client } from 'clients';
+import { ApiGatewayV2ApiARN, CustomARN } from 'types';
 
 const fetchApiGatewayV2RoutesByArn = async (
   arn: ApiGatewayV2ApiARN,

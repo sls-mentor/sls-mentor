@@ -1,14 +1,14 @@
 import {
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
-} from '../../aws-sdk-helpers';
+} from 'aws-sdk-helpers';
 import {
   CustomARN,
   EventBridgeEventBusARN,
   EventBridgeRuleARN,
   Rule,
   RuleCheckResult,
-} from '../../types';
+} from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const eventBuses = CustomARN.filterArns(resourceArns, EventBridgeEventBusARN);

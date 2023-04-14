@@ -1,6 +1,6 @@
 import { ListRulesCommand, Rule } from '@aws-sdk/client-eventbridge';
-import { eventBridgeClient } from '../../clients';
-import { EventBridgeEventBusARN } from '../../types';
+import { eventBridgeClient } from 'clients';
+import { EventBridgeEventBusARN } from 'types';
 export const getAllRulesOfEventBus = async (
   eventBus: EventBridgeEventBusARN,
 ): Promise<Rule[]> => {

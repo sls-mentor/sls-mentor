@@ -1,6 +1,6 @@
 import { DistributionConfig } from '@aws-sdk/client-cloudfront';
-import { fetchDistributionConfig } from '../../aws-sdk-helpers/cloudFront';
-import { CloudFrontDistributionARN, CustomARN, Rule } from '../../types';
+import { fetchDistributionConfig } from 'aws-sdk-helpers/cloudFront';
+import { CloudFrontDistributionARN, CustomARN, Rule } from 'types';
 
 const noHttpAllowed = (distributionConfig: DistributionConfig | undefined) => {
   if (!distributionConfig) return false;

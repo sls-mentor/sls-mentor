@@ -3,9 +3,13 @@ import {
   fetchAllDistributions,
   fetchResponseHeadersPolicyByResponseHeadersPolicyId,
   getResponseHeadersPolicyIdsByDistribution,
-} from '../../aws-sdk-helpers/cloudFront';
-import { EnabledSecurityHeaders, Rule, SecurityHeader } from '../../types';
-import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
+} from 'aws-sdk-helpers';
+import {
+  CloudFrontDistributionARN,
+  EnabledSecurityHeaders,
+  Rule,
+  SecurityHeader,
+} from 'types';
 
 const areSecurityHeadersEnabledOnPolicy = (
   policy?: ResponseHeadersPolicy,

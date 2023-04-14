@@ -3,7 +3,7 @@ import {
   PublicAccessBlockConfiguration,
   S3Client,
 } from '@aws-sdk/client-s3';
-import { CustomARN, S3BucketARN } from '../../types';
+import { CustomARN, S3BucketARN } from 'types';
 
 const s3Client = new S3Client({});
 

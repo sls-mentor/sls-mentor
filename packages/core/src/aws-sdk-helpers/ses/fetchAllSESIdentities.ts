@@ -1,7 +1,7 @@
 import type { GetEmailIdentityCommandOutput } from '@aws-sdk/client-sesv2';
 import { GetEmailIdentityCommand } from '@aws-sdk/client-sesv2';
-import { sesClient } from '../../clients';
-import { CustomARN, SESIdentityARN } from '../../types';
+import { sesClient } from 'clients';
+import { CustomARN, SESIdentityARN } from 'types';
 
 export const fetchAllSESIdentities = async (
   resources: CustomARN[],

@@ -3,8 +3,8 @@ import {
   GetFunctionConfigurationCommand,
 } from '@aws-sdk/client-lambda';
 
-import { lambdaClient } from '../../clients';
-import { CustomARN, LambdaFunctionARN } from '../../types';
+import { lambdaClient } from 'clients';
+import { CustomARN, LambdaFunctionARN } from 'types';
 
 const fetchLambdaConfigurationByArn = async (
   arn: LambdaFunctionARN,

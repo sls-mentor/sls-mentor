@@ -2,8 +2,8 @@ import {
   DescribeUserPoolCommand,
   UserPoolType,
 } from '@aws-sdk/client-cognito-identity-provider';
-import { cognitoIdpClient } from '../../clients';
-import { CognitoUserPoolARN, CustomARN } from '../../types';
+import { cognitoIdpClient } from 'clients';
+import { CognitoUserPoolARN, CustomARN } from 'types';
 
 const fetchUserPoolConfiguration = async (
   userPoolId: string,

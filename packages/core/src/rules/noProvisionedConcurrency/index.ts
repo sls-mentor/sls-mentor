@@ -1,6 +1,6 @@
 import { ProvisionedConcurrencyConfigListItem } from '@aws-sdk/client-lambda';
-import { fetchAllLambdaProvisionedConcurrency } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllLambdaProvisionedConcurrency } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const hasNoProvisionedConcurrency = (
   provisionedConcurrency: ProvisionedConcurrencyConfigListItem[],

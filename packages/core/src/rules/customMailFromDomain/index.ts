@@ -1,6 +1,6 @@
 import { MailFromAttributes } from '@aws-sdk/client-sesv2';
-import { fetchAllSESIdentities } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllSESIdentities } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const isCustomMailFromDomain = (
   mailFromAttributes: MailFromAttributes | undefined,

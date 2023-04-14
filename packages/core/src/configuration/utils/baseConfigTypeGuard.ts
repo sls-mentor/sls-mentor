@@ -1,4 +1,4 @@
-import { BaseConfiguration } from '../../types';
+import { BaseConfiguration } from 'types';
 
 export const baseConfigTypeGuard = (
   config: unknown,

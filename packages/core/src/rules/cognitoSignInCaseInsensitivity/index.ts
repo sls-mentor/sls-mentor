@@ -1,6 +1,6 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
-import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
-import { Rule } from '../../types';
+import { fetchAllUserPoolConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const hasCaseInsensitiveSignIn = (userPool: UserPoolType) => {
   return userPool.UsernameConfiguration?.CaseSensitive === false;

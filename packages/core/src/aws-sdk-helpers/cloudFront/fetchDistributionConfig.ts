@@ -2,7 +2,7 @@ import {
   DistributionConfig,
   GetDistributionConfigCommand,
 } from '@aws-sdk/client-cloudfront';
-import { cloudFrontClient } from '../../clients';
+import { cloudFrontClient } from 'clients';
 
 const fetchDistributionConfig = async (
   id: string | undefined,

@@ -1,5 +1,5 @@
-import { fetchAllPublicAccessBlockConfiguration } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllPublicAccessBlockConfiguration } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const publicAccessBlockConfigurations =

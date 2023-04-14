@@ -4,4 +4,5 @@ export default defineConfig({
   clean: true,
   silent: true,
   outDir: 'dist',
+  dts: true,
 });

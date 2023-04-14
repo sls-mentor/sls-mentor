@@ -1,6 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
-import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllLambdaConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: FunctionConfiguration,

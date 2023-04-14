@@ -1,6 +1,6 @@
 import { IdentityType } from '@aws-sdk/client-sesv2';
-import { fetchAllSESIdentities, isSandboxAccount } from '../../aws-sdk-helpers';
-import { CustomARN, Rule } from '../../types';
+import { fetchAllSESIdentities, isSandboxAccount } from 'aws-sdk-helpers';
+import { CustomARN, Rule } from 'types';
 
 const isDomainIdentity = (identityType: IdentityType): boolean =>
   identityType !== IdentityType.EMAIL_ADDRESS;

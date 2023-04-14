@@ -2,8 +2,8 @@ import {
   LogGroup,
   paginateDescribeLogGroups,
 } from '@aws-sdk/client-cloudwatch-logs';
-import { cloudWatchLogsClient } from '../../clients';
-import { CloudwatchLogGroupARN, CustomARN } from '../../types';
+import { cloudWatchLogsClient } from 'clients';
+import { CloudwatchLogGroupARN, CustomARN } from 'types';
 
 const listLogGroupConfigurations = async (): Promise<
   { arn: CloudwatchLogGroupARN; configuration: LogGroup }[]

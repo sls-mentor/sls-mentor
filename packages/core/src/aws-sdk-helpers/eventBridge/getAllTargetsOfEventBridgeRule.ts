@@ -3,7 +3,7 @@ import {
   Rule,
   Target,
 } from '@aws-sdk/client-eventbridge';
-import { eventBridgeClient } from '../../clients';
+import { eventBridgeClient } from 'clients';
 
 export const getAllTargetsOfEventBridgeRule = async (
   eventBridgeRule: Rule,

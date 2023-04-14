@@ -1,6 +1,7 @@
 import compact from 'lodash/compact';
-import { CustomARN, LambdaFunctionARN } from '../../types';
-import { fetchAllLambdaPolicies, Policy } from './fetchAllLambdaPolicies';
+import { CustomARN, LambdaFunctionARN } from 'types';
+import type { Policy } from './fetchAllLambdaPolicies';
+import { fetchAllLambdaPolicies } from './fetchAllLambdaPolicies';
 
 const ASYNC_AWS_SERVICES = ['events', 's3', 'sqs', 'sns'];
 

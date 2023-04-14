@@ -1,5 +1,5 @@
-import { fetchAllS3BucketEncryptionConfigurations } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllS3BucketEncryptionConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const s3BucketConfigurations = await fetchAllS3BucketEncryptionConfigurations(

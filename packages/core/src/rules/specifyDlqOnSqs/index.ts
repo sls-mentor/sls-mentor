@@ -1,5 +1,5 @@
-import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
-import { CustomARN, Rule, SqsQueueARN } from '../../types';
+import { fetchAllQueuesAttributes } from 'aws-sdk-helpers';
+import { CustomARN, Rule, SqsQueueARN } from 'types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;

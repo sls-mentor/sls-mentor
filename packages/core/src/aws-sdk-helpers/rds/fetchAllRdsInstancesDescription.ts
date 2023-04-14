@@ -3,8 +3,8 @@ import {
   DescribeDBInstancesCommand,
   RDSServiceException,
 } from '@aws-sdk/client-rds';
-import { rdsClient } from '../../clients';
-import { CustomARN, RdsInstanceARN } from '../../types';
+import { rdsClient } from 'clients';
+import { CustomARN, RdsInstanceARN } from 'types';
 const fetchRdsInstanceDescriptionByArn = async (
   arn: RdsInstanceARN,
 ): Promise<DBInstance | undefined> => {

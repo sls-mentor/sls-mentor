@@ -1,5 +1,5 @@
 import { SlsMentorLevel } from '../constants';
-import { CustomARN } from '../types/arn';
+import { CustomARN } from './arn';
 import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
 export const CATEGORIES = [

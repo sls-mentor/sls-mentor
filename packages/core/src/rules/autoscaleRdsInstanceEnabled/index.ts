@@ -1,5 +1,5 @@
-import { fetchAllRdsInstancesDescriptions } from '../../aws-sdk-helpers/';
-import { Rule } from '../../types';
+import { fetchAllRdsInstancesDescriptions } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const rdsInstancesDescriptions = await fetchAllRdsInstancesDescriptions(

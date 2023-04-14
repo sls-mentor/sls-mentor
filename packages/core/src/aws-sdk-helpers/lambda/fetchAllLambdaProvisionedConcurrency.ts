@@ -3,8 +3,8 @@ import {
   ProvisionedConcurrencyConfigListItem,
 } from '@aws-sdk/client-lambda';
 
-import { lambdaClient } from '../../clients';
-import { CustomARN, LambdaFunctionARN } from '../../types';
+import { lambdaClient } from 'clients';
+import { CustomARN, LambdaFunctionARN } from 'types';
 
 const fetchLambdaProvisionedConcurrency = async (
   arn: LambdaFunctionARN,

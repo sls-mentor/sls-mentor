@@ -2,9 +2,9 @@ import {
   Distribution,
   GetDistributionCommand,
 } from '@aws-sdk/client-cloudfront';
-import { cloudFrontClient } from '../../clients';
-import { CustomARN } from '../../types';
-import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
+import { cloudFrontClient } from 'clients';
+import { CustomARN } from 'types';
+import { CloudFrontDistributionARN } from 'types/arn/cloudFront';
 
 type DistributionWithDefinedId = Distribution & { Id: string };
 

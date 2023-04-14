@@ -1,7 +1,7 @@
 import { Route } from '@aws-sdk/client-apigatewayv2';
+import { fetchAllApiGatewayV2Routes } from 'aws-sdk-helpers';
 import compact from 'lodash/compact';
-import { fetchAllApiGatewayV2Routes } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { Rule } from 'types';
 
 const isAuthenticated = (route: Route): boolean => {
   const hasAuthorizer =

@@ -1,8 +1,8 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
-import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
-import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
+import { fetchAllLambdaConfigurations } from 'aws-sdk-helpers';
+import { baseConfigTypeGuard } from 'configuration/utils/baseConfigTypeGuard';
+import { Rule, UnderMaxMemoryRuleConfig } from 'types';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
-import { Rule, UnderMaxMemoryRuleConfig } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
   lambdaConfiguration.MemorySize === undefined ||

@@ -1,6 +1,6 @@
 import { GetBackupPlanOutput } from '@aws-sdk/client-backup';
-import { fetchAllBackupPlanConfigurations } from '../../aws-sdk-helpers';
-import { Rule } from '../../types';
+import { fetchAllBackupPlanConfigurations } from 'aws-sdk-helpers';
+import { Rule } from 'types';
 
 const isRetentionPeriodOrTransitionToColdStorageDefinedForEachRule = (
   backupPlanConfiguration: GetBackupPlanOutput,

@@ -1,6 +1,6 @@
 import { GetBucketPolicyCommand, S3ServiceException } from '@aws-sdk/client-s3';
-import { s3Client } from '../../clients';
-import { CustomARN, S3BucketARN } from '../../types';
+import { s3Client } from 'clients';
+import { CustomARN, S3BucketARN } from 'types';
 interface S3BucketPolicyStatementItem {
   Sid: string;
   Action: string;

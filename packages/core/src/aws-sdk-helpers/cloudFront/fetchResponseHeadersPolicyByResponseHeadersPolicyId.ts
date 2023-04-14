@@ -2,7 +2,7 @@ import {
   GetResponseHeadersPolicyCommand,
   ResponseHeadersPolicy,
 } from '@aws-sdk/client-cloudfront';
-import { cloudFrontClient } from '../../clients';
+import { cloudFrontClient } from 'clients';
 
 const fetchResponseHeadersPolicyByResponseHeadersPolicyId = async (
   policyId: string | undefined,

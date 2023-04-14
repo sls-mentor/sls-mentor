@@ -2,9 +2,8 @@ import { DistributionConfig } from '@aws-sdk/client-cloudfront';
 import {
   fetchAllDistributions,
   fetchDistributionConfig,
-} from '../../aws-sdk-helpers/cloudFront';
-import { Rule } from '../../types';
-import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
+} from 'aws-sdk-helpers';
+import { CloudFrontDistributionARN, Rule } from 'types';
 
 const areSSLCertificateAssociated = (
   distributionConfig: DistributionConfig | undefined,
@@ -26,7 +25,7 @@ const run: Rule['run'] = async resourceArns => {
   );
 
   const results = distributions.map((distribution, index) => ({
-    arn: CloudFrontDistributionARN.fromDistributionId(distribution.Id ?? ''),
+    arn: CloudFrontDistributionARN.fromDistributionId(distribution.Id),
     success: areSSLCertificateAssociated(distributionConfigs[index]),
   }));
 
