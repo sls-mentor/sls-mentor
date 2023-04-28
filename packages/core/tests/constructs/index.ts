@@ -1,6 +1,7 @@
 export * from './defaultBucket';
 export * from './defaultEventBridgeRule';
 export * from './defaultFunction';
+export * from './defaultIdentity';
 export * from './defaultLogGroup';
 export * from './defaultSnsSubscription';
 export * from './defaultSnsTopic';

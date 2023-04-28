@@ -1,5 +1,6 @@
 export * from '../src/rules/cognitoEnforceLongPasswords/test';
 export * from '../src/rules/cognitoSignInCaseInsensitivity/test';
+export * from '../src/rules/assignDefaultConfigurationSet/test';
 export * from '../src/rules/definedLogsRetentionDuration/test';
 export * from '../src/rules/enableBlockPublicAccess/test';
 export * from '../src/rules/noDefaultMemory/test';
@@ -9,3 +10,6 @@ export * from '../src/rules/specifyDlqOnEventBridgeRule/test';
 export * from '../src/rules/underMaxMemory/test';
 export * from '../src/rules/useArm/test';
 export * from '../src/rules/useIntelligentTiering/test';
+export * from '../src/rules/cognitoEnforceLongPasswords/test';
+export * from '../src/rules/cognitoSignInCaseInsensitivity/test';
+export * from '../src/rules/assignDefaultConfigurationSet/test';
