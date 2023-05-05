@@ -28,3 +28,4 @@ export * from './useArm';
 export * from './useIntelligentTiering';
 
 export * from './assignDefaultConfigurationSet';
+export * from './enableReputationMetrics';

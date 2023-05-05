@@ -16,3 +16,4 @@ export * from '../src/rules/useIntelligentTiering/test';
 export * from '../src/rules/cognitoEnforceLongPasswords/test';
 export * from '../src/rules/cognitoSignInCaseInsensitivity/test';
 export * from '../src/rules/assignDefaultConfigurationSet/test';
+export * from '../src/rules/enableReputationMetrics/test';
