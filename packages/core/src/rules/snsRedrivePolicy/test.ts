@@ -27,7 +27,7 @@ export class SnsRedrivePolicy extends Construct {
       'SnsRedrivePolicy',
       {
         deadLetterQueue: hasDeadLetterQueue
-          ? new DefaultSqsQueue(scope, `${id}-queue`)
+          ? new DefaultSqsQueue(scope, 'snsRedrivePolicyDlq')
           : undefined,
       },
     );
