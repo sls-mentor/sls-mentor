@@ -18,7 +18,12 @@ const GettingStarted = (): JSX.Element => (
         label="In your CLI:"
         command="npx sls-mentor"
         commandSecondary="@latest"
-        tip="Encounter an error ? Try specifying an AWS profile with -p or a region with -r"
+        tip={
+          <p>
+            Encounter an error ? Try specifying an AWS profile with -p or a
+            region with -r
+          </p>
+        }
       />
       <LevelChoice />
       <h4 className={styles.subtitle}>Reading the results</h4>

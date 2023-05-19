@@ -8,9 +8,9 @@ const copyCommand = (command: string) => {
 };
 
 interface CodeBlockProps {
-  label: string;
+  label?: string;
   command: string;
-  tip: string;
+  tip?: JSX.Element;
   commandSecondary: string;
 }
 
@@ -21,7 +21,7 @@ export const CodeBlock = ({
   commandSecondary,
 }: CodeBlockProps): JSX.Element => (
   <div className={styles.outerBlock}>
-    <h6>{label}</h6>
+    {label !== undefined && <h6>{label}</h6>}
     <div className={styles.innerBlock}>
       <p className={styles.command}>
         {command}
@@ -33,9 +33,11 @@ export const CodeBlock = ({
         onClick={() => copyCommand(command + commandSecondary)}
       />
     </div>
-    <div className={styles.tip}>
-      <UilLightbulbAlt className={styles.tipIcon} size="2em" />
-      <p className="small">{tip}</p>
-    </div>
+    {tip !== undefined && (
+      <div className={styles.tip}>
+        <UilLightbulbAlt className={styles.tipIcon} size="2em" />
+        <p className="small">{tip}</p>
+      </div>
+    )}
   </div>
 );
