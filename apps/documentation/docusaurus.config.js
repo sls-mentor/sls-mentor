@@ -74,9 +74,9 @@ const config = {
             label: 'Docs',
           },
           {
-            to: 'whySlsMentor',
+            to: 'howToContribute',
             position: 'right',
-            label: 'Why sls-mentor ?',
+            label: 'How to contribute ?',
           },
           {
             href: 'https://github.com/sls-mentor/sls-mentor',

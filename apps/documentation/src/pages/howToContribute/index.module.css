@@ -1,0 +1,24 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.subtext {
+  margin: 2em;
+}
+
+.file {
+  color: var(--ifm-color-primary);
+}
+
+.newRuleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newRuleInsideBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
