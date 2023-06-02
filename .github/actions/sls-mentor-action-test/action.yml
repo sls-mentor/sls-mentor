@@ -1,0 +1,29 @@
+name: Guardian
+description: Linting AWS Infrastructure for performance, security and sustainability optimization.
+author: Frédéric Barthelet
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+inputs:
+  repo-token:
+    description: GitHub repository token for publishing inline lint annotations. Should be secrets.GITHUB_TOKEN.
+    default: ${{ secrets.GITHUB_TOKEN }}
+    required: false
+  level:
+    description: 'Sls-mentor level'
+    required: false
+    default: '1'
+runs:
+  using: 'composite'
+  steps:
+    - name: Configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::463151931555:role/GithubActions
+        aws-region: eu-west-1
+    - name: Run sls-mentor
+      run: src/entrypoint.sh
+      shell: bash
+    - name: print something
+      run: echo "::debug::Set the Octocat variable"

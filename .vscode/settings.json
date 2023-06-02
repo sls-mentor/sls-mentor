@@ -8,5 +8,8 @@
   },
   "search.exclude": {
     "**/dist": true
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }
