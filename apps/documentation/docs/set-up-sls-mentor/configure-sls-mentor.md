@@ -32,7 +32,6 @@ The rule name should be one of the following list:
 - definedLogsRetentionDuration
 - lightBundle
 - limitedAmountOfVersions
-- noDefaultMemory
 - noDeprecatedRuntime
 - noMaxTimeout
 - noMonoPackage

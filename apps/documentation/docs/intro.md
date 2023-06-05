@@ -85,7 +85,6 @@
 - [`Lambda: Specify failure destination to async functions`](./rules/asyncSpecifyFailureDestination): checks that each one of your async Lambda functions has a failure destination.
 - [`Lambda: No mono package`](./rules/noMonoPackage): checks that each one of your Lambda functions has different code.
 - [`Lambda: Light bundle`](./rules/lightBundle): checks that each one of your Lambda functions' bundles is reasonably small.
-- [`Lambda: No default memory`](./rules/noDefaultMemory): checks that you have consciously configured your Lambda functions' memory size.
 - [`Lambda: Under maximum memory`](./rules/underMaxMemory): checks that each one of your Lambda functions' memory size is reasonably small.
 - [`Lambda: No maximum timeout`](./rules/noMaxTimeout): checks that your Lambda functions' timeout is not set at the maximum available.
 - [`Lambda: No provisioned concurrency`](./rules/noProvisionedConcurrency): checks that no Lambda function has provisioned concurrency.
