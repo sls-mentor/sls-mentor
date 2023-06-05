@@ -34,22 +34,48 @@ export const Title = (): JSX.Element => {
 
   return (
     <div className={styles['title-container']} onMouseOver={onTitleHover}>
-      {letters.map(({ letter, color }, i) => (
-        <div
-          className={clsx(
-            styles['letter-container'],
-            lettersOn[i] && styles['on'],
-          )}
-          key={i}
-        >
+      <div className={styles.paragraph}>
+        {letters.slice(0, 3).map(({ letter, color }, i) => (
           <div
-            className={clsx(styles.letter, styles[color])}
-            style={i === 3 ? { marginLeft: '1em' } : {}}
+            className={clsx(
+              styles['letter-container'],
+              lettersOn[i] && styles['on'],
+            )}
+            key={i}
           >
-            <h3>{letter}</h3>
+            <div
+              className={clsx(
+                styles.letter,
+                styles[color],
+                i === 3 ? styles.space : undefined,
+              )}
+            >
+              <h3>{letter}</h3>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className={styles.paragraph}>
+        {letters.slice(3).map(({ letter, color }, i) => (
+          <div
+            className={clsx(
+              styles['letter-container'],
+              lettersOn[i] && styles['on'],
+            )}
+            key={i}
+          >
+            <div
+              className={clsx(
+                styles.letter,
+                styles[color],
+                i === 3 ? styles.space : undefined,
+              )}
+            >
+              <h3>{letter}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
