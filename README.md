@@ -83,7 +83,6 @@
   - [`Lambda: Specify failure destination to async functions`](./apps/documentation/docs/rules/asyncSpecifyFailureDestination.md): checks that each one of your async Lambda functions has a failure destination.
   - [`Lambda: No identical code`](./apps/documentation/docs/rules/noIdenticalCode.md): checks that each one of your Lambda functions has different code.
   - [`Lambda: Light bundle`](./apps/documentation/docs/rules/lightBundle.md): checks that each one of your Lambda functions' bundles is reasonably small.
-  - [`Lambda: No default memory`](./apps/documentation/docs/rules/noDefaultMemory.md): checks that you have consciously configured your Lambda functions' memory size.
   - [`Lambda: Under maximum memory`](./apps/documentation/docs/rules/underMaxMemory.md): checks that each one of your Lambda functions' memory size is reasonably small.
   - [`Lambda: No maximum timeout`](./apps/documentation/docs/rules/noMaxTimeout.md): checks that your Lambda functions' timeout is not set at the maximum available.
   - [`Lambda: No provisioned concurrency`](./apps/documentation/docs/rules/noProvisionedConcurrency.md): checks that no Lambda function has provisioned concurrency.

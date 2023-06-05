@@ -11,7 +11,6 @@ export * from './definedLogsRetentionDuration';
 export * from './enableBlockPublicAccess';
 export * from './lightBundle';
 export * from './limitedAmountOfVersions';
-export * from './noDefaultMemory';
 export * from './noDeprecatedRuntime';
 export * from './noMaxTimeout';
 export * from './noMonoPackage';

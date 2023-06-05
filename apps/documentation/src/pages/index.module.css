@@ -37,6 +37,12 @@
   margin-top: 4em;
 }
 
+@media (max-width: 700px) {
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (min-width: 1000px) {
   .mainSection {
     display: flex;
@@ -49,7 +55,7 @@
     text-align: start;
     width: 600px;
   }
-  
+
   .rightSection {
     width: 300px;
     margin: auto;

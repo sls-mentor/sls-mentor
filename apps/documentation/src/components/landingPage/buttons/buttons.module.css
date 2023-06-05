@@ -13,6 +13,20 @@
   margin-top: 3em;
 }
 
+@media (max-width: 700px) {
+  .buttons-container {
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .button {
+    width: 100%;
+  }
+}
+
 .button {
   padding: 0.7em 1.4em;
   border: 1px solid var(--ifm-color-primary);
