@@ -11,54 +11,15 @@ env:
   NODE_VERSION: 16
 
 jobs:
-  lint:
-    name: Lint
+  sls-mentor-action:
+    name: SLS Mentor Action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
+      - name: Run sls-mentor-action-test
+        uses: ./.github/actions/sls-mentor-action-test
+        # GITHUB_TOKEN in forked repositories is read-only
+        # https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
+        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
         with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run lint
-      - name: Danger
-        run: pnpm danger ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  type:
-    name: Type
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - name: Typescript checks
-        run: pnpm run typecheck
-
-  circular:
-    name: Circular
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run test-circular
+          repo-token: ${{secrets.GITHUB_TOKEN}}

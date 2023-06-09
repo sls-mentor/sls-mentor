@@ -1,0 +1,26 @@
+name: Guardian
+description: Linting AWS Infrastructure for performance, security and sustainability optimization.
+author: Frédéric Barthelet
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+inputs:
+  repo-token:
+    description: GitHub repository token for publishing inline lint annotations. Should be secrets.GITHUB_TOKEN.
+    required: true
+  level:
+    description: 'Sls-mentor level'
+    required: false
+    default: '1'
+  iam-role:
+    description: 'iam-role-to-assume'
+    required: true
+    default: 'arn:aws:iam::123456789012:role/role-to-assume'
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - '${{ inputs.repo-token }}'
+    - '${{ inputs.level }}'
+    - '${{ inputs.iam-role }}'
