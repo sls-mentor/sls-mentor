@@ -4,7 +4,12 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import ThemedImage from '@theme/ThemedImage';
 import { UilArrowDown } from '@iconscout/react-unicons';
-import { Block, CodeBlock } from '../../components';
+import {
+  Block,
+  CodeBlock,
+  OwnArnClassBlock,
+  YoutubeEmbed,
+} from '../../components';
 
 import styles from './index.module.css';
 
@@ -76,7 +81,29 @@ const HowToContribute = (): JSX.Element => (
                 dark: useBaseUrl('/img/newRuleIndexDark.svg'),
               }}
             />
-            <p>Yoooo</p>
+            <p>
+              <ul>
+                <li>Find a name and an error message for your rule</li>
+                <li>Set the categories and the AWS service related to it</li>
+                <li>
+                  Fix a level for the rule, it should reflect the importance and
+                  the effort it takes to be solved. (You can ask for help from
+                  the sls-mentor team to find the right level )
+                </li>
+                <li>
+                  Fetch the configuration of the ressources concerned by the
+                  rule
+                </li>
+                <li>
+                  Check the configuration of the ressources (you might need to
+                  read the sdk documentation to find the right method to do so)
+                </li>
+                <li>
+                  Return an array composed of the ressources with their ARN and
+                  if they verify the rule
+                </li>
+              </ul>
+            </p>
           </div>
           <UilArrowDown size={75} />
           <ThemedImage
@@ -97,16 +124,27 @@ const HowToContribute = (): JSX.Element => (
           you can add links to ressources to help the user understand the rule.
         </p>
       </Block>
-      <Block title='Write the end to end test of your rule in the "test.ts" file'>
+      <Block title='(Optional) Write the end to end test of your rule in the "test.ts" file'>
         <div>
           <p>
-            Test that your rule works as expected against your stack. <br />
-            Then you can write an end to end test that will check that your rule
-            works on a specially crafted stack. The passing and failing created
-            ressources will be tagged so they can be easily checked.
+            First of all, you should test that your rule works as expected on
+            your stack.
             <br />
-            You might need to create a new default construct for your specific
-            resource.
+            Then you have the possibility to write an end to end test that will
+            check that your rule works on a specially crafted stack. The passing
+            and failing created ressources will be tagged so they can be easily
+            checked. ( You might need to create a new default construct for your
+            specific resource.)
+            <br />
+            ⚠️ For some specific rules, it might cost you money to deploy the
+            service to test your rule.
+            <br />
+            ⚠️ Moreover, for some type of resources, it might be impossible to
+            do an end to end test. For instance, you need to tag the created
+            ressource to be able to check if the rule works. But for resources
+            from the SES service, it is impossible to tag them for the moment.
+            <br />⇨ If you don't want to or can't write an end to end test, you
+            just have to remove the files related to the test.
           </p>
           <ThemedImage
             sources={{
@@ -124,51 +162,9 @@ const HowToContribute = (): JSX.Element => (
         </p>
       </Block>
 
-      <h4>
-        If your rule needs resources from a service that is not supported:
-      </h4>
-      <Block title="Create your own ARN class">
-        <ol>
-          <li>
-            Create a new ARN class extending CustomARN (copy{' '}
-            <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/core/src/types/arn/lambda/LambdaFunctionARN.ts">
-              LambdaFunctionARN
-            </a>{' '}
-            for example)
-          </li>
-          <li>
-            Adapt the logic of this class to be able to be generated from a
-            CloudFormation resourceId, and from any information returned by the
-            sdk (example: fromFunctionName for Lambdas)
-          </li>
-          <li>
-            Add a case to the big switch case in{' '}
-            <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/cli/src/init/fetchCloudFormationResourceArns.ts">
-              fetchCloudFormationResourceArns.
-            </a>{' '}
-            This will allow sls-mentor to turn resources from cloudformation
-            into your new ARN class.
-          </li>
-          <li>
-            Create a `list&lt;YourReource&gt;.ts` file in the{' '}
-            <a href="https://github.com/sls-mentor/sls-mentor/tree/master/packages/cli/src/init/listResources">
-              listResources
-            </a>{' '}
-            folder
-          </li>
-          <li>
-            In this file, use the AWS SDK to list all the needed resources from
-            the user's account (don't forget pagination), and then use your new
-            ARN class methods to turn the sdk data into your new ARN class
-          </li>
-          <li>
-            Invoke this function in the{' '}
-            <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/cli/src/init/listResources/listAllResources.ts">
-              listAllResources
-            </a>
-          </li>
-        </ol>
-      </Block>
+      <OwnArnClassBlock />
+      <h4>Watch our youtube tutorial for a live example</h4>
+      <YoutubeEmbed embedId="ijeb5gaU1sQ" />
     </main>
   </Layout>
 );
