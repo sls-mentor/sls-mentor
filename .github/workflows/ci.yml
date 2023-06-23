@@ -11,54 +11,9 @@ env:
   NODE_VERSION: 16
 
 jobs:
-  lint:
-    name: Lint
+  sls-mentor:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
+      - uses: './.github/actions/sls-mentor-action-test/action.yml'
         with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run lint
-      - name: Danger
-        run: pnpm danger ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  type:
-    name: Type
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - name: Typescript checks
-        run: pnpm run typecheck
-
-  circular:
-    name: Circular
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run test-circular
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
