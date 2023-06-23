@@ -1,9 +1,9 @@
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import React from 'react';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
-import ThemedImage from '@theme/ThemedImage';
 import { UilArrowDown } from '@iconscout/react-unicons';
+import ThemedImage from '@theme/ThemedImage';
 import {
   Block,
   CodeBlock,
@@ -53,27 +53,67 @@ const HowToContribute = (): JSX.Element => (
             }}
           />
           <p className={styles.subtext}>
-            It will update the <span className={styles.file}>index.ts</span>{' '}
+            It will update the <span className={styles.file}>index.ts</span>
             files to correctly export the new files. And it will create 3 new
-            files :{' '}
+            files :
             <li>
               <span className={styles.file}>doc.md</span> with the documentation
               of the rule
-            </li>{' '}
+            </li>
             <li>
               <span className={styles.file}>index.ts</span> with the actual code
               of the rule
-            </li>{' '}
+            </li>
             <li>
               <span className={styles.file}>test.ts</span> with the end-to-end
               test for the rule
-            </li>{' '}
+            </li>
           </p>
         </>
       </Block>
 
       <Block title="Write the code of your rule">
         <div className={styles.newRuleBlock}>
+          <table>
+            <tr>
+              <th style={{ width: '50%' }}>
+                <span className={styles.file}>Configuration</span>
+              </th>
+              <th>
+                <span className={styles.file}>Source code</span>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Find a name and an error message for your rule</li>
+                  <li>Set the categories and the AWS service related to it</li>
+                  <li>
+                    Fix a level for the rule, it should reflect the importance
+                    and the effort it takes to be solved. (You can ask for help
+                    from the sls-mentor team to find the right level)
+                  </li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>
+                    Fetch the configuration of the ressources concerned by the
+                    rule
+                  </li>
+                  <li>
+                    Check the configuration of the ressources (you might need to
+                    read the sdk documentation to find the right method to do
+                    so)
+                  </li>
+                  <li>
+                    Return an array composed of the ressources with their ARN
+                    and if they verify the rule
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
           <div className={styles.newRuleInsideBlock}>
             <ThemedImage
               sources={{
@@ -81,29 +121,6 @@ const HowToContribute = (): JSX.Element => (
                 dark: useBaseUrl('/img/newRuleIndexDark.svg'),
               }}
             />
-            <p>
-              <ul>
-                <li>Find a name and an error message for your rule</li>
-                <li>Set the categories and the AWS service related to it</li>
-                <li>
-                  Fix a level for the rule, it should reflect the importance and
-                  the effort it takes to be solved. (You can ask for help from
-                  the sls-mentor team to find the right level )
-                </li>
-                <li>
-                  Fetch the configuration of the ressources concerned by the
-                  rule
-                </li>
-                <li>
-                  Check the configuration of the ressources (you might need to
-                  read the sdk documentation to find the right method to do so)
-                </li>
-                <li>
-                  Return an array composed of the ressources with their ARN and
-                  if they verify the rule
-                </li>
-              </ul>
-            </p>
           </div>
           <UilArrowDown size={75} />
           <ThemedImage
@@ -130,21 +147,29 @@ const HowToContribute = (): JSX.Element => (
             First of all, you should test that your rule works as expected on
             your stack.
             <br />
-            Then you have the possibility to write an end to end test that will
-            check that your rule works on a specially crafted stack. The passing
-            and failing created ressources will be tagged so they can be easily
-            checked. ( You might need to create a new default construct for your
-            specific resource.)
+            Then you can write an end to end test that will check that your rule
+            works on a specially crafted stack. The passing and failing created
+            ressources will be tagged so they can be easily checked. ( You might
+            need to create a new default construct for your specific resource.)
             <br />
-            ⚠️ For some specific rules, it might cost you money to deploy the
-            service to test your rule.
-            <br />
-            ⚠️ Moreover, for some type of resources, it might be impossible to
-            do an end to end test. For instance, you need to tag the created
-            ressource to be able to check if the rule works. But for resources
-            from the SES service, it is impossible to tag them for the moment.
-            <br />⇨ If you don't want to or can't write an end to end test, you
-            just have to remove the files related to the test.
+            ⚠️ Some rules should not be tested:
+            <ul>
+              <li>
+                If testing the rule requires provisioning a non-serverless
+                resource (for example a RDS or a Lambda with provisioned
+                concurrency) don’t test it. We care about the planet (and our
+                costs 🤡). We don’t want to allocate compute or storage units
+                only for our test stack.
+              </li>
+              <li>
+                CloudFormation does not support tags on some resources: SES
+                resources like ConfigurationSet and Identity for example. As you
+                need to tag the created resource to be able to check if the rule
+                works, rules that concern these types of resources cannot be
+                tested.
+              </li>
+            </ul>
+            In these cases, you can remove the test file.
           </p>
           <ThemedImage
             sources={{

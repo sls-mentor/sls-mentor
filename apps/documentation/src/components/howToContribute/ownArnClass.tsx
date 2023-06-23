@@ -16,14 +16,14 @@ export const OwnArnClassBlock = (): JSX.Element => (
         <li>
           Adapt the logic of this class to be able to be generated from a
           CloudFormation resourceId, and from any information returned by the
-          sdk (example: fromFunctionName for Lambdas)
+          AWS SDK (example: fromFunctionName for Lambdas)
         </li>
         <li>
           Add a case to the big switch case in{' '}
           <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/cli/src/init/fetchCloudFormationResourceArns.ts">
             fetchCloudFormationResourceArns.
           </a>{' '}
-          This will allow sls-mentor to turn resources from cloudformation into
+          This will allow sls-mentor to turn resources from CloudFormation into
           your new ARN class.
         </li>
         <li>
