@@ -9,10 +9,18 @@ inputs:
     description: 'Sls-mentor level'
     required: false
     default: '1'
+  iam-role:
+    description: 'IAM role to assume'
+    required: false
+    default: 'arn:aws:iam::463151931555:role/github-action'
 runs:
-  using: 'docker'
-  image: Dockerfile
-  args:
-    - '${{ inputs.repo-token }}'
-    - '${{ inputs.level }}'
-    - 'arn:aws:iam::463151931555:role/github-action'
+  using: 'composite'
+  steps:
+    - name: 'configure aws credentials'
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::463151931555:role/github-action
+        aws-region: 'eu-west-1'
+    - name: 'sls-mentor'
+      run: yarn sls-mentor --level ${{ inputs.level }}
+      shell: bash

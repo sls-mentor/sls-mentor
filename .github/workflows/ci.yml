@@ -14,6 +14,11 @@ jobs:
   sls-mentor:
     runs-on: ubuntu-latest
     steps:
-      - uses: './.github/actions/sls-mentor-action-test/action.yml'
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: action
+        uses: ./.github/actions/sls-mentor-action-test
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
