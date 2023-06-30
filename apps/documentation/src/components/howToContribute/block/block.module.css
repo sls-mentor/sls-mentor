@@ -1,0 +1,23 @@
+.container {
+  margin: 2em 0;
+  background: var(--background-secondary);
+  border-radius: var(--radius-3);
+  padding: 1em;
+}
+
+.innerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.innerCard {
+  background: var(--background);
+  border-radius: var(--radius-2);
+  padding: 1em;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

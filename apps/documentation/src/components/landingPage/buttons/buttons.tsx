@@ -17,10 +17,10 @@ export const Buttons = (): JSX.Element => (
       <b>A step-by-step path</b>
     </button>
     <button
-      onClick={() => (window.location.href = 'slsMentorCategories')}
+      onClick={() => (window.location.href = 'howToContribute')}
       className={styles.button}
     >
-      <b>What do we assess ?</b>
+      <b>Help by contributing 💛</b>
     </button>
   </div>
 );
