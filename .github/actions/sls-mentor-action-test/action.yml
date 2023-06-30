@@ -22,5 +22,5 @@ runs:
         role-to-assume: arn:aws:iam::463151931555:role/github-action
         aws-region: 'eu-west-1'
     - name: 'sls-mentor'
-      run: yarn sls-mentor --level ${{ inputs.level }}
+      run: echo 'toto' | yarn sls-mentor --level ${{ inputs.level }}
       shell: bash
