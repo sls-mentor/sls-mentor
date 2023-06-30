@@ -29,3 +29,4 @@ export * from './useIntelligentTiering';
 export * from './assignDefaultConfigurationSet';
 export * from './enableReputationMetrics';
 export * from './configurationSetEnableSuppresionList';
+export * from './timeoutSmallEnoughForSqsVisibility';
