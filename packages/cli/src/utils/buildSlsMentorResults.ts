@@ -1,9 +1,10 @@
 import { SlsMentorLevel, SlsMentorResults } from '@sls-mentor/core';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import path from 'path';
 import { ChecksResults } from 'types';
 import { REPORT_OUTPUT_FOLDER, REPORT_OUTPUT_PATH } from '../constants';
 
-const TEMPLATE_PATH = './template/index.html';
+const TEMPLATE_PATH = '../../template/index.html';
 
 const PLACEHOLDER = '<<SLS-RESULTS-PLACEHOLDER>>';
 
@@ -30,7 +31,7 @@ export const saveReport = (
   const reportInput = buildSlsMentorResults(checksResults, level);
   const data = JSON.stringify(reportInput).replace(/"/g, '\\"');
 
-  const template = readFileSync(TEMPLATE_PATH).toString();
+  const template = readFileSync(path.join(__dirname, TEMPLATE_PATH)).toString();
 
   const report = template.replace(PLACEHOLDER, data);
 
