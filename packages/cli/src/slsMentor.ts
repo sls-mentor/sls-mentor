@@ -1,9 +1,11 @@
-import { CustomARN } from '@sls-mentor/core';
+/* eslint-disable complexity */
+import { CustomARN, SlsMentorLevel } from '@sls-mentor/core';
 import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
+import { saveReport } from './utils/buildSlsMentorResults';
 import { runChecks } from './checks';
 import { readConfiguration } from './configuration/utils/readConfiguration';
-import { LILA_HEX } from './constants';
+import { LILA_HEX, REPORT_OUTPUT_PATH } from './constants';
 import {
   displayDashboard,
   displayError,
@@ -80,6 +82,14 @@ export const runSlsMentor = async (
   const resultsByCategory = getResultsByCategory(checksResults);
   displayDashboard(resultsByCategory);
   displayGuordle(resultsByCategory);
+
+  if (options.report) {
+    saveReport(checksResults, level as SlsMentorLevel);
+    console.log(
+      chalk.hex(LILA_HEX)('\n\n ⬇️  [NEW!] Report generated to ⬇️\n'),
+    );
+    console.log(chalk.hex(LILA_HEX)(REPORT_OUTPUT_PATH));
+  }
 
   return {
     success: options.noFail || !atLeastOneFailed,

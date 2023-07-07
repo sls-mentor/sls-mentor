@@ -27,4 +27,6 @@ export const noProvisionedConcurrency: Rule = {
   level: 3,
   categories: ['GreenIT', 'ITCosts'],
   service: 'Lambda',
+  easyToFix: false,
+  severity: 'medium',
 } as Rule;

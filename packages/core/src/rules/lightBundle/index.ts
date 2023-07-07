@@ -26,4 +26,6 @@ export const lightBundle: Rule = {
   categories: ['GreenIT', 'Stability'],
   level: 4,
   service: 'Lambda',
+  easyToFix: false,
+  severity: 'critical',
 };

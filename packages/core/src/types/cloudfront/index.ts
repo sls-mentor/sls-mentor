@@ -1,2 +1,2 @@
-export { EnabledSecurityHeaders } from './EnabledSecurityHeaders';
+export * from './EnabledSecurityHeaders';
 export { SecurityHeader } from './SecurityHeaders';

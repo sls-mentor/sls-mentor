@@ -92,6 +92,10 @@
     {
       "path": "packages/core",
       "name": "🛡️ core"
+    },
+    {
+      "path": "packages/report",
+      "name": "📘 report"
     }
   ]
 }

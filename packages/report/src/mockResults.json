@@ -1,0 +1,21 @@
+{
+  "results": {
+    "lightBundle": {
+      "passingResources": 1,
+      "totalResources": 2
+    },
+    "enableBlockPublicAccess": {
+      "passingResources": 4,
+      "totalResources": 8
+    },
+    "s3OnlyAllowHTTPS": {
+      "passingResources": 3,
+      "totalResources": 4
+    },
+    "useArm": {
+      "passingResources": 3,
+      "totalResources": 4
+    }
+  },
+  "level": 1
+}

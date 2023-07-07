@@ -64,4 +64,6 @@ export const noMonoPackage: Rule = {
   categories: ['Stability'],
   level: 1,
   service: 'Lambda',
+  easyToFix: true,
+  severity: 'low',
 };

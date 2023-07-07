@@ -28,4 +28,6 @@ export const snsRedrivePolicy: Rule = {
   categories: ['Stability'],
   level: 4,
   service: 'SNS',
+  easyToFix: false,
+  severity: 'medium',
 };

@@ -88,6 +88,7 @@ program
     'Exit with success status, even if some checks failed',
     false,
   )
+  .option('-R, --report', 'generate an html report', false)
   .action(handleSlsMentorChecksCommand)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)

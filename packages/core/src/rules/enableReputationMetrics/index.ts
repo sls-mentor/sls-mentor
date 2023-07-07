@@ -31,4 +31,6 @@ export const enableReputationMetrics: Rule = {
   categories: ['Stability'],
   level: 3,
   service: 'SES',
+  easyToFix: true,
+  severity: 'medium',
 };

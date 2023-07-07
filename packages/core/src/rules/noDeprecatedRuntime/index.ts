@@ -27,4 +27,6 @@ export const noDeprecatedRuntime: Rule = {
   categories: ['Stability', 'Security'],
   level: 4,
   service: 'Lambda',
+  easyToFix: false,
+  severity: 'high',
 } as Rule;
