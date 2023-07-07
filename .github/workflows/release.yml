@@ -30,6 +30,9 @@ jobs:
       - name: Copy paste root README to @sls-mentor/sls-mentor
         run: cp ../../README.md ./README.md
 
+      - name: Builds Vite report
+        run: cd ../report && pnpm run build && cd ../cli
+
       - name: pnpm run build
         run: pnpm run build
 
