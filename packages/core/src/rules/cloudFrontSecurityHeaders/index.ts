@@ -115,4 +115,6 @@ export const cloudFrontSecurityHeaders: Rule = {
   categories: ['Security'],
   level: 4,
   service: 'CloudFront',
+  easyToFix: true,
+  severity: 'high',
 };

@@ -44,4 +44,6 @@ export const cloudFrontNoHttp: Rule = {
   categories: ['Security'],
   level: 2,
   service: 'CloudFront',
+  easyToFix: true,
+  severity: 'high',
 };

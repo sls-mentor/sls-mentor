@@ -32,6 +32,8 @@ export const ${ruleName}: Rule = {
   categories: ['GreenIT'], // Set categories related to rule
   level: 3, // Set level related to rule
   service: 'Lambda', // Set service related to rule
+  easyToFix: false, // is it easy to fix non-complying resources?
+  severity: 'medium', // what are the impacts of the problem solved by the rule?
 };
 `,
   );

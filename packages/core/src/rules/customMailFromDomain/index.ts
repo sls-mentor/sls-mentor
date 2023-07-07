@@ -30,4 +30,6 @@ export const customMailFromDomain: Rule = {
   categories: ['Stability'],
   level: 2,
   service: 'SES',
+  easyToFix: true,
+  severity: 'medium',
 };

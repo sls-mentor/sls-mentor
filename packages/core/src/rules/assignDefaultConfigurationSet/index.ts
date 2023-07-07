@@ -30,4 +30,6 @@ export const assignDefaultConfigurationSet: Rule = {
   categories: ['Stability'],
   level: 1, // Set level related to rule
   service: 'SES',
+  easyToFix: false,
+  severity: 'medium',
 };

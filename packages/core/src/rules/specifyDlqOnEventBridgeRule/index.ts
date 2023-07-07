@@ -59,4 +59,6 @@ export const specifyDlqOnEventBridgeRule: Rule = {
   categories: ['Stability'],
   level: 5,
   service: 'EventBridge',
+  easyToFix: false,
+  severity: 'medium',
 };

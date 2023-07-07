@@ -36,4 +36,6 @@ export const enableBlockPublicAccess: Rule = {
   categories: ['Security'],
   level: 1,
   service: 'S3',
+  easyToFix: true,
+  severity: 'high',
 };

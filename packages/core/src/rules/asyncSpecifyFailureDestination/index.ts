@@ -46,4 +46,6 @@ export const asyncSpecifyFailureDestination: Rule = {
   categories: ['Stability'],
   level: 5,
   service: 'Lambda',
+  easyToFix: false,
+  severity: 'medium',
 };

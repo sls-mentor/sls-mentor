@@ -31,4 +31,6 @@ export const s3OnlyAllowHTTPS: Rule = {
   categories: ['Security'],
   level: 2,
   service: 'S3',
+  easyToFix: true,
+  severity: 'high',
 };

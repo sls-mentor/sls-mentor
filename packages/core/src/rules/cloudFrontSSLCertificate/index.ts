@@ -42,4 +42,6 @@ export const cloudFrontSSLCertificate: Rule = {
   categories: ['Security'],
   level: 2,
   service: 'CloudFront',
+  easyToFix: false,
+  severity: 'high',
 };

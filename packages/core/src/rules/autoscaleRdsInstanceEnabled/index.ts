@@ -35,4 +35,6 @@ export const autoscaleRdsInstanceEnabled: Rule = {
   categories: ['Stability'],
   level: 3,
   service: 'RDS',
+  easyToFix: true,
+  severity: 'medium',
 };

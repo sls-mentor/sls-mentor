@@ -1,0 +1,46 @@
+.container {
+  width: min-content;
+  position: relative;
+}
+
+.container > * {
+  margin: 0;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.container > h3 {
+  font-weight: 600;
+}
+
+.mainScore {
+  font-size: 300px;
+  font-weight: 800;
+  -webkit-text-fill-color: transparent;
+  line-height: 0.8;
+}
+
+.percent {
+  font-size: 72px;
+}
+
+.high {
+  background: linear-gradient(140deg, #00d90b, #0095ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.medium {
+  background: linear-gradient(140deg, #f69f09, #ffff00);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.low {
+  background: linear-gradient(140deg, #bb1616, #ff8468);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

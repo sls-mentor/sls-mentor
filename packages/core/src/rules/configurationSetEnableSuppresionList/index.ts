@@ -33,4 +33,6 @@ export const configurationSetEnableSuppresionList: Rule = {
   categories: ['Stability'],
   level: 4,
   service: 'SES',
+  easyToFix: true,
+  severity: 'medium',
 };

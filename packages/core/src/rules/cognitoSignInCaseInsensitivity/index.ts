@@ -25,4 +25,6 @@ export const cognitoSignInCaseInsensitivity: Rule = {
   categories: ['Stability'],
   level: 5,
   service: 'Cognito',
+  easyToFix: false,
+  severity: 'low',
 };

@@ -29,4 +29,6 @@ export const cognitoEnforceLongPasswords: Rule = {
   categories: ['Security'],
   level: 3,
   service: 'Cognito',
+  easyToFix: true,
+  severity: 'high',
 };

@@ -49,4 +49,6 @@ export const underMaxMemory: Rule<UnderMaxMemoryRuleConfig> = {
   level: 2,
   service: 'Lambda',
   configurationTypeguard: ruleConfigTypeguard,
+  easyToFix: true,
+  severity: 'medium',
 };

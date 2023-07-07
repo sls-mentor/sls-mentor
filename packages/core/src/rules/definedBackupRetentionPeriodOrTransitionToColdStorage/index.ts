@@ -39,4 +39,6 @@ export const definedBackupRetentionPeriodOrTransitionToColdStorage: Rule = {
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
   service: 'Backup',
+  easyToFix: true,
+  severity: 'high',
 };

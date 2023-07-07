@@ -29,4 +29,6 @@ export const useArm: Rule = {
   categories: ['GreenIT', 'ITCosts', 'Speed'],
   level: 1,
   service: 'Lambda',
+  easyToFix: true,
+  severity: 'critical',
 };

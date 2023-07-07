@@ -33,4 +33,6 @@ export const noSharedIamRoles: Rule = {
   categories: ['Security', 'Stability'],
   level: 4,
   service: 'Lambda',
+  easyToFix: false,
+  severity: 'critical',
 };
