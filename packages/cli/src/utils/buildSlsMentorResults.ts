@@ -4,7 +4,10 @@ import path from 'path';
 import { ChecksResults } from 'types';
 import { REPORT_OUTPUT_FOLDER, REPORT_OUTPUT_PATH } from '../constants';
 
-const TEMPLATE_PATH = '../../template/index.html';
+const TEMPLATE_PATH =
+  process.env.STAGE === 'dev'
+    ? '../../template/index.html'
+    : './template/index.html';
 
 const PLACEHOLDER = '<<SLS-RESULTS-PLACEHOLDER>>';
 
