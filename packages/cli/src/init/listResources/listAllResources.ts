@@ -5,6 +5,7 @@ import {
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
+  DynamoDBTableARN,
   EventBridgeEventBusARN,
   LambdaFunctionARN,
   RdsInstanceARN,
@@ -29,6 +30,7 @@ import { listSESConfigurationSets, listSESIdentities } from './ses';
 import { listSnsSubscriptions } from './sns/listSnsSubscriptions';
 import { listSnsTopics } from './sns/listSnsTopics';
 import { listSqsQueues } from './sqs';
+import { listDynamoDBTables } from './dynamoDB';
 
 export const listAllResources = async (): Promise<CustomARN[]> => {
   const s3buckets: S3BucketARN[] = await listS3Buckets();
@@ -50,6 +52,7 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
   const sesConfigurationSets: SESConfigurationSetARN[] =
     await listSESConfigurationSets();
   const restApiGateways: RestApiGatewayApiARN[] = await listRestApiGateways();
+  const dynamoDBTables: DynamoDBTableARN[] = await listDynamoDBTables();
 
   return [
     ...s3buckets,
@@ -67,5 +70,6 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
     ...snsSubscriptions,
     ...sesConfigurationSets,
     ...restApiGateways,
+    ...dynamoDBTables,
   ];
 };
