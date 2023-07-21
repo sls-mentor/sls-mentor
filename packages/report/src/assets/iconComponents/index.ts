@@ -4,6 +4,7 @@ import BackupSvg from './BackupSvg';
 import CloudFrontSvg from './CloudFrontSvg';
 import CloudWatchSvg from './CloudWatchSvg';
 import CognitoSvg from './CognitoSvg';
+import DynamoDBSvg from './DynamoDBSvg';
 import LambdaSvg from './LambdaSvg';
 import RDSSvg from './RDSSvg';
 import S3Svg from './S3Svg';
@@ -18,6 +19,7 @@ export const AwsIcons: Record<Service, JSX.Element> = {
   Backup: BackupSvg,
   CloudFront: CloudFrontSvg,
   CloudWatch: CloudWatchSvg,
+  DynamoDB: DynamoDBSvg,
   EventBridge: EventBridgeSvg,
   Cognito: CognitoSvg,
   Lambda: LambdaSvg,
