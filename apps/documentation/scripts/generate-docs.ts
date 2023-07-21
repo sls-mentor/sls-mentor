@@ -7,7 +7,11 @@ if (fs.existsSync(path.join(__dirname, '../docs/rules'))) {
 }
 
 fs.mkdirSync(path.join(__dirname, '../docs/rules'));
-rules.forEach(({ fileName }) => {
+
+let tableOfRuleNames = `| Rule | Name for configuration file |
+  | :- | :- |`;
+
+rules.forEach(({ fileName, ruleName }) => {
   fs.copyFileSync(
     path.join(
       __dirname,
@@ -17,4 +21,20 @@ rules.forEach(({ fileName }) => {
     ),
     path.join(__dirname, '../docs/rules', fileName + '.md'),
   );
+  tableOfRuleNames = `${tableOfRuleNames}
+  | ${ruleName} | ${fileName} |`;
 });
+
+const data = fs.readFileSync(
+  path.join(__dirname, './templates/configure-sls-mentor.md'),
+  'utf-8',
+);
+const result = data.replace(
+  /<!-- Rule table will appear here -->/g,
+  tableOfRuleNames,
+);
+fs.writeFileSync(
+  path.join(__dirname, '../docs/set-up-sls-mentor/configure-sls-mentor.md'),
+  result,
+  'utf8',
+);
