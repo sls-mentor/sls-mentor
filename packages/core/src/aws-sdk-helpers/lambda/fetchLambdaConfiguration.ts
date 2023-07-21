@@ -6,7 +6,7 @@ import {
 import { lambdaClient } from '../../clients';
 import { CustomARN, LambdaFunctionARN } from '../../types';
 
-const fetchLambdaConfigurationByArn = async (
+export const fetchLambdaConfigurationByArn = async (
   arn: LambdaFunctionARN,
 ): Promise<{
   arn: LambdaFunctionARN;
