@@ -4,7 +4,7 @@ export { default as backupClient } from './backupClient';
 export { default as cloudFrontClient } from './cloudFrontClient';
 export { default as cloudWatchLogsClient } from './cloudWatchLogsClient';
 export { default as cognitoIdpClient } from './cognitoIdpClient';
-export { default as dynamodbClient } from './dynamodbClient';
+export { default as dynamoDBClient } from './dynamoDBClient';
 export { default as eventBridgeClient } from './eventBridgeClient';
 export { default as lambdaClient } from './lambdaClient';
 export { default as rdsClient } from './rdsClient';
