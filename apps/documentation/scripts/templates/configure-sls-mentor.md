@@ -24,25 +24,7 @@ ignoredResources accepts an array of regex that you wish to ignore. You can eith
 
 The rule name should be one of the following list:
 
-<!-- Todo update rule docs to put it there -->
-
-- asyncSpecifyFailureDestination
-- cloudFrontSecurityHeaders
-- cognitoSignInCaseInsensitivity
-- definedLogsRetentionDuration
-- lightBundle
-- limitedAmountOfVersions
-- noDeprecatedRuntime
-- noMaxTimeout
-- noMonoPackage
-- noProvisionedConcurrency
-- noSharedIamRoles
-- s3OnlyAllowHTTPS
-- specifyDlqOnEventBridgeRule
-- specifyDlqOnSqs
-- underMaxMemory
-- useArm
-- useIntelligentTiering
+<!-- Rule table will appear here -->
 
 For example you can add the following:
 
