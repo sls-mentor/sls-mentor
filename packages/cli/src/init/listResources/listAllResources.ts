@@ -8,6 +8,7 @@ import {
   EventBridgeEventBusARN,
   LambdaFunctionARN,
   RdsInstanceARN,
+  RestApiGatewayApiARN,
   S3BucketARN,
   SESConfigurationSetARN,
   SESIdentityARN,
@@ -15,7 +16,7 @@ import {
   SnsTopicARN,
   SqsQueueARN,
 } from '@sls-mentor/core';
-import { listApiGatewaysV2 } from './apiGatewayV2';
+import { listApiGatewaysV2, listRestApiGateways } from './apiGateway';
 import { listBackupPlans } from './backupPlan';
 import { listCloudFrontDistributions } from './cloudfront';
 import { listCloudwatchLogGroups } from './cloudwatch';
@@ -48,6 +49,7 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
   const snsSubscriptions: SnsSubscriptionARN[] = await listSnsSubscriptions();
   const sesConfigurationSets: SESConfigurationSetARN[] =
     await listSESConfigurationSets();
+  const restApiGateways: RestApiGatewayApiARN[] = await listRestApiGateways();
 
   return [
     ...s3buckets,
@@ -64,5 +66,6 @@ export const listAllResources = async (): Promise<CustomARN[]> => {
     ...snsTopics,
     ...snsSubscriptions,
     ...sesConfigurationSets,
+    ...restApiGateways,
   ];
 };

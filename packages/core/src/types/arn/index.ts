@@ -1,4 +1,4 @@
-export * from './apiGatewayV2';
+export * from './apiGateway';
 export * from './backupPlan';
 export * from './cloudFront';
 export * from './cloudwatch';

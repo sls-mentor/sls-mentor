@@ -4,9 +4,11 @@
   "types": "src/index.ts",
   "version": "0.0.1",
   "scripts": {
-    "create-rule": "ts-node scripts/create-rule.ts"
+    "create-rule": "ts-node scripts/create-rule.ts",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@aws-sdk/client-api-gateway": "^3.363.0",
     "@aws-sdk/client-apigatewayv2": "^3.231.0",
     "@aws-sdk/client-backup": "^3.245.0",
     "@aws-sdk/client-cloudformation": "^3.226.0",

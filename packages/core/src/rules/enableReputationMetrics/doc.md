@@ -1,4 +1,4 @@
-# Documentation of enableReputationMetrics
+# Configuration sets should have reputation metrics enabled
 
 ## Why ?
 

@@ -32,7 +32,7 @@ export const noUnauthorizedApiGatewaysV2Routes: Rule = {
   fileName: 'noUnauthorizedApiGatewaysV2Routes',
   categories: ['Security'],
   level: 5,
-  service: 'ApiGatewayV2',
+  service: 'ApiGateway',
   easyToFix: false,
   severity: 'high',
 };
