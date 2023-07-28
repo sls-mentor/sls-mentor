@@ -1,4 +1,4 @@
-# Documentation of noUnauthorizedRestApiGatewaysResources
+# Rest API resources should have an authorizer
 
 ## Why ?
 

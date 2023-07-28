@@ -1,4 +1,4 @@
-# Documentation of assignDefaultConfigurationSet
+# SES Identities should have a default configuration set
 
 ## Why ?
 
