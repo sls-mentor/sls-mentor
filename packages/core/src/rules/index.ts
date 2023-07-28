@@ -25,8 +25,8 @@ export * from './specifyDlqOnSqs';
 export * from './underMaxMemory';
 export * from './useArm';
 export * from './useIntelligentTiering';
-
 export * from './assignDefaultConfigurationSet';
 export * from './enableReputationMetrics';
 export * from './configurationSetEnableSuppresionList';
 export * from './timeoutSmallEnoughForSqsVisibility';
+export * from './noUnauthorizedRestApiGatewaysRoutes';

@@ -1,5 +1,5 @@
 import { Service } from '@sls-mentor/core';
-import ApiGatewayV2Svg from './ApiGatewayV2Svg';
+import ApiGatewaySvg from './ApiGatewaySvg';
 import BackupSvg from './BackupSvg';
 import CloudFrontSvg from './CloudFrontSvg';
 import CloudWatchSvg from './CloudWatchSvg';
@@ -14,7 +14,7 @@ import SESSvg from './SESSvg';
 import SNSSvg from './SNSSvg';
 
 export const AwsIcons: Record<Service, JSX.Element> = {
-  ApiGatewayV2: ApiGatewayV2Svg,
+  ApiGateway: ApiGatewaySvg,
   Backup: BackupSvg,
   CloudFront: CloudFrontSvg,
   CloudWatch: CloudWatchSvg,

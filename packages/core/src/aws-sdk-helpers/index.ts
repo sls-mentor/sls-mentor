@@ -8,3 +8,7 @@ export * from './s3';
 export * from './ses';
 export * from './sns';
 export * from './sqs';
+export * from './apiGateway';
+export * from './cloudFront';
+export * from './cloudWatchLogs';
+export * from './cognito';

@@ -33,7 +33,7 @@ export const SERVICES = [
   'EventBridge',
   'RDS',
   'Backup',
-  'ApiGatewayV2',
+  'ApiGateway',
   'SES',
 ] as const;
 export type Service = (typeof SERVICES)[number];
@@ -49,7 +49,7 @@ export const serviceNames: Record<Service, string> = {
   EventBridge: 'EventBridge',
   RDS: 'RDS',
   Backup: 'Backup',
-  ApiGatewayV2: 'Api Gateway V2',
+  ApiGateway: 'Api Gateway',
   SES: 'SES',
 };
 
