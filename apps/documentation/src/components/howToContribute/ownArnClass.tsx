@@ -27,7 +27,15 @@ export const OwnArnClassBlock = (): JSX.Element => (
           your new ARN class.
         </li>
         <li>
-          Create a `list&lt;YourResource&gt;.ts` file in the{' '}
+          Add a client for your resource in{' '}
+          <a href="https://github.com/sls-mentor/sls-mentor/blob/050705ca185efabcf504fb7534d14a320d653a80/packages/core/src/clients">
+            clients
+          </a>{' '}
+          folder. This way we only use one client to send the requests to AWS.
+        </li>
+        <li>
+          Create a folder <i>yourResource</i> with a{' '}
+          <i>list&lt;YourResource&gt;.ts</i> file in the{' '}
           <a href="https://github.com/sls-mentor/sls-mentor/tree/master/packages/cli/src/init/listResources">
             listResources
           </a>{' '}
