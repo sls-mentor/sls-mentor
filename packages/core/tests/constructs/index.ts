@@ -1,6 +1,6 @@
 export * from './defaultBucket';
 export * from './defaultConfigurationSet';
-export * from './defaultDynamodb';
+export * from './defaultDynamoDBTable';
 export * from './defaultEventBridgeRule';
 export * from './defaultFunction';
 export * from './defaultIdentity';
