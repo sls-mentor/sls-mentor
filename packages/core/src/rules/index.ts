@@ -12,6 +12,7 @@ export * from './definedBackupRetentionPeriodOrTransitionToColdStorage';
 export * from './definedLogsRetentionDuration';
 export * from './dynamodbBackupConfig';
 export * from './enableBlockPublicAccess';
+export * from './enableDeletionProtectionOnDynamoDBTables';
 export * from './enableReputationMetrics';
 export * from './lightBundle';
 export * from './limitedAmountOfVersions';
@@ -31,10 +32,3 @@ export * from './timeoutSmallEnoughForSqsVisibility';
 export * from './underMaxMemory';
 export * from './useArm';
 export * from './useIntelligentTiering';
-
-export * from './assignDefaultConfigurationSet';
-export * from './configurationSetEnableSuppresionList';
-export * from './dynamodbBackupConfig';
-export * from './enableReputationMetrics';
-export * from './noUnauthorizedRestApiGatewaysRoutes';
-export * from './timeoutSmallEnoughForSqsVisibility';
