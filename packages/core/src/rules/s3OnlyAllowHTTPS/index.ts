@@ -9,7 +9,7 @@ const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
 
   return policy.Statement.some(
     ({ Effect, Condition }) =>
-      Effect === 'Deny' && Condition.Bool['aws:SecureTransport'] === 'false',
+      Effect === 'Deny' && Condition?.Bool?.['aws:SecureTransport'] === 'false',
   );
 };
 

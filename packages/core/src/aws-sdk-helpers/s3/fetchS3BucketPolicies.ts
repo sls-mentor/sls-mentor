@@ -6,8 +6,8 @@ interface S3BucketPolicyStatementItem {
   Action: string;
   Effect: string;
   Resource: string[];
-  Condition: {
-    Bool: {
+  Condition?: {
+    Bool?: {
       'aws:SecureTransport': string;
     };
   };
