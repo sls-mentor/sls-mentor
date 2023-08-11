@@ -32,10 +32,13 @@ export const getResultsByCategory = (
     categories.forEach(category => (resultsByCategory[category] += ruleRatio));
   });
 
-  Object.entries(categoryTotals).forEach(
-    ([category, total]) =>
-      (resultsByCategory[category as Category] *= total > 0 ? 100 / total : 0),
-  );
+  Object.entries(categoryTotals).forEach(([category, total]) => {
+    if (total > 0) {
+      resultsByCategory[category as Category] *= total > 0 ? 100 / total : 0;
+    } else {
+      resultsByCategory[category as Category] = 100;
+    }
+  });
 
   return resultsByCategory;
 };
