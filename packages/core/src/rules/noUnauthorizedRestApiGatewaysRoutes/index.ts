@@ -4,13 +4,11 @@ import { fetchAllRestApiGatewayResources } from '../../aws-sdk-helpers';
 import { Rule } from '../../types';
 
 const isAuthenticated = (resource: Resource): boolean => {
-  const hasAuthorizer =
-    resource.resourceMethods !== undefined &&
-    Object.values(resource.resourceMethods).every(
-      method =>
-        method.authorizationType !== undefined &&
-        method.authorizationType !== 'NONE',
-    );
+  const hasAuthorizer = Object.values(resource.resourceMethods!).every(
+    method =>
+      method.authorizationType !== undefined &&
+      method.authorizationType !== 'NONE',
+  );
 
   return hasAuthorizer;
 };
@@ -21,11 +19,13 @@ const run: Rule['run'] = async resourceArns => {
   );
   const results = compact(
     restApiGatewaysResources.flatMap(({ arn, resources }) =>
-      resources.map(resource => ({
-        arn,
-        success: isAuthenticated(resource),
-        resource: resource.path,
-      })),
+      resources
+        .filter(resource => resource.resourceMethods)
+        .map(resource => ({
+          arn,
+          success: isAuthenticated(resource),
+          resource: resource.path,
+        })),
     ),
   );
 

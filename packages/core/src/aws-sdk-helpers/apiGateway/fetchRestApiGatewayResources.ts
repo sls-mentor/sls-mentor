@@ -6,7 +6,7 @@ const fetchRestApiGatewayResourcesByArn = async (
   arn: RestApiGatewayApiARN,
 ): Promise<Resource[]> => {
   const { items } = await apiGatewayClient.send(
-    new GetResourcesCommand({ restApiId: arn.getApiId() }),
+    new GetResourcesCommand({ restApiId: arn.getApiId(), embed: ['methods'] }),
   );
 
   return items ?? [];
