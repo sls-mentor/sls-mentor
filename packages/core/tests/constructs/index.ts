@@ -1,4 +1,6 @@
 export * from './defaultBucket';
+export * from './defaultConfigurationSet';
+export * from './defaultDynamodb';
 export * from './defaultEventBridgeRule';
 export * from './defaultFunction';
 export * from './defaultIdentity';
@@ -7,5 +9,4 @@ export * from './defaultSnsSubscription';
 export * from './defaultSnsTopic';
 export * from './defaultSqsQueue';
 export * from './defaultUserPool';
-export * from './defaultConfigurationSet';
 export * from './tags';
