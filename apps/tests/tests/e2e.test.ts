@@ -78,6 +78,7 @@ describe('Successful resources', () => {
       getJsonResults: true,
       level: '5',
       cloudformationStacks: ['StackSuccess'],
+      report: false,
     }));
   });
 
@@ -111,6 +112,7 @@ describe('Failed resources', () => {
       getJsonResults: true,
       level: '5',
       cloudformationStacks: ['StackFail'],
+      report: false,
     }));
   });
 
