@@ -14,7 +14,7 @@ export const fetchTopicAttributesByArn = async (
   arn: SnsTopicARN,
 ): Promise<TopicAttributes> => {
   const commandOutput = await snsClient.send(
-    new GetTopicAttributesCommand({ TopicArn: arn.resource }),
+    new GetTopicAttributesCommand({ TopicArn: arn.toString() }),
   );
 
   return {
