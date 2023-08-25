@@ -1,5 +1,6 @@
 import { ProvisionedConcurrencyConfigListItem } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaProvisionedConcurrency } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasNoProvisionedConcurrency = (
@@ -29,4 +30,5 @@ export const noProvisionedConcurrency: Rule = {
   service: 'Lambda',
   easyToFix: false,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 } as Rule;

@@ -1,5 +1,6 @@
 import { DistributionConfig } from '@aws-sdk/client-cloudfront';
 import { fetchDistributionConfig } from '../../aws-sdk-helpers/cloudFront';
+import { Stage } from '../../constants/stage';
 import { CloudFrontDistributionARN, CustomARN, Rule } from '../../types';
 
 const noHttpAllowed = (distributionConfig: DistributionConfig | undefined) => {
@@ -46,4 +47,5 @@ export const cloudFrontNoHttp: Rule = {
   service: 'CloudFront',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

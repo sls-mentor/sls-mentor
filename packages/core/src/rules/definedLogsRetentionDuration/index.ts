@@ -1,5 +1,6 @@
 import { LogGroup } from '@aws-sdk/client-cloudwatch-logs';
 import { fetchAllLogGroupsConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isLogsRetentionDurationDefined = (
@@ -28,4 +29,5 @@ export const definedLogsRetentionDuration: Rule = {
   service: 'CloudWatch',
   easyToFix: true,
   severity: 'low',
+  stage: [Stage.dev, Stage.prod],
 };

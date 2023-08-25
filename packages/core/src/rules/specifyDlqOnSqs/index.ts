@@ -1,4 +1,5 @@
 import { fetchAllQueuesAttributes } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { CustomARN, Rule, SqsQueueARN } from '../../types';
 
 interface RedrivePolicy {
@@ -47,4 +48,5 @@ export const specifyDlqOnSqs: Rule = {
   service: 'SQS',
   easyToFix: false,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

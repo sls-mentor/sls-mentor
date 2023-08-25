@@ -1,5 +1,6 @@
 import { GetConfigurationSetCommandOutput } from '@aws-sdk/client-sesv2';
 import { fetchAllSESConfigurationSets } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isSuppressionListEnabled = (
@@ -35,4 +36,5 @@ export const configurationSetEnableSuppresionList: Rule = {
   service: 'SES',
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

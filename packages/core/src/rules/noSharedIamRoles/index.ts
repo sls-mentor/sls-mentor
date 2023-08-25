@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isLambdaRoleShared = (
@@ -35,4 +36,5 @@ export const noSharedIamRoles: Rule = {
   service: 'Lambda',
   easyToFix: false,
   severity: 'critical',
+  stage: [Stage.dev, Stage.prod],
 };

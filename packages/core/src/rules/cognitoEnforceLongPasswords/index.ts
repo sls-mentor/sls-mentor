@@ -1,5 +1,6 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
 import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const enforcesLongPasswords = (userPool: UserPoolType): boolean => {
@@ -31,4 +32,5 @@ export const cognitoEnforceLongPasswords: Rule = {
   service: 'Cognito',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

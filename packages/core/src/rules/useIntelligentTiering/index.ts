@@ -1,5 +1,6 @@
 import { LifecycleRule } from '@aws-sdk/client-s3';
 import { fetchAllS3BucketLifeCycleRules } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasIntelligentTiering = (rules: LifecycleRule[] | undefined): boolean =>
@@ -35,4 +36,5 @@ export const useIntelligentTiering: Rule = {
   service: 'S3',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.prod, Stage.dev],
 };

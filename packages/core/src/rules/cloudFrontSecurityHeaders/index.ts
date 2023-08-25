@@ -4,6 +4,7 @@ import {
   fetchResponseHeadersPolicyByResponseHeadersPolicyId,
   getResponseHeadersPolicyIdsByDistribution,
 } from '../../aws-sdk-helpers/cloudFront';
+import { Stage } from '../../constants/stage';
 import { EnabledSecurityHeaders, Rule, SecurityHeader } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
@@ -117,4 +118,5 @@ export const cloudFrontSecurityHeaders: Rule = {
   service: 'CloudFront',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

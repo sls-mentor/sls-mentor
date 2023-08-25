@@ -1,4 +1,5 @@
 import { fetchAllSubscriptions } from '../../aws-sdk-helpers/sns/fetchSubscriptions';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const checkSubscriptionRedrivePolicy = (
@@ -30,4 +31,5 @@ export const snsRedrivePolicy: Rule = {
   service: 'SNS',
   easyToFix: false,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

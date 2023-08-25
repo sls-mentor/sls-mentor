@@ -1,5 +1,6 @@
 import { UserPoolType } from '@aws-sdk/client-cognito-identity-provider';
 import { fetchAllUserPoolConfigurations } from '../../aws-sdk-helpers/cognito/fetchUserPoolConfiguration';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasCaseInsensitiveSignIn = (userPool: UserPoolType) => {
@@ -27,4 +28,5 @@ export const cognitoSignInCaseInsensitivity: Rule = {
   service: 'Cognito',
   easyToFix: false,
   severity: 'low',
+  stage: [Stage.dev, Stage.prod],
 };

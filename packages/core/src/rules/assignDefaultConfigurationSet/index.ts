@@ -1,4 +1,5 @@
 import { fetchAllSESIdentities } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const configSetIsAssigned = (
@@ -32,4 +33,5 @@ export const assignDefaultConfigurationSet: Rule = {
   service: 'SES',
   easyToFix: false,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

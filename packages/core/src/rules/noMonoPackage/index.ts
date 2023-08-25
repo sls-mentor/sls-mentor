@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasUniqueShaCode = (
@@ -66,4 +67,5 @@ export const noMonoPackage: Rule = {
   service: 'Lambda',
   easyToFix: true,
   severity: 'low',
+  stage: [Stage.dev, Stage.prod],
 };

@@ -1,5 +1,6 @@
 import { MailFromAttributes } from '@aws-sdk/client-sesv2';
 import { fetchAllSESIdentities } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isCustomMailFromDomain = (
@@ -32,4 +33,5 @@ export const customMailFromDomain: Rule = {
   service: 'SES',
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

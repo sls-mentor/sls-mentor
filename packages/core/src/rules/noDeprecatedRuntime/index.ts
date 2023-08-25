@@ -1,6 +1,7 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
 import { DEPRECATED_RUNTIMES } from '../../constants';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasDeprecatedRuntime = (lambdaConfiguration: FunctionConfiguration) =>
@@ -29,4 +30,5 @@ export const noDeprecatedRuntime: Rule = {
   service: 'Lambda',
   easyToFix: false,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 } as Rule;

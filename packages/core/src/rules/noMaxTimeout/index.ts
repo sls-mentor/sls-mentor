@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
@@ -30,4 +31,5 @@ export const noMaxTimeout: Rule = {
   service: 'Lambda',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 } as Rule;

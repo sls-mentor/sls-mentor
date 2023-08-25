@@ -1,4 +1,5 @@
 import fetchBackupProtectedResourceArns from '../../aws-sdk-helpers/backup/fetchBackupProtectedResourceArns';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
@@ -23,4 +24,5 @@ export const dynamodbBackupConfig: Rule = {
   service: 'DynamoDB',
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.prod],
 };

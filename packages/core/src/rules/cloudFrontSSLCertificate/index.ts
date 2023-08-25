@@ -3,6 +3,7 @@ import {
   fetchAllDistributions,
   fetchDistributionConfig,
 } from '../../aws-sdk-helpers/cloudFront';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 import { CloudFrontDistributionARN } from '../../types/arn/cloudFront';
 
@@ -44,4 +45,5 @@ export const cloudFrontSSLCertificate: Rule = {
   service: 'CloudFront',
   easyToFix: false,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

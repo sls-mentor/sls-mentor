@@ -1,4 +1,5 @@
 import { fetchAllLambdaVersions } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
@@ -26,4 +27,5 @@ export const limitedAmountOfVersions: Rule = {
   service: 'Lambda',
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

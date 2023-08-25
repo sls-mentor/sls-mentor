@@ -1,4 +1,4 @@
-import { SlsMentorLevel } from '../constants';
+import { SlsMentorLevel, Stage } from '../constants';
 import { CustomARN } from '../types/arn';
 import { BaseConfiguration, RuleConfiguration } from './Configuration';
 
@@ -75,4 +75,5 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   configurationTypeguard?: (config: unknown) => config is T;
   easyToFix: boolean;
   severity: Severity;
+  stage: Stage[];
 }

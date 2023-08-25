@@ -1,6 +1,7 @@
 import { Resource } from '@aws-sdk/client-api-gateway';
 import compact from 'lodash/compact';
 import { fetchAllRestApiGatewayResources } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isAuthenticated = (resource: Resource): boolean => {
@@ -42,4 +43,5 @@ export const noUnauthorizedRestApiGatewaysRoutes: Rule = {
   service: 'ApiGateway',
   severity: 'critical',
   easyToFix: false,
+  stage: [Stage.dev, Stage.prod],
 };

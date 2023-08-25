@@ -3,6 +3,7 @@ import {
   fetchLambdaConfigurationByArn,
   fetchQueueAttributesByArn,
 } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isTimeoutValid = (
@@ -77,4 +78,5 @@ export const timeoutSmallEnoughForSqsVisibility: Rule = {
   easyToFix: true,
   severity: 'high',
   service: 'Lambda',
+  stage: [Stage.dev, Stage.prod],
 };

@@ -2,6 +2,7 @@ import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
 import { baseConfigTypeGuard } from '../../configuration/utils/baseConfigTypeGuard';
 import { AWS_HISTORICAL_MAX_MEMORY } from '../../constants';
+import { Stage } from '../../constants/stage';
 import { Rule, UnderMaxMemoryRuleConfig } from '../../types';
 
 const hasMemoryUnderMaxMemory = (lambdaConfiguration: FunctionConfiguration) =>
@@ -51,4 +52,5 @@ export const underMaxMemory: Rule<UnderMaxMemoryRuleConfig> = {
   configurationTypeguard: ruleConfigTypeguard,
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

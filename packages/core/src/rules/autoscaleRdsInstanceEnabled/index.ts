@@ -1,4 +1,5 @@
 import { fetchAllRdsInstancesDescriptions } from '../../aws-sdk-helpers/';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
@@ -37,4 +38,5 @@ export const autoscaleRdsInstanceEnabled: Rule = {
   service: 'RDS',
   easyToFix: true,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

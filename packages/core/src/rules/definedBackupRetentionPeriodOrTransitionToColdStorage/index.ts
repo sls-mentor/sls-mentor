@@ -1,5 +1,6 @@
 import { GetBackupPlanOutput } from '@aws-sdk/client-backup';
 import { fetchAllBackupPlanConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const isRetentionPeriodOrTransitionToColdStorageDefinedForEachRule = (
@@ -41,4 +42,5 @@ export const definedBackupRetentionPeriodOrTransitionToColdStorage: Rule = {
   service: 'Backup',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

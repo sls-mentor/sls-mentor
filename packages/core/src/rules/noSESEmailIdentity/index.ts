@@ -1,5 +1,6 @@
 import { IdentityType } from '@aws-sdk/client-sesv2';
 import { fetchAllSESIdentities, isSandboxAccount } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { CustomARN, Rule } from '../../types';
 
 const isDomainIdentity = (identityType: IdentityType): boolean =>
@@ -35,4 +36,5 @@ export const rule: Rule = {
   level: 1,
   categories: ['Stability'],
   service: 'SES',
+  stage: [Stage.dev, Stage.prod],
 } as Rule;

@@ -2,6 +2,7 @@ import {
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import {
   CustomARN,
   EventBridgeEventBusARN,
@@ -61,4 +62,5 @@ export const specifyDlqOnEventBridgeRule: Rule = {
   service: 'EventBridge',
   easyToFix: false,
   severity: 'medium',
+  stage: [Stage.dev, Stage.prod],
 };

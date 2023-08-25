@@ -1,4 +1,5 @@
 import { fetchAllPublicAccessBlockConfiguration } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
@@ -38,4 +39,5 @@ export const enableBlockPublicAccess: Rule = {
   service: 'S3',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

@@ -2,6 +2,7 @@ import {
   fetchAllS3BucketPolicies,
   S3BucketPolicy,
 } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
@@ -33,4 +34,5 @@ export const s3OnlyAllowHTTPS: Rule = {
   service: 'S3',
   easyToFix: true,
   severity: 'high',
+  stage: [Stage.dev, Stage.prod],
 };

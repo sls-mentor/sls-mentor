@@ -1,5 +1,6 @@
 import { FunctionConfiguration } from '@aws-sdk/client-lambda';
 import { fetchAllLambdaConfigurations } from '../../aws-sdk-helpers';
+import { Stage } from '../../constants/stage';
 import { Rule } from '../../types';
 
 const ARM_ARCHITECTURE = 'arm64';
@@ -31,4 +32,5 @@ export const useArm: Rule = {
   service: 'Lambda',
   easyToFix: true,
   severity: 'critical',
+  stage: [Stage.dev, Stage.prod],
 };
