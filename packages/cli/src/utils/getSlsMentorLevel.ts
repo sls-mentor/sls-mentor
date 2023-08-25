@@ -1,5 +1,5 @@
 import { MAX_SLS_MENTOR_LEVEL } from '@sls-mentor/core';
-import { promptForUserLevelInput } from '../display/promptForUserLevelInput';
+import { promptForUserLevelInput } from '../display/promptForUserInput';
 import { Options } from '../types';
 
 export const getSlsMentorLevel = async (

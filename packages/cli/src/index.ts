@@ -74,6 +74,12 @@ program
     parseTags,
   )
   .option('-l, --level <number>', 'Level on which to run checks')
+  .option(
+    '-s, --stage <string>',
+    'Stage (dev or prod) on which to run checks',
+    undefined,
+  )
+
   /** @deprecated use --cloudformation-stacks instead */
   .option(
     '--cloudformations [cloudformation-stacks...]',

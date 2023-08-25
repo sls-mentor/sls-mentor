@@ -2,7 +2,6 @@
 import { CustomARN, SlsMentorLevel } from '@sls-mentor/core';
 import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
-import { saveReport } from './utils/buildSlsMentorResults';
 import { runChecks } from './checks';
 import { readConfiguration } from './configuration/utils/readConfiguration';
 import { LILA_HEX, REPORT_OUTPUT_PATH } from './constants';
@@ -15,15 +14,18 @@ import {
 } from './display';
 import { fetchAllResourceArns, initAccountAndRegion } from './init';
 import { getResultsByCategory } from './results/getResultsByCategory';
+import { saveReport } from './utils/buildSlsMentorResults';
+import { getSlsMentorLevel } from './utils/getSlsMentorLevel';
+import { getSlsMentorStage } from './utils/getSlsMentorStage';
 
 import { ChecksResults, Options } from './types';
-import { getSlsMentorLevel } from './utils/getSlsMentorLevel';
 
 export const runSlsMentor = async (
   options: Options,
 ): Promise<{ success: boolean; checksResults?: ChecksResults }> => {
   const configuration = readConfiguration();
   const level = await getSlsMentorLevel(options);
+  const stage = await getSlsMentorStage(options);
 
   const connectionSpinner = new Spinner({
     text: chalk.hex(LILA_HEX)('%s Connecting to AWS...'),
@@ -67,6 +69,7 @@ export const runSlsMentor = async (
   const checksResults = await runChecks(
     allResourcesArns,
     level,
+    stage,
     configuration.rules,
   );
 

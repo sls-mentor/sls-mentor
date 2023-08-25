@@ -1,4 +1,4 @@
-import { CustomARN, RuleConfiguration, rules } from '@sls-mentor/core';
+import { CustomARN, RuleConfiguration, rules, Stage } from '@sls-mentor/core';
 import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
 import { LILA_HEX } from './constants';
@@ -10,11 +10,15 @@ const formatSpinnerString = (current: number, total: number): string =>
 export const runChecks = async (
   allResourceArns: CustomARN[],
   level: number,
+  stage?: Stage,
   rulesConfigurations?: Record<string, RuleConfiguration>,
 ): Promise<ChecksResults> => {
   const rulesToRunAccordingToLevel = rules.filter(rule => rule.level <= level);
+  const rulesToRunAccordingtToLevelAndStage = rulesToRunAccordingToLevel.filter(
+    rule => stage === undefined || rule.stage.includes(stage),
+  );
 
-  const total = rulesToRunAccordingToLevel.length;
+  const total = rulesToRunAccordingtToLevelAndStage.length;
   let current = 1;
 
   const rulesSpinner = new Spinner({
@@ -39,7 +43,7 @@ export const runChecks = async (
   decreaseRemaining();
 
   const results = await Promise.all(
-    rulesToRunAccordingToLevel.map(async rule => {
+    rulesToRunAccordingtToLevelAndStage.map(async rule => {
       const ignoredArnPatterns =
         rulesConfigurations?.[rule.fileName]?.ignoredResources;
 
