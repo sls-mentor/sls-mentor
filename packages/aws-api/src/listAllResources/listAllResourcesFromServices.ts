@@ -8,6 +8,7 @@ import {
   CustomARN,
   DynamoDBTableARN,
   EventBridgeEventBusARN,
+  IamRoleARN,
   LambdaFunctionARN,
   RdsInstanceARN,
   S3BucketARN,
@@ -26,6 +27,7 @@ import {
   listCognitoUserPools,
   listDynamoDBTables,
   listEventBridgeEventBuses,
+  listIamRoles,
   listLambdaFunctions,
   listRdsInstances,
   listRestApiGateways,
@@ -58,6 +60,7 @@ export const listAllResourcesFromServices = async (): Promise<CustomARN[]> => {
     await listSESConfigurationSets();
   const restApiGateways: ApiGatewayRestApiARN[] = await listRestApiGateways();
   const dynamoDBTables: DynamoDBTableARN[] = await listDynamoDBTables();
+  const iamRoles: IamRoleARN[] = await listIamRoles();
 
   return [
     ...s3buckets,
@@ -76,5 +79,6 @@ export const listAllResourcesFromServices = async (): Promise<CustomARN[]> => {
     ...sesConfigurationSets,
     ...restApiGateways,
     ...dynamoDBTables,
+    ...iamRoles,
   ];
 };

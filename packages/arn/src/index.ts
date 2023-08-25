@@ -6,6 +6,7 @@ export * from './cloudwatch';
 export * from './cognito';
 export * from './dynamodb';
 export * from './eventBridge';
+export * from './iam';
 export * from './lambda';
 export * from './rds';
 export * from './s3';
