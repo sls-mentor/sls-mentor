@@ -20,12 +20,15 @@
   },
   "dependencies": {
     "@sls-mentor/core": "workspace:*",
+    "@types/node": "18.11.9",
     "aws-cdk": "^2.67.0",
     "aws-cdk-lib": "^2.87.0",
     "constructs": "^10.0.0",
     "danfojs": "^1.1.2",
     "exceljs": "^4.3.0",
+    "seedrandom": "^3.0.5",
     "sls-mentor": "workspace:*",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "typescript": "^5.2.2"
   }
 }
