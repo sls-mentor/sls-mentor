@@ -3,17 +3,7 @@ import { GetPolicyCommand } from '@aws-sdk/client-lambda';
 import { CustomARN, LambdaFunctionARN } from '@sls-mentor/arn';
 
 import { lambdaClient } from 'clients';
-
-// Incomplete, update if needed
-export type Policy = {
-  Statement?: {
-    Condition?: {
-      ArnLike?: {
-        'AWS:SourceArn'?: string;
-      };
-    };
-  }[];
-};
+import { Policy } from 'types/policy';
 
 const fetchLambdaPolicyByArn = async (
   arn: LambdaFunctionARN,

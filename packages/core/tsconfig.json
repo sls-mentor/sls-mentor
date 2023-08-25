@@ -3,6 +3,6 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["./**/*.ts"],
+  "include": ["./**/*.ts", "../aws-api/src/types/policy.ts"],
   "exclude": ["./dist"]
 }
