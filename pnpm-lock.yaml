@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -291,6 +287,9 @@ importers:
       '@aws-sdk/client-cognito-identity-provider':
         specifier: ^3.226.0
         version: 3.245.0
+      '@aws-sdk/client-dynamodb':
+        specifier: ^3.226.0
+        version: 3.226.0
       '@aws-sdk/client-eventbridge':
         specifier: ^3.226.0
         version: 3.245.0
@@ -360,7 +359,7 @@ importers:
         version: 0.2.1
       tsup:
         specifier: ^6.5.0
-        version: 6.5.0(ts-node@10.9.1)(typescript@4.9.4)
+        version: 6.5.0
 
   packages/core:
     dependencies:
@@ -3068,7 +3067,7 @@ packages:
       '@aws-sdk/querystring-builder': 3.226.0
       '@aws-sdk/types': 3.226.0
       '@aws-sdk/util-base64': 3.208.0
-      tslib: 2.4.1
+      tslib: 2.6.0
     dev: false
 
   /@aws-sdk/fetch-http-handler@3.257.0:
@@ -3115,7 +3114,7 @@ packages:
     dependencies:
       '@aws-sdk/types': 3.226.0
       '@aws-sdk/util-buffer-from': 3.208.0
-      tslib: 2.4.1
+      tslib: 2.6.0
     dev: false
 
   /@aws-sdk/hash-node@3.257.0:
@@ -14925,7 +14924,7 @@ packages:
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
 
-  /postcss-load-config@3.1.4(ts-node@10.9.1):
+  /postcss-load-config@3.1.4:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -14938,7 +14937,6 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.0.6
-      ts-node: 10.9.1(@types/node@18.11.9)(typescript@4.9.4)
       yaml: 1.10.2
     dev: true
 
@@ -16749,7 +16747,7 @@ packages:
   /tslib@2.6.0:
     resolution: {integrity: sha512-7At1WUettjcSRHXCyYtTselblcHl9PJFFVKiCAy/bY97+BPZXSQ2wbq0P9s8tK2G7dFQfNnlJnPAiArVBVBsfA==}
 
-  /tsup@6.5.0(ts-node@10.9.1)(typescript@4.9.4):
+  /tsup@6.5.0:
     resolution: {integrity: sha512-36u82r7rYqRHFkD15R20Cd4ercPkbYmuvRkz3Q1LCm5BsiFNUgpo36zbjVhCOgvjyxNBWNKHsaD5Rl8SykfzNA==}
     engines: {node: '>=14'}
     hasBin: true
@@ -16773,13 +16771,12 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss-load-config: 3.1.4(ts-node@10.9.1)
+      postcss-load-config: 3.1.4
       resolve-from: 5.0.0
       rollup: 3.13.0
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
-      typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -17829,3 +17826,7 @@ packages:
 
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
