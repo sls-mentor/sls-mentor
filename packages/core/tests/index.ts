@@ -15,3 +15,4 @@ export * from '../src/rules/timeoutSmallEnoughForSqsVisibility/test';
 export * from '../src/rules/underMaxMemory/test';
 export * from '../src/rules/useArm/test';
 export * from '../src/rules/useIntelligentTiering/test';
+export * from '../src/rules/encryptedSnsTopics/test';

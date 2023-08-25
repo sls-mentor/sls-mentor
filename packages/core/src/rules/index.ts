@@ -38,3 +38,4 @@ export * from './dynamodbBackupConfig';
 export * from './enableReputationMetrics';
 export * from './noUnauthorizedRestApiGatewaysRoutes';
 export * from './timeoutSmallEnoughForSqsVisibility';
+export * from './encryptedSnsTopics';
