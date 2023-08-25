@@ -9,6 +9,7 @@ import {
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
   CustomARN,
+  DynamoDBTableARN,
   EventBridgeEventBusARN,
   LambdaFunctionARN,
   RdsInstanceARN,
@@ -58,6 +59,8 @@ export const createARNFromCloudFormation = ({
       return SESConfigurationSetARN.fromConfigurationSetName(
         PhysicalResourceId,
       );
+    case 'AWS::DynamoDB::Table':
+      return DynamoDBTableARN.fromPhysicalId(PhysicalResourceId);
     default:
       return;
   }
