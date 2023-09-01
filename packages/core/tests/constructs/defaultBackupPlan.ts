@@ -15,7 +15,7 @@ export class DefaultBackupPlan extends BackupPlan implements Tagger {
     id: string,
     props: { backedupResourceArn: string },
   ) {
-    super(scope, id);
+    super(scope, id, { backupPlanName: id });
     this.addRule(
       new BackupPlanRule({
         deleteAfter: Duration.days(1),

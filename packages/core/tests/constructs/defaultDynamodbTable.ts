@@ -32,7 +32,7 @@ export class DefaultDynamoDBTable extends Table implements Tagger {
     );
     if (backup === false) return;
     //do not put anything in the db otherwise backup costs may be incurred
-    new DefaultBackupPlan(this, 'BackupPlan', {
+    new DefaultBackupPlan(this, 'BackupPlan' + id, {
       backedupResourceArn: this.tableArn,
     });
   }

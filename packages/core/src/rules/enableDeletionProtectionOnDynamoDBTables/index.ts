@@ -19,7 +19,7 @@ export const enableDeletionProtectionOnDynamoDBTables: Rule = {
   errorMessage: 'Deletion protection not enabled on DynamoDB tables',
   run,
   fileName: 'enableDeletionProtectionOnDynamoDBTables',
-  categories: ['Security'],
+  categories: ['Stability'],
   level: 3,
   service: 'DynamoDB',
   easyToFix: true,
