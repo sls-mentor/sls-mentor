@@ -16,9 +16,13 @@ export const getAllRulesOfEventBus = async (
       }),
     );
 
-    allEventBusRules.push(...(Rules ?? []));
+    allEventBusRules.push(...(Rules ?? []).filter(isStandardRule));
     nextToken = NextToken;
   } while (nextToken !== undefined);
 
   return allEventBusRules;
 };
+
+function isStandardRule(event: Rule) {
+  return !event.ManagedBy;
+}
