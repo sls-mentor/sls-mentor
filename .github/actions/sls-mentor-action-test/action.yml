@@ -1,0 +1,52 @@
+name: 'Sls mentor '
+description: 'run sls-mentor'
+inputs:
+  level:
+    description: 'Sls-mentor level'
+    required: false
+    default: '1'
+    type: string
+  iam-role:
+    description: 'IAM role to assume'
+    required: true
+    type: string
+  iam-role-session-name:
+    description: 'IAM role session name'
+    required: false
+    default: 'sls-mentor'
+    type: string
+  aws-region:
+    description: 'AWS region'
+    required: false
+    default: 'eu-west-1'
+    type: string
+#outputs:
+#  sls-mentor-result:
+#    description: 'Result of sls-mentor run '
+#    value: ${{ steps.sls-mentor-run.outputs }}
+runs:
+  using: 'composite'
+  steps:
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: ${{inputs.iam-role}}
+        role-session-name: ${{inputs.iam-role-session-name}}
+        aws-region: ${{inputs.aws-region}}
+    - name: 'sls-mentor-run'
+      id: sls-mentor-run
+      run: |
+        echo 'SLS_MENTOR_RESULT<<EOF' >> "$GITHUB_ENV" 
+        npx sls-mentor@latest --level ${{inputs.level}} --noFail >> "$GITHUB_ENV"
+        echo EOF >> "$GITHUB_ENV"
+      shell: bash
+    - uses: actions/github-script@v6
+      with:
+        script: |
+          const output = `Sls-mentor result: ${process.env.SLS_MENTOR_RESULT}`;
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: context.payload.number,
+            body: process.env.SLS_MENTOR_RESULT
+          });

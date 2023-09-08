@@ -11,54 +11,21 @@ env:
   NODE_VERSION: 16
 
 jobs:
-  lint:
-    name: Lint
+  sls-mentor:
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read # This is required for actions/checkout
+      pull-requests: write # This is required for creating review comments
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
+      - name: checkout
+        uses: actions/checkout@v4
         with:
-          version: 7.22.0
-      - uses: actions/cache@v2
+          ref: ${{ github.event.pull_request.head.sha }}
+          # We need to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+      - name: 'sls-mentor-action'
+        id: sls-mentor-action
+        uses: './.github/actions/sls-mentor-action-test/'
         with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run lint
-      - name: Danger
-        run: pnpm danger ci
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  type:
-    name: Type
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - name: Typescript checks
-        run: pnpm run typecheck
-
-  circular:
-    name: Circular
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
-      - uses: actions/cache@v2
-        with:
-          path: ~/.pnpm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
-      - name: Install & cache node dependencies
-        uses: ./.github/actions/install
-      - run: pnpm run test-circular
+          iam-role: arn:aws:iam::463151931555:role/github-action-role
