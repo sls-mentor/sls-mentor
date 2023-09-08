@@ -25,9 +25,7 @@ export class DynamodbBackupConfig extends Construct {
     const dynamodbTable = new DefaultDynamoDBTable(
       this,
       dynamodbTableId,
-      {
-        tableName: backup ? 'backedUpTable' : 'notBackedUpTable',
-      },
+      {},
       backup,
     );
     dynamodbTable.tagRule(dynamodbBackupConfig);
