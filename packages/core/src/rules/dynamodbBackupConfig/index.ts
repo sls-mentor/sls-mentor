@@ -1,14 +1,21 @@
 import fetchBackupProtectedResourceArns from '../../aws-sdk-helpers/backup/fetchBackupProtectedResourceArns';
-import { Rule } from '../../types';
+import { CustomARN, DynamoDBTableARN, Rule } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
-  const backupProtectedResourcesArn = await fetchBackupProtectedResourceArns();
-  const results = resourceArns
-    .filter(arn => arn.service === 'dynamodb')
-    .map(arn => ({
-      arn,
-      success: arn.toString() in backupProtectedResourcesArn,
-    }));
+  const resourceArnsProtectedByBackup =
+    await fetchBackupProtectedResourceArns();
+
+  const dynamodbTableArns = CustomARN.filterArns(
+    resourceArns,
+    DynamoDBTableARN,
+  );
+
+  const results = dynamodbTableArns.map(tableArn => ({
+    arn: tableArn,
+    success: resourceArnsProtectedByBackup.some(protectedByBackup =>
+      protectedByBackup.is(tableArn),
+    ),
+  }));
 
   return { results };
 };
