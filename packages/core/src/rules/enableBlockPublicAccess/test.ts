@@ -15,7 +15,14 @@ export class EnableBlockPublicAccess extends Construct {
   };
 
   static failTestCases: Record<string, EnableBlockPublicAccessProps> = {
-    'Not blocked': { enableBlockPublicAccess: undefined },
+    'Not blocked': {
+      enableBlockPublicAccess: {
+        blockPublicAcls: false,
+        blockPublicPolicy: false,
+        ignorePublicAcls: false,
+        restrictPublicBuckets: false,
+      },
+    },
   };
 
   constructor(

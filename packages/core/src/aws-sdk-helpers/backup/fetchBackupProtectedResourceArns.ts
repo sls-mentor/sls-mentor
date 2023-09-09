@@ -3,15 +3,18 @@ import {
   ListBackupPlansCommand,
   ListBackupSelectionsCommand,
 } from '@aws-sdk/client-backup';
+import { CustomARN } from '../../types';
 import { backupClient } from '../../clients';
 
-const fetchBackupProtectedResourceArns = async (): Promise<string[]> => {
+const fetchBackupProtectedResourceArns = async (): Promise<CustomARN[]> => {
   const backupPlansIds = await fetchBackupPlanIds();
+
   const backupSelections = await Promise.all(
     backupPlansIds.map(backupPlanId =>
       fetchBackupPlanBackupSelections(backupPlanId),
     ),
   );
+
   const protectedResourcesArns = await Promise.all(
     backupPlansIds.map(
       async (backupPlanId, index) =>
@@ -26,11 +29,8 @@ const fetchBackupProtectedResourceArns = async (): Promise<string[]> => {
         ),
     ),
   );
-  const protectedResourcesArnsFlat = protectedResourcesArns
-    .flatMap(obj => obj)
-    .flatMap(obj => obj);
 
-  return protectedResourcesArnsFlat;
+  return protectedResourcesArns.flat(2).map(CustomARN.fromArnString);
 };
 
 const fetchBackupPlanIds = async (): Promise<string[]> => {

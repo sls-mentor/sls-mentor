@@ -53,7 +53,7 @@ const HowToContribute = (): JSX.Element => (
             }}
           />
           <p className={styles.subtext}>
-            It will update the <span className={styles.file}>index.ts</span>
+            It will update the <span className={styles.file}>index.ts</span>{' '}
             files to correctly export the new files. And it will create 3 new
             files :
             <li>

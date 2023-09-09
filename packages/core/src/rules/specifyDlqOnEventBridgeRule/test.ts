@@ -34,7 +34,7 @@ export class SpecifyDlqOnEventBridge extends Construct {
       targets: eventBridgeRuleHasTargetWithDlq
         ? [
             new LambdaFunction(
-              new DefaultFunction(scope, 'target', {
+              new DefaultFunction(scope, 'targetA', {
                 deadLetterQueue: new DefaultSqsQueue(
                   scope,
                   'dlqRuleEvenBridge',
@@ -42,7 +42,7 @@ export class SpecifyDlqOnEventBridge extends Construct {
               }),
             ),
           ]
-        : [new LambdaFunction(new DefaultFunction(scope, 'target'))],
+        : [new LambdaFunction(new DefaultFunction(scope, 'targetB'))],
     });
     eventBridgeRule.tagRule(SpecifyDlqOnEventBridgeRule);
   }

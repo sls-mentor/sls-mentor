@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { DefaultDynamodb } from '../../../tests/constructs';
+import { DefaultDynamoDBTable } from '../../../tests/constructs';
 import { dynamodbBackupConfig } from './index';
 
 interface DynamodbBackupConfigProps {
@@ -22,10 +22,10 @@ export class DynamodbBackupConfig extends Construct {
   ) {
     super(scope, id);
     const dynamodbTableId = 'DynamodbTable';
-    const dynamodbTable = new DefaultDynamodb(
+    const dynamodbTable = new DefaultDynamoDBTable(
       this,
       dynamodbTableId,
-      backup ? 'backedUpTable' : 'notBackedUpTable',
+      {},
       backup,
     );
     dynamodbTable.tagRule(dynamodbBackupConfig);

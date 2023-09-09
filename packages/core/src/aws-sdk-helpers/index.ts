@@ -2,6 +2,7 @@ export * from './apiGatewayV2';
 export * from './backup';
 export * from './backupPlan';
 export * from './cloudWatchLogs';
+export * from './dynamodb';
 export * from './eventBridge';
 export * from './lambda';
 export * from './rds';
