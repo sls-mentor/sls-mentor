@@ -10,7 +10,7 @@ Enabling this property for tables helps ensure that tables do not get accidental
 
 To change this setting, go to the table’s Additional settings, navigate to the Deletion Protection panel and select Enable delete protection.
 
-![deletion protection parameter in the console](https://github.com/sls-mentor/sls-mentor/blob/master/packages/core/src/rules/enableDeletionProtectionOnDynamoDBTables/assets/aws-console-deletion-protection.png 'deletion protection parameter in the console')
+![deletion protection parameter in the console](https://raw.githubusercontent.com/sls-mentor/sls-mentor/master/packages/core/src/rules/enableDeletionProtectionOnDynamoDBTables/assets/aws-console-deletion-protection.png 'deletion protection parameter in the console')
 
 ### AWS CDK
 
