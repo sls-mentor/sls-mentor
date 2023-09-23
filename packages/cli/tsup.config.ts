@@ -1,8 +1,10 @@
 import { defineConfig } from 'tsup';
 
 export default defineConfig({
-  clean: true,
+  entry: ['src/index.ts'],
   silent: true,
-  noExternal: ['@sls-mentor/core'],
+  format: ['cjs', 'esm'],
   outDir: 'dist',
+  // Bundle all internal packages before publishing to npm
+  noExternal: [/@sls-mentor/],
 });

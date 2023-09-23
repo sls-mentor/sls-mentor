@@ -3,34 +3,40 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.stylelint": true
+      "source.fixAll.eslint": true
     },
-    "stylelint.validate": ["typescript", "typescriptreact"],
-    "stylelint.customSyntax": "@stylelint/postcss-css-in-js",
     "search.exclude": {
       "**/coverage": true,
       "**/node_modules": true,
       "**/.serverless": true,
-      "**/.docusaurus": true,
       "**/build": true,
       "**/bundles": true,
       "**/dist": true,
-      "**/tsconfig.tsbuildinfo": true,
+      "**/*.tsbuildinfo": true,
       "**/cdk.out": true,
       "nx-cache/**": true,
       "pnpm-lock.yaml": true
     },
+    "search.followSymlinks": false,
     "files.watcherExclude": {
       "**/.git/objects/**": true,
       "**/.git/subtree-cache/**": true,
-      "**/node_modules/**/*": true,
+      "**/node_modules/**": true,
       "**/coverage/**": true,
       "**/.serverless/**": true,
-      "**/build/**/*": true,
+      "**/build/**": true,
       "**/bundles/**": true,
-      "nx-cache/**/*": true,
-      "**/cdk.out/**/*": true
+      "**/*.tsbuildinfo": true,
+      "nx-cache/**": true,
+      "**/cdk.out/**": true
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true
     },
     "[dotenv][ignore][properties][shellscript]": {
       "editor.defaultFormatter": "foxundermoon.shell-format"
@@ -38,21 +44,10 @@
     "[html][javascript][json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "[markdown][mdx]": {
-      "editor.wordWrap": "on"
-    },
-    "typescript.tsdk": "sls-mentor root/node_modules/typescript/lib",
+    "typescript.tsdk": "node_modules/typescript/lib",
     "vitest.commandLine": "pnpm vitest",
-    "cSpell.words": [
-      "clsx",
-      "esbuild",
-      "horiz",
-      "microservices",
-      "middlewares",
-      "sls-mentor",
-      "ulid"
-    ],
-    "files.exclude": {}
+    "vitest.disabledWorkspaceFolders": ["sls-mentor root"],
+    "cSpell.words": ["esbuild", "swarmion"]
   },
   "extensions": {
     "recommendations": [
@@ -63,7 +58,6 @@
       "ZixuanChen.vitest-explorer",
       "streetsidesoftware.code-spell-checker",
       "streetsidesoftware.code-spell-checker-french",
-      "stylelint.vscode-stylelint",
       "styled-components.vscode-styled-components",
       "SebastianBille.iam-legend"
     ]
@@ -71,31 +65,43 @@
   "folders": [
     {
       "path": ".",
-      "name": "🌍 root"
+      "name": "📁 sls-mentor"
     },
     {
-      "path": "apps/cloudfront",
-      "name": "📡 cloudfront [service]"
-    },
-    {
-      "path": "apps/documentation",
-      "name": "🖥️ documentation [web]"
-    },
-    {
-      "path": "apps/tests",
-      "name": "🧪 test-stack [service]"
-    },
-    {
-      "path": "packages/cli",
-      "name": "🛡️ sls-mentor [cli]"
+      "path": "packages/rules",
+      "name": "📏 rules"
     },
     {
       "path": "packages/core",
-      "name": "🛡️ core"
+      "name": "🛡 core"
+    },
+    {
+      "path": "packages/cli",
+      "name": "💻 cli"
+    },
+    {
+      "path": "packages/arn",
+      "name": "🧬 arn"
+    },
+    {
+      "path": "packages/aws-api",
+      "name": "🌐 aws api"
     },
     {
       "path": "packages/report",
-      "name": "📘 report"
+      "name": "📈 report"
+    },
+    {
+      "path": "packages/documentation",
+      "name": "📑 documentation"
+    },
+    {
+      "path": "services/documentation-cloudfront",
+      "name": "📤 documentation cloudfront"
+    },
+    {
+      "path": "services/tests",
+      "name": "✅ tests"
     }
   ]
 }

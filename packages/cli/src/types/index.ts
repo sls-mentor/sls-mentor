@@ -1,2 +1,2 @@
-export * from './CheckResult';
 export * from './CliOptions';
+export * from './checksResults';

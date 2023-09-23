@@ -1,0 +1,43 @@
+{
+  "name": "@sls-mentor/tests",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "bootstrap": "env $(cat .env | xargs) cdk bootstrap --qualifier 5e28fb0bf3",
+    "deploy": "env $(cat .env | xargs) cdk deploy --all",
+    "destroy": "env $(cat .env | xargs) cdk destroy",
+    "format-check": "prettier --check . ../../.prettierignore",
+    "format-fix": "prettier --write . ../../.prettierignore",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-e2e": "vitest run --config ./vitest.e2e.config.ts",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc",
+    "test-unit": "vitest run --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@sls-mentor/arn": "workspace:^",
+    "@sls-mentor/aws-api": "workspace:^",
+    "@sls-mentor/core": "workspace:^",
+    "@sls-mentor/rules": "workspace:^"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@vitest/coverage-c8": "0.30.0",
+    "aws-cdk": "^2.95.1",
+    "aws-cdk-lib": "2.76.0",
+    "constructs": "10.2.4",
+    "dependency-cruiser": "^13.1.5",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.19.2",
+    "eslint": "^8.49.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "0.30.0"
+  }
+}

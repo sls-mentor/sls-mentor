@@ -1,17 +1,20 @@
 import { createContext, useContext } from 'react';
-import { RuleResults, SlsMentorLevel } from '@sls-mentor/core';
+import {
+  PassingResourcesByCategory,
+  PassingResourcesByRule,
+} from '@sls-mentor/core';
 
 export const ReportContext = createContext<
   | {
-      level: SlsMentorLevel;
-      results: RuleResults;
+      passingResourcesByRule: PassingResourcesByRule;
+      passingResourcesByCategory: PassingResourcesByCategory;
     }
   | undefined
 >(undefined);
 
 export const useReportContext = (): {
-  level: SlsMentorLevel;
-  results: RuleResults;
+  passingResourcesByRule: PassingResourcesByRule;
+  passingResourcesByCategory: PassingResourcesByCategory;
 } => {
   const reportContext = useContext(ReportContext);
 

@@ -4,7 +4,6 @@ const createdFiles = danger.git.created_files;
 
 const newRules: Record<string, boolean | undefined> = {};
 createdFiles.forEach(file => {
-  console.log(file);
   if (!file.match(/packages\/core\/src\/rules\/.*\/index\.ts/)) {
     return;
   }

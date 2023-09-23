@@ -1,0 +1,107 @@
+name: Merge Request 🚀
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  id-token: write
+  contents: read
+  actions: read
+
+env:
+  CI: true
+  NODE_VERSION: 18
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.22.0
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+      - name: Run tests
+        run: pnpm run test
+      - name: Danger
+        run: pnpm danger ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  deploy-front-dev:
+    name: Deploy Front on dev environment 🖥
+    runs-on: ubuntu-latest
+    #needs: tests
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./services/documentation-cloudfront
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::885330630487:role/github-action
+          aws-region: eu-west-1
+
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Package repository
+        run: pnpm -w package
+
+      - name: Copy env file
+        run: cp .env.ci .env
+      - name: Deploy frontend to dev environment
+        run: pnpm run bootstrap && pnpm run deploy
+        env:
+          STAGE: dev
+
+  test-e2e:
+    name: Test E2E 🧪
+    runs-on: ubuntu-latest
+    #needs: tests
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./services/tests
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+
+      - name: Configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::885330630487:role/github-action
+          aws-region: eu-west-1
+
+      - name: Package repository
+        run: pnpm -w package
+
+      - name: Copy env file
+        run: cp .env.ci .env
+
+      - name: Deploy test env
+        run: pnpm run bootstrap && pnpm run deploy
+
+      - name: Run tests
+        run: pnpm run test-e2e

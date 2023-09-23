@@ -1,4 +1,4 @@
-import { rules, Service } from '@sls-mentor/core';
+import { allRules, Service } from '@sls-mentor/rules';
 import { useMemo } from 'react';
 import { getRecommendations } from '../helpers';
 import { useReportContext } from '../hooks';
@@ -7,7 +7,7 @@ import styles from './recommendations.module.css';
 import { AwsIcons } from '../../assets/iconComponents';
 
 const getRuleName = (ruleName: string): string => {
-  const rule = rules.find(({ fileName }) => fileName === ruleName);
+  const rule = allRules.find(({ fileName }) => fileName === ruleName);
 
   return rule?.ruleName ?? '';
 };
@@ -32,8 +32,11 @@ const getTagName = (tag: Tag): string => {
 export const Recommendations = (): JSX.Element => {
   const path = 'https://sls-mentor.dev';
 
-  const { results } = useReportContext();
-  const recommendations = useMemo(() => getRecommendations(results), [results]);
+  const { passingResourcesByRule } = useReportContext();
+  const recommendations = useMemo(
+    () => getRecommendations(passingResourcesByRule),
+    [passingResourcesByRule],
+  );
 
   return (
     <div className={styles.mainContainer}>

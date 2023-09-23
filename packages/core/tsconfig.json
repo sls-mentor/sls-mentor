@@ -1,16 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.options.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "strict": true,
-    "baseUrl": "./src"
+    "baseUrl": "src"
   },
   "include": ["./**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["./dist"]
 }

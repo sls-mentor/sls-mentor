@@ -1,0 +1,285 @@
+{
+  "docsSidebar": [
+    { "label": "Intro", "type": "doc", "id": "intro" },
+    {
+      "type": "category",
+      "label": "Set up sls-mentor",
+      "items": [
+        "set-up-sls-mentor/run-locally",
+        "set-up-sls-mentor/run-in-ci",
+        "set-up-sls-mentor/configure-sls-mentor"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Rules",
+      "items": [
+        {
+          "type": "category",
+          "label": "By service",
+          "items": [
+            {
+              "type": "category",
+              "label": "Lambda",
+              "items": [
+                "rules/asyncSpecifyFailureDestination",
+                "rules/lightBundle",
+                "rules/limitedAmountOfVersions",
+                "rules/noDeprecatedRuntime",
+                "rules/noMaxTimeout",
+                "rules/noMonoPackage",
+                "rules/noProvisionedConcurrency",
+                "rules/noSharedIamRoles",
+                "rules/timeoutSmallEnoughForSqsVisibility",
+                "rules/underMaxMemory",
+                "rules/useArm"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "S3",
+              "items": [
+                "rules/enableBlockPublicAccess",
+                "rules/s3OnlyAllowHTTPS",
+                "rules/useIntelligentTiering"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "CloudWatch",
+              "items": ["rules/definedLogsRetentionDuration"]
+            },
+            {
+              "type": "category",
+              "label": "CloudFront",
+              "items": [
+                "rules/cloudFrontNoHttp",
+                "rules/cloudFrontSSLCertificate",
+                "rules/cloudFrontSecurityHeaders"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Cognito",
+              "items": [
+                "rules/cognitoEnforceLongPasswords",
+                "rules/cognitoSignInCaseInsensitivity"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "DynamoDB",
+              "items": [
+                "rules/dynamodbBackupConfig",
+                "rules/enableDeletionProtectionOnDynamoDBTables"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "SNS",
+              "items": ["rules/encryptedSnsTopics", "rules/snsRedrivePolicy"]
+            },
+            {
+              "type": "category",
+              "label": "SQS",
+              "items": ["rules/specifyDlqOnSqs"]
+            },
+            {
+              "type": "category",
+              "label": "EventBridge",
+              "items": ["rules/specifyDlqOnEventBridgeRule"]
+            },
+            {
+              "type": "category",
+              "label": "RDS",
+              "items": ["rules/autoscaleRdsInstanceEnabled"]
+            },
+            {
+              "type": "category",
+              "label": "Backup",
+              "items": [
+                "rules/definedBackupRetentionPeriodOrTransitionToColdStorage"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Api Gateway",
+              "items": [
+                "rules/noUnauthorizedApiGatewaysV2Routes",
+                "rules/noUnauthorizedRestApiGatewaysRoutes"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "SES",
+              "items": [
+                "rules/assignDefaultConfigurationSet",
+                "rules/configurationSetEnableSuppresionList",
+                "rules/customMailFromDomain",
+                "rules/enableReputationMetrics",
+                "rules/noSESEmailIdentity"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "DynamoDB",
+              "items": [
+                "rules/dynamodbBackupConfig",
+                "rules/enableDeletionProtectionOnDynamoDBTables"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "By category",
+          "items": [
+            {
+              "type": "category",
+              "label": "Sustainability",
+              "items": [
+                "rules/definedBackupRetentionPeriodOrTransitionToColdStorage",
+                "rules/definedLogsRetentionDuration",
+                "rules/lightBundle",
+                "rules/limitedAmountOfVersions",
+                "rules/noMaxTimeout",
+                "rules/noProvisionedConcurrency",
+                "rules/underMaxMemory",
+                "rules/useArm",
+                "rules/useIntelligentTiering"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Stability",
+              "items": [
+                "rules/assignDefaultConfigurationSet",
+                "rules/asyncSpecifyFailureDestination",
+                "rules/autoscaleRdsInstanceEnabled",
+                "rules/cognitoSignInCaseInsensitivity",
+                "rules/configurationSetEnableSuppresionList",
+                "rules/customMailFromDomain",
+                "rules/dynamodbBackupConfig",
+                "rules/enableDeletionProtectionOnDynamoDBTables",
+                "rules/enableReputationMetrics",
+                "rules/lightBundle",
+                "rules/limitedAmountOfVersions",
+                "rules/noDeprecatedRuntime",
+                "rules/noMaxTimeout",
+                "rules/noMonoPackage",
+                "rules/noSharedIamRoles",
+                "rules/noSESEmailIdentity",
+                "rules/snsRedrivePolicy",
+                "rules/specifyDlqOnEventBridgeRule",
+                "rules/specifyDlqOnSqs",
+                "rules/timeoutSmallEnoughForSqsVisibility"
+              ]
+            },
+            { "type": "category", "label": "Speed", "items": ["rules/useArm"] },
+            {
+              "type": "category",
+              "label": "Savings",
+              "items": [
+                "rules/definedBackupRetentionPeriodOrTransitionToColdStorage",
+                "rules/definedLogsRetentionDuration",
+                "rules/noMaxTimeout",
+                "rules/noProvisionedConcurrency",
+                "rules/underMaxMemory",
+                "rules/useArm",
+                "rules/useIntelligentTiering"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Security",
+              "items": [
+                "rules/cloudFrontNoHttp",
+                "rules/cloudFrontSSLCertificate",
+                "rules/cloudFrontSecurityHeaders",
+                "rules/cognitoEnforceLongPasswords",
+                "rules/enableBlockPublicAccess",
+                "rules/encryptedSnsTopics",
+                "rules/noDeprecatedRuntime",
+                "rules/noSharedIamRoles",
+                "rules/noUnauthorizedApiGatewaysV2Routes",
+                "rules/noUnauthorizedRestApiGatewaysRoutes",
+                "rules/s3OnlyAllowHTTPS"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "category",
+          "label": "By level",
+          "items": [
+            {
+              "type": "category",
+              "label": "Level 1",
+              "items": [
+                "rules/assignDefaultConfigurationSet",
+                "rules/enableBlockPublicAccess",
+                "rules/noMonoPackage",
+                "rules/noUnauthorizedRestApiGatewaysRoutes",
+                "rules/noSESEmailIdentity",
+                "rules/useArm"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Level 2",
+              "items": [
+                "rules/cloudFrontNoHttp",
+                "rules/cloudFrontSSLCertificate",
+                "rules/customMailFromDomain",
+                "rules/limitedAmountOfVersions",
+                "rules/s3OnlyAllowHTTPS",
+                "rules/underMaxMemory",
+                "rules/useIntelligentTiering"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Level 3",
+              "items": [
+                "rules/autoscaleRdsInstanceEnabled",
+                "rules/cognitoEnforceLongPasswords",
+                "rules/definedBackupRetentionPeriodOrTransitionToColdStorage",
+                "rules/definedLogsRetentionDuration",
+                "rules/dynamodbBackupConfig",
+                "rules/enableDeletionProtectionOnDynamoDBTables",
+                "rules/enableReputationMetrics",
+                "rules/noMaxTimeout",
+                "rules/noProvisionedConcurrency",
+                "rules/timeoutSmallEnoughForSqsVisibility"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Level 4",
+              "items": [
+                "rules/cloudFrontSecurityHeaders",
+                "rules/configurationSetEnableSuppresionList",
+                "rules/encryptedSnsTopics",
+                "rules/lightBundle",
+                "rules/noDeprecatedRuntime",
+                "rules/noSharedIamRoles",
+                "rules/snsRedrivePolicy",
+                "rules/specifyDlqOnSqs"
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Level 5",
+              "items": [
+                "rules/asyncSpecifyFailureDestination",
+                "rules/cognitoSignInCaseInsensitivity",
+                "rules/noUnauthorizedApiGatewaysV2Routes",
+                "rules/specifyDlqOnEventBridgeRule"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

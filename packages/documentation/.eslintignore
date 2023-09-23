@@ -1,0 +1,3 @@
+dist
+**/generate-docs.ts
+**/generateSidebar.ts

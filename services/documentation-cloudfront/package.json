@@ -1,0 +1,47 @@
+{
+  "name": "@sls-mentor/documentation-cloudfront",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "bootstrap": "env $(cat .env.ci | xargs) cdk bootstrap --qualifier d19233980e",
+    "bootstrap-dev": "env $(cat .env.ci.dev | xargs) cdk bootstrap --qualifier d19233980e",
+    "deploy": "env $(cat .env.ci | xargs) cdk deploy",
+    "deploy-dev": "env $(cat .env.ci.dev | xargs) cdk deploy",
+    "destroy": "env $(cat .env.ci | xargs) cdk destroy",
+    "destroy-dev": "env $(cat .env.ci.dev | xargs) cdk destroy",
+    "format-check": "prettier --check . ../../.prettierignore",
+    "format-fix": "prettier --write . ../../.prettierignore",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --validate .dependency-cruiser.js .",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc",
+    "test-unit": "vitest run --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@aws-sdk/client-cloudfront": "^3.226.0",
+    "@middy/core": "^4.6.1",
+    "@middy/http-cors": "^4.6.1",
+    "@sls-mentor/documentation": "workspace:^",
+    "@swarmion/serverless-contracts": "^0.29.0",
+    "@swarmion/serverless-helpers": "^0.29.0",
+    "ajv": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@vitest/coverage-c8": "0.30.0",
+    "aws-cdk": "^2.95.1",
+    "aws-cdk-lib": "2.76.0",
+    "constructs": "10.2.4",
+    "dependency-cruiser": "^13.1.5",
+    "esbuild": "^0.19.2",
+    "eslint": "^8.49.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "0.30.0"
+  }
+}

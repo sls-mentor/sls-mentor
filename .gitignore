@@ -1,7 +1,57 @@
-dist
-node_modules/
-yarn.lock
-sls-mentor.json
-.tool-versions
-.turbo
+# package directories
+node_modules
+.npm
+
+# Serverless directories
+.serverless
+
+# Webpack directories
+.webpack
+
+# Esbuild directories
+.esbuild
+
+# Ignore stack.json files
+**/stack.json
+
+# production
+/build
+**/dist
+
+# testing
+coverage
+
+# Ignore Jetbrains folder settings
+.idea
+
+# local env
+.env
+.env.dev
+.env.local
+
+# misc
 .DS_Store
+npm-debug.log*
+
+# If people use virtualenvs for python scripts
+.venv
+
+# remove files to invoke lambdas locally
+event.json
+
+# Nx caching
+nx-cache
+
+# Build cache manifests
+*.tsbuildinfo
+
+# CDK output
+**/cdk.out
+
+# Documentation codegen
+*/documentation/sidebars.json
+*/documentation/docs/rules/*
+.docusaurus
+
+# Report output
+**/.sls-mentor

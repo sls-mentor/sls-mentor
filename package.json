@@ -1,139 +1,55 @@
 {
   "name": "@sls-mentor/root",
-  "description": "Audit tool for AWS serverless architectures",
-  "scripts": {
-    "build": "pnpm -- turbo run build",
-    "typecheck": "pnpm -- turbo run typecheck",
-    "lint": "pnpm -- turbo run lint",
-    "test-circular": "depcruise --validate .dependency-cruiser.js ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sls-mentor/sls-mentor.git"
-  },
-  "contributors": [
-    {
-      "name": "Pierre Cholet",
-      "email": "pierrech@theodo.fr"
-    },
-    {
-      "name": "Juliette Fournier",
-      "email": "juliettef@theodo.fr"
-    },
-    {
-      "name": "Valentin Beggi",
-      "email": "valentinbe@theodo.fr"
-    },
-    {
-      "name": "Vincent Zanetta",
-      "email": "vincentz@theodo.fr"
-    },
-    {
-      "name": "Frédéric Barthelet",
-      "email": "fredericb@theodo.fr"
-    },
-    {
-      "name": "Adèle Gauvrit",
-      "email": "adeleg@theodo.fr"
-    },
-    {
-      "name": "Eloi Alain",
-      "email": "eloia@theodo.fr"
-    },
-    {
-      "name": "Ajani Motta",
-      "email": "ajanim@theodo.com"
-    },
-    {
-      "name": "Quentin Nativel",
-      "email": "quentinn@theodo.fr"
-    },
-    {
-      "name": "Alexandre Pernin",
-      "email": "alexandrep@theodo.fr"
-    },
-    {
-      "name": "Zineb El Bachiri",
-      "email": "zinebe@theodo.fr"
-    },
-    {
-      "name": "Adrien Cacciaguerra",
-      "email": "adrienc@theodo.fr"
-    },
-    {
-      "name": "Charles Géry",
-      "email": "charlesg@theodo.fr"
-    }
-  ],
+  "private": true,
+  "version": "1.0.0",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/sls-mentor/sls-mentor/issues"
-  },
-  "homepage": "https://github.com/sls-mentor/sls-mentor#readme",
-  "files": [
-    "dist/**/*",
-    "!dist/**/*.test.js"
-  ],
-  "dependencies": {
-    "@aws-sdk/client-apigatewayv2": "^3.231.0",
-    "@aws-sdk/client-backup": "^3.245.0",
-    "@aws-sdk/client-cloudformation": "^3.226.0",
-    "@aws-sdk/client-cloudfront": "^3.226.0",
-    "@aws-sdk/client-cloudwatch-logs": "^3.226.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.226.0",
-    "@aws-sdk/client-eventbridge": "^3.226.0",
-    "@aws-sdk/client-lambda": "^3.226.0",
-    "@aws-sdk/client-resource-groups-tagging-api": "^3.226.0",
-    "@aws-sdk/client-s3": "^3.226.0",
-    "@aws-sdk/client-sesv2": "^3.288.0",
-    "@aws-sdk/client-sqs": "^3.226.0",
-    "@aws-sdk/client-sts": "^3.226.0",
-    "@aws-sdk/middleware-retry": "^3.226.0",
-    "@aws-sdk/types": "^3.226.0",
-    "@aws-sdk/util-arn-parser": "3.208.0",
-    "@aws-sdk/util-middleware": "^3.226.0",
-    "chalk": "^4.1.2",
-    "cli-select": "^1.1.2",
-    "commander": "^9.2.0",
-    "lodash": "^4.17.21",
-    "object-hash": "^3.0.0",
-    "throttled-queue": "^2.1.4"
+  "scripts": {
+    "build": "nx run-many --target=build --all --parallel=4",
+    "create-rule": "ts-node ./scripts/createRule.ts && pnpm package",
+    "deploy": "nx run-many --target=deploy --all --parallel=4",
+    "deploy-affected": "nx affected --target=deploy",
+    "format-check": "prettier --check .",
+    "format-fix": "prettier --write .",
+    "generate-cdk-service": "nx generate @swarmion/nx-plugin:cdk-service",
+    "generate-library": "nx generate @swarmion/nx-plugin:library",
+    "generate-service": "nx generate @swarmion/nx-plugin:service",
+    "graph": "nx dep-graph",
+    "lint-fix": "eslint --ext=js,ts --fix",
+    "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
+    "package": "nx run-many --target=package --all --parallel=4",
+    "postinstall": "husky install && syncpack format",
+    "test": "nx run-many --targets=test-circular,test-linter,test-type,test-unit --all --parallel=4",
+    "test-affected": "pnpm run format-check && nx affected --targets=test-circular,test-linter,test-type,test-unit",
+    "test-circular": "nx run-many --target=test-circular --all --parallel=4",
+    "test-linter": "nx run-many --target=test-linter --all --parallel=4",
+    "test-type": "nx run-many --target=test-type --all --parallel=4",
+    "test-unit": "nx run-many --target=test-unit --all --parallel=4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.182",
-    "@types/node": "18.11.9",
-    "@types/object-hash": "^2.2.1",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
-    "danger": "^11.2.1",
-    "dependency-cruiser": "^12.3.0",
-    "eslint": "^8.15.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@swarmion/nx-plugin": "^0.29.0",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^5.51.0",
+    "@typescript-eslint/parser": "^5.51.0",
+    "aws-sdk": "^2.1272.0",
+    "danger": "^11.3.0",
+    "dependency-cruiser": "^13.0.0",
+    "eslint": "^8.29.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^26.2.2",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "eslint-plugin-prettier": "^4.0.0",
-    "fs": "0.0.1-security",
-    "prettier": "^2.6.2",
-    "ts-node": "^10.7.0",
-    "turbo": "^1.7.0",
-    "typescript": "^4.6.4"
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "npm-audit-resolver": "^3.0.0-7",
+    "nx": "16.1.0",
+    "prettier": "^2.8.1",
+    "syncpack": "^10.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
   },
-  "keywords": [
-    "aws",
-    "serverless",
-    "cloudformation",
-    "security",
-    "sustainability",
-    "audit",
-    "checks",
-    "CI"
-  ],
   "engines": {
-    "npm": "please-use-pnpm",
-    "yarn": "please-use-pnpm",
-    "node": ">=14.16"
+    "node": "^18.16.1"
   },
-  "packageManager": "pnpm@7.22.0"
+  "packageManager": "pnpm@8.6.0"
 }

@@ -1,5 +1,6 @@
-import { RuleResults, rules, Severity } from '@sls-mentor/core';
+import { allRules, Severity } from '@sls-mentor/rules';
 import { Recommendation } from '../types';
+import { PassingResourcesByRule } from '@sls-mentor/core';
 
 const severityToMultiplier: Record<Severity, number> = {
   low: 1,
@@ -18,11 +19,13 @@ const getRuleImportanceLevel = (
   return failingResources * multiplier * (easyToFix ? 1.5 : 1);
 };
 
-export const getRecommendations = (results: RuleResults): Recommendation[] => {
+export const getRecommendations = (
+  results: PassingResourcesByRule,
+): Recommendation[] => {
   const mappedResults = Object.entries(results).map(
-    ([ruleName, { passingResources, totalResources }]) => {
-      const failingResources = totalResources - passingResources;
-      const rule = rules.find(({ fileName }) => fileName === ruleName);
+    ([ruleName, { passingResourcesAmount, totalResourcesAmount }]) => {
+      const failingResources = totalResourcesAmount - passingResourcesAmount;
+      const rule = allRules.find(({ fileName }) => fileName === ruleName);
 
       if (rule === undefined) {
         throw new Error('Unexpected ruleName encountered');

@@ -2,9 +2,9 @@
   <h1>
     <br/>
     <br/>
-    <img src="apps/documentation/static/img/sls-mentor.svg" width="60px" alt="sls-mentor-logo" />
+    <img src="packages/documentation/static/img/sls-mentor.svg" width="60px" alt="sls-mentor-logo" />
     <br />
-    <img src="apps/documentation/static/img/title.png" width="600px" alt="sls-mentor" />
+    <img src="packages/documentation/static/img/title.png" width="600px" alt="sls-mentor" />
     <br />
   </h1>
   <sup>
@@ -134,11 +134,11 @@
     <img src="https://contrib.rocks/image?repo=sls-mentor/sls-mentor" />
   </a>
   <a href="https://github.com/aleios-cloud/sls-dev-tools/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=aleios-cloud/sls-dev-tools" />
+    <img src="https://contrib.rocks/image?repo=aleios-cloud/sls-dev-tools" style="width: calc(9/12*100%)"/>
   </a>
   <br/>
   <br/>
   <h4>Your contributions are very welcome, feel free to add new rules to sls-mentor !</h4>
   <br />
-  <br />
+  <h4>Built using <a href="https://www.swarmion.dev">Swarmion</a> - Check them out they are great!</h4>
 </div>

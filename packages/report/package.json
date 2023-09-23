@@ -1,16 +1,36 @@
 {
-  "name": "report",
+  "name": "@sls-mentor/report",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && mkdir -p ../cli/template && cp ./dist/index.html ../cli/template/index.html",
-    "preview": "vite preview"
+    "clean": "rimraf dist *.tsbuildinfo",
+    "dev": "pnpm clean dist && vite --config vite.config.ts",
+    "format-check": "prettier --check . ../../.prettierignore",
+    "format-fix": "prettier --write . ../../.prettierignore",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "vite build",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --config -- src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
-    "@sls-mentor/core": "0.0.1",
-    "clsx": "^1.2.1",
+    "@sls-mentor/core": "workspace:^",
+    "@sls-mentor/rules": "workspace:^",
+    "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -20,11 +40,19 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
-    "eslint": "^8.38.0",
+    "@vitest/coverage-c8": "0.30.0",
+    "concurrently": "^8.2.1",
+    "dependency-cruiser": "^13.1.5",
+    "eslint": "^8.49.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "json-schema-to-ts": "^2.9.2",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
-    "vite-plugin-singlefile": "^0.13.5"
+    "vite-plugin-singlefile": "^0.13.5",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "0.30.0"
   }
 }
