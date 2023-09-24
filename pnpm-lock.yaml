@@ -229,18 +229,6 @@ importers:
 
   packages/cli:
     dependencies:
-      '@sls-mentor/arn':
-        specifier: workspace:^
-        version: link:../arn
-      '@sls-mentor/core':
-        specifier: workspace:^
-        version: link:../core
-      '@sls-mentor/report':
-        specifier: workspace:^
-        version: link:../report
-      '@sls-mentor/rules':
-        specifier: workspace:^
-        version: link:../rules
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -254,6 +242,18 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
     devDependencies:
+      '@sls-mentor/arn':
+        specifier: workspace:^
+        version: link:../arn
+      '@sls-mentor/core':
+        specifier: workspace:^
+        version: link:../core
+      '@sls-mentor/report':
+        specifier: workspace:^
+        version: link:../report
+      '@sls-mentor/rules':
+        specifier: workspace:^
+        version: link:../rules
       '@types/cli-spinner':
         specifier: ^0.2.1
         version: 0.2.1
