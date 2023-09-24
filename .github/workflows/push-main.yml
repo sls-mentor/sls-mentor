@@ -66,8 +66,10 @@ jobs:
 
       - name: Copy env file
         run: cp .env.ci .env
-      - name: Deploy frontend to dev environment
+      - name: Deploy frontend to prod environment
         run: pnpm run bootstrap && pnpm run deploy
+        env:
+          STAGE: prod
 
   test-e2e:
     name: Test E2E 🧪
