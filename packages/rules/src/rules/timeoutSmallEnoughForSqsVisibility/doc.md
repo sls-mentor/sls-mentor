@@ -10,7 +10,7 @@ If the processing time of your Lambda is bigger than the visibility timeout of t
 
 Here is a schematic explanation with an SQS with default visibility timeout (30s) consumed by a Lambda with an average processing time of 40s.
 
-![visibility timeout](https://raw.githubusercontent.com/sls-mentor/sls-mentor/master/packages/core/src/rules/timeoutSmallEnoughForSqsVisibility/assets/visibility-timeout.gif 'visibility timeout explained')
+![visibility timeout](https://raw.githubusercontent.com/sls-mentor/sls-mentor/main/packages/core/src/rules/timeoutSmallEnoughForSqsVisibility/assets/visibility-timeout.gif 'visibility timeout explained')
 
 That's why the timeout of your Lambda should always be shorter than the visibility timeout of the queue. AWS recommends setting the source queue's visibility timeout to at least six times the timeout of your Lambda, in particular to leave time for retry.
 

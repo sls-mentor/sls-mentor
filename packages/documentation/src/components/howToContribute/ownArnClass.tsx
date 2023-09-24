@@ -9,7 +9,7 @@ export const OwnArnClassBlock = (): JSX.Element => (
       <ol>
         <li>
           Create a new ARN class extending CustomARN (copy{' '}
-          <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/core/src/types/arn/lambda/LambdaFunctionARN.ts">
+          <a href="https://github.com/sls-mentor/sls-mentor/blob/main/packages/core/src/types/arn/lambda/LambdaFunctionARN.ts">
             LambdaFunctionARN
           </a>{' '}
           for example)
@@ -21,7 +21,7 @@ export const OwnArnClassBlock = (): JSX.Element => (
         </li>
         <li>
           Add a case to the big switch case in{' '}
-          <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/cli/src/init/fetchCloudFormationResourceArns.ts">
+          <a href="https://github.com/sls-mentor/sls-mentor/blob/main/packages/cli/src/init/fetchCloudFormationResourceArns.ts">
             fetchCloudFormationResourceArns.
           </a>{' '}
           This will allow sls-mentor to turn resources from CloudFormation into
@@ -37,7 +37,7 @@ export const OwnArnClassBlock = (): JSX.Element => (
         <li>
           Create a folder <i>yourResource</i> with a{' '}
           <i>list&lt;YourResource&gt;.ts</i> file in the{' '}
-          <a href="https://github.com/sls-mentor/sls-mentor/tree/master/packages/cli/src/init/listResources">
+          <a href="https://github.com/sls-mentor/sls-mentor/tree/main/packages/cli/src/init/listResources">
             listResources
           </a>{' '}
           folder
@@ -49,7 +49,7 @@ export const OwnArnClassBlock = (): JSX.Element => (
         </li>
         <li>
           Invoke this function in the{' '}
-          <a href="https://github.com/sls-mentor/sls-mentor/blob/master/packages/cli/src/init/listResources/listAllResources.ts">
+          <a href="https://github.com/sls-mentor/sls-mentor/blob/main/packages/cli/src/init/listResources/listAllResources.ts">
             listAllResources
           </a>
         </li>

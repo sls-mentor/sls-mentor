@@ -41,7 +41,7 @@ jobs:
   deploy-front-dev:
     name: Deploy Front on dev environment 🖥
     runs-on: ubuntu-latest
-    #needs: tests
+    needs: tests
     defaults:
       run:
         shell: bash
@@ -74,7 +74,7 @@ jobs:
   test-e2e:
     name: Test E2E 🧪
     runs-on: ubuntu-latest
-    #needs: tests
+    needs: tests
     defaults:
       run:
         shell: bash
