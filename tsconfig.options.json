@@ -1,9 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "incremental": true,
+    "noEmitOnError": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "strict": true
+    "isolatedModules": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "esnext",
+    "types": ["node", "vitest/globals"],
+    "lib": ["ES2022"],
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true
   },
   "ts-node": {
     "compilerOptions": {

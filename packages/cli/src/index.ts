@@ -1,10 +1,8 @@
-#!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
-import { runSlsMentor } from './slsMentor';
+import { runSlsMentorCli } from 'runSlsMentorCli';
+
 import { Options, Tag } from './types';
-export * from './slsMentor';
-export * from './types';
 
 const hasKeyAndValue = (
   groups: Record<string, string> | undefined,
@@ -17,11 +15,14 @@ const parseTags = (
   tagOption: string,
   previousTags: Tag[] | undefined,
 ): Tag[] => {
-  const [{ groups: tag }] = [
+  const matches = [
     ...tagOption.matchAll(
       /^Key=(?<key>[\p{L}\p{Z}\p{N}_.:/=+\-@]*),Value=(?<value>[\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/gu,
     ),
   ];
+
+  const tag = matches[0]?.groups;
+
   if (!hasKeyAndValue(tag)) {
     throw new InvalidArgumentError('Invalid flag parameters');
   }
@@ -31,17 +32,6 @@ const parseTags = (
   }
 
   return [...previousTags, tag];
-};
-
-const handleSlsMentorChecksCommand = async (
-  options: Options,
-): Promise<void> => {
-  const { success } = await runSlsMentor(options);
-  if (success) {
-    process.exit(0);
-  }
-
-  process.exit(1);
 };
 
 const setAwsProfile = (command: Command): void => {
@@ -89,7 +79,8 @@ program
     false,
   )
   .option('-R, --report', 'generate an html report', false)
-  .action(handleSlsMentorChecksCommand)
+  .option('-d, --debug', 'enable debug mode', false)
+  .action(runSlsMentorCli)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)
   .parse();

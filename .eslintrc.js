@@ -1,11 +1,16 @@
+/* eslint-disable max-lines */
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'plugin:import/recommended',
-    'plugin:prettier/recommended',
+  extends: ['eslint:recommended', 'plugin:import/recommended'],
+  ignorePatterns: [
+    '**/node_modules/',
+    '**/nx-cache/',
+    '**/dist/',
+    '**/cdk.out/',
+    '**/coverage/',
+    '**/build/',
+    '**/public/',
   ],
   rules: {
-    'prettier/prettier': 'error',
     'import/extensions': 0,
     'import/no-unresolved': 0,
     'import/prefer-default-export': 0,
@@ -31,13 +36,21 @@ module.exports = {
     ],
     'prefer-const': 'error',
     'import/order': [
-      'error',
+      'warn',
       {
+        pathGroups: [{ pattern: '@sls-mentor/**', group: 'unknown' }],
         groups: [
           ['external', 'builtin'],
+          'unknown',
           'internal',
           ['parent', 'sibling', 'index'],
         ],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: false,
+        },
+        'newlines-between': 'always',
+        pathGroupsExcludedImportTypes: ['builtin'],
       },
     ],
     'sort-imports': [
@@ -70,7 +83,7 @@ module.exports = {
       {
         patterns: [
           {
-            group: ['@swarmion-starter/*/*'],
+            group: ['@sls-mentor/*/*'],
             message:
               'import of internal modules must be done at the root level.',
           },
@@ -97,7 +110,6 @@ module.exports = {
   env: {
     es6: true,
     node: true,
-    jest: true,
     browser: true,
   },
   plugins: ['prefer-arrow', 'import'],
@@ -111,17 +123,11 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:@typescript-eslint/recommended-requiring-type-checking',
-        'plugin:prettier/recommended',
       ],
       parser: '@typescript-eslint/parser',
       parserOptions: {
-        project: [
-          './tsconfig.json',
-          './packages/*/tsconfig.json',
-          './apps/*/tsconfig.json',
-        ],
+        project: 'tsconfig.json',
       },
-      settings: { 'import/resolver': { typescript: {} } },
       rules: {
         '@typescript-eslint/prefer-optional-chain': 'error',
         'no-shadow': 'off',
@@ -177,6 +183,20 @@ module.exports = {
           {
             allowNumber: true,
             allowBoolean: true,
+          },
+        ],
+      },
+    },
+    {
+      files: ['**/src/**'],
+      excludedFiles: ['**/__tests__/**', '**/*.test.ts?(x)'],
+      rules: {
+        'import/no-extraneous-dependencies': [
+          'error',
+          {
+            devDependencies: false,
+            optionalDependencies: false,
+            peerDependencies: true,
           },
         ],
       },

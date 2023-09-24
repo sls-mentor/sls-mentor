@@ -1,74 +1,100 @@
 {
   "name": "sls-mentor",
   "description": "Audit tool for AWS serverless architectures",
+  "author": "Serverless By Theodo",
+  "license": "ISC",
+  "homepage": "https://sls-mentor.dev",
+  "bugs": "https://github.com/sls-mentor/sls-mentor/issues",
+  "repository": "sls-mentor/sls-mentor.git",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist *.tsbuildinfo",
+    "dev": "STAGE=dev ts-node --transpileOnly src/index.ts",
+    "format-check": "prettier --check . ../../.prettierignore",
+    "format-fix": "prettier --write . ../../.prettierignore",
+    "import-report": "mkdir -p ./dist/template && cp ../report/dist/index.html ./dist/template/index.html",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases && pnpm import-report",
+    "package-transpile": "tsup",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --config -- src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
+  },
   "bin": {
     "sls-mentor": "./dist/index.js"
   },
-  "scripts": {
-    "dev": "STAGE=dev pnpm exec ts-node --transpileOnly ./src/index.ts",
-    "build": "tsup src/index.ts && mkdir -p ./dist/template && cp ./template/index.html ./dist/template/index.html",
-    "lint": "eslint src --ext .ts",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sls-mentor/sls-mentor.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sls-mentor/sls-mentor/issues"
-  },
-  "files": [
-    "dist/**/*",
-    "!dist/**/*.test.js"
-  ],
-  "homepage": "https://github.com/sls-mentor/sls-mentor#readme",
   "dependencies": {
-    "@aws-sdk/client-api-gateway": "^3.363.0",
-    "@aws-sdk/client-apigatewayv2": "^3.231.0",
-    "@aws-sdk/client-backup": "^3.245.0",
-    "@aws-sdk/client-cloudformation": "^3.226.0",
-    "@aws-sdk/client-cloudfront": "^3.226.0",
-    "@aws-sdk/client-cloudwatch-logs": "^3.226.0",
-    "@aws-sdk/client-cognito-identity-provider": "^3.226.0",
-    "@aws-sdk/client-dynamodb": "^3.398.0",
-    "@aws-sdk/client-eventbridge": "^3.226.0",
-    "@aws-sdk/client-lambda": "^3.226.0",
-    "@aws-sdk/client-rds": "^3.237.0",
-    "@aws-sdk/client-resource-groups-tagging-api": "^3.226.0",
-    "@aws-sdk/client-s3": "^3.226.0",
-    "@aws-sdk/client-sesv2": "^3.272.0",
-    "@aws-sdk/client-sns": "^3.272.0",
-    "@aws-sdk/client-sqs": "^3.226.0",
-    "@aws-sdk/client-sts": "^3.226.0",
-    "@aws-sdk/middleware-retry": "^3.226.0",
-    "@aws-sdk/types": "^3.226.0",
-    "@aws-sdk/util-arn-parser": "3.208.0",
-    "@aws-sdk/util-middleware": "^3.226.0",
+    "@sls-mentor/arn": "workspace:^",
+    "@sls-mentor/core": "workspace:^",
+    "@sls-mentor/report": "workspace:^",
+    "@sls-mentor/rules": "workspace:^",
     "chalk": "^4.1.2",
     "cli-select": "^1.1.2",
     "cli-spinner": "^0.2.10",
-    "commander": "^9.2.0",
-    "lodash": "^4.17.21",
-    "object-hash": "^3.0.0",
-    "throttled-queue": "^2.1.4"
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/cli-spinner": "^0.2.1",
+    "@types/node": "^20.6.0",
+    "@vitest/coverage-c8": "0.30.0",
+    "concurrently": "^8.2.1",
+    "dependency-cruiser": "^13.1.5",
+    "eslint": "^8.49.0",
+    "json-schema-to-ts": "^2.9.2",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "tsc-alias": "^1.8.7",
+    "tsup": "^7.2.0",
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "0.30.0"
   },
   "keywords": [
+    "CI",
+    "audit",
     "aws",
-    "serverless",
+    "checks",
     "cloudformation",
     "security",
-    "sustainability",
-    "audit",
-    "checks",
-    "CI"
+    "serverless",
+    "sustainability"
   ],
-  "main": "src/index.ts",
-  "types": "src/index.ts",
-  "devDependencies": {
-    "@sls-mentor/core": "0.0.1",
-    "@types/cli-spinner": "^0.2.1",
-    "tsup": "^6.5.0"
-  }
+  "maintainers": [
+    {
+      "name": "Pierre Chollet",
+      "email": "pierrech@theodo.fr"
+    },
+    {
+      "name": "Juliette Fournier",
+      "email": "juliettef@theodo.fr"
+    },
+    {
+      "name": "Vincent Zanetta",
+      "email": "vincentz@theodo.fr"
+    },
+    {
+      "name": "Matthieu Jacq",
+      "email": "matthieuj@theodo.fr"
+    },
+    {
+      "name": "James Kyburz",
+      "email": "james.kyburz@gmail.com"
+    },
+    {
+      "name": "Serverless by Theodo",
+      "email": "kumojins@theodo.fr"
+    }
+  ]
 }

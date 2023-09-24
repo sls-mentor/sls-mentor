@@ -1,4 +1,4 @@
-import { Severity } from '@sls-mentor/core';
+import { Severity } from '@sls-mentor/rules';
 
 export type Tag = Severity | 'quick-fix';
 

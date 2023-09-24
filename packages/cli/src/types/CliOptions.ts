@@ -15,4 +15,5 @@ export type Options = {
   report: boolean;
   getJsonResults?: boolean;
   level?: string;
+  debug: boolean;
 };

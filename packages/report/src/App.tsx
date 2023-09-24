@@ -1,12 +1,22 @@
-import { SlsMentorResults } from '@sls-mentor/core';
 import { Report } from './report';
-//import results from './mockResults.json';
+import { mockResults } from './mockResults';
 
 import './global.css';
+import {
+  PassingResourcesByCategory,
+  PassingResourcesByRule,
+} from '@sls-mentor/core';
 
-const results = JSON.parse('<<SLS-RESULTS-PLACEHOLDER>>') as unknown;
+const isProd = import.meta.env.PROD;
+
+const loadResults = () => {
+  return JSON.parse('<<SLS-RESULTS-PLACEHOLDER>>') as {
+    passingResourcesByRule: PassingResourcesByRule;
+    passingResourcesByCategory: PassingResourcesByCategory;
+  };
+};
 
 const App = (): JSX.Element => (
-  <Report slsMentorResults={results as SlsMentorResults} />
+  <Report slsMentorResults={isProd ? loadResults() : mockResults} />
 );
 export default App;

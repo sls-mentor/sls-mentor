@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es6",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": "src"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "Node16",
+      "moduleResolution": "Node16"
+    },
+    "transpileOnly": true
+  },
+  "exclude": ["babel.config.js", "docusaurus.config.js", "docs/*", "blog/*"]
+}

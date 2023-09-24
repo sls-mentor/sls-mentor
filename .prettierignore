@@ -1,0 +1,23 @@
+*.hbs
+.next
+pnpm-lock.yaml
+**/.serverless
+**/stack.json
+.gitlab-ci.yml
+.npm
+.webpack
+.esbuild
+**/coverage
+**/dist
+**/build
+**/public
+**/nx-cache
+**/cdk.out
+nx-cache
+
+# Ignore documentation and report build files
+**/*.js
+**/*.md
+**/*.html
+**/.docusaurus
+**/sidebars.json

@@ -7,14 +7,16 @@ on:
 
 env:
   CI: true
-  NODE_VERSION: 16
+  NODE_VERSION: 18
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./packages/cli
 
 jobs:
   release:
     name: Release to NPM
-    defaults:
-      run:
-        working-directory: ./packages/cli
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,18 +29,14 @@ jobs:
       # Store the name of the release
       # See https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions
 
+      - name: Package repository
+        run: pnpm -w package
+
       - name: Copy paste root README to @sls-mentor/sls-mentor
         run: cp ../../README.md ./README.md
 
-      - name: Builds Vite report
-        run: cd ../report && pnpm run build && cd ../cli
-
-      - name: pnpm run build
-        run: pnpm run build
-
       - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
-      - run: pnpm version $RELEASE_VERSION --no-git-tag-version
-      - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc && pnpm publish --access public --no-git-checks && rm .npmrc
+      - run: pnpm version $RELEASE_VERSION --no-git-tag-version && echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc && pnpm publish --access public --no-git-checks && rm .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
-import { Category, categoryNames } from '@sls-mentor/core';
+import { Category, categoryNames } from '@sls-mentor/rules';
 import clsx from 'clsx';
 import styles from './bars.module.css';
 import { useAnimatedAmount, useReportContext } from '../hooks';
-import { getColorClassName, getResultsByCategory } from '../helpers';
+import { getColorClassName } from '../helpers';
+import { getPercentageFromPassingResources } from '@sls-mentor/core';
 
 const Bar = ({
   percentage,
@@ -33,27 +33,21 @@ const Bar = ({
 };
 
 export const Bars = (): JSX.Element => {
-  const { results } = useReportContext();
-  const resultsByCategory = useMemo(
-    () => getResultsByCategory(results),
-    [results],
-  );
+  const { passingResourcesByCategory } = useReportContext();
 
   return (
     <div className={styles.barsContainer}>
-      {Object.entries(resultsByCategory).map(
-        ([category, { passingResources, totalResources }]) => {
-          const percentage =
-            totalResources > 0 ? (100 * passingResources) / totalResources : 0;
-
-          return (
-            <Bar
-              percentage={percentage}
-              category={category as Category}
-              key={category}
-            />
-          );
-        },
+      {Object.entries(passingResourcesByCategory).map(
+        ([category, { passingResourcesAmount, totalResourcesAmount }]) => (
+          <Bar
+            percentage={getPercentageFromPassingResources({
+              passingResourcesAmount,
+              totalResourcesAmount,
+            })}
+            category={category as Category}
+            key={category}
+          />
+        ),
       )}
     </div>
   );

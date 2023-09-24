@@ -4,7 +4,7 @@ export default (
     xmlns:bx="https://boxy-svg.com"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     style={{
-      // @ts-ignore svg broken type
+      // @ts-expect-error broken svg type
       enableBackground: 'new 0 0 352.644 352.644',
       height: '4em',
     }}
@@ -21,7 +21,7 @@ export default (
         gradientTransform="matrix(-.6583 -.1069 .12087 -.74443 311.907 345.916)"
         gradientUnits="userSpaceOnUse"
       />
-      {/* @ts-ignore svg broken type */}
+      {/* @ts-expect-error broken svg type */}
       <linearGradient bx:pinned="true" id="a" spreadMethod="pad">
         <title>{'Test'}</title>
         <stop
@@ -47,7 +47,7 @@ export default (
         gradientTransform="matrix(.56184 -.3121 .48404 .87139 50.166 126.365)"
         gradientUnits="userSpaceOnUse"
       />
-      {/* @ts-ignore svg broken type */}
+      {/* @ts-expect-error broken svg type*/}
       <linearGradient bx:pinned="true" id="b">
         <stop
           offset={0}

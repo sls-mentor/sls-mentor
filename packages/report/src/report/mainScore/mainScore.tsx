@@ -4,21 +4,16 @@ import { getColorClassName } from '../helpers';
 import { useAnimatedAmount, useReportContext } from '../hooks';
 
 import styles from './mainScore.module.css';
+import { getOverallPercentage } from '@sls-mentor/core';
 
 export const MainScore = (): JSX.Element => {
-  const { results } = useReportContext();
+  const { passingResourcesByRule } = useReportContext();
 
-  const percentage = useMemo(() => {
-    const { passing, total } = Object.values(results).reduce(
-      (acc, { passingResources, totalResources }) => ({
-        passing: acc.passing + passingResources,
-        total: acc.total + totalResources,
-      }),
-      { passing: 0, total: 0 },
-    );
+  const percentage = useMemo(
+    () => getOverallPercentage(passingResourcesByRule),
 
-    return (100 * passing) / total;
-  }, [results]);
+    [passingResourcesByRule],
+  );
 
   const livePercentage = useAnimatedAmount(percentage);
 

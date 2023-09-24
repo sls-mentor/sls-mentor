@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "emitDeclarationOnly": false,
+    "noEmit": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext"
+    },
+    "transpileOnly": true
+  },
+  "references": [],
+  "exclude": ["./cdk.out"],
+  "include": ["./**/*.ts"]
+}

@@ -2,10 +2,32 @@
   "extends": "./tsconfig.options.json",
   "files": [],
   "references": [
-    { "path": "./packages/cli" },
-    { "path": "./packages/core" },
-    { "path": "./apps/documentation" },
-    { "path": "./apps/cloudfront" },
-    { "path": "./apps/tests" }
+    {
+      "path": "./packages/cli/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/core/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/arn/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/aws-api/tsconfig.build.json"
+    },
+    {
+      "path": "./services/tests/tsconfig.json"
+    },
+    {
+      "path": "./services/documentation-cloudfront/tsconfig.json"
+    },
+    {
+      "path": "./packages/rules/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/documentation/tsconfig.build.json"
+    },
+    {
+      "path": "./packages/report/tsconfig.build.json"
+    }
   ]
 }

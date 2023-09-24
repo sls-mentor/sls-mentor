@@ -1,20 +1,33 @@
-import { SlsMentorLevel } from '../constants';
-import { Severity } from './Rule';
+import { Category, RuleName, Service, SlsMentorLevel } from '@sls-mentor/rules';
 
-export type RuleResults = Record<
-  string,
-  { passingResources: number; totalResources: number }
+export type PassingResources = {
+  passingResourcesAmount: number;
+  totalResourcesAmount: number;
+  passingResources: { arn: string; ruleName: RuleName }[];
+  totalResources: { arn: string; ruleName: RuleName }[];
+};
+
+export type PassingRules = {
+  passingRulesAmount: number;
+  totalRulesAmount: number;
+  passingRules: RuleName[];
+  totalRules: RuleName[];
+};
+
+export type PassingResourcesByRule = Partial<
+  Record<RuleName, PassingResources>
+>;
+export type PassingResourcesByService = Partial<
+  Record<Service, PassingResources>
+>;
+export type PassingResourcesByCategory = Partial<
+  Record<Category, PassingResources>
+>;
+export type PassingResourcesByLevel = Partial<
+  Record<SlsMentorLevel, PassingResources>
 >;
 
-export type Tag = Severity | 'quick-fix';
-
-export type Recommendation = {
-  ruleName: string;
-  service: string;
-  tags: Tag[];
-};
-
-export type SlsMentorResults = {
-  results: RuleResults;
-  level: SlsMentorLevel;
-};
+export type PassingRulesByResource = Partial<Record<string, PassingRules>>;
+export type PassingRulesByService = Partial<Record<Service, PassingRules>>;
+export type PassingRulesByCategory = Partial<Record<Category, PassingRules>>;
+export type PassingRulesByLevel = Partial<Record<SlsMentorLevel, PassingRules>>;

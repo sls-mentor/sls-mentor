@@ -1,4 +1,4 @@
-import { Service } from '@sls-mentor/core';
+import { Service } from '@sls-mentor/rules';
 import ApiGatewaySvg from './ApiGatewaySvg';
 import BackupSvg from './BackupSvg';
 import CloudFrontSvg from './CloudFrontSvg';
