@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 
 import { runSlsMentorCli } from 'runSlsMentorCli';
