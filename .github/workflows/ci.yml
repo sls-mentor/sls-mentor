@@ -25,6 +25,6 @@ jobs:
           # We need to fetch all branches and commits so that Nx affected has a base to compare against.
           fetch-depth: 0
       - name: Sls mentor
-        uses: sls-mentor/sls-mentor-github-action@intial-action
+        uses: sls-mentor/sls-mentor-github-action@v0.2
         with:
           iam-role: arn:aws:iam::463151931555:role/github-action-role
