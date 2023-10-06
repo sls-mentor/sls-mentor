@@ -13,4 +13,4 @@ In your AWS console go to SES service, then to Configuration Sets tab and select
 ## Useful links
 
 - [AWS Documentation](https://docs.aws.amazon.com/ses/latest/dg/sending-email-suppression-list-config-level.html)
-- https://dev.to/kumo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 1)
+- https://dev.to/slsbytheodo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 1)

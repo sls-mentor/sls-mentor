@@ -7,9 +7,7 @@ export const SponsoredByTheodo = (): JSX.Element => (
   <div className={styles.container}>
     <div
       className={styles.link}
-      onClick={() =>
-        (window.location.href = 'https://twitter.com/kumoserverless')
-      }
+      onClick={() => (window.location.href = 'https://twitter.com/slsByTheodo')}
     >
       <p className={styles.text}>Sponsored by</p>
       <img
