@@ -18,3 +18,4 @@ export * from './useArm';
 export * from './useIntelligentTiering';
 export * from './encryptedSnsTopics';
 export * from './noIAMRolePolicyWithWildcardResource';
+export * from './encryptedSqsQueues';

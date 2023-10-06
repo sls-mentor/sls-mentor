@@ -43,6 +43,7 @@ The rule name should be one of the following list:
   | Enable the Deletion protection on DynamoDB tables | enableDeletionProtectionOnDynamoDBTables |
   | SES : Reputation Metrics Enabled on Configuration Set | enableReputationMetrics |
   | SNS: Topics should be encrypted | encryptedSnsTopics |
+  | SQS: Queues should be encrypted | encryptedSqsQueues |
   | Lambda: Light Bundle | lightBundle |
   | Lambda: Limited Amount of Versions | limitedAmountOfVersions |
   | Lambda: No Deprecated Runtime | noDeprecatedRuntime |
