@@ -14,7 +14,7 @@ export const SponsoredByTheodo = (): JSX.Element => (
       <p className={styles.text}>Sponsored by</p>
       <img
         className={styles.logo}
-        src={useBaseUrl('/img/kumo.svg')}
+        src={useBaseUrl('/img/theodo.svg')}
         alt="Theodo"
       />
     </div>
