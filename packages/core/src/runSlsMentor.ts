@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 import { CustomARN } from '@sls-mentor/arn';
 import { fetchAccountIdAndRegion, listAllResources } from '@sls-mentor/aws-api';
-import { Configuration, SlsMentorLevel } from '@sls-mentor/rules';
+import { Configuration, SlsMentorLevel, Stage } from '@sls-mentor/rules';
 
 import { runChecks, RunChecksHooks } from './checks';
 import { ChecksResults } from './types';
@@ -22,6 +22,7 @@ export type RunSlsMentorHooks = RunChecksHooks & {
 export const runSlsMentor = async ({
   configuration,
   level,
+  stage,
   cloudformationStacks,
   tags,
   profile,
@@ -31,6 +32,7 @@ export const runSlsMentor = async ({
 }: {
   configuration: Configuration;
   level: SlsMentorLevel;
+  stage?: Stage;
   cloudformationStacks?: string[];
   tags?: { key: string; value: string }[];
   profile?: string;
@@ -124,6 +126,7 @@ export const runSlsMentor = async ({
       ...(await runChecks({
         resourcesToCheck: allResourcesArns,
         level,
+        stage,
         rulesConfigurations: configuration.rules,
         hooks: {
           beforeAllRules: hooks.beforeAllRules,

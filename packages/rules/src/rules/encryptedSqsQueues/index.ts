@@ -1,6 +1,6 @@
 import { fetchAllQueuesAttributes } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isSseEnabled = (attributes?: Record<string, unknown>) => {
   if (attributes === undefined) {
@@ -32,4 +32,5 @@ export const encryptedSqsQueues: Rule = {
   service: 'SQS',
   easyToFix: true,
   severity: 'low',
+  stages: [Stage.prod, Stage.dev],
 };

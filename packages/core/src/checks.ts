@@ -4,6 +4,7 @@ import {
   Rule,
   RuleConfiguration,
   SlsMentorLevel,
+  Stage,
 } from '@sls-mentor/rules';
 
 import { ChecksResults } from './types';
@@ -18,20 +19,25 @@ export type RunChecksHooks = {
 export const runChecks = async ({
   resourcesToCheck,
   level,
+  stage,
   rulesConfigurations,
   hooks = {},
 }: {
   resourcesToCheck: CustomARN[];
   level: SlsMentorLevel;
+  stage?: Stage;
   rulesConfigurations?: Record<string, RuleConfiguration>;
   hooks?: RunChecksHooks;
 }): Promise<ChecksResults> => {
   const rulesToRunAccordingToLevel = allRules.filter(
     rule => rule.level <= level,
   );
+  const rulesToRunAccordingToLevelAndStage = rulesToRunAccordingToLevel.filter(
+    rule => stage === undefined || rule.stages.includes(stage),
+  );
 
   if (hooks.beforeAllRules) {
-    hooks.beforeAllRules(rulesToRunAccordingToLevel);
+    hooks.beforeAllRules(rulesToRunAccordingToLevelAndStage);
   }
 
   const results = await Promise.all(
