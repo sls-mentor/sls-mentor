@@ -12,5 +12,6 @@ export const SERVICES = [
   'Backup',
   'ApiGateway',
   'SES',
+  'IAM',
 ] as const;
 export type Service = (typeof SERVICES)[number];

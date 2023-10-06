@@ -127,6 +127,11 @@
                 "rules/dynamodbBackupConfig",
                 "rules/enableDeletionProtectionOnDynamoDBTables"
               ]
+            },
+            {
+              "type": "category",
+              "label": "IAM",
+              "items": ["rules/noIAMRolePolicyWithWildcardResource"]
             }
           ]
         },
@@ -200,6 +205,7 @@
                 "rules/enableBlockPublicAccess",
                 "rules/encryptedSnsTopics",
                 "rules/noDeprecatedRuntime",
+                "rules/noIAMRolePolicyWithWildcardResource",
                 "rules/noSharedIamRoles",
                 "rules/noUnauthorizedApiGatewaysV2Routes",
                 "rules/noUnauthorizedRestApiGatewaysRoutes",
@@ -232,6 +238,7 @@
                 "rules/cloudFrontSSLCertificate",
                 "rules/customMailFromDomain",
                 "rules/limitedAmountOfVersions",
+                "rules/noIAMRolePolicyWithWildcardResource",
                 "rules/s3OnlyAllowHTTPS",
                 "rules/underMaxMemory",
                 "rules/useIntelligentTiering"

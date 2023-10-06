@@ -11,7 +11,7 @@ import { iamClient } from '../../clients';
 
 const fetchIamRolePoliciesByArn = async (
   arn: IamRoleARN,
-): Promise<Policy[] | undefined> => {
+): Promise<{ policy: Policy; policyName: string }[] | undefined> => {
   try {
     const RoleName = arn.getRoleName();
     const iamRolePolicyNames: string[] = [];
@@ -33,7 +33,7 @@ const fetchIamRolePoliciesByArn = async (
           ),
         ) as Policy;
 
-        return policy;
+        return { policy, policyName: PolicyName };
       }),
     );
   } catch (e) {
@@ -43,7 +43,9 @@ const fetchIamRolePoliciesByArn = async (
 
 export const fetchAllIamRolePolicies = async (
   resourceArns: CustomARN[],
-): Promise<{ arn: IamRoleARN; policies?: Policy[] }[]> => {
+): Promise<
+  { arn: IamRoleARN; policies?: { policy: Policy; policyName: string }[] }[]
+> => {
   const iamRoles = CustomARN.filterArns(resourceArns, IamRoleARN);
 
   return Promise.all(
