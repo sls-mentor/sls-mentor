@@ -17,12 +17,12 @@
 }
 
 .link:hover .logo {
-  filter: drop-shadow(1px 1px 1px var(--shadow-high-contrast));
+  filter: drop-shadow(1px 1px 1px var(--shadow-low-contrast));
 }
 
 .text {
   margin: 0;
-  color: var(--ifm-color-primary);
+  color: var(--grey);
 }
 
 .logo {
