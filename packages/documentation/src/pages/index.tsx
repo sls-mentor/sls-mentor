@@ -6,7 +6,7 @@ import {
   Buttons,
   Card,
   Contributors,
-  SponsoredByKumo,
+  SponsoredByTheodo,
   Title,
 } from '../components';
 import styles from './index.module.css';
@@ -54,7 +54,7 @@ const Home = (): JSX.Element => (
       <section>
         <Contributors />
       </section>
-      <SponsoredByKumo />
+      <SponsoredByTheodo />
     </main>
   </Layout>
 );

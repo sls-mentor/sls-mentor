@@ -1,9 +1,9 @@
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import React from 'react';
 
-import styles from './sponsoredByKumo.module.css';
+import styles from './sponsoredByTheodo.module.css';
 
-export const SponsoredByKumo = (): JSX.Element => (
+export const SponsoredByTheodo = (): JSX.Element => (
   <div className={styles.container}>
     <div
       className={styles.link}
@@ -15,7 +15,7 @@ export const SponsoredByKumo = (): JSX.Element => (
       <img
         className={styles.logo}
         src={useBaseUrl('/img/kumo.svg')}
-        alt="logo-kumo"
+        alt="Theodo"
       />
     </div>
   </div>
