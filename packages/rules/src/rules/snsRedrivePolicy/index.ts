@@ -1,6 +1,6 @@
 import { fetchAllSubscriptions } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const checkSubscriptionRedrivePolicy = (
   attributes: Record<string, string | undefined> | undefined,
@@ -28,6 +28,7 @@ export const snsRedrivePolicy: Rule = {
   fileName: 'snsRedrivePolicy',
   categories: ['Stability'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'SNS',
   easyToFix: false,
   severity: 'medium',

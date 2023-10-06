@@ -1,6 +1,6 @@
 import { fetchAllSESIdentities } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isCustomMailFromDomain = (
   mailFromAttributes: Awaited<
@@ -31,6 +31,7 @@ export const customMailFromDomain: Rule = {
   fileName: 'customMailFromDomain',
   categories: ['Stability'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'SES',
   easyToFix: true,
   severity: 'medium',

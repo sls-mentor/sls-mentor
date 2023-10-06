@@ -1,11 +1,10 @@
 import { fetchAllRdsInstancesDescriptions } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
-  const rdsInstancesDescriptions = await fetchAllRdsInstancesDescriptions(
-    resourceArns,
-  );
+  const rdsInstancesDescriptions =
+    await fetchAllRdsInstancesDescriptions(resourceArns);
   const filteredRdsInstancesDescriptions = rdsInstancesDescriptions.filter(
     instance =>
       instance.description?.Engine !== 'aurora-mysql' &&
@@ -35,6 +34,7 @@ export const autoscaleRdsInstanceEnabled: Rule = {
   fileName: 'autoscaleRdsInstanceEnabled',
   categories: ['Stability'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'RDS',
   easyToFix: true,
   severity: 'medium',

@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const AWS_MAXIMUM_TIMEOUT = 900;
 
@@ -31,6 +31,7 @@ export const noMaxTimeout: Rule = {
   fileName: 'noMaxTimeout',
   categories: ['GreenIT', 'ITCosts', 'Stability'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: true,
   severity: 'high',

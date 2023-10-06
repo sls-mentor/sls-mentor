@@ -1,6 +1,6 @@
 import { fetchAllUserPoolConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from '../../types';
+import { Rule, Stage } from '../../types';
 
 const enforcesLongPasswords = (
   userPool: Awaited<
@@ -32,6 +32,7 @@ export const cognitoEnforceLongPasswords: Rule = {
   fileName: 'cognitoEnforceLongPasswords',
   categories: ['Security'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'Cognito',
   easyToFix: true,
   severity: 'high',

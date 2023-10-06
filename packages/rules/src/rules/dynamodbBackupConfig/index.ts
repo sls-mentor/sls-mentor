@@ -1,7 +1,7 @@
 import { CustomARN, DynamoDBTableARN } from '@sls-mentor/arn';
 import { fetchBackupProtectedResourceArns } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const resourceArnsProtectedByBackup =
@@ -29,6 +29,7 @@ export const dynamodbBackupConfig: Rule = {
   fileName: 'dynamodbBackupConfig',
   categories: ['Stability'],
   level: 3,
+  stages: [Stage.prod],
   service: 'DynamoDB',
   easyToFix: true,
   severity: 'medium',

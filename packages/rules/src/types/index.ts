@@ -4,3 +4,4 @@ export * from './rule';
 export * from './ruleConfiguration';
 export * from './service';
 export * from './slsMentorLevel';
+export * from './slsMentorStage';

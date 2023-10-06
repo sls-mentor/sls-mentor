@@ -1,6 +1,6 @@
 import { fetchAllLambdaVersions } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const MAX_AMOUNT_OF_VERSIONS = 3 + 1; // +$latest
 
@@ -24,6 +24,7 @@ export const limitedAmountOfVersions: Rule = {
   fileName: 'limitedAmountOfVersions',
   categories: ['GreenIT', 'Stability'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: true,
   severity: 'medium',

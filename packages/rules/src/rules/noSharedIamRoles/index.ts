@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isLambdaRoleShared = (
   lambdaConfiguration: Awaited<
@@ -34,6 +34,7 @@ export const noSharedIamRoles: Rule = {
   fileName: 'noSharedIamRoles',
   categories: ['Security', 'Stability'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: false,
   severity: 'critical',

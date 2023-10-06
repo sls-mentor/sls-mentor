@@ -1,6 +1,6 @@
 import { fetchAllSESIdentities } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const configSetIsAssigned = (
   configurationSetName: string | undefined,
@@ -30,6 +30,7 @@ export const assignDefaultConfigurationSet: Rule = {
   fileName: 'assignDefaultConfigurationSet',
   categories: ['Stability'],
   level: 1, // Set level related to rule
+  stages: [Stage.prod, Stage.dev],
   service: 'SES',
   easyToFix: false,
   severity: 'medium',

@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const DEPRECATED_RUNTIMES = [
   'python3.6',
@@ -44,6 +44,7 @@ export const noDeprecatedRuntime: Rule = {
   fileName: 'noDeprecatedRuntime',
   categories: ['Stability', 'Security'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: false,
   severity: 'high',

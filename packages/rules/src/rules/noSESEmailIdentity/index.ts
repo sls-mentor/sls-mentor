@@ -1,6 +1,6 @@
 import { fetchAllSESIdentities, isSandboxAccount } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isDomainIdentity = (
   identityType: Awaited<
@@ -36,6 +36,7 @@ export const rule: Rule = {
   run,
   fileName: 'noSESEmailIdentity',
   level: 1,
+  stages: [Stage.prod, Stage.dev],
   categories: ['Stability'],
   service: 'SES',
 } as Rule;

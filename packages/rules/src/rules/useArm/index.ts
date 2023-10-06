@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const ARM_ARCHITECTURE = 'arm64';
 
@@ -30,6 +30,7 @@ export const useArm: Rule = {
   fileName: 'useArm',
   categories: ['GreenIT', 'ITCosts', 'Speed'],
   level: 1,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: true,
   severity: 'critical',

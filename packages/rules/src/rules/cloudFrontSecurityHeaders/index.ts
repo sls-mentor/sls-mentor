@@ -5,7 +5,7 @@ import {
   getResponseHeadersPolicyIdsByDistribution,
 } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 enum SecurityHeader {
   StrictTransportSecurity = 'Strict-Transport-Security',
@@ -94,9 +94,8 @@ const run: Rule['run'] = async resourceArns => {
     policy?: ResponseHeadersPolicy;
   }[] = await Promise.all(
     distributionIdPolicyIdCouples.map(async ({ distributionId, policyId }) => {
-      const policy = await fetchResponseHeadersPolicyByResponseHeadersPolicyId(
-        policyId,
-      );
+      const policy =
+        await fetchResponseHeadersPolicyByResponseHeadersPolicyId(policyId);
 
       return { distributionId, policy };
     }),
@@ -128,6 +127,7 @@ export const cloudFrontSecurityHeaders: Rule = {
   fileName: 'cloudFrontSecurityHeaders',
   categories: ['Security'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'CloudFront',
   easyToFix: true,
   severity: 'high',

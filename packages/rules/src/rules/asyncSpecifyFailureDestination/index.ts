@@ -4,18 +4,16 @@ import {
   fetchAllLambdaInvokeEventConfigs,
 } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const asyncLambdasArns = await fetchAllAsyncLambdasArns(resourceArns);
 
-  const invokeConfigs = await fetchAllLambdaInvokeEventConfigs(
-    asyncLambdasArns,
-  );
+  const invokeConfigs =
+    await fetchAllLambdaInvokeEventConfigs(asyncLambdasArns);
 
-  const functionsConfigurations = await fetchAllLambdaConfigurations(
-    asyncLambdasArns,
-  );
+  const functionsConfigurations =
+    await fetchAllLambdaConfigurations(asyncLambdasArns);
 
   const results = invokeConfigs.map(({ arn, config }) => {
     const hasFailureDestination =
@@ -46,6 +44,7 @@ export const asyncSpecifyFailureDestination: Rule = {
   fileName: 'asyncSpecifyFailureDestination',
   categories: ['Stability'],
   level: 5,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: false,
   severity: 'medium',

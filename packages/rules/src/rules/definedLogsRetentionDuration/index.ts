@@ -1,6 +1,6 @@
 import { fetchAllLogGroupsConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isLogsRetentionDurationDefined = (
   logGroupConfiguration: Awaited<
@@ -9,9 +9,8 @@ const isLogsRetentionDurationDefined = (
 ): boolean => logGroupConfiguration.retentionInDays !== undefined;
 
 const run: Rule['run'] = async resourceArns => {
-  const logGroupsConfiguration = await fetchAllLogGroupsConfigurations(
-    resourceArns,
-  );
+  const logGroupsConfiguration =
+    await fetchAllLogGroupsConfigurations(resourceArns);
   const results = logGroupsConfiguration.map(({ arn, configuration }) => ({
     arn,
     success: isLogsRetentionDurationDefined(configuration),
@@ -27,6 +26,7 @@ export const definedLogsRetentionDuration: Rule = {
   fileName: 'definedLogsRetentionDuration',
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'CloudWatch',
   easyToFix: true,
   severity: 'low',

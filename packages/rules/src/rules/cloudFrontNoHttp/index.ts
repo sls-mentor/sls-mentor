@@ -1,7 +1,7 @@
 import { CloudFrontDistributionARN, CustomARN } from '@sls-mentor/arn';
 import { fetchDistributionConfig } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const noHttpAllowed = (
   distributionConfig: Awaited<ReturnType<typeof fetchDistributionConfig>>,
@@ -48,6 +48,7 @@ export const cloudFrontNoHttp: Rule = {
   fileName: 'cloudFrontNoHttp',
   categories: ['Security'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'CloudFront',
   easyToFix: true,
   severity: 'high',
