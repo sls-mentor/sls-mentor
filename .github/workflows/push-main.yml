@@ -62,7 +62,9 @@ jobs:
         uses: ./.github/actions/install
 
       - name: Package repository
-        run: pnpm -w package
+        run: pnpm -w package``
+        env:
+          STAGE: prod
 
       - name: Copy env file
         run: cp .env.ci .env
