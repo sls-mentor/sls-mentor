@@ -111,16 +111,12 @@ const config = {
             title: 'Powered by 🚀',
             items: [
               {
-                label: 'Kumo',
-                href: 'https://twitter.com/kumoserverless',
+                label: 'Theodo',
+                href: 'https://theodo.fr',
               },
               {
                 label: 'Aleios',
                 href: 'https://www.aleios.com/',
-              },
-              {
-                label: 'Theodo',
-                href: 'https://www.theodo.fr/',
               },
             ],
           },
@@ -134,6 +130,19 @@ const config = {
               {
                 label: 'Castore',
                 href: 'https://github.com/castore-dev/castore',
+              },
+            ],
+          },
+          {
+            title: 'Follow us 👻',
+            items: [
+              {
+                label: 'X',
+                href: 'https://twitter.com/slsByTheodo',
+              },
+              {
+                label: 'Dev.To',
+                href: 'https://dev.to/slsbytheodo',
               },
             ],
           },

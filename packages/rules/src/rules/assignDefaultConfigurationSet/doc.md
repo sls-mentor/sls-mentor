@@ -18,6 +18,6 @@ Go to your SES identity and select the "Configuration Sets" tab. Then, if you al
 
 ## Useful links
 
-- https://dev.to/kumo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 2)
+- https://dev.to/slsbytheodo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 2)
 
 - [Amazon Documentation](https://docs.aws.amazon.com/ses/latest/dg/using-configuration-sets.html)

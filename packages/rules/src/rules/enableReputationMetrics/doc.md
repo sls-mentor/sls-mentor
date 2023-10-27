@@ -11,5 +11,5 @@ On the "Overview" tab choose to edit the "Reputation options". Then click on the
 
 ## Useful links
 
-- https://dev.to/kumo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 1)
+- https://dev.to/slsbytheodo/from-zero-to-hero-send-aws-ses-emails-like-a-pro-4nei (part 1)
 - [AWS Documentation](https://docs.aws.amazon.com/ses/latest/dg/configuration-sets-export-metrics.html)
