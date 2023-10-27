@@ -13,6 +13,7 @@ import EventBridgeSvg from './EventBridgeSvg';
 import SlsMentorSvg from './SlsMentorSvg';
 import SESSvg from './SESSvg';
 import SNSSvg from './SNSSvg';
+import IAMSvg from './IAMSvg';
 
 export const AwsIcons: Record<Service, JSX.Element> = {
   ApiGateway: ApiGatewaySvg,
@@ -28,6 +29,7 @@ export const AwsIcons: Record<Service, JSX.Element> = {
   SQS: SQSSvg,
   SES: SESSvg,
   SNS: SNSSvg,
+  IAM: IAMSvg,
 };
 
 export const SlsMentorIcon: JSX.Element = SlsMentorSvg;

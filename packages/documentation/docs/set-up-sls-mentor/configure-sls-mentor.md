@@ -46,6 +46,7 @@ The rule name should be one of the following list:
   | Lambda: Light Bundle | lightBundle |
   | Lambda: Limited Amount of Versions | limitedAmountOfVersions |
   | Lambda: No Deprecated Runtime | noDeprecatedRuntime |
+  | IAM: no IAM Role Policy with wildcard Resource | noIAMRolePolicyWithWildcardResource |
   | Lambda: No Maximum Timeout | noMaxTimeout |
   | Lambda: No Mono Package | noMonoPackage |
   | Lambda: No Provisioned Concurrency | noProvisionedConcurrency |

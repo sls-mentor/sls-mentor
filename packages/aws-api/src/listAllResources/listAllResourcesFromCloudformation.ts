@@ -13,6 +13,7 @@ import {
   CustomARN,
   DynamoDBTableARN,
   EventBridgeEventBusARN,
+  IamRoleARN,
   LambdaFunctionARN,
   RdsInstanceARN,
   S3BucketARN,
@@ -63,6 +64,8 @@ const createARNFromCloudFormation = ({
       return DynamoDBTableARN.fromPhysicalId(physicalResourceId);
     case 'AWS::ApiGateway::RestApi':
       return ApiGatewayRestApiARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::IAM::Role':
+      return IamRoleARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }

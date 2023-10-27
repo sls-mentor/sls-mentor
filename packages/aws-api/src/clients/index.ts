@@ -12,3 +12,4 @@ export * from './s3Client';
 export * from './sesClient';
 export * from './snsClient';
 export * from './sqsClient';
+export * from './iamClient';

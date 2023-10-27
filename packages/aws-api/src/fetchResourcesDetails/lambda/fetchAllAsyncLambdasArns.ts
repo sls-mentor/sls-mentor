@@ -1,6 +1,9 @@
 import { CustomARN, LambdaFunctionARN } from '@sls-mentor/arn';
 
-import { fetchAllLambdaPolicies, Policy } from './fetchAllLambdaPolicies';
+import { Policy } from 'types/policy';
+
+import { fetchAllLambdaPolicies } from './fetchAllLambdaPolicies';
+
 
 const ASYNC_AWS_SERVICES = ['events', 's3', 'sqs', 'sns'];
 

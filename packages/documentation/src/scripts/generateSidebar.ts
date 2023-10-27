@@ -25,6 +25,7 @@ const serviceNames: Record<Service, string> = {
   Backup: 'Backup',
   ApiGateway: 'Api Gateway',
   SES: 'SES',
+  IAM: 'IAM',
 };
 
 const rulesByLevelDictionnary = groupBy(allRules, 'level');
