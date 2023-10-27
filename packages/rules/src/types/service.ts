@@ -12,6 +12,5 @@ export const SERVICES = [
   'Backup',
   'ApiGateway',
   'SES',
-  'DynamoDB',
 ] as const;
-export type Service = typeof SERVICES[number];
+export type Service = (typeof SERVICES)[number];
