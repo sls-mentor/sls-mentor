@@ -35,3 +35,4 @@ export * from './underMaxMemory';
 export * from './useArm';
 export * from './useIntelligentTiering';
 export * from './noIAMRolePolicyWithWildcardResource';
+export * from './encryptedRdsInstances';
