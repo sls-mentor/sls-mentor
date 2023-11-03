@@ -32,12 +32,6 @@ const HowToContribute = (): JSX.Element => (
         command="cd "
         commandSecondary="sls-mentor/packages/core"
       />
-      <CodeBlock
-        label="Use the following command to create the files needed for a new rule"
-        command="pnpm "
-        commandSecondary="create-rule"
-        tip={<p>Then you have to enter the name of your rule</p>}
-      />
 
       <Block
         title="It will automaticaly
