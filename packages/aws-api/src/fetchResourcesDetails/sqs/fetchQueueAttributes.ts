@@ -19,12 +19,7 @@ export const fetchQueueAttributesByArn = async (
     attributes: await sqsClient.send(
       new GetQueueAttributesCommand({
         QueueUrl: arn.resource,
-        AttributeNames: [
-          'RedrivePolicy',
-          'VisibilityTimeout',
-          'SqsManagedSseEnabled',
-          'KmsMasterKeyId',
-        ],
+        AttributeNames: ['All'],
       }),
     ),
   };
