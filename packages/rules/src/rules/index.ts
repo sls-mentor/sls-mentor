@@ -15,6 +15,7 @@ export * from './enableBlockPublicAccess';
 export * from './enableDeletionProtectionOnDynamoDBTables';
 export * from './enableReputationMetrics';
 export * from './encryptedSnsTopics';
+export * from './encryptedSqsQueues';
 export * from './lightBundle';
 export * from './limitedAmountOfVersions';
 export * from './noDeprecatedRuntime';
