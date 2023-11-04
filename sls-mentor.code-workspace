@@ -15,7 +15,12 @@
       "**/*.tsbuildinfo": true,
       "**/cdk.out": true,
       "nx-cache/**": true,
-      "pnpm-lock.yaml": true
+      "pnpm-lock.yaml": true,
+      "**/documentation/sidebars.json": true,
+      "**/documentation/docs/rules/**": true,
+      "**/.docusaurus/**": true,
+      "**/.sls-mentor": true,
+      "**/*.svg": true
     },
     "search.followSymlinks": false,
     "files.watcherExclude": {
@@ -28,7 +33,12 @@
       "**/bundles/**": true,
       "**/*.tsbuildinfo": true,
       "nx-cache/**": true,
-      "**/cdk.out/**": true
+      "**/cdk.out/**": true,
+      "**/documentation/sidebars.json": true,
+      "**/documentation/docs/rules/**": true,
+      "**/.docusaurus/**": true,
+      "**/.sls-mentor": true,
+      "**/*.svg": true
     },
     "files.exclude": {
       "**/.git": true,

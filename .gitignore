@@ -49,9 +49,9 @@ nx-cache
 **/cdk.out
 
 # Documentation codegen
-*/documentation/sidebars.json
-*/documentation/docs/rules/*
-.docusaurus
+**/documentation/sidebars.json
+**/documentation/docs/rules/**
+**/.docusaurus/**
 
 # Report output
 **/.sls-mentor
