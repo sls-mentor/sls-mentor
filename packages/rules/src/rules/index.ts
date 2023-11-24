@@ -36,3 +36,4 @@ export * from './useArm';
 export * from './useIntelligentTiering';
 export * from './noIAMRolePolicyWithWildcardResource';
 export * from './encryptedRdsInstances';
+export * from './lambdaTimeoutInferiorToApiGatewayTimeout';

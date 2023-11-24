@@ -19,3 +19,4 @@ export * from './useIntelligentTiering';
 export * from './encryptedSnsTopics';
 export * from './noIAMRolePolicyWithWildcardResource';
 export * from './encryptedSqsQueues';
+export * from './lambdaTimeoutInferiorToApiGatewayTimeout';
