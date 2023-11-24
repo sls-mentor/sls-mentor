@@ -45,6 +45,7 @@ The rule name should be one of the following list:
 | RDS: Database instances should be encrypted                                                       | encryptedRdsInstances                                 |
 | SNS: Topics should be encrypted                                                                   | encryptedSnsTopics                                    |
 | SQS: Queues should be encrypted                                                                   | encryptedSqsQueues                                    |
+| Lambda: timeout inferior to API Gateway timeout                                                   | lambdaTimeoutInferiorToApiGatewayTimeout              |
 | Lambda: Light Bundle                                                                              | lightBundle                                           |
 | Lambda: Limited Amount of Versions                                                                | limitedAmountOfVersions                               |
 | Lambda: No Deprecated Runtime                                                                     | noDeprecatedRuntime                                   |
