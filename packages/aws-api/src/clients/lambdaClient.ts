@@ -20,12 +20,14 @@ const cache: Record<
 const cachePlugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
   applyToStack: stack => {
     stack.add(
-      // @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
       next => async args => {
         const inputHash = hash(args);
-        if (inputHash in cache) {
-          return cache[inputHash];
+        const cachedResult = cache[inputHash];
+
+        if (cachedResult) {
+          return cachedResult;
         }
+
         const resultPromise = queue(() => next(args));
         Object.assign(cache, { [inputHash]: resultPromise });
 
@@ -40,7 +42,6 @@ const cachePlugin: Pluggable<ServiceInputTypes, ServiceOutputTypes> = {
 
 const lambdaClient = new LambdaClient({});
 
-// @ts-ignore : Prevent error ts(2345) - No way to discriminate output type among all possible Lambda Service output types
 lambdaClient.middlewareStack.use(cachePlugin);
 
 export { lambdaClient };
