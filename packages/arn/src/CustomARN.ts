@@ -5,10 +5,28 @@ type CustomARNSubClass<T extends CustomARN> = new (...args: string[]) => T;
 
 export class CustomARN implements ARN {
   public partition = 'aws';
-  public accountId = process.env.AWS_ACCOUNT_ID as string;
-  public region = process.env.AWS_REGION as string;
+  public accountId: string;
+  public region: string;
 
-  constructor(public resource: string, public service: string) {}
+  static setupAccountId: string | undefined = undefined;
+  static setupRegion: string | undefined = undefined;
+
+  constructor(
+    public resource: string,
+    public service: string,
+  ) {
+    const accountId = CustomARN.setupAccountId;
+    const region = CustomARN.setupRegion;
+
+    if (accountId === undefined || region === undefined) {
+      throw new Error(
+        'Static Method CustomARN.setup must be called before creating CustomARN instances',
+      );
+    }
+
+    this.accountId = accountId;
+    this.region = region;
+  }
 
   is = (otherArn: CustomARN): boolean =>
     otherArn.accountId === this.accountId &&
@@ -48,4 +66,15 @@ export class CustomARN implements ARN {
     );
 
   toString = (): string => build(this);
+
+  static setup = ({
+    accountId,
+    region,
+  }: {
+    accountId: string;
+    region: string;
+  }): void => {
+    CustomARN.setupAccountId = accountId;
+    CustomARN.setupRegion = region;
+  };
 }
