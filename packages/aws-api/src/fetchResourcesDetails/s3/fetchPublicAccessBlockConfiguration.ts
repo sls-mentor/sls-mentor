@@ -31,6 +31,9 @@ export const fetchPublicAccesBlockByArn = async (
   try {
     const command = new GetPublicAccessBlockCommand({
       Bucket: arn.resource,
+      // @ts-expect-error CachePlugin doesn't differentiate S3 commands, so we need to add a command name
+      // https://github.com/aws/aws-sdk-js-v3/issues/5593
+      commandName: 'GetPublicAccessBlock',
     });
     const response = await s3Client.send(command);
 

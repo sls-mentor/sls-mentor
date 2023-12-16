@@ -29,6 +29,9 @@ const fetchS3BucketPolicyByArn = async (
     const { Policy: rawPolicy } = await s3Client.send(
       new GetBucketPolicyCommand({
         Bucket: arn.resource,
+        // @ts-expect-error CachePlugin doesn't differentiate S3 commands, so we need to add a command name
+        // https://github.com/aws/aws-sdk-js-v3/issues/5593
+        commandName: 'GetBucketPolicyCommand',
       }),
     );
     if (rawPolicy === undefined) {
