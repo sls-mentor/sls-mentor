@@ -56,9 +56,10 @@ export const runSlsMentor = async ({
     const { region: fetchedRegion, accountId } =
       await fetchAccountIdAndRegion();
 
-    // Useful for the arn module
-    process.env.AWS_REGION = region ?? fetchedRegion;
-    process.env.AWS_ACCOUNT_ID = accountId;
+    CustomARN.setup({
+      accountId,
+      region: region ?? fetchedRegion,
+    });
 
     if (hooks.afterSetupCredentials) {
       hooks.afterSetupCredentials();
