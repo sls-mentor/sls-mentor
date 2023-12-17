@@ -9,8 +9,19 @@ if (fs.existsSync(path.join(__dirname, '../../docs/rules'))) {
 
 fs.mkdirSync(path.join(__dirname, '../../docs/rules'));
 
-let tableOfRuleNames = `| Rule | Name for configuration file |
-  | :- | :- |`;
+const longestRuleName = allRules.reduce(
+  (acc, { ruleName }) => Math.max(acc, ruleName.length),
+  0,
+);
+const longestFileName = allRules.reduce(
+  (acc, { fileName }) => Math.max(acc, fileName.length),
+  0,
+);
+
+let tableOfRuleNames = `| Rule ${' '.repeat(
+  longestRuleName - 4,
+)}| Name for configuration file ${' '.repeat(longestFileName - 27)}|
+| :${'-'.repeat(longestRuleName - 1)} | :${'-'.repeat(longestFileName - 1)} |`;
 
 allRules.forEach(({ fileName, ruleName }) => {
   fs.copyFileSync(
@@ -18,7 +29,9 @@ allRules.forEach(({ fileName, ruleName }) => {
     path.join(__dirname, '../../docs/rules', fileName + '.md'),
   );
   tableOfRuleNames = `${tableOfRuleNames}
-  | ${ruleName} | ${fileName} |`;
+| ${ruleName} ${' '.repeat(
+    longestRuleName - ruleName.length,
+  )}| ${fileName} ${' '.repeat(longestFileName - fileName.length)}|`;
 });
 
 const data = fs.readFileSync(

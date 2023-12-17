@@ -1,3 +1,12 @@
 import { IAMClient } from '@aws-sdk/client-iam';
+import { MiddlewareStack } from '@aws-sdk/types';
 
-export const iamClient = new IAMClient({});
+import { cachePlugin } from './cachePlugin';
+
+const iamClient = new IAMClient({});
+
+(iamClient.middlewareStack as MiddlewareStack<object, object>).use(
+  cachePlugin(),
+);
+
+export { iamClient };
