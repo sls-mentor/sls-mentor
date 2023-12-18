@@ -11,21 +11,27 @@ export default (
     </title>
     <desc>Created with Sketch.</desc>
     <defs>
-      <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
-        <stop stop-color="#BD0816" offset="0%"></stop>
-        <stop stop-color="#FF5252" offset="100%"></stop>
+      <linearGradient
+        x1="0%"
+        y1="100%"
+        x2="100%"
+        y2="0%"
+        id="linearGradient-IAM"
+      >
+        <stop stopColor="#BD0816" offset="0%"></stop>
+        <stop stopColor="#FF5252" offset="100%"></stop>
       </linearGradient>
     </defs>
     <g
       id="Icon-Architecture/16/Arch_AWS-Identity-and-Access-Management_16"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
       <g
         id="Icon-Architecture-BG/16/Security-Identity-Compliance"
-        fill="url(#linearGradient-1)"
+        fill="url(#linearGradient-IAM)"
       >
         <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
       </g>

@@ -8,7 +8,13 @@ export default (
     <title>Icon-Architecture/16/Arch_AWS-Simple-Email-Service_16</title>
     <desc>Created with Sketch.</desc>
     <defs>
-      <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
+      <linearGradient
+        x1="0%"
+        y1="100%"
+        x2="100%"
+        y2="0%"
+        id="linearGradient-SES"
+      >
         <stop stopColor="#2E27AD" offset="0%"></stop>
         <stop stopColor="#527FFF" offset="100%"></stop>
       </linearGradient>
@@ -22,7 +28,7 @@ export default (
     >
       <g
         id="Icon-Architecture-BG/16/Customer-Enablement"
-        fill="url(#linearGradient-1)"
+        fill="url(#linearGradient-SES)"
       >
         <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
       </g>

@@ -9,19 +9,25 @@ export default (
   >
     <title>DynamoDB Icon</title>
     <defs>
-      <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
-        <stop stop-color="#2E27AD" offset="0%" />
-        <stop stop-color="#527FFF" offset="100%" />
+      <linearGradient
+        x1="0%"
+        y1="100%"
+        x2="100%"
+        y2="0%"
+        id="linearGradient-DDB"
+      >
+        <stop stopColor="#2E27AD" offset="0%" />
+        <stop stopColor="#527FFF" offset="100%" />
       </linearGradient>
     </defs>
     <g
       id="Icon-Architecture/16/Arch_Amazon-DynamoDB_16"
       stroke="none"
-      stroke-width="1"
+      strokeWidth="1"
       fill="none"
-      fill-rule="evenodd"
+      fillRule="evenodd"
     >
-      <g id="Icon-Architecture-BG/16/Database" fill="url(#linearGradient-1)">
+      <g id="Icon-Architecture-BG/16/Database" fill="url(#linearGradient-DDB)">
         <rect id="Rectangle" x="0" y="0" width="24" height="24" />
       </g>
       <path
