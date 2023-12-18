@@ -12,11 +12,24 @@ import { apiGatewayV2Client } from 'clients';
 const fetchApiGatewayV2RoutesByArn = async (
   arn: ApiGatewayHttpApiARN,
 ): Promise<Route[]> => {
-  const { Items } = await apiGatewayV2Client.send(
-    new GetRoutesCommand({ ApiId: arn.getApiId() }),
-  );
+  const routes: Route[] = [];
 
-  return Items ?? [];
+  let nextToken: string | undefined;
+
+  do {
+    const { Items, NextToken } = await apiGatewayV2Client.send(
+      new GetRoutesCommand({
+        ApiId: arn.getApiId(),
+        NextToken: nextToken,
+      }),
+    );
+
+    routes.push(...(Items ?? []));
+
+    nextToken = NextToken;
+  } while (nextToken !== undefined);
+
+  return routes;
 };
 
 const fetchApiGatewayProtocolTypeByArn = async (
