@@ -11,3 +11,5 @@ export * from './getPassingRulesByCategory';
 export * from './getPassingResourcesFromRuleResults';
 export * from './getOverallPercentage';
 export * from './getPercentageFromPassingResources';
+
+export * from './filterIgnoredArns';

@@ -15,9 +15,8 @@ export const fetchBackupProtectedResourceArns = async (): Promise<
 
   const protectedResourcesArns = await Promise.all(
     backupPlansIds.map(async backupPlanId => {
-      const backupSelections = await fetchBackupPlanBackupSelections(
-        backupPlanId,
-      );
+      const backupSelections =
+        await fetchBackupPlanBackupSelections(backupPlanId);
 
       return Promise.all(
         backupSelections.map(backupSelectionId =>
@@ -27,7 +26,10 @@ export const fetchBackupProtectedResourceArns = async (): Promise<
     }),
   );
 
-  return protectedResourcesArns.flat(2).map(CustomARN.fromArnString);
+  return protectedResourcesArns
+    .flat(2)
+    .map(CustomARN.fromArnString)
+    .filter((arn): arn is CustomARN => arn !== undefined);
 };
 
 const fetchBackupPlanIds = async (): Promise<string[]> => {

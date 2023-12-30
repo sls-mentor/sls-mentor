@@ -1,10 +1,12 @@
 import { parse } from '@aws-sdk/util-arn-parser';
 
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class SnsSubscriptionARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'sns');
+    super(resource, ArnService.sns);
   }
 
   static fromName = (name: string): SnsSubscriptionARN =>

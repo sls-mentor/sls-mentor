@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class CognitoUserPoolARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'cognito-idp');
+    super(resource, ArnService.cognitoIdp);
   }
 
   static fromUserPoolId = (userPoolId: string): CognitoUserPoolARN =>

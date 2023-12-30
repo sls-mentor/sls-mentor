@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class SESIdentityARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'ses');
+    super(resource, ArnService.ses);
   }
 
   static fromIdentityName = (identity: string): SESIdentityARN =>

@@ -8,9 +8,8 @@ export const fetchAllLambdaTriggeredBySqsAndTheirSqsArns = async (
   { arn: LambdaFunctionARN; sqsTriggers: { arn: SqsQueueARN }[] }[]
 > => {
   const sqsQueueArns = CustomARN.filterArns(resourceArns, SqsQueueARN);
-  const lambdaEventSourceMappings = await fetchAllLambdaEventSourceMappings(
-    resourceArns,
-  );
+  const lambdaEventSourceMappings =
+    await fetchAllLambdaEventSourceMappings(resourceArns);
 
   return lambdaEventSourceMappings
     .map(({ arn, eventSourceMappings }) => ({
@@ -22,6 +21,7 @@ export const fetchAllLambdaTriggeredBySqsAndTheirSqsArns = async (
             eventSourceArn !== undefined,
         )
         .map(CustomARN.fromArnString)
+        .filter((a): a is CustomARN => a !== undefined)
         .filter(eventSourceArn => sqsQueueArns.some(a => a.is(eventSourceArn)))
         .map(sqsQueueARN => ({
           arn: sqsQueueARN,

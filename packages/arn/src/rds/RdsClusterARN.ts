@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class RdsClusterARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'rds');
+    super(resource, ArnService.rds);
   }
 
   static fromRdsClusterName = (rdsName: string): RdsClusterARN =>

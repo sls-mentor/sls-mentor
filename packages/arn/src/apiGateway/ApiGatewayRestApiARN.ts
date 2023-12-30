@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class ApiGatewayRestApiARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'apigateway');
+    super(resource, ArnService.apigateway);
   }
 
   static fromApiId = (apiGatewayId: string): ApiGatewayRestApiARN =>

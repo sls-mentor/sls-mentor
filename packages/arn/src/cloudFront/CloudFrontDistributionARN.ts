@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class CloudFrontDistributionARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'cloudfront');
+    super(resource, ArnService.cloudfront);
   }
 
   static fromDistributionId = (

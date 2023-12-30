@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class SqsQueueARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'sqs');
+    super(resource, ArnService.sqs);
   }
 
   static fromQueueUrl = (queueUrl: string): SqsQueueARN => {

@@ -1,4 +1,4 @@
-import { CustomARN, SqsQueueARN } from '@sls-mentor/arn';
+import { CustomARN } from '@sls-mentor/arn';
 import { fetchAllQueuesAttributes } from '@sls-mentor/aws-api';
 
 import { Rule } from '../../types';
@@ -15,16 +15,17 @@ const run: Rule['run'] = async resourceArns => {
   const deadLetterQueueArns = queuesAttributesByArn
     .map(({ attributes }) => {
       const redrivePolicy = attributes.Attributes?.RedrivePolicy;
-      if (redrivePolicy !== undefined) {
-        const deadLetterTargetArn = (JSON.parse(redrivePolicy) as RedrivePolicy)
-          .deadLetterTargetArn;
 
-        return CustomARN.fromArnString(deadLetterTargetArn);
+      if (redrivePolicy === undefined) {
+        return undefined;
       }
 
-      return undefined;
+      const deadLetterTargetArn = (JSON.parse(redrivePolicy) as RedrivePolicy)
+        .deadLetterTargetArn;
+
+      return CustomARN.fromArnString(deadLetterTargetArn);
     })
-    .filter((arn): arn is SqsQueueARN => arn !== undefined);
+    .filter((arn): arn is CustomARN => arn !== undefined);
 
   const results = queuesAttributesByArn
     .filter(

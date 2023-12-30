@@ -7,6 +7,7 @@ import {
 } from '@sls-mentor/rules';
 
 import { ChecksResults } from './types';
+import { filterIgnoredArns } from './utils';
 
 export type RunChecksHooks = {
   beforeAllRules?: (rules: Rule[]) => void;
@@ -40,7 +41,7 @@ export const runChecks = async ({
         rulesConfigurations?.[rule.fileName]?.ignoredResources;
 
       const filteredResourcesArns = ignoredArnPatterns
-        ? CustomARN.filterIgnoredArns(resourcesToCheck, ignoredArnPatterns)
+        ? filterIgnoredArns(resourcesToCheck, ignoredArnPatterns)
         : resourcesToCheck;
 
       if (hooks.beforeEachRule) {
