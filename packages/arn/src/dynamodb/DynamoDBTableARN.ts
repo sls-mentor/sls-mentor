@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class DynamoDBTableARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'dynamodb');
+    super(resource, ArnService.dynamodb);
   }
 
   static fromTableName = (tableName: string): DynamoDBTableARN =>

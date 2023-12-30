@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class BackupPlanARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'backup');
+    super(resource, ArnService.backup);
   }
 
   static fromBackupPlanId = (backupPlanId: string): BackupPlanARN =>

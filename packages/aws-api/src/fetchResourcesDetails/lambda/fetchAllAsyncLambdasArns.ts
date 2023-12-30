@@ -4,14 +4,14 @@ import { Policy } from 'types/policy';
 
 import { fetchAllLambdaPolicies } from './fetchAllLambdaPolicies';
 
-
 const ASYNC_AWS_SERVICES = ['events', 's3', 'sqs', 'sns'];
 
 const isLambdaPolicyAsync = (policy: Policy): boolean => {
   const sourceArns = (policy.Statement ?? [])
     .map(statement => statement.Condition?.ArnLike?.['AWS:SourceArn'])
     .filter((arn): arn is string => arn !== undefined)
-    .map(arn => CustomARN.fromArnString(arn));
+    .map(arn => CustomARN.fromArnString(arn))
+    .filter((arn): arn is CustomARN => arn !== undefined);
 
   return sourceArns.some(({ service }) => ASYNC_AWS_SERVICES.includes(service));
 };

@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class EventBridgeEventBusARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'events');
+    super(resource, ArnService.events);
   }
 
   static fromEventBusName = (eventBusName: string): EventBridgeEventBusARN =>

@@ -29,5 +29,6 @@ export const listAllResourcesFromTags = async (
   return taggedResources
     .map(({ ResourceARN }) => ResourceARN)
     .filter((resourceArn): resourceArn is string => resourceArn !== undefined)
-    .map(CustomARN.fromArnString);
+    .map(CustomARN.fromArnString)
+    .filter((arn): arn is CustomARN => arn !== undefined);
 };

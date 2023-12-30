@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class CloudwatchLogGroupARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'logs');
+    super(resource, ArnService.logs);
   }
 
   static fromLogGroupName = (logGroupName: string): CloudwatchLogGroupARN =>

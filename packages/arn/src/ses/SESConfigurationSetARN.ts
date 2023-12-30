@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class SESConfigurationSetARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'ses');
+    super(resource, ArnService.ses);
   }
   static fromConfigurationSetName = (
     configuration: string,

@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class LambdaFunctionARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'lambda');
+    super(resource, ArnService.lambda);
   }
 
   static fromFunctionName = (functionName: string): LambdaFunctionARN =>

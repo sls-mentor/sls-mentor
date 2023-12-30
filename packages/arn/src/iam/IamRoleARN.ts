@@ -1,8 +1,10 @@
+import { ArnService } from 'types';
+
 import { CustomARN } from '../CustomARN';
 
 export class IamRoleARN extends CustomARN {
   constructor(resource: string) {
-    super(resource, 'iam');
+    super(resource, ArnService.iam);
   }
 
   static fromRoleName = (roleName: string): IamRoleARN =>
