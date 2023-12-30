@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": "explicit"
     },
     "search.exclude": {
       "**/coverage": true,
@@ -20,6 +20,7 @@
       "**/documentation/docs/rules/**": true,
       "**/.docusaurus/**": true,
       "**/.sls-mentor": true,
+      "**/.sls-mentor-graph": true,
       "**/*.svg": true
     },
     "search.followSymlinks": false,
@@ -38,6 +39,7 @@
       "**/documentation/docs/rules/**": true,
       "**/.docusaurus/**": true,
       "**/.sls-mentor": true,
+      "**/.sls-mentor-graph": true,
       "**/*.svg": true
     },
     "files.exclude": {
@@ -112,6 +114,18 @@
     {
       "path": "services/tests",
       "name": "✅ tests"
+    },
+    {
+      "path": "packages/graph-core",
+      "name": "📊 graph core"
+    },
+    {
+      "path": "packages/graph-cli",
+      "name": "📊 graph cli"
+    },
+    {
+      "path": "packages/graph-front",
+      "name": "📊 graph front"
     }
   ]
 }

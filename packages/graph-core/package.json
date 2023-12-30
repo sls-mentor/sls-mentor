@@ -1,0 +1,52 @@
+{
+  "name": "@sls-mentor/graph-core",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist *.tsbuildinfo",
+    "format-check": "prettier --check . ../../.prettierignore",
+    "format-fix": "prettier --write . ../../.prettierignore",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "pnpm clean && pnpm package-transpile && pnpm package-types && pnpm package-types-aliases",
+    "package-transpile": "tsup",
+    "package-types": "tsc -p tsconfig.build.json",
+    "package-types-aliases": "tsc-alias -p tsconfig.build.json",
+    "test": "nx run format-check && nx run test-linter && nx run test-type && nx run test-unit && nx run test-circular",
+    "test-circular": "pnpm depcruise --config -- src",
+    "test-linter": "pnpm linter-base-config .",
+    "test-type": "tsc --noEmit --emitDeclarationOnly false",
+    "test-unit": "vitest run --coverage --passWithNoTests",
+    "watch": "pnpm clean dist && concurrently 'pnpm:package-* --watch'"
+  },
+  "dependencies": {
+    "@sls-mentor/arn": "workspace:^",
+    "@sls-mentor/aws-api": "workspace:^",
+    "p-limit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.6.0",
+    "@vitest/coverage-c8": "0.30.0",
+    "concurrently": "^8.2.1",
+    "dependency-cruiser": "^13.1.5",
+    "eslint": "^8.49.0",
+    "json-schema-to-ts": "^2.9.2",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
+    "tsc-alias": "^1.8.7",
+    "tsup": "^7.2.0",
+    "typescript": "^5.0.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "0.30.0"
+  }
+}
