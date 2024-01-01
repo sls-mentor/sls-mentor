@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.options.json",
+  "compilerOptions": {
+    "baseUrl": "src"
+  },
+  "include": ["./**/*.ts", "../aws-api/src/types/policy.ts"],
+  "exclude": ["./dist"]
+}
