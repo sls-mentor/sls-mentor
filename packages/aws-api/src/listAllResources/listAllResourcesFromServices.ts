@@ -1,24 +1,4 @@
-import {
-  ApiGatewayHttpApiARN,
-  ApiGatewayRestApiARN,
-  BackupPlanARN,
-  CloudFrontDistributionARN,
-  CloudwatchLogGroupARN,
-  CognitoUserPoolARN,
-  CustomARN,
-  DynamoDBTableARN,
-  EventBridgeEventBusARN,
-  IamRoleARN,
-  LambdaFunctionARN,
-  RdsClusterARN,
-  RdsInstanceARN,
-  S3BucketARN,
-  SESConfigurationSetARN,
-  SESIdentityARN,
-  SnsSubscriptionARN,
-  SnsTopicARN,
-  SqsQueueARN,
-} from '@sls-mentor/arn';
+import { CustomARN } from '@sls-mentor/arn';
 
 import {
   listApiGatewaysV2,
@@ -42,28 +22,45 @@ import {
 } from './services';
 
 export const listAllResourcesFromServices = async (): Promise<CustomARN[]> => {
-  const s3buckets: S3BucketARN[] = await listS3Buckets();
-  const lambdaFunctions: LambdaFunctionARN[] = await listLambdaFunctions();
-  const sqsQueues: SqsQueueARN[] = await listSqsQueues();
-  const cognitoUserPools: CognitoUserPoolARN[] = await listCognitoUserPools();
-  const cloudWatchLogGroups: CloudwatchLogGroupARN[] =
-    await listCloudwatchLogGroups();
-  const eventBridgeEventBuses: EventBridgeEventBusARN[] =
-    await listEventBridgeEventBuses();
-  const cloudFrontDistributions: CloudFrontDistributionARN[] =
-    await listCloudFrontDistributions();
-  const rdsInstances: RdsInstanceARN[] = await listRdsInstances();
-  const backupPlans: BackupPlanARN[] = await listBackupPlans();
-  const apiGatewaysV2: ApiGatewayHttpApiARN[] = await listApiGatewaysV2();
-  const sesIdentities: SESIdentityARN[] = await listSESIdentities();
-  const snsTopics: SnsTopicARN[] = await listSnsTopics();
-  const snsSubscriptions: SnsSubscriptionARN[] = await listSnsSubscriptions();
-  const sesConfigurationSets: SESConfigurationSetARN[] =
-    await listSESConfigurationSets();
-  const restApiGateways: ApiGatewayRestApiARN[] = await listRestApiGateways();
-  const dynamoDBTables: DynamoDBTableARN[] = await listDynamoDBTables();
-  const iamRoles: IamRoleARN[] = await listIamRoles();
-  const rdsClusters: RdsClusterARN[] = await listRdsClusters();
+  const [
+    s3buckets,
+    lambdaFunctions,
+    sqsQueues,
+    cognitoUserPools,
+    cloudWatchLogGroups,
+    eventBridgeEventBuses,
+    cloudFrontDistributions,
+    rdsInstances,
+    backupPlans,
+    apiGatewaysV2,
+    sesIdentities,
+    snsTopics,
+    snsSubscriptions,
+    sesConfigurationSets,
+    restApiGateways,
+    dynamoDBTables,
+    iamRoles,
+    rdsClusters,
+  ] = await Promise.all([
+    listS3Buckets(),
+    listLambdaFunctions(),
+    listSqsQueues(),
+    listCognitoUserPools(),
+    listCloudwatchLogGroups(),
+    listEventBridgeEventBuses(),
+    listCloudFrontDistributions(),
+    listRdsInstances(),
+    listBackupPlans(),
+    listApiGatewaysV2(),
+    listSESIdentities(),
+    listSnsTopics(),
+    listSnsSubscriptions(),
+    listSESConfigurationSets(),
+    listRestApiGateways(),
+    listDynamoDBTables(),
+    listIamRoles(),
+    listRdsClusters(),
+  ]);
 
   return [
     ...s3buckets,
