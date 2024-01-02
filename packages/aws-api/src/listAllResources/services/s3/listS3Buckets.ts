@@ -7,7 +7,11 @@ import { S3BucketARN } from '@sls-mentor/arn';
 
 import { s3Client } from 'clients';
 
-export const listS3Buckets = async (): Promise<S3BucketARN[]> => {
+export const listS3Buckets = async ({
+  region,
+}: {
+  region: string;
+}): Promise<S3BucketARN[]> => {
   const { Buckets } = await s3Client.send(
     new ListBucketsCommand({
       // CachePlugin doesn't differentiate S3 commands, so we need to add a command name
@@ -32,12 +36,13 @@ export const listS3Buckets = async (): Promise<S3BucketARN[]> => {
           commandName: 'GetBucketLocationCommand',
         }),
       );
-      if (LocationConstraint === process.env.AWS_REGION) {
+      if (LocationConstraint === region) {
         bucketArns.push(S3BucketARN.fromBucketName(bucketName));
       }
     }
-  } catch {
+  } catch (e) {
     // Bucket does not match region
+    console.log(e);
   }
 
   return bucketArns;

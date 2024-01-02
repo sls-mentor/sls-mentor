@@ -25,11 +25,12 @@ export const runGraph = async ({
   region?: string;
 }): Promise<Data> => {
   const { region: fetchedRegion, accountId } = await fetchAccountIdAndRegion();
-  CustomARN.setup({ accountId, region: region ?? fetchedRegion });
-
+  const regionToUse = region ?? fetchedRegion;
+  CustomARN.setup({ accountId, region: regionToUse });
   const arns = await listAllResources({
     cloudformationStacks,
     tags,
+    region: regionToUse,
   });
 
   const [

@@ -32,7 +32,7 @@
   "dependencies": {
     "@sls-mentor/arn": "workspace:^",
     "@sls-mentor/aws-api": "workspace:^",
-    "p-limit": "^5.0.0"
+    "p-limit": "^3.1.0"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",

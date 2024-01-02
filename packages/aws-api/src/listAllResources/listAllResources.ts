@@ -7,11 +7,15 @@ import { listAllResourcesFromTags } from './listAllResourcesFromTags';
 export const listAllResources = async ({
   cloudformationStacks,
   tags,
+  region,
 }: {
   cloudformationStacks?: string[];
   tags?: { key: string; value: string }[];
+  region: string;
 }): Promise<CustomARN[]> => {
-  const allResourcesFromServices = await listAllResourcesFromServices();
+  const allResourcesFromServices = await listAllResourcesFromServices({
+    region,
+  });
 
   const resourcesToKeepByTags =
     tags === undefined || tags.length === 0
