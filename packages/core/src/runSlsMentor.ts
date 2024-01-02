@@ -48,6 +48,7 @@ export const runSlsMentor = async ({
       message: string;
     }
 > => {
+  let regionToUse: string;
   try {
     if (hooks.beforeSetupCredentials) {
       hooks.beforeSetupCredentials();
@@ -56,9 +57,11 @@ export const runSlsMentor = async ({
     const { region: fetchedRegion, accountId } =
       await fetchAccountIdAndRegion();
 
+    regionToUse = region ?? fetchedRegion;
+
     CustomARN.setup({
       accountId,
-      region: region ?? fetchedRegion,
+      region: regionToUse,
     });
 
     if (hooks.afterSetupCredentials) {
@@ -95,6 +98,7 @@ export const runSlsMentor = async ({
       ...(await listAllResources({
         cloudformationStacks,
         tags,
+        region: regionToUse,
       })),
     );
 

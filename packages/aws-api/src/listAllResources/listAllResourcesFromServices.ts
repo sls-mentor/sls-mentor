@@ -21,7 +21,11 @@ import {
   listSqsQueues,
 } from './services';
 
-export const listAllResourcesFromServices = async (): Promise<CustomARN[]> => {
+export const listAllResourcesFromServices = async ({
+  region,
+}: {
+  region: string;
+}): Promise<CustomARN[]> => {
   const [
     s3buckets,
     lambdaFunctions,
@@ -42,7 +46,7 @@ export const listAllResourcesFromServices = async (): Promise<CustomARN[]> => {
     iamRoles,
     rdsClusters,
   ] = await Promise.all([
-    listS3Buckets(),
+    listS3Buckets({ region }),
     listLambdaFunctions(),
     listSqsQueues(),
     listCognitoUserPools(),
