@@ -6,7 +6,9 @@ import { cachePlugin } from './cachePlugin';
 const apiGatewayClient = new APIGatewayClient({});
 
 (apiGatewayClient.middlewareStack as MiddlewareStack<object, object>).use(
-  cachePlugin(),
+  cachePlugin({
+    intervalsPerSecond: 5,
+  }),
 );
 
 export { apiGatewayClient };
