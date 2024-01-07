@@ -13,7 +13,7 @@ export class SESIdentityARN extends CustomARN {
   static fromPhysicalId = (physicalId: string): SESIdentityARN =>
     SESIdentityARN.fromIdentityName(physicalId);
 
-  getIdentity = (): string => {
+  getIdentityName = (): string => {
     const identity = this.resource.split('/')[1];
 
     if (identity === undefined) {
@@ -21,5 +21,16 @@ export class SESIdentityARN extends CustomARN {
     }
 
     return identity;
+  };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.ses && arn.resource.startsWith('identity/');
+
+  static fromCustomARN = (arn: CustomARN): SESIdentityARN => {
+    if (!SESIdentityARN.is(arn)) {
+      throw new Error('Invalid SES Identity ARN');
+    }
+
+    return new SESIdentityARN(arn.resource);
   };
 }

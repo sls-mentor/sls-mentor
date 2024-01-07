@@ -20,4 +20,23 @@ export class SqsQueueARN extends CustomARN {
 
   static fromPhysicalId = (physicalId: string): SqsQueueARN =>
     SqsQueueARN.fromQueueUrl(physicalId);
+
+  getQueueName = (): string => {
+    const queueName = this.resource;
+
+    return queueName;
+  };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.sqs &&
+    !arn.resource.includes(':') &&
+    !arn.resource.includes('/');
+
+  static fromCustomARN = (arn: CustomARN): SqsQueueARN => {
+    if (!SqsQueueARN.is(arn)) {
+      throw new Error('Invalid SQS Queue ARN');
+    }
+
+    return new SqsQueueARN(arn.resource);
+  };
 }

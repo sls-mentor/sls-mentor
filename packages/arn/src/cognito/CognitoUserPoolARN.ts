@@ -22,4 +22,16 @@ export class CognitoUserPoolARN extends CustomARN {
 
     return userPoolId;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.cognitoIdp &&
+    arn.resource.startsWith('userpool/');
+
+  static fromCustomARN = (arn: CustomARN): CognitoUserPoolARN => {
+    if (!CognitoUserPoolARN.is(arn)) {
+      throw new Error('Invalid Cognito User Pool ARN');
+    }
+
+    return new CognitoUserPoolARN(arn.resource);
+  };
 }

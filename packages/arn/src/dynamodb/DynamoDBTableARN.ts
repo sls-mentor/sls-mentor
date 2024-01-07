@@ -22,4 +22,15 @@ export class DynamoDBTableARN extends CustomARN {
 
     return tableName;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.dynamodb && arn.resource.startsWith('table/');
+
+  static fromCustomARN = (arn: CustomARN): DynamoDBTableARN => {
+    if (!DynamoDBTableARN.is(arn)) {
+      throw new Error('Invalid DynamoDB Table ARN');
+    }
+
+    return new DynamoDBTableARN(arn.resource);
+  };
 }

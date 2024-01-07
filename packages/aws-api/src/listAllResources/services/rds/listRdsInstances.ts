@@ -20,5 +20,5 @@ export const listRdsInstances = async (): Promise<RdsInstanceARN[]> => {
       (DBInstanceIdentifier): DBInstanceIdentifier is string =>
         DBInstanceIdentifier !== undefined,
     )
-    .map(RdsInstanceARN.fromRdsInstanceName);
+    .map(RdsInstanceARN.fromRdsInstanceIdentifier);
 };

@@ -9,13 +9,27 @@ export class SnsTopicARN extends CustomARN {
     super(resource, ArnService.sns);
   }
 
-  static fromName = (name: string): SnsTopicARN => new SnsTopicARN(name);
-  static fromArnString = (arnString: string): SnsTopicARN => {
+  static fromTopicArn = (arnString: string): SnsTopicARN => {
     const parsedArn = parse(arnString);
 
     return new SnsTopicARN(parsedArn.resource);
   };
 
   static fromPhysicalId = (physicalId: string): SnsTopicARN =>
-    SnsTopicARN.fromArnString(physicalId);
+    SnsTopicARN.fromTopicArn(physicalId);
+
+  getTopicArn = (): string => this.toString();
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.sns &&
+    !arn.resource.includes(':') &&
+    !arn.resource.includes('/');
+
+  static fromCustomARN = (arn: CustomARN): SnsTopicARN => {
+    if (!SnsTopicARN.is(arn)) {
+      throw new Error('Invalid SNS Topic ARN');
+    }
+
+    return new SnsTopicARN(arn.resource);
+  };
 }

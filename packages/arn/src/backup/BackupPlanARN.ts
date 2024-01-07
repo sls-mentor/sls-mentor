@@ -22,4 +22,16 @@ export class BackupPlanARN extends CustomARN {
 
     return backupPlanId;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.backup &&
+    arn.resource.startsWith('backup-plan:');
+
+  static fromCustomARN = (arn: CustomARN): BackupPlanARN => {
+    if (!BackupPlanARN.is(arn)) {
+      throw new Error('Invalid Backup Plan ARN');
+    }
+
+    return new BackupPlanARN(arn.resource);
+  };
 }

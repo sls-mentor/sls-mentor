@@ -22,4 +22,15 @@ export class EventBridgeEventBusARN extends CustomARN {
 
     return eventBusName;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.events && arn.resource.startsWith('event-bus/');
+
+  static fromCustomARN = (arn: CustomARN): EventBridgeEventBusARN => {
+    if (!EventBridgeEventBusARN.is(arn)) {
+      throw new Error('Invalid EventBridge Event Bus ARN');
+    }
+
+    return new EventBridgeEventBusARN(arn.resource);
+  };
 }
