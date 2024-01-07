@@ -17,7 +17,7 @@ export const fetchAllSESIdentities = async (
       arn,
       identity: await sesClient.send(
         new GetEmailIdentityCommand({
-          EmailIdentity: arn.getIdentity(),
+          EmailIdentity: arn.getIdentityName(),
         }),
       ),
     })),

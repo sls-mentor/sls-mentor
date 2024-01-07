@@ -7,19 +7,31 @@ export class RdsInstanceARN extends CustomARN {
     super(resource, ArnService.rds);
   }
 
-  static fromRdsInstanceName = (rdsName: string): RdsInstanceARN =>
-    new RdsInstanceARN(`db:${rdsName}`);
+  static fromRdsInstanceIdentifier = (
+    instanceIdentifier: string,
+  ): RdsInstanceARN => new RdsInstanceARN(`db:${instanceIdentifier}`);
 
   static fromPhysicalId = (physicalId: string): RdsInstanceARN =>
-    RdsInstanceARN.fromRdsInstanceName(physicalId);
+    RdsInstanceARN.fromRdsInstanceIdentifier(physicalId);
 
-  getRdsName = (): string => {
-    const rdsName = this.resource.split(':')[1];
+  getInstanceIdentifier = (): string => {
+    const instanceIdentifier = this.resource.split(':')[1];
 
-    if (rdsName === undefined) {
+    if (instanceIdentifier === undefined) {
       throw new Error('Invalid RDS Instance ARN');
     }
 
-    return rdsName;
+    return instanceIdentifier;
+  };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.rds && arn.resource.startsWith('db:');
+
+  static fromCustomARN = (arn: CustomARN): RdsInstanceARN => {
+    if (!RdsInstanceARN.is(arn)) {
+      throw new Error('Invalid RDS Instance ARN');
+    }
+
+    return new RdsInstanceARN(arn.resource);
   };
 }

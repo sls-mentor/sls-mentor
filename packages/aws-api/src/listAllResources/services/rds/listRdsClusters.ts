@@ -19,5 +19,5 @@ export const listRdsClusters = async (): Promise<RdsClusterARN[]> => {
       (DBClusterIdentifier): DBClusterIdentifier is string =>
         DBClusterIdentifier !== undefined,
     )
-    .map(RdsClusterARN.fromRdsClusterName);
+    .map(RdsClusterARN.fromRdsClusterIdentifier);
 };

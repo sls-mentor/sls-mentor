@@ -24,4 +24,16 @@ export class CloudFrontDistributionARN extends CustomARN {
 
     return distributionId;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.cloudfront &&
+    arn.resource.startsWith('distribution/');
+
+  static fromCustomARN = (arn: CustomARN): CloudFrontDistributionARN => {
+    if (!CloudFrontDistributionARN.is(arn)) {
+      throw new Error('Invalid CloudFront Distribution ARN');
+    }
+
+    return new CloudFrontDistributionARN(arn.resource);
+  };
 }

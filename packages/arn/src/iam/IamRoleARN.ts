@@ -22,4 +22,15 @@ export class IamRoleARN extends CustomARN {
 
     return roleName;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.iam && arn.resource.startsWith('role/');
+
+  static fromCustomARN = (arn: CustomARN): IamRoleARN => {
+    if (!IamRoleARN.is(arn)) {
+      throw new Error('Invalid Iam Role ARN');
+    }
+
+    return new IamRoleARN(arn.resource);
+  };
 }

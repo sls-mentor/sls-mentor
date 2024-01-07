@@ -22,4 +22,15 @@ export class LambdaFunctionARN extends CustomARN {
 
     return functionName;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.lambda && arn.resource.startsWith('function:');
+
+  static fromCustomARN = (arn: CustomARN): LambdaFunctionARN => {
+    if (!LambdaFunctionARN.is(arn)) {
+      throw new Error('Invalid Lambda Function ARN');
+    }
+
+    return new LambdaFunctionARN(arn.resource);
+  };
 }

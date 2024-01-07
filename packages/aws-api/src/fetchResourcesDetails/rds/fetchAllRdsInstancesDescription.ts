@@ -14,7 +14,7 @@ const fetchRdsInstanceDescriptionByArn = async (
   try {
     const { DBInstances: rdsInstancesDescriptionList } = await rdsClient.send(
       new DescribeDBInstancesCommand({
-        DBInstanceIdentifier: arn.getRdsName(),
+        DBInstanceIdentifier: arn.getInstanceIdentifier(),
       }),
     );
     if (rdsInstancesDescriptionList === undefined) {

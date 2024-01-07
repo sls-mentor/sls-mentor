@@ -7,16 +7,28 @@ export class RdsClusterARN extends CustomARN {
     super(resource, ArnService.rds);
   }
 
-  static fromRdsClusterName = (rdsName: string): RdsClusterARN =>
-    new RdsClusterARN(`cluster:${rdsName}`);
+  static fromRdsClusterIdentifier = (
+    clusterIdentifier: string,
+  ): RdsClusterARN => new RdsClusterARN(`cluster:${clusterIdentifier}`);
 
-  getRdsName = (): string => {
-    const rdsName = this.resource.split(':')[1];
+  getClusterIdentifier = (): string => {
+    const clusterIdentifier = this.resource.split(':')[1];
 
-    if (rdsName === undefined) {
+    if (clusterIdentifier === undefined) {
       throw new Error('Invalid RDS Cluster ARN');
     }
 
-    return rdsName;
+    return clusterIdentifier;
+  };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.rds && arn.resource.startsWith('cluster:');
+
+  static fromCustomARN = (arn: CustomARN): RdsClusterARN => {
+    if (!RdsClusterARN.is(arn)) {
+      throw new Error('Invalid RDS Cluster ARN');
+    }
+
+    return new RdsClusterARN(arn.resource);
   };
 }

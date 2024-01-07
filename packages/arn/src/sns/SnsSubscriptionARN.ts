@@ -9,15 +9,27 @@ export class SnsSubscriptionARN extends CustomARN {
     super(resource, ArnService.sns);
   }
 
-  static fromName = (name: string): SnsSubscriptionARN =>
-    new SnsSubscriptionARN(name);
-
-  static fromArnString = (arnString: string): SnsSubscriptionARN => {
+  static fromSubscriptionArn = (arnString: string): SnsSubscriptionARN => {
     const parsedArn = parse(arnString);
 
     return new SnsSubscriptionARN(parsedArn.resource);
   };
 
   static fromPhysicalId = (physicalId: string): SnsSubscriptionARN =>
-    SnsSubscriptionARN.fromArnString(physicalId);
+    SnsSubscriptionARN.fromSubscriptionArn(physicalId);
+
+  getSubscriptionArn = (): string => this.toString();
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.sns &&
+    arn.resource.includes(':') &&
+    !arn.resource.includes('/');
+
+  static fromCustomARN = (arn: CustomARN): SnsSubscriptionARN => {
+    if (!SnsSubscriptionARN.is(arn)) {
+      throw new Error('Invalid SNS Subscription ARN');
+    }
+
+    return new SnsSubscriptionARN(arn.resource);
+  };
 }

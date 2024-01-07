@@ -14,7 +14,7 @@ const fetchSESConfigurationSets = async (
   arn,
   configurationSet: await sesClient.send(
     new GetConfigurationSetCommand({
-      ConfigurationSetName: arn.getName(),
+      ConfigurationSetName: arn.getConfigurationSetName(),
     }),
   ),
 });

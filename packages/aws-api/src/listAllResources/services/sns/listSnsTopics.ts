@@ -13,5 +13,5 @@ export const listSnsTopics = async (): Promise<SnsTopicARN[]> => {
   return snsTopics
     .map(topic => topic.TopicArn)
     .filter((topic): topic is string => topic !== undefined)
-    .map(SnsTopicARN.fromArnString);
+    .map(SnsTopicARN.fromTopicArn);
 };

@@ -6,12 +6,17 @@ export class SESConfigurationSetARN extends CustomARN {
   constructor(resource: string) {
     super(resource, ArnService.ses);
   }
+
   static fromConfigurationSetName = (
     configuration: string,
   ): SESConfigurationSetARN => {
     return new SESConfigurationSetARN(`configuration/${configuration}`);
   };
-  getName = (): string => {
+
+  static fromPhysicalId = (physicalId: string): SESConfigurationSetARN =>
+    SESConfigurationSetARN.fromConfigurationSetName(physicalId);
+
+  getConfigurationSetName = (): string => {
     const name = this.resource.split('/')[1];
 
     if (name === undefined) {
@@ -21,6 +26,14 @@ export class SESConfigurationSetARN extends CustomARN {
     return name;
   };
 
-  static fromPhysicalId = (physicalId: string): SESConfigurationSetARN =>
-    SESConfigurationSetARN.fromConfigurationSetName(physicalId);
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.ses && arn.resource.startsWith('configuration/');
+
+  static fromCustomARN = (arn: CustomARN): SESConfigurationSetARN => {
+    if (!SESConfigurationSetARN.is(arn)) {
+      throw new Error('Invalid SES Configuration Set ARN');
+    }
+
+    return new SESConfigurationSetARN(arn.resource);
+  };
 }

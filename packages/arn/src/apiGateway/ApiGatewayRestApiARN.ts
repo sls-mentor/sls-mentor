@@ -22,4 +22,16 @@ export class ApiGatewayRestApiARN extends CustomARN {
 
     return apiId;
   };
+
+  static is = (arn: CustomARN): boolean =>
+    arn.service === ArnService.apigateway &&
+    arn.resource.startsWith('/restapis/');
+
+  static fromCustomARN = (arn: CustomARN): ApiGatewayRestApiARN => {
+    if (!ApiGatewayRestApiARN.is(arn)) {
+      throw new Error('Invalid API Gateway REST API ARN');
+    }
+
+    return new ApiGatewayRestApiARN(arn.resource);
+  };
 }
