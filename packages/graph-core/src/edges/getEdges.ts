@@ -1,6 +1,5 @@
 import { ArnService, CustomARN, EventBridgeEventBusARN } from '@sls-mentor/arn';
 import {
-  fetchAccountIdAndRegion,
   fetchAllApiGatewayV2Integrations,
   fetchAllIamRolePolicies,
   fetchAllLambdaConfigurations,
@@ -8,31 +7,14 @@ import {
   fetchAllRestApiGatewayResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
-  listAllResources,
 } from '@sls-mentor/aws-api';
 
-import { Data, Edge } from 'types';
+import { Edge } from 'types';
 
-const servicesToHide: ArnService[] = ['backup', 'iam', 'logs'];
-
-export const runGraph = async ({
-  tags,
-  cloudformationStacks,
-  region,
-}: {
-  tags?: { key: string; value: string }[];
-  cloudformationStacks?: string[];
-  region?: string;
-}): Promise<Data> => {
-  const { region: fetchedRegion, accountId } = await fetchAccountIdAndRegion();
-  const regionToUse = region ?? fetchedRegion;
-  CustomARN.setup({ accountId, region: regionToUse });
-  const arns = await listAllResources({
-    cloudformationStacks,
-    tags,
-    region: regionToUse,
-  });
-
+export const getEdges = async (
+  arns: CustomARN[],
+  servicesToHide: ArnService[],
+): Promise<Edge[]> => {
   const [
     lambdaFunctions,
     iamRolePolicies,
@@ -79,7 +61,7 @@ export const runGraph = async ({
       )?.policies ?? [],
   }));
 
-  const edges: Edge[] = [
+  const rawEdges: Edge[] = [
     ...lambdaFunctionsAndRoleArn
       .map(({ arn, rolePolicies }) => {
         return rolePolicies.map(policy => {
@@ -100,7 +82,12 @@ export const runGraph = async ({
           return resources.map(resource =>
             resource.map(r => ({
               from: arn.toString(),
-              to: r.replace(/\/\*$/, ''),
+              to:
+                r === '*'
+                  ? '*'
+                  : CustomARN.fromArnString(
+                      r.replace(/\/\*$/, ''),
+                    )?.toString() ?? '*',
             })),
           );
         });
@@ -155,13 +142,10 @@ export const runGraph = async ({
         : [];
     }),
   ];
-  const relevantArns = arns.filter(
-    arn => !servicesToHide.includes(arn.service),
-  );
 
   const uniqueEdges = Array.from(
-    edges.reduce((acc, edge) => {
-      const stringifiedEdge = JSON.stringify(edge);
+    rawEdges.reduce((acc, edge) => {
+      const stringifiedEdge = `${edge.from}->${edge.to}`;
 
       if (acc.has(stringifiedEdge)) {
         return acc;
@@ -171,30 +155,32 @@ export const runGraph = async ({
 
       return acc;
     }, new Set<string>()),
-  ).map(e => JSON.parse(e) as Edge);
-  const relevantEdges = uniqueEdges
+  ).map(e => {
+    const [from, to] = e.split('->');
+
+    if (from === undefined || to === undefined) {
+      throw new Error('Unexpected undefined value in edge');
+    }
+
+    return {
+      from,
+      to,
+    };
+  });
+
+  return uniqueEdges
     .filter(({ from, to }) => from !== '*' && to !== '*')
-    .map(({ from, to }) => ({
-      from: CustomARN.fromArnString(from),
-      to: CustomARN.fromArnString(to),
-    }))
-    .filter(
-      (edge): edge is { from: CustomARN; to: CustomARN } =>
-        relevantArns.some(arn => arn.is(edge.from)) &&
-        relevantArns.some(arn => arn.is(edge.to)),
-    );
+    .filter(({ from, to }) => {
+      const fromArn = CustomARN.fromArnString(from);
+      const toArn = CustomARN.fromArnString(to);
 
-  return {
-    nodes: Object.fromEntries(
-      relevantArns.map(arn => {
-        const stringifiedArn = arn.toString();
-
-        return [stringifiedArn, { arn: stringifiedArn }];
-      }),
-    ),
-    edges: relevantEdges.map(({ from, to }) => ({
-      from: from.toString(),
-      to: to.toString(),
-    })),
-  };
+      return (
+        fromArn !== undefined &&
+        toArn !== undefined &&
+        !servicesToHide.includes(fromArn.service) &&
+        !servicesToHide.includes(toArn.service) &&
+        arns.some(arn => arn.is(fromArn)) &&
+        arns.some(arn => arn.is(toArn))
+      );
+    });
 };

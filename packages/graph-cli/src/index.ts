@@ -2,7 +2,7 @@ import { Command, InvalidArgumentError, program } from 'commander';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-import { runGraph } from '@sls-mentor/graph-core';
+import { generateGraph, serializeGraphData } from '@sls-mentor/graph-core';
 
 type Options = {
   awsProfile?: string;
@@ -71,10 +71,18 @@ const REPORT_OUTPUT_FOLDER = './.sls-mentor-graph';
 const REPORT_OUTPUT_PATH = `${REPORT_OUTPUT_FOLDER}/index.html`;
 
 const run = async (options: Options): Promise<void> => {
-  const result = await runGraph({
+  const result = await generateGraph({
     tags: options.tags,
     cloudformationStacks: options.cloudformationStacks,
   });
+
+  const serializedResult = serializeGraphData(result);
+
+  writeFileSync(
+    './raw.json',
+    JSON.stringify(serializedResult, null, 2),
+    'utf-8',
+  );
 
   const data = JSON.stringify(result).replace(/"/g, '\\"');
 

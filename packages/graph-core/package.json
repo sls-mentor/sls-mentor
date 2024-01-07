@@ -31,8 +31,7 @@
   },
   "dependencies": {
     "@sls-mentor/arn": "workspace:^",
-    "@sls-mentor/aws-api": "workspace:^",
-    "p-limit": "^3.1.0"
+    "@sls-mentor/aws-api": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
@@ -43,6 +42,7 @@
     "json-schema-to-ts": "^2.9.2",
     "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
+    "ts-toolbelt": "^9.6.0",
     "tsc-alias": "^1.8.7",
     "tsup": "^7.2.0",
     "typescript": "^5.0.2",

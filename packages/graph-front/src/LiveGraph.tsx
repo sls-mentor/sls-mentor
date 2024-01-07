@@ -1,4 +1,4 @@
-import { Data } from '@sls-mentor/graph-core';
+import { GraphData } from '@sls-mentor/graph-core';
 import { useEffect, useRef, useState } from 'react';
 import { update } from './update';
 import { ArnService } from '@sls-mentor/arn';
@@ -8,12 +8,13 @@ import { getInitialState } from './getInitialState';
 
 const NODE_RADIUS = 15;
 
-export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
+export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [{ nodes, edges, hoveredNode, connectedArns }, setState] = useState(
-    getInitialState(data),
-  );
+  const [
+    { nodes, edges, hoveredNode, connectedArns, hoveredNodeArn },
+    setState,
+  ] = useState(getInitialState(data));
 
   useEffect(() => {
     const { current: currentContainer } = containerRef;
@@ -36,13 +37,14 @@ export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
               (node.y + clientHeight / 2 - mouseY) ** 2 <
             NODE_RADIUS ** 2,
         );
+        const hoveredNodeArn = hoveredNode?.arn?.toString();
 
         const connectedArns: Record<string, boolean> = {};
         edges.forEach(edge => {
-          if (edge.from === hoveredNode?.arn) {
+          if (edge.from === hoveredNodeArn) {
             connectedArns[edge.to] = true;
           }
-          if (edge.to === hoveredNode?.arn) {
+          if (edge.to === hoveredNodeArn) {
             connectedArns[edge.from] = true;
           }
         });
@@ -51,6 +53,7 @@ export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
           nodes,
           edges,
           hoveredNode,
+          hoveredNodeArn,
           connectedArns,
           mouseX,
           mouseY,
@@ -115,9 +118,7 @@ export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
               )}rad`,
               transformOrigin: 'top left',
               opacity:
-                hoveredNode?.arn === from || hoveredNode?.arn === to
-                  ? 0.5
-                  : 0.1,
+                hoveredNodeArn === from || hoveredNodeArn === to ? 0.5 : 0.1,
             }}
           />
         );
@@ -133,7 +134,7 @@ export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
             height: NODE_RADIUS * 2,
             borderRadius: NODE_RADIUS,
             overflow: 'hidden',
-            opacity: hoveredNode?.arn === arn || connectedArns[arn] ? 1 : 0.5,
+            opacity: hoveredNodeArn === arn || connectedArns[arn] ? 1 : 0.5,
             cursor: 'pointer',
           }}
         >
@@ -156,7 +157,7 @@ export const LiveGraph = ({ data }: { data: Data }): JSX.Element => {
             borderRadius: 5,
           }}
         >
-          {hoveredNode.arn}
+          {hoveredNodeArn}
         </p>
       )}
     </div>

@@ -51,6 +51,7 @@
     "@aws-sdk/types": "^3.408.0",
     "@sls-mentor/arn": "workspace:^",
     "object-hash": "^3.0.0",
+    "p-limit": "^3.1.0",
     "throttled-queue": "^2.1.4"
   },
   "devDependencies": {

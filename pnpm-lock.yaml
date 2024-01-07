@@ -180,6 +180,9 @@ importers:
       object-hash:
         specifier: ^3.0.0
         version: 3.0.0
+      p-limit:
+        specifier: ^3.1.0
+        version: 3.1.0
       throttled-queue:
         specifier: ^2.1.4
         version: 2.1.4
@@ -521,9 +524,6 @@ importers:
       '@sls-mentor/aws-api':
         specifier: workspace:^
         version: link:../aws-api
-      p-limit:
-        specifier: ^3.1.0
-        version: 3.1.0
     devDependencies:
       '@types/node':
         specifier: ^20.6.0
@@ -549,6 +549,9 @@ importers:
       rimraf:
         specifier: ^5.0.1
         version: 5.0.5
+      ts-toolbelt:
+        specifier: ^9.6.0
+        version: 9.6.0
       tsc-alias:
         specifier: ^1.8.7
         version: 1.8.8
