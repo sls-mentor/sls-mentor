@@ -9,7 +9,7 @@ import { ApiGatewayHttpApiARN, CustomARN } from '@sls-mentor/arn';
 
 import { apiGatewayV2Client } from 'clients';
 
-const fetchApiGatewayV2RoutesByArn = async (
+export const fetchApiGatewayV2RoutesByArn = async (
   arn: ApiGatewayHttpApiARN,
 ): Promise<Route[]> => {
   const routes: Route[] = [];

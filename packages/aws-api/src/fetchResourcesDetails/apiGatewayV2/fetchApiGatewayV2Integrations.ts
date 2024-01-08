@@ -1,22 +1,10 @@
-import {
-  GetIntegrationCommand,
-  GetRoutesCommand,
-  Route,
-} from '@aws-sdk/client-apigatewayv2';
+import { GetIntegrationCommand } from '@aws-sdk/client-apigatewayv2';
 
 import { ApiGatewayHttpApiARN, CustomARN } from '@sls-mentor/arn';
 
 import { apiGatewayV2Client } from 'clients';
 
-const fetchApiGatewayV2RoutesByArn = async (
-  arn: ApiGatewayHttpApiARN,
-): Promise<Route[]> => {
-  const { Items } = await apiGatewayV2Client.send(
-    new GetRoutesCommand({ ApiId: arn.getApiId() }),
-  );
-
-  return Items ?? [];
-};
+import { fetchApiGatewayV2RoutesByArn } from './fetchApiGatewayV2Routes';
 
 export const fetchAllApiGatewayV2Integrations = async (
   resourceArns: CustomARN[],
