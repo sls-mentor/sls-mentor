@@ -2,13 +2,16 @@ import { Command, InvalidArgumentError, program } from 'commander';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-import { runGraph } from '@sls-mentor/graph-core';
+import { generateGraph, serializeGraphData } from '@sls-mentor/graph-core';
 
 type Options = {
   awsProfile?: string;
   awsRegion?: string;
   cloudformationStacks?: string[];
   tags?: Tag[];
+  stdout: boolean;
+  file?: string;
+  noReport: boolean;
 };
 
 type Tag = {
@@ -71,16 +74,36 @@ const REPORT_OUTPUT_FOLDER = './.sls-mentor-graph';
 const REPORT_OUTPUT_PATH = `${REPORT_OUTPUT_FOLDER}/index.html`;
 
 const run = async (options: Options): Promise<void> => {
-  const result = await runGraph({
+  const result = await generateGraph({
     tags: options.tags,
     cloudformationStacks: options.cloudformationStacks,
   });
 
-  const data = JSON.stringify(result).replace(/"/g, '\\"');
+  const serializedResult = serializeGraphData(result);
+
+  if (options.stdout) {
+    process.stdout.write(JSON.stringify(serializedResult, null, 2));
+  }
+
+  if (options.file !== undefined) {
+    writeFileSync(
+      options.file,
+      JSON.stringify(serializedResult, null, 2),
+      'utf-8',
+    );
+  }
+
+  if (options.noReport) {
+    return;
+  }
 
   const template = readFileSync(join(__dirname, TEMPLATE_PATH)).toString();
 
-  const report = template.replace(PLACEHOLDER, data);
+  // Escape double quotes because they are used in the template
+  const report = template.replace(
+    PLACEHOLDER,
+    JSON.stringify(serializedResult).replace(/"/g, '\\"'),
+  );
 
   const reportFolderExists = existsSync(REPORT_OUTPUT_FOLDER);
 
@@ -90,10 +113,10 @@ const run = async (options: Options): Promise<void> => {
 
   writeFileSync(REPORT_OUTPUT_PATH, report);
 
-  console.log('Report generated to ⬇️');
-  console.log(REPORT_OUTPUT_PATH);
-
-  return Promise.resolve();
+  if (!options.stdout) {
+    console.log('Report generated to ⬇️');
+    console.log(REPORT_OUTPUT_PATH);
+  }
 };
 
 program
@@ -110,6 +133,9 @@ program
     '-c, --cloudformation-stacks [cloudformation-stacks...]',
     'Filter checked account resources by CloudFormation stack names',
   )
+  .option('-s, --stdout', 'Output JSON to stdout, makes command silent', false)
+  .option('-f, --file <file>', 'Output JSON to file')
+  .option('-n, --noReport', 'Do not generate HTML report', false)
   .action(run)
   .hook('preAction', setAwsProfile)
   .hook('preAction', setAwsRegion)

@@ -1,4 +1,4 @@
-import { GetResourcesCommand, Resource } from '@aws-sdk/client-api-gateway';
+import { paginateGetResources, Resource } from '@aws-sdk/client-api-gateway';
 
 import { ApiGatewayRestApiARN, CustomARN } from '@sls-mentor/arn';
 
@@ -7,11 +7,16 @@ import { apiGatewayClient } from 'clients';
 const fetchRestApiGatewayResourcesByArn = async (
   arn: ApiGatewayRestApiARN,
 ): Promise<Resource[]> => {
-  const { items } = await apiGatewayClient.send(
-    new GetResourcesCommand({ restApiId: arn.getApiId(), embed: ['methods'] }),
-  );
+  const resources: Resource[] = [];
 
-  return items ?? [];
+  for await (const page of paginateGetResources(
+    { client: apiGatewayClient },
+    { restApiId: arn.getApiId(), embed: ['methods'] },
+  )) {
+    resources.push(...(page.items ?? []));
+  }
+
+  return resources;
 };
 
 export const fetchAllRestApiGatewayResources = async (

@@ -1,14 +1,15 @@
-import { Data, Edge } from '@sls-mentor/graph-core';
+import { GraphData, Edge } from '@sls-mentor/graph-core';
 import { NodeWithLocation } from './types';
 import { CustomARN } from '@sls-mentor/arn';
 
 export const getInitialState = ({
   nodes,
   edges,
-}: Data): {
+}: GraphData): {
   nodes: Record<string, NodeWithLocation>;
   edges: Edge[];
   hoveredNode: NodeWithLocation | undefined;
+  hoveredNodeArn: string | undefined;
   connectedArns: Record<string, boolean>;
   mouseX: number;
   mouseY: number;
@@ -46,6 +47,7 @@ export const getInitialState = ({
     ),
     edges,
     hoveredNode: undefined,
+    hoveredNodeArn: undefined,
     connectedArns: {},
     mouseX: 0,
     mouseY: 0,
