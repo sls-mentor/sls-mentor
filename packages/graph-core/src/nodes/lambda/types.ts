@@ -4,6 +4,13 @@ export type ColdStartStats = {
   coldStartPercentage: number;
 };
 
+export type ExecutionStats = {
+  averageDuration: number;
+  maxDuration: number;
+  averageMemoryUsed: number;
+  percentageMemoryUsed: number;
+};
+
 export type ConfigurationStats = {
   memorySize: number;
   timeout: number;
@@ -13,4 +20,5 @@ export type ConfigurationStats = {
 export type LambdaFunctionStats = {
   coldStarts?: ColdStartStats;
   configuration: ConfigurationStats;
+  execution?: ExecutionStats;
 };

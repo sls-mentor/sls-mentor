@@ -4,7 +4,7 @@ import {
   fetchAllLambdaConfigurations,
 } from '@sls-mentor/aws-api';
 
-import { ColdStartStats, LambdaFunctionStats } from './types';
+import { ColdStartStats, ExecutionStats, LambdaFunctionStats } from './types';
 
 const getLogInsightsData = async (
   lambdaFunctions: LambdaFunctionARN[],
@@ -98,6 +98,39 @@ const mapColdStartStats = (
   };
 };
 
+const mapExecutionStats = (
+  logInsightsData: Awaited<
+    ReturnType<typeof getLogInsightsData>
+  >[number]['data'],
+): ExecutionStats | undefined => {
+  if (logInsightsData === undefined) {
+    return undefined;
+  }
+
+  const {
+    averageDuration,
+    averageMemoryUsed,
+    percentageMemoryUsed,
+    maxDuration,
+  } = logInsightsData;
+
+  if (
+    averageDuration === undefined ||
+    averageMemoryUsed === undefined ||
+    percentageMemoryUsed === undefined ||
+    maxDuration === undefined
+  ) {
+    return undefined;
+  }
+
+  return {
+    averageDuration,
+    maxDuration,
+    percentageMemoryUsed,
+    averageMemoryUsed,
+  };
+};
+
 const mapConfigurationStats = (
   lambdaFunctionConfiguration: Awaited<
     ReturnType<typeof fetchAllLambdaConfigurations>
@@ -150,6 +183,7 @@ export const getLambdaFunctionNodes = async (
           stats: {
             configuration: mapConfigurationStats(configuration),
             coldStarts: mapColdStartStats(logInsights),
+            execution: mapExecutionStats(logInsights),
           },
         },
       ];

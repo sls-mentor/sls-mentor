@@ -8,8 +8,13 @@ export type Edge = {
   to: string;
 };
 
+export type LambdaFunctionNode = NodeBase<
+  LambdaFunctionARN,
+  LambdaFunctionStats
+>;
+
 export type Node =
-  | NodeBase<LambdaFunctionARN, LambdaFunctionStats>
+  | LambdaFunctionNode
   | NodeBase<Exclude<SupportedARN, LambdaFunctionARN>>;
 
 export type SerializedNode =

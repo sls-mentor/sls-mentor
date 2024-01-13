@@ -1,4 +1,5 @@
 import { SerializedGraphData } from '@sls-mentor/graph-core';
+import { LambdaFunctionStats } from '@sls-mentor/graph-core/dist/types/nodes';
 
 export const mockResults: SerializedGraphData = {
   nodes: Object.fromEntries(
@@ -1457,13 +1458,44 @@ export const mockResults: SerializedGraphData = {
         {
           arn: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
         },
-    }).map(([key, value]) => [
-      key,
-      {
-        arn: value.arn,
-        stats: {},
-      },
-    ]),
+    }).map(([key, value]) => {
+      if (key.startsWith('arn:aws:lambda')) {
+        const stats: LambdaFunctionStats = {
+          configuration: {
+            memorySize: Math.floor(Math.random() * 1000),
+            timeout: Math.floor(Math.random() * 1000),
+            bundleSize: Math.floor(Math.random() * 1000),
+          },
+          execution: {
+            averageDuration: Math.floor(Math.random() * 1000),
+            averageMemoryUsed: Math.floor(Math.random() * 1000),
+            percentageMemoryUsed: Math.floor(Math.random() * 1000),
+            maxDuration: Math.floor(Math.random() * 1000),
+          },
+          coldStarts: {
+            coldStartPercentage: Math.floor(Math.random() * 1000),
+            averageDuration: Math.floor(Math.random() * 1000),
+            maxDuration: Math.floor(Math.random() * 1000),
+          },
+        };
+
+        return [
+          key,
+          {
+            ...value,
+            stats,
+          },
+        ];
+      }
+
+      return [
+        key,
+        {
+          ...value,
+          stats: {},
+        },
+      ];
+    }),
   ),
   edges: [
     {
