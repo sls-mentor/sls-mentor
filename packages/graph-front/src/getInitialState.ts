@@ -1,14 +1,13 @@
 import { GraphData, Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocation } from './types';
-import { CustomARN } from '@sls-mentor/arn';
+import { NodeWithLocationAndRank } from './types';
 
 export const getInitialState = ({
   nodes,
   edges,
 }: GraphData): {
-  nodes: Record<string, NodeWithLocation>;
+  nodes: Record<string, NodeWithLocationAndRank>;
   edges: Edge[];
-  hoveredNode: NodeWithLocation | undefined;
+  hoveredNode: NodeWithLocationAndRank | undefined;
   hoveredNodeArn: string | undefined;
   connectedArns: Record<string, boolean>;
   mouseX: number;
@@ -18,32 +17,23 @@ export const getInitialState = ({
     nodes: Object.fromEntries(
       Object.entries(nodes)
         .map(([arn, node]) => {
-          const parsedArn = CustomARN.fromArnString(arn);
-
-          if (parsedArn === undefined) {
-            return [arn, undefined];
-          }
-
           const r = Math.random() * 2 * Math.PI;
 
-          return [
-            arn,
-            {
-              ...node,
-              x: Math.cos(r),
-              y: Math.sin(r),
-              vx: 0,
-              vy: 0,
-              ax: 0,
-              ay: 0,
-              parsedArn,
-            },
-          ];
+          const nodeWithLocationAndRank: NodeWithLocationAndRank = {
+            ...node,
+            x: Math.cos(r),
+            y: Math.sin(r),
+            vx: 0,
+            vy: 0,
+            ax: 0,
+            ay: 0,
+            rank: undefined,
+            value: undefined,
+          };
+
+          return [arn, nodeWithLocationAndRank];
         })
-        .filter(([, node]) => node !== undefined) as [
-        string,
-        NodeWithLocation,
-      ][],
+        .filter(([, node]) => node !== undefined),
     ),
     edges,
     hoveredNode: undefined,

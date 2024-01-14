@@ -1,7 +1,6 @@
 import { GraphData } from '@sls-mentor/graph-core';
 import { useEffect, useRef, useState } from 'react';
 import { update } from './update';
-import { ArnService } from '@sls-mentor/arn';
 import { ArnAwsIcons } from './assets/iconComponents';
 
 import { getInitialState } from './getInitialState';
@@ -139,7 +138,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           }}
         >
           <div style={{ pointerEvents: 'none' }}>
-            {ArnAwsIcons[node.parsedArn.service as ArnService]}
+            {ArnAwsIcons[node.arn.service]}
           </div>
         </div>
       ))}

@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocation } from './types';
+import { NodeWithLocationAndRank } from './types';
 
 const SPRING_CONSTANT = 0.003;
 const RESISTANCE_CONSTANT = 0.1;
@@ -22,7 +22,7 @@ export const update = ({
   springConstant = SPRING_CONSTANT,
   maxAcceleration = MAX_ACCELERATION,
 }: {
-  nodes: Record<string, NodeWithLocation>;
+  nodes: Record<string, NodeWithLocationAndRank>;
   edges: Edge[];
   repulsionConstant?: number;
   resistanceConstant?: number;
