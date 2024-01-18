@@ -6,7 +6,7 @@ import { cachePlugin } from './cachePlugin';
 const lambdaClient = new LambdaClient({});
 
 (lambdaClient.middlewareStack as MiddlewareStack<object, object>).use(
-  cachePlugin({ maxRequestsPerInterval: 8 }),
+  cachePlugin({ intervalsPerSecond: 8 }),
 );
 
 export { lambdaClient };
