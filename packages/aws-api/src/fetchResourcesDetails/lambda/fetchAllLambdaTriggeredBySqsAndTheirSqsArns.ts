@@ -21,7 +21,10 @@ export const fetchAllLambdaTriggeredBySqsAndTheirSqsArns = async (
             eventSourceArn !== undefined,
         )
         .map(CustomARN.fromArnString)
-        .filter((a): a is CustomARN => a !== undefined)
+        .filter(
+          (eventSourceArn): eventSourceArn is CustomARN =>
+            eventSourceArn !== undefined && SqsQueueARN.is(eventSourceArn),
+        )
         .map(SqsQueueARN.fromCustomARN)
         .filter(eventSourceArn => sqsQueueArns.some(a => a.is(eventSourceArn)))
         .map(sqsQueueARN => ({
