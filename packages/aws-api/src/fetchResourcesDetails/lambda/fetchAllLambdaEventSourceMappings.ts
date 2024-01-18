@@ -1,6 +1,6 @@
 import {
   EventSourceMappingConfiguration,
-  ListEventSourceMappingsCommand,
+  paginateListEventSourceMappings,
 } from '@aws-sdk/client-lambda';
 
 import { CustomARN, LambdaFunctionARN } from '@sls-mentor/arn';
@@ -13,15 +13,20 @@ const fetchLambdaEventSourceMappings = async (
   arn: LambdaFunctionARN;
   eventSourceMappings: EventSourceMappingConfiguration[];
 }> => {
-  const { EventSourceMappings } = await lambdaClient.send(
-    new ListEventSourceMappingsCommand({
-      FunctionName: arn.getFunctionName(),
-    }),
-  );
+  const eventSourceMappings: EventSourceMappingConfiguration[] = [];
+
+  for await (const eventSourceMapping of paginateListEventSourceMappings(
+    {
+      client: lambdaClient,
+    },
+    { FunctionName: arn.getFunctionName() },
+  )) {
+    eventSourceMappings.push(...(eventSourceMapping.EventSourceMappings ?? []));
+  }
 
   return {
     arn,
-    eventSourceMappings: EventSourceMappings ?? [],
+    eventSourceMappings,
   };
 };
 
