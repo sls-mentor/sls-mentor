@@ -6,7 +6,6 @@ export default (
     style={{
       // @ts-expect-error broken svg type
       enableBackground: 'new 0 0 352.644 352.644',
-      height: '3em',
     }}
     viewBox="167.049 132.925 121.845 146.683"
   >
