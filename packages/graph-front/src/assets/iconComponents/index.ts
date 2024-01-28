@@ -14,6 +14,7 @@ import SlsMentorSvg from './SlsMentorSvg';
 import SNSSvg from './SNSSvg';
 import IAMSvg from './IAMSvg';
 import { ArnService } from '@sls-mentor/arn';
+import SlsMentorSvgWhite from './SlsMentorSvgWhite';
 
 export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   apigateway: ApiGatewaySvg,
@@ -33,3 +34,4 @@ export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
 };
 
 export const SlsMentorLogo: JSX.Element = SlsMentorSvg;
+export const SlsMentorLogoWhite: JSX.Element = SlsMentorSvgWhite;
