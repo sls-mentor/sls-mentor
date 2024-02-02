@@ -5,6 +5,8 @@ const RESISTANCE_CONSTANT = 0.1;
 const MAX_ACCELERATION = 1.5;
 const SPRING_CONSTANT = 0.003;
 
+export const OFFSET = 48;
+
 /**
  * @param nodes Nodes to simulate
  * @param edges Edges to simulate
@@ -28,6 +30,8 @@ export const updateWithRank = ({
   clientWidth: number;
   clientHeight: number;
 }): void => {
+  const offsetClientHeight = clientHeight - OFFSET;
+
   const maxRankRoot = Math.ceil(
     Math.sqrt(
       Object.values(nodes).filter(({ rank }) => rank !== undefined).length,
@@ -50,9 +54,10 @@ export const updateWithRank = ({
     node1.ay -=
       springConstant *
       (node1.y -
-        (-clientHeight / 2 +
-          Math.floor(rank / maxRankRoot) * (clientHeight / maxRankRoot) +
-          clientHeight / (2 * maxRankRoot)));
+        (OFFSET -
+          clientHeight / 2 +
+          Math.floor(rank / maxRankRoot) * (offsetClientHeight / maxRankRoot) +
+          offsetClientHeight / (2 * maxRankRoot)));
   });
 
   Object.values(nodes).forEach(node => {
