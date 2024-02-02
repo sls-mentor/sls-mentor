@@ -12,7 +12,7 @@ const loadResults = () => {
 };
 
 export const useGraphData = (): GraphData | undefined => {
-  const isProd = false; //import.meta.env.PROD;
+  const isProd = import.meta.env.PROD;
 
   const graphData = isProd ? loadResults() : mockResults;
 

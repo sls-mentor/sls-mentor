@@ -8,6 +8,8 @@ import { NODE_RADIUS, getInitialState } from './getInitialState';
 import { NodeWithLocationAndRank } from './types';
 import { updateWithRank } from './updateWithRank';
 
+import { SlsMentorLogo } from './assets/iconComponents';
+
 const RankingKey = {
   averageColdStartDuration: 'averageColdStartDuration',
   maxColdStartDuration: 'maxColdStartDuration',
@@ -391,7 +393,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
         style={{
           position: 'absolute',
           bottom: 0,
-          left: 0,
+          right: 0,
           padding: 10,
           display: 'flex',
           flexDirection: 'column',
@@ -404,6 +406,22 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           </button>
         ))}
         <button onClick={() => setRanking(undefined)}>None</button>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          position: 'absolute',
+          padding: '16px',
+          bottom: 0,
+          left: 0,
+        }}
+      >
+        {SlsMentorLogo}
+        <p style={{ fontSize: 18, color: 'white', fontWeight: 600 }}>
+          sls-mentor
+        </p>
       </div>
     </div>
   );
