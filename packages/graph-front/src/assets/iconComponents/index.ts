@@ -10,6 +10,7 @@ import S3Svg from './S3Svg';
 import SQSSvg from './SQSSvg';
 import EventBridgeSvg from './EventBridgeSvg';
 import SESSvg from './SESSvg';
+import SlsMentorSvg from './SlsMentorSvg';
 import SNSSvg from './SNSSvg';
 import IAMSvg from './IAMSvg';
 import { ArnService } from '@sls-mentor/arn';
@@ -30,3 +31,5 @@ export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   backup: BackupSvg,
   logs: CloudWatchSvg,
 };
+
+export const SlsMentorLogo: JSX.Element = SlsMentorSvg;

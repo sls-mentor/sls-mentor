@@ -6,7 +6,9 @@ import { ArnAwsIcons } from './assets/iconComponents';
 
 import { NODE_RADIUS, getInitialState } from './getInitialState';
 import { NodeWithLocationAndRank } from './types';
-import { updateWithRank } from './updateWithRank';
+import { OFFSET, updateWithRank } from './updateWithRank';
+
+import { SlsMentorLogo } from './assets/iconComponents';
 
 const RankingKey = {
   averageColdStartDuration: 'averageColdStartDuration',
@@ -88,7 +90,7 @@ const rankings: Record<
       return undefined;
     }
 
-    return node.stats.configuration.bundleSize;
+    return node.stats.configuration.bundleSize / 1000;
   },
   timeout: node => {
     if (!isLambdaNode(node)) {
@@ -116,7 +118,13 @@ const rankings: Record<
       return undefined;
     }
 
-    return node.stats.execution?.averageMemoryUsed;
+    const averageMemoryUsed = node.stats.execution?.averageMemoryUsed;
+
+    if (averageMemoryUsed !== undefined) {
+      return averageMemoryUsed / 1000000;
+    }
+
+    return undefined;
   },
   percentageMemoryUsed: node => {
     if (!isLambdaNode(node)) {
@@ -183,7 +191,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             ]),
           ),
           nodeRadius:
-            clientHeight /
+            (clientHeight - OFFSET) /
             Math.ceil(Math.sqrt(Object.values(rankedNodes).length)) /
             3,
         };
@@ -391,7 +399,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
         style={{
           position: 'absolute',
           bottom: 0,
-          left: 0,
+          right: 0,
           padding: 10,
           display: 'flex',
           flexDirection: 'column',
@@ -405,6 +413,40 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
         ))}
         <button onClick={() => setRanking(undefined)}>None</button>
       </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '10px',
+          position: 'absolute',
+          padding: '16px',
+          bottom: 0,
+          left: 0,
+        }}
+      >
+        {SlsMentorLogo}
+        <p style={{ fontSize: '1.5em', color: 'white', fontWeight: 600 }}>
+          sls-mentor
+        </p>
+      </div>
+      {ranking !== undefined && (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            position: 'absolute',
+            padding: '16px',
+            top: 0,
+            left: 0,
+          }}
+        >
+          <p style={{ fontSize: 18, color: 'white', fontWeight: 500 }}>
+            Lambda functions ranked by {rankingKeyTranslation[ranking]} (
+            {rankingUnit[ranking]})
+          </p>
+        </div>
+      )}
     </div>
   );
 };
