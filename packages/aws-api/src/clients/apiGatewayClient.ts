@@ -7,7 +7,7 @@ const apiGatewayClient = new APIGatewayClient({});
 
 (apiGatewayClient.middlewareStack as MiddlewareStack<object, object>).use(
   cachePlugin({
-    intervalsPerSecond: 5,
+    intervalsPerSecond: 1,
   }),
 );
 

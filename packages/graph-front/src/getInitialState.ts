@@ -1,6 +1,8 @@
 import { GraphData, Edge } from '@sls-mentor/graph-core';
 import { NodeWithLocationAndRank } from './types';
 
+export const NODE_RADIUS = 15;
+
 export const getInitialState = ({
   nodes,
   edges,
@@ -12,6 +14,7 @@ export const getInitialState = ({
   connectedArns: Record<string, boolean>;
   mouseX: number;
   mouseY: number;
+  nodeRadius: number;
 } => {
   return {
     nodes: Object.fromEntries(
@@ -41,5 +44,6 @@ export const getInitialState = ({
     connectedArns: {},
     mouseX: 0,
     mouseY: 0,
+    nodeRadius: NODE_RADIUS,
   };
 };
