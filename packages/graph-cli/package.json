@@ -1,5 +1,5 @@
 {
-  "name": "@sls-mentor/graph-cli",
+  "name": "sls-mentor",
   "description": "Audit tool for AWS serverless architectures",
   "author": "Serverless By Theodo",
   "license": "ISC",
@@ -36,14 +36,14 @@
     "sls-mentor": "./dist/index.js"
   },
   "dependencies": {
-    "@sls-mentor/graph-core": "workspace:^",
-    "@sls-mentor/graph-front": "workspace:^",
     "chalk": "^4.1.2",
     "cli-select": "^1.1.2",
     "cli-spinner": "^0.2.10",
     "commander": "^11.0.0"
   },
   "devDependencies": {
+    "@sls-mentor/graph-core": "workspace:^",
+    "@sls-mentor/graph-front": "workspace:^",
     "@types/cli-spinner": "^0.2.1",
     "@types/node": "^20.6.0",
     "@vitest/coverage-c8": "0.30.0",

@@ -56,3 +56,4 @@ nx-cache
 # Report output
 **/.sls-mentor
 **/.sls-mentor-graph
+**/raw.json

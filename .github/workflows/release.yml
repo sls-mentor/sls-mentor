@@ -18,6 +18,7 @@ jobs:
   release:
     name: Release to NPM
     runs-on: ubuntu-latest
+    if: "!contains(github.event.release.tag_name , 'alpha')"
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
@@ -38,5 +39,35 @@ jobs:
       - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - run: pnpm version $RELEASE_VERSION --no-git-tag-version && echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc && pnpm publish --access public --no-git-checks && rm .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  prerelease:
+    name: Release a 3.0.0-alpha version to NPM
+    runs-on: ubuntu-latest
+    if: contains(github.event.release.tag_name, 'alpha')
+    defaults:
+      run:
+        working-directory: ./packages/graph-cli
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.pnpm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+      - name: Install & cache node dependencies
+        uses: ./.github/actions/install
+      # Store the name of the release
+      # See https://stackoverflow.com/questions/58177786/get-the-current-pushed-tag-in-github-actions
+
+      - name: Package repository
+        run: pnpm -w package
+
+      - name: Copy paste root README to @sls-mentor/sls-mentor
+        run: cp ../../README.md ./README.md
+
+      - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - run: pnpm version $RELEASE_VERSION --no-git-tag-version && echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc && pnpm publish --access public --no-git-checks --tag alpha && rm .npmrc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
