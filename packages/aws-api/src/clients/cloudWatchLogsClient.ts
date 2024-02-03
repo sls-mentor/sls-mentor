@@ -6,7 +6,9 @@ import { cachePlugin } from './cachePlugin';
 const cloudWatchLogsClient = new CloudWatchLogsClient({});
 
 (cloudWatchLogsClient.middlewareStack as MiddlewareStack<object, object>).use(
-  cachePlugin(),
+  cachePlugin({
+    intervalsPerSecond: 4,
+  }),
 );
 
 export { cloudWatchLogsClient };
