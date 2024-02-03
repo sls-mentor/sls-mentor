@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { Command, InvalidArgumentError, program } from 'commander';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
