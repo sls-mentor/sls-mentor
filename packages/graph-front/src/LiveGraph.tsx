@@ -9,6 +9,7 @@ import { NodeWithLocationAndRank } from './types';
 import { OFFSET, updateWithRank } from './updateWithRank';
 
 import { SlsMentorLogo } from './assets/iconComponents';
+import { Logo } from './Logo';
 
 const RankingKey = {
   averageColdStartDuration: 'averageColdStartDuration',
@@ -424,7 +425,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           left: 0,
         }}
       >
-        {SlsMentorLogo}
+        <div style={{ width: '3em' }}>{SlsMentorLogo}</div>
         <p style={{ fontSize: '1.5em', color: 'white', fontWeight: 600 }}>
           sls-mentor
         </p>
@@ -447,6 +448,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           </p>
         </div>
       )}
+      <Logo />
     </div>
   );
 };
