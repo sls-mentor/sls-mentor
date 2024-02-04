@@ -1,7 +1,12 @@
-import { GraphData, LambdaFunctionNode, Node } from '@sls-mentor/graph-core';
+import {
+  DynamoDBTableNode,
+  GraphData,
+  LambdaFunctionNode,
+  Node,
+} from '@sls-mentor/graph-core';
 import { useEffect, useRef, useState } from 'react';
 import { update } from './update';
-import { LambdaFunctionARN } from '@sls-mentor/arn';
+import { DynamoDBTableARN, LambdaFunctionARN } from '@sls-mentor/arn';
 import { ArnAwsIcons } from './assets/iconComponents';
 
 import { NODE_RADIUS, getInitialState } from './getInitialState';
@@ -22,6 +27,9 @@ const RankingKey = {
   maxDuration: 'maxDuration',
   averageMemoryUsed: 'averageMemoryUsed',
   percentageMemoryUsed: 'percentageMemoryUsed',
+  itemCount: 'itemCount',
+  tableSize: 'tableSize',
+  averageItemSize: 'averageItemSize',
 } as const;
 type RankingKey = (typeof RankingKey)[keyof typeof RankingKey];
 
@@ -36,6 +44,9 @@ const rankingKeyTranslation: Record<RankingKey, string> = {
   maxDuration: 'Max Duration',
   averageMemoryUsed: 'Average Memory Used',
   percentageMemoryUsed: 'Percentage Memory Used',
+  itemCount: 'Item Count',
+  tableSize: 'Table Size',
+  averageItemSize: 'Average Item Size',
 };
 
 const rankingUnit: Record<RankingKey, string> = {
@@ -49,10 +60,16 @@ const rankingUnit: Record<RankingKey, string> = {
   maxDuration: 'ms',
   averageMemoryUsed: 'MB',
   percentageMemoryUsed: '%',
+  itemCount: 'items',
+  tableSize: 'MB',
+  averageItemSize: 'kB',
 };
 
 const isLambdaNode = (node: Node): node is LambdaFunctionNode =>
   LambdaFunctionARN.is(node.arn);
+
+const isDynamoDBTableNode = (node: Node): node is DynamoDBTableNode =>
+  DynamoDBTableARN.is(node.arn);
 
 const rankings: Record<
   RankingKey,
@@ -121,11 +138,11 @@ const rankings: Record<
 
     const averageMemoryUsed = node.stats.execution?.averageMemoryUsed;
 
-    if (averageMemoryUsed !== undefined) {
-      return averageMemoryUsed / 1000000;
+    if (averageMemoryUsed === undefined) {
+      return undefined;
     }
 
-    return undefined;
+    return averageMemoryUsed / 1000000;
   },
   percentageMemoryUsed: node => {
     if (!isLambdaNode(node)) {
@@ -133,6 +150,39 @@ const rankings: Record<
     }
 
     return node.stats.execution?.percentageMemoryUsed;
+  },
+  tableSize: node => {
+    if (!isDynamoDBTableNode(node)) {
+      return undefined;
+    }
+
+    const tableSizeBytes = node.stats.configuration?.tableSize;
+
+    if (tableSizeBytes === undefined) {
+      return undefined;
+    }
+
+    return tableSizeBytes / 1000000;
+  },
+  itemCount: node => {
+    if (!isDynamoDBTableNode(node)) {
+      return undefined;
+    }
+
+    return node.stats.configuration?.itemCount;
+  },
+  averageItemSize: node => {
+    if (!isDynamoDBTableNode(node)) {
+      return undefined;
+    }
+
+    const averageItemSizeBytes = node.stats.configuration?.averageItemSize;
+
+    if (averageItemSizeBytes === undefined) {
+      return undefined;
+    }
+
+    return averageItemSizeBytes / 1000;
   },
 };
 
