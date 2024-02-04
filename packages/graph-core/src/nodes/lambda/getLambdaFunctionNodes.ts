@@ -4,7 +4,12 @@ import {
   fetchAllLambdaConfigurations,
 } from '@sls-mentor/aws-api';
 
-import { ColdStartStats, ExecutionStats, LambdaFunctionStats } from './types';
+import {
+  LambdaFunctionColdStartStats,
+  LambdaFunctionConfigurationStats,
+  LambdaFunctionExecutionStats,
+  LambdaFunctionStats,
+} from './types';
 
 const getLogInsightsData = async (
   lambdaFunctions: LambdaFunctionARN[],
@@ -75,7 +80,7 @@ const mapColdStartStats = (
   logInsightsData: Awaited<
     ReturnType<typeof getLogInsightsData>
   >[number]['data'],
-): ColdStartStats | undefined => {
+): LambdaFunctionColdStartStats | undefined => {
   if (logInsightsData === undefined) {
     return undefined;
   }
@@ -102,7 +107,7 @@ const mapExecutionStats = (
   logInsightsData: Awaited<
     ReturnType<typeof getLogInsightsData>
   >[number]['data'],
-): ExecutionStats | undefined => {
+): LambdaFunctionExecutionStats | undefined => {
   if (logInsightsData === undefined) {
     return undefined;
   }
@@ -135,7 +140,7 @@ const mapConfigurationStats = (
   lambdaFunctionConfiguration: Awaited<
     ReturnType<typeof fetchAllLambdaConfigurations>
   >[number]['configuration'],
-): LambdaFunctionStats['configuration'] => {
+): LambdaFunctionConfigurationStats => {
   const { MemorySize, Timeout, CodeSize } = lambdaFunctionConfiguration;
 
   if (

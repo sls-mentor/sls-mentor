@@ -1,24 +1,24 @@
-export type ColdStartStats = {
+export type LambdaFunctionColdStartStats = {
   averageDuration: number;
   maxDuration: number;
   coldStartPercentage: number;
 };
 
-export type ExecutionStats = {
+export type LambdaFunctionExecutionStats = {
   averageDuration: number;
   maxDuration: number;
   averageMemoryUsed: number;
   percentageMemoryUsed: number;
 };
 
-export type ConfigurationStats = {
+export type LambdaFunctionConfigurationStats = {
   memorySize: number;
   timeout: number;
   bundleSize: number;
 };
 
 export type LambdaFunctionStats = {
-  coldStarts?: ColdStartStats;
-  configuration: ConfigurationStats;
-  execution?: ExecutionStats;
+  coldStarts?: LambdaFunctionColdStartStats;
+  configuration: LambdaFunctionConfigurationStats;
+  execution?: LambdaFunctionExecutionStats;
 };
