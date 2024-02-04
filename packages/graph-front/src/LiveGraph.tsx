@@ -1,161 +1,27 @@
 import { GraphData } from '@sls-mentor/graph-core';
-import { useEffect, useRef, useState } from 'react';
-import { update } from './update';
 import { ArnAwsIcons } from './assets/iconComponents';
 
-import { NODE_RADIUS, getInitialState } from './getInitialState';
-import { OFFSET, updateWithRank } from './updateWithRank';
-
-import { SlsMentorLogo } from './assets/iconComponents';
-import { Logo } from './Logo';
-import {
-  RankingKey,
-  rankingFunctions,
-  rankingKeyTranslation,
-  rankingUnit,
-} from './ranking';
+import { rankingUnitTranslation } from './translations';
+import { Zoom, Footer, Header, RankingSelect, Logo } from './layout';
+import { useGraph } from './useGraph';
 
 export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const [
-    {
-      nodes,
-      edges,
-      hoveredNode,
-      connectedArns,
-      hoveredNodeArn,
-      nodeRadius,
-      zoomLevel,
-    },
-    setState,
-  ] = useState(getInitialState(data));
-  const [ranking, setRanking] = useState<RankingKey | undefined>(undefined);
-
-  useEffect(() => {
-    const { current: currentContainer } = containerRef;
-    if (currentContainer === null) {
-      return;
-    }
-
-    const { clientWidth, clientHeight } = currentContainer;
-
-    const updateFn = ranking === undefined ? update : updateWithRank;
-
-    if (ranking !== undefined) {
-      const rankFn = rankingFunctions[ranking];
-      if (rankFn === undefined) {
-        throw new Error(`Ranking function for ${ranking} not found`);
-      }
-
-      setState(state => {
-        const rankedNodes = Object.fromEntries(
-          Object.values(state.nodes)
-            .map(node => {
-              const value = rankFn(node);
-              return { arn: node.arn.toString(), value };
-            })
-            .filter(
-              (node): node is { arn: string; value: number } =>
-                node.value !== undefined,
-            )
-            .sort((a, b) => b.value - a.value)
-            .map((node, index) => [
-              node.arn,
-              { rank: index, value: node.value },
-            ]),
-        );
-
-        return {
-          ...state,
-          nodes: Object.fromEntries(
-            Object.entries(state.nodes).map(([arn, node]) => [
-              arn,
-              {
-                ...node,
-                rank: rankedNodes[arn]?.rank,
-                value: rankedNodes[arn]?.value,
-              },
-            ]),
-          ),
-          nodeRadius:
-            (clientHeight - OFFSET) /
-            Math.ceil(Math.sqrt(Object.values(rankedNodes).length)) /
-            3,
-        };
-      });
-    } else {
-      setState(state => ({
-        ...state,
-        nodeRadius: NODE_RADIUS,
-      }));
-    }
-
-    const refresh = () => {
-      setState(
-        ({
-          nodes,
-          edges,
-          mouseX,
-          mouseY,
-          nodeRadius,
-          hoveredNode,
-          hoveredNodeArn,
-          zoomLevel,
-        }) => {
-          updateFn({
-            nodes,
-            edges,
-            clientWidth,
-            clientHeight,
-          });
-
-          const connectedArns: Record<string, boolean> = {};
-          edges.forEach(edge => {
-            if (edge.from === hoveredNodeArn) {
-              connectedArns[edge.to] = true;
-            }
-            if (edge.to === hoveredNodeArn) {
-              connectedArns[edge.from] = true;
-            }
-          });
-
-          return {
-            nodes,
-            edges,
-            hoveredNode,
-            hoveredNodeArn,
-            connectedArns,
-            mouseX,
-            mouseY,
-            nodeRadius,
-            zoomLevel,
-          };
-        },
-      );
-    };
-
-    const onMouseMove = (event: MouseEvent) => {
-      setState(state => ({
-        ...state,
-        mouseX: event.clientX,
-        mouseY: event.clientY,
-      }));
-    };
-
-    const interval = setInterval(refresh, 1000 / 30);
-    currentContainer.addEventListener('mousemove', onMouseMove);
-
-    return () => {
-      clearInterval(interval);
-      currentContainer.removeEventListener('mousemove', onMouseMove);
-    };
-  }, [setState, ranking]);
-
-  const { clientWidth, clientHeight } = containerRef.current ?? {
-    clientWidth: 0,
-    clientHeight: 0,
-  };
+  const {
+    containerRef,
+    ranking,
+    setRanking,
+    edges,
+    nodes,
+    zoomLevel,
+    clientHeight,
+    clientWidth,
+    hoveredNode,
+    hoveredNodeArn,
+    nodeRadius,
+    connectedArns,
+    updateHoveredNode,
+    updateZoomLevel,
+  } = useGraph(data);
 
   return (
     <div
@@ -226,20 +92,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                 overflow: 'hidden',
                 cursor: 'pointer',
               }}
-              onMouseEnter={() =>
-                setState(state => ({
-                  ...state,
-                  hoveredNode: node,
-                  hoveredNodeArn: arn,
-                }))
-              }
-              onMouseLeave={() =>
-                setState(state => ({
-                  ...state,
-                  hoveredNode: undefined,
-                  hoveredNodeArn: undefined,
-                }))
-              }
+              onMouseEnter={() => updateHoveredNode(node)}
+              onMouseLeave={() => updateHoveredNode(undefined)}
             >
               <div
                 style={{
@@ -265,7 +119,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                   padding: 1,
                 }}
               >
-                {node.value.toFixed(1)} {rankingUnit[ranking]}
+                {node.value.toFixed(1)} {rankingUnitTranslation[ranking]}
               </p>
             )}
           </div>
@@ -305,98 +159,16 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                   width: 'max-content',
                 }}
               >
-                {hoveredNode.value.toFixed(1)} {rankingUnit[ranking]}
+                {hoveredNode.value.toFixed(1)} {rankingUnitTranslation[ranking]}
               </p>
             )}
           </>
         )}
-      <div
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          padding: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 2,
-        }}
-      >
-        {Object.values(RankingKey).map(key => (
-          <button key={key} onClick={() => setRanking(key)}>
-            {rankingKeyTranslation[key]}
-          </button>
-        ))}
-        <button onClick={() => setRanking(undefined)}>None</button>
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          position: 'absolute',
-          padding: '16px',
-          bottom: 0,
-          left: 0,
-        }}
-      >
-        <div style={{ width: '3em' }}>{SlsMentorLogo}</div>
-        <p style={{ fontSize: '1.5em', color: 'white', fontWeight: 600 }}>
-          sls-mentor
-        </p>
-      </div>
-      {ranking !== undefined && (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            position: 'absolute',
-            padding: '16px',
-            top: 0,
-            left: 0,
-          }}
-        >
-          <p style={{ fontSize: 18, color: 'white', fontWeight: 500 }}>
-            Lambda functions ranked by {rankingKeyTranslation[ranking]} (
-            {rankingUnit[ranking]})
-          </p>
-        </div>
-      )}
+      <RankingSelect setRanking={setRanking} />
+      {ranking !== undefined && <Header ranking={ranking} />}
+      <Footer />
       <Logo />
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          padding: 10,
-          display: 'flex',
-          flexDirection: 'row',
-          gap: 2,
-        }}
-      >
-        <button
-          onClick={() => {
-            setState(state => ({
-              ...state,
-              zoomLevel: state.zoomLevel * 1.1,
-            }));
-          }}
-          style={{ width: '1.5em', height: '1.5em', fontSize: '1.5em' }}
-        >
-          +
-        </button>
-        <button
-          onClick={() => {
-            setState(state => ({
-              ...state,
-              zoomLevel: state.zoomLevel / 1.1,
-            }));
-          }}
-          style={{ width: '1.5em', height: '1.5em', fontSize: '1.5em' }}
-        >
-          -
-        </button>
-      </div>
+      <Zoom updateZoom={factor => updateZoomLevel(factor)} />
     </div>
   );
 };

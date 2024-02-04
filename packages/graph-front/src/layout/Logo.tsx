@@ -1,4 +1,4 @@
-import { SlsMentorLogoWhite } from './assets/iconComponents';
+import { SlsMentorLogoWhite } from '../assets/iconComponents';
 
 export const Logo = () => (
   <div

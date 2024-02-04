@@ -4,56 +4,7 @@ import {
   LambdaFunctionNode,
   Node,
 } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank } from './types';
-
-export const RankingKey = {
-  averageColdStartDuration: 'averageColdStartDuration',
-  maxColdStartDuration: 'maxColdStartDuration',
-  coldStartPercentage: 'coldStartPercentage',
-  memorySize: 'memorySize',
-  bundleSize: 'bundleSize',
-  timeout: 'timeout',
-  averageDuration: 'averageDuration',
-  maxDuration: 'maxDuration',
-  averageMemoryUsed: 'averageMemoryUsed',
-  percentageMemoryUsed: 'percentageMemoryUsed',
-  itemCount: 'itemCount',
-  tableSize: 'tableSize',
-  averageItemSize: 'averageItemSize',
-} as const;
-export type RankingKey = (typeof RankingKey)[keyof typeof RankingKey];
-
-export const rankingKeyTranslation: Record<RankingKey, string> = {
-  averageColdStartDuration: 'Average Cold Start Duration',
-  maxColdStartDuration: 'Max Cold Start Duration',
-  coldStartPercentage: 'Cold Start Percentage',
-  memorySize: 'Memory Size',
-  bundleSize: 'Bundle Size',
-  timeout: 'Timeout',
-  averageDuration: 'Average Duration',
-  maxDuration: 'Max Duration',
-  averageMemoryUsed: 'Average Memory Used',
-  percentageMemoryUsed: 'Percentage Memory Used',
-  itemCount: 'Item Count',
-  tableSize: 'Table Size',
-  averageItemSize: 'Average Item Size',
-};
-
-export const rankingUnit: Record<RankingKey, string> = {
-  averageColdStartDuration: 'ms',
-  maxColdStartDuration: 'ms',
-  coldStartPercentage: '%',
-  memorySize: 'MB',
-  bundleSize: 'MB',
-  timeout: 's',
-  averageDuration: 'ms',
-  maxDuration: 'ms',
-  averageMemoryUsed: 'MB',
-  percentageMemoryUsed: '%',
-  itemCount: 'items',
-  tableSize: 'MB',
-  averageItemSize: 'kB',
-};
+import { NodeWithLocationAndRank, RankingKey } from '../types';
 
 export const isLambdaNode = (node: Node): node is LambdaFunctionNode =>
   LambdaFunctionARN.is(node.arn);
@@ -98,7 +49,7 @@ export const rankingFunctions: Record<
       return undefined;
     }
 
-    return node.stats.configuration.bundleSize / 1000;
+    return node.stats.configuration.bundleSize / 1000000;
   },
   timeout: node => {
     if (!isLambdaNode(node)) {

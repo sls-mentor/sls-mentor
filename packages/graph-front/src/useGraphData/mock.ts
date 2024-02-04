@@ -1,5 +1,7 @@
-import { SerializedGraphData } from '@sls-mentor/graph-core';
-import { LambdaFunctionStats } from '@sls-mentor/graph-core/dist/types/nodes';
+import {
+  LambdaFunctionNode,
+  SerializedGraphData,
+} from '@sls-mentor/graph-core';
 
 export const mockResults: SerializedGraphData = {
   nodes: Object.fromEntries(
@@ -1460,7 +1462,7 @@ export const mockResults: SerializedGraphData = {
         },
     }).map(([key, value]) => {
       if (key.startsWith('arn:aws:lambda')) {
-        const stats: LambdaFunctionStats = {
+        const stats: LambdaFunctionNode['stats'] = {
           configuration: {
             memorySize: Math.floor(Math.random() * 1000),
             timeout: Math.floor(Math.random() * 1000),
