@@ -140,7 +140,15 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [
-    { nodes, edges, hoveredNode, connectedArns, hoveredNodeArn, nodeRadius },
+    {
+      nodes,
+      edges,
+      hoveredNode,
+      connectedArns,
+      hoveredNodeArn,
+      nodeRadius,
+      zoomLevel,
+    },
     setState,
   ] = useState(getInitialState(data));
   const [ranking, setRanking] = useState<RankingKey | undefined>(undefined);
@@ -205,44 +213,47 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     }
 
     const refresh = () => {
-      setState(({ nodes, edges, mouseX, mouseY, nodeRadius }) => {
-        updateFn({
+      setState(
+        ({
           nodes,
           edges,
-          clientWidth,
-          clientHeight,
-        });
-
-        const hoveredNode = Object.values(nodes).find(
-          node =>
-            (node.x + clientWidth / 2 - mouseX) ** 2 +
-              (node.y + clientHeight / 2 - mouseY) ** 2 <
-              nodeRadius ** 2 &&
-            (ranking === undefined || node.rank !== undefined),
-        );
-        const hoveredNodeArn = hoveredNode?.arn?.toString();
-
-        const connectedArns: Record<string, boolean> = {};
-        edges.forEach(edge => {
-          if (edge.from === hoveredNodeArn) {
-            connectedArns[edge.to] = true;
-          }
-          if (edge.to === hoveredNodeArn) {
-            connectedArns[edge.from] = true;
-          }
-        });
-
-        return {
-          nodes,
-          edges,
-          hoveredNode,
-          hoveredNodeArn,
-          connectedArns,
           mouseX,
           mouseY,
           nodeRadius,
-        };
-      });
+          hoveredNode,
+          hoveredNodeArn,
+          zoomLevel,
+        }) => {
+          updateFn({
+            nodes,
+            edges,
+            clientWidth,
+            clientHeight,
+          });
+
+          const connectedArns: Record<string, boolean> = {};
+          edges.forEach(edge => {
+            if (edge.from === hoveredNodeArn) {
+              connectedArns[edge.to] = true;
+            }
+            if (edge.to === hoveredNodeArn) {
+              connectedArns[edge.from] = true;
+            }
+          });
+
+          return {
+            nodes,
+            edges,
+            hoveredNode,
+            hoveredNodeArn,
+            connectedArns,
+            mouseX,
+            mouseY,
+            nodeRadius,
+            zoomLevel,
+          };
+        },
+      );
     };
 
     const onMouseMove = (event: MouseEvent) => {
@@ -292,11 +303,12 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                 position: 'absolute',
                 backgroundColor: 'white',
                 height: 2,
-                width: Math.sqrt(
-                  (fromNode.x - toNode.x) ** 2 + (fromNode.y - toNode.y) ** 2,
-                ),
-                left: toNode.x + clientWidth / 2,
-                top: toNode.y + clientHeight / 2,
+                width:
+                  Math.sqrt(
+                    (fromNode.x - toNode.x) ** 2 + (fromNode.y - toNode.y) ** 2,
+                  ) * zoomLevel,
+                left: zoomLevel * toNode.x + clientWidth / 2,
+                top: zoomLevel * toNode.y + clientHeight / 2,
                 rotate: `${Math.atan2(
                   fromNode.y - toNode.y,
                   fromNode.x - toNode.x,
@@ -317,8 +329,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             key={arn}
             style={{
               position: 'absolute',
-              left: node.x + clientWidth / 2 - nodeRadius,
-              top: node.y + clientHeight / 2 - nodeRadius,
+              left: zoomLevel * (node.x - nodeRadius) + clientWidth / 2,
+              top: zoomLevel * (node.y - nodeRadius) + clientHeight / 2,
               opacity:
                 hoveredNodeArn === arn ||
                 connectedArns[arn] ||
@@ -329,14 +341,35 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           >
             <div
               style={{
-                width: nodeRadius * 2,
-                height: nodeRadius * 2,
-                borderRadius: nodeRadius,
+                width: nodeRadius * 2 * zoomLevel,
+                height: nodeRadius * 2 * zoomLevel,
+                borderRadius: nodeRadius * zoomLevel,
                 overflow: 'hidden',
                 cursor: 'pointer',
               }}
+              onMouseEnter={() =>
+                setState(state => ({
+                  ...state,
+                  hoveredNode: node,
+                  hoveredNodeArn: arn,
+                }))
+              }
+              onMouseLeave={() =>
+                setState(state => ({
+                  ...state,
+                  hoveredNode: undefined,
+                  hoveredNodeArn: undefined,
+                }))
+              }
             >
-              <div style={{ pointerEvents: 'none' }}>
+              <div
+                style={{
+                  pointerEvents: 'none',
+                  height: '100%',
+                  width: '100%',
+                  lineHeight: 0,
+                }}
+              >
                 {ArnAwsIcons[node.arn.service]}
               </div>
             </div>
@@ -344,11 +377,11 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               <p
                 style={{
                   position: 'absolute',
-                  fontSize: nodeRadius / 1.5,
+                  fontSize: (nodeRadius / 1.5) * zoomLevel,
                   backgroundColor: '#fffa',
-                  borderRadius: 5,
+                  borderRadius: 5 * zoomLevel,
                   transform: 'translate(-50%, 10%)',
-                  left: nodeRadius,
+                  left: nodeRadius * zoomLevel,
                   width: 'max-content',
                   padding: 1,
                 }}
@@ -365,8 +398,9 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             <p
               style={{
                 position: 'absolute',
-                left: hoveredNode.x + clientWidth / 2,
-                top: hoveredNode.y + clientHeight / 2 + nodeRadius,
+                left: hoveredNode.x * zoomLevel + clientWidth / 2,
+                top:
+                  (hoveredNode.y + nodeRadius) * zoomLevel + clientHeight / 2,
                 textAlign: 'center',
                 overflow: 'visible',
                 transform: 'translateX(-50%)',
@@ -382,8 +416,9 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               <p
                 style={{
                   position: 'absolute',
-                  left: hoveredNode.x + clientWidth / 2,
-                  top: hoveredNode.y + clientHeight / 2 + nodeRadius,
+                  left: hoveredNode.x * zoomLevel + clientWidth / 2,
+                  top:
+                    (hoveredNode.y + nodeRadius) * zoomLevel + clientHeight / 2,
                   fontSize: 32,
                   backgroundColor: '#fffa',
                   borderRadius: 5,
@@ -449,6 +484,40 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
         </div>
       )}
       <Logo />
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          padding: 10,
+          display: 'flex',
+          flexDirection: 'row',
+          gap: 2,
+        }}
+      >
+        <button
+          onClick={() => {
+            setState(state => ({
+              ...state,
+              zoomLevel: state.zoomLevel * 1.1,
+            }));
+          }}
+          style={{ width: '1.5em', height: '1.5em', fontSize: '1.5em' }}
+        >
+          +
+        </button>
+        <button
+          onClick={() => {
+            setState(state => ({
+              ...state,
+              zoomLevel: state.zoomLevel / 1.1,
+            }));
+          }}
+          style={{ width: '1.5em', height: '1.5em', fontSize: '1.5em' }}
+        >
+          -
+        </button>
+      </div>
     </div>
   );
 };

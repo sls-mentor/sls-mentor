@@ -454,12 +454,6 @@ importers:
 
   packages/graph-cli:
     dependencies:
-      '@sls-mentor/graph-core':
-        specifier: workspace:^
-        version: link:../graph-core
-      '@sls-mentor/graph-front':
-        specifier: workspace:^
-        version: link:../graph-front
       chalk:
         specifier: ^4.1.2
         version: 4.1.2
@@ -473,6 +467,12 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
     devDependencies:
+      '@sls-mentor/graph-core':
+        specifier: workspace:^
+        version: link:../graph-core
+      '@sls-mentor/graph-front':
+        specifier: workspace:^
+        version: link:../graph-front
       '@types/cli-spinner':
         specifier: ^0.2.1
         version: 0.2.1
