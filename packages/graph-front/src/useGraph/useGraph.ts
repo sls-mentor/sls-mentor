@@ -1,24 +1,35 @@
-import { useRef, useState, useEffect } from 'react';
+import {
+  useRef,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+  RefObject,
+} from 'react';
 import { GraphState, getInitialState } from './getInitialState';
 import { setupRefresh } from './setupRefresh';
 import { GraphData } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank, RankingKey } from '../types';
+import { MenuState, NodeWithLocationAndRank, RankingKey } from '../types';
 
 export const useGraph = (
   data: GraphData,
 ): {
-  containerRef: React.RefObject<HTMLDivElement>;
+  containerRef: RefObject<HTMLDivElement>;
   clientWidth: number;
   clientHeight: number;
   ranking: RankingKey | undefined;
-  setRanking: (ranking: RankingKey | undefined) => void;
+  setMenu: Dispatch<SetStateAction<MenuState>>;
   updateZoomLevel: (zoomFactor: number) => void;
   updateHoveredNode: (node: NodeWithLocationAndRank | undefined) => void;
-} & GraphState => {
+} & GraphState &
+  MenuState => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [state, setState] = useState(getInitialState(data));
-  const [ranking, setRanking] = useState<RankingKey | undefined>(undefined);
+  const [menu, setMenu] = useState<MenuState>({
+    ranking: undefined,
+    warningsEnabled: false,
+  });
 
   useEffect(() => {
     const { current: currentContainer } = containerRef;
@@ -29,11 +40,11 @@ export const useGraph = (
     const { destroy } = setupRefresh({
       currentContainer,
       setState,
-      ranking,
+      ranking: menu.ranking,
     });
 
     return destroy;
-  }, [setState, ranking]);
+  }, [setState, menu]);
 
   const { clientWidth, clientHeight } = containerRef.current ?? {
     clientWidth: 0,
@@ -44,8 +55,8 @@ export const useGraph = (
     containerRef,
     clientWidth,
     clientHeight,
-    ranking,
-    setRanking,
+    setMenu,
+    ...menu,
     updateZoomLevel: zoomFactor => {
       setState(state => ({
         ...state,

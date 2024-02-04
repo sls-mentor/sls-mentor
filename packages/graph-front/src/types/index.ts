@@ -1,2 +1,2 @@
 export * from './graph';
-export * from './ranking';
+export * from './menu';

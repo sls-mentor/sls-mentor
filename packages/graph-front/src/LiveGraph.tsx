@@ -2,14 +2,15 @@ import { GraphData } from '@sls-mentor/graph-core';
 import { ArnAwsIcons } from './assets/iconComponents';
 
 import { rankingUnitTranslation } from './translations';
-import { Zoom, Footer, Header, RankingSelect, Logo } from './layout';
+import { Zoom, Footer, Header, Menu, Logo } from './layout';
 import { useGraph } from './useGraph';
 
 export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const {
     containerRef,
     ranking,
-    setRanking,
+    warningsEnabled,
+    setMenu,
     edges,
     nodes,
     zoomLevel,
@@ -33,7 +34,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
       ref={containerRef}
     >
       {ranking === undefined &&
-        edges.map(({ from, to }) => {
+        edges.map(({ from, to, warnings }) => {
           const fromNode = nodes[from];
           const toNode = nodes[to];
 
@@ -46,7 +47,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               key={`${from}-${to}`}
               style={{
                 position: 'absolute',
-                backgroundColor: 'white',
+                backgroundColor:
+                  warnings.length > 0 && warningsEnabled ? 'red' : 'white',
                 height: 2,
                 width:
                   Math.sqrt(
@@ -60,8 +62,9 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                 )}rad`,
                 transformOrigin: 'top left',
                 opacity:
-                  hoveredNodeArn !== undefined &&
-                  (hoveredNodeArn === from || hoveredNodeArn === to)
+                  (hoveredNodeArn !== undefined &&
+                    (hoveredNodeArn === from || hoveredNodeArn === to)) ||
+                  (warnings.length > 0 && warningsEnabled)
                     ? 0.5
                     : 0.1,
               }}
@@ -164,7 +167,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             )}
           </>
         )}
-      <RankingSelect setRanking={setRanking} />
+      <Menu setMenu={setMenu} />
       {ranking !== undefined && <Header ranking={ranking} />}
       <Footer />
       <Logo />
