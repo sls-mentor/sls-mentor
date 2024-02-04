@@ -1,13 +1,14 @@
 import {
   ArnService,
   CustomARN,
+  DynamoDBTableARN,
   getRefinedArn,
   LambdaFunctionARN,
 } from '@sls-mentor/arn';
 import { fetchAccountIdAndRegion, listAllResources } from '@sls-mentor/aws-api';
 
 import { getEdges } from './edges';
-import { getLambdaFunctionNodes } from './nodes';
+import { getDynamoDBTableNodes, getLambdaFunctionNodes } from './nodes';
 import { GraphData } from './types';
 
 const servicesToHide: ArnService[] = ['backup', 'iam', 'logs'];
@@ -31,9 +32,10 @@ export const generateGraph = async ({
     region: regionToUse,
   });
 
-  const [edges, lambdaFunctionNodes] = await Promise.all([
+  const [edges, lambdaFunctionNodes, dynamoDBTableNodes] = await Promise.all([
     getEdges(arns, servicesToHide),
     getLambdaFunctionNodes(arns),
+    getDynamoDBTableNodes(arns),
   ]);
 
   const relevantArns = arns.filter(
@@ -46,7 +48,10 @@ export const generateGraph = async ({
         (acc, arn) => {
           const refinedArn = getRefinedArn(arn);
 
-          if (CustomARN.checkArnType(LambdaFunctionARN)(refinedArn)) {
+          if (
+            CustomARN.checkArnType(LambdaFunctionARN)(refinedArn) ||
+            CustomARN.checkArnType(DynamoDBTableARN)(refinedArn)
+          ) {
             return acc;
           }
 
@@ -61,6 +66,7 @@ export const generateGraph = async ({
         {} as GraphData['nodes'],
       ),
       ...lambdaFunctionNodes,
+      ...dynamoDBTableNodes,
     },
     edges,
   };

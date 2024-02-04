@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank } from './types';
+import { NodeWithLocationAndRank } from '../types';
 
 const RESISTANCE_CONSTANT = 0.1;
 const MAX_ACCELERATION = 1.5;

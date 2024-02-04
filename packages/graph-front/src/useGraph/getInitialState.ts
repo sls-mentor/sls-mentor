@@ -1,12 +1,9 @@
 import { GraphData, Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank } from './types';
+import { NodeWithLocationAndRank } from '../types';
 
 export const NODE_RADIUS = 15;
 
-export const getInitialState = ({
-  nodes,
-  edges,
-}: GraphData): {
+export type GraphState = {
   nodes: Record<string, NodeWithLocationAndRank>;
   edges: Edge[];
   hoveredNode: NodeWithLocationAndRank | undefined;
@@ -16,7 +13,9 @@ export const getInitialState = ({
   mouseY: number;
   nodeRadius: number;
   zoomLevel: number;
-} => {
+};
+
+export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
   return {
     nodes: Object.fromEntries(
       Object.entries(nodes)

@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank } from './types';
+import { NodeWithLocationAndRank } from '../types';
 
 const SPRING_CONSTANT = 0.003;
 const RESISTANCE_CONSTANT = 0.1;
