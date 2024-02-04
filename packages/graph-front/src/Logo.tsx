@@ -23,9 +23,13 @@ export const Logo = () => (
           @keyframes disapear {
             0% {
               opacity: 1;
+              visibility: visible;
+            }
+            99% {
+              opacity: 0;
             }
             100% {
-              opacity: 0;
+              visibility: hidden;
             }
           }
         `}

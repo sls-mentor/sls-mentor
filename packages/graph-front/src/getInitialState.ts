@@ -15,6 +15,7 @@ export const getInitialState = ({
   mouseX: number;
   mouseY: number;
   nodeRadius: number;
+  zoomLevel: number;
 } => {
   return {
     nodes: Object.fromEntries(
@@ -45,5 +46,6 @@ export const getInitialState = ({
     mouseX: 0,
     mouseY: 0,
     nodeRadius: NODE_RADIUS,
+    zoomLevel: 1,
   };
 };
