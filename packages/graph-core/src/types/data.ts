@@ -1,6 +1,10 @@
-import { LambdaFunctionARN, SupportedARN } from '@sls-mentor/arn';
+import {
+  DynamoDBTableARN,
+  LambdaFunctionARN,
+  SupportedARN,
+} from '@sls-mentor/arn';
 
-import { LambdaFunctionStats } from '../nodes';
+import { DynamoDBTableStats, LambdaFunctionStats } from '../nodes';
 import { NodeBase, SerializedNodeBase } from './helpers';
 
 export type Edge = {
@@ -13,12 +17,16 @@ export type LambdaFunctionNode = NodeBase<
   LambdaFunctionStats
 >;
 
+export type DynamoDBTableNode = NodeBase<DynamoDBTableARN, DynamoDBTableStats>;
+
 export type Node =
   | LambdaFunctionNode
-  | NodeBase<Exclude<SupportedARN, LambdaFunctionARN>>;
+  | DynamoDBTableNode
+  | NodeBase<Exclude<SupportedARN, LambdaFunctionARN | DynamoDBTableARN>>;
 
 export type SerializedNode =
   | SerializedNodeBase<LambdaFunctionStats>
+  | SerializedNodeBase<DynamoDBTableStats>
   | SerializedNodeBase;
 
 export type GraphData = {
