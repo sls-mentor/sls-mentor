@@ -1,190 +1,19 @@
-import {
-  DynamoDBTableNode,
-  GraphData,
-  LambdaFunctionNode,
-  Node,
-} from '@sls-mentor/graph-core';
+import { GraphData } from '@sls-mentor/graph-core';
 import { useEffect, useRef, useState } from 'react';
 import { update } from './update';
-import { DynamoDBTableARN, LambdaFunctionARN } from '@sls-mentor/arn';
 import { ArnAwsIcons } from './assets/iconComponents';
 
 import { NODE_RADIUS, getInitialState } from './getInitialState';
-import { NodeWithLocationAndRank } from './types';
 import { OFFSET, updateWithRank } from './updateWithRank';
 
 import { SlsMentorLogo } from './assets/iconComponents';
 import { Logo } from './Logo';
-
-const RankingKey = {
-  averageColdStartDuration: 'averageColdStartDuration',
-  maxColdStartDuration: 'maxColdStartDuration',
-  coldStartPercentage: 'coldStartPercentage',
-  memorySize: 'memorySize',
-  bundleSize: 'bundleSize',
-  timeout: 'timeout',
-  averageDuration: 'averageDuration',
-  maxDuration: 'maxDuration',
-  averageMemoryUsed: 'averageMemoryUsed',
-  percentageMemoryUsed: 'percentageMemoryUsed',
-  itemCount: 'itemCount',
-  tableSize: 'tableSize',
-  averageItemSize: 'averageItemSize',
-} as const;
-type RankingKey = (typeof RankingKey)[keyof typeof RankingKey];
-
-const rankingKeyTranslation: Record<RankingKey, string> = {
-  averageColdStartDuration: 'Average Cold Start Duration',
-  maxColdStartDuration: 'Max Cold Start Duration',
-  coldStartPercentage: 'Cold Start Percentage',
-  memorySize: 'Memory Size',
-  bundleSize: 'Bundle Size',
-  timeout: 'Timeout',
-  averageDuration: 'Average Duration',
-  maxDuration: 'Max Duration',
-  averageMemoryUsed: 'Average Memory Used',
-  percentageMemoryUsed: 'Percentage Memory Used',
-  itemCount: 'Item Count',
-  tableSize: 'Table Size',
-  averageItemSize: 'Average Item Size',
-};
-
-const rankingUnit: Record<RankingKey, string> = {
-  averageColdStartDuration: 'ms',
-  maxColdStartDuration: 'ms',
-  coldStartPercentage: '%',
-  memorySize: 'MB',
-  bundleSize: 'MB',
-  timeout: 's',
-  averageDuration: 'ms',
-  maxDuration: 'ms',
-  averageMemoryUsed: 'MB',
-  percentageMemoryUsed: '%',
-  itemCount: 'items',
-  tableSize: 'MB',
-  averageItemSize: 'kB',
-};
-
-const isLambdaNode = (node: Node): node is LambdaFunctionNode =>
-  LambdaFunctionARN.is(node.arn);
-
-const isDynamoDBTableNode = (node: Node): node is DynamoDBTableNode =>
-  DynamoDBTableARN.is(node.arn);
-
-const rankings: Record<
+import {
   RankingKey,
-  (node: NodeWithLocationAndRank) => number | undefined
-> = {
-  averageColdStartDuration: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.coldStarts?.averageDuration;
-  },
-  maxColdStartDuration: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.coldStarts?.maxDuration;
-  },
-  coldStartPercentage: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.coldStarts?.coldStartPercentage;
-  },
-  memorySize: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.configuration.memorySize;
-  },
-  bundleSize: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.configuration.bundleSize / 1000;
-  },
-  timeout: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.configuration.timeout;
-  },
-  averageDuration: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.execution?.averageDuration;
-  },
-  maxDuration: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.execution?.maxDuration;
-  },
-  averageMemoryUsed: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    const averageMemoryUsed = node.stats.execution?.averageMemoryUsed;
-
-    if (averageMemoryUsed === undefined) {
-      return undefined;
-    }
-
-    return averageMemoryUsed / 1000000;
-  },
-  percentageMemoryUsed: node => {
-    if (!isLambdaNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.execution?.percentageMemoryUsed;
-  },
-  tableSize: node => {
-    if (!isDynamoDBTableNode(node)) {
-      return undefined;
-    }
-
-    const tableSizeBytes = node.stats.configuration?.tableSize;
-
-    if (tableSizeBytes === undefined) {
-      return undefined;
-    }
-
-    return tableSizeBytes / 1000000;
-  },
-  itemCount: node => {
-    if (!isDynamoDBTableNode(node)) {
-      return undefined;
-    }
-
-    return node.stats.configuration?.itemCount;
-  },
-  averageItemSize: node => {
-    if (!isDynamoDBTableNode(node)) {
-      return undefined;
-    }
-
-    const averageItemSizeBytes = node.stats.configuration?.averageItemSize;
-
-    if (averageItemSizeBytes === undefined) {
-      return undefined;
-    }
-
-    return averageItemSizeBytes / 1000;
-  },
-};
+  rankingFunctions,
+  rankingKeyTranslation,
+  rankingUnit,
+} from './ranking';
 
 export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -214,7 +43,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     const updateFn = ranking === undefined ? update : updateWithRank;
 
     if (ranking !== undefined) {
-      const rankFn = rankings[ranking];
+      const rankFn = rankingFunctions[ranking];
       if (rankFn === undefined) {
         throw new Error(`Ranking function for ${ranking} not found`);
       }
