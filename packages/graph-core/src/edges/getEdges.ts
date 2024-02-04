@@ -1,15 +1,15 @@
 import { ArnService, CustomARN, EventBridgeEventBusARN } from '@sls-mentor/arn';
 import {
-  fetchAllApiGatewayV2Integrations,
   fetchAllIamRolePolicies,
   fetchAllLambdaConfigurations,
   fetchAllQueuesAttributes,
-  fetchAllRestApiGatewayResources,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '@sls-mentor/aws-api';
 
 import { Edge } from 'types';
+
+import { getHttpApiEdges, getRestApiEdges } from './apiGateway';
 
 export const getEdges = async (
   arns: CustomARN[],
@@ -18,15 +18,15 @@ export const getEdges = async (
   const [
     lambdaFunctions,
     iamRolePolicies,
-    lambdaRoutes,
-    restResources,
+    httpApiEdges,
+    restApiEdges,
     eventBridgeTargets,
     queueAttributes,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
-    fetchAllApiGatewayV2Integrations(arns),
-    fetchAllRestApiGatewayResources(arns),
+    getHttpApiEdges(arns),
+    getRestApiEdges(arns),
     Promise.all(
       (
         await Promise.all(
@@ -88,43 +88,19 @@ export const getEdges = async (
                   : CustomARN.fromArnString(
                       r.replace(/\/\*$/, ''),
                     )?.toString() ?? '*',
+              warnings: [],
             })),
           );
         });
       })
       .flat(3),
-    ...lambdaRoutes
-      .map(({ arn, targets }) =>
-        targets.map(target => ({
-          from: arn.toString(),
-          to: target.uri,
-        })),
-      )
-      .flat(),
+    ...httpApiEdges,
     ...eventBridgeTargets.flat().map(target => ({
       from: target.arn.toString(),
       to: target.target.Arn ?? '*',
+      warnings: [],
     })),
-    ...restResources
-      .map(({ arn, resources }) =>
-        resources.map(resource => {
-          const methods = resource.resourceMethods ?? {};
-
-          return Object.entries(methods).map(([, { methodIntegration }]) => {
-            const uri = methodIntegration?.uri ?? '';
-            const uriArn =
-              uri
-                .match(/(arn:aws:lambda:.*:.*:function:.*)\//)?.[0]
-                ?.slice(0, -1) ?? '*';
-
-            return {
-              from: arn.toString(),
-              to: uriArn,
-            };
-          });
-        }),
-      )
-      .flat(2),
+    ...restApiEdges,
     ...queueAttributes.flatMap(({ arn, attributes }) => {
       const deadLetterTargetArn = (
         JSON.parse(attributes.Attributes?.RedrivePolicy ?? '{}') as {
@@ -137,35 +113,24 @@ export const getEdges = async (
             {
               from: arn.toString(),
               to: deadLetterTargetArn,
+              warnings: [],
             },
           ]
         : [];
     }),
   ];
 
-  const uniqueEdges = Array.from(
-    rawEdges.reduce((acc, edge) => {
-      const stringifiedEdge = `${edge.from}->${edge.to}`;
+  const seenEdges = new Set<string>();
+  const uniqueEdges = rawEdges.filter(edge => {
+    const stringifiedEdge = `${edge.from}->${edge.to}`;
 
-      if (acc.has(stringifiedEdge)) {
-        return acc;
-      }
-
-      acc.add(stringifiedEdge);
-
-      return acc;
-    }, new Set<string>()),
-  ).map(e => {
-    const [from, to] = e.split('->');
-
-    if (from === undefined || to === undefined) {
-      throw new Error('Unexpected undefined value in edge');
+    if (seenEdges.has(stringifiedEdge)) {
+      return false;
     }
 
-    return {
-      from,
-      to,
-    };
+    seenEdges.add(stringifiedEdge);
+
+    return true;
   });
 
   return uniqueEdges

@@ -27,9 +27,10 @@ const run: Rule['run'] = async resourceArns => {
         Object.values(resourceMethods ?? {}),
       ),
     )
-    .map(({ methodIntegration }) => ({
+    .map(({ methodIntegration, authorizationType }) => ({
       uri: methodIntegration?.uri ?? '',
       timeoutMs: methodIntegration?.timeoutInMillis ?? 0,
+      authorizationType,
     }));
 
   const apiIntegrations = apiIntegrationsV2.concat(apiIntegrationsV1);

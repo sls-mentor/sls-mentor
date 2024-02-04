@@ -4,12 +4,16 @@ import {
   SupportedARN,
 } from '@sls-mentor/arn';
 
+import { HttpApiWarnings, RestApiWarnings } from 'edges/apiGateway/types';
+import { BaseEdge } from 'edges/types';
+
 import { DynamoDBTableStats, LambdaFunctionStats } from '../nodes';
 import { NodeBase, SerializedNodeBase } from './helpers';
 
-export type Edge = {
-  from: string;
-  to: string;
+type Warnings = RestApiWarnings | HttpApiWarnings;
+
+export type Edge = BaseEdge & {
+  warnings: Warnings[];
 };
 
 export type LambdaFunctionNode = NodeBase<

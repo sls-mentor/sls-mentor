@@ -1503,3314 +1503,4142 @@ export const mockResults: SerializedGraphData = {
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleDocsToSign_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientSingleTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-dispatchPfloAnalysis',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extConvertPrctsToClients_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreMigrationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateOperationSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportWarningStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connectAuthorizer',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-disableUserQueue982B26C7-LiN5tIa93MsE',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-genAlctnRiskRprt',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-disableUserQueue982B26C7-LiN5tIa93MsE',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreUserTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorUser',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientSingleTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreUserTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
+      warnings: [],
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaClientIds_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieDocsToSig_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateSupportsInamazon',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorCgntoUsr',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-assgnCgntoUsrToGrp',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-client-dev-AlibabaDocumentDownloadQueue40C425D8-9DgLu6lZf0Xi.fifo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientSingleTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-contractEventFanout_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fetchGazpromVieSCPIAnnex_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftSbcptn',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftSbcptn',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-onGoingSbscptnSgnPjctn_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-onGoingSbscptnSgnPjctn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-postAuthentication',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreUserTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-preTokenGeneration',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionSignedDocs_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-isClientCertified_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-isClientCertified_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-clientForProfileProjection_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationFatca_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationFatca_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGSepaMndtes',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGSepaMndtes',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGSepaMndtes',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSepaMandates_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSepaMandates_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSepaMandates_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getFormFields',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-deletePreValidation',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchCombinedMngSupports',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-getCertificationStatus',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-getCertificationStatus',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-requestOMDocsGeneration',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-requestOMDocsGeneration',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateDerogatedRateCerti_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateDerogatedRateCerti_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateDerogatedRateCerti_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-genOperationRiskMapPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-genOperationRiskMapPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveSbcrptnOnSigned_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveSbcrptnOnSigned_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveSbcrptnOnSigned_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-submitComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-submitComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-submitComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoImportStateFunctions_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoImportStateFunctions_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrSubscriptio_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGSpprtAnnex_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchUcLoiPacte',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-getTemplate',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-getTemplate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-resendCltTmpPassword_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-resendCltTmpPassword_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-resendCltTmpPassword_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorUser',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateRicPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateRicPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-checkSynchronisation',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedRegDocsOnS3',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedRegDocsOnS3',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestProductDocDwlUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtCreated_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-netflixIpsAuthorizer',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-disableUserQueue982B26C7-LiN5tIa93MsE',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-custom-resource-existing-s3',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-custom-resource-existing-s3',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-deleteSupportsInamazon',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-custom-resource-existing-s3',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generatePartnerRic_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generatePartnerRic_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generatePartnerRic_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-syncAdvisorToamazon',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleSpclSprtAnx_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleSpclSprtAnx_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleSpclSprtAnx_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleSpclSprtAnx_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchRefreshClientDocs',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchRefreshClientDocs',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-sendMessage',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-sendMessage',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-sendMessage',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmLogoUploadUrl',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-syncMicrosoftProspect',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-enableUser',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-enableUser',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-enableUser',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genDerOnCltCreatedOrUpdated_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genDerOnCltCreatedOrUpdated_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-generateOMDocuments',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-generateOMDocuments',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-generateOMDocuments',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-refreshComplexProductQuiz',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-refreshComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractSignedDocs_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractSignedDocs_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientUpdated_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAllocation',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createAdvisor',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createAdvisor',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientNotes_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientSingleTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientNotes_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateNestleeARPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateNestleeARPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-createProspect',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-createProspect',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-createProspect',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestStndlnCrtfctUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestStndlnCrtfctUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestStndlnCrtfctUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedOperationDocs',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOMContract',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-clientEventFanout',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-sendMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-sendMessage_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-sendMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-enableClientUser_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-enableClientUser_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-enableClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-enableClientUser_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClient',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClient',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClient',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateDerPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateDerPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSupport_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generateRic_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generateRic_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generateRic_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createSbcrptnSignature',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genScheduledAllocAnnex_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genScheduledAllocAnnex_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genScheduledAllocAnnex_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genScheduledAllocAnnex_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGArbtrgMndte',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGArbtrgMndte',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGArbtrgMndte',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedSbcrptnDocs',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-computePosition',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-advisorMassImport',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-advisorMassImport',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-advisorMassImport',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-downloadAlibabaDocuments_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-client-dev-AlibabaDocumentDownloadQueue40C425D8-9DgLu6lZf0Xi.fifo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-downloadAlibabaDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-downloadAlibabaDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-runMigrations_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreMigrationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-runMigrations_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-resetUserLoginAttempts',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreUserTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperation_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-storePfloId',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleFacebookTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genClientRiskMapping_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getProductDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchSyncMicrosoftPrspct_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchSyncMicrosoftPrspct_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientRelationship_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-getCognitoUsers',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-getCognitoUsers',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAvailableFrPostalCodes_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAvailableFrPostalCodes_',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-client-dev-AlibabaDocumentDownloadQueue40C425D8-9DgLu6lZf0Xi.fifo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSupportAnnexes_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updateSignature',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updateSignature',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-runMigrations',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreMigrationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-runMigrations',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-runMigrations',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-runMigrations',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-migrateOperatorsToRDS',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-migrateOperatorsToRDS',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestRegDocSignatures_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestRegDocSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestRegDocSignatures_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestRegDocSignatures_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidateOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-reqInitialAllocValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-reqInitialAllocValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-reqInitialAllocValidation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnOprtnStarte_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-microsoftLegalDocProjectio_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-trsctWriteCltPrntChldRltns_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-preAuthentication',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreUserTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-preAuthentication',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-disableUserQueue982B26C7-LiN5tIa93MsE',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationRiskMapping_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationRiskMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-runMigrations',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreMigrationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-runMigrations',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidateSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncNetflixCertificate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleSignatureTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncNetflixCertificate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncNetflixCertificate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientViaRelationship_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientViaRelationship_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientViaRelationship_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-syncFirmToamazon',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-core-dev-deadLetterQueue3F848E28-QiWRykbETBUS',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-amazonLegalDocProjectio_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connect',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteFiles',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteFiles',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestOpTempUploadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestOpTempUploadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateCgpoImportStatus_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateCgpoImportStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOpRiskMappingDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOpRiskMappingDocuments_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOpRiskMappingDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disconnect',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-saveexampleCgpoIdsMapping_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-saveexampleCgpoIdsMapping_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserUpdated_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserUpdated_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArmdVieARPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArmdVieARPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-saveTemplate',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-saveTemplate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientSingleTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateNote_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-isAdvisorCertified',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnOprtnUpdate_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrSubscription_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientAddedDocuments_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientAddedDocuments_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genQpiOnQpiScoreComputed_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createFirm',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createFirm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-getComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-getComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-getComplexProductQuiz',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieContrac_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieContrac_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieContrac_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieContrac_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieContrac_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchAggregate_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchAggregate_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClientOnSubValid',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClientOnSubValid',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClientOnSubValid',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArbtrgMandate_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArbtrgMandate_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArbtrgMandate_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-computeQpiScore_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-computeQpiScore_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-trsctWriteCltPrtnrRltns_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGDocsToSign',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGDocsToSign',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnAdviceReport_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnAdviceReport_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreMigrationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-runMigrations_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-validateProfile_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-validateProfile_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftOprtn',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftOprtn',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendOperationSignedMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleCoreRealtimeTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendOperationSignedMessage_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendOperationSignedMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendOperationSignedMessage_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestPdfFormUploadUrl',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestPdfFormUploadUrl',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-setClientAuthorization_',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-setClientAuthorization_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-reassignClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-reassignClient_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genMissionLetter_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchFreeMngSupports',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleMicrosoftTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportErrorStatus_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientAlibabaMigrationTechnicalTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperation_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleCtct_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleCtct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleCtct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleCtct_',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleCtct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-clientForQpiProjection_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchVersndFileUploaded',
       to: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchVersndFileUploaded',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genCmplxPrdct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genCmplxPrdct_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genCmplxPrdct_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getFinancialReports_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getFinancialReports_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromSbcptnZipSft_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromSbcptnZipSft_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromSbcptnZipSft_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromSbcptnZipSft_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-initPfloAnalysis',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleFacebookTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addSupportInAllocation',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-globalSearch',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-health',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateClntRskMppngPdfForm',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateClntRskMppngPdfForm',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestDocDownloadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestDocDownloadUrl_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestDocDownloadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestDocDownloadUrl_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateProgressiveInvest_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateProgressiveInvest_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateProgressiveInvest_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrDocumentsToSig_',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrDocumentsToSig_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-compileTemplate',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-compileTemplate',
       to: 'arn:aws:rds:us-east-1:123456789012:cluster:example-core-dev-auroracluster-4oifvjhzbgl4',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-compileTemplate',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestPdfFormDownloadUrl',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserCreated_',
       to: 'arn:aws:cognito-idp:us-east-1:123456789012:userpool/us-east-1_7Bp123dzvg',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserCreated_',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/example-AuthorizationTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGContract',
       to: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGContract',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleClientProjectionsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-gnrtPSGContract',
       to: 'arn:aws:dynamodb:us-east-1:123456789012:table/exampleContractEventsTable-dev',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestSbcrptnSignatures_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidateSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmLogoUploadUrl',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOpRiskMappingDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createAdvisor',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperations_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestPdfFormDownloadUrl',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenSbcrptn_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-submitComplexProductQuiz',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestProductDocDwlUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updateSignature',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-computeQpiScore_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestOpTempUploadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-createFirm',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updateCertifNetflixClbk',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-reqInitialAllocValidation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSupport_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestRegDocSignatures_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-health',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-enableUser',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-globalSearch',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrSubscriptio_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveHandWrittenOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-enableClientUser_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-saveTemplate',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-isClientCertified_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoImportStateFunctions_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-computePosition',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getProductDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMArbitration',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportDetails',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-isAdvisorCertified',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-updateAlert',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOperationSignature_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-requestOMDocsGeneration',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAlertActions',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAllocation',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsComparison',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-compileTemplate',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestPreValidation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientRelationship_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncNetflixCertificate',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-getComplexProductQuiz',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-template-document-dev-getTemplate',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-searchOMSupportOrIndex',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getFinancialReports_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-getCognitoUsers',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateNote_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-validateProfile_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsByCategory',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-getCertificationStatus',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAvailableFrPostalCodes_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-resendCltTmpPassword_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestPdfFormUploadUrl',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscriptionSignedDocs_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientAddedDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestStndlnCrtfctUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClient_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientNotes_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-reassignClient_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestDocDownloadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractSignedDocs_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidateOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:apigateway:us-east-1:123456789012:/apis/fnjzfh86fejf',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addSupportInAllocation',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-health',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-refreshToken',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchCombinedMngSupports',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchFreeMngSupports',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-fetchUcLoiPacte',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/default',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-syncAdvisorToamazon',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-syncFirmToamazon',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-clientForProfileProjection_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-clientForQpiProjection_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientUpdated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genClientRiskMapping_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genDerOnCltCreatedOrUpdated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genMissionLetter_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-genQpiOnQpiScoreComputed_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generatePartnerRic_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-generateRic_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserCreated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserUpdated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-sendMessage_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-setClientAuthorization_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientViaRelationship_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftOprtn',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftSbcptn',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtCreated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnOprtnStarte_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnOprtnUpdate_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchAggregate_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-amazonLegalDocProjectio_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationRiskMapping_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-onGoingSbscptnSgnPjctn_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectSubscription_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveSbcrptnOnSigned_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-microsoftLegalDocProjectio_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromSbcptnZipSft_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteFiles',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-resetUserLoginAttempts',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOMContract',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-generateOMDocuments',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-sendMessage',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createSbcrptnSignature',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-deletePreValidation',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedOperationDocs',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedRegDocsOnS3',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-uploadSignedSbcrptnDocs',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-createProspect',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-syncMicrosoftProspect',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClient',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateClientOnSubValid',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/exampleEventBus-dev',
       to: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-advisor-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-facebook-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-client-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-contract-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-core-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-amazon-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-signature-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:events:us-east-1:123456789012:event-bus/TestexampleEventBus-dev',
       to: 'arn:aws:sqs:us-east-1:123456789012:dev-microsoft-testing-queue',
+      warnings: [],
     },
     {
       from: 'arn:aws:sqs:us-east-1:123456789012:example-client-dev-AlibabaDocumentDownloadQueue40C425D8-9DgLu6lZf0Xi.fifo',
       to: 'arn:aws:sqs:us-east-1:123456789012:example-client-dev-AlibabaDocumentDownloadDLQ2788F99A-qRDfoiz2BPQk.fifo',
+      warnings: [],
     },
   ],
 };
