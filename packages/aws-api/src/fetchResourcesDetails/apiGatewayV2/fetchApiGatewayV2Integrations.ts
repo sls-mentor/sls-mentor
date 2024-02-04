@@ -14,6 +14,7 @@ export const fetchAllApiGatewayV2Integrations = async (
     targets: {
       uri: string;
       timeoutMs: number;
+      authorizationType: string | undefined;
     }[];
   }[]
 > => {
@@ -27,7 +28,7 @@ export const fetchAllApiGatewayV2Integrations = async (
       const routes = await fetchApiGatewayV2RoutesByArn(arn);
 
       const targets = await Promise.all(
-        routes.map(async ({ Target }) => {
+        routes.map(async ({ Target, AuthorizationType }) => {
           const integration = await apiGatewayV2Client.send(
             new GetIntegrationCommand({
               ApiId: arn.getApiId(),
@@ -38,6 +39,7 @@ export const fetchAllApiGatewayV2Integrations = async (
           return {
             uri: integration.IntegrationUri ?? '',
             timeoutMs: integration.TimeoutInMillis ?? 0,
+            authorizationType: AuthorizationType,
           };
         }),
       );

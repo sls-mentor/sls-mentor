@@ -14,3 +14,8 @@ export const RankingKey = {
   averageItemSize: 'averageItemSize',
 } as const;
 export type RankingKey = (typeof RankingKey)[keyof typeof RankingKey];
+
+export type MenuState = {
+  ranking: RankingKey | undefined;
+  warningsEnabled: boolean;
+};
