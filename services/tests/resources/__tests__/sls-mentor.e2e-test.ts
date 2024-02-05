@@ -52,7 +52,13 @@ describe('Successful resources', () => {
       region: process.env.AWS_REGION,
       level: 5,
       cloudformationStacks: [STACK_SUCCESS_NAME],
-      configuration: {},
+      configuration: {
+        rules: {
+          encryptedSnsTopics: {
+            ignoredResources: ['.*'],
+          },
+        },
+      },
       debug: true,
     });
 
@@ -94,7 +100,13 @@ describe('Failed resources', () => {
       region: process.env.AWS_REGION,
       level: 5,
       cloudformationStacks: [STACK_FAIL_NAME],
-      configuration: {},
+      configuration: {
+        rules: {
+          encryptedSnsTopics: {
+            ignoredResources: ['.*'],
+          },
+        },
+      },
       debug: true,
     });
 
