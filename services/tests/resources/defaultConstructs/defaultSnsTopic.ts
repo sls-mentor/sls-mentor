@@ -1,5 +1,4 @@
 import { Tags } from 'aws-cdk-lib';
-import { Key } from 'aws-cdk-lib/aws-kms';
 import { CfnTopic, Topic, TopicProps } from 'aws-cdk-lib/aws-sns';
 import { Construct } from 'constructs';
 
@@ -12,16 +11,7 @@ export class DefaultSnsTopic extends Topic implements Tagger {
     id: string,
     props: Partial<TopicProps> | undefined = {},
   ) {
-    super(
-      scope,
-      id,
-      Object.assign<TopicProps, Partial<TopicProps>>(
-        {
-          masterKey: new Key(scope, `${id}-key`),
-        },
-        props,
-      ),
-    );
+    super(scope, id, Object.assign<TopicProps, Partial<TopicProps>>({}, props));
   }
 
   tagRule(rule: Rule): void {
