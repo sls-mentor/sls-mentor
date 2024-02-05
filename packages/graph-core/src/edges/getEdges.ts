@@ -136,16 +136,21 @@ export const getEdges = async (
   return uniqueEdges
     .filter(({ from, to }) => from !== '*' && to !== '*')
     .filter(({ from, to }) => {
-      const fromArn = CustomARN.fromArnString(from);
-      const toArn = CustomARN.fromArnString(to);
+      // There are still problems with some resources that do not have a valid ARN format
+      try {
+        const fromArn = CustomARN.fromArnString(from);
+        const toArn = CustomARN.fromArnString(to);
 
-      return (
-        fromArn !== undefined &&
-        toArn !== undefined &&
-        !servicesToHide.includes(fromArn.service) &&
-        !servicesToHide.includes(toArn.service) &&
-        arns.some(arn => arn.is(fromArn)) &&
-        arns.some(arn => arn.is(toArn))
-      );
+        return (
+          fromArn !== undefined &&
+          toArn !== undefined &&
+          !servicesToHide.includes(fromArn.service) &&
+          !servicesToHide.includes(toArn.service) &&
+          arns.some(arn => arn.is(fromArn)) &&
+          arns.some(arn => arn.is(toArn))
+        );
+      } catch (e) {
+        return false;
+      }
     });
 };
