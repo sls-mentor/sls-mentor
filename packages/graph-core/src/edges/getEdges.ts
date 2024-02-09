@@ -1,8 +1,14 @@
-import { ArnService, CustomARN, EventBridgeEventBusARN } from '@sls-mentor/arn';
+import {
+  ArnService,
+  CustomARN,
+  EventBridgeEventBusARN,
+  LambdaFunctionARN,
+} from '@sls-mentor/arn';
 import {
   fetchAllIamRolePolicies,
   fetchAllLambdaConfigurations,
   fetchAllQueuesAttributes,
+  fetchAllStepFunctionConfigurations,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '@sls-mentor/aws-api';
@@ -10,6 +16,7 @@ import {
 import { Edge } from 'types';
 
 import { getHttpApiEdges, getRestApiEdges } from './apiGateway';
+import { findLambdasInDefinition } from './stepFunction/findLambdasInDefinition';
 
 export const getEdges = async (
   arns: CustomARN[],
@@ -22,6 +29,7 @@ export const getEdges = async (
     restApiEdges,
     eventBridgeTargets,
     queueAttributes,
+    stateMachineDefinition,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
@@ -51,6 +59,7 @@ export const getEdges = async (
         }),
     ),
     fetchAllQueuesAttributes(arns),
+    fetchAllStepFunctionConfigurations(arns),
   ]);
 
   const lambdaFunctionsAndRoleArn = lambdaFunctions.map(l => ({
@@ -62,6 +71,21 @@ export const getEdges = async (
   }));
 
   const rawEdges: Edge[] = [
+    ...stateMachineDefinition
+      .map(({ arn, definition }) => {
+        const lambdaArns = findLambdasInDefinition(definition);
+
+        return lambdaArns.map(lambdaArn => ({
+          from: arn.toString(),
+          to: LambdaFunctionARN.fromFunctionName(
+            LambdaFunctionARN.fromCustomARN(
+              CustomARN.fromArnString(lambdaArn) as CustomARN,
+            ).getFunctionName(),
+          ).toString(),
+          warnings: [],
+        }));
+      })
+      .flat(1),
     ...lambdaFunctionsAndRoleArn
       .map(({ arn, rolePolicies }) => {
         return rolePolicies.map(policy => {

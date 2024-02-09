@@ -13,3 +13,4 @@ export { sesClient } from './sesClient';
 export { snsClient } from './snsClient';
 export { sqsClient } from './sqsClient';
 export { iamClient } from './iamClient';
+export { stepFunctionClient } from './stepFunctionClient';
