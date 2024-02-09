@@ -21,6 +21,7 @@ export const useGraph = (
   setMenu: Dispatch<SetStateAction<MenuState>>;
   updateZoomLevel: (zoomFactor: number) => void;
   updateHoveredNode: (node: NodeWithLocationAndRank | undefined) => void;
+  updateClickedNode: (node: NodeWithLocationAndRank | undefined) => void;
 } & GraphState &
   MenuState => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -68,6 +69,13 @@ export const useGraph = (
         ...state,
         hoveredNode: node,
         hoveredNodeArn: node === undefined ? undefined : node.arn.toString(),
+      }));
+    },
+    updateClickedNode: node => {
+      setState(state => ({
+        ...state,
+        clickedNode: node,
+        clickedNodeArn: node === undefined ? undefined : node.arn.toString(),
       }));
     },
     ...state,

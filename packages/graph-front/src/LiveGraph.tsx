@@ -22,6 +22,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     connectedArns,
     updateHoveredNode,
     updateZoomLevel,
+    updateClickedNode,
+    clickedNode,
   } = useGraph(data);
 
   return (
@@ -97,6 +99,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               }}
               onMouseEnter={() => updateHoveredNode(node)}
               onMouseLeave={() => updateHoveredNode(undefined)}
+              onMouseDown={() => updateClickedNode(node)}
+              onMouseUp={() => updateClickedNode(undefined)}
             >
               <div
                 style={{
@@ -129,6 +133,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
         ) : null,
       )}
       {hoveredNode !== undefined &&
+        clickedNode === undefined &&
         (ranking === undefined || hoveredNode.rank !== undefined) && (
           <>
             <p
@@ -144,6 +149,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                 backgroundColor: '#fffa',
                 borderRadius: 5,
                 padding: 1,
+                pointerEvents: 'none',
+                userSelect: 'none',
               }}
             >
               {hoveredNodeArn}
@@ -160,6 +167,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                   borderRadius: 5,
                   transform: 'translate(-50%, 150%)',
                   width: 'max-content',
+                  pointerEvents: 'none',
+                  userSelect: 'none',
                 }}
               >
                 {hoveredNode.value.toFixed(1)} {rankingUnitTranslation[ranking]}

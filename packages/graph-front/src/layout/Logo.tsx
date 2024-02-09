@@ -30,6 +30,7 @@ export const Logo = () => (
             }
             100% {
               visibility: hidden;
+              opacity: 0;
             }
           }
         `}

@@ -13,6 +13,8 @@ export type GraphState = {
   mouseY: number;
   nodeRadius: number;
   zoomLevel: number;
+  clickedNode: NodeWithLocationAndRank | undefined;
+  clickedNodeArn: string | undefined;
 };
 
 export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
@@ -46,5 +48,7 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
     mouseY: 0,
     nodeRadius: NODE_RADIUS,
     zoomLevel: 1,
+    clickedNode: undefined,
+    clickedNodeArn: undefined,
   };
 };
