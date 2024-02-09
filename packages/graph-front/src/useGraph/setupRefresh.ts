@@ -77,12 +77,18 @@ export const setupRefresh = ({
         hoveredNode,
         hoveredNodeArn,
         zoomLevel,
+        clickedNodeArn,
+        clickedNode,
       }) => {
         updateFn({
           nodes,
           edges,
           clientWidth,
           clientHeight,
+          clickedNodeArn,
+          mouseX: mouseX - clientWidth / 2,
+          mouseY: mouseY - clientHeight / 2,
+          zoomLevel,
         });
 
         const connectedArns: Record<string, boolean> = {};
@@ -105,6 +111,8 @@ export const setupRefresh = ({
           mouseY,
           nodeRadius,
           zoomLevel,
+          clickedNodeArn,
+          clickedNode,
         };
       },
     );

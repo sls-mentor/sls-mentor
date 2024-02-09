@@ -21,6 +21,10 @@ export const update = ({
   resistanceConstant = RESISTANCE_CONSTANT,
   springConstant = SPRING_CONSTANT,
   maxAcceleration = MAX_ACCELERATION,
+  clickedNodeArn,
+  mouseX,
+  mouseY,
+  zoomLevel,
 }: {
   nodes: Record<string, NodeWithLocationAndRank>;
   edges: Edge[];
@@ -28,6 +32,10 @@ export const update = ({
   resistanceConstant?: number;
   springConstant?: number;
   maxAcceleration?: number;
+  clickedNodeArn: string | undefined;
+  mouseX: number;
+  mouseY: number;
+  zoomLevel: number;
 }): void => {
   Object.values(nodes).forEach((node1, i) => {
     Object.values(nodes).forEach((node2, j) => {
@@ -39,15 +47,21 @@ export const update = ({
         (node2.x - node1.x) * (node2.x - node1.x) +
         (node2.y - node1.y) * (node2.y - node1.y);
 
-      node1.ax -= (repulsionConstant * (node2.x - node1.x)) / distance2;
-      node1.ay -= (repulsionConstant * (node2.y - node1.y)) / distance2;
+      if (node1.arn.toString() !== clickedNodeArn) {
+        node1.ax -= (repulsionConstant * (node2.x - node1.x)) / distance2;
+        node1.ay -= (repulsionConstant * (node2.y - node1.y)) / distance2;
+      }
 
-      node2.ax += (repulsionConstant * (node2.x - node1.x)) / distance2;
-      node2.ay += (repulsionConstant * (node2.y - node1.y)) / distance2;
+      if (node2.arn.toString() !== clickedNodeArn) {
+        node2.ax += (repulsionConstant * (node2.x - node1.x)) / distance2;
+        node2.ay += (repulsionConstant * (node2.y - node1.y)) / distance2;
+      }
     });
 
-    node1.ax -= springConstant * node1.x;
-    node1.ay -= springConstant * node1.y;
+    if (node1.arn.toString() !== clickedNodeArn) {
+      node1.ax -= springConstant * node1.x;
+      node1.ay -= springConstant * node1.y;
+    }
   });
 
   edges.forEach(e => {
@@ -58,14 +72,25 @@ export const update = ({
       return;
     }
 
-    node1.ax += springConstant * (node2.x - node1.x);
-    node1.ay += springConstant * (node2.y - node1.y);
+    if (node1.arn.toString() !== clickedNodeArn) {
+      node1.ax += springConstant * (node2.x - node1.x);
+      node1.ay += springConstant * (node2.y - node1.y);
+    }
 
-    node2.ax += springConstant * (node1.x - node2.x);
-    node2.ay += springConstant * (node1.y - node2.y);
+    if (node2.arn.toString() !== clickedNodeArn) {
+      node2.ax += springConstant * (node1.x - node2.x);
+      node2.ay += springConstant * (node1.y - node2.y);
+    }
   });
 
   Object.values(nodes).forEach(node => {
+    if (node.arn.toString() === clickedNodeArn) {
+      node.x = mouseX / zoomLevel;
+      node.y = mouseY / zoomLevel;
+
+      return;
+    }
+
     const accelerationSquared = node.ax * node.ax + node.ay * node.ay;
     if (accelerationSquared > maxAcceleration * maxAcceleration) {
       const accelerationModule = Math.sqrt(accelerationSquared);
