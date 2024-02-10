@@ -34,7 +34,7 @@
   <h2>One minute quick start 🚀</h2>
   <br />
   <pre>npx <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor</a></pre>
-    <img src="./docs/images/guardian-run.gif" style="width: 60%">
+    <img src="./packages/documentation/static/img/guardian-run.gif" style="width: 60%">
   <br />
   <br />
 </div>
