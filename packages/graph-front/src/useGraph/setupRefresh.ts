@@ -126,13 +126,38 @@ export const setupRefresh = ({
     }));
   };
 
+  const onKeyPress = (event: KeyboardEvent) => {
+    if (event.code === 'Space') {
+      setState(state => {
+        const clickedNodeArn = state.clickedNodeArn;
+        const clickedNode = state.nodes[clickedNodeArn ?? ''];
+        if (clickedNode === undefined) {
+          return state;
+        }
+
+        return {
+          ...state,
+          nodes: {
+            ...state.nodes,
+            [clickedNode.arn.toString()]: {
+              ...clickedNode,
+              pinned: !clickedNode.pinned,
+            },
+          },
+        };
+      });
+    }
+  };
+
   const interval = setInterval(refresh, 1000 / 30);
   currentContainer.addEventListener('mousemove', onMouseMove);
+  document.addEventListener('keydown', onKeyPress);
 
   return {
     destroy: () => {
       clearInterval(interval);
       currentContainer.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('keydown', onKeyPress);
     },
   };
 };

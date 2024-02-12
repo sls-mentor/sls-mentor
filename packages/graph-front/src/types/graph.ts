@@ -12,4 +12,5 @@ type NodeWithLocation = {
 export type NodeWithLocationAndRank = NodeWithLocation & {
   rank?: number;
   value?: number;
+  pinned: boolean;
 };

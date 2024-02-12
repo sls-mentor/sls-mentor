@@ -34,6 +34,7 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
             ay: 0,
             rank: undefined,
             value: undefined,
+            pinned: false,
           };
 
           return [arn, nodeWithLocationAndRank];
