@@ -13,6 +13,7 @@ import { S3BucketARN } from './s3';
 import { SESConfigurationSetARN, SESIdentityARN } from './ses';
 import { SnsSubscriptionARN, SnsTopicARN } from './sns';
 import { SqsQueueARN } from './sqs';
+import { StepFunctionStateMachineARN } from './stepFunction';
 
 export type SupportedARN =
   | ApiGatewayHttpApiARN
@@ -33,7 +34,8 @@ export type SupportedARN =
   | SESIdentityARN
   | SnsSubscriptionARN
   | SnsTopicARN
-  | SqsQueueARN;
+  | SqsQueueARN
+  | StepFunctionStateMachineARN;
 
 export {
   ApiGatewayHttpApiARN,
@@ -55,6 +57,7 @@ export {
   SnsSubscriptionARN,
   SnsTopicARN,
   SqsQueueARN,
+  StepFunctionStateMachineARN,
   CustomARN,
 };
 
@@ -101,6 +104,8 @@ export const getRefinedArn = (arn: CustomARN): SupportedARN => {
       return SnsTopicARN.fromCustomARN(arn);
     case SqsQueueARN.is(arn):
       return SqsQueueARN.fromCustomARN(arn);
+    case StepFunctionStateMachineARN.is(arn):
+      return StepFunctionStateMachineARN.fromCustomARN(arn);
     default:
       throw new Error(`Missing implementation for ARN ${arn.toString()}`);
   }

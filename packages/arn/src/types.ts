@@ -13,6 +13,7 @@ export const ArnService = {
   iam: 'iam',
   logs: 'logs',
   backup: 'backup',
+  states: 'states',
 } as const;
 
 export type ArnService = (typeof ArnService)[keyof typeof ArnService];

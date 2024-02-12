@@ -45,6 +45,7 @@
     "@aws-sdk/client-resource-groups-tagging-api": "^3.409.0",
     "@aws-sdk/client-s3": "^3.409.0",
     "@aws-sdk/client-sesv2": "^3.409.0",
+    "@aws-sdk/client-sfn": "^3.409.0",
     "@aws-sdk/client-sns": "^3.409.0",
     "@aws-sdk/client-sqs": "^3.409.0",
     "@aws-sdk/client-sts": "^3.409.0",

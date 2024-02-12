@@ -19,6 +19,7 @@ import {
   listSnsSubscriptions,
   listSnsTopics,
   listSqsQueues,
+  listStateMachines,
 } from './services';
 
 export const listAllResourcesFromServices = async ({
@@ -45,6 +46,7 @@ export const listAllResourcesFromServices = async ({
     dynamoDBTables,
     iamRoles,
     rdsClusters,
+    stateMachines,
   ] = await Promise.all([
     listS3Buckets({ region }),
     listLambdaFunctions(),
@@ -64,6 +66,7 @@ export const listAllResourcesFromServices = async ({
     listDynamoDBTables(),
     listIamRoles(),
     listRdsClusters(),
+    listStateMachines(),
   ]);
 
   return [
@@ -85,5 +88,6 @@ export const listAllResourcesFromServices = async ({
     ...dynamoDBTables,
     ...iamRoles,
     ...rdsClusters,
+    ...stateMachines,
   ];
 };

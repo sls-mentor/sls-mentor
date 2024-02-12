@@ -12,3 +12,4 @@ export * from './dynamoDB';
 export * from './cloudfront';
 export * from './rds';
 export * from './sqs';
+export * from './stepFunction';

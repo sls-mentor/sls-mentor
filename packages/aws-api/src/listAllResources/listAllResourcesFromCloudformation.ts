@@ -22,6 +22,7 @@ import {
   SnsSubscriptionARN,
   SnsTopicARN,
   SqsQueueARN,
+  StepFunctionStateMachineARN,
 } from '@sls-mentor/arn';
 
 // This is a big switch
@@ -66,6 +67,8 @@ const createARNFromCloudFormation = ({
       return ApiGatewayRestApiARN.fromPhysicalId(physicalResourceId);
     case 'AWS::IAM::Role':
       return IamRoleARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::StepFunctions::StateMachine':
+      return StepFunctionStateMachineARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }
