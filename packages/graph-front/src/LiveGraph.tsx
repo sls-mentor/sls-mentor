@@ -93,9 +93,10 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               style={{
                 width: nodeRadius * 2 * zoomLevel,
                 height: nodeRadius * 2 * zoomLevel,
-                borderRadius: nodeRadius * zoomLevel,
+                borderRadius: '50%',
                 overflow: 'hidden',
                 cursor: 'pointer',
+                border: node.pinned ? '2px solid #fffa' : 'none',
               }}
               onMouseEnter={() => updateHoveredNode(node)}
               onMouseLeave={() => updateHoveredNode(undefined)}

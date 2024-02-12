@@ -47,18 +47,18 @@ export const update = ({
         (node2.x - node1.x) * (node2.x - node1.x) +
         (node2.y - node1.y) * (node2.y - node1.y);
 
-      if (node1.arn.toString() !== clickedNodeArn) {
+      if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
         node1.ax -= (repulsionConstant * (node2.x - node1.x)) / distance2;
         node1.ay -= (repulsionConstant * (node2.y - node1.y)) / distance2;
       }
 
-      if (node2.arn.toString() !== clickedNodeArn) {
+      if (node2.arn.toString() !== clickedNodeArn && !node2.pinned) {
         node2.ax += (repulsionConstant * (node2.x - node1.x)) / distance2;
         node2.ay += (repulsionConstant * (node2.y - node1.y)) / distance2;
       }
     });
 
-    if (node1.arn.toString() !== clickedNodeArn) {
+    if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
       node1.ax -= springConstant * node1.x;
       node1.ay -= springConstant * node1.y;
     }
@@ -72,18 +72,22 @@ export const update = ({
       return;
     }
 
-    if (node1.arn.toString() !== clickedNodeArn) {
+    if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
       node1.ax += springConstant * (node2.x - node1.x);
       node1.ay += springConstant * (node2.y - node1.y);
     }
 
-    if (node2.arn.toString() !== clickedNodeArn) {
+    if (node2.arn.toString() !== clickedNodeArn && !node2.pinned) {
       node2.ax += springConstant * (node1.x - node2.x);
       node2.ay += springConstant * (node1.y - node2.y);
     }
   });
 
   Object.values(nodes).forEach(node => {
+    if (node.pinned) {
+      return;
+    }
+
     if (node.arn.toString() === clickedNodeArn) {
       node.x = mouseX / zoomLevel;
       node.y = mouseY / zoomLevel;

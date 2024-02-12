@@ -72,10 +72,24 @@ export const useGraph = (
       }));
     },
     updateClickedNode: node => {
+      const nodesWithoutPinnedNode =
+        node === undefined
+          ? {}
+          : {
+              nodes: {
+                ...state.nodes,
+                [node.arn.toString()]: {
+                  ...node,
+                  pinned: false,
+                },
+              },
+            };
+
       setState(state => ({
         ...state,
         clickedNode: node,
         clickedNodeArn: node === undefined ? undefined : node.arn.toString(),
+        ...nodesWithoutPinnedNode,
       }));
     },
     ...state,
