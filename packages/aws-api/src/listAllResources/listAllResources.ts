@@ -5,14 +5,14 @@ import { listAllResourcesFromServices } from './listAllResourcesFromServices';
 import { listAllResourcesFromTags } from './listAllResourcesFromTags';
 
 export const listAllResources = async ({
-  cloudformationStacks,
+  cloudformationStacksToFilter,
   tags,
   region,
 }: {
-  cloudformationStacks?: string[];
+  cloudformationStacksToFilter?: string[];
   tags?: { key: string; value: string }[];
   region: string;
-}): Promise<CustomARN[]> => {
+}): Promise<{ arn: CustomARN; stackName?: string }[]> => {
   const allResourcesFromServices = await listAllResourcesFromServices({
     region,
   });
@@ -22,16 +22,24 @@ export const listAllResources = async ({
       ? allResourcesFromServices
       : await listAllResourcesFromTags(tags);
 
-  const resourcesToKeepByStacks =
-    cloudformationStacks === undefined || cloudformationStacks.length === 0
-      ? allResourcesFromServices
-      : await listAllResourcesFromCloudformation(cloudformationStacks);
-
-  const resourcesToKeep = resourcesToKeepByTags.filter(arn =>
-    resourcesToKeepByStacks.some(a => a.is(arn)),
+  const resourcesToKeepByStacks = await listAllResourcesFromCloudformation(
+    cloudformationStacksToFilter ?? [],
   );
 
-  return allResourcesFromServices.filter(arn =>
-    resourcesToKeep.some(a => a.is(arn)),
+  const resourcesToKeep = resourcesToKeepByStacks.filter(resource =>
+    resourcesToKeepByTags.some(a => a.is(resource.arn)),
   );
+
+  return allResourcesFromServices
+    .map(arn => {
+      const stackName = resourcesToKeep.find(resource => resource.arn.is(arn))
+        ?.stackName;
+
+      return { arn, stackName };
+    })
+    .filter(
+      resource =>
+        resource.stackName !== undefined ||
+        (cloudformationStacksToFilter ?? []).length === 0,
+    );
 };

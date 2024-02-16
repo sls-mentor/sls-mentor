@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { CustomARN, LambdaFunctionARN } from '@sls-mentor/arn';
 import {
   executeQuery,
@@ -159,17 +160,21 @@ const mapConfigurationStats = (
 };
 
 export const getLambdaFunctionNodes = async (
-  arns: CustomARN[],
+  resources: { arn: CustomARN; stackName?: string }[],
 ): Promise<
   Record<
     string,
     {
       arn: LambdaFunctionARN;
       stats: LambdaFunctionStats;
+      cloudformationStack: string | undefined;
     }
   >
 > => {
-  const lambdaFunctionArns = CustomARN.filterArns(arns, LambdaFunctionARN);
+  const lambdaFunctionArns = CustomARN.filterArns(
+    resources.map(({ arn }) => arn),
+    LambdaFunctionARN,
+  );
 
   const logInsightsData = await getLogInsightsData(lambdaFunctionArns);
   const lambdaFunctionConfigurations =
@@ -190,6 +195,8 @@ export const getLambdaFunctionNodes = async (
             coldStarts: mapColdStartStats(logInsights),
             execution: mapExecutionStats(logInsights),
           },
+          cloudformationStack: resources.find(resource => resource.arn.is(arn))
+            ?.stackName,
         },
       ];
     }),

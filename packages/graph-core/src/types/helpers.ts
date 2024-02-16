@@ -6,6 +6,7 @@ export type NodeBase<
 > = {
   arn: T;
   stats: S;
+  cloudformationStack: string | undefined;
 };
 
 export type SerializedNodeBase<
@@ -13,4 +14,5 @@ export type SerializedNodeBase<
 > = {
   arn: string;
   stats: S;
+  cloudformationStack: string | undefined;
 };

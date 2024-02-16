@@ -1,7 +1,9 @@
 import {
   CloudFormationClient,
   paginateListStackResources,
+  paginateListStacks,
   StackResourceSummary,
+  StackStatus,
 } from '@aws-sdk/client-cloudformation';
 
 import {
@@ -74,33 +76,89 @@ const createARNFromCloudFormation = ({
   }
 };
 
+const findCloudformationStacksToSearch = async (
+  cloudformationStacksToFilter: string[],
+  cloudFormationClient: CloudFormationClient,
+) => {
+  const cloudformationStacks: string[] = [];
+  if (cloudformationStacksToFilter.length > 0) {
+    return cloudformationStacksToFilter;
+  }
+  for await (const page of paginateListStacks(
+    {
+      client: cloudFormationClient,
+    },
+    {
+      StackStatusFilter: Object.values(StackStatus).filter(
+        status =>
+          status !== StackStatus.DELETE_COMPLETE &&
+          status !== StackStatus.DELETE_FAILED &&
+          status !== StackStatus.DELETE_IN_PROGRESS,
+      ),
+    },
+  )) {
+    cloudformationStacks.push(
+      ...(page.StackSummaries?.map(stack => stack.StackName ?? '') ?? []),
+    );
+  }
+
+  return cloudformationStacks;
+};
+
+type ResourcesWithStackName = StackResourceSummary & { StackName: string };
+
 export const listAllResourcesFromCloudformation = async (
-  cloudformationStacks: string[],
-): Promise<CustomARN[]> => {
+  cloudformationStacksToFilter: string[],
+): Promise<{ arn: CustomARN; stackName: string }[]> => {
   const cloudFormationClient = new CloudFormationClient({});
 
-  const resources: StackResourceSummary[] = [];
-  for (const stack of cloudformationStacks) {
-    for await (const page of paginateListStackResources(
-      { client: cloudFormationClient },
-      { StackName: stack },
-    )) {
-      resources.push(...(page.StackResourceSummaries ?? []));
+  const cloudformationStacksToSearch = await findCloudformationStacksToSearch(
+    cloudformationStacksToFilter,
+    cloudFormationClient,
+  );
+
+  const resources: ResourcesWithStackName[] = [];
+  for (const stack of cloudformationStacksToSearch) {
+    try {
+      for await (const page of paginateListStackResources(
+        { client: cloudFormationClient },
+        { StackName: stack },
+      )) {
+        page.StackResourceSummaries?.forEach(resource =>
+          resources.push({ ...resource, StackName: stack }),
+        );
+      }
+    } catch (error) {
+      console.error(`Error while listing resources for stack ${stack}`);
     }
   }
 
   return resources
-    .map(({ ResourceType, PhysicalResourceId }) => ({
+    .map(({ ResourceType, PhysicalResourceId, StackName }) => ({
       resourceType: ResourceType,
       physicalResourceId: PhysicalResourceId,
+      stackName: StackName,
     }))
     .filter(
       (
         resource,
-      ): resource is { resourceType: string; physicalResourceId: string } =>
+      ): resource is {
+        resourceType: string;
+        physicalResourceId: string;
+        stackName: string;
+      } =>
         resource.resourceType !== undefined &&
         resource.physicalResourceId !== undefined,
     )
-    .map(createARNFromCloudFormation)
-    .filter((arn): arn is CustomARN => arn !== undefined);
+    .map(({ resourceType, physicalResourceId, stackName }) => ({
+      arn: createARNFromCloudFormation({
+        resourceType,
+        physicalResourceId,
+      }),
+      stackName,
+    }))
+    .filter(
+      (resource): resource is { arn: CustomARN; stackName: string } =>
+        resource.arn !== undefined,
+    );
 };
