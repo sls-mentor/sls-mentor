@@ -7,6 +7,7 @@
     <img src="packages/documentation/static/img/title.png" width="600px" alt="sls-mentor" />
     <br />
   </h1>
+  <br />
   <sup>
     <p>We are open to contributions, check our <a href="https://github.com/sls-mentor/sls-mentor/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22">good first issues</a>!</p>
     <a href="https://www.npmjs.com/package/sls-mentor">
@@ -16,8 +17,12 @@
       <img src="https://img.shields.io/npm/dm/sls-mentor.svg" alt="npm downloads" />
     </a>
   </sup>
-  <br />
-  <br />
+  <h2>🚨 [NEW]sls-mentor 3.0 is in alpha! 🚨</h2>
+  <p>Visualize you AWS serverless application like never before</p>
+  <img src="packages/documentation/static/img/3.0.0.gif" style="width: 100%" />
+  <pre>npx <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor@alpha</a> -p &lt;AWS_CLI_PROFILE&gt;</pre>
+  <p>Weekly pre-releases, we need your feedback and feature requests!</p>
+  <h2>⬇️ Back to sls-mentor v2 ⬇️</h2>
   <p>
     <q>Just because you don't see something, doesn't mean it doesn't exist</q>
   </p>
@@ -34,7 +39,7 @@
   <h2>One minute quick start 🚀</h2>
   <br />
   <pre>npx <a href="https://www.npmjs.com/package/sls-mentor">sls-mentor</a></pre>
-    <img src="./packages/documentation/static/img/guardian-run.gif" style="width: 60%">
+    <img src="packages/documentation/static/img/guardian-run.gif" style="width: 80%" />
   <br />
   <br />
 </div>
