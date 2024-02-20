@@ -22,7 +22,7 @@ const mapConfigurationStats = (
 };
 
 export const getDynamoDBTableNodes = async (
-  resources: { arn: CustomARN; stackName?: string }[],
+  resources: { arn: CustomARN; cloudformationStack?: string }[],
 ): Promise<
   Record<
     string,
@@ -47,7 +47,7 @@ export const getDynamoDBTableNodes = async (
             configuration: mapConfigurationStats(configuration),
           },
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
-            ?.stackName,
+            ?.cloudformationStack,
         },
       ];
     }),

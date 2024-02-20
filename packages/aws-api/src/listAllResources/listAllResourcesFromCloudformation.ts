@@ -76,14 +76,22 @@ const createARNFromCloudFormation = ({
   }
 };
 
-const findCloudformationStacksToSearch = async (
+const generateStackNameToRootStackName = async (
   cloudformationStacksToFilter: string[],
   cloudFormationClient: CloudFormationClient,
-) => {
-  const cloudformationStacks: string[] = [];
+): Promise<Record<string, string>> => {
   if (cloudformationStacksToFilter.length > 0) {
-    return cloudformationStacksToFilter;
+    return Object.fromEntries(
+      cloudformationStacksToFilter.map(stack => [stack, stack]),
+    );
   }
+
+  const cloudformationStacks: {
+    stackId: string;
+    stackName: string;
+    rootStackId?: string;
+  }[] = [];
+
   for await (const page of paginateListStacks(
     {
       client: cloudFormationClient,
@@ -98,24 +106,46 @@ const findCloudformationStacksToSearch = async (
     },
   )) {
     cloudformationStacks.push(
-      ...(page.StackSummaries?.map(stack => stack.StackName ?? '') ?? []),
+      ...(page.StackSummaries?.map(stack => ({
+        stackId: stack.StackId ?? '',
+        stackName: stack.StackName ?? '',
+        rootStackId: stack.RootId,
+      })) ?? []),
     );
   }
 
-  return cloudformationStacks;
+  const stackNameToRootStackName: Record<string, string> = {};
+
+  for (const { rootStackId, stackName } of cloudformationStacks) {
+    if (rootStackId === undefined) {
+      stackNameToRootStackName[stackName] = stackName;
+    } else {
+      const rootStack = cloudformationStacks.find(
+        otherStack => otherStack.stackId === rootStackId,
+      );
+
+      if (rootStack !== undefined) {
+        stackNameToRootStackName[stackName] = rootStack.stackName;
+      }
+    }
+  }
+
+  return stackNameToRootStackName;
 };
 
 type ResourcesWithStackName = StackResourceSummary & { StackName: string };
 
 export const listAllResourcesFromCloudformation = async (
   cloudformationStacksToFilter: string[],
-): Promise<{ arn: CustomARN; stackName: string }[]> => {
+): Promise<{ arn: CustomARN; cloudformationStack: string }[]> => {
   const cloudFormationClient = new CloudFormationClient({});
 
-  const cloudformationStacksToSearch = await findCloudformationStacksToSearch(
+  const stackNameToRootStackName = await generateStackNameToRootStackName(
     cloudformationStacksToFilter,
     cloudFormationClient,
   );
+
+  const cloudformationStacksToSearch = Object.keys(stackNameToRootStackName);
 
   const resources: ResourcesWithStackName[] = [];
   for (const stack of cloudformationStacksToSearch) {
@@ -155,10 +185,10 @@ export const listAllResourcesFromCloudformation = async (
         resourceType,
         physicalResourceId,
       }),
-      stackName,
+      cloudformationStack: stackNameToRootStackName[stackName],
     }))
     .filter(
-      (resource): resource is { arn: CustomARN; stackName: string } =>
+      (resource): resource is { arn: CustomARN; cloudformationStack: string } =>
         resource.arn !== undefined,
     );
 };

@@ -12,7 +12,7 @@ export const listAllResources = async ({
   cloudformationStacksToFilter?: string[];
   tags?: { key: string; value: string }[];
   region: string;
-}): Promise<{ arn: CustomARN; stackName?: string }[]> => {
+}): Promise<{ arn: CustomARN; cloudformationStack?: string }[]> => {
   const allResourcesFromServices = await listAllResourcesFromServices({
     region,
   });
@@ -32,14 +32,15 @@ export const listAllResources = async ({
 
   return allResourcesFromServices
     .map(arn => {
-      const stackName = resourcesToKeep.find(resource => resource.arn.is(arn))
-        ?.stackName;
+      const cloudformationStack = resourcesToKeep.find(resource =>
+        resource.arn.is(arn),
+      )?.cloudformationStack;
 
-      return { arn, stackName };
+      return { arn, cloudformationStack };
     })
     .filter(
       resource =>
-        resource.stackName !== undefined ||
+        resource.cloudformationStack !== undefined ||
         (cloudformationStacksToFilter ?? []).length === 0,
     );
 };

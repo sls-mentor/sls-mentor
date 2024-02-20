@@ -160,7 +160,7 @@ const mapConfigurationStats = (
 };
 
 export const getLambdaFunctionNodes = async (
-  resources: { arn: CustomARN; stackName?: string }[],
+  resources: { arn: CustomARN; cloudformationStack?: string }[],
 ): Promise<
   Record<
     string,
@@ -196,7 +196,7 @@ export const getLambdaFunctionNodes = async (
             execution: mapExecutionStats(logInsights),
           },
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
-            ?.stackName,
+            ?.cloudformationStack,
         },
       ];
     }),

@@ -65,7 +65,7 @@ export const generateGraph = async ({
               stats: {},
               cloudformationStack: resources.find(resource =>
                 resource.arn.is(arn),
-              )?.stackName,
+              )?.cloudformationStack,
             },
           };
         },

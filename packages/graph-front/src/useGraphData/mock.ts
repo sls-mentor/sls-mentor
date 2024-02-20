@@ -1486,6 +1486,7 @@ export const mockResults: SerializedGraphData = {
           {
             ...value,
             stats,
+            cloudformationStack: Math.random() > 0.5 ? 'stack-1' : 'stack-2',
           },
         ];
       }
@@ -1495,6 +1496,7 @@ export const mockResults: SerializedGraphData = {
         {
           ...value,
           stats: {},
+          cloudformationStack: Math.random() > 0.5 ? 'stack-1' : 'stack-2',
         },
       ];
     }),
