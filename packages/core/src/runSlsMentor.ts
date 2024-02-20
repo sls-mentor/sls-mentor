@@ -95,11 +95,13 @@ export const runSlsMentor = async ({
     }
 
     allResourcesArns.push(
-      ...(await listAllResources({
-        cloudformationStacks,
-        tags,
-        region: regionToUse,
-      })),
+      ...(
+        await listAllResources({
+          cloudformationStacksToFilter: cloudformationStacks,
+          tags,
+          region: regionToUse,
+        })
+      ).map(({ arn }) => arn),
     );
 
     if (hooks.afterFetchAllResources) {

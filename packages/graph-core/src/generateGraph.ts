@@ -26,21 +26,24 @@ export const generateGraph = async ({
   const regionToUse = region ?? fetchedRegion;
   CustomARN.setup({ accountId, region: regionToUse });
 
-  const arns = await listAllResources({
-    cloudformationStacks,
+  const resources = await listAllResources({
+    cloudformationStacksToFilter: cloudformationStacks,
     tags,
     region: regionToUse,
   });
 
   const [edges, lambdaFunctionNodes, dynamoDBTableNodes] = await Promise.all([
-    getEdges(arns, servicesToHide),
-    getLambdaFunctionNodes(arns),
-    getDynamoDBTableNodes(arns),
+    getEdges(
+      resources.map(({ arn }) => arn),
+      servicesToHide,
+    ),
+    getLambdaFunctionNodes(resources),
+    getDynamoDBTableNodes(resources),
   ]);
 
-  const relevantArns = arns.filter(
-    arn => !servicesToHide.includes(arn.service),
-  );
+  const relevantArns = resources
+    .map(({ arn }) => arn)
+    .filter(arn => !servicesToHide.includes(arn.service));
 
   return {
     nodes: {
@@ -60,6 +63,9 @@ export const generateGraph = async ({
             [refinedArn.toString()]: {
               arn: refinedArn,
               stats: {},
+              cloudformationStack: resources.find(resource =>
+                resource.arn.is(arn),
+              )?.cloudformationStack,
             },
           };
         },

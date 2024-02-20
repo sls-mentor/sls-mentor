@@ -22,17 +22,20 @@ const mapConfigurationStats = (
 };
 
 export const getDynamoDBTableNodes = async (
-  arns: CustomARN[],
+  resources: { arn: CustomARN; cloudformationStack?: string }[],
 ): Promise<
   Record<
     string,
     {
       arn: DynamoDBTableARN;
       stats: DynamoDBTableStats;
+      cloudformationStack: string | undefined;
     }
   >
 > => {
-  const tableConfigurations = await fetchAllDynamoDBTableConfigurations(arns);
+  const tableConfigurations = await fetchAllDynamoDBTableConfigurations(
+    resources.map(({ arn }) => arn),
+  );
 
   return Object.fromEntries(
     tableConfigurations.map(({ arn, configuration }) => {
@@ -43,6 +46,8 @@ export const getDynamoDBTableNodes = async (
           stats: {
             configuration: mapConfigurationStats(configuration),
           },
+          cloudformationStack: resources.find(resource => resource.arn.is(arn))
+            ?.cloudformationStack,
         },
       ];
     }),
