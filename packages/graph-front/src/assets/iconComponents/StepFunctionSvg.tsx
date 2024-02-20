@@ -9,8 +9,8 @@ export default (
     <desc>Created with Sketch.</desc>
     <defs>
       <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
-        <stop stop-color="#B0084D" offset="0%" />
-        <stop stop-color="#FF4F8B" offset="100%" />
+        <stop stopColor="#B0084D" offset="0%" />
+        <stop stopColor="#FF4F8B" offset="100%" />
       </linearGradient>
     </defs>
     <g

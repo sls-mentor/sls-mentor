@@ -25,6 +25,8 @@ export const update = ({
   mouseX,
   mouseY,
   zoomLevel,
+  clusteringEnabled = true,
+  clusters,
 }: {
   nodes: Record<string, NodeWithLocationAndRank>;
   edges: Edge[];
@@ -36,31 +38,72 @@ export const update = ({
   mouseX: number;
   mouseY: number;
   zoomLevel: number;
+  clusteringEnabled?: boolean;
+  clusters: Record<string, { amount: number; x: number; y: number }>;
 }): void => {
   Object.values(nodes).forEach((node1, i) => {
+    if (node1.visibility === 'None') {
+      return;
+    }
     Object.values(nodes).forEach((node2, j) => {
       if (i <= j) {
         return;
       }
+
+      if (node2.visibility === 'None') {
+        return;
+      }
+
+      const node1Stack = node1.cloudformationStack;
+      const node2Stack = node2.cloudformationStack;
+
+      const repulsionMultiplier =
+        clusteringEnabled &&
+        node1Stack &&
+        node2Stack &&
+        node1Stack !== node2Stack
+          ? 2
+          : 1;
 
       const distance2 =
         (node2.x - node1.x) * (node2.x - node1.x) +
         (node2.y - node1.y) * (node2.y - node1.y);
 
       if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
-        node1.ax -= (repulsionConstant * (node2.x - node1.x)) / distance2;
-        node1.ay -= (repulsionConstant * (node2.y - node1.y)) / distance2;
+        node1.ax -=
+          (repulsionMultiplier * repulsionConstant * (node2.x - node1.x)) /
+          distance2;
+        node1.ay -=
+          (repulsionMultiplier * repulsionConstant * (node2.y - node1.y)) /
+          distance2;
       }
 
       if (node2.arn.toString() !== clickedNodeArn && !node2.pinned) {
-        node2.ax += (repulsionConstant * (node2.x - node1.x)) / distance2;
-        node2.ay += (repulsionConstant * (node2.y - node1.y)) / distance2;
+        node2.ax +=
+          (repulsionMultiplier * repulsionConstant * (node2.x - node1.x)) /
+          distance2;
+        node2.ay +=
+          (repulsionMultiplier * repulsionConstant * (node2.y - node1.y)) /
+          distance2;
       }
     });
 
+    if (clusteringEnabled && node1.cloudformationStack !== undefined) {
+      const cluster = clusters[node1.cloudformationStack];
+
+      if (cluster === undefined) {
+        return;
+      }
+
+      node1.ax += springConstant * (cluster.x - node1.x);
+      node1.ay += springConstant * (cluster.y - node1.y);
+    }
+
+    const attractionMultiplier = clusteringEnabled ? 0.7 : 1;
+
     if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
-      node1.ax -= springConstant * node1.x;
-      node1.ay -= springConstant * node1.y;
+      node1.ax -= springConstant * node1.x * attractionMultiplier;
+      node1.ay -= springConstant * node1.y * attractionMultiplier;
     }
   });
 
@@ -69,6 +112,17 @@ export const update = ({
     const node2 = nodes[e.to];
 
     if (node1 === undefined || node2 === undefined) {
+      return;
+    }
+
+    if (node1.visibility === 'None' || node2.visibility === 'None') {
+      return;
+    }
+
+    const node1Stack = node1.cloudformationStack;
+    const node2Stack = node2.cloudformationStack;
+
+    if (clusteringEnabled && node1Stack !== node2Stack) {
       return;
     }
 
@@ -85,6 +139,10 @@ export const update = ({
 
   Object.values(nodes).forEach(node => {
     if (node.pinned) {
+      return;
+    }
+
+    if (node.visibility === 'None') {
       return;
     }
 
@@ -113,5 +171,18 @@ export const update = ({
 
     node.ax = 0;
     node.ay = 0;
+
+    if (node.cloudformationStack === undefined) {
+      return;
+    }
+
+    const cluster = clusters[node.cloudformationStack];
+
+    if (cluster === undefined) {
+      return;
+    }
+
+    cluster.x += node.vx / cluster.amount;
+    cluster.y += node.vy / cluster.amount;
   });
 };
