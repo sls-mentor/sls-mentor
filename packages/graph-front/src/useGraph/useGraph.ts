@@ -9,7 +9,7 @@ import {
 import { GraphState, getInitialState } from './getInitialState';
 import { setupRefresh } from './setupRefresh';
 import { GraphData } from '@sls-mentor/graph-core';
-import { MenuState, NodeWithLocationAndRank, RankingKey } from '../types';
+import { MenuState, NodeWithLocationAndRank } from '../types';
 
 export const useGraph = (
   data: GraphData,
@@ -17,19 +17,20 @@ export const useGraph = (
   containerRef: RefObject<HTMLDivElement>;
   clientWidth: number;
   clientHeight: number;
-  ranking: RankingKey | undefined;
   setMenu: Dispatch<SetStateAction<MenuState>>;
   updateZoomLevel: (zoomFactor: number) => void;
   updateHoveredNode: (node: NodeWithLocationAndRank | undefined) => void;
   updateClickedNode: (node: NodeWithLocationAndRank | undefined) => void;
-} & GraphState &
-  MenuState => {
+  menu: MenuState;
+} & GraphState => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [state, setState] = useState(getInitialState(data));
   const [menu, setMenu] = useState<MenuState>({
     ranking: undefined,
     warningsEnabled: false,
+    enableClustering: false,
+    filterCloudformationStacks: [],
   });
 
   useEffect(() => {
@@ -42,6 +43,8 @@ export const useGraph = (
       currentContainer,
       setState,
       ranking: menu.ranking,
+      enableClustering: menu.enableClustering,
+      filterCloudformationStacks: menu.filterCloudformationStacks,
     });
 
     return destroy;
@@ -57,7 +60,7 @@ export const useGraph = (
     clientWidth,
     clientHeight,
     setMenu,
-    ...menu,
+    menu,
     updateZoomLevel: zoomFactor => {
       setState(state => ({
         ...state,

@@ -3,16 +3,58 @@ import { GraphState, NODE_RADIUS } from './getInitialState';
 import { rankingFunctions } from './ranking';
 import { update } from './update';
 import { OFFSET, updateWithRank } from './updateWithRank';
-import { RankingKey } from '../types';
+import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
+import { Edge } from '@sls-mentor/graph-core';
+
+const getNodeVisibility = (
+  node: NodeWithLocationAndRank,
+  filterCloudformationStacks: string[],
+  edges: Edge[],
+  nodes: Record<string, NodeWithLocationAndRank>,
+): NodeVisibility => {
+  if (filterCloudformationStacks.length === 0) {
+    return NodeVisibility.Full;
+  }
+
+  if (filterCloudformationStacks.includes(node.cloudformationStack as string)) {
+    return NodeVisibility.Full;
+  }
+
+  for (const { from, to } of edges) {
+    if (
+      from === node.arn.toString() &&
+      filterCloudformationStacks.includes(
+        nodes[to]?.cloudformationStack as string,
+      )
+    ) {
+      return NodeVisibility.Partial;
+    }
+
+    if (
+      to === node.arn.toString() &&
+      filterCloudformationStacks.includes(
+        nodes[from]?.cloudformationStack as string,
+      )
+    ) {
+      return NodeVisibility.Partial;
+    }
+  }
+
+  return NodeVisibility.None;
+};
 
 export const setupRefresh = ({
   currentContainer,
   ranking,
   setState,
+  enableClustering,
+  filterCloudformationStacks,
 }: {
   currentContainer: HTMLDivElement;
   ranking: RankingKey | undefined;
   setState: Dispatch<SetStateAction<GraphState>>;
+  enableClustering: boolean;
+  filterCloudformationStacks: string[];
 }): {
   destroy: () => void;
 } => {
@@ -50,6 +92,12 @@ export const setupRefresh = ({
               ...node,
               rank: rankedNodes[arn]?.rank,
               value: rankedNodes[arn]?.value,
+              visibility: getNodeVisibility(
+                node,
+                filterCloudformationStacks,
+                state.edges,
+                state.nodes,
+              ),
             },
           ]),
         ),
@@ -62,6 +110,20 @@ export const setupRefresh = ({
   } else {
     setState(state => ({
       ...state,
+      nodes: Object.fromEntries(
+        Object.entries(state.nodes).map(([arn, node]) => [
+          arn,
+          {
+            ...node,
+            visibility: getNodeVisibility(
+              node,
+              filterCloudformationStacks,
+              state.edges,
+              state.nodes,
+            ),
+          },
+        ]),
+      ),
       nodeRadius: NODE_RADIUS,
     }));
   }
@@ -79,6 +141,7 @@ export const setupRefresh = ({
         zoomLevel,
         clickedNodeArn,
         clickedNode,
+        clusters,
       }) => {
         updateFn({
           nodes,
@@ -89,6 +152,8 @@ export const setupRefresh = ({
           mouseX: mouseX - clientWidth / 2,
           mouseY: mouseY - clientHeight / 2,
           zoomLevel,
+          clusteringEnabled: enableClustering,
+          clusters,
         });
 
         const connectedArns: Record<string, boolean> = {};
@@ -113,6 +178,7 @@ export const setupRefresh = ({
           zoomLevel,
           clickedNodeArn,
           clickedNode,
+          clusters,
         };
       },
     );

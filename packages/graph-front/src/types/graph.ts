@@ -9,8 +9,17 @@ type NodeWithLocation = {
   ay: number;
 } & Node;
 
+export const NodeVisibility = {
+  Full: 'Full',
+  Partial: 'Partial',
+  None: 'None',
+} as const;
+export type NodeVisibility =
+  (typeof NodeVisibility)[keyof typeof NodeVisibility];
+
 export type NodeWithLocationAndRank = NodeWithLocation & {
   rank?: number;
   value?: number;
   pinned: boolean;
+  visibility: NodeVisibility;
 };

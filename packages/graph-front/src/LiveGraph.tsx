@@ -4,12 +4,11 @@ import { ArnAwsIcons } from './assets/iconComponents';
 import { rankingUnitTranslation } from './translations';
 import { Zoom, Footer, Header, Menu, Logo } from './layout';
 import { useGraph } from './useGraph';
+import { useMemo } from 'react';
 
 export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const {
     containerRef,
-    ranking,
-    warningsEnabled,
     setMenu,
     edges,
     nodes,
@@ -24,7 +23,26 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     updateZoomLevel,
     updateClickedNode,
     clickedNode,
+    clusters,
+    menu,
   } = useGraph(data);
+
+  const cfnStacks = useMemo(() => {
+    const stacks = new Set<string>();
+    Object.values(data.nodes).forEach(({ cloudformationStack }) => {
+      if (cloudformationStack !== undefined) {
+        stacks.add(cloudformationStack);
+      }
+    });
+    return Array.from(stacks);
+  }, [data]);
+
+  const {
+    ranking,
+    warningsEnabled,
+    enableClustering,
+    filterCloudformationStacks,
+  } = menu;
 
   return (
     <div
@@ -35,12 +53,50 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
       }}
       ref={containerRef}
     >
+      {enableClustering && (
+        <>
+          {Object.entries(clusters).map(([name, { x, y }]) =>
+            filterCloudformationStacks.length === 0 ||
+            filterCloudformationStacks.includes(name) ? (
+              <div
+                key={name}
+                style={{
+                  position: 'absolute',
+                  left: zoomLevel * x + clientWidth / 2,
+                  top: zoomLevel * y + clientHeight / 2,
+                  opacity: 0.5,
+                }}
+              >
+                <p
+                  style={{
+                    position: 'absolute',
+                    fontSize: 16,
+                    backgroundColor: '#fffa',
+                    borderRadius: 5 * zoomLevel,
+                    transform: 'translate(-50%, 10%)',
+                    left: nodeRadius * zoomLevel,
+                    width: 'max-content',
+                    padding: 1,
+                  }}
+                >
+                  {name}
+                </p>
+              </div>
+            ) : null,
+          )}
+        </>
+      )}
       {ranking === undefined &&
         edges.map(({ from, to, warnings }) => {
           const fromNode = nodes[from];
           const toNode = nodes[to];
 
-          if (fromNode === undefined || toNode === undefined) {
+          if (
+            fromNode === undefined ||
+            toNode === undefined ||
+            toNode.visibility === 'None' ||
+            fromNode.visibility === 'None'
+          ) {
             return null;
           }
 
@@ -74,7 +130,8 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
           );
         })}
       {Object.entries(nodes).map(([arn, node]) =>
-        ranking === undefined || node.rank !== undefined ? (
+        (ranking === undefined || node.rank !== undefined) &&
+        node.visibility !== 'None' ? (
           <div
             key={arn}
             style={{
@@ -82,9 +139,10 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
               left: zoomLevel * (node.x - nodeRadius) + clientWidth / 2,
               top: zoomLevel * (node.y - nodeRadius) + clientHeight / 2,
               opacity:
-                hoveredNodeArn === arn ||
-                connectedArns[arn] ||
-                hoveredNode === undefined
+                (hoveredNodeArn === arn ||
+                  connectedArns[arn] ||
+                  hoveredNode === undefined) &&
+                node.visibility !== 'Partial'
                   ? 1
                   : 0.5,
             }}
@@ -177,7 +235,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             )}
           </>
         )}
-      <Menu setMenu={setMenu} />
+      <Menu setMenu={setMenu} menu={menu} cfnStacks={cfnStacks} />
       {ranking !== undefined && <Header ranking={ranking} />}
       <Footer />
       <Logo />
