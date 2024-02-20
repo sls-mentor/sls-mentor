@@ -1,5 +1,26 @@
 import { RankingKey } from './types';
 
+const resourceTranslation = {
+  lambdaFunction: 'Lambda functions',
+  dynamodbTable: 'DynamoDB tables',
+};
+
+export const rankingResourceTranslation: Record<RankingKey, string> = {
+  averageColdStartDuration: resourceTranslation.lambdaFunction,
+  maxColdStartDuration: resourceTranslation.lambdaFunction,
+  coldStartPercentage: resourceTranslation.lambdaFunction,
+  memorySize: resourceTranslation.lambdaFunction,
+  bundleSize: resourceTranslation.lambdaFunction,
+  timeout: resourceTranslation.lambdaFunction,
+  averageDuration: resourceTranslation.lambdaFunction,
+  maxDuration: resourceTranslation.lambdaFunction,
+  averageMemoryUsed: resourceTranslation.lambdaFunction,
+  percentageMemoryUsed: resourceTranslation.lambdaFunction,
+  itemCount: resourceTranslation.dynamodbTable,
+  tableSize: resourceTranslation.dynamodbTable,
+  averageItemSize: resourceTranslation.dynamodbTable,
+};
+
 export const rankingKeyTranslation: Record<RankingKey, string> = {
   averageColdStartDuration: 'Average Cold Start Duration',
   maxColdStartDuration: 'Max Cold Start Duration',

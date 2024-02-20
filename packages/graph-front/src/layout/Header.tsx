@@ -1,4 +1,8 @@
-import { rankingKeyTranslation, rankingUnitTranslation } from '../translations';
+import {
+  rankingKeyTranslation,
+  rankingResourceTranslation,
+  rankingUnitTranslation,
+} from '../translations';
 import { RankingKey } from '../types';
 
 interface Props {
@@ -18,8 +22,8 @@ export const Header = ({ ranking }: Props) => (
     }}
   >
     <p style={{ fontSize: 18, color: 'white', fontWeight: 500 }}>
-      Lambda functions ranked by {rankingKeyTranslation[ranking]} (
-      {rankingUnitTranslation[ranking]})
+      {rankingResourceTranslation[ranking]} ranked by{' '}
+      {rankingKeyTranslation[ranking]} ({rankingUnitTranslation[ranking]})
     </p>
   </div>
 );
