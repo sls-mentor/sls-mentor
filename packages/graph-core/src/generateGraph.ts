@@ -18,7 +18,7 @@ export const generateGraph = async ({
   cloudformationStacks,
   region,
 }: {
-  tags?: { key: string; value: string }[];
+  tags?: { Key?: string; Value?: string }[];
   cloudformationStacks?: string[];
   region?: string;
 }): Promise<GraphData> => {
@@ -28,7 +28,7 @@ export const generateGraph = async ({
 
   const resources = await listAllResources({
     cloudformationStacksToFilter: cloudformationStacks,
-    tags,
+    tagsToFilter: tags,
     region: regionToUse,
   });
 
@@ -66,6 +66,8 @@ export const generateGraph = async ({
               cloudformationStack: resources.find(resource =>
                 resource.arn.is(arn),
               )?.cloudformationStack,
+              tags:
+                resources.find(resource => resource.arn.is(arn))?.tags ?? [],
             },
           };
         },

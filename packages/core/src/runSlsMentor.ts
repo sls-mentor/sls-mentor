@@ -98,7 +98,10 @@ export const runSlsMentor = async ({
       ...(
         await listAllResources({
           cloudformationStacksToFilter: cloudformationStacks,
-          tags,
+          tagsToFilter: tags?.map(({ key, value }) => ({
+            Key: key,
+            Value: value,
+          })),
           region: regionToUse,
         })
       ).map(({ arn }) => arn),
