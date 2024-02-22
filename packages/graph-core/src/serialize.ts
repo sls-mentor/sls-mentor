@@ -19,6 +19,7 @@ export const serializeGraphData = (
         arn: node.arn.toString(),
         stats: node.stats,
         cloudformationStack: node.cloudformationStack,
+        tags: node.tags,
       },
     }),
     {} as SerializedGraphData['nodes'],
@@ -56,6 +57,7 @@ export const deserializeGraphData = (
           arn: refinedArn,
           stats: node.stats,
           cloudformationStack: node.cloudformationStack,
+          tags: node.tags,
         },
         // Bold type casting - We trust the serialized data
         // And we know that LambdaFunctionArn -> string -> LambdaFunctionArn for example

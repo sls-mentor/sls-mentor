@@ -76,7 +76,10 @@ const REPORT_OUTPUT_PATH = `${REPORT_OUTPUT_FOLDER}/index.html`;
 
 const run = async (options: Options): Promise<void> => {
   const result = await generateGraph({
-    tags: options.tags,
+    tags:
+      options.tags === undefined
+        ? undefined
+        : options.tags.map(({ key, value }) => ({ Key: key, Value: value })),
     cloudformationStacks: options.cloudformationStacks,
   });
 

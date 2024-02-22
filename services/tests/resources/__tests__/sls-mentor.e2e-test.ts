@@ -130,13 +130,16 @@ describe('Failed resources', () => {
             result: RuleCheckResult[];
           }
         | undefined;
-      let resourcesExpectedToFail: CustomARN[];
+      let resourcesExpectedToFail: {
+        arn: CustomARN;
+        tags: { Key?: string; Value?: string }[];
+      }[];
       beforeAll(async () => {
         checksResultForRule = checksResults?.find(
           checksResult => checksResult.rule.ruleName === ruleName,
         );
         resourcesExpectedToFail = await listAllResourcesFromTags([
-          { key: 'rule', value: ruleName },
+          { Key: 'rule', Value: ruleName },
         ]);
       });
 
@@ -147,7 +150,9 @@ describe('Failed resources', () => {
       it('should fail for specific resources', () => {
         checksResultForRule?.result.map(checkResultForRule => {
           const correspondingExpectedToFailResource =
-            resourcesExpectedToFail.find(arn => arn.is(checkResultForRule.arn));
+            resourcesExpectedToFail.find(resource =>
+              resource.arn.is(checkResultForRule.arn),
+            );
           if (correspondingExpectedToFailResource !== undefined) {
             expect(checkResultForRule).toFailSlsMentorRule();
           }
