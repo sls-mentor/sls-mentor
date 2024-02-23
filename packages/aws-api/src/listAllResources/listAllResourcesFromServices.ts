@@ -8,6 +8,7 @@ import {
   listCognitoUserPools,
   listDynamoDBTables,
   listEventBridgeEventBuses,
+  listGraphqlApis,
   listIamRoles,
   listLambdaFunctions,
   listRdsClusters,
@@ -47,6 +48,7 @@ export const listAllResourcesFromServices = async ({
     iamRoles,
     rdsClusters,
     stateMachines,
+    graphqlApis,
   ] = await Promise.all([
     listS3Buckets({ region }),
     listLambdaFunctions(),
@@ -67,6 +69,7 @@ export const listAllResourcesFromServices = async ({
     listIamRoles(),
     listRdsClusters(),
     listStateMachines(),
+    listGraphqlApis(),
   ]);
 
   return [
@@ -89,5 +92,6 @@ export const listAllResourcesFromServices = async ({
     ...iamRoles,
     ...rdsClusters,
     ...stateMachines,
+    ...graphqlApis,
   ];
 };

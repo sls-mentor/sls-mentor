@@ -32,6 +32,7 @@
   "dependencies": {
     "@aws-sdk/client-api-gateway": "^3.409.0",
     "@aws-sdk/client-apigatewayv2": "^3.409.0",
+    "@aws-sdk/client-appsync": "^3.409.0",
     "@aws-sdk/client-backup": "^3.409.0",
     "@aws-sdk/client-cloudformation": "^3.409.0",
     "@aws-sdk/client-cloudfront": "^3.409.0",

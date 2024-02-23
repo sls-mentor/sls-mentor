@@ -14,6 +14,7 @@ export const ArnService = {
   logs: 'logs',
   backup: 'backup',
   states: 'states',
+  appsync: 'appsync',
 } as const;
 
 export type ArnService = (typeof ArnService)[keyof typeof ArnService];

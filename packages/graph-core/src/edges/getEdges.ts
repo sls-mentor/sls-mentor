@@ -5,6 +5,7 @@ import {
   LambdaFunctionARN,
 } from '@sls-mentor/arn';
 import {
+  fetchAllGraphqlApiResources,
   fetchAllIamRolePolicies,
   fetchAllLambdaConfigurations,
   fetchAllQueuesAttributes,
@@ -16,6 +17,7 @@ import {
 import { Edge } from 'types';
 
 import { getHttpApiEdges, getRestApiEdges } from './apiGateway';
+import { findArnsFromDataSources } from './appSync';
 import { findLambdasInDefinition } from './stepFunction/findLambdasInDefinition';
 
 export const getEdges = async (
@@ -30,6 +32,7 @@ export const getEdges = async (
     eventBridgeTargets,
     queueAttributes,
     stateMachineDefinition,
+    graphqlApiResources,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
@@ -60,6 +63,7 @@ export const getEdges = async (
     ),
     fetchAllQueuesAttributes(arns),
     fetchAllStepFunctionConfigurations(arns),
+    fetchAllGraphqlApiResources(arns),
   ]);
 
   const lambdaFunctionsAndRoleArn = lambdaFunctions.map(l => ({
@@ -71,6 +75,17 @@ export const getEdges = async (
   }));
 
   const rawEdges: Edge[] = [
+    ...graphqlApiResources
+      .map(({ arn, dataSources }) => {
+        const dataSourcesArns = findArnsFromDataSources(dataSources);
+
+        return dataSourcesArns.map(dataSourceArn => ({
+          from: arn.toString(),
+          to: dataSourceArn,
+          warnings: [],
+        }));
+      })
+      .flat(1),
     ...stateMachineDefinition
       .map(({ arn, definition }) => {
         const lambdaArns = findLambdasInDefinition(definition);

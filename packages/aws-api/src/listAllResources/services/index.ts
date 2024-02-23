@@ -1,3 +1,4 @@
+export * from './appSync';
 export * from './backup';
 export * from './cloudwatch';
 export * from './cognito';

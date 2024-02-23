@@ -1,5 +1,6 @@
 import { CustomARN } from './CustomARN';
 import { ApiGatewayHttpApiARN, ApiGatewayRestApiARN } from './apiGateway';
+import { AppSyncApiARN } from './appSync';
 import { BackupPlanARN } from './backup';
 import { CloudFrontDistributionARN } from './cloudFront';
 import { CloudwatchLogGroupARN } from './cloudwatch';
@@ -18,6 +19,7 @@ import { StepFunctionStateMachineARN } from './stepFunction';
 export type SupportedARN =
   | ApiGatewayHttpApiARN
   | ApiGatewayRestApiARN
+  | AppSyncApiARN
   | BackupPlanARN
   | CloudFrontDistributionARN
   | CloudwatchLogGroupARN
@@ -40,6 +42,7 @@ export type SupportedARN =
 export {
   ApiGatewayHttpApiARN,
   ApiGatewayRestApiARN,
+  AppSyncApiARN,
   BackupPlanARN,
   CloudFrontDistributionARN,
   CloudwatchLogGroupARN,
@@ -70,6 +73,8 @@ export const getRefinedArn = (arn: CustomARN): SupportedARN => {
       return ApiGatewayHttpApiARN.fromCustomARN(arn);
     case ApiGatewayRestApiARN.is(arn):
       return ApiGatewayRestApiARN.fromCustomARN(arn);
+    case AppSyncApiARN.is(arn):
+      return AppSyncApiARN.fromCustomARN(arn);
     case BackupPlanARN.is(arn):
       return BackupPlanARN.fromCustomARN(arn);
     case CloudFrontDistributionARN.is(arn):

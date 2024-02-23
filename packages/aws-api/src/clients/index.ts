@@ -1,5 +1,6 @@
 export { apiGatewayV2Client } from './apiGatewayV2Client';
 export { apiGatewayClient } from './apiGatewayClient';
+export { appSyncClient } from './appSyncClient';
 export { backupClient } from './backupClient';
 export { cloudFrontClient } from './cloudFrontClient';
 export { cloudWatchLogsClient } from './cloudWatchLogsClient';

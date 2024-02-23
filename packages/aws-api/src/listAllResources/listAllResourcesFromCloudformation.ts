@@ -9,6 +9,7 @@ import {
 import {
   ApiGatewayHttpApiARN,
   ApiGatewayRestApiARN,
+  AppSyncApiARN,
   CloudFrontDistributionARN,
   CloudwatchLogGroupARN,
   CognitoUserPoolARN,
@@ -74,6 +75,8 @@ const createARNFromCloudFormation = ({
       return StepFunctionStateMachineARN.fromPhysicalId(physicalResourceId);
     case 'AWS::RDS::DBCluster':
       return RdsClusterARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::AppSync::GraphQLApi':
+      return AppSyncApiARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }
