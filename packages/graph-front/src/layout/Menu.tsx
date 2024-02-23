@@ -104,10 +104,14 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
       >
         <button
           onClick={() =>
-            setMenu(m => ({ ...m, enableClustering: !m.enableClustering }))
+            setMenu(m => ({
+              ...m,
+              enableCloudformationClustering: !m.enableCloudformationClustering,
+            }))
           }
         >
-          {menu.enableClustering ? 'Disable' : 'Enable'} clustering
+          {menu.enableCloudformationClustering ? 'Disable' : 'Enable'}{' '}
+          clustering
         </button>
         <button
           onClick={() =>

@@ -29,7 +29,7 @@ export const useGraph = (
   const [menu, setMenu] = useState<MenuState>({
     ranking: undefined,
     warningsEnabled: false,
-    enableClustering: false,
+    enableCloudformationClustering: false,
     filterCloudformationStacks: [],
   });
 
@@ -43,7 +43,7 @@ export const useGraph = (
       currentContainer,
       setState,
       ranking: menu.ranking,
-      enableClustering: menu.enableClustering,
+      enableCloudformationClustering: menu.enableCloudformationClustering,
       filterCloudformationStacks: menu.filterCloudformationStacks,
     });
 

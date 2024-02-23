@@ -40,7 +40,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const {
     ranking,
     warningsEnabled,
-    enableClustering,
+    enableCloudformationClustering,
     filterCloudformationStacks,
   } = menu;
 
@@ -53,7 +53,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
       }}
       ref={containerRef}
     >
-      {enableClustering && (
+      {enableCloudformationClustering && (
         <>
           {Object.entries(clusters).map(([name, { x, y }]) =>
             filterCloudformationStacks.length === 0 ||

@@ -47,13 +47,13 @@ export const setupRefresh = ({
   currentContainer,
   ranking,
   setState,
-  enableClustering,
+  enableCloudformationClustering,
   filterCloudformationStacks,
 }: {
   currentContainer: HTMLDivElement;
   ranking: RankingKey | undefined;
   setState: Dispatch<SetStateAction<GraphState>>;
-  enableClustering: boolean;
+  enableCloudformationClustering: boolean;
   filterCloudformationStacks: string[];
 }): {
   destroy: () => void;
@@ -152,7 +152,7 @@ export const setupRefresh = ({
           mouseX: mouseX - clientWidth / 2,
           mouseY: mouseY - clientHeight / 2,
           zoomLevel,
-          clusteringEnabled: enableClustering,
+          clusteringEnabled: enableCloudformationClustering,
           clusters,
         });
 
