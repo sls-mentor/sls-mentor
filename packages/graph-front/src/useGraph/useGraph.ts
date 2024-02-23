@@ -31,6 +31,7 @@ export const useGraph = (
     warningsEnabled: false,
     enableCloudformationClustering: false,
     filterCloudformationStacks: [],
+    clusteringByTagValue: undefined,
   });
 
   useEffect(() => {
@@ -45,6 +46,7 @@ export const useGraph = (
       ranking: menu.ranking,
       enableCloudformationClustering: menu.enableCloudformationClustering,
       filterCloudformationStacks: menu.filterCloudformationStacks,
+      clusteringByTagValue: menu.clusteringByTagValue,
     });
 
     return destroy;

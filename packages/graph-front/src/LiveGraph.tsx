@@ -27,22 +27,37 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     menu,
   } = useGraph(data);
 
-  const cfnStacks = useMemo(() => {
+  const { cfnStacks, tags } = useMemo(() => {
     const stacks = new Set<string>();
+    const tags = new Set<string>();
+
     Object.values(data.nodes).forEach(({ cloudformationStack }) => {
       if (cloudformationStack !== undefined) {
         stacks.add(cloudformationStack);
       }
     });
-    return Array.from(stacks);
+
+    Object.values(data.nodes).forEach(({ tags: nodeTags }) => {
+      nodeTags.forEach(({ Key }) => {
+        if (Key !== undefined) {
+          tags.add(Key);
+        }
+      });
+    });
+
+    return { cfnStacks: Array.from(stacks), tags: Array.from(tags) };
   }, [data]);
 
   const {
     ranking,
     warningsEnabled,
     enableCloudformationClustering,
+    clusteringByTagValue,
     filterCloudformationStacks,
   } = menu;
+
+  const clusteringEnabled =
+    enableCloudformationClustering || clusteringByTagValue !== undefined;
 
   return (
     <div
@@ -53,7 +68,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
       }}
       ref={containerRef}
     >
-      {enableCloudformationClustering && (
+      {clusteringEnabled && (
         <>
           {Object.entries(clusters).map(([name, { x, y }]) =>
             filterCloudformationStacks.length === 0 ||
@@ -235,7 +250,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             )}
           </>
         )}
-      <Menu setMenu={setMenu} menu={menu} cfnStacks={cfnStacks} />
+      <Menu setMenu={setMenu} menu={menu} cfnStacks={cfnStacks} tags={tags} />
       {ranking !== undefined && <Header ranking={ranking} />}
       <Footer />
       <Logo />

@@ -6,11 +6,12 @@ interface Props {
   setMenu: Dispatch<SetStateAction<MenuState>>;
   menu: MenuState;
   cfnStacks: string[];
+  tags: string[];
 }
 
-export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
+export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
   const [currentSelection, setCurrentSelection] = useState<
-    'ranking' | 'filter' | undefined
+    'ranking' | 'filter' | 'clustering' | undefined
   >(undefined);
 
   return (
@@ -94,6 +95,48 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
         ) : (
           <></>
         )}
+        {currentSelection === 'clustering' ? (
+          <>
+            <button
+              onClick={() => {
+                setMenu(m => ({
+                  ...m,
+                  enableCloudformationClustering: false,
+                  clusteringByTagValue: undefined,
+                }));
+              }}
+            >
+              No clustering
+            </button>
+            <button
+              onClick={() => {
+                setMenu(m => ({
+                  ...m,
+                  enableCloudformationClustering: true,
+                  clusteringByTagValue: undefined,
+                }));
+              }}
+            >
+              CFN stacks
+            </button>
+            {tags.map(tag => (
+              <button
+                key={tag}
+                onClick={() => {
+                  setMenu(m => ({
+                    ...m,
+                    enableCloudformationClustering: false,
+                    clusteringByTagValue: tag,
+                  }));
+                }}
+              >
+                Tag: "{tag}"
+              </button>
+            ))}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
       <div
         style={{
@@ -106,24 +149,37 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
           onClick={() =>
             setMenu(m => ({
               ...m,
-              enableCloudformationClustering: !m.enableCloudformationClustering,
-            }))
-          }
-        >
-          {menu.enableCloudformationClustering ? 'Disable' : 'Enable'}{' '}
-          clustering
-        </button>
-        <button
-          onClick={() =>
-            setMenu(m => ({
-              ...m,
               warningsEnabled: !m.warningsEnabled,
             }))
           }
         >
           {menu.warningsEnabled ? 'Disable' : 'Enable'} warnings
         </button>
-        <button onClick={() => setCurrentSelection('ranking')}>
+        <button
+          onClick={() => {
+            if (currentSelection === 'clustering') {
+              setCurrentSelection(undefined);
+            } else {
+              setCurrentSelection('clustering');
+            }
+          }}
+        >
+          Graph is clustered by:{' '}
+          {menu.enableCloudformationClustering
+            ? 'CFN stack'
+            : menu.clusteringByTagValue
+            ? menu.clusteringByTagValue
+            : 'None'}
+        </button>
+        <button
+          onClick={() => {
+            if (currentSelection === 'ranking') {
+              setCurrentSelection(undefined);
+            } else {
+              setCurrentSelection('ranking');
+            }
+          }}
+        >
           Ranking: {menu.ranking ? rankingKeyTranslation[menu.ranking] : 'None'}
         </button>
         <button

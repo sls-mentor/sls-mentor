@@ -37,6 +37,7 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
             value: undefined,
             pinned: false,
             visibility: NodeVisibility.Full,
+            cluster: undefined,
           };
 
           return [arn, nodeWithLocationAndRank];
@@ -53,28 +54,6 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
     zoomLevel: 1,
     clickedNode: undefined,
     clickedNodeArn: undefined,
-    clusters: Object.values(nodes).reduce<
-      Record<string, { amount: number; x: number; y: number }>
-    >((acc, node) => {
-      if (node.cloudformationStack === undefined) {
-        return acc;
-      }
-
-      const cluster = acc[node.cloudformationStack];
-
-      if (cluster === undefined) {
-        acc[node.cloudformationStack] = {
-          amount: 1,
-          x: 0,
-          y: 0,
-        };
-
-        return acc;
-      }
-
-      cluster.amount += 1;
-
-      return acc;
-    }, {}),
+    clusters: {},
   };
 };

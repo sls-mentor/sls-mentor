@@ -22,4 +22,5 @@ export type NodeWithLocationAndRank = NodeWithLocation & {
   value?: number;
   pinned: boolean;
   visibility: NodeVisibility;
+  cluster: string | undefined;
 };

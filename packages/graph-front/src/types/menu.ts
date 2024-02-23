@@ -19,5 +19,6 @@ export type MenuState = {
   ranking: RankingKey | undefined;
   warningsEnabled: boolean;
   enableCloudformationClustering: boolean;
+  clusteringByTagValue: string | undefined;
   filterCloudformationStacks: string[];
 };

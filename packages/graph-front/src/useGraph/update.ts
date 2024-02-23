@@ -45,6 +45,8 @@ export const update = ({
     if (node1.visibility === 'None') {
       return;
     }
+    const node1Cluster = node1.cluster;
+
     Object.values(nodes).forEach((node2, j) => {
       if (i <= j) {
         return;
@@ -54,14 +56,13 @@ export const update = ({
         return;
       }
 
-      const node1Stack = node1.cloudformationStack;
-      const node2Stack = node2.cloudformationStack;
+      const node2Cluster = node2.cluster;
 
       const repulsionMultiplier =
         clusteringEnabled &&
-        node1Stack &&
-        node2Stack &&
-        node1Stack !== node2Stack
+        node1Cluster &&
+        node2Cluster &&
+        node1Cluster !== node2Cluster
           ? 2
           : 1;
 
@@ -88,8 +89,8 @@ export const update = ({
       }
     });
 
-    if (clusteringEnabled && node1.cloudformationStack !== undefined) {
-      const cluster = clusters[node1.cloudformationStack];
+    if (clusteringEnabled && node1Cluster !== undefined) {
+      const cluster = clusters[node1Cluster];
 
       if (cluster === undefined) {
         return;
@@ -119,10 +120,10 @@ export const update = ({
       return;
     }
 
-    const node1Stack = node1.cloudformationStack;
-    const node2Stack = node2.cloudformationStack;
+    const node1Cluster = node1.cluster;
+    const node2Cluster = node2.cluster;
 
-    if (clusteringEnabled && node1Stack !== node2Stack) {
+    if (clusteringEnabled && node1Cluster !== node2Cluster) {
       return;
     }
 
@@ -172,11 +173,11 @@ export const update = ({
     node.ax = 0;
     node.ay = 0;
 
-    if (node.cloudformationStack === undefined) {
+    if (node.cluster === undefined) {
       return;
     }
 
-    const cluster = clusters[node.cloudformationStack];
+    const cluster = clusters[node.cluster];
 
     if (cluster === undefined) {
       return;

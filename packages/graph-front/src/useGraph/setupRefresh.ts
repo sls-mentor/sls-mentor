@@ -5,6 +5,7 @@ import { update } from './update';
 import { OFFSET, updateWithRank } from './updateWithRank';
 import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
 import { Edge } from '@sls-mentor/graph-core';
+import { computeClusters, getNodeCluster } from './computeClusters';
 
 const getNodeVisibility = (
   node: NodeWithLocationAndRank,
@@ -48,6 +49,7 @@ export const setupRefresh = ({
   ranking,
   setState,
   enableCloudformationClustering,
+  clusteringByTagValue,
   filterCloudformationStacks,
 }: {
   currentContainer: HTMLDivElement;
@@ -55,10 +57,14 @@ export const setupRefresh = ({
   setState: Dispatch<SetStateAction<GraphState>>;
   enableCloudformationClustering: boolean;
   filterCloudformationStacks: string[];
+  clusteringByTagValue: string | undefined;
 }): {
   destroy: () => void;
 } => {
   const { clientWidth, clientHeight } = currentContainer;
+
+  const clusteringEnabled =
+    enableCloudformationClustering || clusteringByTagValue !== undefined;
 
   const updateFn = ranking === undefined ? update : updateWithRank;
 
@@ -83,34 +89,37 @@ export const setupRefresh = ({
           .map((node, index) => [node.arn, { rank: index, value: node.value }]),
       );
 
+      const newNodes = Object.fromEntries(
+        Object.entries(state.nodes).map(([arn, node]) => [
+          arn,
+          {
+            ...node,
+            rank: rankedNodes[arn]?.rank,
+            value: rankedNodes[arn]?.value,
+            visibility: getNodeVisibility(
+              node,
+              filterCloudformationStacks,
+              state.edges,
+              state.nodes,
+            ),
+            cluster: undefined,
+          },
+        ]),
+      );
+
       return {
         ...state,
-        nodes: Object.fromEntries(
-          Object.entries(state.nodes).map(([arn, node]) => [
-            arn,
-            {
-              ...node,
-              rank: rankedNodes[arn]?.rank,
-              value: rankedNodes[arn]?.value,
-              visibility: getNodeVisibility(
-                node,
-                filterCloudformationStacks,
-                state.edges,
-                state.nodes,
-              ),
-            },
-          ]),
-        ),
+        nodes: newNodes,
         nodeRadius:
           (clientHeight - OFFSET) /
           Math.ceil(Math.sqrt(Object.values(rankedNodes).length)) /
           3,
+        clusters: {},
       };
     });
   } else {
-    setState(state => ({
-      ...state,
-      nodes: Object.fromEntries(
+    setState(state => {
+      const newNodes = Object.fromEntries(
         Object.entries(state.nodes).map(([arn, node]) => [
           arn,
           {
@@ -121,11 +130,28 @@ export const setupRefresh = ({
               state.edges,
               state.nodes,
             ),
+            cluster: getNodeCluster({
+              node,
+              clusteringByTagValue,
+              enableCloudformationClustering,
+            }),
           },
         ]),
-      ),
-      nodeRadius: NODE_RADIUS,
-    }));
+      );
+
+      const clusters = computeClusters({
+        clusteringByTagValue,
+        enableCloudformationClustering,
+        nodes: newNodes,
+      });
+
+      return {
+        ...state,
+        nodes: newNodes,
+        nodeRadius: NODE_RADIUS,
+        clusters,
+      };
+    });
   }
 
   const refresh = () => {
@@ -152,7 +178,7 @@ export const setupRefresh = ({
           mouseX: mouseX - clientWidth / 2,
           mouseY: mouseY - clientHeight / 2,
           zoomLevel,
-          clusteringEnabled: enableCloudformationClustering,
+          clusteringEnabled,
           clusters,
         });
 
