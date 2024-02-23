@@ -17,6 +17,7 @@ import {
   EventBridgeEventBusARN,
   IamRoleARN,
   LambdaFunctionARN,
+  RdsClusterARN,
   RdsInstanceARN,
   S3BucketARN,
   SESConfigurationSetARN,
@@ -71,6 +72,8 @@ const createARNFromCloudFormation = ({
       return IamRoleARN.fromPhysicalId(physicalResourceId);
     case 'AWS::StepFunctions::StateMachine':
       return StepFunctionStateMachineARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::RDS::DBCluster':
+      return RdsClusterARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }

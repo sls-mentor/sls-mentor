@@ -11,6 +11,9 @@ export class RdsClusterARN extends CustomARN {
     clusterIdentifier: string,
   ): RdsClusterARN => new RdsClusterARN(`cluster:${clusterIdentifier}`);
 
+  static fromPhysicalId = (physicalId: string): RdsClusterARN =>
+    RdsClusterARN.fromRdsClusterIdentifier(physicalId);
+
   getClusterIdentifier = (): string => {
     const clusterIdentifier = this.resource.split(':')[1];
 
