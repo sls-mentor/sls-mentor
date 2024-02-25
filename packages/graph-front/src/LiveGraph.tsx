@@ -29,7 +29,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
 
   const { cfnStacks, tags } = useMemo(() => {
     const stacks = new Set<string>();
-    const tags = new Set<string>();
+    const tags: Record<string, Set<string>> = {};
 
     Object.values(data.nodes).forEach(({ cloudformationStack }) => {
       if (cloudformationStack !== undefined) {
@@ -38,14 +38,23 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     });
 
     Object.values(data.nodes).forEach(({ tags: nodeTags }) => {
-      nodeTags.forEach(({ Key }) => {
-        if (Key !== undefined) {
-          tags.add(Key);
+      Object.entries(nodeTags).forEach(([key, value]) => {
+        if (key !== undefined && value !== undefined) {
+          if (tags[key] === undefined) {
+            tags[key] = new Set<string>();
+          }
+
+          tags[key]?.add(value);
         }
       });
     });
 
-    return { cfnStacks: Array.from(stacks), tags: Array.from(tags) };
+    return {
+      cfnStacks: Array.from(stacks),
+      tags: Object.fromEntries(
+        Object.entries(tags).map(([key, value]) => [key, Array.from(value)]),
+      ),
+    };
   }, [data]);
 
   const {

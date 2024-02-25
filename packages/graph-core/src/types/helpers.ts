@@ -7,7 +7,7 @@ export type NodeBase<
   arn: T;
   stats: S;
   cloudformationStack: string | undefined;
-  tags: { Key?: string; Value?: string }[];
+  tags: Record<string, string>;
 };
 
 export type SerializedNodeBase<
@@ -16,5 +16,5 @@ export type SerializedNodeBase<
   arn: string;
   stats: S;
   cloudformationStack: string | undefined;
-  tags: { Key?: string; Value?: string }[];
+  tags: Record<string, string>;
 };

@@ -10,8 +10,7 @@ const computeTagClusters = ({
   const clusters = Object.values(nodes).reduce<
     Record<string, { amount: number; x: number; y: number }>
   >((acc, node) => {
-    const tagValue = node.tags.find(({ Key }) => Key === clusteringByTagValue)
-      ?.Value;
+    const tagValue = node.tags[clusteringByTagValue];
 
     if (tagValue === undefined) {
       return acc;
@@ -123,7 +122,7 @@ export const getNodeCluster = ({
   enableCloudformationClustering: boolean;
 }): string | undefined => {
   if (clusteringByTagValue !== undefined) {
-    return node.tags.find(({ Key }) => Key === clusteringByTagValue)?.Value;
+    return node.tags[clusteringByTagValue];
   }
 
   if (enableCloudformationClustering) {

@@ -25,7 +25,7 @@ export const getDynamoDBTableNodes = async (
   resources: {
     arn: CustomARN;
     cloudformationStack?: string;
-    tags: { Key?: string; Value?: string }[];
+    tags: Record<string, string>;
   }[],
 ): Promise<
   Record<
@@ -34,7 +34,7 @@ export const getDynamoDBTableNodes = async (
       arn: DynamoDBTableARN;
       stats: DynamoDBTableStats;
       cloudformationStack: string | undefined;
-      tags: { Key?: string; Value?: string }[];
+      tags: Record<string, string>;
     }
   >
 > => {
@@ -53,7 +53,7 @@ export const getDynamoDBTableNodes = async (
           },
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
             ?.cloudformationStack,
-          tags: resources.find(resource => resource.arn.is(arn))?.tags ?? [],
+          tags: resources.find(resource => resource.arn.is(arn))?.tags ?? {},
         },
       ];
     }),

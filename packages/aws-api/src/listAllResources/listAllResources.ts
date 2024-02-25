@@ -1,5 +1,3 @@
-import { Tag } from '@aws-sdk/client-resource-groups-tagging-api';
-
 import { CustomARN } from '@sls-mentor/arn';
 
 import { listAllResourcesFromCloudformation } from './listAllResourcesFromCloudformation';
@@ -15,7 +13,11 @@ export const listAllResources = async ({
   tagsToFilter?: { Key?: string; Value?: string }[];
   region: string;
 }): Promise<
-  { arn: CustomARN; cloudformationStack?: string; tags: Tag[] }[]
+  {
+    arn: CustomARN;
+    cloudformationStack?: string;
+    tags: Record<string, string>;
+  }[]
 > => {
   const allResourcesFromServices = await listAllResourcesFromServices({
     region,
@@ -59,5 +61,15 @@ export const listAllResources = async ({
               resourceTag.Key === tag.Key && resourceTag.Value === tag.Value,
           ),
         ),
-    );
+    )
+    .map(resource => {
+      return {
+        arn: resource.arn,
+        cloudformationStack: resource.cloudformationStack,
+        tags: resource.tags.reduce(
+          (acc, tag) => ({ ...acc, [tag.Key ?? '']: tag.Value }),
+          {},
+        ),
+      };
+    });
 };
