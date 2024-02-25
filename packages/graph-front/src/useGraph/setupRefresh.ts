@@ -4,14 +4,70 @@ import { rankingFunctions } from './ranking';
 import { update } from './update';
 import { OFFSET, updateWithRank } from './updateWithRank';
 import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
-import { Edge } from '@sls-mentor/graph-core';
 import { computeClusters, getNodeCluster } from './computeClusters';
+import { Edge } from '@sls-mentor/graph-core';
 
-const getNodeVisibility = (
+const computePartialVisibility = (
+  nodes: Record<string, NodeWithLocationAndRank>,
+  edges: Edge[],
+): Record<string, NodeWithLocationAndRank> =>
+  Object.fromEntries(
+    Object.entries(nodes).map(([arn, node]) => {
+      const isConnected = edges.some(
+        ({ from, to }) =>
+          (from === arn && nodes[to]?.visibility === NodeVisibility.Full) ||
+          (to === arn && nodes[from]?.visibility === NodeVisibility.Full),
+      );
+
+      return [
+        arn,
+        {
+          ...node,
+          visibility:
+            node.visibility === NodeVisibility.Full
+              ? NodeVisibility.Full
+              : isConnected
+              ? NodeVisibility.Partial
+              : NodeVisibility.None,
+        },
+      ];
+    }),
+  );
+
+const getNodeTagVisibility = (
+  node: NodeWithLocationAndRank,
+  filterTagKey: string,
+  filterTagValues: string[],
+): NodeVisibility => {
+  if (filterTagValues.length === 0) {
+    return NodeVisibility.Full;
+  }
+
+  if (filterTagValues.some(value => node.tags[filterTagKey] === value)) {
+    return NodeVisibility.Full;
+  }
+
+  return NodeVisibility.None;
+};
+
+const getNodeTagsVisibility = (
+  node: NodeWithLocationAndRank,
+  filterTags: Record<string, string[]>,
+): NodeVisibility => {
+  for (const [tagKey, tagValues] of Object.entries(filterTags)) {
+    const tagVisibility = getNodeTagVisibility(node, tagKey, tagValues);
+
+    if (tagVisibility === NodeVisibility.None) {
+      return NodeVisibility.None;
+    }
+  }
+
+  return NodeVisibility.Full;
+};
+
+const getNodeCfnVisibility = (
   node: NodeWithLocationAndRank,
   filterCloudformationStacks: string[],
-  edges: Edge[],
-  nodes: Record<string, NodeWithLocationAndRank>,
 ): NodeVisibility => {
   if (filterCloudformationStacks.length === 0) {
     return NodeVisibility.Full;
@@ -21,27 +77,25 @@ const getNodeVisibility = (
     return NodeVisibility.Full;
   }
 
-  for (const { from, to } of edges) {
-    if (
-      from === node.arn.toString() &&
-      filterCloudformationStacks.includes(
-        nodes[to]?.cloudformationStack as string,
-      )
-    ) {
-      return NodeVisibility.Partial;
-    }
+  return NodeVisibility.None;
+};
 
-    if (
-      to === node.arn.toString() &&
-      filterCloudformationStacks.includes(
-        nodes[from]?.cloudformationStack as string,
-      )
-    ) {
-      return NodeVisibility.Partial;
-    }
+export const getNodeVisibility = (
+  node: NodeWithLocationAndRank,
+  filterCloudformationStacks: string[],
+  filterTags: Record<string, string[]>,
+): NodeVisibility => {
+  const tagsVisibility = getNodeTagsVisibility(node, filterTags);
+  const cfnVisibility = getNodeCfnVisibility(node, filterCloudformationStacks);
+
+  if (
+    tagsVisibility === NodeVisibility.None ||
+    cfnVisibility === NodeVisibility.None
+  ) {
+    return NodeVisibility.None;
   }
 
-  return NodeVisibility.None;
+  return NodeVisibility.Full;
 };
 
 export const setupRefresh = ({
@@ -51,6 +105,7 @@ export const setupRefresh = ({
   enableCloudformationClustering,
   clusteringByTagValue,
   filterCloudformationStacks,
+  filterTags,
 }: {
   currentContainer: HTMLDivElement;
   ranking: RankingKey | undefined;
@@ -58,6 +113,7 @@ export const setupRefresh = ({
   enableCloudformationClustering: boolean;
   filterCloudformationStacks: string[];
   clusteringByTagValue: string | undefined;
+  filterTags: Record<string, string[]>;
 }): {
   destroy: () => void;
 } => {
@@ -99,8 +155,7 @@ export const setupRefresh = ({
             visibility: getNodeVisibility(
               node,
               filterCloudformationStacks,
-              state.edges,
-              state.nodes,
+              filterTags,
             ),
             cluster: undefined,
           },
@@ -109,7 +164,7 @@ export const setupRefresh = ({
 
       return {
         ...state,
-        nodes: newNodes,
+        nodes: computePartialVisibility(newNodes, state.edges),
         nodeRadius:
           (clientHeight - OFFSET) /
           Math.ceil(Math.sqrt(Object.values(rankedNodes).length)) /
@@ -127,8 +182,7 @@ export const setupRefresh = ({
             visibility: getNodeVisibility(
               node,
               filterCloudformationStacks,
-              state.edges,
-              state.nodes,
+              filterTags,
             ),
             cluster: getNodeCluster({
               node,
@@ -147,7 +201,7 @@ export const setupRefresh = ({
 
       return {
         ...state,
-        nodes: newNodes,
+        nodes: computePartialVisibility(newNodes, state.edges),
         nodeRadius: NODE_RADIUS,
         clusters,
       };
