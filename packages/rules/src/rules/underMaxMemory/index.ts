@@ -1,6 +1,11 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { baseConfigTypeGuard, Rule, UnderMaxMemoryRuleConfig } from 'types';
+import {
+  baseConfigTypeGuard,
+  Rule,
+  Stage,
+  UnderMaxMemoryRuleConfig,
+} from 'types';
 
 import { AWS_HISTORICAL_MAX_MEMORY } from './constants';
 
@@ -51,6 +56,7 @@ export const underMaxMemory: Rule<UnderMaxMemoryRuleConfig> = {
   fileName: 'underMaxMemory',
   categories: ['GreenIT', 'ITCosts'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   configurationTypeguard: ruleConfigTypeguard,
   easyToFix: true,

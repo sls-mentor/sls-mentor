@@ -1,6 +1,6 @@
 import { fetchAllIamRolePolicies, Policy } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const getPoliciesWithWildcardResource = (
   policies: { policy: Policy; policyName: string }[],
@@ -65,4 +65,5 @@ export const noIAMRolePolicyWithWildcardResource: Rule = {
   service: 'IAM',
   easyToFix: true,
   severity: 'medium',
+  stages: [Stage.prod, Stage.dev],
 };

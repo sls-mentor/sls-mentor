@@ -7,7 +7,7 @@ import {
 } from '@sls-mentor/core';
 import { CATEGORIES } from '@sls-mentor/rules';
 
-import { getSlsMentorLevel, readConfiguration } from 'input';
+import { getSlsMentorLevel, getSlsMentorStage, readConfiguration } from 'input';
 import {
   displayDashboard,
   displayError,
@@ -22,11 +22,13 @@ import { Options, PercentageByCategory } from 'types';
 export const runSlsMentorCli = async (options: Options): Promise<void> => {
   const configuration = readConfiguration();
   const level = await getSlsMentorLevel(options);
+  const stage = await getSlsMentorStage(options);
   const hooks = getHooks();
 
   const result = await runSlsMentor({
     configuration,
     level,
+    stage,
     cloudformationStacks:
       options.cloudformationStacks ?? options.cloudformations,
     tags: options.tags,

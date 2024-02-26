@@ -1,6 +1,6 @@
 import { fetchAllPublicAccessBlockConfiguration } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const publicAccessBlockConfigurations =
@@ -36,6 +36,7 @@ export const enableBlockPublicAccess: Rule = {
   fileName: 'enableBlockPublicAccess',
   categories: ['Security'],
   level: 1,
+  stages: [Stage.prod, Stage.dev],
   service: 'S3',
   easyToFix: true,
   severity: 'high',

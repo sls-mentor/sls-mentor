@@ -1,6 +1,6 @@
 import { fetchAllUserPoolConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasCaseInsensitiveSignIn = (
   userPool: Awaited<
@@ -28,6 +28,7 @@ export const cognitoSignInCaseInsensitivity: Rule = {
   fileName: 'cognitoSignInCaseInsensitivity',
   categories: ['Stability'],
   level: 5,
+  stages: [Stage.prod, Stage.dev],
   service: 'Cognito',
   easyToFix: false,
   severity: 'low',

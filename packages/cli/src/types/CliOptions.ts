@@ -1,3 +1,5 @@
+import { Stage } from '@sls-mentor/rules';
+
 export type Tag = {
   key: string;
   value: string;
@@ -16,4 +18,5 @@ export type Options = {
   getJsonResults?: boolean;
   level?: string;
   debug: boolean;
+  stage?: Stage;
 };

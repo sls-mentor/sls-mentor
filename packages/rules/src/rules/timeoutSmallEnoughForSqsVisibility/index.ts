@@ -4,7 +4,7 @@ import {
   fetchQueueAttributesByArn,
 } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isTimeoutValid = (
   sqsVisibilityTimeout: number,
@@ -75,6 +75,7 @@ export const timeoutSmallEnoughForSqsVisibility: Rule = {
   fileName: 'timeoutSmallEnoughForSqsVisibility',
   categories: ['Stability'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   easyToFix: true,
   severity: 'high',
   service: 'Lambda',

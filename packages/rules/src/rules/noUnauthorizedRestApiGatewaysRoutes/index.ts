@@ -1,6 +1,6 @@
 import { fetchAllRestApiGatewayResources } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isAuthenticated = (
   resource: Awaited<
@@ -17,9 +17,8 @@ const isAuthenticated = (
 };
 
 const run: Rule['run'] = async resourceArns => {
-  const restApiGatewaysResources = await fetchAllRestApiGatewayResources(
-    resourceArns,
-  );
+  const restApiGatewaysResources =
+    await fetchAllRestApiGatewayResources(resourceArns);
   const results = restApiGatewaysResources.flatMap(({ arn, resources }) =>
     resources
       .filter(resource => resource.resourceMethods)
@@ -40,6 +39,7 @@ export const noUnauthorizedRestApiGatewaysRoutes: Rule = {
   fileName: 'noUnauthorizedRestApiGatewaysRoutes',
   categories: ['Security'],
   level: 1,
+  stages: [Stage.prod, Stage.dev],
   service: 'ApiGateway',
   severity: 'critical',
   easyToFix: false,

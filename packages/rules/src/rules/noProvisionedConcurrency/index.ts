@@ -1,6 +1,6 @@
 import { fetchAllLambdaProvisionedConcurrency } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasNoProvisionedConcurrency = (
   provisionedConcurrency: Awaited<
@@ -27,6 +27,7 @@ export const noProvisionedConcurrency: Rule = {
   run,
   fileName: 'noProvisionedConcurrency',
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   categories: ['GreenIT', 'ITCosts'],
   service: 'Lambda',
   easyToFix: false,

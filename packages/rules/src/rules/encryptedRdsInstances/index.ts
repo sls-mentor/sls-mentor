@@ -1,6 +1,6 @@
 import { fetchAllRdsInstancesDescriptions } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
   const rdsInstances = await fetchAllRdsInstancesDescriptions(resourceArns);
@@ -23,4 +23,5 @@ export const encryptedRdsInstances: Rule = {
   service: 'RDS',
   easyToFix: false,
   severity: 'low',
+  stages: [Stage.prod, Stage.dev],
 };

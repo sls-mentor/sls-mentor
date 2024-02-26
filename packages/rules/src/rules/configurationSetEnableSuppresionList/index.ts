@@ -1,6 +1,6 @@
 import { fetchAllSESConfigurationSets } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isSuppressionListEnabled = (
   configurationSet: Awaited<
@@ -34,6 +34,7 @@ export const configurationSetEnableSuppresionList: Rule = {
   fileName: 'configurationSetEnableSuppresionList',
   categories: ['Stability'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'SES',
   easyToFix: true,
   severity: 'medium',

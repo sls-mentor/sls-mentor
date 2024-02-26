@@ -1,6 +1,6 @@
 import { fetchAllTopics } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const checkEncryptedSNSTopics = (
   attributes: Record<string, string | undefined> | undefined,
@@ -29,6 +29,7 @@ export const encryptedSnsTopics: Rule = {
   fileName: 'encryptedSnsTopics', // Do not change
   categories: ['Security'], // Set categories related to rule
   level: 4, // Set level related to rule
+  stages: [Stage.prod, Stage.dev],
   service: 'SNS', // Set service related to rule
   easyToFix: true, // is it easy to fix non-complying resources?
   severity: 'low', // what are the impacts of the problem solved by the rule?

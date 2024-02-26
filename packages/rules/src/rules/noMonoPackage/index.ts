@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasUniqueShaCode = (
   lambdaConfiguration: Awaited<
@@ -16,9 +16,8 @@ const hasUniqueShaCode = (
 };
 
 const run: Rule['run'] = async resourceArns => {
-  const lambdasConfigurations = await fetchAllLambdaConfigurations(
-    resourceArns,
-  );
+  const lambdasConfigurations =
+    await fetchAllLambdaConfigurations(resourceArns);
 
   const functionsArnGroupedByCodeSha = lambdasConfigurations.reduce(
     (acc, { configuration }) => {
@@ -65,6 +64,7 @@ export const noMonoPackage: Rule = {
   fileName: 'noMonoPackage',
   categories: ['Stability'],
   level: 1,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: true,
   severity: 'low',

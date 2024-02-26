@@ -1,6 +1,6 @@
 import { fetchAllLambdaConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasHeavyBundle = (
   lambdaConfiguration: Awaited<
@@ -29,6 +29,7 @@ export const lightBundle: Rule = {
   fileName: 'lightBundle',
   categories: ['GreenIT', 'Stability'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'Lambda',
   easyToFix: false,
   severity: 'critical',

@@ -1,6 +1,6 @@
 import { fetchAllSESConfigurationSets } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isReputationMetricsEnabled = (
   configurationSet: Awaited<
@@ -32,6 +32,7 @@ export const enableReputationMetrics: Rule = {
   fileName: 'enableReputationMetrics',
   categories: ['Stability'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'SES',
   easyToFix: true,
   severity: 'medium',

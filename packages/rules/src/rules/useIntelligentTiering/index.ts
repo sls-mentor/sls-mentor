@@ -1,6 +1,6 @@
 import { fetchAllS3BucketLifeCycleRules } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasIntelligentTiering = (
   rules: Awaited<
@@ -18,9 +18,8 @@ const hasIntelligentTiering = (
   ) ?? false;
 
 const run: Rule['run'] = async resourceArns => {
-  const s3BucketLifecycleRules = await fetchAllS3BucketLifeCycleRules(
-    resourceArns,
-  );
+  const s3BucketLifecycleRules =
+    await fetchAllS3BucketLifeCycleRules(resourceArns);
   const results = s3BucketLifecycleRules.map(({ arn, rules }) => ({
     arn,
     success: hasIntelligentTiering(rules),
@@ -36,6 +35,7 @@ export const useIntelligentTiering: Rule = {
   fileName: 'useIntelligentTiering',
   categories: ['GreenIT', 'ITCosts'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'S3',
   easyToFix: true,
   severity: 'high',

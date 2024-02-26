@@ -1,6 +1,6 @@
 import { fetchAllBackupPlanConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isRetentionPeriodOrTransitionToColdStorageDefinedForEachRule = (
   backupPlanConfiguration: Awaited<
@@ -40,6 +40,7 @@ export const definedBackupRetentionPeriodOrTransitionToColdStorage: Rule = {
   fileName: 'definedBackupRetentionPeriodOrTransitionToColdStorage',
   categories: ['GreenIT', 'ITCosts'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'Backup',
   easyToFix: true,
   severity: 'high',

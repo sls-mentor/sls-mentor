@@ -1,6 +1,6 @@
 import { fetchAllS3BucketPolicies, S3BucketPolicy } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const hasSSLConfiguration = (policy: S3BucketPolicy | undefined): boolean => {
   if (policy === undefined) {
@@ -30,6 +30,7 @@ export const s3OnlyAllowHTTPS: Rule = {
   fileName: 's3OnlyAllowHTTPS',
   categories: ['Security'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'S3',
   easyToFix: true,
   severity: 'high',

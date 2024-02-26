@@ -1,11 +1,10 @@
 import { fetchAllDynamoDBTableConfigurations } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const run: Rule['run'] = async resourceArns => {
-  const dynamoDBTables = await fetchAllDynamoDBTableConfigurations(
-    resourceArns,
-  );
+  const dynamoDBTables =
+    await fetchAllDynamoDBTableConfigurations(resourceArns);
 
   const results = dynamoDBTables.map(({ arn, configuration }) => ({
     arn,
@@ -22,6 +21,7 @@ export const enableDeletionProtectionOnDynamoDBTables: Rule = {
   fileName: 'enableDeletionProtectionOnDynamoDBTables',
   categories: ['Stability'],
   level: 3,
+  stages: [Stage.prod, Stage.dev],
   service: 'DynamoDB',
   easyToFix: true,
   severity: 'medium',

@@ -8,7 +8,7 @@ import {
   getAllTargetsOfEventBridgeRule,
 } from '@sls-mentor/aws-api';
 
-import { Rule } from '../../types';
+import { Rule, Stage } from '../../types';
 
 const run: Rule['run'] = async resourceArns => {
   const eventBuses = CustomARN.filterArns(resourceArns, EventBridgeEventBusARN);
@@ -21,9 +21,8 @@ const run: Rule['run'] = async resourceArns => {
 
   const allEventBridgeTargetsWithRule = await Promise.all(
     allEventBridgeRules.map(async rule => {
-      const allTargetsOfEventBridgeRule = await getAllTargetsOfEventBridgeRule(
-        rule,
-      );
+      const allTargetsOfEventBridgeRule =
+        await getAllTargetsOfEventBridgeRule(rule);
 
       return {
         rule,
@@ -56,6 +55,7 @@ export const specifyDlqOnEventBridgeRule: Rule = {
   fileName: 'specifyDlqOnEventBridgeRule',
   categories: ['Stability'],
   level: 5,
+  stages: [Stage.prod, Stage.dev],
   service: 'EventBridge',
   easyToFix: false,
   severity: 'medium',

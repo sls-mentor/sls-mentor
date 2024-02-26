@@ -4,7 +4,7 @@ import {
   fetchDistributionConfig,
 } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const areSSLCertificateAssociated = (
   distributionConfig: Awaited<ReturnType<typeof fetchDistributionConfig>>,
@@ -43,6 +43,7 @@ export const cloudFrontSSLCertificate: Rule = {
   fileName: 'cloudFrontSSLCertificate',
   categories: ['Security'],
   level: 2,
+  stages: [Stage.prod, Stage.dev],
   service: 'CloudFront',
   easyToFix: false,
   severity: 'high',

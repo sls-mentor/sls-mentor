@@ -1,6 +1,6 @@
 import { fetchAllApiGatewayV2Routes } from '@sls-mentor/aws-api';
 
-import { Rule } from 'types';
+import { Rule, Stage } from 'types';
 
 const isAuthenticated = (
   route: Awaited<
@@ -42,6 +42,7 @@ export const noUnauthorizedApiGatewaysV2Routes: Rule = {
   fileName: 'noUnauthorizedApiGatewaysV2Routes',
   categories: ['Security'],
   level: 5,
+  stages: [Stage.prod, Stage.dev],
   service: 'ApiGateway',
   easyToFix: false,
   severity: 'high',

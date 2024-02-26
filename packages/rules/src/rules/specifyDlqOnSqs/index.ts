@@ -1,7 +1,7 @@
 import { CustomARN } from '@sls-mentor/arn';
 import { fetchAllQueuesAttributes } from '@sls-mentor/aws-api';
 
-import { Rule } from '../../types';
+import { Rule, Stage } from '../../types';
 
 interface RedrivePolicy {
   deadLetterTargetArn: string;
@@ -49,6 +49,7 @@ export const specifyDlqOnSqs: Rule = {
   fileName: 'specifyDlqOnSqs',
   categories: ['Stability'],
   level: 4,
+  stages: [Stage.prod, Stage.dev],
   service: 'SQS',
   easyToFix: false,
   severity: 'medium',

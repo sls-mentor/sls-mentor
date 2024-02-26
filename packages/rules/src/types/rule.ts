@@ -5,6 +5,7 @@ import { BaseConfiguration, RuleConfiguration } from './ruleConfiguration';
 import { Service } from './service';
 import { Severity } from './severityLevel';
 import { SlsMentorLevel } from './slsMentorLevel';
+import { Stage } from './slsMentorStage';
 
 type RuleCheckResultAdditionalProperties = Record<string, unknown>;
 
@@ -25,6 +26,7 @@ export interface Rule<T extends RuleConfiguration = BaseConfiguration> {
   }>;
   categories: Category[];
   level: SlsMentorLevel;
+  stages: Stage[];
   service: Service;
   configurationTypeguard?: (config: unknown) => config is T;
   easyToFix: boolean;
