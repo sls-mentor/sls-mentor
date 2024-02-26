@@ -1489,18 +1489,8 @@ export const mockResults: SerializedGraphData = {
             cloudformationStack: Math.random() > 0.5 ? 'stack-1' : 'stack-2',
             tags:
               Math.random() > 0.5
-                ? [
-                    {
-                      Key: 'tag-key',
-                      Value: 'tag-value-1',
-                    },
-                  ]
-                : [
-                    {
-                      Key: 'tag-key',
-                      Value: 'tag-value-2',
-                    },
-                  ],
+                ? { 'tag-key': 'tag-value-1' }
+                : { 'tag-key': 'tag-value-2' },
           },
         ];
       }
@@ -1513,18 +1503,8 @@ export const mockResults: SerializedGraphData = {
           cloudformationStack: Math.random() > 0.5 ? 'stack-1' : 'stack-2',
           tags:
             Math.random() > 0.5
-              ? [
-                  {
-                    Key: 'tag-key',
-                    Value: 'tag-value-1',
-                  },
-                ]
-              : [
-                  {
-                    Key: 'tag-key',
-                    Value: 'tag-value-2',
-                  },
-                ],
+              ? { 'tag-key': 'tag-value-1' }
+              : { 'tag-key': 'tag-value-2' },
         },
       ];
     }),

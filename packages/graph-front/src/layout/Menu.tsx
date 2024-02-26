@@ -1,17 +1,28 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { rankingKeyTranslation } from '../translations';
 import { MenuState, RankingKey } from '../types';
+import { FilterMenu } from './FilterMenu';
 
 interface Props {
   setMenu: Dispatch<SetStateAction<MenuState>>;
   menu: MenuState;
   cfnStacks: string[];
+  tags: Record<string, string[]>;
 }
 
-export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
+export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
   const [currentSelection, setCurrentSelection] = useState<
-    'ranking' | 'filter' | undefined
+    'ranking' | 'filter-by-cfn' | 'filter-by-tags' | 'clustering' | undefined
   >(undefined);
+  const [filteredTagKey, setFilteredTagKey] = useState<string | undefined>(
+    undefined,
+  );
+
+  useEffect(() => {
+    if (currentSelection !== 'filter-by-tags') {
+      setFilteredTagKey(undefined);
+    }
+  }, [currentSelection, setFilteredTagKey]);
 
   return (
     <div
@@ -25,6 +36,14 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
         gap: 2,
       }}
     >
+      {filteredTagKey && (
+        <FilterMenu
+          tagKey={filteredTagKey}
+          menu={menu}
+          setMenu={setMenu}
+          tagValues={tags[filteredTagKey] ?? []}
+        />
+      )}
       <div
         style={{
           display: 'flex',
@@ -63,7 +82,7 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
         ) : (
           <></>
         )}
-        {currentSelection === 'filter' ? (
+        {currentSelection === 'filter-by-cfn' ? (
           <>
             {cfnStacks.map(stack => (
               <button
@@ -87,7 +106,71 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
                   });
                 }}
               >
-                {stack}
+                {stack}{' '}
+                {menu.filterCloudformationStacks.includes(stack) ? '✅' : ''}
+              </button>
+            ))}
+          </>
+        ) : (
+          <></>
+        )}
+        {currentSelection === 'filter-by-tags' ? (
+          <>
+            {Object.keys(tags).map(tagKey => (
+              <button
+                key={tagKey}
+                onClick={() => {
+                  if (filteredTagKey === tagKey) {
+                    setFilteredTagKey(undefined);
+                  } else {
+                    setFilteredTagKey(tagKey);
+                  }
+                }}
+              >
+                {tagKey}{' '}
+                {(menu.filterTags[tagKey]?.length ?? 0) > 0 ? '✅' : ''}
+              </button>
+            ))}
+          </>
+        ) : (
+          <></>
+        )}
+        {currentSelection === 'clustering' ? (
+          <>
+            <button
+              onClick={() => {
+                setMenu(m => ({
+                  ...m,
+                  enableCloudformationClustering: false,
+                  clusteringByTagValue: undefined,
+                }));
+              }}
+            >
+              No clustering
+            </button>
+            <button
+              onClick={() => {
+                setMenu(m => ({
+                  ...m,
+                  enableCloudformationClustering: true,
+                  clusteringByTagValue: undefined,
+                }));
+              }}
+            >
+              CFN stacks
+            </button>
+            {Object.keys(tags).map(key => (
+              <button
+                key={key}
+                onClick={() => {
+                  setMenu(m => ({
+                    ...m,
+                    enableCloudformationClustering: false,
+                    clusteringByTagValue: key,
+                  }));
+                }}
+              >
+                Tag: "{key}"
               </button>
             ))}
           </>
@@ -104,13 +187,6 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
       >
         <button
           onClick={() =>
-            setMenu(m => ({ ...m, enableClustering: !m.enableClustering }))
-          }
-        >
-          {menu.enableClustering ? 'Disable' : 'Enable'} clustering
-        </button>
-        <button
-          onClick={() =>
             setMenu(m => ({
               ...m,
               warningsEnabled: !m.warningsEnabled,
@@ -119,19 +195,56 @@ export const Menu = ({ setMenu, menu, cfnStacks }: Props) => {
         >
           {menu.warningsEnabled ? 'Disable' : 'Enable'} warnings
         </button>
-        <button onClick={() => setCurrentSelection('ranking')}>
+        <button
+          onClick={() => {
+            if (currentSelection === 'clustering') {
+              setCurrentSelection(undefined);
+            } else {
+              setCurrentSelection('clustering');
+            }
+          }}
+        >
+          Graph is clustered by:{' '}
+          {menu.enableCloudformationClustering
+            ? 'CFN stack'
+            : menu.clusteringByTagValue
+            ? menu.clusteringByTagValue
+            : 'None'}
+        </button>
+        <button
+          onClick={() => {
+            if (currentSelection === 'ranking') {
+              setCurrentSelection(undefined);
+            } else {
+              setCurrentSelection('ranking');
+            }
+          }}
+        >
           Ranking: {menu.ranking ? rankingKeyTranslation[menu.ranking] : 'None'}
         </button>
         <button
           onClick={() => {
-            if (currentSelection === 'filter') {
+            if (currentSelection === 'filter-by-cfn') {
               setCurrentSelection(undefined);
             } else {
-              setCurrentSelection('filter');
+              setCurrentSelection('filter-by-cfn');
             }
           }}
         >
-          Add CFN stacks to filter
+          Filter by CFN stack{' '}
+          {menu.filterCloudformationStacks.length > 0 ? '✅' : ''}
+        </button>
+        <button
+          onClick={() => {
+            if (currentSelection === 'filter-by-tags') {
+              setCurrentSelection(undefined);
+            } else {
+              setCurrentSelection('filter-by-tags');
+            }
+          }}
+        >
+          Filter by tags{' '}
+          {Object.values(menu.filterTags).some(t => t.length > 0) ? '✅' : ''}
         </button>
       </div>
     </div>

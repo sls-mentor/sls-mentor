@@ -163,7 +163,7 @@ export const getLambdaFunctionNodes = async (
   resources: {
     arn: CustomARN;
     cloudformationStack?: string;
-    tags: { Key?: string; Value?: string }[];
+    tags: Record<string, string>;
   }[],
 ): Promise<
   Record<
@@ -172,7 +172,7 @@ export const getLambdaFunctionNodes = async (
       arn: LambdaFunctionARN;
       stats: LambdaFunctionStats;
       cloudformationStack: string | undefined;
-      tags: { Key?: string; Value?: string }[];
+      tags: Record<string, string>;
     }
   >
 > => {
@@ -202,7 +202,7 @@ export const getLambdaFunctionNodes = async (
           },
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
             ?.cloudformationStack,
-          tags: resources.find(resource => resource.arn.is(arn))?.tags ?? [],
+          tags: resources.find(resource => resource.arn.is(arn))?.tags ?? {},
         },
       ];
     }),

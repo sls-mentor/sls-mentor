@@ -29,8 +29,10 @@ export const useGraph = (
   const [menu, setMenu] = useState<MenuState>({
     ranking: undefined,
     warningsEnabled: false,
-    enableClustering: false,
+    enableCloudformationClustering: false,
     filterCloudformationStacks: [],
+    clusteringByTagValue: undefined,
+    filterTags: {},
   });
 
   useEffect(() => {
@@ -43,8 +45,10 @@ export const useGraph = (
       currentContainer,
       setState,
       ranking: menu.ranking,
-      enableClustering: menu.enableClustering,
+      enableCloudformationClustering: menu.enableCloudformationClustering,
       filterCloudformationStacks: menu.filterCloudformationStacks,
+      clusteringByTagValue: menu.clusteringByTagValue,
+      filterTags: menu.filterTags,
     });
 
     return destroy;
