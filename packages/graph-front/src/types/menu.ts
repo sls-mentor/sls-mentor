@@ -12,6 +12,7 @@ export const RankingKey = {
   itemCount: 'itemCount',
   tableSize: 'tableSize',
   averageItemSize: 'averageItemSize',
+  bucketSize: 'bucketSize',
 } as const;
 export type RankingKey = (typeof RankingKey)[keyof typeof RankingKey];
 
