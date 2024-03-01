@@ -1,11 +1,13 @@
 import {
   DynamoDBTableARN,
   LambdaFunctionARN,
+  S3BucketARN,
   SupportedARN,
 } from '@sls-mentor/arn';
 
 import { HttpApiWarnings, RestApiWarnings } from 'edges/apiGateway/types';
 import { BaseEdge } from 'edges/types';
+import { S3BucketStats } from 'nodes/s3/types';
 
 import { DynamoDBTableStats, LambdaFunctionStats } from '../nodes';
 import { NodeBase, SerializedNodeBase } from './helpers';
@@ -32,15 +34,18 @@ export type LambdaFunctionNode = NodeBase<
 >;
 
 export type DynamoDBTableNode = NodeBase<DynamoDBTableARN, DynamoDBTableStats>;
+export type S3BucketNode = NodeBase<S3BucketARN, S3BucketStats>;
 
 export type Node =
   | LambdaFunctionNode
   | DynamoDBTableNode
+  | S3BucketNode
   | NodeBase<Exclude<SupportedARN, LambdaFunctionARN | DynamoDBTableARN>>;
 
 export type SerializedNode =
   | SerializedNodeBase<LambdaFunctionStats>
   | SerializedNodeBase<DynamoDBTableStats>
+  | SerializedNodeBase<S3BucketStats>
   | SerializedNodeBase;
 
 export type GraphData = {
