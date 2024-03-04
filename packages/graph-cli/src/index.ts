@@ -95,6 +95,11 @@ const run = async (options: Options): Promise<void> => {
       JSON.stringify(serializedResult, null, 2),
       'utf-8',
     );
+
+    if (!options.stdout) {
+      console.log('JSON report generated to ⬇️');
+      console.log(options.file + '\n');
+    }
   }
 
   if (options.noReport) {
