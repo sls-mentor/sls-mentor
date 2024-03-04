@@ -17,6 +17,7 @@ import { ArnService } from '@sls-mentor/arn';
 import SlsMentorSvgWhite from './SlsMentorSvgWhite';
 import StepFunctionSvg from './StepFunctionSvg';
 import AppSyncSvg from './AppSyncSvg';
+import SecretsManagerSvg from './SecretsManagerSvg';
 
 export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   apigateway: ApiGatewaySvg,
@@ -35,6 +36,7 @@ export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   logs: CloudWatchSvg,
   states: StepFunctionSvg,
   appsync: AppSyncSvg,
+  secretsmanager: SecretsManagerSvg,
 };
 
 export const SlsMentorLogo: JSX.Element = SlsMentorSvg;

@@ -15,6 +15,7 @@ import {
   listRdsInstances,
   listRestApiGateways,
   listS3Buckets,
+  listSecrets,
   listSESConfigurationSets,
   listSESIdentities,
   listSnsSubscriptions,
@@ -49,6 +50,7 @@ export const listAllResourcesFromServices = async ({
     rdsClusters,
     stateMachines,
     graphqlApis,
+    secretManegerSecrets,
   ] = await Promise.all([
     listS3Buckets({ region }),
     listLambdaFunctions(),
@@ -70,6 +72,7 @@ export const listAllResourcesFromServices = async ({
     listRdsClusters(),
     listStateMachines(),
     listGraphqlApis(),
+    listSecrets(),
   ]);
 
   return [
@@ -93,5 +96,6 @@ export const listAllResourcesFromServices = async ({
     ...rdsClusters,
     ...stateMachines,
     ...graphqlApis,
+    ...secretManegerSecrets,
   ];
 };

@@ -14,3 +14,4 @@ export * from './cloudfront';
 export * from './rds';
 export * from './sqs';
 export * from './stepFunction';
+export * from './secretsManager';

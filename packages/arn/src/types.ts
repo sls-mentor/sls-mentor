@@ -15,6 +15,7 @@ export const ArnService = {
   backup: 'backup',
   states: 'states',
   appsync: 'appsync',
+  secretsmanager: 'secretsmanager',
 } as const;
 
 export type ArnService = (typeof ArnService)[keyof typeof ArnService];

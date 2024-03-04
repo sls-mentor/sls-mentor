@@ -11,6 +11,7 @@ import { IamRoleARN } from './iam';
 import { LambdaFunctionARN } from './lambda';
 import { RdsClusterARN, RdsInstanceARN } from './rds';
 import { S3BucketARN } from './s3';
+import { SecretsManagerSecretARN } from './secretsManager';
 import { SESConfigurationSetARN, SESIdentityARN } from './ses';
 import { SnsSubscriptionARN, SnsTopicARN } from './sns';
 import { SqsQueueARN } from './sqs';
@@ -37,7 +38,8 @@ export type SupportedARN =
   | SnsSubscriptionARN
   | SnsTopicARN
   | SqsQueueARN
-  | StepFunctionStateMachineARN;
+  | StepFunctionStateMachineARN
+  | SecretsManagerSecretARN;
 
 export {
   ApiGatewayHttpApiARN,
@@ -61,6 +63,7 @@ export {
   SnsTopicARN,
   SqsQueueARN,
   StepFunctionStateMachineARN,
+  SecretsManagerSecretARN,
   CustomARN,
 };
 
@@ -111,6 +114,8 @@ export const getRefinedArn = (arn: CustomARN): SupportedARN => {
       return SqsQueueARN.fromCustomARN(arn);
     case StepFunctionStateMachineARN.is(arn):
       return StepFunctionStateMachineARN.fromCustomARN(arn);
+    case SecretsManagerSecretARN.is(arn):
+      return SecretsManagerSecretARN.fromCustomARN(arn);
     default:
       throw new Error(`Missing implementation for ARN ${arn.toString()}`);
   }

@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
   CloudFormationClient,
   paginateListStackResources,
@@ -21,6 +22,7 @@ import {
   RdsClusterARN,
   RdsInstanceARN,
   S3BucketARN,
+  SecretsManagerSecretARN,
   SESConfigurationSetARN,
   SESIdentityARN,
   SnsSubscriptionARN,
@@ -77,6 +79,8 @@ const createARNFromCloudFormation = ({
       return RdsClusterARN.fromPhysicalId(physicalResourceId);
     case 'AWS::AppSync::GraphQLApi':
       return AppSyncApiARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::SecretsManager::Secret':
+      return SecretsManagerSecretARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }
