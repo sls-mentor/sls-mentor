@@ -3,6 +3,7 @@ import { CustomARN } from '@sls-mentor/arn';
 import {
   listApiGatewaysV2,
   listBackupPlans,
+  listCloudformationStacks,
   listCloudFrontDistributions,
   listCloudwatchLogGroups,
   listCognitoUserPools,
@@ -51,6 +52,7 @@ export const listAllResourcesFromServices = async ({
     stateMachines,
     graphqlApis,
     secretManegerSecrets,
+    cloudformationStacks,
   ] = await Promise.all([
     listS3Buckets({ region }),
     listLambdaFunctions(),
@@ -73,6 +75,7 @@ export const listAllResourcesFromServices = async ({
     listStateMachines(),
     listGraphqlApis(),
     listSecrets(),
+    listCloudformationStacks(),
   ]);
 
   return [
@@ -97,5 +100,6 @@ export const listAllResourcesFromServices = async ({
     ...stateMachines,
     ...graphqlApis,
     ...secretManegerSecrets,
+    ...cloudformationStacks.map(({ stackArn }) => stackArn),
   ];
 };
