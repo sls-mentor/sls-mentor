@@ -2,9 +2,7 @@
 import {
   CloudFormationClient,
   paginateListStackResources,
-  paginateListStacks,
   StackResourceSummary,
-  StackStatus,
 } from '@aws-sdk/client-cloudformation';
 
 import {
@@ -30,6 +28,8 @@ import {
   SqsQueueARN,
   StepFunctionStateMachineARN,
 } from '@sls-mentor/arn';
+
+import { listCloudformationStacks } from './services';
 
 // This is a big switch
 // eslint-disable-next-line complexity
@@ -86,9 +86,8 @@ const createARNFromCloudFormation = ({
   }
 };
 
-const generateStackNameToRootStackName = async (
+export const generateStackNameToRootStackName = async (
   cloudformationStacksToFilter: string[],
-  cloudFormationClient: CloudFormationClient,
 ): Promise<Record<string, string>> => {
   if (cloudformationStacksToFilter.length > 0) {
     return Object.fromEntries(
@@ -96,46 +95,23 @@ const generateStackNameToRootStackName = async (
     );
   }
 
-  const cloudformationStacks: {
-    stackId: string;
-    stackName: string;
-    rootStackId?: string;
-  }[] = [];
-
-  for await (const page of paginateListStacks(
-    {
-      client: cloudFormationClient,
-    },
-    {
-      StackStatusFilter: Object.values(StackStatus).filter(
-        status =>
-          status !== StackStatus.DELETE_COMPLETE &&
-          status !== StackStatus.DELETE_FAILED &&
-          status !== StackStatus.DELETE_IN_PROGRESS,
-      ),
-    },
-  )) {
-    cloudformationStacks.push(
-      ...(page.StackSummaries?.map(stack => ({
-        stackId: stack.StackId ?? '',
-        stackName: stack.StackName ?? '',
-        rootStackId: stack.RootId,
-      })) ?? []),
-    );
-  }
+  const cloudformationStacks = await listCloudformationStacks();
 
   const stackNameToRootStackName: Record<string, string> = {};
 
-  for (const { rootStackId, stackName } of cloudformationStacks) {
-    if (rootStackId === undefined) {
+  for (const { rootStackArn, stackArn } of cloudformationStacks) {
+    const stackName = stackArn.getStackName();
+    if (rootStackArn === undefined) {
       stackNameToRootStackName[stackName] = stackName;
     } else {
       const rootStack = cloudformationStacks.find(
-        otherStack => otherStack.stackId === rootStackId,
+        otherStack =>
+          otherStack.stackArn.getStackName() === rootStackArn.getStackName(),
       );
 
       if (rootStack !== undefined) {
-        stackNameToRootStackName[stackName] = rootStack.stackName;
+        stackNameToRootStackName[stackName] =
+          rootStack.rootStackArn?.getStackName() ?? '';
       }
     }
   }
@@ -152,7 +128,6 @@ export const listAllResourcesFromCloudformation = async (
 
   const stackNameToRootStackName = await generateStackNameToRootStackName(
     cloudformationStacksToFilter,
-    cloudFormationClient,
   );
 
   const cloudformationStacksToSearch = Object.keys(stackNameToRootStackName);

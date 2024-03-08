@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
   ArnService,
   CustomARN,
@@ -10,6 +11,7 @@ import {
   fetchAllLambdaConfigurations,
   fetchAllQueuesAttributes,
   fetchAllStepFunctionConfigurations,
+  findStacksToStacksImports,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
 } from '@sls-mentor/aws-api';
@@ -33,6 +35,7 @@ export const getEdges = async (
     queueAttributes,
     stateMachineDefinition,
     graphqlApiResources,
+    stacksToStacksImports,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
@@ -64,6 +67,7 @@ export const getEdges = async (
     fetchAllQueuesAttributes(arns),
     fetchAllStepFunctionConfigurations(arns),
     fetchAllGraphqlApiResources(arns),
+    findStacksToStacksImports(),
   ]);
 
   const lambdaFunctionsAndRoleArn = lambdaFunctions.map(l => ({
@@ -75,6 +79,13 @@ export const getEdges = async (
   }));
 
   const rawEdges: Edge[] = [
+    ...stacksToStacksImports.map(({ exportingStack, importingStack }) => {
+      return {
+        from: exportingStack?.toString() ?? '*',
+        to: importingStack?.toString() ?? '*',
+        warnings: [],
+      };
+    }),
     ...graphqlApiResources
       .map(({ arn, dataSources }) => {
         const dataSourcesArns = findArnsFromDataSources(dataSources);

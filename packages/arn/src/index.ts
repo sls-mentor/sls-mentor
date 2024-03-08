@@ -1,3 +1,5 @@
+import { CloudformationStackARN } from 'cloudformation';
+
 import { CustomARN } from './CustomARN';
 import { ApiGatewayHttpApiARN, ApiGatewayRestApiARN } from './apiGateway';
 import { AppSyncApiARN } from './appSync';
@@ -39,7 +41,8 @@ export type SupportedARN =
   | SnsTopicARN
   | SqsQueueARN
   | StepFunctionStateMachineARN
-  | SecretsManagerSecretARN;
+  | SecretsManagerSecretARN
+  | CloudformationStackARN;
 
 export {
   ApiGatewayHttpApiARN,
@@ -65,6 +68,7 @@ export {
   StepFunctionStateMachineARN,
   SecretsManagerSecretARN,
   CustomARN,
+  CloudformationStackARN,
 };
 
 export * from './types';
@@ -116,6 +120,8 @@ export const getRefinedArn = (arn: CustomARN): SupportedARN => {
       return StepFunctionStateMachineARN.fromCustomARN(arn);
     case SecretsManagerSecretARN.is(arn):
       return SecretsManagerSecretARN.fromCustomARN(arn);
+    case CloudformationStackARN.is(arn):
+      return CloudformationStackARN.fromCustomARN(arn);
     default:
       throw new Error(`Missing implementation for ARN ${arn.toString()}`);
   }
