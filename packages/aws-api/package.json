@@ -36,6 +36,7 @@
     "@aws-sdk/client-backup": "^3.409.0",
     "@aws-sdk/client-cloudformation": "^3.409.0",
     "@aws-sdk/client-cloudfront": "^3.409.0",
+    "@aws-sdk/client-cloudwatch": "^3.515.0",
     "@aws-sdk/client-cloudwatch-logs": "^3.409.0",
     "@aws-sdk/client-cognito-identity-provider": "^3.409.0",
     "@aws-sdk/client-dynamodb": "^3.409.0",
