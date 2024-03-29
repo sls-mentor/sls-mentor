@@ -36,11 +36,30 @@ const generateStackNameToStackArn = async (): Promise<
 
   const stackNameToStackArn: Record<string, CloudformationStackARN> = {};
 
-  for (const { stackArn } of cloudformationStacks) {
-    stackNameToStackArn[stackArn.getStackName()] = stackArn;
+  for (const { stackArn, rootStackArn } of cloudformationStacks) {
+    stackNameToStackArn[stackArn.getStackName()] = rootStackArn ?? stackArn;
   }
 
   return stackNameToStackArn;
+};
+
+const generateStackIdToRootStackId = async (): Promise<
+  Record<string, string>
+> => {
+  const cloudformationStacks = await listCloudformationStacks();
+
+  const stackIdToRootStackId: Record<string, string> = {};
+
+  for (const { stackArn, rootStackArn } of cloudformationStacks) {
+    const rootStackId = rootStackArn?.toString();
+    if (rootStackId !== undefined) {
+      stackIdToRootStackId[stackArn.toString()] = rootStackId;
+    } else {
+      stackIdToRootStackId[stackArn.toString()] = stackArn.toString();
+    }
+  }
+
+  return stackIdToRootStackId;
 };
 
 export const findStacksToStacksImports = async (): Promise<
@@ -57,6 +76,7 @@ export const findStacksToStacksImports = async (): Promise<
 
   const allExports = await findAllExportsFromCloudformation();
   const stackNameToStackArn = await generateStackNameToStackArn();
+  const stackIdToRootStackId = await generateStackIdToRootStackId();
 
   await Promise.all(
     allExports.map(async exportedValue => {
@@ -68,9 +88,11 @@ export const findStacksToStacksImports = async (): Promise<
             },
             { ExportName: exportedValue.Name ?? '' },
           )) {
-            cloudformationImports.push({
-              exportStackArn: exportedValue.ExportingStackId ?? '',
-              importStackName: page.Imports?.join('') ?? '',
+            page.Imports?.forEach(importStackName => {
+              cloudformationImports.push({
+                exportStackArn: exportedValue.ExportingStackId ?? '',
+                importStackName,
+              });
             });
           }
         }
@@ -86,7 +108,9 @@ export const findStacksToStacksImports = async (): Promise<
   );
 
   return cloudformationImports.map(stack => ({
-    exportingStack: CloudformationStackARN.fromStackId(stack.exportStackArn),
+    exportingStack: CloudformationStackARN.fromStackId(
+      stackIdToRootStackId[stack.exportStackArn] ?? '',
+    ),
     importingStack: stackNameToStackArn[stack.importStackName],
   }));
 };
