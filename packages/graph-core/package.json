@@ -31,7 +31,8 @@
   },
   "dependencies": {
     "@sls-mentor/arn": "workspace:^",
-    "@sls-mentor/aws-api": "workspace:^"
+    "@sls-mentor/aws-api": "workspace:^",
+    "graph-cycles": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^20.6.0",

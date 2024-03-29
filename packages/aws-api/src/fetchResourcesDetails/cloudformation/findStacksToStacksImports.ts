@@ -29,7 +29,7 @@ const findAllExportsFromCloudformation = async (): Promise<Export[]> => {
   return cloudformationExports;
 };
 
-const generateStackNameToStackArn = async (): Promise<
+const toRootStackArn = async (): Promise<
   Record<string, CloudformationStackARN>
 > => {
   const cloudformationStacks = await listCloudformationStacks();
@@ -75,7 +75,7 @@ export const findStacksToStacksImports = async (): Promise<
   const cloudFormationClient = new CloudFormationClient({});
 
   const allExports = await findAllExportsFromCloudformation();
-  const stackNameToStackArn = await generateStackNameToStackArn();
+  const stackNameToStackArn = await toRootStackArn();
   const stackIdToRootStackId = await generateStackIdToRootStackId();
 
   await Promise.all(

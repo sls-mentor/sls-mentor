@@ -10,7 +10,17 @@ import { BaseEdge } from 'edges/types';
 import { DynamoDBTableStats, LambdaFunctionStats } from '../nodes';
 import { NodeBase, SerializedNodeBase } from './helpers';
 
-type Warnings = RestApiWarnings | HttpApiWarnings;
+export const CloudFormationWarnings = {
+  CircularDependencies: 'CircularDependencies',
+} as const;
+
+export type CircularDependenciesWarnings =
+  (typeof CloudFormationWarnings)[keyof typeof CloudFormationWarnings];
+
+type Warnings =
+  | RestApiWarnings
+  | HttpApiWarnings
+  | CircularDependenciesWarnings;
 
 export type Edge = BaseEdge & {
   warnings: Warnings[];
