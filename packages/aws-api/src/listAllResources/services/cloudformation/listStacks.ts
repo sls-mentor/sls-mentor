@@ -44,3 +44,13 @@ export const listCloudformationStacks = async (): Promise<
 
   return cloudformationStacks;
 };
+
+export const listCloudformationRootStacks = async (): Promise<
+  CloudformationStackARN[]
+> => {
+  const stacks = await listCloudformationStacks();
+
+  return stacks
+    .filter(stack => stack.rootStackArn === undefined)
+    .map(stack => stack.stackArn);
+};

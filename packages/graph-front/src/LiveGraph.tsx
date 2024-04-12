@@ -149,7 +149,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                 style={{
                   position: 'absolute',
                   backgroundColor: color,
-                  height: menu.seeCloudformationStacks ? 4 : 2,
+                  height: 2,
                   width:
                     Math.sqrt(
                       (fromNode.x - toNode.x) ** 2 +
@@ -178,7 +178,7 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                     borderColor: color,
                     opacity,
                     borderStyle: 'solid',
-                    borderWidth: 4,
+                    borderWidth: 2,
                     borderTop: 'none',
                     borderRight: 'none',
                   }}
@@ -193,9 +193,9 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
                     height: nodeRadius * 2 * zoomLevel,
                     width: nodeRadius * 2 * zoomLevel,
                     left,
-                    top: top - 2 * (nodeRadius * zoomLevel + 3),
+                    top: top - 2 * (nodeRadius * zoomLevel + 1),
                     opacity,
-                    border: '4px solid',
+                    border: '2px solid',
                     borderColor: color,
                   }}
                 />
