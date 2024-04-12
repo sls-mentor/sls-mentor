@@ -20,6 +20,7 @@ export const serializeGraphData = (
         stats: node.stats,
         cloudformationStack: node.cloudformationStack,
         tags: node.tags,
+        vpcConfig: node.vpcConfig,
       },
     }),
     {} as SerializedGraphData['nodes'],

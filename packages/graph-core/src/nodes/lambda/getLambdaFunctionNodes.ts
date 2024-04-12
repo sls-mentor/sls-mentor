@@ -173,6 +173,13 @@ export const getLambdaFunctionNodes = async (
       stats: LambdaFunctionStats;
       cloudformationStack: string | undefined;
       tags: Record<string, string>;
+      vpcConfig:
+        | {
+            SubnetIds?: string[];
+            SecurityGroupIds?: string[];
+            VpcId?: string;
+          }
+        | undefined;
     }
   >
 > => {
@@ -203,6 +210,10 @@ export const getLambdaFunctionNodes = async (
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
             ?.cloudformationStack,
           tags: resources.find(resource => resource.arn.is(arn))?.tags ?? {},
+          vpcConfig:
+            configuration.VpcConfig?.VpcId === ''
+              ? undefined
+              : configuration.VpcConfig,
         },
       ];
     }),
