@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import {
   ArnService,
   CustomARN,
@@ -18,6 +19,7 @@ import { Edge } from 'types';
 
 import { getHttpApiEdges, getRestApiEdges } from './apiGateway';
 import { findArnsFromDataSources } from './appSync';
+import { findStacksToStacksImportsWithCircularDependencies } from './cloudFormation';
 import { findLambdasInDefinition } from './stepFunction/findLambdasInDefinition';
 
 export const getEdges = async (
@@ -33,6 +35,7 @@ export const getEdges = async (
     queueAttributes,
     stateMachineDefinition,
     graphqlApiResources,
+    stacksToStacksImports,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
@@ -64,6 +67,7 @@ export const getEdges = async (
     fetchAllQueuesAttributes(arns),
     fetchAllStepFunctionConfigurations(arns),
     fetchAllGraphqlApiResources(arns),
+    findStacksToStacksImportsWithCircularDependencies(),
   ]);
 
   const lambdaFunctionsAndRoleArn = lambdaFunctions.map(l => ({
@@ -75,6 +79,15 @@ export const getEdges = async (
   }));
 
   const rawEdges: Edge[] = [
+    ...stacksToStacksImports.map(
+      ({ exportingStack, importingStack, warnings }) => {
+        return {
+          from: exportingStack?.toString() ?? '*',
+          to: importingStack?.toString() ?? '*',
+          warnings,
+        };
+      },
+    ),
     ...graphqlApiResources
       .map(({ arn, dataSources }) => {
         const dataSourcesArns = findArnsFromDataSources(dataSources);
