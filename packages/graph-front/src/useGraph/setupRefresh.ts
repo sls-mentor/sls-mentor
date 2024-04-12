@@ -6,6 +6,7 @@ import { OFFSET, updateWithRank } from './updateWithRank';
 import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
 import { computeClusters, getNodeCluster } from './computeClusters';
 import { Edge } from '@sls-mentor/graph-core';
+import { CloudformationStackARN } from '@sls-mentor/arn';
 
 const computePartialVisibility = (
   nodes: Record<string, NodeWithLocationAndRank>,
@@ -84,7 +85,16 @@ export const getNodeVisibility = (
   node: NodeWithLocationAndRank,
   filterCloudformationStacks: string[],
   filterTags: Record<string, string[]>,
+  seeCloudformationStacks: boolean,
 ): NodeVisibility => {
+  if (!seeCloudformationStacks && CloudformationStackARN.is(node.arn)) {
+    return NodeVisibility.None;
+  }
+
+  if (seeCloudformationStacks && !CloudformationStackARN.is(node.arn)) {
+    return NodeVisibility.None;
+  }
+
   const tagsVisibility = getNodeTagsVisibility(node, filterTags);
   const cfnVisibility = getNodeCfnVisibility(node, filterCloudformationStacks);
 
@@ -106,6 +116,7 @@ export const setupRefresh = ({
   clusteringByTagValue,
   filterCloudformationStacks,
   filterTags,
+  seeCloudformationStacks,
 }: {
   currentContainer: HTMLDivElement;
   ranking: RankingKey | undefined;
@@ -114,6 +125,7 @@ export const setupRefresh = ({
   filterCloudformationStacks: string[];
   clusteringByTagValue: string | undefined;
   filterTags: Record<string, string[]>;
+  seeCloudformationStacks: boolean;
 }): {
   destroy: () => void;
 } => {
@@ -156,6 +168,7 @@ export const setupRefresh = ({
               node,
               filterCloudformationStacks,
               filterTags,
+              seeCloudformationStacks,
             ),
             cluster: undefined,
           },
@@ -183,6 +196,7 @@ export const setupRefresh = ({
               node,
               filterCloudformationStacks,
               filterTags,
+              seeCloudformationStacks,
             ),
             cluster: getNodeCluster({
               node,
@@ -202,7 +216,7 @@ export const setupRefresh = ({
       return {
         ...state,
         nodes: computePartialVisibility(newNodes, state.edges),
-        nodeRadius: NODE_RADIUS,
+        nodeRadius: seeCloudformationStacks ? NODE_RADIUS * 2 : NODE_RADIUS,
         clusters,
       };
     });
@@ -234,6 +248,7 @@ export const setupRefresh = ({
           zoomLevel,
           clusteringEnabled,
           clusters,
+          ...(seeCloudformationStacks ? { repulsionConstant: 100 } : {}),
         });
 
         const connectedArns: Record<string, boolean> = {};

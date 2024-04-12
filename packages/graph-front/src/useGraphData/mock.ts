@@ -1,9 +1,90 @@
 import {
+  CloudFormationWarnings,
   LambdaFunctionNode,
   SerializedGraphData,
 } from '@sls-mentor/graph-core';
 
 export const mockResults: SerializedGraphData = {
+  nodes: {
+    'arn:aws:s3:us-east-1:123456789012:example-1': {
+      arn: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      stats: {},
+      cloudformationStack: undefined,
+      tags: {},
+    },
+    'arn:aws:s3:us-east-1:123456789012:example-2': {
+      arn: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      stats: {},
+      cloudformationStack: undefined,
+      tags: {},
+    },
+    'arn:aws:s3:us-east-1:123456789012:example-3': {
+      arn: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      stats: {},
+      cloudformationStack: undefined,
+      tags: {},
+    },
+    'arn:aws:s3:us-east-1:123456789012:example-4': {
+      arn: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      stats: {},
+      cloudformationStack: undefined,
+      tags: {},
+    },
+    'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431':
+      {
+        arn: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431',
+        stats: {},
+        cloudformationStack: undefined,
+        tags: {},
+      },
+    'arn:aws:cloudformation:us-east-1:123456789012:stack/Part09AuroraStack/0b67a460-b402-11ee-9879-02c30954b8f7':
+      {
+        arn: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part09AuroraStack/0b67a460-b402-11ee-9879-02c30954b8f7',
+        stats: {},
+        cloudformationStack: undefined,
+        tags: {},
+      },
+  },
+  edges: [
+    {
+      from: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      to: 'arn:aws:s3:us-east-1:123456789012:example-2',
+      warnings: [],
+    },
+    {
+      from: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      to: 'arn:aws:s3:us-east-1:123456789012:example-3',
+      warnings: [],
+    },
+    {
+      from: 'arn:aws:s3:us-east-1:123456789012:example-1',
+      to: 'arn:aws:s3:us-east-1:123456789012:example-4',
+      warnings: [],
+    },
+    {
+      from: 'arn:aws:s3:us-east-1:123456789012:example-2',
+      to: 'arn:aws:s3:us-east-1:123456789012:example-3',
+      warnings: [],
+    },
+    {
+      from: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part09AuroraStack/0b67a460-b402-11ee-9879-02c30954b8f7',
+      to: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431',
+      warnings: [CloudFormationWarnings.CircularDependencies],
+    },
+    {
+      from: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431',
+      to: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part09AuroraStack/0b67a460-b402-11ee-9879-02c30954b8f7',
+      warnings: [CloudFormationWarnings.CircularDependencies],
+    },
+    {
+      from: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431',
+      to: 'arn:aws:cloudformation:us-east-1:123456789012:stack/Part08SQSStack/969a0fb0-b401-11ee-ba2a-0a809f902431',
+      warnings: [CloudFormationWarnings.CircularDependencies],
+    },
+  ],
+};
+
+export const mockResults2: SerializedGraphData = {
   nodes: Object.fromEntries(
     Object.entries({
       'arn:aws:s3:us-east-1:123456789012:example-advisor-dev-serverlessdeploymentbucket-192uxncrxkb7k':

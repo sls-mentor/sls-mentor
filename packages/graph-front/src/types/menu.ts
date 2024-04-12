@@ -23,4 +23,5 @@ export type MenuState = {
   clusteringByTagValue: string | undefined;
   filterCloudformationStacks: string[];
   filterTags: Record<string, string[]>;
+  seeCloudformationStacks: boolean;
 };

@@ -246,6 +246,16 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
           Filter by tags{' '}
           {Object.values(menu.filterTags).some(t => t.length > 0) ? '✅' : ''}
         </button>
+        <button
+          onClick={() =>
+            setMenu(m => ({
+              ...m,
+              seeCloudformationStacks: !m.seeCloudformationStacks,
+            }))
+          }
+        >
+          {menu.seeCloudformationStacks ? 'See resources' : 'See CFN stacks'}
+        </button>
       </div>
     </div>
   );
