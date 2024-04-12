@@ -124,33 +124,83 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
             return null;
           }
 
+          const rotation = `${Math.atan2(
+            fromNode.y - toNode.y,
+            fromNode.x - toNode.x,
+          )}rad`;
+
+          const opacity =
+            (hoveredNodeArn !== undefined &&
+              (hoveredNodeArn === from || hoveredNodeArn === to)) ||
+            (warnings.length > 0 && warningsEnabled)
+              ? 0.5
+              : 0.1;
+
+          const left = zoomLevel * toNode.x + clientWidth / 2;
+          const top = zoomLevel * toNode.y + clientHeight / 2;
+
+          const color =
+            warnings.length > 0 && warningsEnabled ? 'red' : 'white';
+
           return (
-            <div
-              key={`${from}-${to}`}
-              style={{
-                position: 'absolute',
-                backgroundColor:
-                  warnings.length > 0 && warningsEnabled ? 'red' : 'white',
-                height: 2,
-                width:
-                  Math.sqrt(
-                    (fromNode.x - toNode.x) ** 2 + (fromNode.y - toNode.y) ** 2,
-                  ) * zoomLevel,
-                left: zoomLevel * toNode.x + clientWidth / 2,
-                top: zoomLevel * toNode.y + clientHeight / 2,
-                rotate: `${Math.atan2(
-                  fromNode.y - toNode.y,
-                  fromNode.x - toNode.x,
-                )}rad`,
-                transformOrigin: 'top left',
-                opacity:
-                  (hoveredNodeArn !== undefined &&
-                    (hoveredNodeArn === from || hoveredNodeArn === to)) ||
-                  (warnings.length > 0 && warningsEnabled)
-                    ? 0.5
-                    : 0.1,
-              }}
-            />
+            <>
+              <div
+                key={`${from}-${to}`}
+                style={{
+                  position: 'absolute',
+                  backgroundColor: color,
+                  height: menu.seeCloudformationStacks ? 4 : 2,
+                  width:
+                    Math.sqrt(
+                      (fromNode.x - toNode.x) ** 2 +
+                        (fromNode.y - toNode.y) ** 2,
+                    ) * zoomLevel,
+                  left,
+                  top,
+                  transform: `rotate(${rotation}) translateY(-50%)`,
+                  transformOrigin: 'top left',
+                  opacity,
+                }}
+              />
+              {menu.seeCloudformationStacks && (
+                <div
+                  key={`${from}-${to}-arrow`}
+                  style={{
+                    position: 'absolute',
+                    width: (nodeRadius / 2) * zoomLevel,
+                    height: (nodeRadius / 2) * zoomLevel,
+                    left,
+                    top,
+                    transform: `translate(-50%, -50%) rotate(${rotation}) translateX(${
+                      nodeRadius * zoomLevel
+                    }px) translate(70%) rotate(45deg)`,
+                    transformOrigin: 'center',
+                    borderColor: color,
+                    opacity,
+                    borderStyle: 'solid',
+                    borderWidth: 4,
+                    borderTop: 'none',
+                    borderRight: 'none',
+                  }}
+                />
+              )}
+              {from === to && (
+                <div
+                  key={`${from}-${to}-loop`}
+                  style={{
+                    position: 'absolute',
+                    borderRadius: '50%',
+                    height: nodeRadius * 2 * zoomLevel,
+                    width: nodeRadius * 2 * zoomLevel,
+                    left,
+                    top: top - 2 * (nodeRadius * zoomLevel + 3),
+                    opacity,
+                    border: '4px solid',
+                    borderColor: color,
+                  }}
+                />
+              )}
+            </>
           );
         })}
       {Object.entries(nodes).map(([arn, node]) =>

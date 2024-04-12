@@ -14,7 +14,7 @@ const loadResults = () => {
 export const useGraphData = (): GraphData | undefined => {
   const isProd = import.meta.env.PROD;
 
-  const graphData = isProd ? loadResults() : mockResults;
+  const graphData: SerializedGraphData = isProd ? loadResults() : mockResults;
 
   const firstArn = Object.keys(graphData.nodes)[0] ?? '';
   const [, partition, , region, accountId] = firstArn.split(':');
