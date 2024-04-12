@@ -1,8 +1,13 @@
-import { DynamoDBTableARN, LambdaFunctionARN } from '@sls-mentor/arn';
+import {
+  DynamoDBTableARN,
+  LambdaFunctionARN,
+  S3BucketARN,
+} from '@sls-mentor/arn';
 import {
   DynamoDBTableNode,
   LambdaFunctionNode,
   Node,
+  S3BucketNode,
 } from '@sls-mentor/graph-core';
 import { NodeWithLocationAndRank, RankingKey } from '../types';
 
@@ -11,6 +16,9 @@ export const isLambdaNode = (node: Node): node is LambdaFunctionNode =>
 
 export const isDynamoDBTableNode = (node: Node): node is DynamoDBTableNode =>
   DynamoDBTableARN.is(node.arn);
+
+export const isS3BucketNode = (node: Node): node is S3BucketNode =>
+  S3BucketARN.is(node.arn);
 
 export const rankingFunctions: Record<
   RankingKey,
@@ -124,5 +132,17 @@ export const rankingFunctions: Record<
     }
 
     return averageItemSizeBytes / 1000;
+  },
+  bucketSize: node => {
+    if (!isS3BucketNode(node)) {
+      return undefined;
+    }
+
+    const bucketSizeBytes = node.stats.configuration?.bucketSize;
+    if (bucketSizeBytes === undefined) {
+      return undefined;
+    }
+
+    return bucketSizeBytes / 1000;
   },
 };
