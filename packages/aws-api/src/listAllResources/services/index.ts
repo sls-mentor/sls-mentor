@@ -16,3 +16,4 @@ export * from './sqs';
 export * from './stepFunction';
 export * from './secretsManager';
 export * from './cloudformation';
+export * from './ec2';

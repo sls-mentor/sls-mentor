@@ -19,6 +19,7 @@ import StepFunctionSvg from './StepFunctionSvg';
 import AppSyncSvg from './AppSyncSvg';
 import SecretsManagerSvg from './SecretsManagerSvg';
 import CloudformationSvg from './CloudformationSvg';
+import NatGatewaySvg from './NatGatewaySvg';
 
 export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   apigateway: ApiGatewaySvg,
@@ -39,6 +40,7 @@ export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   appsync: AppSyncSvg,
   secretsmanager: SecretsManagerSvg,
   cloudformation: CloudformationSvg,
+  ec2: NatGatewaySvg,
 };
 
 export const SlsMentorLogo: JSX.Element = SlsMentorSvg;
