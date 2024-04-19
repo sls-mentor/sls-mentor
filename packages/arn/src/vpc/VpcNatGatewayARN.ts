@@ -7,6 +7,10 @@ export class VpcNatGatewayARN extends CustomARN {
     super(resource, ArnService.ec2);
   }
 
+  static fromPhysicalId = (physicalId: string): VpcNatGatewayARN => {
+    return this.fromNatGatewayId(physicalId);
+  };
+
   static fromNatGatewayId = (natGatewayId: string): VpcNatGatewayARN =>
     new VpcNatGatewayARN(`natgateway/${natGatewayId}`);
 
