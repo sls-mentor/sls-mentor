@@ -1,6 +1,8 @@
 import { CustomARN, DynamoDBTableARN } from '@sls-mentor/arn';
 import { fetchAllDynamoDBTableConfigurations } from '@sls-mentor/aws-api';
 
+import { NodeBase } from 'types/helpers';
+
 import { DynamoDBTableConfigurationStats, DynamoDBTableStats } from './types';
 
 const mapConfigurationStats = (
@@ -27,17 +29,7 @@ export const getDynamoDBTableNodes = async (
     cloudformationStack?: string;
     tags: Record<string, string>;
   }[],
-): Promise<
-  Record<
-    string,
-    {
-      arn: DynamoDBTableARN;
-      stats: DynamoDBTableStats;
-      cloudformationStack: string | undefined;
-      tags: Record<string, string>;
-    }
-  >
-> => {
+): Promise<Record<string, NodeBase<DynamoDBTableARN, DynamoDBTableStats>>> => {
   const tableConfigurations = await fetchAllDynamoDBTableConfigurations(
     resources.map(({ arn }) => arn),
   );
