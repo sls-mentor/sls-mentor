@@ -16,3 +16,4 @@ export { sqsClient } from './sqsClient';
 export { iamClient } from './iamClient';
 export { stepFunctionClient } from './stepFunctionClient';
 export { secretsManagerClient } from './secretsManagerClient';
+export { ec2Client } from './ec2Client';
