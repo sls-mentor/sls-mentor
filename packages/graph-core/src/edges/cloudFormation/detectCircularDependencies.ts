@@ -16,7 +16,7 @@ type Graph = {
 
 const detectCircularDependencies = (
   stacksImports: LinkBetweenStacks,
-): string[][] | null => {
+): string[][] => {
   const graph: Graph = stacksImports.reduce(
     (acc: Graph, { exportingStack, importingStack }) => {
       if (exportingStack !== undefined && importingStack !== undefined) {
@@ -55,18 +55,19 @@ export const findStacksToStacksImportsWithCircularDependencies =
 
     const dictOfCircularDependencies: Record<string, boolean> = {};
 
-    if (circularDependencies !== null) {
-      circularDependencies.forEach(([from, to]) => {
-        if (to === undefined) {
-          dictOfCircularDependencies[`${from ?? ''}-${from ?? ''}`] = true;
-        } else if (from === undefined) {
+    circularDependencies.forEach(cycle => {
+      for (let i = 0; i < cycle.length; i++) {
+        const from = cycle[i];
+        const to = cycle[(i + 1) % cycle.length];
+
+        if (from === undefined || to === undefined) {
           throw new Error('This should not happen');
-        } else {
-          dictOfCircularDependencies[`${from}-${to}`] = true;
-          dictOfCircularDependencies[`${to}-${from}`] = true;
         }
-      });
-    }
+
+        dictOfCircularDependencies[`${from}-${to}`] = true;
+        dictOfCircularDependencies[`${to}-${from}`] = true;
+      }
+    });
 
     return stacksToStacksImports.map(({ exportingStack, importingStack }) => {
       if (
