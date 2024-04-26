@@ -40,6 +40,7 @@
     "@aws-sdk/client-cloudwatch-logs": "^3.409.0",
     "@aws-sdk/client-cognito-identity-provider": "^3.409.0",
     "@aws-sdk/client-dynamodb": "^3.409.0",
+    "@aws-sdk/client-ec2": "3.409.0",
     "@aws-sdk/client-eventbridge": "^3.409.0",
     "@aws-sdk/client-iam": "^3.421.0",
     "@aws-sdk/client-lambda": "^3.409.0",

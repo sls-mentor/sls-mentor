@@ -8,6 +8,11 @@ export type NodeBase<
   stats: S;
   cloudformationStack: string | undefined;
   tags: Record<string, string>;
+  vpcConfig?: {
+    SubnetIds?: string[];
+    SecurityGroupIds?: string[];
+    VpcId?: string;
+  };
 };
 
 export type SerializedNodeBase<
@@ -17,4 +22,9 @@ export type SerializedNodeBase<
   stats: S;
   cloudformationStack: string | undefined;
   tags: Record<string, string>;
+  vpcConfig?: {
+    SubnetIds?: string[];
+    SecurityGroupIds?: string[];
+    VpcId?: string;
+  };
 };

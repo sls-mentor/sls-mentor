@@ -5,6 +5,8 @@ import {
   fetchAllLambdaConfigurations,
 } from '@sls-mentor/aws-api';
 
+import { NodeBase } from 'types/helpers';
+
 import {
   LambdaFunctionColdStartStats,
   LambdaFunctionConfigurationStats,
@@ -166,15 +168,7 @@ export const getLambdaFunctionNodes = async (
     tags: Record<string, string>;
   }[],
 ): Promise<
-  Record<
-    string,
-    {
-      arn: LambdaFunctionARN;
-      stats: LambdaFunctionStats;
-      cloudformationStack: string | undefined;
-      tags: Record<string, string>;
-    }
-  >
+  Record<string, NodeBase<LambdaFunctionARN, LambdaFunctionStats>>
 > => {
   const lambdaFunctionArns = CustomARN.filterArns(
     resources.map(({ arn }) => arn),
@@ -203,6 +197,10 @@ export const getLambdaFunctionNodes = async (
           cloudformationStack: resources.find(resource => resource.arn.is(arn))
             ?.cloudformationStack,
           tags: resources.find(resource => resource.arn.is(arn))?.tags ?? {},
+          vpcConfig:
+            configuration.VpcConfig?.VpcId === ''
+              ? undefined
+              : configuration.VpcConfig,
         },
       ];
     }),

@@ -7,6 +7,7 @@ import {
 } from '@sls-mentor/arn';
 import { fetchAccountIdAndRegion, listAllResources } from '@sls-mentor/aws-api';
 
+import { getRDSNodes } from 'nodes/rds';
 import { getS3Nodes } from 'nodes/s3';
 
 import { getEdges } from './edges';
@@ -34,16 +35,22 @@ export const generateGraph = async ({
     region: regionToUse,
   });
 
-  const [edges, lambdaFunctionNodes, dynamoDBTableNodes, s3BucketNodes] =
-    await Promise.all([
-      getEdges(
-        resources.map(({ arn }) => arn),
-        servicesToHide,
-      ),
-      getLambdaFunctionNodes(resources),
-      getDynamoDBTableNodes(resources),
-      getS3Nodes(resources),
-    ]);
+  const [
+    edges,
+    lambdaFunctionNodes,
+    dynamoDBTableNodes,
+    s3BucketNodes,
+    rdsNodes,
+  ] = await Promise.all([
+    getEdges(
+      resources.map(({ arn }) => arn),
+      servicesToHide,
+    ),
+    getLambdaFunctionNodes(resources),
+    getDynamoDBTableNodes(resources),
+    getS3Nodes(resources),
+    getRDSNodes(resources),
+  ]);
 
   const relevantArns = resources
     .map(({ arn }) => arn)
@@ -80,6 +87,7 @@ export const generateGraph = async ({
       ...lambdaFunctionNodes,
       ...dynamoDBTableNodes,
       ...s3BucketNodes,
+      ...rdsNodes,
     },
     edges,
   };
