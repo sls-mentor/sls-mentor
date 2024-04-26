@@ -27,6 +27,7 @@ import {
   SnsTopicARN,
   SqsQueueARN,
   StepFunctionStateMachineARN,
+  VpcNatGatewayARN,
 } from '@sls-mentor/arn';
 
 import { listCloudformationStacks } from './services';
@@ -81,6 +82,8 @@ const createARNFromCloudFormation = ({
       return AppSyncApiARN.fromPhysicalId(physicalResourceId);
     case 'AWS::SecretsManager::Secret':
       return SecretsManagerSecretARN.fromPhysicalId(physicalResourceId);
+    case 'AWS::EC2::NatGateway':
+      return VpcNatGatewayARN.fromPhysicalId(physicalResourceId);
     default:
       return;
   }

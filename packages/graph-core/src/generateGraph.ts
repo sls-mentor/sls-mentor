@@ -11,7 +11,11 @@ import { getRDSNodes } from 'nodes/rds';
 import { getS3Nodes } from 'nodes/s3';
 
 import { getEdges } from './edges';
-import { getDynamoDBTableNodes, getLambdaFunctionNodes } from './nodes';
+import {
+  getDynamoDBTableNodes,
+  getLambdaFunctionNodes,
+  getNatGatewayNodes,
+} from './nodes';
 import { GraphData } from './types';
 
 const servicesToHide: ArnService[] = ['backup', 'iam', 'logs'];
@@ -41,6 +45,7 @@ export const generateGraph = async ({
     dynamoDBTableNodes,
     s3BucketNodes,
     rdsNodes,
+    natGatewayNodes,
   ] = await Promise.all([
     getEdges(
       resources.map(({ arn }) => arn),
@@ -50,6 +55,7 @@ export const generateGraph = async ({
     getDynamoDBTableNodes(resources),
     getS3Nodes(resources),
     getRDSNodes(resources),
+    getNatGatewayNodes(resources),
   ]);
 
   const relevantArns = resources
@@ -88,6 +94,7 @@ export const generateGraph = async ({
       ...dynamoDBTableNodes,
       ...s3BucketNodes,
       ...rdsNodes,
+      ...natGatewayNodes,
     },
     edges,
   };

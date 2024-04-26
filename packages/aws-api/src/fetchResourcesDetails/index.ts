@@ -17,4 +17,4 @@ export * from './sqs';
 export * from './stepFunction';
 export * from './appSync';
 export * from './cloudformation';
-export * from './vpc';
+export * from './ec2';

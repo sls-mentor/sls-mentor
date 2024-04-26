@@ -12,6 +12,7 @@ import {
   listGraphqlApis,
   listIamRoles,
   listLambdaFunctions,
+  listNatGateways,
   listRdsClusters,
   listRdsInstances,
   listRestApiGateways,
@@ -53,6 +54,7 @@ export const listAllResourcesFromServices = async ({
     graphqlApis,
     secretManegerSecrets,
     cloudformationStacks,
+    natGateways,
   ] = await Promise.all([
     listS3Buckets({ region }),
     listLambdaFunctions(),
@@ -76,6 +78,7 @@ export const listAllResourcesFromServices = async ({
     listGraphqlApis(),
     listSecrets(),
     listCloudformationRootStacks(),
+    listNatGateways(),
   ]);
 
   return [
@@ -101,5 +104,6 @@ export const listAllResourcesFromServices = async ({
     ...graphqlApis,
     ...secretManegerSecrets,
     ...cloudformationStacks,
+    ...natGateways,
   ];
 };

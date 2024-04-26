@@ -18,6 +18,7 @@ import { SESConfigurationSetARN, SESIdentityARN } from './ses';
 import { SnsSubscriptionARN, SnsTopicARN } from './sns';
 import { SqsQueueARN } from './sqs';
 import { StepFunctionStateMachineARN } from './stepFunction';
+import { VpcNatGatewayARN } from './vpc';
 
 export type SupportedARN =
   | ApiGatewayHttpApiARN
@@ -42,7 +43,8 @@ export type SupportedARN =
   | SqsQueueARN
   | StepFunctionStateMachineARN
   | SecretsManagerSecretARN
-  | CloudformationStackARN;
+  | CloudformationStackARN
+  | VpcNatGatewayARN;
 
 export {
   ApiGatewayHttpApiARN,
@@ -69,6 +71,7 @@ export {
   SecretsManagerSecretARN,
   CustomARN,
   CloudformationStackARN,
+  VpcNatGatewayARN,
 };
 
 export * from './types';
@@ -122,6 +125,8 @@ export const getRefinedArn = (arn: CustomARN): SupportedARN => {
       return SecretsManagerSecretARN.fromCustomARN(arn);
     case CloudformationStackARN.is(arn):
       return CloudformationStackARN.fromCustomARN(arn);
+    case VpcNatGatewayARN.is(arn):
+      return VpcNatGatewayARN.fromCustomARN(arn);
     default:
       throw new Error(`Missing implementation for ARN ${arn.toString()}`);
   }

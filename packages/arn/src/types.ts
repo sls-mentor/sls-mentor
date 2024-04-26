@@ -17,6 +17,7 @@ export const ArnService = {
   appsync: 'appsync',
   secretsmanager: 'secretsmanager',
   cloudformation: 'cloudformation',
+  ec2: 'ec2',
 } as const;
 
 export type ArnService = (typeof ArnService)[keyof typeof ArnService];
