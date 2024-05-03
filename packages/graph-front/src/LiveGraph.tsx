@@ -61,12 +61,15 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     ranking,
     warningsEnabled,
     enableCloudformationClustering,
+    enableVpcClustering,
     clusteringByTagValue,
     filterCloudformationStacks,
   } = menu;
 
   const clusteringEnabled =
-    enableCloudformationClustering || clusteringByTagValue !== undefined;
+    enableCloudformationClustering ||
+    clusteringByTagValue !== undefined ||
+    enableVpcClustering;
 
   return (
     <div
@@ -79,32 +82,44 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     >
       {clusteringEnabled && (
         <>
-          {Object.entries(clusters).map(([name, { x, y }]) =>
+          {Object.entries(clusters).map(([name, { x, y, radius }]) =>
             filterCloudformationStacks.length === 0 ||
             filterCloudformationStacks.includes(name) ? (
               <div
-                key={name}
                 style={{
+                  borderRadius: '50%',
+                  border: '2px solid #fffa',
+                  width: radius * 2 * zoomLevel,
+                  height: radius * 2 * zoomLevel,
+                  left: zoomLevel * (x - radius) + clientWidth / 2,
+                  top: zoomLevel * (y - radius) + clientHeight / 2,
                   position: 'absolute',
-                  left: zoomLevel * x + clientWidth / 2,
-                  top: zoomLevel * y + clientHeight / 2,
-                  opacity: 0.5,
                 }}
               >
-                <p
+                <div
+                  key={name}
                   style={{
                     position: 'absolute',
-                    fontSize: 16,
-                    backgroundColor: '#fffa',
-                    borderRadius: 5 * zoomLevel,
-                    transform: 'translate(-50%, 10%)',
-                    left: nodeRadius * zoomLevel,
-                    width: 'max-content',
-                    padding: 1,
+                    left: zoomLevel * x + clientWidth / 2,
+                    top: zoomLevel * y + clientHeight / 2,
+                    opacity: 0.5,
                   }}
                 >
-                  {name}
-                </p>
+                  <p
+                    style={{
+                      position: 'absolute',
+                      fontSize: 16,
+                      backgroundColor: '#fffa',
+                      borderRadius: 5 * zoomLevel,
+                      transform: 'translate(-50%, 10%)',
+                      left: nodeRadius * zoomLevel,
+                      width: 'max-content',
+                      padding: 1,
+                    }}
+                  >
+                    {name}
+                  </p>
+                </div>
               </div>
             ) : null,
           )}

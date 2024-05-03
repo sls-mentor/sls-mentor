@@ -142,6 +142,7 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
                 setMenu(m => ({
                   ...m,
                   enableCloudformationClustering: false,
+                  enableVpcClustering: false,
                   clusteringByTagValue: undefined,
                 }));
               }}
@@ -153,11 +154,24 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
                 setMenu(m => ({
                   ...m,
                   enableCloudformationClustering: true,
+                  enableVpcClustering: false,
                   clusteringByTagValue: undefined,
                 }));
               }}
             >
               CFN stacks
+            </button>
+            <button
+              onClick={() => {
+                setMenu(m => ({
+                  ...m,
+                  enableCloudformationClustering: false,
+                  enableVpcClustering: true,
+                  clusteringByTagValue: undefined,
+                }));
+              }}
+            >
+              VPC
             </button>
             {Object.keys(tags).map(key => (
               <button

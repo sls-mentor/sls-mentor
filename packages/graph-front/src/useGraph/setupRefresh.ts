@@ -113,6 +113,7 @@ export const setupRefresh = ({
   ranking,
   setState,
   enableCloudformationClustering,
+  enableVpcClustering,
   clusteringByTagValue,
   filterCloudformationStacks,
   filterTags,
@@ -122,6 +123,7 @@ export const setupRefresh = ({
   ranking: RankingKey | undefined;
   setState: Dispatch<SetStateAction<GraphState>>;
   enableCloudformationClustering: boolean;
+  enableVpcClustering: boolean;
   filterCloudformationStacks: string[];
   clusteringByTagValue: string | undefined;
   filterTags: Record<string, string[]>;
@@ -132,7 +134,9 @@ export const setupRefresh = ({
   const { clientWidth, clientHeight } = currentContainer;
 
   const clusteringEnabled =
-    enableCloudformationClustering || clusteringByTagValue !== undefined;
+    enableCloudformationClustering ||
+    clusteringByTagValue !== undefined ||
+    enableVpcClustering;
 
   const updateFn = ranking === undefined ? update : updateWithRank;
 
@@ -202,6 +206,7 @@ export const setupRefresh = ({
               node,
               clusteringByTagValue,
               enableCloudformationClustering,
+              enableVpcClustering,
             }),
           },
         ]),
@@ -211,6 +216,7 @@ export const setupRefresh = ({
         clusteringByTagValue,
         enableCloudformationClustering,
         nodes: newNodes,
+        enableVpcClustering,
       });
 
       return {

@@ -1572,6 +1572,9 @@ export const mockResults2: SerializedGraphData = {
               Math.random() > 0.5
                 ? { 'tag-key': 'tag-value-1' }
                 : { 'tag-key': 'tag-value-2' },
+            vpcConfig: {
+              VpcId: Math.random() > 0.5 ? 'vpc-1' : 'vpc-2',
+            },
           },
         ];
       }

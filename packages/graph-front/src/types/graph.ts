@@ -24,3 +24,10 @@ export type NodeWithLocationAndRank = NodeWithLocation & {
   visibility: NodeVisibility;
   cluster: string | undefined;
 };
+
+export type ClusterPosition = {
+  amount: number;
+  x: number;
+  y: number;
+  radius: number;
+};

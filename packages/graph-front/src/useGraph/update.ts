@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { NodeWithLocationAndRank } from '../types';
+import { ClusterPosition, NodeWithLocationAndRank } from '../types';
 
 const SPRING_CONSTANT = 0.003;
 const RESISTANCE_CONSTANT = 0.1;
@@ -39,8 +39,15 @@ export const update = ({
   mouseY: number;
   zoomLevel: number;
   clusteringEnabled?: boolean;
-  clusters: Record<string, { amount: number; x: number; y: number }>;
+  clusters: Record<string, ClusterPosition>;
 }): void => {
+  Object.keys(clusters).forEach(cluster => {
+    const c = clusters[cluster];
+    if (c !== undefined) {
+      c.radius = 0;
+    }
+  });
+
   Object.values(nodes).forEach((node1, i) => {
     if (node1.visibility === 'None') {
       return;
@@ -185,5 +192,13 @@ export const update = ({
 
     cluster.x += node.vx / cluster.amount;
     cluster.y += node.vy / cluster.amount;
+
+    cluster.radius = Math.max(
+      cluster.radius,
+      Math.sqrt(
+        (node.x - cluster.x) * (node.x - cluster.x) +
+          (node.y - cluster.y) * (node.y - cluster.y),
+      ),
+    );
   });
 };

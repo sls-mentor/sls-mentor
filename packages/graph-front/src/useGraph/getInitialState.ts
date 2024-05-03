@@ -1,5 +1,9 @@
 import { GraphData, Edge } from '@sls-mentor/graph-core';
-import { NodeVisibility, NodeWithLocationAndRank } from '../types';
+import {
+  ClusterPosition,
+  NodeVisibility,
+  NodeWithLocationAndRank,
+} from '../types';
 
 export const NODE_RADIUS = 15;
 
@@ -15,7 +19,7 @@ export type GraphState = {
   zoomLevel: number;
   clickedNode: NodeWithLocationAndRank | undefined;
   clickedNodeArn: string | undefined;
-  clusters: Record<string, { amount: number; x: number; y: number }>;
+  clusters: Record<string, ClusterPosition>;
 };
 
 export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
