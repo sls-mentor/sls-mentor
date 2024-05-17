@@ -6,6 +6,11 @@ import { Zoom, Footer, Header, Menu, Logo } from './layout';
 import { useGraph } from './useGraph';
 import { useMemo } from 'react';
 
+const VPC_CLUSTER_MARGIN = 50;
+const VPC_SECURITY_GROUP_CLUSTER_MARGIN = 15;
+const VPC_COLOR = '#8011ea';
+const VPC_SECURITY_GROUP_COLOR = '#da79f7';
+
 export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
   const {
     containerRef,
@@ -61,12 +66,15 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     ranking,
     warningsEnabled,
     enableCloudformationClustering,
+    enableVpcClustering,
     clusteringByTagValue,
     filterCloudformationStacks,
   } = menu;
 
   const clusteringEnabled =
-    enableCloudformationClustering || clusteringByTagValue !== undefined;
+    enableCloudformationClustering ||
+    clusteringByTagValue !== undefined ||
+    enableVpcClustering;
 
   return (
     <div
@@ -79,35 +87,103 @@ export const LiveGraph = ({ data }: { data: GraphData }): JSX.Element => {
     >
       {clusteringEnabled && (
         <>
-          {Object.entries(clusters).map(([name, { x, y }]) =>
-            filterCloudformationStacks.length === 0 ||
-            filterCloudformationStacks.includes(name) ? (
-              <div
-                key={name}
-                style={{
-                  position: 'absolute',
-                  left: zoomLevel * x + clientWidth / 2,
-                  top: zoomLevel * y + clientHeight / 2,
-                  opacity: 0.5,
-                }}
-              >
-                <p
-                  style={{
-                    position: 'absolute',
-                    fontSize: 16,
-                    backgroundColor: '#fffa',
-                    borderRadius: 5 * zoomLevel,
-                    transform: 'translate(-50%, 10%)',
-                    left: nodeRadius * zoomLevel,
-                    width: 'max-content',
-                    padding: 1,
-                  }}
-                >
-                  {name}
-                </p>
-              </div>
-            ) : null,
-          )}
+          <>
+            {Object.entries(clusters).map(
+              ([name, { x, y, radius, securityGroups }]) => {
+                return filterCloudformationStacks.length === 0 ||
+                  filterCloudformationStacks.includes(name) ? (
+                  <>
+                    {enableVpcClustering === true && (
+                      <>
+                        <div
+                          style={{
+                            borderRadius: '50%',
+                            border: `2px solid ${VPC_COLOR}`,
+                            width:
+                              (radius + VPC_CLUSTER_MARGIN) * 2 * zoomLevel,
+                            height:
+                              (radius + VPC_CLUSTER_MARGIN) * 2 * zoomLevel,
+                            left:
+                              zoomLevel * (x - radius - VPC_CLUSTER_MARGIN) +
+                              clientWidth / 2,
+                            top:
+                              zoomLevel * (y - radius - VPC_CLUSTER_MARGIN) +
+                              clientHeight / 2,
+                            position: 'absolute',
+                          }}
+                        />
+                        {securityGroups &&
+                          securityGroups.map(
+                            ({
+                              securityGroupRadius,
+                              securityGroupX,
+                              securityGroupY,
+                            }) => (
+                              <div
+                                style={{
+                                  borderRadius: '50%',
+                                  border: `2px solid ${VPC_SECURITY_GROUP_COLOR}`,
+                                  borderStyle: 'dashed',
+                                  width:
+                                    (securityGroupRadius +
+                                      VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                    2 *
+                                    zoomLevel,
+                                  height:
+                                    (securityGroupRadius +
+                                      VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                    2 *
+                                    zoomLevel,
+                                  left:
+                                    zoomLevel *
+                                      (securityGroupX -
+                                        securityGroupRadius -
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) +
+                                    clientWidth / 2,
+                                  top:
+                                    zoomLevel *
+                                      (securityGroupY -
+                                        securityGroupRadius -
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) +
+                                    clientHeight / 2,
+                                  position: 'absolute',
+                                }}
+                              />
+                            ),
+                          )}
+                      </>
+                    )}
+                    <div
+                      key={name}
+                      style={{
+                        position: 'absolute',
+                        left: zoomLevel * x + clientWidth / 2,
+                        top: zoomLevel * y + clientHeight / 2,
+                        opacity: 0.5,
+                      }}
+                    >
+                      <p
+                        style={{
+                          position: 'absolute',
+                          fontSize: 16,
+                          backgroundColor: enableVpcClustering
+                            ? VPC_COLOR
+                            : '#fffa',
+                          borderRadius: 5 * zoomLevel,
+                          transform: 'translate(-50%, 10%)',
+                          left: nodeRadius * zoomLevel,
+                          width: 'max-content',
+                          padding: 1,
+                        }}
+                      >
+                        {name}
+                      </p>
+                    </div>
+                  </>
+                ) : null;
+              },
+            )}
+          </>
         </>
       )}
       {ranking === undefined &&

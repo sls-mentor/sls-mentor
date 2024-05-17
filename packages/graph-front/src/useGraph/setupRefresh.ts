@@ -1,12 +1,13 @@
+import { CloudformationStackARN } from '@sls-mentor/arn';
+import { Edge } from '@sls-mentor/graph-core';
 import { Dispatch, SetStateAction } from 'react';
+import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
+import { computeClusters, getNodeCluster } from './computeClusters';
 import { GraphState, NODE_RADIUS } from './getInitialState';
 import { rankingFunctions } from './ranking';
 import { update } from './update';
+import { updateVpc } from './updateVpc';
 import { OFFSET, updateWithRank } from './updateWithRank';
-import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
-import { computeClusters, getNodeCluster } from './computeClusters';
-import { Edge } from '@sls-mentor/graph-core';
-import { CloudformationStackARN } from '@sls-mentor/arn';
 
 const computePartialVisibility = (
   nodes: Record<string, NodeWithLocationAndRank>,
@@ -113,6 +114,7 @@ export const setupRefresh = ({
   ranking,
   setState,
   enableCloudformationClustering,
+  enableVpcClustering,
   clusteringByTagValue,
   filterCloudformationStacks,
   filterTags,
@@ -122,6 +124,7 @@ export const setupRefresh = ({
   ranking: RankingKey | undefined;
   setState: Dispatch<SetStateAction<GraphState>>;
   enableCloudformationClustering: boolean;
+  enableVpcClustering: boolean;
   filterCloudformationStacks: string[];
   clusteringByTagValue: string | undefined;
   filterTags: Record<string, string[]>;
@@ -132,9 +135,16 @@ export const setupRefresh = ({
   const { clientWidth, clientHeight } = currentContainer;
 
   const clusteringEnabled =
-    enableCloudformationClustering || clusteringByTagValue !== undefined;
+    enableCloudformationClustering ||
+    clusteringByTagValue !== undefined ||
+    enableVpcClustering;
 
-  const updateFn = ranking === undefined ? update : updateWithRank;
+  const updateFn =
+    ranking === undefined
+      ? enableVpcClustering
+        ? updateVpc
+        : update
+      : updateWithRank;
 
   if (ranking !== undefined) {
     const rankFn = rankingFunctions[ranking];
@@ -202,6 +212,7 @@ export const setupRefresh = ({
               node,
               clusteringByTagValue,
               enableCloudformationClustering,
+              enableVpcClustering,
             }),
           },
         ]),
@@ -211,6 +222,7 @@ export const setupRefresh = ({
         clusteringByTagValue,
         enableCloudformationClustering,
         nodes: newNodes,
+        enableVpcClustering,
       });
 
       return {

@@ -59,6 +59,7 @@ export const deserializeGraphData = (
           stats: node.stats,
           cloudformationStack: node.cloudformationStack,
           tags: node.tags,
+          vpcConfig: node.vpcConfig,
         },
         // Bold type casting - We trust the serialized data
         // And we know that LambdaFunctionArn -> string -> LambdaFunctionArn for example
