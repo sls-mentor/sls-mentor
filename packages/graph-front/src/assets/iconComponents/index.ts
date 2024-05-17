@@ -21,6 +21,10 @@ import SecretsManagerSvg from './SecretsManagerSvg';
 import CloudformationSvg from './CloudformationSvg';
 import NatGatewaySvg from './NatGatewaySvg';
 
+import EmptyLambdaSvg from './EmptyLambdaSvg';
+import EmptyDynamoDBSvg from './EmptyDynamoDBSvg';
+import EmptyS3Svg from './EmptyS3Svg';
+
 export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   apigateway: ApiGatewaySvg,
   cloudfront: CloudFrontSvg,
@@ -41,6 +45,28 @@ export const ArnAwsIcons: Record<ArnService, JSX.Element> = {
   secretsmanager: SecretsManagerSvg,
   cloudformation: CloudformationSvg,
   ec2: NatGatewaySvg,
+};
+
+export const EmptyArnAwsIcon: Record<ArnService, JSX.Element> = {
+  apigateway: EmptyLambdaSvg,
+  cloudfront: EmptyLambdaSvg,
+  dynamodb: EmptyDynamoDBSvg,
+  events: EmptyLambdaSvg,
+  'cognito-idp': EmptyLambdaSvg,
+  lambda: EmptyLambdaSvg,
+  rds: EmptyLambdaSvg,
+  s3: EmptyS3Svg,
+  sqs: EmptyLambdaSvg,
+  ses: EmptyLambdaSvg,
+  sns: EmptyLambdaSvg,
+  iam: EmptyLambdaSvg,
+  backup: EmptyLambdaSvg,
+  logs: EmptyLambdaSvg,
+  states: EmptyLambdaSvg,
+  appsync: EmptyLambdaSvg,
+  secretsmanager: EmptyLambdaSvg,
+  cloudformation: EmptyLambdaSvg,
+  ec2: EmptyLambdaSvg,
 };
 
 export const SlsMentorLogo: JSX.Element = SlsMentorSvg;

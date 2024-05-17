@@ -51,9 +51,13 @@ export type SerializedNode =
 export type GraphData = {
   nodes: { [arn: string]: Node };
   edges: Edge[];
+  tags: { Key?: string; Value?: string }[];
+  cloudformationStacks: string[];
 };
 
 export type SerializedGraphData = {
   nodes: { [arn: string]: SerializedNode };
   edges: Edge[];
+  tags: { Key?: string; Value?: string }[];
+  cloudformationStacks: string[];
 };

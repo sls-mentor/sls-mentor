@@ -1,52 +1,31 @@
-import {
-  useRef,
-  useState,
-  useEffect,
-  Dispatch,
-  SetStateAction,
-  RefObject,
-} from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { GraphState, getInitialState } from './getInitialState';
 import { setupRefresh } from './setupRefresh';
 import { GraphData } from '@sls-mentor/graph-core';
-import { MenuState, NodeWithLocationAndRank } from '../types';
+import { MenuState, NodeWithLocation } from '../types';
 
 export const useGraph = (
   data: GraphData,
+  menu: MenuState,
 ): {
-  containerRef: RefObject<HTMLDivElement>;
   clientWidth: number;
   clientHeight: number;
-  setMenu: Dispatch<SetStateAction<MenuState>>;
   updateZoomLevel: (zoomFactor: number) => void;
-  updateHoveredNode: (node: NodeWithLocationAndRank | undefined) => void;
-  updateClickedNode: (node: NodeWithLocationAndRank | undefined) => void;
-  menu: MenuState;
+  updateHoveredNode: (node: NodeWithLocation | undefined) => void;
+  updateClickedNode: (node: NodeWithLocation | undefined) => void;
+  containerRef: React.RefObject<HTMLDivElement>;
 } & GraphState => {
+  const [state, setState] = useState(getInitialState(data));
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const [state, setState] = useState(getInitialState(data));
-  const [menu, setMenu] = useState<MenuState>({
-    ranking: undefined,
-    warningsEnabled: false,
-    enableCloudformationClustering: false,
-    enableVpcClustering: false,
-    filterCloudformationStacks: [],
-    clusteringByTagValue: undefined,
-    seeCloudformationStacks: false,
-    filterTags: {},
-  });
-
   useEffect(() => {
-    const { current: currentContainer } = containerRef;
-    if (currentContainer === null) {
+    if (containerRef.current === null) {
       return;
     }
 
     const { destroy } = setupRefresh({
-      currentContainer,
+      currentContainer: containerRef.current,
       setState,
-      ranking: menu.ranking,
       enableCloudformationClustering: menu.enableCloudformationClustering,
       enableVpcClustering: menu.enableVpcClustering,
       filterCloudformationStacks: menu.filterCloudformationStacks,
@@ -64,11 +43,8 @@ export const useGraph = (
   };
 
   return {
-    containerRef,
     clientWidth,
     clientHeight,
-    setMenu,
-    menu,
     updateZoomLevel: zoomFactor => {
       setState(state => ({
         ...state,
@@ -83,26 +59,29 @@ export const useGraph = (
       }));
     },
     updateClickedNode: node => {
-      const nodesWithoutPinnedNode =
-        node === undefined
-          ? {}
-          : {
-              nodes: {
-                ...state.nodes,
-                [node.arn.toString()]: {
-                  ...node,
-                  pinned: false,
+      setState(state => {
+        const nodesWithoutPinnedNode =
+          node === undefined
+            ? {}
+            : {
+                nodes: {
+                  ...state.nodes,
+                  [node.arn.toString()]: {
+                    ...node,
+                    pinned: false,
+                  },
                 },
-              },
-            };
+              };
 
-      setState(state => ({
-        ...state,
-        clickedNode: node,
-        clickedNodeArn: node === undefined ? undefined : node.arn.toString(),
-        ...nodesWithoutPinnedNode,
-      }));
+        return {
+          ...state,
+          clickedNode: node,
+          clickedNodeArn: node === undefined ? undefined : node.arn.toString(),
+          ...nodesWithoutPinnedNode,
+        };
+      });
     },
     ...state,
+    containerRef,
   };
 };

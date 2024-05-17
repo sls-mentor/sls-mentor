@@ -97,5 +97,7 @@ export const generateGraph = async ({
       ...natGatewayNodes,
     },
     edges,
+    tags: tags ?? [],
+    cloudformationStacks: cloudformationStacks ?? [],
   };
 };

@@ -1,23 +1,19 @@
 import { GraphData, Edge } from '@sls-mentor/graph-core';
-import {
-  ClusterPosition,
-  NodeVisibility,
-  NodeWithLocationAndRank,
-} from '../types';
+import { ClusterPosition, NodeVisibility, NodeWithLocation } from '../types';
 
 export const NODE_RADIUS = 15;
 
 export type GraphState = {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
   edges: Edge[];
-  hoveredNode: NodeWithLocationAndRank | undefined;
+  hoveredNode: NodeWithLocation | undefined;
   hoveredNodeArn: string | undefined;
   connectedArns: Record<string, boolean>;
   mouseX: number;
   mouseY: number;
   nodeRadius: number;
   zoomLevel: number;
-  clickedNode: NodeWithLocationAndRank | undefined;
+  clickedNode: NodeWithLocation | undefined;
   clickedNodeArn: string | undefined;
   clusters: Record<string, ClusterPosition>;
 };
@@ -29,7 +25,7 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
         .map(([arn, node]) => {
           const r = Math.random() * 2 * Math.PI;
 
-          const nodeWithLocationAndRank: NodeWithLocationAndRank = {
+          const nodeWithLocation: NodeWithLocation = {
             ...node,
             x: Math.cos(r),
             y: Math.sin(r),
@@ -37,14 +33,13 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
             vy: 0,
             ax: 0,
             ay: 0,
-            rank: undefined,
             value: undefined,
             pinned: false,
             visibility: NodeVisibility.Full,
             cluster: undefined,
           };
 
-          return [arn, nodeWithLocationAndRank];
+          return [arn, nodeWithLocation];
         })
         .filter(([, node]) => node !== undefined),
     ),

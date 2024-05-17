@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { ClusterPosition, NodeWithLocationAndRank } from '../types';
+import { ClusterPosition, NodeWithLocation } from '../types';
 
 const SPRING_CONSTANT = 0.003;
 const RESISTANCE_CONSTANT = 0.1;
@@ -10,8 +10,8 @@ const getRepulsionForVPC = ({
   node1,
   node2,
 }: {
-  node1: NodeWithLocationAndRank;
-  node2: NodeWithLocationAndRank;
+  node1: NodeWithLocation;
+  node2: NodeWithLocation;
 }): { repulsionMultiplier: number } => {
   const node1SecurityGroups = node1.vpcConfig?.SecurityGroupIds;
   const node1VpcId = node1.vpcConfig?.VpcId;
@@ -59,7 +59,7 @@ const getRepulsionForVPC = ({
 const computeVpcSecurityGroupClusters = ({
   nodes,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
 }): Record<string, ClusterPosition> => {
   const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
     (acc, node) => {
@@ -120,7 +120,7 @@ export const updateVpc = ({
   zoomLevel,
   clusters: vpcClusters,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
   edges: Edge[];
   repulsionConstant?: number;
   resistanceConstant?: number;

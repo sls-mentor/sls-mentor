@@ -1,4 +1,4 @@
-import { LiveGraph } from './LiveGraph';
+import { Container } from './Container';
 
 import './global.css';
 import { useGraphData } from './useGraphData';
@@ -28,7 +28,7 @@ const App = (): JSX.Element => {
     );
   }
 
-  return <LiveGraph data={graphData} />;
+  return <Container data={graphData} />;
 };
 
 export default App;

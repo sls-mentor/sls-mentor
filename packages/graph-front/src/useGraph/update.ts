@@ -1,5 +1,5 @@
 import { Edge } from '@sls-mentor/graph-core';
-import { ClusterPosition, NodeWithLocationAndRank } from '../types';
+import { ClusterPosition, NodeWithLocation } from '../types';
 
 const SPRING_CONSTANT = 0.003;
 const RESISTANCE_CONSTANT = 0.1;
@@ -28,7 +28,7 @@ export const update = ({
   clusteringEnabled = true,
   clusters,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
   edges: Edge[];
   repulsionConstant?: number;
   resistanceConstant?: number;
