@@ -4,7 +4,7 @@ import {
   SerializedGraphData,
 } from '@sls-mentor/graph-core';
 
-export const mockResults: SerializedGraphData = {
+export const mockResults2: SerializedGraphData = {
   nodes: {
     'arn:aws:s3:us-east-1:123456789012:example-1': {
       arn: 'arn:aws:s3:us-east-1:123456789012:example-1',
@@ -84,7 +84,7 @@ export const mockResults: SerializedGraphData = {
   ],
 };
 
-export const mockResults2: SerializedGraphData = {
+export const mockResults: SerializedGraphData = {
   nodes: Object.fromEntries(
     Object.entries({
       'arn:aws:s3:us-east-1:123456789012:example-advisor-dev-serverlessdeploymentbucket-192uxncrxkb7k':
@@ -99,606 +99,606 @@ export const mockResults2: SerializedGraphData = {
         {
           arn: 'arn:aws:s3:us-east-1:123456789012:example-authorization-de-serverlessdeploymentbuck-wk1zu2qhbgxq',
         },
-      'arn:aws:s3:us-east-1:123456789012:example-client-dev-serverlessdeploymentbucket-17z37rtj5l1pz':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-client-dev-serverlessdeploymentbucket-17z37rtj5l1pz',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-contract-dev-serverlessdeploymentbucket-l828d10kopik':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-contract-dev-serverlessdeploymentbucket-l828d10kopik',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailtestbucket28902521-5h5wckacds5p':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailtestbucket28902521-5h5wckacds5p',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-filebucketcdfcd6de-1mscqd4k9ajrb':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-filebucketcdfcd6de-1mscqd4k9ajrb',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-serverlessdeploymentbucket-124enzjrdoxsw':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-serverlessdeploymentbucket-124enzjrdoxsw',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-testbucket560b80bc-m21mtdgulyzi':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testbucket560b80bc-m21mtdgulyzi',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-testversionedbucketc2efb22d-r0h920zdmvlo':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testversionedbucketc2efb22d-r0h920zdmvlo',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedtestbucket512ca11c-13jjng3e740zx':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedtestbucket512ca11c-13jjng3e740zx',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-amazon-dev-serverlessdeploymentbucket-16ms16744lfcc':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-amazon-dev-serverlessdeploymentbucket-16ms16744lfcc',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-google-dev-serverlessdeploymentbucket-1d69a3pt2x4s8':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-google-dev-serverlessdeploymentbucket-1d69a3pt2x4s8',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-signature-dev-serverlessdeploymentbucket-1n91d1q6o51fu':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-signature-dev-serverlessdeploymentbucket-1n91d1q6o51fu',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-microsoft-dev-serverlessdeploymentbucket-1009whoitzyw8':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-microsoft-dev-serverlessdeploymentbucket-1009whoitzyw8',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-template-documen-serverlessdeploymentbuck-1dmxkm0nq85yt':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-template-documen-serverlessdeploymentbuck-1dmxkm0nq85yt',
-        },
-      'arn:aws:s3:us-east-1:123456789012:example-user-dev-serverlessdeploymentbucket-1mvdqpth97t27':
-        {
-          arn: 'arn:aws:s3:us-east-1:123456789012:example-user-dev-serverlessdeploymentbucket-1mvdqpth97t27',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleDocsToSign_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleDocsToSign_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-dispatchPfloAnalysis':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-dispatchPfloAnalysis',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extConvertPrctsToClients_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extConvertPrctsToClients_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-mergeMicrosoftSupports':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-mergeMicrosoftSupports',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAlertActions':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAlertActions',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateOperationSignature_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateOperationSignature_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportWarningStatus_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportWarningStatus_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsByCategory':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsByCategory',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connectAuthorizer':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connectAuthorizer',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-genAlctnRiskRprt':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-genAlctnRiskRprt',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorUser':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorUser',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-createPflo':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-createPflo',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaClientIds_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaClientIds_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieDocsToSig_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieDocsToSig_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateSupportsInamazon':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateSupportsInamazon',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorCgntoUsr':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorCgntoUsr',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportDetails':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportDetails',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-assgnCgntoUsrToGrp':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-assgnCgntoUsrToGrp',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-searchOMSupportOrIndex':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-searchOMSupportOrIndex',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-contractEventFanout_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-contractEventFanout_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-updateAlert':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-updateAlert',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk',
-        },
-      'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fetchGazpromVieSCPIAnnex_':
-        {
-          arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fetchGazpromVieSCPIAnnex_',
-        },
+      // 'arn:aws:s3:us-east-1:123456789012:example-client-dev-serverlessdeploymentbucket-17z37rtj5l1pz':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-client-dev-serverlessdeploymentbucket-17z37rtj5l1pz',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-contract-dev-serverlessdeploymentbucket-l828d10kopik':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-contract-dev-serverlessdeploymentbucket-l828d10kopik',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailbucket843a740f-w7l4mb25ihsw',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailtestbucket28902521-5h5wckacds5p':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-emailtestbucket28902521-5h5wckacds5p',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-filebucketcdfcd6de-1mscqd4k9ajrb':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-filebucketcdfcd6de-1mscqd4k9ajrb',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-serverlessdeploymentbucket-124enzjrdoxsw':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-serverlessdeploymentbucket-124enzjrdoxsw',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testbucket560b80bc-m21mtdgulyzi':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testbucket560b80bc-m21mtdgulyzi',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testversionedbucketc2efb22d-r0h920zdmvlo':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-testversionedbucketc2efb22d-r0h920zdmvlo',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedfilebucket4b15d6a0-1n9drmjeu6bvo',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedtestbucket512ca11c-13jjng3e740zx':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-unversionedtestbucket512ca11c-13jjng3e740zx',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-core-dev-versionedfilebucketf1777025-abc3fdzcez9i',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-amazon-dev-serverlessdeploymentbucket-16ms16744lfcc':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-amazon-dev-serverlessdeploymentbucket-16ms16744lfcc',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-google-dev-serverlessdeploymentbucket-1d69a3pt2x4s8':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-google-dev-serverlessdeploymentbucket-1d69a3pt2x4s8',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-signature-dev-serverlessdeploymentbucket-1n91d1q6o51fu':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-signature-dev-serverlessdeploymentbucket-1n91d1q6o51fu',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-microsoft-dev-serverlessdeploymentbucket-1009whoitzyw8':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-microsoft-dev-serverlessdeploymentbucket-1009whoitzyw8',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-template-documen-serverlessdeploymentbuck-1dmxkm0nq85yt':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-template-documen-serverlessdeploymentbuck-1dmxkm0nq85yt',
+      //   },
+      // 'arn:aws:s3:us-east-1:123456789012:example-user-dev-serverlessdeploymentbucket-1mvdqpth97t27':
+      //   {
+      //     arn: 'arn:aws:s3:us-east-1:123456789012:example-user-dev-serverlessdeploymentbucket-1mvdqpth97t27',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-chckPldPblshImprtEvt_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getCgpoClntIdsFrmJsn_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClient_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getRegulatoryDocuments_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnOtherDocuments_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestDocDownloadUrl_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-addexampleIdToOMContract',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fillAdviceReportProof_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleFatca_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOnGoingSbscptnSgn_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleDocsToSign_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateNestleDocsToSign_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onProfileFormCompleted_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClientUser_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestOprtSpprtsValidatio_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieAllocAnne_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadGazpromOprtnZipSftp_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-OMUpdateOperationStatus_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-copyPartnerRegulatoryDoc_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateAdvisor',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createNote_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-createOrUpdateOMClient',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateQpiPdfForm',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSupports_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-invalidatePrvdrOperation_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-ctActFrSearchOnCtUpdated_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSubscription_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-processValidationEmail',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genSubscriptionRiskMapping_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-dispatchPfloAnalysis':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-dispatchPfloAnalysis',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtnSlip_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientUserStatus_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrtnrRltns_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubInitAllocAnalysis',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFATCA_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncProfileToC2i_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extConvertPrctsToClients_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extConvertPrctsToClients_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCgntoGrp',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-internalUpdateSignature',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateRegDocSignatures_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMContract',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-createClientUser_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestCgpoJsonUrl',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFATCA_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateArtmsVieARPdfForm',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getSubscription_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validateOperationSupports_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateProspectIntoClient',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-syncQpiToC2i_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-archiveClient_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genOperationSepaMandate_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extSyncClient_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateAdvRprt_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-runMigrations',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getOperationSignedDocs_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-mergeMicrosoftSupports':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-mergeMicrosoftSupports',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAlertActions':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getAlertActions',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-requestFirmsDownloadUrl',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateOperationSignature_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateOperationSignature_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-dispatchPdfFormGnrtRqstd',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportWarningStatus_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-putCgpoImportWarningStatus_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsByCategory':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportsByCategory',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateGazpromVieFIC_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-createRegDocSignature',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connectAuthorizer':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-connectAuthorizer',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-genPSGCmplxPrdct_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-updateSubscriptionSignatur_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-getAdvisor',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-genMergedPrecontractDoc',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteClientUser_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-genAlctnRiskRprt':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-genAlctnRiskRprt',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-createContract_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-disableUser',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateSvnrCtct_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getMicrosoftProspectId_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-syncPreValidationRequest',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-saveFinancialReport',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorUser':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorUser',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientNoteUploadUrl_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-dispatchAggregate',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-startOperation_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-createPflo':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-facebook-dev-createPflo',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-uploadOprtSlipWithCpxPdcts',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-sendMessage_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getamazonDocument',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-dispatchDocsRegen_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getQpi_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-deleteAdvisorUser',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-requestClientDocUploadUrl_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getClientsForSearch_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaClientIds_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getAlibabaClientIds_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listAdvisors',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-assignOperator_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateOprtAthmsVieFIC_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieDocsToSig_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-generateArthmsVieDocsToSig_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onQpiScoreComputed_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateSupportsInamazon':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-microsoft-dev-updateSupportsInamazon',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onClientUserDeleted_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-setContractAuthorization',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorCgntoUsr':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createOperatorCgntoUsr',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-getContractActsForSearch_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listOperators',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportDetails':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMSupportDetails',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generatePSGARPdfForm',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-deleteSignedDocuments_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-createAdvisorCognitoUser',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-assgnCgntoUsrToGrp':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-assgnCgntoUsrToGrp',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-aggregateClntPrntChldRltns_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-extGetSwagger_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-saveOperationOnSigned_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestAddedUploadUrl_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-user-dev-resendTemporaryPassword',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-generateMissionLetterPdfForm',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-deleteNote_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-onGoingSignatureProjection_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-cltFrSearchOnClientCreated_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-updateFirm',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateClient_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dangerousCleanData',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listPdfForms',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-requestClientDocUploadUrl_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-searchOMSupportOrIndex':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-searchOMSupportOrIndex',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-OMArbitrationInProgress',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-getOMClientPortfolio',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-contractEventFanout_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-contractEventFanout_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-updateQpi_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-validatePrvdrOperation_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-client-dev-getOnGoingSignature_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-updateAlert':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-amazon-dev-updateAlert',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-core-dev-dispatchUnversndFileUploaded',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-projectOperation_',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-advisor-dev-listFirms',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-signature-dev-updatePreValNetflixClbk',
+      //   },
+      // 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fetchGazpromVieSCPIAnnex_':
+      //   {
+      //     arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-fetchGazpromVieSCPIAnnex_',
+      //   },
       'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftSbcptn':
         {
           arn: 'arn:aws:lambda:us-east-1:123456789012:function:example-contract-dev-autoValidateMicrosoftSbcptn',
@@ -1561,20 +1561,37 @@ export const mockResults2: SerializedGraphData = {
             maxDuration: Math.floor(Math.random() * 1000),
           },
         };
-
+        const random = Math.random();
         return [
           key,
           {
             ...value,
             stats,
-            cloudformationStack: Math.random() > 0.5 ? 'stack-1' : 'stack-2',
+            cloudformationStack: random > 0.5 ? 'stack-1' : 'stack-2',
             tags:
               Math.random() > 0.5
                 ? { 'tag-key': 'tag-value-1' }
                 : { 'tag-key': 'tag-value-2' },
-            vpcConfig: {
-              VpcId: Math.random() > 0.5 ? 'vpc-1' : 'vpc-2',
-            },
+            vpcConfig:
+              Math.random() > 0.5
+                ? {
+                    VpcId: 'vpc-1',
+                    SecurityGroupIds:
+                      random > 0.3
+                        ? random > 0.6
+                          ? ['sg-1', 'sg-2']
+                          : ['sg-2']
+                        : ['sg-1'],
+                  }
+                : {
+                    VpcId: 'vpc-2',
+                    SecurityGroupIds:
+                      random > 0.3
+                        ? random > 0.6
+                          ? ['sg-3', 'sg-4']
+                          : ['sg-4']
+                        : ['sg-3'],
+                  },
           },
         ];
       }

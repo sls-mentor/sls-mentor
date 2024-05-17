@@ -30,4 +30,9 @@ export type ClusterPosition = {
   x: number;
   y: number;
   radius: number;
+  securityGroups?: {
+    securityGroupRadius: number;
+    securityGroupX: number;
+    securityGroupY: number;
+  }[];
 };

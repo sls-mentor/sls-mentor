@@ -1,12 +1,13 @@
+import { CloudformationStackARN } from '@sls-mentor/arn';
+import { Edge } from '@sls-mentor/graph-core';
 import { Dispatch, SetStateAction } from 'react';
+import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
+import { computeClusters, getNodeCluster } from './computeClusters';
 import { GraphState, NODE_RADIUS } from './getInitialState';
 import { rankingFunctions } from './ranking';
 import { update } from './update';
+import { updateVpc } from './updateVpc';
 import { OFFSET, updateWithRank } from './updateWithRank';
-import { NodeVisibility, NodeWithLocationAndRank, RankingKey } from '../types';
-import { computeClusters, getNodeCluster } from './computeClusters';
-import { Edge } from '@sls-mentor/graph-core';
-import { CloudformationStackARN } from '@sls-mentor/arn';
 
 const computePartialVisibility = (
   nodes: Record<string, NodeWithLocationAndRank>,
@@ -138,7 +139,12 @@ export const setupRefresh = ({
     clusteringByTagValue !== undefined ||
     enableVpcClustering;
 
-  const updateFn = ranking === undefined ? update : updateWithRank;
+  const updateFn =
+    ranking === undefined
+      ? enableVpcClustering
+        ? updateVpc
+        : update
+      : updateWithRank;
 
   if (ranking !== undefined) {
     const rankFn = rankingFunctions[ranking];
