@@ -15,16 +15,25 @@ const getRepulsionForVPC = ({
 }): { repulsionMultiplier: number } => {
   const node1SecurityGroups = node1.vpcConfig?.SecurityGroupIds;
   const node1VpcId = node1.vpcConfig?.VpcId;
-  if (node1SecurityGroups === undefined || node1VpcId === undefined) {
-    // node is not in VPC
-    return { repulsionMultiplier: 1 };
+
+  if (node1SecurityGroups === undefined) {
+    if (node1VpcId === undefined) {
+      // node is not in VPC
+      return { repulsionMultiplier: 1 };
+    }
+    // node is in VPC but not in security group
+    return { repulsionMultiplier: 0.3 };
   }
 
   const node2SecurityGroups = node2.vpcConfig?.SecurityGroupIds;
   const node2VpcId = node2.vpcConfig?.VpcId;
-  if (node2SecurityGroups === undefined || node2VpcId === undefined) {
-    // node is not in VPC
-    return { repulsionMultiplier: 1 };
+  if (node2SecurityGroups === undefined) {
+    if (node2VpcId === undefined) {
+      // node is not in VPC
+      return { repulsionMultiplier: 1 };
+    }
+    // node is in VPC but not in security group
+    return { repulsionMultiplier: 0.3 };
   }
 
   const securityGroupIntersection = node1SecurityGroups.filter(sg =>
@@ -251,11 +260,7 @@ export const updateVpc = ({
     node.ax = 0;
     node.ay = 0;
 
-    if (
-      node.vpcConfig === undefined ||
-      node.vpcConfig.VpcId === undefined ||
-      node.vpcConfig.SecurityGroupIds === undefined
-    ) {
+    if (node.vpcConfig === undefined || node.vpcConfig.VpcId === undefined) {
       return;
     }
 
@@ -278,6 +283,10 @@ export const updateVpc = ({
     );
 
     cluster.securityGroups = [];
+
+    if (node.vpcConfig.SecurityGroupIds === undefined) {
+      return;
+    }
 
     const securityGroupClusters = node.vpcConfig.SecurityGroupIds.map(
       securityGroup => vpcSecurityGroupClusters[securityGroup],
