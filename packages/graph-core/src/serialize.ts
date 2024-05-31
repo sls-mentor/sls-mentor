@@ -29,6 +29,8 @@ export const serializeGraphData = (
   return {
     nodes: serializedNodes,
     edges,
+    tags: graphData.tags,
+    cloudformationStacks: graphData.cloudformationStacks,
   };
 };
 
@@ -71,5 +73,7 @@ export const deserializeGraphData = (
   return {
     nodes: deserializedNodes,
     edges,
+    tags: serializedGraphData.tags,
+    cloudformationStacks: serializedGraphData.cloudformationStacks,
   };
 };

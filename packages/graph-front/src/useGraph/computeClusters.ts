@@ -1,10 +1,10 @@
-import { ClusterPosition, NodeWithLocationAndRank } from '../types';
+import { ClusterPosition, NodeWithLocation } from '../types';
 
 const computeTagClusters = ({
   nodes,
   clusteringByTagValue,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
   clusteringByTagValue: string;
 }): Record<string, ClusterPosition> => {
   const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
@@ -53,7 +53,7 @@ const computeTagClusters = ({
 const computeCloudformationStackClusters = ({
   nodes,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
 }): Record<string, ClusterPosition> => {
   const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
     (acc, node) => {
@@ -99,7 +99,7 @@ const computeCloudformationStackClusters = ({
 const computeVpcClusters = ({
   nodes,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
 }): Record<string, ClusterPosition> => {
   const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
     (acc, node) => {
@@ -151,7 +151,7 @@ export const computeClusters = ({
   enableCloudformationClustering,
   enableVpcClustering,
 }: {
-  nodes: Record<string, NodeWithLocationAndRank>;
+  nodes: Record<string, NodeWithLocation>;
   clusteringByTagValue: string | undefined;
   enableCloudformationClustering: boolean;
   enableVpcClustering: boolean;
@@ -177,7 +177,7 @@ export const getNodeCluster = ({
   enableCloudformationClustering,
   enableVpcClustering,
 }: {
-  node: NodeWithLocationAndRank;
+  node: NodeWithLocation;
   clusteringByTagValue: string | undefined;
   enableCloudformationClustering: boolean;
   enableVpcClustering: boolean;

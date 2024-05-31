@@ -82,6 +82,17 @@ export const mockResults2: SerializedGraphData = {
       warnings: [CloudFormationWarnings.CircularDependencies],
     },
   ],
+  tags: [
+    {
+      Key: 'tag-key-1',
+      Value: 'tag-value-1',
+    },
+    {
+      Key: 'tag-key-2',
+      Value: 'tag-value-2',
+    },
+  ],
+  cloudformationStacks: ['CloudFormationStack1', 'CloudFormationStack2'],
 };
 
 export const mockResults: SerializedGraphData = {
@@ -5752,4 +5763,15 @@ export const mockResults: SerializedGraphData = {
       warnings: [],
     },
   ],
+  tags: [
+    {
+      Key: 'tag-key-1',
+      Value: 'tag-value-1',
+    },
+    {
+      Key: 'tag-key-2',
+      Value: 'tag-value-2',
+    },
+  ],
+  cloudformationStacks: ['CloudFormationStack1', 'CloudFormationStack2'],
 };
