@@ -6,7 +6,7 @@ import { useGraph } from './useGraph';
 import { MenuState } from './types';
 
 const VPC_CLUSTER_MARGIN = 50;
-const VPC_SECURITY_GROUP_CLUSTER_MARGIN = 15;
+const VPC_SECURITY_GROUP_CLUSTER_MARGIN = 25;
 const VPC_COLOR = '#8011ea';
 const VPC_SECURITY_GROUP_COLOR = '#da79f7';
 
@@ -140,9 +140,11 @@ export const LiveGraph = ({
                           backgroundColor: enableVpcClustering
                             ? VPC_COLOR
                             : '#fffa',
+                          color: 'white',
                           borderRadius: 5 * zoomLevel,
-                          transform: 'translate(-50%, 10%)',
                           left: nodeRadius * zoomLevel,
+                          top: (radius + VPC_CLUSTER_MARGIN) * zoomLevel,
+                          transform: 'translateX(-50%)',
                           width: 'max-content',
                           padding: 1,
                         }}
