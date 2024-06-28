@@ -104,7 +104,6 @@ const computeVpcClusters = ({
   const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
     (acc, node) => {
       const vpcId = node.vpcConfig?.VpcId;
-      console.log(vpcId);
       if (vpcId === undefined) {
         return acc;
       }

@@ -150,6 +150,7 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
                   setMenu(m => ({
                     ...m,
                     enableCloudformationClustering: false,
+                    enableVpcClustering: false,
                     clusteringByTagValue: undefined,
                   }));
                 }}
@@ -162,6 +163,7 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
                     ...m,
                     enableCloudformationClustering: true,
                     clusteringByTagValue: undefined,
+                    enableVpcClustering: false,
                   }));
                 }}
               >
@@ -175,6 +177,7 @@ export const Menu = ({ setMenu, menu, cfnStacks, tags }: Props) => {
                       ...m,
                       enableCloudformationClustering: false,
                       clusteringByTagValue: key,
+                      enableVpcClustering: false,
                     }));
                   }}
                 >

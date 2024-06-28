@@ -19,7 +19,7 @@ const getRepulsionForVPC = ({
   if (node1SecurityGroups === undefined) {
     if (node1VpcId === undefined) {
       // node is not in VPC
-      return { repulsionMultiplier: 1 };
+      return { repulsionMultiplier: 5 };
     }
     // node is in VPC but not in security group
     return { repulsionMultiplier: 0.3 };
@@ -30,7 +30,7 @@ const getRepulsionForVPC = ({
   if (node2SecurityGroups === undefined) {
     if (node2VpcId === undefined) {
       // node is not in VPC
-      return { repulsionMultiplier: 1 };
+      return { repulsionMultiplier: 5 };
     }
     // node is in VPC but not in security group
     return { repulsionMultiplier: 0.3 };
@@ -49,9 +49,9 @@ const getRepulsionForVPC = ({
           securityGroupIntersection.length === node1SecurityGroups.length &&
           securityGroupIntersection.length === node2SecurityGroups.length
           ? 0.3
-          : 0.5
+          : 1
         : 1
-      : 2;
+      : 8;
 
   return { repulsionMultiplier };
 };
@@ -138,6 +138,7 @@ export const updateVpc = ({
     const c = vpcClusters[cluster];
     if (c !== undefined) {
       c.radius = 0;
+      c.securityGroups = [];
     }
   });
 
@@ -206,6 +207,17 @@ export const updateVpc = ({
 
     const attractionMultiplier = 0.7;
 
+    if (node1.vpcConfig?.VpcId !== undefined) {
+      const cluster = vpcClusters[node1.vpcConfig.VpcId];
+
+      if (cluster === undefined) {
+        return;
+      }
+
+      node1.ax += springConstant * (cluster.x - node1.x) * attractionMultiplier;
+      node1.ay += springConstant * (cluster.y - node1.y) * attractionMultiplier;
+    }
+
     if (node1.arn.toString() !== clickedNodeArn && !node1.pinned) {
       node1.ax -= springConstant * node1.x * attractionMultiplier;
       node1.ay -= springConstant * node1.y * attractionMultiplier;
@@ -226,39 +238,33 @@ export const updateVpc = ({
   });
 
   Object.values(nodes).forEach(node => {
-    if (node.pinned) {
-      return;
-    }
+    if (
+      !node.pinned &&
+      node.visibility !== 'None' &&
+      node.arn.toString() !== clickedNodeArn
+    ) {
+      const accelerationSquared = node.ax * node.ax + node.ay * node.ay;
+      if (accelerationSquared > maxAcceleration * maxAcceleration) {
+        const accelerationModule = Math.sqrt(accelerationSquared);
+        node.ax /= accelerationModule / maxAcceleration;
+        node.ay /= accelerationModule / maxAcceleration;
+      }
 
-    if (node.visibility === 'None') {
-      return;
-    }
+      node.vx += node.ax;
+      node.vy += node.ay;
 
-    if (node.arn.toString() === clickedNodeArn) {
+      node.vx *= 1 - resistanceConstant;
+      node.vy *= 1 - resistanceConstant;
+
+      node.x += node.vx;
+      node.y += node.vy;
+
+      node.ax = 0;
+      node.ay = 0;
+    } else if (node.arn.toString() === clickedNodeArn) {
       node.x = mouseX / zoomLevel;
       node.y = mouseY / zoomLevel;
-
-      return;
     }
-
-    const accelerationSquared = node.ax * node.ax + node.ay * node.ay;
-    if (accelerationSquared > maxAcceleration * maxAcceleration) {
-      const accelerationModule = Math.sqrt(accelerationSquared);
-      node.ax /= accelerationModule / maxAcceleration;
-      node.ay /= accelerationModule / maxAcceleration;
-    }
-
-    node.vx += node.ax;
-    node.vy += node.ay;
-
-    node.vx *= 1 - resistanceConstant;
-    node.vy *= 1 - resistanceConstant;
-
-    node.x += node.vx;
-    node.y += node.vy;
-
-    node.ax = 0;
-    node.ay = 0;
 
     if (node.vpcConfig === undefined || node.vpcConfig.VpcId === undefined) {
       return;
@@ -281,8 +287,6 @@ export const updateVpc = ({
           (node.y - cluster.y) * (node.y - cluster.y),
       ),
     );
-
-    cluster.securityGroups = [];
 
     if (node.vpcConfig.SecurityGroupIds === undefined) {
       return;
