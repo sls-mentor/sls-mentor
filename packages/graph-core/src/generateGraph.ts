@@ -5,7 +5,11 @@ import {
   getRefinedArn,
   LambdaFunctionARN,
 } from '@sls-mentor/arn';
-import { fetchAccountIdAndRegion, listAllResources } from '@sls-mentor/aws-api';
+import {
+  fetchAccountIdAndRegion,
+  fetchVpcs,
+  listAllResources,
+} from '@sls-mentor/aws-api';
 
 import { getRDSNodes } from 'nodes/rds';
 import { getS3Nodes } from 'nodes/s3';
@@ -62,6 +66,8 @@ export const generateGraph = async ({
     .map(({ arn }) => arn)
     .filter(arn => !servicesToHide.includes(arn.service));
 
+  const vpcs = await fetchVpcs();
+
   return {
     nodes: {
       ...relevantArns.reduce(
@@ -99,5 +105,8 @@ export const generateGraph = async ({
     edges,
     tags: tags ?? [],
     cloudformationStacks: cloudformationStacks ?? [],
+    vpcConfig: {
+      vpcs: Object.fromEntries(vpcs.map(vpc => [vpc.VpcId ?? '', vpc])),
+    },
   };
 };

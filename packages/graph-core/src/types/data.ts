@@ -4,6 +4,7 @@ import {
   S3BucketARN,
   SupportedARN,
 } from '@sls-mentor/arn';
+import { VpcInfo } from '@sls-mentor/aws-api';
 
 import { HttpApiWarnings, RestApiWarnings } from 'edges/apiGateway/types';
 import { BaseEdge } from 'edges/types';
@@ -53,6 +54,7 @@ export type GraphData = {
   edges: Edge[];
   tags: { Key?: string; Value?: string }[];
   cloudformationStacks: string[];
+  vpcConfigs: { [vpcId: string]: VpcInfo };
 };
 
 export type SerializedGraphData = {
