@@ -1,11 +1,12 @@
 import {
   paginateGetResources,
-  ResourceGroupsTaggingAPIClient,
   ResourceTagMapping,
   Tag,
 } from '@aws-sdk/client-resource-groups-tagging-api';
 
 import { CustomARN } from '@sls-mentor/arn';
+
+import { resourceGroupsTaggingClient } from 'clients';
 
 export const listAllResourcesFromTags = async (
   tagsToFilter: {
@@ -13,11 +14,9 @@ export const listAllResourcesFromTags = async (
     Value?: string;
   }[],
 ): Promise<{ arn: CustomARN; tags: Tag[] }[]> => {
-  const tagClient = new ResourceGroupsTaggingAPIClient({});
-
   const taggedResources: ResourceTagMapping[] = [];
   for await (const page of paginateGetResources(
-    { client: tagClient },
+    { client: resourceGroupsTaggingClient },
     {
       TagFilters:
         tagsToFilter.length > 0
