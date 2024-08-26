@@ -7,18 +7,26 @@ import { rdsClient } from 'clients';
 export const listRdsInstances = async (): Promise<RdsInstanceARN[]> => {
   const rdsInstances: DBInstance[] = [];
 
-  for await (const resources of paginateDescribeDBInstances(
-    { client: rdsClient },
-    {},
-  )) {
-    rdsInstances.push(...(resources.DBInstances ?? []));
-  }
+  try {
+    for await (const resources of paginateDescribeDBInstances(
+      { client: rdsClient },
+      {},
+    )) {
+      rdsInstances.push(...(resources.DBInstances ?? []));
+    }
 
-  return rdsInstances
-    .map(({ DBInstanceIdentifier }) => DBInstanceIdentifier)
-    .filter(
-      (DBInstanceIdentifier): DBInstanceIdentifier is string =>
-        DBInstanceIdentifier !== undefined,
-    )
-    .map(RdsInstanceARN.fromRdsInstanceIdentifier);
+    return rdsInstances
+      .map(({ DBInstanceIdentifier }) => DBInstanceIdentifier)
+      .filter(
+        (DBInstanceIdentifier): DBInstanceIdentifier is string =>
+          DBInstanceIdentifier !== undefined,
+      )
+      .map(RdsInstanceARN.fromRdsInstanceIdentifier);
+  } catch (e) {
+    console.log('There was an issue while getting RDSInstances: ', {
+      e,
+    });
+
+    return [];
+  }
 };

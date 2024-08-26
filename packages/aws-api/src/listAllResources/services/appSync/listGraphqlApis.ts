@@ -1,4 +1,8 @@
-import { GraphqlApi, ListGraphqlApisCommand } from '@aws-sdk/client-appsync';
+import {
+  AccessDeniedException,
+  GraphqlApi,
+  ListGraphqlApisCommand,
+} from '@aws-sdk/client-appsync';
 
 import { AppSyncApiARN } from '@sls-mentor/arn';
 
@@ -9,17 +13,32 @@ export const listGraphqlApis = async (): Promise<AppSyncApiARN[]> => {
 
   let nextToken: string | undefined;
 
-  do {
-    const resources = await appSyncClient.send(
-      new ListGraphqlApisCommand({ nextToken }),
-    );
+  try {
+    do {
+      const resources = await appSyncClient.send(
+        new ListGraphqlApisCommand({ nextToken }),
+      );
 
-    appSyncApis.push(...(resources.graphqlApis ?? []));
-    nextToken = resources.nextToken;
-  } while (nextToken !== undefined);
+      appSyncApis.push(...(resources.graphqlApis ?? []));
+      nextToken = resources.nextToken;
+    } while (nextToken !== undefined);
 
-  return appSyncApis
-    .map(({ apiId }) => apiId)
-    .filter((apiId): apiId is string => apiId !== undefined)
-    .map(AppSyncApiARN.fromAppSyncApiId);
+    return appSyncApis
+      .map(({ apiId }) => apiId)
+      .filter((apiId): apiId is string => apiId !== undefined)
+      .map(AppSyncApiARN.fromAppSyncApiId);
+  } catch (e) {
+    if (e instanceof AccessDeniedException) {
+      console.log(
+        '403: You are not allowed to request AppSync GraphqlApis, this resource will be ignored in the report',
+      );
+
+      return [];
+    }
+    console.log('There was an issue while getting AppSyncGraphqlApis: ', {
+      e,
+    });
+
+    return [];
+  }
 };

@@ -48,9 +48,17 @@ export const listCloudformationStacks = async (): Promise<
 export const listCloudformationRootStacks = async (): Promise<
   CloudformationStackARN[]
 > => {
-  const stacks = await listCloudformationStacks();
+  try {
+    const stacks = await listCloudformationStacks();
 
-  return stacks
-    .filter(stack => stack.rootStackArn === undefined)
-    .map(stack => stack.stackArn);
+    return stacks
+      .filter(stack => stack.rootStackArn === undefined)
+      .map(stack => stack.stackArn);
+  } catch (e) {
+    console.log('There was an issue while getting CloudformationStack: ', {
+      e,
+    });
+
+    return [];
+  }
 };
