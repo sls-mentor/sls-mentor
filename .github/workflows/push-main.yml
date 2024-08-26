@@ -22,9 +22,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 7.22.0
+      - uses: pnpm/action-setup@v4
       - uses: actions/cache@v2
         with:
           path: ~/.pnpm
