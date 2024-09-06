@@ -31,6 +31,7 @@ export const serializeGraphData = (
     edges,
     tags: graphData.tags,
     cloudformationStacks: graphData.cloudformationStacks,
+    vpcConfig: graphData.vpcConfig,
   };
 };
 
@@ -75,5 +76,6 @@ export const deserializeGraphData = (
     edges,
     tags: serializedGraphData.tags,
     cloudformationStacks: serializedGraphData.cloudformationStacks,
+    vpcConfig: serializedGraphData.vpcConfig,
   };
 };
