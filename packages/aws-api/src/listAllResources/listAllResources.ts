@@ -54,6 +54,7 @@ export const listAllResources = async ({
     )
     .filter(
       resource =>
+        resource.arn.service === 'iam' || // Tagging client does not support IAM
         (tagsToFilter ?? []).length === 0 ||
         tagsToFilter?.some(tag =>
           resource.tags.some(
