@@ -3,6 +3,7 @@ import { CustomARN, LambdaFunctionARN } from '@sls-mentor/arn';
 import {
   executeQuery,
   fetchAllLambdaConfigurations,
+  fetchLambdaConfigurationByArn,
 } from '@sls-mentor/aws-api';
 
 import { NodeBase } from 'types/helpers';
@@ -40,14 +41,18 @@ const getLogInsightsData = async (
 > =>
   Promise.all(
     lambdaFunctions.map(async arn => {
-      const functionName = arn.getFunctionName();
-
       const startTime = new Date();
       startTime.setDate(startTime.getDate() - 7);
       const endTime = new Date();
 
+      const conf = await fetchLambdaConfigurationByArn(arn);
+
+      const logGroupName =
+        conf.configuration.LoggingConfig?.LogGroup ??
+        `/aws/lambda/${arn.getFunctionName()}`;
+
       const results = await executeQuery({
-        logGroupName: `/aws/lambda/${functionName}`,
+        logGroupName,
         startTime,
         endTime,
         filter: 'REPORT',
