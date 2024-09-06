@@ -3,9 +3,7 @@ description: 'Install monorepo dependencies using pnpm'
 runs:
   using: 'composite'
   steps:
-    - uses: pnpm/action-setup@v2.2.4
-      with:
-        version: 7.22.0
+    - uses: pnpm/action-setup@v4
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v3
       with:
