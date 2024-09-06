@@ -93,6 +93,10 @@ export const mockResults2: SerializedGraphData = {
     },
   ],
   cloudformationStacks: ['CloudFormationStack1', 'CloudFormationStack2'],
+  vpcConfig: {
+    vpcs: {},
+    subnets: {},
+  },
 };
 
 export const mockResults: SerializedGraphData = {
@@ -5774,4 +5778,8 @@ export const mockResults: SerializedGraphData = {
     },
   ],
   cloudformationStacks: ['CloudFormationStack1', 'CloudFormationStack2'],
+  vpcConfig: {
+    vpcs: {},
+    subnets: {},
+  },
 };

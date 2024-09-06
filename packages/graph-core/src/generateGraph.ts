@@ -5,7 +5,12 @@ import {
   getRefinedArn,
   LambdaFunctionARN,
 } from '@sls-mentor/arn';
-import { fetchAccountIdAndRegion, listAllResources } from '@sls-mentor/aws-api';
+import {
+  fetchAccountIdAndRegion,
+  fetchSubnetGroups,
+  fetchVpcs,
+  listAllResources,
+} from '@sls-mentor/aws-api';
 
 import { getRDSNodes } from 'nodes/rds';
 import { getS3Nodes } from 'nodes/s3';
@@ -46,6 +51,8 @@ export const generateGraph = async ({
     s3BucketNodes,
     rdsNodes,
     natGatewayNodes,
+    vpcs,
+    subnets,
   ] = await Promise.all([
     getEdges(
       resources.map(({ arn }) => arn),
@@ -56,6 +63,8 @@ export const generateGraph = async ({
     getS3Nodes(resources),
     getRDSNodes(resources),
     getNatGatewayNodes(resources),
+    fetchVpcs(),
+    fetchSubnetGroups(),
   ]);
 
   const relevantArns = resources
@@ -99,5 +108,11 @@ export const generateGraph = async ({
     edges,
     tags: tags ?? [],
     cloudformationStacks: cloudformationStacks ?? [],
+    vpcConfig: {
+      vpcs: Object.fromEntries(vpcs.map(vpc => [vpc.vpcId, vpc])),
+      subnets: Object.fromEntries(
+        subnets.map(subnet => [subnet.subnetId, subnet]),
+      ),
+    },
   };
 };

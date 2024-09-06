@@ -4,6 +4,11 @@ import {
   S3BucketARN,
   SupportedARN,
 } from '@sls-mentor/arn';
+import {
+  SubnetType,
+  type SubnetWithRouteTable,
+  VpcInfo,
+} from '@sls-mentor/aws-api';
 
 import { HttpApiWarnings, RestApiWarnings } from 'edges/apiGateway/types';
 import { BaseEdge } from 'edges/types';
@@ -53,6 +58,10 @@ export type GraphData = {
   edges: Edge[];
   tags: { Key?: string; Value?: string }[];
   cloudformationStacks: string[];
+  vpcConfig: {
+    vpcs: { [vpcId: string]: VpcInfo };
+    subnets: { [subnetId: string]: SubnetWithRouteTable };
+  };
 };
 
 export type SerializedGraphData = {
@@ -60,4 +69,10 @@ export type SerializedGraphData = {
   edges: Edge[];
   tags: { Key?: string; Value?: string }[];
   cloudformationStacks: string[];
+  vpcConfig: {
+    vpcs: { [vpcId: string]: VpcInfo };
+    subnets: { [subnetId: string]: SubnetWithRouteTable };
+  };
 };
+
+export { SubnetType, SubnetWithRouteTable };
