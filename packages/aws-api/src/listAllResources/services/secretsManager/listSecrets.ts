@@ -7,15 +7,23 @@ import { secretsManagerClient } from 'clients';
 export const listSecrets = async (): Promise<SecretsManagerSecretARN[]> => {
   const secrets = [];
 
-  for await (const page of paginateListSecrets(
-    { client: secretsManagerClient },
-    {},
-  )) {
-    secrets.push(...(page.SecretList ?? []));
-  }
+  try {
+    for await (const page of paginateListSecrets(
+      { client: secretsManagerClient },
+      {},
+    )) {
+      secrets.push(...(page.SecretList ?? []));
+    }
 
-  return secrets
-    .map(({ ARN }) => ARN)
-    .filter((arn): arn is string => arn !== undefined)
-    .map(SecretsManagerSecretARN.fromSecretArn);
+    return secrets
+      .map(({ ARN }) => ARN)
+      .filter((arn): arn is string => arn !== undefined)
+      .map(SecretsManagerSecretARN.fromSecretArn);
+  } catch (e) {
+    console.log('There was an issue while getting SecretsManagerSecrets: ', {
+      e,
+    });
+
+    return [];
+  }
 };

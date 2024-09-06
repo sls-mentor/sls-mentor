@@ -7,9 +7,20 @@ import { sqsClient } from 'clients';
 export const listSqsQueues = async (): Promise<SqsQueueARN[]> => {
   const queueUrls: string[] = [];
 
-  for await (const resources of paginateListQueues({ client: sqsClient }, {})) {
-    queueUrls.push(...(resources.QueueUrls ?? []));
-  }
+  try {
+    for await (const resources of paginateListQueues(
+      { client: sqsClient },
+      {},
+    )) {
+      queueUrls.push(...(resources.QueueUrls ?? []));
+    }
 
-  return queueUrls.map(SqsQueueARN.fromQueueUrl);
+    return queueUrls.map(SqsQueueARN.fromQueueUrl);
+  } catch (e) {
+    console.log('There was an issue while getting SqsQueues: ', {
+      e,
+    });
+
+    return [];
+  }
 };

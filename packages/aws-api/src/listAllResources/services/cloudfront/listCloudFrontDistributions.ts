@@ -11,15 +11,27 @@ export const listCloudFrontDistributions = async (): Promise<
   CloudFrontDistributionARN[]
 > => {
   const cloudFrontDistributions: DistributionSummary[] = [];
+  try {
+    for await (const resources of paginateListDistributions(
+      { client: cloudFrontClient },
+      {},
+    )) {
+      cloudFrontDistributions.push(
+        ...(resources.DistributionList?.Items ?? []),
+      );
+    }
 
-  for await (const resources of paginateListDistributions(
-    { client: cloudFrontClient },
-    {},
-  )) {
-    cloudFrontDistributions.push(...(resources.DistributionList?.Items ?? []));
+    return cloudFrontDistributions.map(({ Id }) =>
+      CloudFrontDistributionARN.fromDistributionId(Id ?? ''),
+    );
+  } catch (e) {
+    console.log(
+      'There was an issue while getting CloudFrontDistributions: ',
+      {
+        e,
+      },
+    );
+
+    return [];
   }
-
-  return cloudFrontDistributions.map(({ Id }) =>
-    CloudFrontDistributionARN.fromDistributionId(Id ?? ''),
-  );
 };

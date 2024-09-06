@@ -12,14 +12,25 @@ export const listStateMachines = async (): Promise<
 > => {
   const stateMachines: StateMachineListItem[] = [];
 
-  for await (const resources of paginateListStateMachines(
-    { client: stepFunctionClient },
-    {},
-  )) {
-    stateMachines.push(...(resources.stateMachines ?? []));
-  }
+  try {
+    for await (const resources of paginateListStateMachines(
+      { client: stepFunctionClient },
+      {},
+    )) {
+      stateMachines.push(...(resources.stateMachines ?? []));
+    }
 
-  return stateMachines.map(({ name }) =>
-    StepFunctionStateMachineARN.fromStateMachineName(name ?? ''),
-  );
+    return stateMachines.map(({ name }) =>
+      StepFunctionStateMachineARN.fromStateMachineName(name ?? ''),
+    );
+  } catch (e) {
+    console.log(
+      'There was an issue while getting StepFunctionStateMachines: ',
+      {
+        e,
+      },
+    );
+
+    return [];
+  }
 };
