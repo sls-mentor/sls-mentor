@@ -1,4 +1,4 @@
-import { GraphData } from '@sls-mentor/graph-core';
+import { GraphData, SubnetType } from '@sls-mentor/graph-core';
 import { ArnAwsIcons } from './assets/iconComponents';
 
 import { Zoom, Footer } from './layout';
@@ -9,6 +9,12 @@ const VPC_CLUSTER_MARGIN = 50;
 const VPC_SECURITY_GROUP_CLUSTER_MARGIN = 25;
 const VPC_COLOR = '#8011ea';
 const VPC_SECURITY_GROUP_COLOR = '#da79f7';
+
+const subnetColor = {
+  [SubnetType.PRIVATE]: '#FF6F59',
+  [SubnetType.PUBLIC]: '#43AA8B',
+  [SubnetType.PRIVATE_WITH_NAT]: '#FEE440',
+};
 
 export const LiveGraph = ({
   data,
@@ -48,6 +54,7 @@ export const LiveGraph = ({
     clusteringByTagValue !== undefined ||
     enableVpcClustering;
 
+  console.log(clusters);
   return (
     <div
       style={{
@@ -60,7 +67,7 @@ export const LiveGraph = ({
         <>
           <>
             {Object.entries(clusters).map(
-              ([name, { x, y, radius, securityGroups }]) => {
+              ([name, { x, y, radius, securityGroups, subnets }]) => {
                 return filterCloudformationStacks.length === 0 ||
                   filterCloudformationStacks.includes(name) ? (
                   <>
@@ -120,6 +127,64 @@ export const LiveGraph = ({
                                   position: 'absolute',
                                 }}
                               />
+                            ),
+                          )}
+                        {subnets &&
+                          subnets.map(
+                            ({ subnetRadius, subnetX, subnetY, type }) => (
+                              <div
+                                style={{
+                                  borderRadius: '50%',
+                                  border: `2px solid ${subnetColor[type]}`,
+                                  borderStyle: 'dashed',
+                                  width:
+                                    (subnetRadius +
+                                      VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                    2 *
+                                    zoomLevel,
+                                  height:
+                                    (subnetRadius +
+                                      VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                    2 *
+                                    zoomLevel,
+                                  left:
+                                    zoomLevel *
+                                      (subnetX -
+                                        subnetRadius -
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) +
+                                    clientWidth / 2,
+                                  top:
+                                    zoomLevel *
+                                      (subnetY -
+                                        subnetRadius -
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) +
+                                    clientHeight / 2,
+                                  position: 'absolute',
+                                }}
+                              >
+                                <p
+                                  style={{
+                                    fontSize: 16,
+                                    color: subnetColor[type],
+                                    borderRadius: 5 * zoomLevel,
+                                    left:
+                                      (subnetRadius +
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                      zoomLevel,
+                                    top:
+                                      (subnetRadius +
+                                        VPC_SECURITY_GROUP_CLUSTER_MARGIN) *
+                                      2 *
+                                      zoomLevel,
+                                    transform: 'translateX(-50%)',
+                                    width: 'max-content',
+                                    padding: 1,
+                                    position: 'absolute',
+                                  }}
+                                >
+                                  {type}
+                                </p>
+                              </div>
                             ),
                           )}
                       </>

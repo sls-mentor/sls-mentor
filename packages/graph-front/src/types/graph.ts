@@ -1,4 +1,4 @@
-import { Node } from '@sls-mentor/graph-core';
+import { Node, SubnetType } from '@sls-mentor/graph-core';
 
 export const NodeVisibility = {
   Full: 'Full',
@@ -30,5 +30,11 @@ export type ClusterPosition = {
     securityGroupRadius: number;
     securityGroupX: number;
     securityGroupY: number;
+  }[];
+  subnets?: {
+    subnetRadius: number;
+    subnetX: number;
+    subnetY: number;
+    type: SubnetType;
   }[];
 };

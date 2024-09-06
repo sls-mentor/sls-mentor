@@ -1,4 +1,4 @@
-import { Edge } from '@sls-mentor/graph-core';
+import { Edge, SubnetType, SubnetWithRouteTable } from '@sls-mentor/graph-core';
 import { ClusterPosition, NodeWithLocation } from '../types';
 
 const SPRING_CONSTANT = 0.003;
@@ -60,43 +60,131 @@ const computeVpcSecurityGroupClusters = ({
   nodes,
 }: {
   nodes: Record<string, NodeWithLocation>;
-}): Record<string, ClusterPosition> => {
-  const clusters = Object.values(nodes).reduce<Record<string, ClusterPosition>>(
-    (acc, node) => {
-      const vpcSecurityGroups = node.vpcConfig?.SecurityGroupIds;
-      if (vpcSecurityGroups === undefined) {
+}): Record<
+  string,
+  {
+    amount: number;
+    x: number;
+    y: number;
+    radius: number;
+    vpcId: string;
+  }
+> => {
+  const clusters = Object.values(nodes).reduce<
+    Record<
+      string,
+      {
+        amount: number;
+        x: number;
+        y: number;
+        radius: number;
+        vpcId: string;
+      }
+    >
+  >((acc, node) => {
+    const vpcSecurityGroups = node.vpcConfig?.SecurityGroupIds;
+    if (vpcSecurityGroups === undefined) {
+      return acc;
+    }
+
+    vpcSecurityGroups.forEach(vpcSecurityGroup => {
+      const cluster = acc[vpcSecurityGroup];
+
+      if (cluster === undefined) {
+        acc[vpcSecurityGroup] = {
+          amount: 1,
+          x: node.x,
+          y: node.y,
+          radius: 0,
+          vpcId: node.vpcConfig?.VpcId ?? '',
+        };
+
         return acc;
       }
 
-      vpcSecurityGroups.forEach(vpcSecurityGroup => {
-        const cluster = acc[vpcSecurityGroup];
+      cluster.amount += 1;
+      cluster.x += node.x;
+      cluster.y += node.y;
 
-        if (cluster === undefined) {
-          acc[vpcSecurityGroup] = {
-            amount: 1,
-            x: node.x,
-            y: node.y,
-            radius: 0,
-          };
-
-          return acc;
-        }
-
-        cluster.amount += 1;
-        cluster.x += node.x;
-        cluster.y += node.y;
-
-        return acc;
-      });
       return acc;
-    },
-    {},
-  );
+    });
+    return acc;
+  }, {});
 
   return Object.entries(clusters).reduce(
     (acc, [vpcSecurityGroupId, cluster]) => ({
       ...acc,
       [vpcSecurityGroupId]: {
+        ...cluster,
+        x: cluster.x / cluster.amount,
+        y: cluster.y / cluster.amount,
+        radius: 0,
+      },
+    }),
+    {},
+  );
+};
+
+const computeSubnetClusters = ({
+  nodes,
+}: {
+  nodes: Record<string, NodeWithLocation>;
+}): Record<
+  string,
+  {
+    amount: number;
+    x: number;
+    y: number;
+    radius: number;
+    vpcId: string;
+  }
+> => {
+  const clusters = Object.values(nodes).reduce<
+    Record<
+      string,
+      {
+        amount: number;
+        x: number;
+        y: number;
+        radius: number;
+        vpcId: string;
+      }
+    >
+  >((acc, node) => {
+    const subnets = node.vpcConfig?.SubnetIds;
+    const vpcId = node.vpcConfig?.VpcId;
+    if (subnets === undefined || vpcId === undefined) {
+      return acc;
+    }
+
+    subnets.forEach(subnet => {
+      const cluster = acc[subnet];
+
+      if (cluster === undefined) {
+        acc[subnet] = {
+          amount: 1,
+          x: node.x,
+          y: node.y,
+          radius: 0,
+          vpcId: node.vpcConfig?.VpcId ?? '',
+        };
+
+        return acc;
+      }
+
+      cluster.amount += 1;
+      cluster.x += node.x;
+      cluster.y += node.y;
+
+      return acc;
+    });
+    return acc;
+  }, {});
+
+  return Object.entries(clusters).reduce(
+    (acc, [subnetId, cluster]) => ({
+      ...acc,
+      [subnetId]: {
         ...cluster,
         x: cluster.x / cluster.amount,
         y: cluster.y / cluster.amount,
@@ -119,6 +207,7 @@ export const updateVpc = ({
   mouseY,
   zoomLevel,
   clusters: vpcClusters,
+  subnets,
 }: {
   nodes: Record<string, NodeWithLocation>;
   edges: Edge[];
@@ -131,14 +220,17 @@ export const updateVpc = ({
   mouseY: number;
   zoomLevel: number;
   clusters: Record<string, ClusterPosition>;
+  subnets: Record<string, SubnetWithRouteTable>;
 }): void => {
   const vpcSecurityGroupClusters = computeVpcSecurityGroupClusters({ nodes });
+  const vpcSubnetClusters = computeSubnetClusters({ nodes });
 
   Object.keys(vpcClusters).forEach(cluster => {
     const c = vpcClusters[cluster];
     if (c !== undefined) {
       c.radius = 0;
       c.securityGroups = [];
+      c.subnets = [];
     }
   });
 
@@ -313,12 +405,50 @@ export const updateVpc = ({
               (node.y - securityGroupCluster.y),
         ),
       );
-
-      cluster.securityGroups?.push({
-        securityGroupX: securityGroupCluster.x,
-        securityGroupY: securityGroupCluster.y,
-        securityGroupRadius: securityGroupCluster.radius,
-      });
     });
+
+    const subnetClusters = node.vpcConfig.SubnetIds?.map(
+      subnet => vpcSubnetClusters[subnet],
+    );
+
+    subnetClusters?.forEach(subnetCluster => {
+      if (subnetCluster === undefined) {
+        return;
+      }
+
+      subnetCluster.x += node.vx / subnetCluster.amount;
+      subnetCluster.y += node.vy / subnetCluster.amount;
+
+      subnetCluster.radius = Math.max(
+        subnetCluster.radius ?? 0,
+        Math.sqrt(
+          (node.x - subnetCluster.x) * (node.x - subnetCluster.x) +
+            (node.y - subnetCluster.y) * (node.y - subnetCluster.y),
+        ),
+      );
+    });
+  });
+
+  Object.entries(vpcClusters).forEach(([id, cluster]) => {
+    if (cluster?.securityGroups !== undefined) {
+      cluster.securityGroups = Object.values(vpcSecurityGroupClusters)
+        .filter(({ vpcId }) => vpcId === id)
+        .map(securityGroupCluster => ({
+          securityGroupX: securityGroupCluster.x,
+          securityGroupY: securityGroupCluster.y,
+          securityGroupRadius: securityGroupCluster.radius,
+        }));
+    }
+
+    if (cluster?.subnets !== undefined) {
+      cluster.subnets = Object.entries(vpcSubnetClusters)
+        .filter(([, { vpcId }]) => vpcId === id)
+        .map(([id, subnetCluster]) => ({
+          subnetX: subnetCluster.x,
+          subnetY: subnetCluster.y,
+          subnetRadius: subnetCluster.radius,
+          type: subnets[id]?.subnetType ?? SubnetType.PRIVATE,
+        }));
+    }
   });
 };

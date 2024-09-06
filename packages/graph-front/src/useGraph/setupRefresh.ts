@@ -188,6 +188,7 @@ export const setupRefresh = ({
         clickedNodeArn,
         clickedNode,
         clusters,
+        subnets,
       }) => {
         updateFn({
           nodes,
@@ -199,6 +200,7 @@ export const setupRefresh = ({
           clusteringEnabled,
           clusters,
           ...(seeCloudformationStacks ? { repulsionConstant: 100 } : {}),
+          subnets,
         });
 
         const connectedArns: Record<string, boolean> = {};
@@ -224,6 +226,7 @@ export const setupRefresh = ({
           clickedNodeArn,
           clickedNode,
           clusters,
+          subnets,
         };
       },
     );
