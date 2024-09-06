@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { ARN, build, parse } from '@aws-sdk/util-arn-parser';
 
 import {
@@ -100,13 +101,16 @@ export class CustomARN implements ARN {
    * @returns
    */
   static fromArnString = (arnString: string): CustomARN | undefined => {
-    const parsedArn = parse(arnString);
+    try {
+      const parsedArn = parse(arnString);
+      if (isArnService(parsedArn.service)) {
+        return new CustomARN(parsedArn.resource, parsedArn.service);
+      }
 
-    if (isArnService(parsedArn.service)) {
-      return new CustomARN(parsedArn.resource, parsedArn.service);
+      return undefined;
+    } catch (e) {
+      return undefined;
     }
-
-    return undefined;
   };
 
   /**
