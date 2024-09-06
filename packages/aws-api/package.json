@@ -43,7 +43,7 @@
     "@aws-sdk/client-ec2": "3.409.0",
     "@aws-sdk/client-eventbridge": "^3.409.0",
     "@aws-sdk/client-iam": "^3.421.0",
-    "@aws-sdk/client-lambda": "^3.409.0",
+    "@aws-sdk/client-lambda": "^3.645.0",
     "@aws-sdk/client-rds": "^3.409.0",
     "@aws-sdk/client-resource-groups-tagging-api": "^3.409.0",
     "@aws-sdk/client-s3": "^3.409.0",
