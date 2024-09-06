@@ -1,4 +1,4 @@
-import { GraphData, Edge } from '@sls-mentor/graph-core';
+import { GraphData, Edge, SubnetWithRouteTable } from '@sls-mentor/graph-core';
 import { ClusterPosition, NodeVisibility, NodeWithLocation } from '../types';
 
 export const NODE_RADIUS = 15;
@@ -16,9 +16,14 @@ export type GraphState = {
   clickedNode: NodeWithLocation | undefined;
   clickedNodeArn: string | undefined;
   clusters: Record<string, ClusterPosition>;
+  subnets: Record<string, SubnetWithRouteTable>;
 };
 
-export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
+export const getInitialState = ({
+  nodes,
+  edges,
+  vpcConfig,
+}: GraphData): GraphState => {
   return {
     nodes: Object.fromEntries(
       Object.entries(nodes)
@@ -54,5 +59,6 @@ export const getInitialState = ({ nodes, edges }: GraphData): GraphState => {
     clickedNode: undefined,
     clickedNodeArn: undefined,
     clusters: {},
+    subnets: vpcConfig.subnets,
   };
 };
