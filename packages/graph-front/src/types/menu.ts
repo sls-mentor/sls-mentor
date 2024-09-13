@@ -7,4 +7,5 @@ export type MenuState = {
   filterTags: Record<string, string[]>;
   seeCloudformationStacks: boolean;
   openStats: boolean;
+  filterByName: string;
 };

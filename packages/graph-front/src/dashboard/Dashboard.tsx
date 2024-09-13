@@ -23,10 +23,12 @@ const getFilteredNodes = ({
   nodes,
   filterTags,
   filterCloudformationStacks,
+  filterByName,
 }: {
   nodes: Record<string, Node>;
   filterTags: Record<string, string[]>;
   filterCloudformationStacks: string[];
+  filterByName: string;
 }) => {
   let filteredNodes: Record<string, Node> = nodes;
 
@@ -48,6 +50,14 @@ const getFilteredNodes = ({
     );
 
     filteredNodes = Object.fromEntries(nodesOfClusters);
+  }
+
+  if (filterByName !== '') {
+    const nodesWithName = Object.entries(filteredNodes).filter(([arn]) =>
+      arn.toLowerCase().includes(filterByName.toLowerCase()),
+    );
+
+    filteredNodes = Object.fromEntries(nodesWithName);
   }
 
   return filteredNodes;
@@ -75,6 +85,7 @@ export const Dashboard = ({
     nodes,
     filterTags: menu.filterTags,
     filterCloudformationStacks: menu.filterCloudformationStacks,
+    filterByName: menu.filterByName,
   });
 
   const nodesByService = Object.values(filteredNodes).reduce(
