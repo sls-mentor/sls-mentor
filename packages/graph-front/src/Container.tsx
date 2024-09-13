@@ -61,6 +61,7 @@ export const Container = ({ data }: { data: GraphData }): JSX.Element => {
           setMenu={setMenu}
           tags={data.tags}
           cloudformationStacks={data.cloudformationStacks}
+          menu={menu}
         />
       ) : (
         <>

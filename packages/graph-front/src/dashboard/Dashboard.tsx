@@ -16,7 +16,42 @@ interface Props {
   setMenu: Dispatch<SetStateAction<MenuState>>;
   tags: { Key?: string; Value?: string }[];
   cloudformationStacks: string[];
+  menu: MenuState;
 }
+
+const getFilteredNodes = ({
+  nodes,
+  filterTags,
+  filterCloudformationStacks,
+}: {
+  nodes: Record<string, Node>;
+  filterTags: Record<string, string[]>;
+  filterCloudformationStacks: string[];
+}) => {
+  let filteredNodes: Record<string, Node> = nodes;
+
+  if (Object.keys(filterTags).length !== 0) {
+    const nodesWithTags = Object.entries(nodes).filter(([, node]) => {
+      for (const [tagKey, tagValues] of Object.entries(filterTags)) {
+        if (tagValues.some(value => node.tags[tagKey] === value)) {
+          return true;
+        }
+      }
+      return false;
+    });
+    filteredNodes = Object.fromEntries(nodesWithTags);
+  }
+
+  if (filterCloudformationStacks.length !== 0) {
+    const nodesOfClusters = Object.entries(filteredNodes).filter(([, node]) =>
+      filterCloudformationStacks.includes(node.cloudformationStack as string),
+    );
+
+    filteredNodes = Object.fromEntries(nodesOfClusters);
+  }
+
+  return filteredNodes;
+};
 
 type DashboardType =
   | 'S3BucketSize'
@@ -30,12 +65,19 @@ export const Dashboard = ({
   setMenu,
   tags,
   cloudformationStacks,
+  menu,
 }: Props): JSX.Element => {
   const [selectedDashboard, setSelectedDashboard] = useState<
     DashboardType | undefined
   >(undefined);
 
-  const nodesByService = Object.values(nodes).reduce(
+  const filteredNodes = getFilteredNodes({
+    nodes,
+    filterTags: menu.filterTags,
+    filterCloudformationStacks: menu.filterCloudformationStacks,
+  });
+
+  const nodesByService = Object.values(filteredNodes).reduce(
     (acc, node) => ({
       ...acc,
       [node.arn.service]: acc[node.arn.service] + 1,
@@ -114,7 +156,7 @@ export const Dashboard = ({
                       color: getServiceColor(ArnService.lambda),
                     }}
                   >
-                    {Object.keys(nodes).length}
+                    {Object.keys(filteredNodes).length}
                   </h1>
                   <h2 style={{ fontSize: '1em' }}>Total resources</h2>
                 </div>
@@ -307,18 +349,20 @@ export const Dashboard = ({
           </div>
         </>
       )}
-      {selectedDashboard === 'S3BucketSize' && <S3Dashboard nodes={nodes} />}
+      {selectedDashboard === 'S3BucketSize' && (
+        <S3Dashboard nodes={filteredNodes} />
+      )}
       {selectedDashboard === 'DynamoDBTableSize' && (
-        <DynamoDBDashboard nodes={nodes} />
+        <DynamoDBDashboard nodes={filteredNodes} />
       )}
       {selectedDashboard === 'LambdaConfiguration' && (
-        <LambdaConfigurationDashboard nodes={nodes} />
+        <LambdaConfigurationDashboard nodes={filteredNodes} />
       )}
       {selectedDashboard === 'LambdaColdStarts' && (
-        <LambdaColdStartsDashboard nodes={nodes} />
+        <LambdaColdStartsDashboard nodes={filteredNodes} />
       )}
       {selectedDashboard === 'LambdaExecution' && (
-        <LambdaExecutionDashboard nodes={nodes} />
+        <LambdaExecutionDashboard nodes={filteredNodes} />
       )}
       <div
         style={{
