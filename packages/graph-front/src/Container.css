@@ -1,0 +1,12 @@
+.searchBar {
+  background-color: #7c7776;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: white;
+  padding: 0.5rem 3rem;
+  outline: none;
+}
+
+.searchBar::placeholder {
+  color: #bcbcbc;
+}

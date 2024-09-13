@@ -54,7 +54,6 @@ export const LiveGraph = ({
     clusteringByTagValue !== undefined ||
     enableVpcClustering;
 
-  console.log(clusters);
   return (
     <div
       style={{
