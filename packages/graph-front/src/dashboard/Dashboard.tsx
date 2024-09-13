@@ -331,10 +331,12 @@ export const Dashboard = ({
           fontWeight: 900,
         }}
         onClick={() =>
-          setMenu(m => ({
-            ...m,
-            openStats: false,
-          }))
+          selectedDashboard === undefined
+            ? setMenu(m => ({
+                ...m,
+                openStats: false,
+              }))
+            : setSelectedDashboard(undefined)
         }
       >
         X
