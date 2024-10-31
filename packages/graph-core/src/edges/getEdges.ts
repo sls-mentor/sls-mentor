@@ -4,12 +4,14 @@ import {
   CustomARN,
   EventBridgeEventBusARN,
   LambdaFunctionARN,
+  RdsClusterARN,
 } from '@sls-mentor/arn';
 import {
   fetchAllGraphqlApiResources,
   fetchAllIamRolePolicies,
   fetchAllLambdaConfigurations,
   fetchAllQueuesAttributes,
+  fetchAllRdsInstancesDescriptions,
   fetchAllStepFunctionConfigurations,
   getAllRulesOfEventBus,
   getAllTargetsOfEventBridgeRule,
@@ -36,6 +38,7 @@ export const getEdges = async (
     stateMachineDefinition,
     graphqlApiResources,
     stacksToStacksImports,
+    rdsDbInstances,
   ] = await Promise.all([
     fetchAllLambdaConfigurations(arns),
     fetchAllIamRolePolicies(arns),
@@ -68,6 +71,7 @@ export const getEdges = async (
     fetchAllStepFunctionConfigurations(arns),
     fetchAllGraphqlApiResources(arns),
     findStacksToStacksImportsWithCircularDependencies(),
+    fetchAllRdsInstancesDescriptions(arns),
   ]);
 
   const lambdaFunctionsAndRoleArn = lambdaFunctions.map(l => ({
@@ -170,6 +174,25 @@ export const getEdges = async (
           ]
         : [];
     }),
+    ...rdsDbInstances
+      .map(({ arn, description }) => {
+        const dbClusterIdentifier = description?.DBClusterIdentifier;
+
+        if (dbClusterIdentifier === undefined) {
+          return [];
+        }
+
+        return [
+          {
+            from: arn.toString(),
+            to: RdsClusterARN.fromRdsClusterIdentifier(
+              dbClusterIdentifier,
+            ).toString(),
+            warnings: [],
+          },
+        ];
+      })
+      .flat(1),
   ];
 
   const seenEdges = new Set<string>();
