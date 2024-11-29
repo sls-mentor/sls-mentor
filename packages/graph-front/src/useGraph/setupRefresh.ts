@@ -84,7 +84,9 @@ export const getNodeVisibility = (
   node: NodeWithLocation,
   filterCloudformationStacks: string[],
   filterTags: Record<string, string[]>,
+  filterByName: string,
   seeCloudformationStacks: boolean,
+  arn: string,
 ): NodeVisibility => {
   if (!seeCloudformationStacks && CloudformationStackARN.is(node.arn)) {
     return NodeVisibility.None;
@@ -92,6 +94,14 @@ export const getNodeVisibility = (
 
   if (seeCloudformationStacks && !CloudformationStackARN.is(node.arn)) {
     return NodeVisibility.None;
+  }
+
+  if (filterByName !== '') {
+    if (arn.toLowerCase().includes(filterByName.toLowerCase())) {
+      return NodeVisibility.Full;
+    } else {
+      return NodeVisibility.None;
+    }
   }
 
   const tagsVisibility = getNodeTagsVisibility(node, filterTags);
@@ -115,6 +125,7 @@ export const setupRefresh = ({
   clusteringByTagValue,
   filterCloudformationStacks,
   filterTags,
+  filterByName,
   seeCloudformationStacks,
 }: {
   currentContainer: HTMLDivElement;
@@ -124,6 +135,7 @@ export const setupRefresh = ({
   filterCloudformationStacks: string[];
   clusteringByTagValue: string | undefined;
   filterTags: Record<string, string[]>;
+  filterByName: string;
   seeCloudformationStacks: boolean;
 }): {
   destroy: () => void;
@@ -147,7 +159,9 @@ export const setupRefresh = ({
             node,
             filterCloudformationStacks,
             filterTags,
+            filterByName,
             seeCloudformationStacks,
+            arn,
           ),
           cluster: getNodeCluster({
             node,

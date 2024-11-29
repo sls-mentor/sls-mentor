@@ -31,6 +31,7 @@ export const useGraph = (
       filterCloudformationStacks: menu.filterCloudformationStacks,
       clusteringByTagValue: menu.clusteringByTagValue,
       filterTags: menu.filterTags,
+      filterByName: menu.filterByName,
       seeCloudformationStacks: menu.seeCloudformationStacks,
     });
 
